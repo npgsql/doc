@@ -66,6 +66,7 @@ please let us know and we'll add it.
   See [#438](https://github.com/npgsql/npgsql/issues/438).
 * Removed the AlwaysPrepare connection string parameter
 * Removed the Encoding connection string parameter, which was obsolete and unused anyway
+* Removed the Protocol connection string parameter, which was obsolete and unused anyway (protocol 3 was always used)
   (UTF8 was always used regardless of what was specified)
 * Removed NpgsqlDataReader.LastInsertedOID, it did not allow accessing individual OIDs in multi-statement commands.
   Replaced with NpgsqlDataReader.Statements, which provides OID and affected row information on a statement-by-statement
