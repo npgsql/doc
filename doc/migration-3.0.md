@@ -80,8 +80,11 @@ please let us know and we'll add it.
   case, if you rely on these parameters you must send them yourself.
 * Removed the obsolete `NpgsqlParameterCollection.Add(name, value)` method. Use `AddWithValue()` instead, which also exists
   in SqlClient.
-* The savepoint manipulation methods on `NpgsqlTransaction` have been renamed from `Save`, and `Rollback` to
-  `CreateSavepoint` and `RollbackToSavepoint`.
+* <del>The savepoint manipulation methods on `NpgsqlTransaction` have been renamed from `Save`, and `Rollback` to
+  `CreateSavepoint` and `RollbackToSavepoint`.</del>
+  This broke the naming conventions for these methods across other providers (SqlClient, Oracle...) and so in 3.0.2 the previous
+  names were returned and the new names marked as obsolete.
+  3.1 will remove the the new names and leaves only `Save` and `Rollback`. See [#738](https://github.com/npgsql/npgsql/issues/738).
 * The default CommandTimeout has changed from 20 seconds to 30 seconds, as in
   [ADO.NET](https://msdn.microsoft.com/en-us/library/system.data.idbcommand.commandtimeout(v=vs.110).aspx).
 * `CommandType.TableDirect` now requires CommandText to contain the name of a table, as per the
