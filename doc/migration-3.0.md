@@ -79,6 +79,9 @@ please let us know and we'll add it.
   See [#641](https://github.com/npgsql/npgsql/issues/641) for more details.
 * Previously, Npgsql set DateStyle=ISO, lc_monetary=C and extra_float_digits=3 on all connections it created. This is no longer
   case, if you rely on these parameters you must send them yourself.
+* NpgsqlConnection.Clone() will now only return a new connection with the same connection string as the original.
+  Previous versions returned an open connection if the original was open, and copied the Notice event listeners as well.
+  Note: NpgsqlConnection.Clone() was accidentally missing from 3.0.0 and 3.0.1.
 * Removed the obsolete `NpgsqlParameterCollection.Add(name, value)` method. Use `AddWithValue()` instead, which also exists
   in SqlClient.
 * <del>The savepoint manipulation methods on `NpgsqlTransaction` have been renamed from `Save`, and `Rollback` to
