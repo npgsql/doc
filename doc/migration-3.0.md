@@ -38,6 +38,10 @@ please let us know and we'll add it.
   Simply set the NpgsqlDbType property on the parameter.
 * Removed support for writing a parameter with an `IEnumerable<T>` value, since that would require Npgsql to enumerate it multiple
   times internally. `IList<T>` and IList are permitted.
+* It is no longer possible to write a .NET enum to an integral PostgreSQL column (e.g. int4).
+  Proper enum support has been added which allows writing to PostgreSQL enum columns
+  (see [the docs](http://www.npgsql.org/doc/enum.html).
+  To continue writing enums to integral columns as before, simply add an explicit cast to the integral type in your code.
 * NpgsqlMacAddress has been removed and replaced by the standard .NET PhysicalAddress.
 * Npgsql's BitString has been removed and replaced by the standard .NET BitArray.
 * NpgsqlTime has been removed and replaced by the standard .NET TimeSpan.
