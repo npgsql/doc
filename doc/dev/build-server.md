@@ -46,3 +46,7 @@ When upgrading TeamCity, the agent needs to be able to stop and start the Window
 * Download the plugin from https://github.com/jonnyzzz/TeamCity.GitHub, get the ZIP
 * Drop the ZIP in the TeamCity content dir's plugins subdir
 * Add the Build Feature "Report change status to GitHub". Configure everything appropriately, and be sure the user you set up has push access to the repository!
+
+## Install assorted dev utilities
+
+* GitVersion (with Chocolatey)
