@@ -66,13 +66,19 @@ Parameter keywords are case-insensitive.
 
     <tr>
       <td>SSL Mode</td>
-      <td>Controls whether SSL is required, disabled or preferred, depending on server support.</td>
+      <td>
+        Controls whether SSL is required, disabled or preferred, depending on server support.
+        <a href="security.html">See docs for more info</a>.
+      </td>
       <td>Disabled</td>
     </tr>
 
     <tr id="trust-server-certificate">
       <td>Trust Server Certificate</td>
-      <td>Whether to trust the server certificate without validating it.</td>
+      <td>
+        Whether to trust the server certificate without validating it.
+        <a href="security.html">See docs for more info</a>.
+      </td>
       <td>false</td>
     </tr>
 
@@ -84,19 +90,28 @@ Parameter keywords are case-insensitive.
 
     <tr>
       <td>Integrated Security</td>
-      <td>Whether to use Windows integrated security to log in.</td>
+      <td>
+        Whether to use Windows integrated security to log in.
+        <a href="security.html">See docs for more info</a>.
+      </td>
       <td>false</td>
     </tr>
 
     <tr>
       <td>Kerberos Service Name</td>
-      <td>The Kerberos service name to be used for authentication.</td>
+      <td>
+        The Kerberos service name to be used for authentication.
+        <a href="security.html">See docs for more info</a>.
+      </td>
       <td></td>
     </tr>
 
     <tr>
       <td>Include Realm</td>
-      <td>The Kerberos realm to be used for authentication.</td>
+      <td>
+        The Kerberos realm to be used for authentication.
+        <a href="security.html">See docs for more info</a>.
+      </td>
       <td></td>
     </tr>
 
