@@ -16,7 +16,7 @@ Please let us know of any bugs you run across!
 
 Large-scale features not yet implemented:
 
-* CoreCLR ([#471](EF://github.com/npgsql/npgsql/issues/471))
+* CoreCLR ([#471](https://github.com/npgsql/npgsql/issues/471))
 * Reverse engineering (RevEng) - generating code model from an existing database
   ([#758](https://github.com/npgsql/npgsql/issues/758))
 
