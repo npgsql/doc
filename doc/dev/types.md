@@ -332,6 +332,9 @@ tsquery:
 			UInt8 type (1 = val, 2 = oper)
 			UInt8 weight + UInt8 prefix (1/0) + null-terminated string, or UInt8 oper (1 = not, 2 = and, 3 = or)
 
+enum:
+	Simple text
+
 gtsvector:
 	GiST for tsvector. Probably internal type.
 
