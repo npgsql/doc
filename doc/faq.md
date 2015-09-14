@@ -47,4 +47,10 @@ using (var cmd = new NpgsqlCommand("INSERT INTO foo (col) VALUES (@p)", conn)) {
 }
 {% endhighlight %}
 
+---
 
+### I'm trying to apply an Entity Framework 6 migration and I get `Type is not resolved for member 'Npgsql.NpgsqlException,Npgsql'`!
+
+Unfortunately, a shortcoming of EF6 requires you to have Npgsql.dll in the Global Assembly Cache (GAC), otherwise you can't see
+migration-triggered exceptions. You can add Npgsql.dll to the GAC by opening a VS Developer Command Prompt as administator and
+running the command `gacutil /i Npgsql.dll`. You can remove it from the GAC with `gacutil /u Npgsql`.
