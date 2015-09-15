@@ -15,7 +15,7 @@ NpgsqlLogManager.Provider = new ???
 
 {% endhighlight %}
 
-*Note: you must set the logging provider *before* invoking any other Npgsql method, at the very start of your program.*
+*Note: you must set the logging provider before invoking any other Npgsql method, at the very start of your program.*
 
 It's trivial to create a logging provider that passes log messages to whatever logging framework you use. You can find such an adaptor for NLog [here](http://ni).
 
