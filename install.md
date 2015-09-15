@@ -14,5 +14,9 @@ feed (see below), package name EntityFramework7.Npgsql.
 If you'd like to have Visual Studio Design-Time support, you can try our <a href="">experiental installer</a>.
 Otherwise follow the <a href="doc/ddex.html">instructions for manual installation</a> in the documentation.
 
-Our build server publishes CI nuget packages for every build. If you'd like to install an unstable build, add our unstable NuGet
-feed at MyGet: [https://www.myget.org/F/npgsql-unstable](https://www.myget.org/F/npgsql-unstable).
+Our build server publishes CI nuget packages for every build. If a bug affecting you was fixed but there hasn't yet been a patch release,
+you can get a CI nuget at our [stable MyGet feed](https://www.myget.org/gallery/npgsql). These packages are generally stable and
+safe to use (although it's better to wait for a release).
+
+We also publish CI packages for the next minor/major version at our [unstable MyGet feed](https://www.myget.org/gallery/npgsql).
+These are definitely unstable and should be used with care.
