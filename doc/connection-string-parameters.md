@@ -135,7 +135,7 @@ Parameter keywords are case-insensitive.
 
     <tr>
       <td>Connection Lifetime</td>
-      <td>The time to wait before closing unused connections in the pool if the count of all connections exeeds MinPoolSize.</td>
+      <td>The time to wait before closing unused connections in the pool if the count of all connections exceeds MinPoolSize.</td>
       <td>15</td>
     </tr>
 
