@@ -66,7 +66,9 @@ please let us know and we'll add it.
   `NpgsqlDataReader.GetProviderSpecificValue` or even better, the generic
   `NpgsqlDataReader.GetFieldValue<T>`.
 * Removed the feature where Npgsql automatically "dereferenced" a resultset of refcursors into multiple
-  resultsets (this was used to emulate returning multiple resultsets from stored procedures).
+  resultsets (this was used to emulate returning multiple resultsets from stored procedures). Note that if
+  your function needs to return a single resultset, it should be simply returning a table rather than a
+  cursor (see `RETURNS TABLE`).
   See [#438](https://github.com/npgsql/npgsql/issues/438).
 * Removed the AlwaysPrepare connection string parameter
 * Removed the Encoding connection string parameter, which was obsolete and unused anyway
