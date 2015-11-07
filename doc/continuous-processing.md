@@ -26,20 +26,18 @@ progress, enable the [Continuous Processing](connection-string-parameters.html#c
 
 {% highlight C# %}
 
-using (var conn = new NpgsqlConnection(ConnectionString + ";ContinuousProcessing=true"))
+var conn = new NpgsqlConnection(ConnectionString + ";ContinuousProcessing=true");
+conn.Open();
+conn.Notification += (o, e) => Console.WriteLine("Received notification");
+
+using (var cmd = new NpgsqlCommand("LISTEN notifytest", conn))
 {
-    conn.Open();
-    conn.Notification += (o, e) => Console.WriteLine("Received notification");
+    cmd.ExecuteNonQuery();
+{
 
-    using (var cmd = new NpgsqlCommand("LISTEN notifytest", conn))
-    {
-        cmd.CommandTimeout = 0;   // Disable timeout
-
-        cmd.ExecuteNonQuery();
-        // The program will hang until someone else does "NOTIFY notifytest".
-        // At this point the LISTEN command will complete successfully.
-    }
-}
+// From this point your connection will fire the Notification event whenever a PostgreSQL
+// notification arrives. Keep the connection open and referenced to make sure it doesn't go 
+// out of scope and garbage collected.
 
 {% endhighlight %}
 
