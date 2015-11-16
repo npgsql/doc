@@ -33,6 +33,13 @@ NpgsqlLogManager.Provider = new ConsoleLogManager(<min level>, <print level?>, <
 Level defaults to `NpgsqlLogLevel.Info` (which will only print warnings and errors).
 You can also have log levels and connector IDs logged.
 
+## Statement and Parameter Logging
+
+Npgsql will log all SQL statements at level Debug, this can help you debug exactly what's being sent to PostgreSQL.
+
+By default, Npgsql will not log parameter values as these may contain sensitive information. You can turn on
+parameter logging by setting `NpgsqlLogManager.IsParameterLoggingEnabled` to true.
+
 ## NLogLoggingProvider (or implementing your own)
 
 The following provider is used in the Npgsql unit tests to pass log messages to [NLog](http://nlog-project.org/).
