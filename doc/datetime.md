@@ -50,14 +50,14 @@ Accordingly, your DateTime's Kind will determine the the timezone sent to the da
 .NET Value                 | PG type     | Action
 ---------------------------|-------------|---------------------------------------------------------------------
 DateTime(Kind=UTC)         | timestamp   | Send as-is
-DateTime(Kind=Local)       | timestamp   | Send as-is
-DateTime(Kind=Unspecified) | timestamp   | Send as-is
+DateTime(Kind=Local)       | timestamp (default)   | Send as-is
+DateTime(Kind=Unspecified) | timestamp (default)   | Send as-is
 DateTimeOffset             | timestamp   | Strip offset, send as-is
                            |             |
-DateTime(Kind=UTC)         | timestamptz | Send as-is
+DateTime(Kind=UTC)         | timestamptz (default) | Send as-is
 DateTime(Kind=Local)       | timestamptz | Convert to UTC locally before sending
 DateTime(Kind=Unspecified) | timestamptz | Send as-is
-DateTimeOffset             | timestamptz | Convert to UTC locally before sending
+DateTimeOffset             | timestamptz (default) | Convert to UTC locally before sending
                            |             |
 DateTime(Kind=UTC)         | time        | Send as-is
 DateTime(Kind=Local)       | time        | Send as-is
