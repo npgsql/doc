@@ -8,7 +8,7 @@ Note that like EF7 itself the provider is under heavy development, but most of t
 
 To use the EF7 provider, install the latest prerelease version of NuGet
 [`EntityFramework7.Npgsql`](https://www.nuget.org/packages/EntityFramework7.Npgsql/) from nuget.org.
-You can then follow [EF7's "getting started" section](http://ef.readthedocs.org/en/latest/getting-started/full-dotnet.html),
+You can then follow [EF7's "getting started" section](http://ef.readthedocs.org/en/latest/getting-started/full-dotnet/index.html),
 using Npgsql instead of SqlServer.
 
 General progress is tracked in the [EF7 issue on the npgsql github](https://github.com/npgsql/npgsql/issues/249).
