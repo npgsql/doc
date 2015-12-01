@@ -67,10 +67,10 @@ Parameter keywords are case-insensitive.
     <tr>
       <td>SSL Mode</td>
       <td>
-        Controls whether SSL is required, disabled or preferred, depending on server support.
+        Controls whether SSL is used, depending on server support. Can be `Require`, `Disable`, or `Prefer`.
         <a href="security.html">See docs for more info</a>.
       </td>
-      <td>Disabled</td>
+      <td>Disable</td>
     </tr>
 
     <tr id="trust-server-certificate">

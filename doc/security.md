@@ -35,8 +35,8 @@ By default PostgreSQL connections are unencrypted, but you can turn on SSL/TLS e
 First, you have to set up your PostgreSQL to receive SSL/TLS connections
 [as described here](http://www.postgresql.org/docs/current/static/ssl-tcp.html).
 
-Once that's done, specify `SSL Mode` in your connection string, setting it to either `required`
-(connection will fail if the server isn't set up for encryption), or `preferred` (use encryption if
+Once that's done, specify `SSL Mode` in your connection string, setting it to either `Require`
+(connection will fail if the server isn't set up for encryption), or `Prefer` (use encryption if
 possible but fallback to unencrypted otherwise).
 
 Note that by default, Npgsql will verify that your server's certificate is valid. If you're using a
