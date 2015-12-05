@@ -16,14 +16,14 @@ similar to [.NET DateTimeOffset](https://msdn.microsoft.com/en-us/library/system
 The .NET and PostgreSQL types differ in the resolution and range they provide;
 the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:
 
-PostgreSQL type | Precision/Range | .NET Native Type | Precision/Range | Npgsql .NET Provider-Specific Type
-----------------|-----------------|------------------|-----------------|-----------------------------------
-timestamp | 1 microsecond, 4713BC-294276AD | DateTime | 100 nanoseconds, 1AD-9999AD | NpgsqlDateTime
-timestamp with timezone | 1 microsecond, 4713BC-294276AD | DateTime | 100 nanoseconds, 1AD-9999AD | NpgsqlDateTime
-date | 1 day, 4713BC-5874897AD | DateTime | 100 nanoseconds, 1AD-9999AD | NpgsqlDate
-time | 1 microsecond, 0-24 hours | TimeSpan | 100 nanoseconds, -10,675,199 - 10,675,199 days | N/A
-time with timezone | 1 microsecond, 0-24 hours | DateTimeOffset (ignore date) | 100 nanoseconds, 1AD-9999AD | N/A
-interval | 1 microsecond, -178000000-178000000 years | TimeSpan | 100 nanoseconds, -10,675,199 - 10,675,199 days | NpgsqlTimeSpan
+PostgreSQL type         | Precision/Range                           | .NET Native Type             | Precision/Range                                | Npgsql .NET Provider-Specific Type
+------------------------|-------------------------------------------|------------------------------|------------------------------------------------|-----------------------------------
+timestamp               | 1 microsecond, 4713BC-294276AD            | DateTime                     | 100 nanoseconds, 1AD-9999AD                    | NpgsqlDateTime
+timestamp with timezone | 1 microsecond, 4713BC-294276AD            | DateTime                     | 100 nanoseconds, 1AD-9999AD                    | NpgsqlDateTime
+date                    | 1 day, 4713BC-5874897AD                   | DateTime                     | 100 nanoseconds, 1AD-9999AD                    | NpgsqlDate
+time                    | 1 microsecond, 0-24 hours                 | TimeSpan                     | 100 nanoseconds, -10,675,199 - 10,675,199 days | N/A
+time with timezone      | 1 microsecond, 0-24 hours                 | DateTimeOffset (ignore date) | 100 nanoseconds, 1AD-9999AD                    | N/A
+interval                | 1 microsecond, -178000000-178000000 years | TimeSpan                     | 100 nanoseconds, -10,675,199 - 10,675,199 days | NpgsqlTimeSpan
 
 If your needs are met by the .NET native types, it is best that you use them directly with Npgsql.
 If, however, you require the extended range of a PostgreSQL type you can use Npgsql's provider-specific types, which represent PostgreSQL types in an exact way.
@@ -47,44 +47,44 @@ Accordingly, your DateTime's Kind will determine the the timezone sent to the da
 
 ## Detailed Behavior: Sending values to the database
 
-.NET Value                 | PG type     | Action
----------------------------|-------------|---------------------------------------------------------------------
-DateTime(Kind=UTC)         | timestamp   | Send as-is
-DateTime(Kind=Local)       | timestamp   | Send as-is
-DateTime(Kind=Unspecified) | timestamp   | Send as-is
-DateTimeOffset             | timestamp   | Strip offset, send as-is
-                           |             |
-DateTime(Kind=UTC)         | timestamptz | Send as-is
-DateTime(Kind=Local)       | timestamptz | Convert to UTC locally before sending
-DateTime(Kind=Unspecified) | timestamptz | Send as-is
-DateTimeOffset             | timestamptz | Convert to UTC locally before sending
-                           |             |
-DateTime(Kind=UTC)         | time        | Send as-is
-DateTime(Kind=Local)       | time        | Send as-is
-DateTime(Kind=Unspecified) | time        | Send as-is
-DateTimeOffset             | time        | Strip offset, send as-is
-                           |             |
-DateTime(Kind=UTC)         | timetz      | Send time and UTC timezone
-DateTime(Kind=Local)       | timetz      | Send time and local system timezone
-DateTime(Kind=Unspecified) | timetz      | Assume local, send time and local system timezone
-DateTimeOffset             | timetz      | Send time and timezone
+.NET value                 | PG type               | Action
+---------------------------|-----------------------|--------------------------------------------------
+DateTime(Kind=UTC)         | timestamp             | Send as-is
+DateTime(Kind=Local)       | timestamp (default)   | Send as-is
+DateTime(Kind=Unspecified) | timestamp (default)   | Send as-is
+DateTimeOffset             | timestamp             | Strip offset, send as-is
+                           |                       |
+DateTime(Kind=UTC)         | timestamptz (default) | Send as-is
+DateTime(Kind=Local)       | timestamptz           | Convert to UTC locally before sending
+DateTime(Kind=Unspecified) | timestamptz           | Send as-is
+DateTimeOffset             | timestamptz (default) | Convert to UTC locally before sending
+                           |                       |
+DateTime(Kind=UTC)         | time                  | Send as-is
+DateTime(Kind=Local)       | time                  | Send as-is
+DateTime(Kind=Unspecified) | time                  | Send as-is
+DateTimeOffset             | time                  | Strip offset, send as-is
+                           |                       |
+DateTime(Kind=UTC)         | timetz                | Send time and UTC timezone
+DateTime(Kind=Local)       | timetz                | Send time and local system timezone
+DateTime(Kind=Unspecified) | timetz                | Assume local, send time and local system timezone
+DateTimeOffset             | timetz                | Send time and timezone
 
 ## Detailed Behavior: Reading values to the database
 
-PG type     | .NET value     | Action
-------------|----------------|-----------------------------------
-timestamp   | DateTime (default)      | Kind=Unspecified
-timestamp   | DateTimeOffset | Should throw an exception?
-            |                |
-timestamptz | DateTime       | Kind=UTC (PG binary encoding sends UTC)
+PG type     | .NET value               | Action
+------------|--------------------------|--------------------------------------------------
+timestamp   | DateTime (default)       | Kind=Unspecified
+timestamp   | DateTimeOffset           | Should throw an exception?
+            |                          |
+timestamptz | DateTime                 | Kind=UTC (PG binary encoding sends UTC)
 timestamptz | DateTimeOffset (default) | **Offset=UTC**
-            |                |
+            |                          |
 time        | TimeSpan (default)       | As-is
-time        | DateTime       | **Use only time component**
-time        | DateTimeOffset | **Exception?**
-            |                |
-timetz      | TimeSpan       | Strip offset, read as-is
-timetz      | DateTime       | **Use only time component, throw away time zone**
+time        | DateTime                 | **Use only time component**
+time        | DateTimeOffset           | **Exception?**
+            |                          |
+timetz      | TimeSpan                 | Strip offset, read as-is
+timetz      | DateTime                 | **Use only time component, throw away time zone**
 timetz      | DateTimeOffset (default) | **Use only time- and time zone component**
 
 ## Further Reading
