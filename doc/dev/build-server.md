@@ -14,7 +14,13 @@ At the time of writing, this means 8.4, 9.0, 9.1, 9.2, 9.3. They are configured 
 The parameterized unit tests look at the environment variables NPGSQL_TEST_DB_8.4, NPGSQL_TEST_DB_9.0 and so on for the connection strings to the above. Set them up in TeamCity on the Npgsql project level, in the parameters tab.
 
 For SSPI/GSS tests, you need to set up a user with the same name as the user that will be running the tests (i.e. teamcity_agent).
-You must also add a line at the top of each PG's pg_hba.conf to set up SSPI/GSS for that user.
+You must also add the following lines at the top of each PG's pg_hba.conf to set up SSPI/GSS for that user:
+
+```
+host    all             teamcity_agent  127.0.0.1/32            sspi  include_realm=0
+host    all             teamcity_agent  ::1/128                 sspi  include_realm=0
+```
+
 See [this page on SSPI](https://wiki.postgresql.org/wiki/Configuring_for_single_sign-on_using_SSPI_on_Windows).
 
 ## Install a TeamCity-dedicated Postgresql cluster
