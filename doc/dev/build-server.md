@@ -56,3 +56,4 @@ When upgrading TeamCity, the agent needs to be able to stop and start the Window
 ## Install assorted dev utilities
 
 * GitVersion (with Chocolatey)
+* WiX toolset (v3.10.1 at time of writing)
