@@ -11,6 +11,14 @@ The best way to install Npgsql in your project is with our <a href="https://www.
 - An Entity Framework 7 provider is in the works but is still unsuitable for actual use. You can try it out via our unstable
 feed (see below), package name EntityFramework7.Npgsql.
 
+In some cases you'll want to install Npgsql into your
+[Global Assembly Cache (GAC)](https://msdn.microsoft.com/en-us/library/yf1d93sz%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396).
+This is usually the case when you're using a generic database program that can work with any ADO.NET provider but doesn't come
+with Npgsql or reference it directly. For these cases, you can download the Npgsql Windows installer from
+[our Github releases page](https://github.com/npgsql/npgsql/releases): it will install Npgsql (and optionally the Entity Framework
+providers) into your GAC and add Npgsql's DbProviderFactory into your `machine.config` file.
+This is *not* the general recommended method of using Npgsql - install via Nuget if possible.
+
 If you'd like to have Visual Studio Design-Time support, you can try our <a href="">experiental installer</a>.
 Otherwise follow the <a href="doc/ddex.html">instructions for manual installation</a> in the documentation.
 
