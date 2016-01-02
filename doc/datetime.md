@@ -69,7 +69,7 @@ DateTime(Kind=Local)       | timetz                | Send time and local system 
 DateTime(Kind=Unspecified) | timetz                | Assume local, send time and local system timezone
 DateTimeOffset             | timetz                | Send time and timezone
 
-## Detailed Behavior: Reading values to the database
+## Detailed Behavior: Reading values from the database
 
 PG type     | .NET value               | Action
 ------------|--------------------------|--------------------------------------------------
