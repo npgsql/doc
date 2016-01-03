@@ -11,15 +11,16 @@ There is also a growing suite of speed tests to be able to measure performance. 
 
 ## Simple setup
 
-The Npgsql test suite requires a Postgresql backend to test against. Simply use the latest version of Postgresql on your dev machine on the default port (5432). All tests will be run on database *npgsql_tests*, using user *npgsql_tests*, and password *npgsql_tests*.
+The Npgsql test suite requires a PostgreSQL backend to test against. Simply use the latest version of Postgresql on your dev machine on the default port (5432).
+By default, all tests will be run using user *npgsql_tests*, and password *npgsql_tests*. Npgsql will automatically create a database called *npgsql_tests* and
+run its tests against this.
 
-To set this up, connect to Postgresql as the admin user as follows:
+To set this up, connect to PostgreSQL as the admin user as follows:
 
 {% highlight sql %}
 psql -h localhost -U postgresql
 <enter the admin password>
 create user npgsql_tests password 'npgsql_tests' superuser;
-create database npgsql_tests owner npgsql_tests;
 {% endhighlight %}
 
 And you're done.
