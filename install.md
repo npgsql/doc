@@ -26,5 +26,5 @@ Our build server publishes CI nuget packages for every build. If a bug affecting
 you can get a CI nuget at our [stable MyGet feed](https://www.myget.org/gallery/npgsql). These packages are generally stable and
 safe to use (although it's better to wait for a release).
 
-We also publish CI packages for the next minor/major version at our [unstable MyGet feed](https://www.myget.org/gallery/npgsql).
+We also publish CI packages for the next minor/major version at our [unstable MyGet feed](https://www.myget.org/gallery/npgsql-unstable).
 These are definitely unstable and should be used with care.
