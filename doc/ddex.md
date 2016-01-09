@@ -18,21 +18,21 @@ Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-4689261
 
 Visual Studio 2015 users:
 
-- *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
+1. *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
 
 Visual Studio 2013 users:
 
-- *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
-- [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
+1. *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
+2. [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
 
 Visual Studio 2012 users:
 
-- *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
-- [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
+1. *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
+2. [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
 
 PostgreSQL server installed:
 
-- Tested on *PostgreSQL 9.3.4 (win-x64)*
+1. Tested on *PostgreSQL 9.3.4 (win-x64)*
 
 ### Install DDEX provider (Npgsql 3.0.x)
 
@@ -87,11 +87,11 @@ Note: If we need administrative privileges to modify your devenv.exe.config, it 
 3. [Console Application]
 4. Name is [testef] for example.
 
-### Install [Npgsql for Entity Framework 6](https://www.nuget.org/packages/EntityFramework6.Npgsql/) (3.0.x) from NuGet
+### Install Npgsql for Entity Framework 6 (3.0.x) from NuGet
 1. Right click project [testef]
 2. [Managet NuGet Packages...]
 3. Type "Npgsql" at [Search Online (Ctrl+E)]
-4. Install "Npgsql for Entity Framework 6" (EntityFramework6.Npgsql). Version is 3.0.5 for now.
+4. Install "Npgsql for Entity Framework 6" ([EntityFramework6.Npgsql](https://www.nuget.org/packages/EntityFramework6.Npgsql/)). Version is 3.0.5 for now.
 5. EntityFramework 6.0.0 and Npgsql are also installed as part of its dependency.
 
 Notice: The assembly versions of Npgsql and NpgsqlDdexProvider **must be same**. If, for some reason, you need to install a version which isn't the latest one from NuGet, you need to use the following command in the NuGet Package Manager Console:
@@ -128,17 +128,17 @@ An App.config having Npgsql EFv6 privoder:
 
 ### Add Npgsql ADO.NET Data Provider
 
-You need to declare the *Npgsql ADO.NET Data Provider*. It is done by editing one of following config files:
+You need to declare the *Npgsql ADO.NET Data Provider*. Edit one of following config files:
 
-- `App.config` or `Web.config`
-- `machine.config`
+1. `App.config` or `Web.config`
+2. `machine.config`
 
 If you are using NuGet for your application, we recommend to edit: App.config or Web.config
 
-machine.config files are located in these places. Framework64 will exist on 64-bit Windows:
+machine.config are located in these places. Framework64 will exist on 64-bit Windows:
 
-- C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
-- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
 
 This is needed part of App.config:
 {% highlight xml %}
@@ -213,10 +213,7 @@ My sample ConnectionString:
 Host=127.0.0.1;Port=5432;Database=npgsql_tests;Username=npgsql_tests;Password=npgsql_tests
 ~~~
 
-Note: These properies are obsoleted since Npgsql 3.0.0:
-
-- Please remove **PreloadReader**
-- Please remove **Compatible**
+Note: **PreloadReader** and **Compatible** properies are obsoleted since Npgsql 3.0.0. Please remove it before pasting ConnectionString.
 
 10. Select [Yes, include the sensitive data in the connection string.] in this case for easy setup.  
 ![ef5](https://cloud.githubusercontent.com/assets/5955540/3362833/f8a3514c-fb0d-11e3-8675-8147125ad10b.png)
