@@ -17,22 +17,26 @@ Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-4689261
 ### Prerequisites
 
 Visual Studio 2015 users:
-1. *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
+
+- *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
 
 Visual Studio 2013 users:
-1. *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
-2. [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
+
+- *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
+- [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
 
 Visual Studio 2012 users:
-1. *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
-2. [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
+
+- *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
+- [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
 
 PostgreSQL server installed:
-1. Tested on *PostgreSQL 9.3.4 (win-x64)*
+
+- Tested on *PostgreSQL 9.3.4 (win-x64)*
 
 ### Install DDEX provider (Npgsql 3.0.x)
 
-1. Grab *Setup_NpgsqlDdexProvider.exe* from https://github.com/npgsql/npgsql/releases and run it.
+1. Grab *Setup_NpgsqlDdexProvider.exe* from [https://github.com/npgsql/npgsql/releases](https://github.com/npgsql/npgsql/releases) and run it.
 2. Select all components to install.
 
 ### Install Npgsql ADO.NET Data Provider to Visual Studio (Npgsql 3.0.x)
@@ -96,10 +100,10 @@ Notice: The assembly versions of Npgsql and NpgsqlDdexProvider **must be same**.
 
 ### Add Npgsql EFv6 provider
 
+Notice: Recent *EntityFramework6.Npgsql* NuGet package auotmatically does this process.
+
 1. Open [App.config], or [Web.config] for web projects.
 2. Add provider-element into providers-element: `<provider invariantName="Npgsql" type="Npgsql.NpgsqlServices, EntityFramework6.Npgsql" />`
-
-Notice: Recent *EntityFramework6.Npgsql* NuGet package auotmatically does this process.
 
 An App.config having Npgsql EFv6 privoder:
 {% highlight xml %}
@@ -125,16 +129,18 @@ An App.config having Npgsql EFv6 privoder:
 ### Add Npgsql ADO.NET Data Provider
 
 You need to declare the *Npgsql ADO.NET Data Provider*. It is done by editing one of following config files:
-1. `App.config` or `Web.config`
-2. `machine.config`
+
+- `App.config` or `Web.config`
+- `machine.config`
 
 If you are using NuGet for your application, we recommend to edit: App.config or Web.config
 
 machine.config files are located in these places. Framework64 will exist on 64-bit Windows:
-1. C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
-2. C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
 
-This is needed part:
+- C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+
+This is needed part of App.config:
 {% highlight xml %}
 <system.data>
   <DbProviderFactories>
@@ -148,7 +154,7 @@ This is needed part:
 </system.data>
 {% endhighlight %}
 
-Note: `<remove invariant="Npgsql"/>` is important, in case of having `<add invariant="Npgsql" ... />` in machine.config.
+Note: `<remove invariant="Npgsql"/>` is important, in case of already having `<add invariant="Npgsql" ... />` in machine.config.
 
 Edited App.config:
 {% highlight xml %}
@@ -208,8 +214,9 @@ Host=127.0.0.1;Port=5432;Database=npgsql_tests;Username=npgsql_tests;Password=np
 ~~~
 
 Note: These properies are obsoleted since Npgsql 3.0.0:
-1. Please remove **PreloadReader**
-2. Please remove **Compatible**
+
+- Please remove **PreloadReader**
+- Please remove **Compatible**
 
 10. Select [Yes, include the sensitive data in the connection string.] in this case for easy setup.  
 ![ef5](https://cloud.githubusercontent.com/assets/5955540/3362833/f8a3514c-fb0d-11e3-8675-8147125ad10b.png)
