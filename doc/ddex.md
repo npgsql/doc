@@ -11,31 +11,31 @@ Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-4689261
 
 ### Overview
 
-- Install Npgsql DDEX (Data Designer Extensibility) provider.
-- Visual Studio's *Entity Data Model wizard* will be enabled for PostgreSQL servers.
+1. Install Npgsql DDEX (Data Designer Extensibility) provider.
+2. Visual Studio's *Entity Data Model wizard* will be enabled for PostgreSQL servers.
 
 ### Prerequisites
 
 Visual Studio 2015 users:
-- *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
+1. *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
 
 Visual Studio 2013 users:
-- *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
-- [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
+1. *Visual Studio 2013 Professional Update 2* or greater editions. Express edition won't work.
+2. [Microsoft Visual Studio 2013 Update 5](https://www.microsoft.com/en-us/download/details.aspx?id=48129) is available.
 
 Visual Studio 2012 users:
-- *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
-- [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
+1. *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
+2. [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
 
 PostgreSQL server installed:
-- Tested on *PostgreSQL 9.3.4 (win-x64)*
+1. Tested on *PostgreSQL 9.3.4 (win-x64)*
 
-### Install DDEX provider (Npgsql 3.0.x):
+### Install DDEX provider (Npgsql 3.0.x)
 
 1. Grab *Setup_NpgsqlDdexProvider.exe* from https://github.com/npgsql/npgsql/releases and run it.
 2. Select all components to install.
 
-### Install Npgsql ADO.NET Data Provider to Visual Studio (Npgsql 3.0.x):
+### Install Npgsql ADO.NET Data Provider to Visual Studio (Npgsql 3.0.x)
 
 1. Launch Visual Studio.
 2. Open [TOOL] menu, and then click [Setup Npgsql DbProviderFactories...]
@@ -43,7 +43,8 @@ PostgreSQL server installed:
 4. Restart Visual Studio.
 
 Prompt:
-```
+
+~~~
 NpgsqlDdexProvider
 
 Could we modify the host config file in order to activate Npgsql
@@ -59,10 +60,11 @@ PublicKeyToken=5d8b90d52f46fda7
 
 ----------------------------------------------------------------
                                                  [OK] [Cancel]
-```
+~~~
 
 If select [Ok], the result will be prompted:
-```
+
+~~~
 NpgsqlDdexProvider
 
 Modification successful.
@@ -71,7 +73,7 @@ Please restart this VisualStudio.
 
 ---------------------------------
                            [OK]
-```
+~~~
 
 Note: If we need administrative privileges to modify your devenv.exe.config, it will be prompted.
 
@@ -120,17 +122,17 @@ An App.config having Npgsql EFv6 privoder:
 </configuration>
 {% endhighlight %}
 
-### Add *Npgsql ADO.NET Data Provider*
+### Add Npgsql ADO.NET Data Provider
 
 You need to declare the *Npgsql ADO.NET Data Provider*. It is done by editing one of following config files:
-- `App.config` or `Web.config`
-- `machine.config`
+1. `App.config` or `Web.config`
+2. `machine.config`
 
 If you are using NuGet for your application, we recommend to edit: App.config or Web.config
 
 machine.config files are located in these places. Framework64 will exist on 64-bit Windows:
-- C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
-- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+1. C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+2. C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
 
 This is needed part:
 {% highlight xml %}
@@ -146,7 +148,7 @@ This is needed part:
 </system.data>
 {% endhighlight %}
 
-Note: `<remove invariant="Npgsql"/>` is needed, in case of having `<add invariant="Npgsql" ... />` in machine.config.
+Note: `<remove invariant="Npgsql"/>` is important, in case of having `<add invariant="Npgsql" ... />` in machine.config.
 
 Edited App.config:
 {% highlight xml %}
@@ -205,9 +207,9 @@ My sample ConnectionString:
 Host=127.0.0.1;Port=5432;Database=npgsql_tests;Username=npgsql_tests;Password=npgsql_tests
 ~~~
 
-Note: Some properies are obsoleted since Npgsql 3.0.0:
-- Please remove **PreloadReader**
-- Please remove **Compatible**
+Note: These properies are obsoleted since Npgsql 3.0.0:
+1. Please remove **PreloadReader**
+2. Please remove **Compatible**
 
 10. Select [Yes, include the sensitive data in the connection string.] in this case for easy setup.  
 ![ef5](https://cloud.githubusercontent.com/assets/5955540/3362833/f8a3514c-fb0d-11e3-8675-8147125ad10b.png)
@@ -263,28 +265,20 @@ Sample output:
 (by @kenjiuno)
 Reference: https://github.com/npgsql/npgsql/pull/718#issuecomment-131815079
 
-NpgsqlDdexProvider has a feature to check your .NET project.
+NpgsqlDdexProvider 3.0.4 and later has a feature to check Npgsql installation status of your .NET project.
 
 1. Right click your .NET project
 2. Click [Check Npgsql project installation]
 
---
-
 <img width="359" alt="checknpgsqlprojectinstallation" src="https://cloud.githubusercontent.com/assets/5955540/11956722/9be2f4de-a8ff-11e5-9ca7-a1264c9a8a58.png">
-
---
 
 Click a button to start the check!
 
 <img width="451" alt="test1" src="https://cloud.githubusercontent.com/assets/5955540/11956750/d8556302-a8ff-11e5-95a4-8eb965ad0370.png">
 
---
-
 It will suggest them if you need one or more actions:
 
 <img width="451" alt="test3" src="https://cloud.githubusercontent.com/assets/5955540/11956755/dc675270-a8ff-11e5-8265-311e532a285d.png">
-
---
 
 [Test and result] shows test cases and their results:
 
@@ -294,7 +288,8 @@ It will suggest them if you need one or more actions:
 ## How to check if Npgsql DDEX was correctly loaded. (Npgsql 2.x)
 
 (by @kenjiuno)
-Reference: https://github.com/npgsql/Npgsql/pull/67#issuecomment-40281835
+
+Reference: [#67](https://github.com/npgsql/Npgsql/pull/67#issuecomment-40281835)
 
 Here are tips to check.
 
@@ -324,7 +319,8 @@ Note that the `Version` attribute above should match the version of the Npgsql A
 # NpgsqlDdexProvider build tips
 
 (by @kenjiuno)
-Reference: https://github.com/npgsql/Npgsql/pull/213#issuecomment-42109168
+
+Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-42109168)
 
 ## VS2010 users
 
