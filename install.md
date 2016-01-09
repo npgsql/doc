@@ -19,7 +19,7 @@ with Npgsql or reference it directly. For these cases, you can download the Npgs
 providers) into your GAC and add Npgsql's DbProviderFactory into your `machine.config` file.
 This is *not* the general recommended method of using Npgsql - install via Nuget if possible.
 
-If you'd like to have Visual Studio Design-Time support, you can try our <a href="https://github.com/npgsql/npgsql/releases">experiental installer</a> Setup_NpgsqlDdexProvider.exe.
+If you'd like to have Visual Studio Design-Time support, you can try our <a href="https://github.com/npgsql/npgsql/releases">experimental installer</a> Setup_NpgsqlDdexProvider.exe.
 And then follow the <a href="doc/ddex.html">instructions</a> in the documentation.
 
 Our build server publishes CI nuget packages for every build. If a bug affecting you was fixed but there hasn't yet been a patch release,
