@@ -200,6 +200,7 @@ My sample ConnectionString:
 Host=127.0.0.1;Port=5432;Database=npgsql_tests;Username=npgsql_tests;Password=npgsql_tests
 ~~~
 
+
 Note: **PreloadReader** and **Compatible** properies are obsoleted since Npgsql 3.0.0. Please remove it before pasting ConnectionString.
 
 10. Select [Yes, include the sensitive data in the connection string.] in this case for easy setup.  
@@ -254,7 +255,8 @@ Sample output:
 ## How to check if Npgsql DDEX is working correctly. (Npgsql 3.0.x)
 
 (by @kenjiuno)
-Reference: https://github.com/npgsql/npgsql/pull/718#issuecomment-131815079
+
+Reference: [#718](https://github.com/npgsql/npgsql/pull/718#issuecomment-131815079)
 
 NpgsqlDdexProvider 3.0.4 and later has a feature to check Npgsql installation status of your .NET project.
 
