@@ -3,7 +3,7 @@ layout: doc
 title: Visual Studio Support (DDEX)
 ---
 
-## VS2012,VS2013,and VS2015Pro + NpgsqlDdexProvider + EFv6 how to
+## VS2012,VS2013,and VS2015Pro+NpgsqlDdexProvider+EFv6 how to
 
 (by @kenjiuno)
 
@@ -12,13 +12,15 @@ Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-4689261
 ### Overview
 
 1. Install Npgsql DDEX (Data Designer Extensibility) provider.
-2. Visual Studio's *Entity Data Model wizard* will be enabled for PostgreSQL servers.
+2. Install Npgsql ADO.NET Data Provider.
+3. Visual Studio's *Entity Data Model wizard* will be enabled for PostgreSQL servers.
 
 ### Prerequisites
 
 Visual Studio 2015 users:
 
 1. *Visual Studio 2015 Professional* or greater editions. Express edition won't work.
+2. [Microsoft Visual Studio 2015 Update 1](https://www.microsoft.com/en-us/download/details.aspx?id=49989) is available.
 
 Visual Studio 2013 users:
 
@@ -27,7 +29,7 @@ Visual Studio 2013 users:
 
 Visual Studio 2012 users:
 
-1. *Visual Studio 2013 Professional* or greater editions. Express edition won't work.
+1. *Visual Studio 2012 Professional* or greater editions. Express edition won't work.
 2. [Visual Studio 2012 Update 5](http://www.microsoft.com/en-us/download/details.aspx?id=48708) is available.
 
 PostgreSQL server installed:
@@ -38,6 +40,8 @@ PostgreSQL server installed:
 
 1. Grab *Setup_NpgsqlDdexProvider.exe* from [https://github.com/npgsql/npgsql/releases](https://github.com/npgsql/npgsql/releases) and run it.
 2. Select all components to install.
+
+Note: The **version** among *Npgsql*, *EntityFramework6.Npgsql* and *NpgsqlDdexProvider* **must be same**. For example, if you select *Npgsql* 3.0.5, it needs *EntityFramework6.Npgsql* 3.0.5. Also *NpgsqlDdexProvider* 3.0.5.
 
 ### Install Npgsql ADO.NET Data Provider to Visual Studio (Npgsql 3.0.x)
 
@@ -69,12 +73,14 @@ Setup succeeded.
 Note: It will be prompted if administrative privilege is required to modify your devenv.exe.config.
 
 ### Prepare new project for testing
+
 1. Launch Visual Studio.
 2. [FILE]→[New]→[Project...]
 3. [Console Application]
 4. Name is [testef] for example.
 
 ### Install Npgsql for Entity Framework 6 (3.0.x) from NuGet
+
 1. Right click project [testef]
 2. [Managet NuGet Packages...]
 3. Type "Npgsql" at [Search Online (Ctrl+E)]
@@ -87,7 +93,7 @@ Notice: The assembly versions of Npgsql and NpgsqlDdexProvider **must be same**.
 
 ### Add Npgsql EFv6 provider
 
-Notice: Recent *EntityFramework6.Npgsql* NuGet package auotmatically does this process.
+Notice: Recent *EntityFramework6.Npgsql* NuGet package automatically does this process.
 
 1. Open [App.config], or [Web.config] for web projects.
 2. Add provider-element into providers-element: `<provider invariantName="Npgsql" type="Npgsql.NpgsqlServices, EntityFramework6.Npgsql" />`
@@ -122,7 +128,7 @@ You need to declare the *Npgsql ADO.NET Data Provider*. Edit one of following co
 
 If you are using NuGet for your application, we recommend to edit: App.config or Web.config
 
-machine.config are located in these places. Framework64 will exist on 64-bit Windows:
+machine.config are placed in these locations. Framework64 will exist on 64-bit Windows:
 
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
@@ -200,8 +206,7 @@ My sample ConnectionString:
 Host=127.0.0.1;Port=5432;Database=npgsql_tests;Username=npgsql_tests;Password=npgsql_tests
 ~~~
 
-
-Note: **PreloadReader** and **Compatible** properies are obsoleted since Npgsql 3.0.0. Please remove it before pasting ConnectionString.
+Note: **PreloadReader** and **Compatible** properies are obsoleted since Npgsql 3.0.0. Please remove them before submitting ConnectionString.
 
 10. Select [Yes, include the sensitive data in the connection string.] in this case for easy setup.  
 ![ef5](https://cloud.githubusercontent.com/assets/5955540/3362833/f8a3514c-fb0d-11e3-8675-8147125ad10b.png)
@@ -320,14 +325,13 @@ Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-4210916
 You'll need VS2010 Professional or greater.
 
 SP0 users:
-- Install: **Visual Studio 2010 SDK**
-  http://www.microsoft.com/en-us/download/details.aspx?id=2680
+
+- Install: [Visual Studio 2010 SDK](http://www.microsoft.com/en-us/download/details.aspx?id=2680)
 
 SP1 users:
-- Install: **Microsoft Visual Studio 2010 Service Pack 1 (Installer)**
-  http://www.microsoft.com/en-us/download/details.aspx?id=23691
-- Install: **Visual Studio 2010 SP1 SDK**
-  http://www.microsoft.com/en-us/download/details.aspx?id=21835
+
+- Install: [Microsoft Visual Studio 2010 Service Pack 1 (Installer)](http://www.microsoft.com/en-us/download/details.aspx?id=23691)
+- Install: [Visual Studio 2010 SP1 SDK](http://www.microsoft.com/en-us/download/details.aspx?id=21835)
 
 If you need newer NpgsqlDdexProvider2010.pkgdef, create your own manually.
 pkgdef is a kind of registry file for our DDEX registration.
@@ -362,26 +366,21 @@ Check: **How to create a pkgdef file for your Visual Studio Package**    http://
 
 You'll need VS2012 Professional or greater.
 
-- Install: **Microsoft Visual Studio 2012 SDK**
-  http://www.microsoft.com/en-us/download/details.aspx?id=30668
-- Install: **Visual Studio 2012 Update 4**
-  http://www.microsoft.com/en-us/download/details.aspx?id=39305
+- Install: [Microsoft Visual Studio 2012 SDK](http://www.microsoft.com/en-us/download/details.aspx?id=30668)
+- Install: [Visual Studio 2012 Update 4](http://www.microsoft.com/en-us/download/details.aspx?id=39305)
 
 ## VS2013 users
 
 You'll need VS2013 Professional or greater.
 
-- Install: **Microsoft Visual Studio 2013 SDK**
-  http://www.microsoft.com/en-us/download/details.aspx?id=40758
-- Install: **Visual Studio 2013 Update 2** or later. Try Update 4:
-  https://www.microsoft.com/en-us/download/details.aspx?id=44921
+- Install: [Microsoft Visual Studio 2013 SDK](http://www.microsoft.com/en-us/download/details.aspx?id=40758)
+- Install: [Visual Studio 2013 Update 2](https://www.microsoft.com/en-us/download/details.aspx?id=44921) or later.
 
-## VS2015RC users
+## VS2015 users
 
-You'll need [VS2015Pro RC](https://www.microsoft.com/en-us/download/details.aspx?id=46876), [VS2015 RC Downloads](https://www.visualstudio.com/en-us/downloads/visual-studio-2015-downloads-vs.aspx) or such.
+You'll need VS2015 Professional or greater.
 
-- Install: **Microsoft Visual Studio 2015 RC SDK**
-  https://www.microsoft.com/en-us/download/details.aspx?id=46850
+- Check: [Installing the Visual Studio Extensibility Tools (VS SDK)](https://msdn.microsoft.com/en-us/library/bb166441.aspx#Anchor_0)
 
 ## How to debug Npgsql DDEX extension
 
