@@ -46,40 +46,27 @@ PostgreSQL server installed:
 3. Click [OK], 2 times.
 4. Restart Visual Studio.
 
-Prompt:
+It asks permission to modify your devenv.exe.config:
 
-~~~
-NpgsqlDdexProvider
+![setup2](https://cloud.githubusercontent.com/assets/5955540/9305488/b7368b7e-452c-11e5-9555-5dba7cb53a5a.png)
 
-Could we modify the host config file in order to activate Npgsql
-ADO.NET Data Provider?
+This process will add the Npgsql in devenv.exe.config:
 
-C:\Program Files (x86)\Microsoft Visual Studio
-12.0\Common7\IDE\devenv.exe.config
+{% highlight xml %}
+  <system.data>
+    <DbProviderFactories>
+      ...
+      <remove invariant="Npgsql" />
+      <add name="Npgsql Data Provider" invariant="Npgsql" description=".Net Data Provider for PostgreSQL" type="Npgsql.NpgsqlFactory, Npgsql, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" />
+    </DbProviderFactories>
+  </system.data>
+{% endhighlight %}
 
-The assembly version:
+Setup succeeded.
 
-Npgsql, Version=3.0.5.0, Culture=neutral,
-PublicKeyToken=5d8b90d52f46fda7
+![setup3](https://cloud.githubusercontent.com/assets/5955540/9305503/e28f8578-452c-11e5-988c-228cc6792371.png)
 
-----------------------------------------------------------------
-                                                 [OK] [Cancel]
-~~~
-
-If select [Ok], the result will be prompted:
-
-~~~
-NpgsqlDdexProvider
-
-Modification successful.
-
-Please restart this VisualStudio.
-
----------------------------------
-                           [OK]
-~~~
-
-Note: If we need administrative privileges to modify your devenv.exe.config, it will be prompted.
+Note: It will be prompted if administrative privilege is required to modify your devenv.exe.config.
 
 ### Prepare new project for testing
 1. Launch Visual Studio.
