@@ -21,8 +21,8 @@ to unambiguously specify exactly what type you want to write. Test your code thr
 
 {% highlight C# %}
 
-// Export two columns from table data
-using (var writer = conn.BeginBinaryImport("COPY data (field_text, field_int2) FROM STDIN BINARY"))
+// Import two columns to table data
+using (var writer = conn.BeginBinaryImport("COPY data (field_text, field_int2) FROM STDIN (FORMAT BINARY)"))
 {
     writer.StartRow();
     writer.Write("Hello");
@@ -33,8 +33,8 @@ using (var writer = conn.BeginBinaryImport("COPY data (field_text, field_int2) F
     writer.WriteNull();
 }
 
-// Import two columns to table data
-using (var reader = Conn.BeginBinaryExport("COPY data (field_text, field_int2) TO STDIN BINARY"))
+// Export two columns to table data
+using (var reader = Conn.BeginBinaryExport("COPY data (field_text, field_int2) TO STDOUT (FORMAT BINARY)"))
 {
     reader.StartRow();
     Console.WriteLine(reader.Read<string>());
@@ -64,7 +64,7 @@ using (var writer = conn.BeginTextImport("COPY data (field_text, field_int4) FRO
     writer.Write("GOODBYE\t2\n");
 }
 
-using (var reader = conn.BeginTextExport("COPY data (field_text, field_int4) TO STDIN")) {
+using (var reader = conn.BeginTextExport("COPY data (field_text, field_int4) TO STDOUT")) {
     Console.WriteLine(reader.ReadLine());
     Console.WriteLine(reader.ReadLine());
 }
@@ -84,13 +84,13 @@ Example:
 int len;
 var data = new byte[10000];
 // Export table1 to data array
-using (var inStream = conn.BeginRawBinaryCopy("COPY table1 TO STDIN BINARY")) {
+using (var inStream = conn.BeginRawBinaryCopy("COPY table1 TO STDOUT (FORMAT BINARY)")) {
     // We assume the data will fit in 10000 bytes, in real usage you would read repeatedly, writine to a file.
     len = inStream.Read(data, 0, data.Length);
 }
 
 // Import data array into table2
-using (var outStream = conn.BeginRawBinaryCopy("COPY table2 FROM STDIN BINARY")) {
+using (var outStream = conn.BeginRawBinaryCopy("COPY table2 FROM STDIN (FORMAT BINARY)")) {
     outStream.Write(data, 0, len);
 }
 {% endhighlight %}
