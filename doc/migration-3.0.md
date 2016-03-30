@@ -79,6 +79,8 @@ please let us know and we'll add it.
 * Removed NpgsqlDataReader.LastInsertedOID, it did not allow accessing individual OIDs in multi-statement commands.
   Replaced with NpgsqlDataReader.Statements, which provides OID and affected row information on a statement-by-statement
   basis.
+* Removed `NpgsqlDataReader.HasOrdinal`, was a badly-named non-standard API without a serious use case.
+  `GetName()` can be used as a workaround.
 
 ## Other
 
