@@ -6,10 +6,10 @@ title: Entity Framework 7
 An experimental Npgsql Entity Framework 7 provider is available for testing.
 Note that like EF7 itself the provider is under heavy development, but most of the basic features work.
 
-To use the EF7 provider, install the latest prerelease version of NuGet
-[`EntityFramework7.Npgsql`](https://www.nuget.org/packages/EntityFramework7.Npgsql/) from nuget.org.
-You can then follow [EF7's "getting started" section](http://ef.readthedocs.org/en/latest/getting-started/full-dotnet/index.html),
-using Npgsql instead of SqlServer.
+Development happens in the
+[Npgsql.EntityFrameworkCore.PostgreSQL](https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL) repo,
+all issues should be opened there. RC2 work is in progress but the provider isn't ready yet, use RC1 as instructed
+below.
 
 Reverse-engineering (database-first) is also supported; the Npgsql provider for that is
 [`EntityFramework7.Npgsql.Design`](https://www.nuget.org/packages/EntityFramework7.Npgsql.Design/).
