@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: doc-3.0
 title: Migrating from 2.2 to 3.0
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: doc
+layout: doc-3.0
 title: Type mappings
 ---
 

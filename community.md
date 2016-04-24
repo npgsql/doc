@@ -15,7 +15,7 @@ If you'd like to help, you can subscribe to the
 and help answer questions.
 
 To contribute code, please send us a pull request on github.
-Also, please see our [dev resources page](doc/dev.html).
+Also, please see our [dev resources page](dev/).
 
 ## Contributors
 
