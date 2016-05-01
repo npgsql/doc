@@ -13,6 +13,7 @@ Npgsql has been ported to the latest dotnet RC2 bits and compiles with the dotne
 The Entity Framework Core provider (previously EF7) is being moved into
 [its own repository](https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL).
 There are several reasons for this change:
+
 * The general instability of EFCore caused frequent build issues which interfered with
   unrelated work on Npgsql.
 * The EFCore provider and Npgsql are very loosely-coupled, there's no real reason for
