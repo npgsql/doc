@@ -35,6 +35,7 @@ These are the steps needed to publish release 3.0.6:
 * Upload MSI to the github release
 * Delete hotfix/3.0.6 both locally and on github
 * Create new branch hotfix/3.0.7 off of master, push to github
+* Close the Github 3.0.6 milestone, create new 3.0.7 milestone
 
 ## Other stuff
 
