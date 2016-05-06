@@ -36,34 +36,3 @@ Setting this up is easy. The test suite checks for the existence of environment 
 For example, to test against Postgresql versions 9.3 and 9.1, define NPGSQL_TEST_DB_9.3 and NPGSQL_TEST_DB_9.1, each containing a valid Postgresql connection string.
 
 After that, you have to configure each backend to listen to different tcp ports. Remember to add the port parameter to the connection string you specified above!
-
-## Debugging tests with Visual Studio .Net 
-
-In order to debug the tests running on NUnit under Visual Studio .net, you need to make some small changes to the project. 
-
-### Project properties 
-
-1. First, select the project NpgsqlTests in solution explorer, right-click it and select Properties. 
-1. In the Debug tab, set the complete path of nunit-x86.exe in the Start external program box.
-1. In the Command line arguments, set the complete path of the NpgsqlTests.dll assembly you want to debug
-1. Set the path of the assembly in the working directory box.
-
-### Nunit configuration
-
-If you are using .Net 4.0 and above, you have to edit nunit-x86.exe.config  (or nunit.exe.config if you are running 64-bit version of NUnit) and add the following section inside the configuration element:
-
-{% highlight xml %}
-<startup>
-    <supportedRuntime version="4.0" />
-</startup>
-{% endhighlight %}
-
-**This is needed or else, Visual Studio will complain that it can't load debug symbols.**
-
-### Set NpgsqlTests project as startup project
-
-To facilitate debugging, you can specify NpgsqlTests as startup project. This way, when you press F5, Visual studio will start NUnit with the tests loaded.
-
-### Reference
-
-A complete reference tutorial with pictures where those instructions were taken from can be found here: http://erraticdev.blogspot.com/2012/01/running-or-debugging-nunit-tests-from.html
