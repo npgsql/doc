@@ -76,7 +76,7 @@ PG type     | .NET value               | Action
 timestamp   | DateTime (default)       | Kind=Unspecified
 timestamp   | DateTimeOffset           | Should throw an exception?
             |                          |
-timestamptz | DateTime                 | Kind=UTC (PG binary encoding sends UTC)
+timestamptz | DateTime                 | Kind=Local (according to system tz)
 timestamptz | DateTimeOffset (default) | **Offset=UTC**
             |                          |
 time        | TimeSpan (default)       | As-is
