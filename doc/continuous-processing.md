@@ -1,7 +1,9 @@
 ---
-layout: doc-3.0
+layout: doc
 title: Continuous Processing
 ---
+
+Note: *Continuous processing has been removed in Npgsql 3.1, and [replaced by `Wait`](wait.html)*.
 
 ## PostgreSQL Asynchronous messages
 
@@ -45,20 +47,4 @@ using (var cmd = new NpgsqlCommand("LISTEN notifytest", conn))
 
 ## Keepalive
 
-Clients in continuous processing mode can sometimes wait for hours, even days before getting a single notification. In this scenario,
-how can the client know the connection is still up, and hasn't been broken by a server or network outage? For this purpose, Npgsql
-has a keepalive feature, which makes it send periodic `SELECT 1` queries. This feature is by default disabled, and must be enabled via
-the [Keepalive](connection-string-parameter.html#keepalive) connection string parameter, setting the number of seconds between each
-keepalive.
-
-When keepalive is enabled, Npgsql will emit an
-[`NpgsqlConnection.StateChange`](https://msdn.microsoft.com/en-us/library/system.data.common.dbconnection.statechange(v=vs.110).aspx)
-event if the keepalive fails.
-
-Note that it does not really make sense to turn on this feature unless you're going to be waiting for asynchronous notifications (and
-turning on ContinuousProcessing). For normal operations, simply perform your queries and you'll get an exception if the connection
-fails.
-
-Note: Npgsql does not turn on TCP keepalive because that feature isn't universally reliable across all network
-equipment.
-
+You may want to turn on [keepalives](keepalive.html).

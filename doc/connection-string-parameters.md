@@ -1,5 +1,5 @@
 ---
-layout: doc-3.1
+layout: doc
 title: Connection String Parameters
 ---
 
@@ -65,6 +65,15 @@ Parameter keywords are case-insensitive.
     </tr>
 
     <tr>
+      <td>Client Encoding</td>
+      <td>
+        Gets or sets the client_encoding parameter.</br>
+	Since 3.1.
+      </td>
+      <td></td>
+    </tr>
+
+    <tr>
       <td>SSL Mode</td>
       <td>
         Controls whether SSL is used, depending on server support. Can be `Require`, `Disable`, or `Prefer`.
@@ -91,7 +100,7 @@ Parameter keywords are case-insensitive.
     <tr>
       <td>Integrated Security</td>
       <td>
-        Whether to use Windows integrated security to log in.
+        Whether to use integrated security to log in (GSS/SSPI), currently supported on Windows only.
         <a href="security.html">See docs for more info</a>.
       </td>
       <td>false</td>
@@ -101,7 +110,8 @@ Parameter keywords are case-insensitive.
       <td>Persist Security Info</td>
       <td>
         Gets or sets a Boolean value that indicates if security-sensitive information, such as the password,
-	is not returned as part of the connection if the connection is open or has ever been in an open state.
+	is not returned as part of the connection if the connection is open or has ever been in an open state.<br/>
+	Since 3.1 only.
       </td>
       <td>false</td>
     </tr>
@@ -139,12 +149,15 @@ Parameter keywords are case-insensitive.
     <tr>
       <td>Maximum Pool Size</td>
       <td>The maximum connection pool size.</td>
-      <td>20</td>
+      <td>100<br/> (20 in 3.0)</td>
     </tr>
 
     <tr id="connection-idle-lifetime">
       <td>Connection Idle Lifetime</td>
-      <td>The time (in seconds) to wait before closing idle connections in the pool if the count of all connections exceeds MinPoolSize.</td>
+      <td>
+        The time (in seconds) to wait before closing idle connections in the pool if the count of all connections exceeds MinPoolSize.<br/>
+	Since 3.1 only.
+      </td>
       <td>300</td>
     </tr>
 
@@ -152,7 +165,8 @@ Parameter keywords are case-insensitive.
       <td>Connection Pruning Interval</td>
       <td>
         How many seconds the pool waits before attempting to prune idle connections that are beyond idle lifetime
-	(see <a href="#connection-idle-lifetime#">ConnectionIdleLifetime</a>.
+	(see <a href="#connection-idle-lifetime#">ConnectionIdleLifetime</a>.<br/>
+	Since 3.1 only.
       </td>
       <td>10</td>
     </tr>
@@ -195,7 +209,10 @@ Parameter keywords are case-insensitive.
 
     <tr>
       <td>Backend Timeouts</td>
-      <td>Whether to have the backend enforce CommandTimeout and InternalCommandTimeout via the statement_timeout variable.</td>
+      <td>
+        Whether to have the backend enforce CommandTimeout and InternalCommandTimeout via the statement_timeout variable.<br/>
+	Removed in 3.1 (no more backend timeouts)
+      </td>
       <td>true</td>
     </tr>
 

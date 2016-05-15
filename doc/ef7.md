@@ -1,5 +1,5 @@
 ---
-layout: doc-3.1
+layout: doc
 title: Entity Framework 7
 ---
 

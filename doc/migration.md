@@ -1,7 +1,40 @@
 ---
-layout: doc-3.0
-title: Migrating from 2.2 to 3.0
+layout: doc
+title: Migration Notes
 ---
+
+## Migrating from 3.0 to 3.1
+
+* CommandTimeout used to be implemented with PostgreSQL's `statement_timeout` parameter, but this wasn't a very reliable
+  method and has been removed. CommandTimeout is now implemented via socket timeouts only, see
+  [#689](https://github.com/npgsql/npgsql/issues/689) for more details.
+  Note that if a socket timeout occurs, the connection is broken and must be reopened.
+* The [`Persist Security Info`](connection-string-parameters.html#persist-security-info) parameter has been implemented
+  and is false by default. This means that once a connection has been opened, you will not be able to get its password.
+* Removed ContinuousProcessing mode, and replaced it with [Wait](wait.html), a simpler and less bug-prone
+  mechanism for consuming asynchronous notifications ([#1024](https://github.com/npgsql/npgsql/issues/1024)).
+* The `Maximum Pool Size` connection is parameter is now 100 default instead of 20 (this is default in SqlClient, pg_bouncer...).
+* The `Connection Lifetime` parameter has been renamed to `Connection Idle Lifetime`, and its default has been changed from
+  15 to 300. Also, once the number of seconds has elapsed the connection is closed immediately; the previous behavior closed
+  half of the connections.
+* `RegisterEnum` and `RegisterEnumGlobally` have been renamed to `MapEnum` and `MapEnumGlobally` respectively.
+* If you used enum mapping in 3.0, the strategy for translating between CLR and PostgreSQL type names has changed. In 3.0
+  Npgsql simply used the CLR name (e.g. SomeField) as the PostgreSQL name; Npgsql 3.1 uses a user-definable name translator,
+  default to snake case (e.g. some_field). See [#859](https://github.com/npgsql/npgsql/issues/859).
+* The `EnumLabel` attribute has been replaced by the `PgName` attribute (which is also used for the new composite type support).
+* When PostgreSQL sends an error, it is no longer raised by an NpgsqlException but by a PostgresException.
+  PostgresException is a subclass of NpgsqlException so code catching NpgsqlException should still work, but the
+  PostgreSQL-specific exception properties will only be available on PostgresException.
+* The Code property on NpgsqlException has been renamed to SqlState. It has also been moved to PostgresException.
+* NpgsqlNotice has been renamed to PostgresNotice
+* For multistatement commands, PostgreSQL parse errors will now be thrown only when the user calls NextResult() and gets to
+  the problematic statement.
+* It is no longer possible to dispose a prepared statement while a reader is still open.
+  Since disposing a prepared statement includes database interaction, the connection must be idle.
+* Removed `NpgsqlConnection.SupportsHexByteFormat`.
+* Renamed `NpgsqlConnection.Supports_E_StringPrefix` to `SupportsEStringPrefix`.
+
+## Migrating from 2.2 to 3.0
 
 Version 3.0 represents a near-total rewrite of Npgsql. In addition to changing how Npgsql works internally and communicates
 with PostgreSQL, a conscious effort was made to better align Npgsql with the ADO.NET specs/standard and with SqlClient
@@ -11,7 +44,7 @@ where that made sense. This means that you cannot expect to drop 3.0 as a replac
 The following is a *non-exhaustive* list of things that changed. If you run against a breaking change not documented here,
 please let us know and we'll add it.
 
-## Major
+### Major
 
 * Support for .NET 2.0, .NET 3.5 and .NET 4.0 has been dropped - you will have to upgrade to .NET 4.5 to use Npgsql 3.0.
   We'll continue to do bugfixes on the 2.2 branch for a while on a best-effort basis.
@@ -22,7 +55,7 @@ please let us know and we'll add it.
 * Composite (custom) types aren't supported yet, but this is a high-priority feature for us.
   See [#441](https://github.com/npgsql/npgsql/issues/441).
 
-## SSL
+### SSL
 
 * Npgsql 2.2 didn't perform validation on the server's certificate by default, so self-signed certificate were accepted.
   The new default is to perform validation. Specify the
@@ -30,7 +63,7 @@ please let us know and we'll add it.
 * The "SSL" connection string parameter has been removed, use "SSL Mode" instead.
 * The "SSL Mode" parameter's Allow option has been removed, as it wasn't doing anything.
 
-## Type Handling
+### Type Handling
 
 * Previously, Npgsql allowed writing a NULL by setting NpgsqlParameter.Value to `null`.
   This is [not allowed in ADO.NET](https://msdn.microsoft.com/en-us/library/system.data.common.dbparameter.value%28v=vs.110%29.aspx)
@@ -58,7 +91,7 @@ please let us know and we'll add it.
   Previously they returned int[], even for multidimensional arrays.
 * NpgsqlDataReader.GetDataTypeName() now returns the name of the PostgreSQL type rather than its OID.
 
-## Retired features
+### Retired features
 
 * Removed the "Preload Reader" feature, which loaded the entire resultset into memory. If you require this
   (inefficient) behavior, read the result into memory outside Npgsql. We plan on working on MARS support,
@@ -82,7 +115,7 @@ please let us know and we'll add it.
 * Removed `NpgsqlDataReader.HasOrdinal`, was a badly-named non-standard API without a serious use case.
   `GetName()` can be used as a workaround.
 
-## Other
+### Other
 
 * It is no longer possible to create database entities (tables, functions) and then use them in the same multi-query command -
   you must first send a command creating the entity, and only then send commands using it.
@@ -107,4 +140,3 @@ please let us know and we'll add it.
 * `CommandType.StoredProcedure` now requires CommandText contain *only* the name of a function, without parentheses or parameter
   information, as per the [MSDN docs](https://msdn.microsoft.com/en-us/library/system.data.commandtype%28v=vs.110%29.aspx).
 * Moved the `LastInsertedOID` property from NpgsqlCommand to NpgsqlReader, like the standard ADO.NET `RecordsAffected`.
-

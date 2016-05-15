@@ -1,5 +1,5 @@
 ---
-layout: doc-3.0
+layout: doc
 title: FAQ
 ---
 

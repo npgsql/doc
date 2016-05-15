@@ -1,5 +1,5 @@
 ---
-layout: doc-3.1
+layout: doc
 title: Compatibility Notes
 ---
 
@@ -20,6 +20,14 @@ A few known issues:
   ExecuteReaderAsync.
   However, *connecting* asynchronously is not yet implemented (doing so will transparently fall back to sync). This is a planned feature
   for 3.1, see [#379](https://github.com/npgsql/npgsql/issues/379).
+
+## .NET Framework/.NET Core/Xamarin...
+
+Npgsql 3.1 targets .NET Framework 4.5 and 4.5.1, as well as the [.NET Standard 1.3](https://github.com/dotnet/corefx) which allows it
+to run on .NET Core.
+
+Support for [Xamarin](https://github.com/npgsql/npgsql/issues/451) and the
+[Windows Universal App Platform](https://github.com/npgsql/npgsql/issues/820) is a goal for 3.2.
 
 ## Amazon Redshift
 
