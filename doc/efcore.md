@@ -28,6 +28,20 @@ Features not yet implemented:
 
 ---
 
+## Regular expressions
+
+PostgreSQL supports
+[regular expression operations in the database](http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP),
+and the Npgsql EFCore provider provides some support for evaluating C# regex operations at the backend.
+All you have to do is use Regex.IsMatch in your where clause:
+
+{% highlight C# %}
+var customersStartingWithA = context.Customers.Where(c => Regex.IsMatch(c.CompanyName, "^A"));
+{% endhighlight %}
+
+Since this regular expression is evaluated at the server, the EFCore provider doesn't need to load all
+the customers from the database, saving lots of transfer bandwidth.
+
 ## Setting up PostgreSQL extensions
 
 The provider allows you to specify PostgreSQL extensions that should be set up in your database.
