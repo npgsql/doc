@@ -31,10 +31,24 @@ Features not yet implemented:
 ## Setting up PostgreSQL extensions
 
 The provider allows you to specify PostgreSQL extensions that should be set up in your database.
-Simply use the HasPostgresExtension in your context's OnModelCreating:
+Simply use HasPostgresExtension in your context's OnModelCreating:
 
 {% highlight C# %}
 protected override void OnModelCreating(ModelBuilder modelBuilder) {
     modelBuilder.HasPostgresExtension("hstore");
 }
 {% endhighlight %}
+
+## Using a database template
+
+When creating a new database,
+[PostgreSQL allows specifying another "template database"](http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html)
+which will be copied as the basis for the new one. You can trigger this by using HasDatabaseTemplate in your context's
+OnModelCreating:
+
+{% highlight C# %}
+protected override void OnModelCreating(ModelBuilder modelBuilder) {
+    modelBuilder.HasDatabaseTemplate("my_template_db");
+}
+{% endhighlight %}
+
