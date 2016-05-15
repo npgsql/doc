@@ -25,3 +25,16 @@ Features not yet implemented:
 * It's not possible to use PostgreSQL-specific types inside where clauses
   (https://github.com/aspnet/EntityFramework/issues/5365).
 * Composite types aren't supported yet ([#22](https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/22)).
+
+---
+
+## Setting up PostgreSQL extensions
+
+The provider allows you to specify PostgreSQL extensions that should be set up in your database.
+Simply use the HasPostgresExtension in your context's OnModelCreating:
+
+{% highlight C# %}
+protected override void OnModelCreating(ModelBuilder modelBuilder) {
+    modelBuilder.HasPostgresExtension("hstore");
+}
+{% endhighlight %}
