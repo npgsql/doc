@@ -5,14 +5,15 @@ redirect_from:
   - /doc/ef7.html
 ---
 
+## Installation and General Info
+
 An experimental Npgsql Entity Framework Core provider is available for testing.
 Note that like EFCore itself the provider is under heavy development, but most of the basic features work.
-To use the provider, add the [Npgsql unstable feed](http://myget.org/gallery/npgsql-unstable) to your NuGet.Config.
 
 The main provider package is
-[Npgsql.EntityFrameworkCore.PostgreSQL](http://myget.org/feed/npgsql-unstable/package/nuget/Npgsql.EntityFrameworkCore.PostgreSQL).
+[Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/).
 Reverse-engineering (database-first) is also supported; the provider for that is
-[Npgsql.EntityFrameworkCore.PostgreSQL.Design](http://myget.org/feed/npgsql-unstable/package/nuget/Npgsql.EntityFrameworkCore.PostgreSQL.Design).
+[Npgsql.EntityFrameworkCore.PostgreSQL.Design](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Design/).
 The database-first instructions in the EFCore getting started work, just change the provider name and the connection string.
 
 Development happens in [this github repo](https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL), issues should be opened there.
@@ -28,7 +29,9 @@ Features not yet implemented:
 
 ---
 
-## Regular expressions
+## Cool Features
+
+### Regular expressions
 
 PostgreSQL supports
 [regular expression operations in the database](http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP),
@@ -42,7 +45,7 @@ var customersStartingWithA = context.Customers.Where(c => Regex.IsMatch(c.Compan
 Since this regular expression is evaluated at the server, the EFCore provider doesn't need to load all
 the customers from the database, saving lots of transfer bandwidth.
 
-## Setting up PostgreSQL extensions
+### Setting up PostgreSQL extensions
 
 The provider allows you to specify PostgreSQL extensions that should be set up in your database.
 Simply use HasPostgresExtension in your context's OnModelCreating:
@@ -53,7 +56,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder) {
 }
 {% endhighlight %}
 
-## Using a database template
+### Using a database template
 
 When creating a new database,
 [PostgreSQL allows specifying another "template database"](http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html)
