@@ -47,10 +47,12 @@ Finally, you may control mappings on a field-by-field basis via the [PgName] att
 translator.
 
 {% highlight C# %}
+using NpgsqlTypes;
+
 enum SomeEnum {
-   [PgLabel("happy")]
+   [PgName("happy")]
    Good,
-   [PgLabel("sad")]
+   [PgName("sad")]
    Bad
 }
 {% endhighlight %}
