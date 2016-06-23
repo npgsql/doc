@@ -21,4 +21,4 @@ Please report any issues you find.
 
 ## License
 
-Npgsql uses the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/develop/LICENSE.txt), a liberal OSI-approved open source license.
+Npgsql uses the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/dev/LICENSE.txt), a liberal OSI-approved open source license.
