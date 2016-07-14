@@ -35,3 +35,4 @@ Here is a sample project.json to get you started:
 
 {% endhighlight %}
 
+Note that `netcoreapp1.0` can be replaced with `netstandard13` (or up) to create a library.
