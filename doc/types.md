@@ -137,7 +137,7 @@ Notes when using Range and Array, bitwise-or NpgsqlDbType.Range or NpgsqlDbType.
 For example, to construct the NpgsqlDbType for a `int4range`, write `NpgsqlDbType.Range | NpgsqlDbType.Integer`.
 To construct the NpgsqlDbType for an `int[]`, write `NpgsqlDbType.Array | NpgsqlDbType.Integer`.
 
-For information about enums, [see the enum page](enums.html).
+For information about enums, [see the Enums and Composites page](enums_and_composites.html).
 
 | .NET type					| Auto-inferred PostgreSQL type
 |-----------------------------------------------|------------------------------
