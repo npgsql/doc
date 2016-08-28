@@ -57,3 +57,12 @@ When upgrading TeamCity, the agent needs to be able to stop and start the Window
 
 * GitVersion (with Chocolatey)
 * WiX toolset (v3.10.1 at time of writing)
+
+## Install WiX
+
+WiX 3.10 has a dependency on .NET Framework 3.5, but there's some issue blocking its installation on Windows Server 2012 R2 (at least on Azure).
+A good workaround is to simply install via Powershell (`Add-WindowsFeature NET-Framework-Core`), see
+https://msdn.microsoft.com/en-us/library/dn169001(v=nav.70).aspx#InstallNET35.
+
+Note that ICE validation is disabled because apparently it requires an interactive account or admin privileges, which doesn't work in continuous integration.
+
