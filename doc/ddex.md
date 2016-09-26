@@ -9,6 +9,8 @@ title: Visual Studio Support (DDEX)
 
 Reference: [#213](https://github.com/npgsql/Npgsql/pull/213#issuecomment-46892619)
 
+**Note:** Npgsql 3.1 and NpgsqlDdexProvider 3.1.0 documentations are ongoing at github: https://github.com/npgsql/npgsql/issues/1299
+
 ### Overview
 
 1. Install Npgsql DDEX (Data Designer Extensibility) provider.
