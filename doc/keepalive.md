@@ -5,7 +5,7 @@ title: Keepalive
 
 Some clients keep idle connections for long periods of time - this is especially frequent when waiting for PostgreSQL notifications.
 In this scenario, how can the client know the connection is still up, and hasn't been broken by a server or network outage?
-For this purpose, Npgsql has a keepalive feature, which makes it send periodic `SELECT 1` queries.
+For this purpose, Npgsql has a keepalive feature, which makes it send periodic `SELECT NULL` queries.
 This feature is by default disabled, and must be enabled via the
 [Keepalive](connection-string-parameters.html#keepalive) connection string parameter, setting the number of seconds between each keepalive.
 
