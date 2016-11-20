@@ -1,0 +1,71 @@
+﻿{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "Npgsql.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**" ],
+          "cwd": "Npgsql/src/Npgsql"
+        }
+      ],
+      "dest": "obj/api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "**/*.yml" ],
+        "cwd": "obj/api",
+        "dest": "api"
+      },
+      {
+        "files": [ "**.md" ],
+        "cwd": "Npgsql/doc",
+        "dest": "doc"
+      },
+      {
+        "files": [ "**.md" ],
+        "cwd": "Npgsql.EntityFrameworkCore.PostgreSQL/doc",
+        "dest": "efcore"
+      },
+      {
+        "files": [ "**.md" ],
+        "cwd": "EntityFramework6.Npgsql/doc",
+        "dest": "ef6"
+      },
+      {
+        "files": [ "*.md", "dev/**.md", "toc.yml" ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "logo2.svg", "img/**", "CNAME" ]
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "Npgsql Documentation",
+      "_appFooter": "© Copyright 2016 The Npgsql Development Team",
+      "_enableSearch": true,
+      "_disableContribution" : true
+    },
+    "fileMetadata": {
+      "_gitContribute" : {
+        "Npgsql/**.md": {
+          "repo": "https://github.com/npgsql/Npgsql",
+          "branch": "master"
+        },
+        "Npgsql.EntityFrameworkCore.PostgreSQL/**.md": {
+          "repo": "https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL"
+	},
+        "EntityFramework6.Npgsql/**.md": {
+          "repo": "https://github.com/npgsql/EntityFramework6.Npgsql"
+	},
+        "obj/api/**.yml": {
+          "repo": "https://github.com/npgsql/Npgsql"
+	}
+      }
+    },
+    "template" : [ "default", "npgsql_template" ],
+    "dest" : "_site"
+  }
+}
