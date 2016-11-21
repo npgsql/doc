@@ -16,27 +16,29 @@
   </a>
 </p>
 
-# About
+# Npgsql - .NET Access to PostgreSQL
+
+## About
 
 Npgsql is an open source ADO.NET Data Provider for PostgreSQL, it allows programs written in C#, Visual Basic, F# to access the PostgreSQL database server.
 It is implemented in 100% C# code, is free and is open source.
 
 In addition, providers have been written for Entity Framework Core and for Entity Framework 6.x.
 
-# Getting Help
+## Getting Help
 
 The best way to get help for Npgsql is to post a question to Stack Overflow and tag it with the `npsgql` tag.
 If you think you've encountered a bug or want to request a feature, open an issue in the appropriate project's github repository.
 
-# License
+## License
 
 Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/master/LICENSE.txt), a liberal OSI-approved open source license.
 
-# Thanks
+## Thanks
 
 A special thanks to Rowan Miller, Scott Hanselman and Martin Woodward at Microsoft for generously donating an Azure subscription for Npgsql’s continuous integration platform.
 
-# Contributors
+## Contributors
 
 Current active contributors to Npgsql are:
 
@@ -57,6 +59,6 @@ Past contributors to Npgsql:
 * Brar Piening
 * Hiroshi Saito
 
-# Developer Resources
+## Developer Resources
 
 For information on development see [this page](dev/index.md).
