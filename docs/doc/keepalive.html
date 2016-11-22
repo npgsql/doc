@@ -74,6 +74,7 @@
             <article class="content wrap" id="_content" data-uid="">
               <h1 id="keepalive">Keepalive</h1>
               
+<p><img src="/img/warning.png" alt="warning"> Keepalives unfortunately aren&#39;t sent while in Wait, here&#39;s a <a href="https://github.com/npgsql/npgsql/issues/1214#issuecomment-235828359">workaround</a>. This will be fixed in 3.2.</p>
 <p>Some clients keep idle connections for long periods of time - this is especially frequent when waiting for PostgreSQL notifications.
 In this scenario, how can the client know the connection is still up, and hasn&#39;t been broken by a server or network outage?
 For this purpose, Npgsql has a keepalive feature, which makes it send periodic <code>SELECT NULL</code> queries.
