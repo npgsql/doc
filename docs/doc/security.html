@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Security and Encryption | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Security and Encryption | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h1 id="security-and-encryption">Security and Encryption</h1>
+              
+<h2 id="logging-in">Logging in</h2>
+<p>The simplest to log into PostgreSQL is by specifying a <code>Username</code> and a <code>Password</code> in your connection string.
+Depending on how your PostgreSQL is configured (in the <code>pg_hba.conf</code> file), Npgsql will send the password in
+MD5 or in cleartext (not recommended).</p>
+<p>For documentation about all auth methods supported by PostgreSQL,
+<a href="http://www.postgresql.org/docs/current/static/auth-methods.html">see this page</a>.
+Note that Npgsql does not support logging in via Unix-domain sockets (auth method <code>local</code>).</p>
+<h2 id="integrated-security-sspikerberos">Integrated Security (SSPI/Kerberos)</h2>
+<p>Logging in with a username and password isn&#39;t recommended, since your application must have access to
+your password. An alternate way of authenticating is &quot;Integrated Security&quot;, which uses SSPI (on Windows) or
+Kerberos. The advantage of this method is that authentication is handed off to your operating system, using
+your already-open login session. Your application never needs to handle a password. You can use this method
+for a Kerberos login, Windows Active Directory or a local Windows session.</p>
+<p>Instructions on setting up Kerberos and SSPI are available in the
+<a href="http://www.postgresql.org/docs/current/static/auth-methods.html">PostgreSQL auth methods docs</a>.
+Some more instructions for SSPI are
+<a href="https://wiki.postgresql.org/wiki/Configuring_for_single_sign-on_using_SSPI_on_Windows">available here</a>.</p>
+<p>Once your PostgreSQL is configured correctly, simply include <code>Integrated Security=true</code> in your connection
+string and drop the Password parameter (if you leave out Username it will be inferred from your US).</p>
+<h2 id="encryption-ssltls">Encryption (SSL/TLS)</h2>
+<p>By default PostgreSQL connections are unencrypted, but you can turn on SSL/TLS encryption if you wish.
+First, you have to set up your PostgreSQL to receive SSL/TLS connections
+<a href="http://www.postgresql.org/docs/current/static/ssl-tcp.html">as described here</a>.</p>
+<p>Once that&#39;s done, specify <code>SSL Mode</code> in your connection string, setting it to either <code>Require</code>
+(connection will fail if the server isn&#39;t set up for encryption), or <code>Prefer</code> (use encryption if
+possible but fallback to unencrypted otherwise).</p>
+<p>Note that by default, Npgsql will verify that your server&#39;s certificate is valid. If you&#39;re using a
+self-signed certificate this will fail. You can instruct Npgsql to ignore this by specifying
+<code>Trust Server Certificate=true</code> in the connection string. To precisely control how the server&#39;s
+certificate is validated, you can register <code>UserCertificateValidationCallback</code> on <code>NpgsqlConnection</code>
+(this works just like on .NET&#39;s
+<a href="https://msdn.microsoft.com/en-us/library/system.net.security.remotecertificatevalidationcallback(v=vs.110).aspx"><code>SSLStream</code></a>).</p>
+<p>You can also have Npgsql provide client certificates to the server by registering the
+<code>ProvideClientCertificatesCallback</code> on <code>NpgsqlConnection</code> (this works just like on .NET&#39;s
+<a href="https://msdn.microsoft.com/en-us/library/system.net.security.localcertificateselectioncallback(v=vs.110).aspx"><code>SSLStream</code></a>).</p>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

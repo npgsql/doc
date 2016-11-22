@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Value Generation | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Value Generation | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h1 id="value-generation">Value Generation</h1>
+              
+<p>See <a href="https://docs.microsoft.com/en-us/ef/core/modeling/generated-properties">the general EF Docs on value generation</a> to better understand the concepts described here.</p>
+<h2 id="serial-autoincrement-columns">Serial (Autoincrement) Columns</h2>
+<p>In PostgreSQL, the standard autoincrement column type is called <code>serial</code>. This isn&#39;t really a special type like in some other databases (e.g. SQL Server&#39;s IDENTITY), but rather a shorthand for specifying that the column&#39;s default value should come from a sequence. See <a href="https://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL">the PostgreSQL docs</a> for more info.</p>
+<p>When <code>ValueGeneratedOnAdd</code> is specified on a short, int or long property, the Npgsql EF Core provider will automatically map it to a <code>serial</code> column. Note that EF Core will automatically recognize key properties by convention (e.g. a property called <code>Id</code> in your entity) and will implicitly set them to <code>ValueGeneratedOnAdd</code>.</p>
+<p>Note that there was a significant and breaking change in 1.1. If you have existing migrations generated with 1.0, please read the <a href="migration/1.1.html">migration notes</a>.</p>
+<h2 id="hilo-autoincrement-generation">HiLo Autoincrement Generation</h2>
+<p>One disadvantage of database-generated values is that these values must be read back from the database after a row is inserted. If you&#39;re saving multiple related entities, this means you must perform multiple roundtrips as the first entity&#39;s generated key must be read before writing the second one. One solution to this problem is HiLo value generation: rather than relying on the database to generate each and every value, the application &quot;allocates&quot; a range of values, which it can then populate directly on new entities without any additional roundtrips. When the range is exhausted, a new range is allocated. In practical terms, this uses a sequence that increments by some large value (100 by default), allowing the application to insert 100 rows autonomously.</p>
+<p>To use HiLo, specify <code>ForNpgsqlUseSequenceHiLo</code> on a property in your model&#39;s <code>OnModelCreating</code>:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.Id).ForNpgsqlUseSequenceHiLo();
+</code></pre><p>You can also make your model use HiLo everywhere:</p>
+<pre><code class="lang-c#">modelBuilder.ForNpgsqlUseSequenceHiLo();
+</code></pre><h2 id="guiduuid-generation">Guid/UUID Generation</h2>
+<p>By default, if you specify <code>ValueGeneratedOnAdd</code> on a Guid property, a random Guid value will be generated client-side and sent to the database.</p>
+<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property. Note that PostgreSQL doesn&#39;t include any Guid/UUID generation functions, you must add an extension such as <code>uuid-ossp</code> or <code>pgcrypto</code>. This can be done by placing the following code in your model&#39;s <code>OnModelCreating</code>:</p>
+<pre><code class="lang-c#">modelBuilder.HasPostgresExtension(&quot;uuid-ossp&quot;);
+modelBuilder
+    .Entity&lt;Blog&gt;()
+    .Property(e =&gt; e.SomeGuidProperty)
+    .HasDefaultValueSql(&quot;uuid_generate_v4()&quot;);
+</code></pre><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
+<h2 id="computed-columns-on-add-or-update">Computed Columns (On Add or Update)</h2>
+<p>PostgreSQL does not support computed columns.</p>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

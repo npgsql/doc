@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Documentation | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Documentation | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h2 id="getting-started">Getting Started</h2>
+              
+<p>The best way to use Npgsql is to install its <a href="https://www.nuget.org/packages/Npgsql/">nuget package</a>.</p>
+<p>Npgsql aims to be fully ADO.NET-compatible, its API should feel almost identical to other .NET database drivers.
+Here&#39;s a basic code snippet to get you started.</p>
+<pre><code class="lang-c#">using (var conn = new NpgsqlConnection(&quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;))
+{
+    conn.Open();
+    using (var cmd = new NpgsqlCommand())
+    {
+        cmd.Connection = conn;
+
+        // Insert some data
+        cmd.CommandText = &quot;INSERT INTO data (some_field) VALUES (&#39;Hello world&#39;)&quot;;
+        cmd.ExecuteNonQuery();
+
+        // Retrieve all rows
+        cmd.CommandText = &quot;SELECT some_field FROM data&quot;;
+        using (var reader = cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Console.WriteLine(reader.GetString(0));
+            }
+        }
+    }
+}
+</code></pre><p>You can find more info about the ADO.NET API in the <a href="https://msdn.microsoft.com/en-us/library/h43ks021(v=vs.110).aspx">MSDN docs</a>
+or in many tutorials on the Internet.</p>
+<h2 id="gac-installation">GAC Installation</h2>
+<p>In some cases you&#39;ll want to install Npgsql into your <a href="https://msdn.microsoft.com/en-us/library/yf1d93sz%28v=vs.110%29.aspx?f=255&amp;MSPPError=-2147217396">Global Assembly Cache (GAC)</a>.
+This is usually the case when you&#39;re using a generic database program that can work with any ADO.NET provider but doesn&#39;t come with Npgsql or reference it directly. For these cases, you can download the Npgsql Windows installer from <a href="https://github.com/npgsql/npgsql/releases">our Github releases page</a>: it will install Npgsql (and optionally the Entity Framework providers) into your GAC and add Npgsql&#39;s DbProviderFactory into your <code>machine.config</code> file.  This is <em>not</em> the general recommended method of using Npgsql - install via Nuget if possible.</p>
+<h2 id="visual-studio-integration">Visual Studio Integration</h2>
+<p>If you&#39;d like to have Visual Studio Design-Time support, you can try our <a href="https://github.com/npgsql/npgsql/releases">experimental DDEX installer</a>.
+Follow the <a href="ddex.html">instructions</a> in the documentation.</p>
+<h2 id="unstable-packages">Unstable Packages</h2>
+<p>The Npgsql build server publishes CI nuget packages for every build. If a bug affecting you was fixed but there hasn&#39;t yet been a patch release,
+you can get a CI nuget at our <a href="https://www.myget.org/gallery/npgsql">stable MyGet feed</a>. These packages are generally stable and
+safe to use (although it&#39;s better to wait for a release).</p>
+<p>We also publish CI packages for the next minor/major version at our <a href="https://www.myget.org/gallery/npgsql-unstable">unstable MyGet feed</a>.
+These are definitely unstable and should be used with care.</p>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Migration Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Migration Notes | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:rel" content="../../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h1 id="migrating-from-22-to-30">Migrating from 2.2 to 3.0</h1>
+              
+<p>Version 3.0 represents a near-total rewrite of Npgsql. In addition to changing how Npgsql works internally and communicates
+with PostgreSQL, a conscious effort was made to better align Npgsql with the ADO.NET specs/standard and with SqlClient
+where that made sense. This means that you cannot expect to drop 3.0 as a replacement to 2.2 and expect things to work</p>
+<ul>
+<li>upgrade cautiously and test extensively before deploying anything to production.</li>
+</ul>
+<p>The following is a <em>non-exhaustive</em> list of things that changed. If you run against a breaking change not documented here,
+please let us know and we&#39;ll add it.</p>
+<h2 id="major">Major</h2>
+<ul>
+<li>Support for .NET 2.0, .NET 3.5 and .NET 4.0 has been dropped - you will have to upgrade to .NET 4.5 to use Npgsql 3.0.
+We&#39;ll continue to do bugfixes on the 2.2 branch for a while on a best-effort basis.</li>
+<li>The Entity Framework provider packages have been renamed to align with Microsoft&#39;s new naming.
+The new packages are <em>EntityFramework5.Npgsql</em> and <em>EntityFramework6.Npgsql</em>. EntityFramework7.Npgsql is in alpha.</li>
+<li>A brand-new bulk copy API has been written, using binary encoding for much better performance.
+See <a href="../copy.html">the docs</a>.</li>
+<li>Composite (custom) types aren&#39;t supported yet, but this is a high-priority feature for us.
+See <a href="https://github.com/npgsql/npgsql/issues/441">#441</a>.</li>
+</ul>
+<h2 id="ssl">SSL</h2>
+<ul>
+<li>Npgsql 2.2 didn&#39;t perform validation on the server&#39;s certificate by default, so self-signed certificate were accepted.
+The new default is to perform validation. Specify the
+<a href="../connection-string-parameters.html#security-and-encryption">Trust Server Certificate</a> connection string parameter to get back previous behavior.</li>
+<li>The &quot;SSL&quot; connection string parameter has been removed, use &quot;SSL Mode&quot; instead.</li>
+<li>The &quot;SSL Mode&quot; parameter&#39;s Allow option has been removed, as it wasn&#39;t doing anything.</li>
+</ul>
+<h2 id="type-handling">Type Handling</h2>
+<ul>
+<li>Previously, Npgsql allowed writing a NULL by setting NpgsqlParameter.Value to <code>null</code>.
+This is <a href="https://msdn.microsoft.com/en-us/library/system.data.common.dbparameter.value%28v=vs.110%29.aspx">not allowed in ADO.NET</a>
+and is no longer supported, set to <code>DBNull.Value</code> instead.</li>
+<li>In some cases, you will now be required to explicitly set a parameter&#39;s type although you didn&#39;t have to before (you&#39;ll get an error
+42804 explaining this). This can happen especially in Dapper custom custom type handlers (<a href="https://github.com/npgsql/npgsql/issues/694">#694</a>).
+Simply set the NpgsqlDbType property on the parameter.</li>
+<li>Removed support for writing a parameter with an <code>IEnumerable&lt;T&gt;</code> value, since that would require Npgsql to enumerate it multiple
+times internally. <code>IList&lt;T&gt;</code> and IList are permitted.</li>
+<li>It is no longer possible to write a .NET enum to an integral PostgreSQL column (e.g. int4).
+Proper enum support has been added which allows writing to PostgreSQL enum columns
+(see <a href="http://www.npgsql.org/doc/enum.html">the docs</a>.
+To continue writing enums to integral columns as before, simply add an explicit cast to the integral type in your code.</li>
+<li>NpgsqlMacAddress has been removed and replaced by the standard .NET PhysicalAddress.</li>
+<li>Npgsql&#39;s BitString has been removed and replaced by the standard .NET BitArray.</li>
+<li>NpgsqlTime has been removed and replaced by the standard .NET TimeSpan.</li>
+<li>NpgsqlTimeZone has been removed.</li>
+<li>NpgsqlTimeTZ now holds 2 TimeSpans, rather than an NpgsqlTime and an NpgsqlTimeZone.</li>
+<li>NpgsqlTimeStamp no longer maps DateTime.{Max,Min}Value to {positive,negative}
+infinity. Use NpgsqlTimeStamp.Infinity and NpgsqlTimeStamp.MinusInfinity explicitly for that.
+You can also specify the &quot;Convert Infinity DateTime&quot; connection string parameter to retain the old behavior.</li>
+<li>Renamed NpgsqlInet&#39;s addr and mask to Address and Mask.</li>
+<li>NpgsqlPoint now holds Doubles instead of Singles (<a href="https://github.com/npgsql/npgsql/issues/437">#437</a>).</li>
+<li>NpgsqlDataReader.GetFieldType() and GetProviderSpecificFieldType() now return Array for arrays.
+Previously they returned int[], even for multidimensional arrays.</li>
+<li>NpgsqlDataReader.GetDataTypeName() now returns the name of the PostgreSQL type rather than its OID.</li>
+</ul>
+<h2 id="retired-features">Retired features</h2>
+<ul>
+<li>Removed the &quot;Preload Reader&quot; feature, which loaded the entire resultset into memory. If you require this
+(inefficient) behavior, read the result into memory outside Npgsql. We plan on working on MARS support,
+see <a href="https://github.com/npgsql/npgsql/issues/462">#462</a>.</li>
+<li>The &quot;Use Extended Types&quot; parameter is no longer needed and isn&#39;t supported. To access PostgreSQL values
+that can&#39;t be represented by the standard CLR types, use the standard ADO.NET
+<code>NpgsqlDataReader.GetProviderSpecificValue</code> or even better, the generic
+<code>NpgsqlDataReader.GetFieldValue&lt;T&gt;</code>.</li>
+<li>Removed the feature where Npgsql automatically &quot;dereferenced&quot; a resultset of refcursors into multiple
+resultsets (this was used to emulate returning multiple resultsets from stored procedures). Note that if
+your function needs to return a single resultset, it should be simply returning a table rather than a
+cursor (see <code>RETURNS TABLE</code>).
+See <a href="https://github.com/npgsql/npgsql/issues/438">#438</a>.</li>
+<li>Removed the AlwaysPrepare connection string parameter</li>
+<li>Removed the Encoding connection string parameter, which was obsolete and unused anyway</li>
+<li>Removed the Protocol connection string parameter, which was obsolete and unused anyway (protocol 3 was always used)
+(UTF8 was always used regardless of what was specified)</li>
+<li>Removed NpgsqlDataReader.LastInsertedOID, it did not allow accessing individual OIDs in multi-statement commands.
+Replaced with NpgsqlDataReader.Statements, which provides OID and affected row information on a statement-by-statement
+basis.</li>
+<li>Removed <code>NpgsqlDataReader.HasOrdinal</code>, was a badly-named non-standard API without a serious use case.
+<code>GetName()</code> can be used as a workaround.</li>
+</ul>
+<h2 id="other">Other</h2>
+<ul>
+<li>It is no longer possible to create database entities (tables, functions) and then use them in the same multi-query command -
+you must first send a command creating the entity, and only then send commands using it.
+See <a href="https://github.com/npgsql/npgsql/issues/641">#641</a> for more details.</li>
+<li>Previously, Npgsql set DateStyle=ISO, lc_monetary=C and extra_float_digits=3 on all connections it created. This is no longer
+case, if you rely on these parameters you must send them yourself.</li>
+<li>NpgsqlConnection.Clone() will now only return a new connection with the same connection string as the original.
+Previous versions returned an open connection if the original was open, and copied the Notice event listeners as well.
+Note: NpgsqlConnection.Clone() was accidentally missing from 3.0.0 and 3.0.1.</li>
+<li>Removed the obsolete <code>NpgsqlParameterCollection.Add(name, value)</code> method. Use <code>AddWithValue()</code> instead, which also exists
+in SqlClient.</li>
+<li><del>The savepoint manipulation methods on <code>NpgsqlTransaction</code> have been renamed from <code>Save</code>, and <code>Rollback</code> to
+<code>CreateSavepoint</code> and <code>RollbackToSavepoint</code>.</del>
+This broke the naming conventions for these methods across other providers (SqlClient, Oracle...) and so in 3.0.2 the previous
+names were returned and the new names marked as obsolete.
+3.1 will remove the the new names and leaves only <code>Save</code> and <code>Rollback</code>. See <a href="https://github.com/npgsql/npgsql/issues/738">#738</a>.</li>
+<li>The default CommandTimeout has changed from 20 seconds to 30 seconds, as in
+<a href="https://msdn.microsoft.com/en-us/library/system.data.idbcommand.commandtimeout(v=vs.110).aspx">ADO.NET</a>.</li>
+<li><code>CommandType.TableDirect</code> now requires CommandText to contain the name of a table, as per the
+<a href="https://msdn.microsoft.com/en-us/library/system.data.commandtype%28v=vs.110%29.aspx">MSDN docs</a>.
+Multiple tables (join) aren&#39;t supported.</li>
+<li><code>CommandType.StoredProcedure</code> now requires CommandText contain <em>only</em> the name of a function, without parentheses or parameter
+information, as per the <a href="https://msdn.microsoft.com/en-us/library/system.data.commandtype%28v=vs.110%29.aspx">MSDN docs</a>.</li>
+<li>Moved the <code>LastInsertedOID</code> property from NpgsqlCommand to NpgsqlReader, like the standard ADO.NET <code>RecordsAffected</code>.</li>
+</ul>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

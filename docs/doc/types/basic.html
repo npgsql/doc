@@ -1,0 +1,920 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Supported Types and their Mappings | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Supported Types and their Mappings | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    <meta property="docfx:rel" content="../../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h1 id="supported-types-and-their-mappings">Supported Types and their Mappings</h1>
+              
+<h2 id="type-mappings-when-reading-values-sent-from-the-backend">Type mappings when reading values sent from the backend</h2>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Default .NET type</th>
+<th>Provider-specific type</th>
+<th>Other .NET types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>bool</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>int2</td>
+<td>short</td>
+<td></td>
+<td>byte, sbyte, int, long, float, double, decimal, string</td>
+</tr>
+<tr>
+<td>int4</td>
+<td>int</td>
+<td></td>
+<td>byte, short, long, float, double, decimal, string</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>long</td>
+<td></td>
+<td>long, byte, short, int, float, double, decimal, string</td>
+</tr>
+<tr>
+<td>float4</td>
+<td>float</td>
+<td></td>
+<td>double</td>
+</tr>
+<tr>
+<td>float8</td>
+<td>double</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>numeric</td>
+<td>decimal</td>
+<td></td>
+<td>byte, short, int, long, float, double, string</td>
+</tr>
+<tr>
+<td>money</td>
+<td>decimal</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>varchar</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>bpchar</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>citext</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>json</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>jsonb</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>xml</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>point</td>
+<td>NpgsqlPoint</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>lseg</td>
+<td>NpgsqlLSeg</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>path</td>
+<td>NpgsqlPath</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>polygon</td>
+<td>NpgsqlPolygon</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>line</td>
+<td>NpgsqlLine</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>circle</td>
+<td>NpgsqlCircle</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>box</td>
+<td>NpgsqlBox</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>bit(1)</td>
+<td>bool</td>
+<td></td>
+<td>BitArray</td>
+</tr>
+<tr>
+<td>bit(n)</td>
+<td>BitArray</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>varbit</td>
+<td>BitArray</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hstore</td>
+<td>IDictionary<string, string=""></string,></td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>Guid</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>cidr</td>
+<td>NpgsqlInet</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>inet</td>
+<td>IPAddress</td>
+<td>NpgsqlInet</td>
+<td>string</td>
+</tr>
+<tr>
+<td>macaddr</td>
+<td>PhysicalAddress</td>
+<td></td>
+<td>string</td>
+</tr>
+<tr>
+<td>tsquery</td>
+<td>NpgsqlTsQuery</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tsvector</td>
+<td>NpgsqlTsVector</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>DateTime</td>
+<td>NpgsqlDate</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>TimeSpan</td>
+<td>NpgsqlTimeSpan</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>DateTime</td>
+<td>NpgsqlDateTime</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamptz</td>
+<td>DateTime</td>
+<td>NpgsqlDateTime</td>
+<td>DateTimeOffset</td>
+</tr>
+<tr>
+<td>time</td>
+<td>TimeSpan</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>timetz</td>
+<td>DateTimeOffset</td>
+<td></td>
+<td>DateTimeOffset, DateTime, TimeSpan</td>
+</tr>
+<tr>
+<td>bytea</td>
+<td>byte[]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>oid</td>
+<td>uint</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>xid</td>
+<td>uint</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>cid</td>
+<td>uint</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>oidvector</td>
+<td>uint[]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>char[]</td>
+</tr>
+<tr>
+<td>(internal) char</td>
+<td>char</td>
+<td></td>
+<td>byte, short, int, long</td>
+</tr>
+<tr>
+<td>geometry (PostGIS)</td>
+<td>PostgisGeometry</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>record</td>
+<td>object[]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>composite types</td>
+<td>T</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>range subtypes</td>
+<td>NpgsqlRange<telement></telement></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>enum types</td>
+<td>TEnum</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>array types</td>
+<td>Array    (of child element type)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The Default .NET type column specifies the data type <code>NpgsqlDataReader.GetValue</code> will return.</p>
+<p><code>NpgsqlDataReader.GetProviderSpecificValue</code> will return a value of a data type specified in the Provider-specific type column,
+or the Default .NET type if there is no specialization.</p>
+<p>The Other .NET types column specifies which other data types in which the value can be retrieved using
+<code>NpgsqlDataReader.GetBoolean</code>, <code>.GetByte</code>, <code>.GetDouble</code> etc. or by <code>.GetFieldValue&lt;T&gt;</code>.</p>
+<h2 id="type-mappings-when-sending-parameters-to-the-backend">Type mappings when sending parameters to the backend</h2>
+<p>There are three rules that decides what backend type a parameter will sent as.</p>
+<ol>
+<li>If the parameter&#39;s <code>NpgsqlDbType</code> is set, it is used.</li>
+<li>If the parameter&#39;s <code>DbType</code> is set, it is used.</li>
+<li>Of neither of the above is set, the the backend type will be inferred based on the type the value has.</li>
+</ol>
+<p>Note that for DateTime and NpgsqlDateTime, the <code>Kind</code> attribute tells wether to use <code>timestamp</code> or <code>timestamptz</code>.</p>
+<p>Note that when <code>NpgsqlDbType</code> or <code>DbType</code> is set to a primitive type (bool, numbers and string),
+most other primitive types are accepted since they all implement the IConvertible interface,
+which is what Npgsql uses to convert the value to the target type.</p>
+<table>
+<thead>
+<tr>
+<th>NpgsqlDbType</th>
+<th>DbType</th>
+<th>PostgreSQL type</th>
+<th>Accepted .NET types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>Boolean</td>
+<td>bool</td>
+<td>bool, IConvertible</td>
+</tr>
+<tr>
+<td>Smallint</td>
+<td>Int16</td>
+<td>int2</td>
+<td>short, IConvertible</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>Int32</td>
+<td>int4</td>
+<td>int, IConvertible</td>
+</tr>
+<tr>
+<td>Bigint</td>
+<td>Int64</td>
+<td>int8</td>
+<td>long, IConvertible</td>
+</tr>
+<tr>
+<td>Real</td>
+<td>Single</td>
+<td>float4</td>
+<td>float, IConvertible</td>
+</tr>
+<tr>
+<td>Double</td>
+<td>Double</td>
+<td>float8</td>
+<td>double, IConvertible</td>
+</tr>
+<tr>
+<td>Numeric</td>
+<td>Decimal, VarNumeric</td>
+<td>numeric</td>
+<td>decimal, IConvertible</td>
+</tr>
+<tr>
+<td>Money</td>
+<td>Currency</td>
+<td>money</td>
+<td>decimal, IConvertible</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>String, StringFixedLength, AnsiString, AnsiStringFixedLength</td>
+<td>text</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Varchar</td>
+<td></td>
+<td>varchar</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Char</td>
+<td></td>
+<td>char</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Citext</td>
+<td></td>
+<td>citext</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Json</td>
+<td></td>
+<td>json</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Jsonb</td>
+<td></td>
+<td>jsonb</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Xml</td>
+<td></td>
+<td>xml</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>Point</td>
+<td></td>
+<td>point</td>
+<td>NpgsqlPoint</td>
+</tr>
+<tr>
+<td>LSeg</td>
+<td></td>
+<td>lseg</td>
+<td>NpgsqlLSeg</td>
+</tr>
+<tr>
+<td>Path</td>
+<td></td>
+<td>path</td>
+<td>NpgsqlPath</td>
+</tr>
+<tr>
+<td>Polygon</td>
+<td></td>
+<td>polygon</td>
+<td>NpgsqlPolygon</td>
+</tr>
+<tr>
+<td>Line</td>
+<td></td>
+<td>line</td>
+<td>NpgsqlLine</td>
+</tr>
+<tr>
+<td>Circle</td>
+<td></td>
+<td>circle</td>
+<td>NpgsqlCircle</td>
+</tr>
+<tr>
+<td>Box</td>
+<td></td>
+<td>box</td>
+<td>NpgsqlBox</td>
+</tr>
+<tr>
+<td>Bit</td>
+<td></td>
+<td>bit</td>
+<td>BitArray, bool, string</td>
+</tr>
+<tr>
+<td>Varbit</td>
+<td></td>
+<td>varbit</td>
+<td>BitArray, bool, string</td>
+</tr>
+<tr>
+<td>Hstore</td>
+<td></td>
+<td>hstore</td>
+<td>IDictionary<string, string=""></string,></td>
+</tr>
+<tr>
+<td>Uuid</td>
+<td></td>
+<td>uuid</td>
+<td>Guid, string</td>
+</tr>
+<tr>
+<td>Cidr</td>
+<td></td>
+<td>cidr</td>
+<td>IPAddress, NpgsqlInet</td>
+</tr>
+<tr>
+<td>Inet</td>
+<td></td>
+<td>inet</td>
+<td>IPAddress, NpgsqlInet</td>
+</tr>
+<tr>
+<td>MacAddr</td>
+<td></td>
+<td>macaddr</td>
+<td>PhysicalAddress</td>
+</tr>
+<tr>
+<td>TsQuery</td>
+<td></td>
+<td>tsquery</td>
+<td>NpgsqlTsQuery</td>
+</tr>
+<tr>
+<td>TsVector</td>
+<td></td>
+<td>tsvector</td>
+<td>NpgsqlTsVector</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Date</td>
+<td>date</td>
+<td>DateTime, NpgsqlDate, IConvertible</td>
+</tr>
+<tr>
+<td>Interval</td>
+<td></td>
+<td>interval</td>
+<td>TimeSpan, NpgsqlTimeSpan, string</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>DateTime, DateTime2</td>
+<td>timestamp</td>
+<td>DateTime, DateTimeOffset, NpgsqlDateTime, IConvertible</td>
+</tr>
+<tr>
+<td>TimestampTZ</td>
+<td>DateTimeOffset</td>
+<td>timestamptz</td>
+<td>DateTime, DateTimeOffset, NpgsqlDateTime, IConvertible</td>
+</tr>
+<tr>
+<td>Time</td>
+<td>Time</td>
+<td>time</td>
+<td>TimeSpan, string</td>
+</tr>
+<tr>
+<td>TimeTZ</td>
+<td></td>
+<td>timetz</td>
+<td>DateTimeOffset, DateTime, TimeSpan</td>
+</tr>
+<tr>
+<td>Bytea</td>
+<td>Binary</td>
+<td>bytea</td>
+<td>byte[], ArraySegment<byte></byte></td>
+</tr>
+<tr>
+<td>Oid</td>
+<td></td>
+<td>oid</td>
+<td>uint, IConvertible</td>
+</tr>
+<tr>
+<td>Xid</td>
+<td></td>
+<td>xid</td>
+<td>uint, IConvertible</td>
+</tr>
+<tr>
+<td>Cid</td>
+<td></td>
+<td>cid</td>
+<td>uint, IConvertible</td>
+</tr>
+<tr>
+<td>Oidvector</td>
+<td></td>
+<td>oidvector</td>
+<td>uint[]</td>
+</tr>
+<tr>
+<td>Name</td>
+<td></td>
+<td>name</td>
+<td>string, char[], char, IConvertible</td>
+</tr>
+<tr>
+<td>InternalChar</td>
+<td></td>
+<td>(internal) char</td>
+<td>byte, IConvertible</td>
+</tr>
+<tr>
+<td>Geometry</td>
+<td></td>
+<td>geometry</td>
+<td>PostgisGeometry</td>
+</tr>
+<tr>
+<td>Composite</td>
+<td></td>
+<td>composite types</td>
+<td>T</td>
+</tr>
+<tr>
+<td>Range \</td>
+<td>(other NpgsqlDbType)</td>
+<td></td>
+<td>range types</td>
+</tr>
+<tr>
+<td>Enum</td>
+<td></td>
+<td>enum types</td>
+<td>TEnum</td>
+</tr>
+<tr>
+<td>Array \</td>
+<td>(other NpgsqlDbType)</td>
+<td></td>
+<td>array types</td>
+</tr>
+</tbody>
+</table>
+<p>Notes when using Range and Array, bitwise-or NpgsqlDbType.Range or NpgsqlDbType.Array with the child type.
+For example, to construct the NpgsqlDbType for a <code>int4range</code>, write <code>NpgsqlDbType.Range | NpgsqlDbType.Integer</code>.
+To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbType.Array | NpgsqlDbType.Integer</code>.</p>
+<p>For information about enums, <a href="enums_and_composites.html">see the Enums and Composites page</a>.</p>
+<table>
+<thead>
+<tr>
+<th>.NET type</th>
+<th>Auto-inferred PostgreSQL type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>int2</td>
+</tr>
+<tr>
+<td>sbyte</td>
+<td>int2</td>
+</tr>
+<tr>
+<td>short</td>
+<td>int2</td>
+</tr>
+<tr>
+<td>int</td>
+<td>int4</td>
+</tr>
+<tr>
+<td>long</td>
+<td>int8</td>
+</tr>
+<tr>
+<td>float</td>
+<td>float4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>float8</td>
+</tr>
+<tr>
+<td>decimal</td>
+<td>numeric</td>
+</tr>
+<tr>
+<td>string</td>
+<td>text</td>
+</tr>
+<tr>
+<td>char[]</td>
+<td>text</td>
+</tr>
+<tr>
+<td>char</td>
+<td>text</td>
+</tr>
+<tr>
+<td>NpgsqlPoint</td>
+<td>point</td>
+</tr>
+<tr>
+<td>NpgsqlLSeg</td>
+<td>lseg</td>
+</tr>
+<tr>
+<td>NpgsqlPath</td>
+<td>path</td>
+</tr>
+<tr>
+<td>NpgsqlPolygon</td>
+<td>polygon</td>
+</tr>
+<tr>
+<td>NpgsqlLine</td>
+<td>line</td>
+</tr>
+<tr>
+<td>NpgsqlCircle</td>
+<td>circle</td>
+</tr>
+<tr>
+<td>NpgsqlBox</td>
+<td>box</td>
+</tr>
+<tr>
+<td>BitArray</td>
+<td>varbit</td>
+</tr>
+<tr>
+<td>Guid</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td>IPAddress</td>
+<td>inet</td>
+</tr>
+<tr>
+<td>NpgsqlInet</td>
+<td>inet</td>
+</tr>
+<tr>
+<td>PhysicalAddress</td>
+<td>macaddr</td>
+</tr>
+<tr>
+<td>NpgsqlTsQuery</td>
+<td>tsquery</td>
+</tr>
+<tr>
+<td>NpgsqlTsVector</td>
+<td>tsvector</td>
+</tr>
+<tr>
+<td>NpgsqlDate</td>
+<td>date</td>
+</tr>
+<tr>
+<td>NpgsqlDateTime(Kind=Local,Unspecified)</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>NpgsqlDateTime(Kind=Utc)</td>
+<td>timestamptz</td>
+</tr>
+<tr>
+<td>DateTime(Kind=Local,Unspecified)</td>
+<td>timestamp</td>
+</tr>
+<tr>
+<td>DateTime(Kind=Utc)</td>
+<td>timestamptz</td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>timestamptz</td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>time</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>bytea</td>
+</tr>
+<tr>
+<td>PostgisGeometry</td>
+<td>geometry</td>
+</tr>
+<tr>
+<td>Custom composite type</td>
+<td>composite types</td>
+</tr>
+<tr>
+<td>NpgsqlRange<telement></telement></td>
+<td>range types</td>
+</tr>
+<tr>
+<td>Enum types</td>
+<td>enum types</td>
+</tr>
+<tr>
+<td>Array types</td>
+<td>array types</td>
+</tr>
+</tbody>
+</table>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

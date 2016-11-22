@@ -1,0 +1,2422 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct NpgsqlDateTime
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct NpgsqlDateTime
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../">
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content">
+              
+              
+              <h1 id="NpgsqlTypes_NpgsqlDateTime" data-uid="NpgsqlTypes.NpgsqlDateTime">Struct NpgsqlDateTime
+              </h1>
+              <div class="markdown level0 summary"><p>A struct similar to .NET DateTime but capable of storing PostgreSQL&#39;s timestamp and timestamptz types.
+DateTime is capable of storing values from year 1 to 9999 at 100-nanosecond precision,
+while PostgreSQL&#39;s timestamps store values from 4713BC to 5874897AD with 1-microsecond precision.</p>
+</div>
+              <div class="markdown level0 conceptual"></div>
+              <div class="inheritedMembers">
+                <h5>Inherited Members</h5>
+                <div>
+                  <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.GetType()</span>
+                </div>
+              </div>
+              <h6><strong>Namespace</strong>:NpgsqlTypes</h6>
+              <h6><strong>Assembly</strong>:Npgsql.dll</h6>
+              <h5 id="NpgsqlTypes_NpgsqlDateTime_syntax">Syntax</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Serializable]
+public struct NpgsqlDateTime : IEquatable&lt;NpgsqlDateTime&gt;, IComparable&lt;NpgsqlDateTime&gt;, IComparable, IComparer&lt;NpgsqlDateTime&gt;, IComparer</code></pre>
+              </div>
+              <h3 id="constructors">Constructors
+              </h3>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_NpgsqlTypes_NpgsqlDate_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(NpgsqlTypes.NpgsqlDate)">NpgsqlDateTime(NpgsqlDate)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(NpgsqlDate date)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDate.html#NpgsqlTypes_NpgsqlDate">NpgsqlDate</a></td>
+                    <td><em>date</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_NpgsqlTypes_NpgsqlDate_System_TimeSpan_System_DateTimeKind_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(NpgsqlTypes.NpgsqlDate,System.TimeSpan,System.DateTimeKind)">NpgsqlDateTime(NpgsqlDate, TimeSpan, DateTimeKind)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(NpgsqlDate date, TimeSpan time, DateTimeKind kind = DateTimeKind.Unspecified)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDate.html#NpgsqlTypes_NpgsqlDate">NpgsqlDate</a></td>
+                    <td><em>date</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.TimeSpan</span></td>
+                    <td><em>time</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.DateTimeKind</span></td>
+                    <td><em>kind</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_System_DateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(System.DateTime)">NpgsqlDateTime(DateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(DateTime dateTime)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DateTime</span></td>
+                    <td><em>dateTime</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_DateTimeKind_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeKind)">NpgsqlDateTime(Int32, Int32, Int32, Int32, Int32, Int32, DateTimeKind)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(int year, int month, int day, int hours, int minutes, int seconds, DateTimeKind kind = DateTimeKind.Unspecified)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>year</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>month</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>day</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>hours</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>minutes</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>seconds</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.DateTimeKind</span></td>
+                    <td><em>kind</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_DateTimeKind_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.DateTimeKind)">NpgsqlDateTime(Int32, Int32, Int32, Int32, Int32, Int32, Int32, DateTimeKind)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(int year, int month, int day, int hours, int minutes, int seconds, int milliseconds, DateTimeKind kind = DateTimeKind.Unspecified)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>year</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>month</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>day</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>hours</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>minutes</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>seconds</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>milliseconds</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.DateTimeKind</span></td>
+                    <td><em>kind</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_System_Int64_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(System.Int64)">NpgsqlDateTime(Int64)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(long ticks)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int64</span></td>
+                    <td><em>ticks</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime__ctor_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime__ctor_System_Int64_System_DateTimeKind_" data-uid="NpgsqlTypes.NpgsqlDateTime.#ctor(System.Int64,System.DateTimeKind)">NpgsqlDateTime(Int64, DateTimeKind)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime(long ticks, DateTimeKind kind)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int64</span></td>
+                    <td><em>ticks</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.DateTimeKind</span></td>
+                    <td><em>kind</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 id="fields">Fields
+              </h3>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Epoch" data-uid="NpgsqlTypes.NpgsqlDateTime.Epoch">Epoch</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static readonly NpgsqlDateTime Epoch</code></pre>
+              </div>
+              <h5 class="fieldValue">Field Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Era" data-uid="NpgsqlTypes.NpgsqlDateTime.Era">Era</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static readonly NpgsqlDateTime Era</code></pre>
+              </div>
+              <h5 class="fieldValue">Field Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Infinity" data-uid="NpgsqlTypes.NpgsqlDateTime.Infinity">Infinity</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static readonly NpgsqlDateTime Infinity</code></pre>
+              </div>
+              <h5 class="fieldValue">Field Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_NegativeInfinity" data-uid="NpgsqlTypes.NpgsqlDateTime.NegativeInfinity">NegativeInfinity</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static readonly NpgsqlDateTime NegativeInfinity</code></pre>
+              </div>
+              <h5 class="fieldValue">Field Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 id="properties">Properties
+              </h3>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Date_" data-uid="NpgsqlTypes.NpgsqlDateTime.Date*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Date" data-uid="NpgsqlTypes.NpgsqlDateTime.Date">Date</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDate Date { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDate.html#NpgsqlTypes_NpgsqlDate">NpgsqlDate</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_DateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.DateTime*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_DateTime" data-uid="NpgsqlTypes.NpgsqlDateTime.DateTime">DateTime</h4>
+              <div class="markdown level1 summary"><p>Cast of an <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> to a <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a>.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public DateTime DateTime { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DateTime</span></td>
+                    <td><p>An equivalent <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a>.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Day_" data-uid="NpgsqlTypes.NpgsqlDateTime.Day*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Day" data-uid="NpgsqlTypes.NpgsqlDateTime.Day">Day</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Day { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_DayOfWeek_" data-uid="NpgsqlTypes.NpgsqlDateTime.DayOfWeek*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_DayOfWeek" data-uid="NpgsqlTypes.NpgsqlDateTime.DayOfWeek">DayOfWeek</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public DayOfWeek DayOfWeek { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DayOfWeek</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_DayOfYear_" data-uid="NpgsqlTypes.NpgsqlDateTime.DayOfYear*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_DayOfYear" data-uid="NpgsqlTypes.NpgsqlDateTime.DayOfYear">DayOfYear</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int DayOfYear { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Hour_" data-uid="NpgsqlTypes.NpgsqlDateTime.Hour*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Hour" data-uid="NpgsqlTypes.NpgsqlDateTime.Hour">Hour</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Hour { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_IsFinite_" data-uid="NpgsqlTypes.NpgsqlDateTime.IsFinite*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_IsFinite" data-uid="NpgsqlTypes.NpgsqlDateTime.IsFinite">IsFinite</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool IsFinite { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_IsInfinity_" data-uid="NpgsqlTypes.NpgsqlDateTime.IsInfinity*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_IsInfinity" data-uid="NpgsqlTypes.NpgsqlDateTime.IsInfinity">IsInfinity</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool IsInfinity { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_IsLeapYear_" data-uid="NpgsqlTypes.NpgsqlDateTime.IsLeapYear*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_IsLeapYear" data-uid="NpgsqlTypes.NpgsqlDateTime.IsLeapYear">IsLeapYear</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool IsLeapYear { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_IsNegativeInfinity_" data-uid="NpgsqlTypes.NpgsqlDateTime.IsNegativeInfinity*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_IsNegativeInfinity" data-uid="NpgsqlTypes.NpgsqlDateTime.IsNegativeInfinity">IsNegativeInfinity</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool IsNegativeInfinity { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Kind_" data-uid="NpgsqlTypes.NpgsqlDateTime.Kind*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Kind" data-uid="NpgsqlTypes.NpgsqlDateTime.Kind">Kind</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public DateTimeKind Kind { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DateTimeKind</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Millisecond_" data-uid="NpgsqlTypes.NpgsqlDateTime.Millisecond*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Millisecond" data-uid="NpgsqlTypes.NpgsqlDateTime.Millisecond">Millisecond</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Millisecond { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Minute_" data-uid="NpgsqlTypes.NpgsqlDateTime.Minute*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Minute" data-uid="NpgsqlTypes.NpgsqlDateTime.Minute">Minute</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Minute { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Month_" data-uid="NpgsqlTypes.NpgsqlDateTime.Month*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Month" data-uid="NpgsqlTypes.NpgsqlDateTime.Month">Month</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Month { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Now_" data-uid="NpgsqlTypes.NpgsqlDateTime.Now*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Now" data-uid="NpgsqlTypes.NpgsqlDateTime.Now">Now</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlDateTime Now { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Second_" data-uid="NpgsqlTypes.NpgsqlDateTime.Second*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Second" data-uid="NpgsqlTypes.NpgsqlDateTime.Second">Second</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Second { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Ticks_" data-uid="NpgsqlTypes.NpgsqlDateTime.Ticks*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Ticks" data-uid="NpgsqlTypes.NpgsqlDateTime.Ticks">Ticks</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public long Ticks { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int64</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Time_" data-uid="NpgsqlTypes.NpgsqlDateTime.Time*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Time" data-uid="NpgsqlTypes.NpgsqlDateTime.Time">Time</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public TimeSpan Time { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.TimeSpan</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Year_" data-uid="NpgsqlTypes.NpgsqlDateTime.Year*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Year" data-uid="NpgsqlTypes.NpgsqlDateTime.Year">Year</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Year { get; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h3 id="methods">Methods
+              </h3>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Add_" data-uid="NpgsqlTypes.NpgsqlDateTime.Add*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Add_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlDateTime.Add(NpgsqlTypes.NpgsqlTimeSpan)">Add(NpgsqlTimeSpan)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the value of the specified TimeSpan to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime Add(NpgsqlTimeSpan value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td><em>value</em></td>
+                    <td><p>A positive or negative time interval.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the time interval represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Add_" data-uid="NpgsqlTypes.NpgsqlDateTime.Add*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Add_System_TimeSpan_" data-uid="NpgsqlTypes.NpgsqlDateTime.Add(System.TimeSpan)">Add(TimeSpan)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the value of the specified <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a> to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime Add(TimeSpan value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.TimeSpan</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A positive or negative time interval.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the time interval represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddDays_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddDays*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddDays_System_Double_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddDays(System.Double)">AddDays(Double)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of days to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddDays(double value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Double</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of whole and fractional days. The value parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of days represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddHours_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddHours*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddHours_System_Double_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddHours(System.Double)">AddHours(Double)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of hours to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddHours(double value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Double</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of whole and fractional hours. The value parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of hours represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddMilliseconds_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMilliseconds*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddMilliseconds_System_Double_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMilliseconds(System.Double)">AddMilliseconds(Double)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of milliseconds to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddMilliseconds(double value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Double</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of whole and fractional milliseconds. The value parameter can be negative or positive. Note that this value is rounded to the nearest integer.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of milliseconds represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddMinutes_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMinutes*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddMinutes_System_Double_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMinutes(System.Double)">AddMinutes(Double)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of minutes to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddMinutes(double value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Double</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of whole and fractional minutes. The value parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of minutes represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddMonths_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMonths*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddMonths_System_Int32_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddMonths(System.Int32)">AddMonths(Int32)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of months to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddMonths(int value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of months. The months parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and months.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddSeconds_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddSeconds*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddSeconds_System_Double_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddSeconds(System.Double)">AddSeconds(Double)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of minutes to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddSeconds(double value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Double</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of whole and fractional minutes. The value parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of minutes represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddTicks_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddTicks*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddTicks_System_Int64_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddTicks(System.Int64)">AddTicks(Int64)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of ticks to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddTicks(long value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int64</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of 100-nanosecond ticks. The value parameter can be positive or negative.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the time represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_AddYears_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddYears*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_AddYears_System_Int32_" data-uid="NpgsqlTypes.NpgsqlDateTime.AddYears(System.Int32)">AddYears(Int32)</h4>
+              <div class="markdown level1 summary"><p>Returns a new <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> that adds the specified number of years to the value of this instance.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime AddYears(int value)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td><em>value</em></td>
+                    <td><p>A number of years. The value parameter can be negative or positive.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An object whose value is the sum of the date and time represented by this instance and the number of years represented by value.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Compare_" data-uid="NpgsqlTypes.NpgsqlDateTime.Compare*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Compare_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.Compare(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">Compare(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Compare(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.Collections.Generic.IComparer&lt;T&gt;.Compare(T, T)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Compare_" data-uid="NpgsqlTypes.NpgsqlDateTime.Compare*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Compare_System_Object_System_Object_" data-uid="NpgsqlTypes.NpgsqlDateTime.Compare(System.Object,System.Object)">Compare(Object, Object)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int Compare(object x, object y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.Collections.IComparer.Compare(System.Object, System.Object)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_CompareTo_" data-uid="NpgsqlTypes.NpgsqlDateTime.CompareTo*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_CompareTo_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.CompareTo(NpgsqlTypes.NpgsqlDateTime)">CompareTo(NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int CompareTo(NpgsqlDateTime other)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>other</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.IComparable&lt;T&gt;.CompareTo(T)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_CompareTo_" data-uid="NpgsqlTypes.NpgsqlDateTime.CompareTo*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_CompareTo_System_Object_" data-uid="NpgsqlTypes.NpgsqlDateTime.CompareTo(System.Object)">CompareTo(Object)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public int CompareTo(object obj)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td><em>obj</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.IComparable.CompareTo(System.Object)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Equals_" data-uid="NpgsqlTypes.NpgsqlDateTime.Equals*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Equals_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.Equals(NpgsqlTypes.NpgsqlDateTime)">Equals(NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlDateTime other)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>other</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.IEquatable&lt;T&gt;.Equals(T)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Equals_" data-uid="NpgsqlTypes.NpgsqlDateTime.Equals*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlDateTime.Equals(System.Object)">Equals(Object)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td><em>obj</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="overrides">Overrides</h5>
+              <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlDateTime.GetHashCode*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_GetHashCode" data-uid="NpgsqlTypes.NpgsqlDateTime.GetHashCode">GetHashCode()</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="overrides">Overrides</h5>
+              <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Normalize_" data-uid="NpgsqlTypes.NpgsqlDateTime.Normalize*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Normalize" data-uid="NpgsqlTypes.NpgsqlDateTime.Normalize">Normalize()</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime Normalize()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Parse_" data-uid="NpgsqlTypes.NpgsqlDateTime.Parse*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlDateTime.Parse(System.String)">Parse(String)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlDateTime Parse(string str)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><em>str</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Subtract_" data-uid="NpgsqlTypes.NpgsqlDateTime.Subtract*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Subtract_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.Subtract(NpgsqlTypes.NpgsqlDateTime)">Subtract(NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlTimeSpan Subtract(NpgsqlDateTime timestamp)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>timestamp</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_Subtract_" data-uid="NpgsqlTypes.NpgsqlDateTime.Subtract*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_Subtract_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlDateTime.Subtract(NpgsqlTypes.NpgsqlTimeSpan)">Subtract(NpgsqlTimeSpan)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[Pure]
+public NpgsqlDateTime Subtract(NpgsqlTimeSpan interval)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td><em>interval</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_ToLocalTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.ToLocalTime*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_ToLocalTime" data-uid="NpgsqlTypes.NpgsqlDateTime.ToLocalTime">ToLocalTime()</h4>
+              <div class="markdown level1 summary"><p>Converts the value of the current <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> object to local time.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime ToLocalTime()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 id="NpgsqlTypes_NpgsqlDateTime_ToLocalTime_remarks">Remarks</h5>
+              <div class="markdown level1 remarks"><p>See the MSDN documentation for DateTime.ToLocalTime().
+<strong>Note:</strong> this method <strong>only</strong> takes into account the time zone&#39;s base offset, and does
+<strong>not</strong> respect daylight savings. See <a href="https://github.com/npgsql/npgsql/pull/684">https://github.com/npgsql/npgsql/pull/684</a> for more
+details.</p>
+</div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_ToString_" data-uid="NpgsqlTypes.NpgsqlDateTime.ToString*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_ToString" data-uid="NpgsqlTypes.NpgsqlDateTime.ToString">ToString()</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="overrides">Overrides</h5>
+              <div><span class="xref">System.ValueType.ToString()</span></div>
+              <a id="NpgsqlTypes_NpgsqlDateTime_ToUniversalTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.ToUniversalTime*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_ToUniversalTime" data-uid="NpgsqlTypes.NpgsqlDateTime.ToUniversalTime">ToUniversalTime()</h4>
+              <div class="markdown level1 summary"><p>Converts the value of the current <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> object to Coordinated Universal Time (UTC).</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public NpgsqlDateTime ToUniversalTime()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 id="NpgsqlTypes_NpgsqlDateTime_ToUniversalTime_remarks">Remarks</h5>
+              <div class="markdown level1 remarks"><p>See the MSDN documentation for DateTime.ToUniversalTime().
+<strong>Note:</strong> this method <strong>only</strong> takes into account the time zone&#39;s base offset, and does
+<strong>not</strong> respect daylight savings. See <a href="https://github.com/npgsql/npgsql/pull/684">https://github.com/npgsql/npgsql/pull/684</a> for more
+details.</p>
+</div>
+              <h3 id="operators">Operators
+              </h3>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Addition_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Addition*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Addition_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Addition(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlTimeSpan)">Addition(NpgsqlDateTime, NpgsqlTimeSpan)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlDateTime operator +(NpgsqlDateTime timestamp, NpgsqlTimeSpan interval)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>timestamp</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td><em>interval</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Addition_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Addition*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Addition_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Addition(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlDateTime)">Addition(NpgsqlTimeSpan, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlDateTime operator +(NpgsqlTimeSpan interval, NpgsqlDateTime timestamp)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td><em>interval</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>timestamp</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Equality_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Equality*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Equality_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Equality(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">Equality(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Explicit_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Explicit*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Explicit_NpgsqlTypes_NpgsqlDateTime__System_DateTime" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Explicit(NpgsqlTypes.NpgsqlDateTime)~System.DateTime">Explicit(NpgsqlDateTime to DateTime)</h4>
+              <div class="markdown level1 summary"><p>Explicit cast of an <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a> to a <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a>.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static explicit operator DateTime(NpgsqlDateTime npgsqlDateTime)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>npgsqlDateTime</em></td>
+                    <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a>.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DateTime</span></td>
+                    <td><p>An equivalent <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a>.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_GreaterThan_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_GreaterThan*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_GreaterThan_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_GreaterThan(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">GreaterThan(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator&gt;(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_GreaterThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_GreaterThanOrEqual*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_GreaterThanOrEqual(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">GreaterThanOrEqual(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator &gt;=(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Implicit_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Implicit*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Implicit_System_DateTime__NpgsqlTypes_NpgsqlDateTime" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Implicit(System.DateTime)~NpgsqlTypes.NpgsqlDateTime">Implicit(DateTime to NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"><p>Implicit cast of a <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a> to an <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static implicit operator NpgsqlDateTime(DateTime dateTime)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.DateTime</span></td>
+                    <td><em>dateTime</em></td>
+                    <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime_DateTime">DateTime</a></p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><p>An equivalent <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a>.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Inequality*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Inequality_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Inequality(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">Inequality(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_LessThan_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_LessThan*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_LessThan_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_LessThan(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">LessThan(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator &lt;(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_LessThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_LessThanOrEqual*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_LessThanOrEqual_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_LessThanOrEqual(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">LessThanOrEqual(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator &lt;=(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Subtraction_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Subtraction*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Subtraction_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlDateTime_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Subtraction(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlDateTime)">Subtraction(NpgsqlDateTime, NpgsqlDateTime)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan operator -(NpgsqlDateTime x, NpgsqlDateTime y)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>x</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>y</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a id="NpgsqlTypes_NpgsqlDateTime_op_Subtraction_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Subtraction*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlDateTime_op_Subtraction_NpgsqlTypes_NpgsqlDateTime_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlDateTime.op_Subtraction(NpgsqlTypes.NpgsqlDateTime,NpgsqlTypes.NpgsqlTimeSpan)">Subtraction(NpgsqlDateTime, NpgsqlTimeSpan)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static NpgsqlDateTime operator -(NpgsqlDateTime timestamp, NpgsqlTimeSpan interval)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td><em>timestamp</em></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan">NpgsqlTimeSpan</a></td>
+                    <td><em>interval</em></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html#NpgsqlTypes_NpgsqlDateTime">NpgsqlDateTime</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2016 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
