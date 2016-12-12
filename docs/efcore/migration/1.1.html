@@ -8,7 +8,7 @@
     <title>Migrating to 1.1 | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Migrating to 1.1 | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.7.3.0">
+    <meta name="generator" content="docfx 2.9.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -88,9 +88,9 @@
 </ul>
 <p>Here&#39;s the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/3?closed=1">full list of issues</a>. Please report any problems to <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL</a>.</p>
 <h2 id="upgrading-from-10x">Upgrading from 1.0.x</h2>
-<p>If you&#39;ve used 1.0.x without migrations, you can simply upgrade and everything should just work. Unfortunately, if you already have migrations from 1.0.x you&#39;ll have to do some manual fixups because of some bad decisions that were previously made. If deleting your old migrations and starting over (e.g. non-production database) is an option you may wish to do so. The following are instructions for fixing up 1.0.x migrations.</p>
-<p>First, Npgsql 1.0.x used a problematic method to identify serial (autoincrement) columns in migrations. If you look at your migration code you&#39;ll see <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code> on various columns. Unfortunately this annotation is also present non-serial columns, e.g. columns with default values. This causes various issues and has been replaced in 1.1. However, you&#39;ll have to remove <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code>, and replacing it with <code>.Annotation(&quot;Npgsql:ValueGenerationStrategy&quot;, NpgsqlValueGenerationStrategy.SerialColumn)</code> but <em>only</em> on columns which should be serial (e.g. not on columns with defaults). If you attempt to run a migration that has the old annotation, Npgsql will throw an exception and refuse to run your migrations.</p>
-<p>Unfortunately, this change will cause some incorrect changes the first time you add a migration after the upgrade. To avoid this, simply add a dummy migration right after upgrading to 1.1 and then delete the two new migration files, but keeping the changes made to your ModelSnapshot.cs. From this point on everything should be fine. <em>Make sure you have no pending changes to your model before doing this!</em>.</p>
+<p>If you&#39;ve used 1.0.x without migrations, you can simply upgrade and everything should just work. Unfortunately, if you already have migrations from 1.0.x you&#39;ll have to do some manual fixups because of some bad decisions that were previously made. If deleting your old migrations and starting over (e.g. non-production database) is an option, you may wish to do so. The following are instructions for fixing up 1.0.x migrations.</p>
+<p>First, Npgsql 1.0.x used a problematic method to identify serial (autoincrement) columns in migrations. If you look at your migration code you&#39;ll see <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code> on various columns. Unfortunately this annotation is also present on non-serial columns, e.g. columns with default values. This causes various issues and has been replaced in 1.1. However, you&#39;ll have to manually remove <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code>, and replace it with <code>.Annotation(&quot;Npgsql:ValueGenerationStrategy&quot;, NpgsqlValueGenerationStrategy.SerialColumn)</code> but <em>only</em> on columns which should be serial (e.g. not on columns with defaults). If you attempt to run a migration that has the old annotation, Npgsql will throw an exception and refuse to run your migrations.</p>
+<p>Unfortunately, this change will cause some incorrect changes the first time you add a migration after the upgrade. To avoid this, simply add a dummy migration right after upgrading to 1.1 and then delete the two new files generated for the dummy migration, <em>but keep the changes made to your ModelSnapshot.cs</em>. From this point on everything should be fine. <em>Make sure you have no pending changes to your model before doing this!</em>.</p>
 <p>Apologies for this problematic upgrade procedure, it should at least keep things clean going forward.</p>
 
             </article>
@@ -98,6 +98,13 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/migration/1.1.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>
