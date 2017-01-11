@@ -74,79 +74,16 @@
             <article class="content wrap" id="_content" data-uid="">
               <h1 id="logging">Logging</h1>
               
-<p>Npgsql includes a built-in feature for outputting logging events which can help debug issues.</p>
-<p>Npgsql logging is disabled by default and must be turned on. Logging can be turned on by setting <code>NpgsqlLogManager.Provider</code> to a class implementing the <code>INpgsqlLoggingProvider</code> interface. Npgsql comes with a console implementation which can be set up as follows:</p>
-<pre><code class="lang-c#">NpgsqlLogManager.Provider = new ???
-</code></pre><p><em>Note: you must set the logging provider before invoking any other Npgsql method, at the very start of your program.</em></p>
-<p>It&#39;s trivial to create a logging provider that passes log messages to whatever logging framework you use. You can find such an adaptor for NLog <a href="http://ni">here</a>.</p>
-<p><em>Note:</em> the logging API is a first implementation and will probably improve/change - don&#39;t treat it as a stable part of the Npgsql API. Let us know if you think there are any missing messages or features!</p>
-<h2 id="consoleloggingprovider">ConsoleLoggingProvider</h2>
-<p>Npgsql comes with one built-in logging provider: ConsoleLoggingProvider. It will simply dump all log messages with a given level or above to stdanrd output.
-You can set it up by including the following line at the beginning of your application:</p>
-<pre><code class="lang-c#">NpgsqlLogManager.Provider = new ConsoleLoggingProvider(&lt;min level&gt;, &lt;print level?&gt;, &lt;print connector id?&gt;);
-</code></pre><p>Level defaults to <code>NpgsqlLogLevel.Info</code> (which will only print warnings and errors).
-You can also have log levels and connector IDs logged.</p>
+<p>Npgsql uses Microsoft.Extensions.Logging to emit log events that can be routed to your logging library of choice - see <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging">their docs</a> for more information. Note that Microsoft.Extensions.Logging support replaced Npgsql&#39;s own custom logging wrapper in 3.2.</p>
+<p>Since Npgsql is an ADO.NET provider and does not support dependency injection, you must manually inject your ILoggingFactory by including the following code <em>before</em> starting to use any of Npgsql&#39;s other APIs:</p>
+<pre><code class="lang-c#">NpgsqlLogManager.Provider = new LoggerFactory
+    .AddConsole((text, logLevel) =&gt; logLevel &gt;= LogLevel.Debug);
+</code></pre><p>This will make Npgsql log to the console, for messages of at least Debug level. Other providers exist for NLog and other logging packages and services.</p>
 <h2 id="statement-and-parameter-logging">Statement and Parameter Logging</h2>
 <p>Npgsql will log all SQL statements at level Debug, this can help you debug exactly what&#39;s being sent to PostgreSQL.</p>
 <p>By default, Npgsql will not log parameter values as these may contain sensitive information. You can turn on
 parameter logging by setting <code>NpgsqlLogManager.IsParameterLoggingEnabled</code> to true.</p>
-<h2 id="nlogloggingprovider-or-implementing-your-own">NLogLoggingProvider (or implementing your own)</h2>
-<p>The following provider is used in the Npgsql unit tests to pass log messages to <a href="http://nlog-project.org/">NLog</a>.
-You&#39;re welcome to copy-paste it into your project, or to use it as a starting point for implementing your own custom provider.</p>
-<pre><code class="lang-c#">class NLogLoggingProvider : INpgsqlLoggingProvider
-{
-    public NpgsqlLogger CreateLogger(string name)
-    {
-        return new NLogLogger(name);
-    }
-}
 
-class NLogLogger : NpgsqlLogger
-{
-    readonly Logger _log;
-
-    internal NLogLogger(string name)
-    {
-        _log = LogManager.GetLogger(name);
-    }
-
-    public override bool IsEnabled(NpgsqlLogLevel level)
-    {
-        return _log.IsEnabled(ToNLogLogLevel(level));
-    }
-
-    public override void Log(NpgsqlLogLevel level, int connectorId, string msg, Exception exception = null)
-    {
-        var ev = new LogEventInfo(ToNLogLogLevel(level), &quot;&quot;, msg);
-        if (exception != null)
-            ev.Exception = exception;
-        if (connectorId != 0)
-            ev.Properties[&quot;ConnectorId&quot;] = connectorId;
-        _log.Log(ev);
-    }
-
-    static LogLevel ToNLogLogLevel(NpgsqlLogLevel level)
-    {
-        switch (level)
-        {
-        case NpgsqlLogLevel.Trace:
-            return LogLevel.Trace;
-        case NpgsqlLogLevel.Debug:
-            return LogLevel.Debug;
-        case NpgsqlLogLevel.Info:
-            return LogLevel.Info;
-        case NpgsqlLogLevel.Warn:
-            return LogLevel.Warn;
-        case NpgsqlLogLevel.Error:
-            return LogLevel.Error;
-        case NpgsqlLogLevel.Fatal:
-            return LogLevel.Fatal;
-        default:
-            throw new ArgumentOutOfRangeException(&quot;level&quot;);
-        }
-    }
-}
-</code></pre>
             </article>
           </div>
           
@@ -155,7 +92,7 @@ class NLogLogger : NpgsqlLogger
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/logging.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/dev/doc/logging.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -174,7 +111,7 @@ class NLogLogger : NpgsqlLogger
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2016 The Npgsql Development Team
+            © Copyright 2017 The Npgsql Development Team
             
           </div>
         </div>

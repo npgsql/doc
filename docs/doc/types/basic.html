@@ -393,22 +393,18 @@
 </tr>
 </tbody>
 </table>
-<p>The Default .NET type column specifies the data type <code>NpgsqlDataReader.GetValue</code> will return.</p>
-<p><code>NpgsqlDataReader.GetProviderSpecificValue</code> will return a value of a data type specified in the Provider-specific type column,
-or the Default .NET type if there is no specialization.</p>
-<p>The Other .NET types column specifies which other data types in which the value can be retrieved using
-<code>NpgsqlDataReader.GetBoolean</code>, <code>.GetByte</code>, <code>.GetDouble</code> etc. or by <code>.GetFieldValue&lt;T&gt;</code>.</p>
+<p>The Default .NET type column specifies the data type <code>NpgsqlDataReader.GetValue()</code> will return.</p>
+<p><code>NpgsqlDataReader.GetProviderSpecificValue</code> will return a value of a data type specified in the Provider-specific type column, or the Default .NET type if there is no specialization.</p>
+<p>Finally, the third column specifies other CLR types which Npgsql supports for the PostgreSQL data type. These can be retrieved by calling <code>NpgsqlDataReader.GetBoolean()</code>, <code>GetByte()</code>, <code>GetDouble()</code> etc. or via <code>GetFieldValue&lt;T&gt;()</code>.</p>
 <h2 id="type-mappings-when-sending-parameters-to-the-backend">Type mappings when sending parameters to the backend</h2>
-<p>There are three rules that decides what backend type a parameter will sent as.</p>
+<p>There are three rules that determine the PostgreSQL type sent for a parameter:</p>
 <ol>
 <li>If the parameter&#39;s <code>NpgsqlDbType</code> is set, it is used.</li>
 <li>If the parameter&#39;s <code>DbType</code> is set, it is used.</li>
-<li>Of neither of the above is set, the the backend type will be inferred based on the type the value has.</li>
+<li>If neither of the above is set, the backend type will be inferred from the CLR value type.</li>
 </ol>
-<p>Note that for DateTime and NpgsqlDateTime, the <code>Kind</code> attribute tells wether to use <code>timestamp</code> or <code>timestamptz</code>.</p>
-<p>Note that when <code>NpgsqlDbType</code> or <code>DbType</code> is set to a primitive type (bool, numbers and string),
-most other primitive types are accepted since they all implement the IConvertible interface,
-which is what Npgsql uses to convert the value to the target type.</p>
+<p>Note that for DateTime and NpgsqlDateTime, the <code>Kind</code> attribute determines whether to use <code>timestamp</code> or <code>timestamptz</code>.</p>
+<p>Note that when <code>NpgsqlDbType</code> or <code>DbType</code> is set to a primitive type (bool, numbers and string), most other primitive types are accepted since they all implement the IConvertible interface, which is what Npgsql uses to convert the value to the target type.</p>
 <table>
 <thead>
 <tr>
@@ -715,9 +711,7 @@ which is what Npgsql uses to convert the value to the target type.</p>
 </tr>
 </tbody>
 </table>
-<p>Notes when using Range and Array, bitwise-or NpgsqlDbType.Range or NpgsqlDbType.Array with the child type.
-For example, to construct the NpgsqlDbType for a <code>int4range</code>, write <code>NpgsqlDbType.Range | NpgsqlDbType.Integer</code>.
-To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbType.Array | NpgsqlDbType.Integer</code>.</p>
+<p>Notes when using Range and Array, bitwise-or NpgsqlDbType.Range or NpgsqlDbType.Array with the child type. For example, to construct the NpgsqlDbType for a <code>int4range</code>, write <code>NpgsqlDbType.Range | NpgsqlDbType.Integer</code>. To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbType.Array | NpgsqlDbType.Integer</code>.</p>
 <p>For information about enums, <a href="enums_and_composites.html">see the Enums and Composites page</a>.</p>
 <table>
 <thead>
@@ -894,7 +888,7 @@ To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbTyp
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/types/basic.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/dev/doc/types/basic.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -913,7 +907,7 @@ To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbTyp
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2016 The Npgsql Development Team
+            © Copyright 2017 The Npgsql Development Team
             
           </div>
         </div>

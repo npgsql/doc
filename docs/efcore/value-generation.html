@@ -79,7 +79,16 @@
 <p>In PostgreSQL, the standard autoincrement column type is called <code>serial</code>. This isn&#39;t really a special type like in some other databases (e.g. SQL Server&#39;s IDENTITY), but rather a shorthand for specifying that the column&#39;s default value should come from a sequence. See <a href="https://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL">the PostgreSQL docs</a> for more info.</p>
 <p>When <code>ValueGeneratedOnAdd</code> is specified on a short, int or long property, the Npgsql EF Core provider will automatically map it to a <code>serial</code> column. Note that EF Core will automatically recognize key properties by convention (e.g. a property called <code>Id</code> in your entity) and will implicitly set them to <code>ValueGeneratedOnAdd</code>.</p>
 <p>Note that there was a significant and breaking change in 1.1. If you have existing migrations generated with 1.0, please read the <a href="migration/1.1.html">migration notes</a>.</p>
-<h2 id="hilo-autoincrement-generation">HiLo Autoincrement Generation</h2>
+<h2 id="standard-sequence-driven-columns">Standard Sequence-Driven Columns</h2>
+<p>While <code>serial</code> sets up a sequence for you, you may want to manage sequence creation yourself. This can be useful for cases where you need to control the sequence&#39;s increment value (i.e. increment by 2), populate two columns from the same sequence, etc. Adding a sequence to your model is described in <a href="https://docs.microsoft.com/en-us/ef/core/modeling/relational/sequences">the general EF Core documentation</a>; once the sequence is specified, you can simply set a column&#39;s default value to extract the next value from that sequence. Note that the SQL used to fetch the next value from a sequence differs across databases (see <a href="https://www.postgresql.org/docs/current/static/functions-sequence.html">the PostgreSQL docs</a>). Your models&#39; <code>OnModelCreating</code> should look like this:</p>
+<pre><code class="lang-c#">modelBuilder.HasSequence&lt;int&gt;(&quot;OrderNumbers&quot;)
+    .StartsAt(1000)
+    .IncrementsBy(5);
+
+modelBuilder.Entity&lt;Order&gt;()
+    .Property(o =&gt; o.OrderNo)
+    .HasDefaultValueSql(&quot;nextval(&#39;\&quot;OrderNumbers\&quot;&#39;)&quot;);
+</code></pre><h2 id="hilo-autoincrement-generation">HiLo Autoincrement Generation</h2>
 <p>One disadvantage of database-generated values is that these values must be read back from the database after a row is inserted. If you&#39;re saving multiple related entities, this means you must perform multiple roundtrips as the first entity&#39;s generated key must be read before writing the second one. One solution to this problem is HiLo value generation: rather than relying on the database to generate each and every value, the application &quot;allocates&quot; a range of values, which it can then populate directly on new entities without any additional roundtrips. When the range is exhausted, a new range is allocated. In practical terms, this uses a sequence that increments by some large value (100 by default), allowing the application to insert 100 rows autonomously.</p>
 <p>To use HiLo, specify <code>ForNpgsqlUseSequenceHiLo</code> on a property in your model&#39;s <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.Id).ForNpgsqlUseSequenceHiLo();
@@ -124,7 +133,7 @@ modelBuilder
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2016 The Npgsql Development Team
+            © Copyright 2017 The Npgsql Development Team
             
           </div>
         </div>

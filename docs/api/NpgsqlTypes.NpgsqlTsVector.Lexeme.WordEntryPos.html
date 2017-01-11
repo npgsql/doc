@@ -84,12 +84,6 @@
               <div class="inheritedMembers">
                 <h5>Inherited Members</h5>
                 <div>
-                  <span class="xref">System.ValueType.Equals(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.ValueType.GetHashCode()</span>
-                </div>
-                <div>
                   <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
                 </div>
                 <div>
@@ -103,7 +97,7 @@
               <h6><strong>Assembly</strong>:Npgsql.dll</h6>
               <h5 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_syntax">Syntax</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public struct WordEntryPos</code></pre>
+                <pre><code class="lang-csharp hljs">public struct WordEntryPos : IEquatable&lt;NpgsqlTsVector.Lexeme.WordEntryPos&gt;</code></pre>
               </div>
               <h3 id="constructors">Constructors
               </h3>
@@ -112,7 +106,7 @@
                 <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos__ctor_System_Int32_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.%23ctor(System.Int32%2CNpgsqlTypes.NpgsqlTsVector.Lexeme.Weight)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
               </span>
               <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/doc/blob/master/Npgsql/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L449">View Source</a>
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L435">View Source</a>
               </span>
               <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos__ctor_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.#ctor*"></a>
               <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos__ctor_System_Int32_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.#ctor(System.Int32,NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight)">WordEntryPos(Int32, NpgsqlTsVector.Lexeme.Weight)</h4>
@@ -154,7 +148,7 @@
                 <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Pos.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
               </span>
               <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/doc/blob/master/Npgsql/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L472">View Source</a>
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L457">View Source</a>
               </span>
               <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Pos_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Pos*"></a>
               <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Pos" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Pos">Pos</h4>
@@ -185,7 +179,7 @@
                 <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Weight.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Weight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
               </span>
               <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/doc/blob/master/Npgsql/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L467">View Source</a>
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L452">View Source</a>
               </span>
               <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Weight_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Weight*"></a>
               <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Weight" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Weight">Weight</h4>
@@ -215,10 +209,143 @@
               </h3>
               <span class="small pull-right mobile-hide">
                 <span class="divider">|</span>
+                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L473">View Source</a>
+              </span>
+              <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)">Equals(NpgsqlTsVector.Lexeme.WordEntryPos)</h4>
+              <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlTsVector.Lexeme.WordEntryPos o)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.html">NpgsqlTsVector.Lexeme.WordEntryPos</a></td>
+                    <td><span class="parametername">o</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="implements">Implements</h5>
+                  <div><span class="xref">System.IEquatable&lt;T&gt;.Equals(T)</span></div>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L478">View Source</a>
+              </span>
+              <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.Equals(System.Object)">Equals(Object)</h4>
+              <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override bool Equals(object o)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td><span class="parametername">o</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="overrides">Overrides</h5>
+              <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L484">View Source</a>
+              </span>
+              <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.GetHashCode*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_GetHashCode" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.GetHashCode">GetHashCode()</h4>
+              <div class="markdown level1 summary"><p>Gets a hash code for the current object.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+              </div>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Int32</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="overrides">Overrides</h5>
+              <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
                 <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
               </span>
               <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/doc/blob/master/Npgsql/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L478">View Source</a>
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L463">View Source</a>
               </span>
               <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_ToString_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.ToString*"></a>
               <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_ToString" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.ToString">ToString()</h4>
@@ -246,6 +373,114 @@
               </table>
               <h5 class="overrides">Overrides</h5>
               <div><span class="xref">System.ValueType.ToString()</span></div>
+              <h3 id="operators">Operators
+              </h3>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Equality_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Equality(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos%2CNpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L489">View Source</a>
+              </span>
+              <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Equality_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Equality*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Equality_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Equality(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos,NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)">Equality(NpgsqlTsVector.Lexeme.WordEntryPos, NpgsqlTsVector.Lexeme.WordEntryPos)</h4>
+              <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlTsVector.Lexeme.WordEntryPos left, NpgsqlTsVector.Lexeme.WordEntryPos right)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.html">NpgsqlTsVector.Lexeme.WordEntryPos</a></td>
+                    <td><span class="parametername">left</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.html">NpgsqlTsVector.Lexeme.WordEntryPos</a></td>
+                    <td><span class="parametername">right</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Inequality_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Inequality(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos%2CNpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L494">View Source</a>
+              </span>
+              <a id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Inequality*"></a>
+              <h4 id="NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_op_Inequality_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos_" data-uid="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.op_Inequality(NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos,NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos)">Inequality(NpgsqlTsVector.Lexeme.WordEntryPos, NpgsqlTsVector.Lexeme.WordEntryPos)</h4>
+              <div class="markdown level1 summary"><p>Determines whether the specified object is unequal to the current object.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlTsVector.Lexeme.WordEntryPos left, NpgsqlTsVector.Lexeme.WordEntryPos right)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.html">NpgsqlTsVector.Lexeme.WordEntryPos</a></td>
+                    <td><span class="parametername">left</span></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos.html">NpgsqlTsVector.Lexeme.WordEntryPos</a></td>
+                    <td><span class="parametername">right</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Boolean</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
             </article>
           </div>
           
@@ -257,7 +492,7 @@
                     <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=NpgsqlTypes_NpgsqlTsVector_Lexeme_WordEntryPos.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTsVector.Lexeme.WordEntryPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/master/Npgsql/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L435" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlTypes/NpgsqlTsVector.cs/#L421" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -276,7 +511,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2016 The Npgsql Development Team
+            © Copyright 2017 The Npgsql Development Team
             
           </div>
         </div>

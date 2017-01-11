@@ -87,7 +87,7 @@
 <tbody>
 <tr>
 <td>Host</td>
-<td>The hostname or IP address of the PostgreSQL server to connect to.</td>
+<td>Specifies the host name of the machine on which the server is running. If the value begins with a slash, it is used as the directory for the Unix-domain socket.</td>
 <td><em>Required</em></td>
 </tr>
 <tr>
@@ -135,6 +135,11 @@
 <tr>
 <td>Use SSL Stream</td>
 <td>Npgsql uses its own internal implementation of TLS/SSL. Turn this on to use .NET SslStream instead.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Check Certificate Revocation</td>
+<td>Whether to check the certificate revocation list during authentication. False by default.</td>
 <td>false</td>
 </tr>
 <tr>
@@ -239,9 +244,34 @@
 </thead>
 <tbody>
 <tr>
-<td>Buffer Size</td>
-<td>Determines the size of the internal buffer Npgsql uses when reading or writing. Increasing may improve performance if transferring large values from the database.</td>
+<td>Max Auto Prepare</td>
+<td>The maximum number SQL statements that can be automatically prepared at any given point. Beyond this number the least-recently-used statement will be recycled. Zero disables automatic preparation.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Auto Prepare Min Usages</td>
+<td>The minimum number of usages an SQL statement is used before it&#39;s automatically prepared.</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Read Buffer Size</td>
+<td>Determines the size of the internal buffer Npgsql uses when reading. Increasing may improve performance if transferring large values from the database.</td>
 <td>8192</td>
+</tr>
+<tr>
+<td>Write Buffer Size</td>
+<td>Determines the size of the internal buffer Npgsql uses when writing. Increasing may improve performance if transferring large values to the database.</td>
+<td>8192</td>
+</tr>
+<tr>
+<td>Socket Receive Buffer Size</td>
+<td>Determines the size of socket receive buffer.</td>
+<td>System-dependent</td>
+</tr>
+<tr>
+<td>Socket Send Buffer Size</td>
+<td>Determines the size of socket send buffer.</td>
+<td>System-dependent</td>
 </tr>
 </tbody>
 </table>
@@ -313,7 +343,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/connection-string-parameters.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/dev/doc/connection-string-parameters.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -332,7 +362,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2016 The Npgsql Development Team
+            © Copyright 2017 The Npgsql Development Team
             
           </div>
         </div>
