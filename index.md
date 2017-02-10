@@ -27,7 +27,7 @@ In addition, providers have been written for Entity Framework Core and for Entit
 
 ## Getting Help
 
-The best way to get help for Npgsql is to post a question to Stack Overflow and tag it with the `npsgql` tag.
+The best way to get help for Npgsql is to post a question to Stack Overflow and tag it with the `npgsql` tag.
 If you think you've encountered a bug or want to request a feature, open an issue in the appropriate project's github repository.
 
 ## License
