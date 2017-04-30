@@ -8,7 +8,7 @@
     <title>Prepared Statements | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Prepared Statements | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.11.2.0">
+    <meta name="generator" content="docfx 2.16.7.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -17,6 +17,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     <meta property="docfx:rel" content="../">
+    
   </head>
   <body data-spy="scroll" data-target="#affix">
     <div id="wrapper">
@@ -227,15 +228,15 @@ cmd.Prepare();
 <pre><code class="lang-c#">using (var conn = new NpgsqlConnection(...)
 using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
     conn.Open();
-    conn.Prepare();   // First time on this physical connection, Npgsql prepares with PostgreSQL
-    conn.ExecuteNonQuery();
+    cmd.Prepare();   // First time on this physical connection, Npgsql prepares with PostgreSQL
+    cmd.ExecuteNonQuery();
 }
 
 using (var conn = new NpgsqlConnection(...)
 using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
     conn.Open();      // We assume the pool returned the same physical connection used above
-    conn.Prepare();   // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn&#39;t need to do anything
-    conn.ExecuteNonQuery();
+    cmd.Prepare();   // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn&#39;t need to do anything
+    cmd.ExecuteNonQuery();
 }
 </code></pre><p>You can still choose to close a prepared statement by calling <code>NpgsqlCommand.Unprepare()</code>. You can also unprepare all statements on a given connection by calling <code>NpgsqlConnection.UnprepareAll()</code>.</p>
 <h2 id="automatic-preparation">Automatic Preparation</h2>

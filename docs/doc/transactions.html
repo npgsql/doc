@@ -8,7 +8,7 @@
     <title>Transactions | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Transactions | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.11.2.0">
+    <meta name="generator" content="docfx 2.16.7.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -17,6 +17,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     <meta property="docfx:rel" content="../">
+    
   </head>
   <body data-spy="scroll" data-target="#affix">
     <div id="wrapper">
@@ -80,7 +81,7 @@
 <p>Although concurrent transactions aren&#39;t supported, PostgreSQL supports the concept of <em>savepoints</em> - you may set named savepoints in a transaction and roll back to them later without rolling back the entire transaction. Savepoints can be created, rolled back to, and released via <code>NpgsqlTransaction.Save(name)</code>, <code>NpgsqlTransaction.Rollback(name)</code> and <code>NpgsqlTransaction.Release(name)</code> respectively. <a href="https://www.postgresql.org/docs/current/static/tutorial-transactions.html">See the PostgreSQL documentation for more details.</a>.</p>
 <p>When calling <code>BeginTransaction()</code>, you may optionally set the <em>isolation level</em>. <a href="https://www.postgresql.org/docs/current/static/transaction-iso.html">See the docs for more details.</a></p>
 <h2 id="systemtransactions-and-distributed-transactions">System.Transactions and Distributed Transactions</h2>
-<p>In addition to <code>DbConnection.BeginTransaction()</code>, .NET includes System.Transactions, an alternative API for managing transactions - <a href="https://msdn.microsoft.com/en-us/library/ee818746.aspx">read the MSDN docs to understand the concepts involved</a>. Npgsql fully supports this API.</p>
+<p>In addition to <code>DbConnection.BeginTransaction()</code>, .NET includes System.Transactions, an alternative API for managing transactions - <a href="https://msdn.microsoft.com/en-us/library/ee818746.aspx">read the MSDN docs to understand the concepts involved</a>. Npgsql fully supports this API. To participate in a TransactionScope, either add <code>Enlist=true</code> in your connection string, or manually call <code>.Enlist()</code> on your connection.</p>
 <p>When more than one connection (or resource) enlists in the same transaction, the transaction is said to be <em>distributed</em>. Distributed transactions allow you to perform changes atomically across more than one database (or resource) via a two-phase commit protocol - <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms681205(v=vs.85).aspx">here is the MSDN documentation</a>. Npgsql supports distributed transactions - support has been rewritten for version 3.2, fixing many previous issues. However, at this time Npgsql enlists as a <em>volatile resource manager</em>, meaning that if your application crashes while performing, recovery will not be managed properly. For more information about this, <a href="https://msdn.microsoft.com/en-us/library/ee818750.aspx">see this page and the related ones</a>. If you would like to see better distributed transaction recovery (i.e. durable resource manager enlistment), please say so <a href="https://github.com/npgsql/npgsql/issues/1378">on this issue</a> and subscribe to it for updates.</p>
 <p>Note that if you open and close connections to the same database inside an ambient transaction, without ever having two connections open <em>at the same time</em>, Npgsql will internally reuse the same connection, avoiding the escalation to a full-blown distributed transaction. This is better for performance and for general simplicity.</p>
 

@@ -8,7 +8,7 @@
     <title>Performance | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Performance | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.11.2.0">
+    <meta name="generator" content="docfx 2.16.7.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -17,6 +17,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     <meta property="docfx:rel" content="../">
+    
   </head>
   <body data-spy="scroll" data-target="#affix">
     <div id="wrapper">
@@ -92,7 +93,8 @@ using (var reader = cmd.ExecuteReader())
 }
 </code></pre><h2 id="performance-counters">Performance Counters</h2>
 <p>Npgsql 3.2 includes support for <em>performance counters</em>, which provide visibility into connections and the connection pool - this helps you understand what your application is doing in real-time, whether there&#39;s a connection leak, etc. Npgsql counter support is very similar to <a href="https://msdn.microsoft.com/en-us/library/ms254503(v=vs.110).aspx">that of other ADO.NET providers, such as SqlClient</a>, it&#39;s recommended that your read that page first.</p>
-<p>Using performance counters first involves setting them up on your Windows system. To do this you will need to install Npgsql&#39;s MSI, which is available on the <a href="https://github.com/npgsql/npgsql/releases">github releases page</a>. Note that GAC installation isn&#39;t necessary (or recommended). Once the counters are installed, fire up the Windows Performance Monitor and look for the category &quot;.NET Data Provider for PostgreSQL (Npgsql)&quot;. Restart your Npgsql application, and you should start seeing real-time data.</p>
+<p>Using performance counters first involves setting them up on your Windows system. To do this you will need to install Npgsql&#39;s MSI, which is available on the <a href="https://github.com/npgsql/npgsql/releases">github releases page</a>. Note that GAC installation isn&#39;t necessary (or recommended). Once the counters are installed, fire up the Windows Performance Monitor and look for the category &quot;.NET Data Provider for PostgreSQL (Npgsql)&quot;.</p>
+<p>In addition, you will need to pass <code>Use Perf Counters=true</code> on your connection string. Once you start your Npgsql application with this addition, you should start seeing real-time data in the Performance Monitor.</p>
 <p>Performance counters are currently only available on Windows with .NET Framework (.NET Core doesn&#39;t include performance counters yet).</p>
 <h2 id="pooled-connection-reset">Pooled Connection Reset</h2>
 <p>When a pooled connection is closed, Npgsql will arrange for its state to be reset the next time it&#39;s used. This prevents leakage of state from one usage cycle of a physical connection to another one. For example, you may change certain PostgreSQL parameters (e.g. <code>statement_timeout</code>), and it&#39;s undesirable for this change to persist when the connection is closed.</p>
