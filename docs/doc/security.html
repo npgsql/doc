@@ -8,7 +8,7 @@
     <title>Security and Encryption | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Security and Encryption | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.16.7.0">
+    <meta name="generator" content="docfx 2.17.7.15">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,8 +73,8 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-              <h1 id="security-and-encryption">Security and Encryption</h1>
-              
+<h1 id="security-and-encryption">Security and Encryption</h1>
+
 <h2 id="logging-in">Logging in</h2>
 <p>The simplest to log into PostgreSQL is by specifying a <code>Username</code> and a <code>Password</code> in your connection string. Depending on how your PostgreSQL is configured (in the <code>pg_hba.conf</code> file), Npgsql will send the password in MD5 or in cleartext (not recommended).</p>
 <p>For documentation about all auth methods supported by PostgreSQL, <a href="http://www.postgresql.org/docs/current/static/auth-methods.html">see this page</a>. Note that Npgsql does not support logging in via Unix-domain sockets (auth method <code>local</code>).</p>
@@ -88,8 +88,7 @@
 <p>Note that by default, Npgsql will verify that your server&#39;s certificate is valid. If you&#39;re using a self-signed certificate this will fail. You can instruct Npgsql to ignore this by specifying
 <code>Trust Server Certificate=true</code> in the connection string. To precisely control how the server&#39;s certificate is validated, you can register <code>UserCertificateValidationCallback</code> on <code>NpgsqlConnection</code> (this works just like on .NET&#39;s <a href="https://msdn.microsoft.com/en-us/library/system.net.security.remotecertificatevalidationcallback(v=vs.110).aspx"><code>SSLStream</code></a>).</p>
 <p>You can also have Npgsql provide client certificates to the server by registering the <code>ProvideClientCertificatesCallback</code> on <code>NpgsqlConnection</code> (this works just like on .NET&#39;s <a href="https://msdn.microsoft.com/en-us/library/system.net.security.localcertificateselectioncallback(v=vs.110).aspx"><code>SSLStream</code></a>).</p>
-
-            </article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

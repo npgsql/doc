@@ -8,7 +8,7 @@
     <title>Type Mapping | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Type Mapping | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.16.7.0">
+    <meta name="generator" content="docfx 2.17.7.15">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,8 +73,8 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-              <h2 id="type-mapping">Type Mapping</h2>
-              
+<h2 id="type-mapping">Type Mapping</h2>
+
 <p>The EF Core provider can transparently map any type supported by Npgsql at the ADO.NET level. This means you can use PostgreSQL-specific types, such as <code>inet</code> or <code>circle</code>, directly in your entities - this wasn&#39;t possible in EF 6.x. Simply define your properties just as if they were a simple type, such as a string:</p>
 <pre><code class="lang-c#">public class MyEntity
 {
@@ -98,8 +98,7 @@ public string SomeStringProperty { get; set; }
 <p>PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations in the database</a>, and the Npgsql EF Core provider provides some support for evaluating C# regex operations at the backend. All you have to do is use <code>Regex.IsMatch</code> in your where clause:</p>
 <pre><code class="lang-c#">var customersStartingWithA = context.Customers.Where(c =&gt; Regex.IsMatch(c.CompanyName, &quot;^A&quot;));
 </code></pre><p>Since this regular expression is evaluated at the server, the EF Core provider doesn&#39;t need to load all the customers from the database, saving lots of transfer bandwidth.</p>
-
-            </article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

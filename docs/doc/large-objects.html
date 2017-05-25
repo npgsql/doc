@@ -8,7 +8,7 @@
     <title>Large Objects | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Large Objects | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.16.7.0">
+    <meta name="generator" content="docfx 2.17.7.15">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,8 +73,8 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-              <h1 id="large-objects">Large Objects</h1>
-              
+<h1 id="large-objects">Large Objects</h1>
+
 <p>The Large Objects feature is a way of storing large files in a PostgreSQL database. Files can normally be stored in bytea columns but there are two downsides; a file can only be 1 GB and the backend buffers the whole file when reading or writing a column, which may use significant amounts of RAM on the backend.</p>
 <p>With the Large Objects feature, objects are instead stored in a separate system table in smaller chunks and provides a streaming API for the user. Each object is given an integral identifier that is used for accessing the object, that can, for example, be stored in a user&#39;s table containing information about this object.</p>
 <h2 id="example">Example</h2>
@@ -102,8 +102,7 @@ using (var transaction = Conn.BeginTransaction()) {
 }
 </code></pre><h2 id="see-also">See also</h2>
 <p>See the <a href="http://www.postgresql.org/docs/current/static/largeobjects.html">PostgreSQL documentation</a> for more information. All functionality are implemented and wrapped in the classes <code>NpgsqlLargeObjectManager</code> and <code>NpgsqlLargeObjectStream</code> using standard .NET Stream as base class.</p>
-
-            </article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

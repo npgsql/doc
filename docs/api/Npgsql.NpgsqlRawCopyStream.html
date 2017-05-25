@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class NpgsqlRawCopyStream
    | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.9.0.0">
+    <meta name="generator" content="docfx 2.17.7.15">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -19,6 +19,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     <meta property="docfx:rel" content="../">
+    
   </head>
   <body data-spy="scroll" data-target="#affix">
     <div id="wrapper">
@@ -55,7 +56,7 @@
           </div>
         </div>
       </header>
-      <div role="main" class="container body-content">
+      <div class="container body-content">
         
         <div id="search-results">
           <div class="search-list"></div>
@@ -73,568 +74,568 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Npgsql_NpgsqlRawCopyStream" data-uid="Npgsql.NpgsqlRawCopyStream">Class NpgsqlRawCopyStream
-              </h1>
-              <div class="markdown level0 summary"><p>Provides an API for a raw binary COPY operation, a high-performance data import/export mechanism to
+            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlRawCopyStream">
+  
+  
+  <h1 id="Npgsql_NpgsqlRawCopyStream" data-uid="Npgsql.NpgsqlRawCopyStream">Class NpgsqlRawCopyStream
+  </h1>
+  <div class="markdown level0 summary"><p>Provides an API for a raw binary COPY operation, a high-performance data import/export mechanism to
 a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginRawBinaryCopy_System_String_">BeginRawBinaryCopy(String)</a></p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <div class="inheritance">
-                <h5>Inheritance</h5>
-                  <div class="level0"><span class="xref">System.Object</span></div>
-                  <div class="level1"><span class="xref">System.MarshalByRefObject</span></div>
-                  <div class="level2"><span class="xref">System.IO.Stream</span></div>
-                  <div class="level3"><span class="xref">NpgsqlRawCopyStream</span></div>
-              </div>
-              <div class="inheritedMembers">
-                <h5>Inherited Members</h5>
-                <div>
-                  <span class="xref">System.IO.Stream.Null</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Int32, System.Threading.CancellationToken)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CopyTo(System.IO.Stream)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CopyTo(System.IO.Stream, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.Close()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.Dispose()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.FlushAsync()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.FlushAsync(System.Threading.CancellationToken)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CreateWaitHandle()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.BeginRead(System.Byte[], System.Int32, System.Int32, System.AsyncCallback, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.EndRead(System.IAsyncResult)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.ReadAsync(System.Byte[], System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.ReadAsync(System.Byte[], System.Int32, System.Int32, System.Threading.CancellationToken)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.BeginWrite(System.Byte[], System.Int32, System.Int32, System.AsyncCallback, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.EndWrite(System.IAsyncResult)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32, System.Threading.CancellationToken)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.ReadByte()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.WriteByte(System.Byte)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.Synchronized(System.IO.Stream)</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.ObjectInvariant()</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.CanTimeout</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.ReadTimeout</span>
-                </div>
-                <div>
-                  <span class="xref">System.IO.Stream.WriteTimeout</span>
-                </div>
-                <div>
-                  <span class="xref">System.MarshalByRefObject.MemberwiseClone(System.Boolean)</span>
-                </div>
-                <div>
-                  <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
-                </div>
-                <div>
-                  <span class="xref">System.MarshalByRefObject.InitializeLifetimeService()</span>
-                </div>
-                <div>
-                  <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ToString()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetHashCode()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetType()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.MemberwiseClone()</span>
-                </div>
-              </div>
-              <h6><strong>Namespace</strong>:Npgsql</h6>
-              <h6><strong>Assembly</strong>:Npgsql.dll</h6>
-              <h5 id="Npgsql_NpgsqlRawCopyStream_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public sealed class NpgsqlRawCopyStream : Stream, ICancelable, IDisposable</code></pre>
-              </div>
-              <h5 id="Npgsql_NpgsqlRawCopyStream_remarks"><strong>Remarks</strong></h5>
-              <div class="markdown level0 remarks"><p>See <a href="http://www.postgresql.org/docs/current/static/sql-copy.html">http://www.postgresql.org/docs/current/static/sql-copy.html</a>.</p>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.MarshalByRefObject</span></div>
+    <div class="level2"><span class="xref">System.IO.Stream</span></div>
+    <div class="level3"><span class="xref">NpgsqlRawCopyStream</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.IO.Stream.Null</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Int32, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CopyTo(System.IO.Stream)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CopyTo(System.IO.Stream, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.Close()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.FlushAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.FlushAsync(System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CreateWaitHandle()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.BeginRead(System.Byte[], System.Int32, System.Int32, System.AsyncCallback, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.EndRead(System.IAsyncResult)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ReadAsync(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ReadAsync(System.Byte[], System.Int32, System.Int32, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.BeginWrite(System.Byte[], System.Int32, System.Int32, System.AsyncCallback, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.EndWrite(System.IAsyncResult)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ReadByte()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.WriteByte(System.Byte)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.Synchronized(System.IO.Stream)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ObjectInvariant()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.CanTimeout</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ReadTimeout</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.WriteTimeout</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.MemberwiseClone(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.InitializeLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>:Npgsql</h6>
+  <h6><strong>Assembly</strong>:Npgsql.dll</h6>
+  <h5 id="Npgsql_NpgsqlRawCopyStream_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlRawCopyStream : Stream, ICancelable, IDisposable</code></pre>
+  </div>
+  <h5 id="Npgsql_NpgsqlRawCopyStream_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="http://www.postgresql.org/docs/current/static/sql-copy.html">http://www.postgresql.org/docs/current/static/sql-copy.html</a>.</p>
 </div>
-              <h3 id="properties">Properties
-              </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_CanRead.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanRead%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L62">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_CanRead_" data-uid="Npgsql.NpgsqlRawCopyStream.CanRead*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_CanRead" data-uid="Npgsql.NpgsqlRawCopyStream.CanRead">CanRead</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override bool CanRead { get; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Boolean</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.CanRead</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_CanSeek.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanSeek%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L293">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_CanSeek_" data-uid="Npgsql.NpgsqlRawCopyStream.CanSeek*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_CanSeek" data-uid="Npgsql.NpgsqlRawCopyStream.CanSeek">CanSeek</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override bool CanSeek { get; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Boolean</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.CanSeek</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_CanWrite.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanWrite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L61">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_CanWrite_" data-uid="Npgsql.NpgsqlRawCopyStream.CanWrite*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_CanWrite" data-uid="Npgsql.NpgsqlRawCopyStream.CanWrite">CanWrite</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override bool CanWrite { get; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Boolean</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.CanWrite</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Length.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L305">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Length_" data-uid="Npgsql.NpgsqlRawCopyStream.Length*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Length" data-uid="Npgsql.NpgsqlRawCopyStream.Length">Length</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override long Length { get; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int64</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Length</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Position.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L310">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Position_" data-uid="Npgsql.NpgsqlRawCopyStream.Position*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Position" data-uid="Npgsql.NpgsqlRawCopyStream.Position">Position</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override long Position { get; set; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int64</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Position</span></div>
-              <h3 id="methods">Methods
-              </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Cancel.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Cancel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L205">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Cancel_" data-uid="Npgsql.NpgsqlRawCopyStream.Cancel*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Cancel" data-uid="Npgsql.NpgsqlRawCopyStream.Cancel">Cancel()</h4>
-              <div class="markdown level1 summary"><p>Cancels and terminates an ongoing operation. Any data already written will be discarded.</p>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_CanRead.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanRead%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L62">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_CanRead_" data-uid="Npgsql.NpgsqlRawCopyStream.CanRead*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_CanRead" data-uid="Npgsql.NpgsqlRawCopyStream.CanRead">CanRead</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanRead { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.CanRead</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_CanSeek.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanSeek%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L295">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_CanSeek_" data-uid="Npgsql.NpgsqlRawCopyStream.CanSeek*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_CanSeek" data-uid="Npgsql.NpgsqlRawCopyStream.CanSeek">CanSeek</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanSeek { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.CanSeek</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_CanWrite.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.CanWrite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L61">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_CanWrite_" data-uid="Npgsql.NpgsqlRawCopyStream.CanWrite*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_CanWrite" data-uid="Npgsql.NpgsqlRawCopyStream.CanWrite">CanWrite</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanWrite { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.CanWrite</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Length.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L307">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Length_" data-uid="Npgsql.NpgsqlRawCopyStream.Length*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Length" data-uid="Npgsql.NpgsqlRawCopyStream.Length">Length</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long Length { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Length</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Position.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L312">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Position_" data-uid="Npgsql.NpgsqlRawCopyStream.Position*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Position" data-uid="Npgsql.NpgsqlRawCopyStream.Position">Position</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long Position { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Position</span></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Cancel.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Cancel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L207">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Cancel_" data-uid="Npgsql.NpgsqlRawCopyStream.Cancel*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Cancel" data-uid="Npgsql.NpgsqlRawCopyStream.Cancel">Cancel()</h4>
+  <div class="markdown level1 summary"><p>Cancels and terminates an ongoing operation. Any data already written will be discarded.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public void Cancel()</code></pre>
-              </div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L238">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Dispose_" data-uid="Npgsql.NpgsqlRawCopyStream.Dispose*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Dispose_System_Boolean_" data-uid="Npgsql.NpgsqlRawCopyStream.Dispose(System.Boolean)">Dispose(Boolean)</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Boolean</span></td>
-                    <td><span class="parametername">disposing</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Dispose(System.Boolean)</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Flush.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Flush%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L139">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Flush_" data-uid="Npgsql.NpgsqlRawCopyStream.Flush*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Flush" data-uid="Npgsql.NpgsqlRawCopyStream.Flush">Flush()</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override void Flush()</code></pre>
-              </div>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Flush()</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Read_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Read(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L149">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Read_" data-uid="Npgsql.NpgsqlRawCopyStream.Read*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Read_System_Byte___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlRawCopyStream.Read(System.Byte[],System.Int32,System.Int32)">Read(Byte[], Int32, Int32)</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override int Read(byte[] buffer, int offset, int count)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Byte</span>[]</td>
-                    <td><span class="parametername">buffer</span></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td><span class="parametername">offset</span></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td><span class="parametername">count</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Read(System.Byte[], System.Int32, System.Int32)</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Seek_System_Int64_System_IO_SeekOrigin_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Seek(System.Int64%2CSystem.IO.SeekOrigin)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L295">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Seek_" data-uid="Npgsql.NpgsqlRawCopyStream.Seek*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Seek_System_Int64_System_IO_SeekOrigin_" data-uid="Npgsql.NpgsqlRawCopyStream.Seek(System.Int64,System.IO.SeekOrigin)">Seek(Int64, SeekOrigin)</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override long Seek(long offset, SeekOrigin origin)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int64</span></td>
-                    <td><span class="parametername">offset</span></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.IO.SeekOrigin</span></td>
-                    <td><span class="parametername">origin</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int64</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Seek(System.Int64, System.IO.SeekOrigin)</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_SetLength_System_Int64_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.SetLength(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L300">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_SetLength_" data-uid="Npgsql.NpgsqlRawCopyStream.SetLength*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_SetLength_System_Int64_" data-uid="Npgsql.NpgsqlRawCopyStream.SetLength(System.Int64)">SetLength(Int64)</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override void SetLength(long value)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int64</span></td>
-                    <td><span class="parametername">value</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.SetLength(System.Int64)</span></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream_Write_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Write(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L106">View Source</a>
-              </span>
-              <a id="Npgsql_NpgsqlRawCopyStream_Write_" data-uid="Npgsql.NpgsqlRawCopyStream.Write*"></a>
-              <h4 id="Npgsql_NpgsqlRawCopyStream_Write_System_Byte___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlRawCopyStream.Write(System.Byte[],System.Int32,System.Int32)">Write(Byte[], Int32, Int32)</h4>
-              <div class="markdown level1 summary"></div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public override void Write(byte[] buffer, int offset, int count)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Byte</span>[]</td>
-                    <td><span class="parametername">buffer</span></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td><span class="parametername">offset</span></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td><span class="parametername">count</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="overrides">Overrides</h5>
-              <div><span class="xref">System.IO.Stream.Write(System.Byte[], System.Int32, System.Int32)</span></div>
-            </article>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Cancel()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L240">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Dispose_" data-uid="Npgsql.NpgsqlRawCopyStream.Dispose*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Dispose_System_Boolean_" data-uid="Npgsql.NpgsqlRawCopyStream.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Dispose(System.Boolean)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Flush.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Flush%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L141">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Flush_" data-uid="Npgsql.NpgsqlRawCopyStream.Flush*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Flush" data-uid="Npgsql.NpgsqlRawCopyStream.Flush">Flush()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Flush()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Flush()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Read_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Read(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L151">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Read_" data-uid="Npgsql.NpgsqlRawCopyStream.Read*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Read_System_Byte___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlRawCopyStream.Read(System.Byte[],System.Int32,System.Int32)">Read(Byte[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Read(byte[] buffer, int offset, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Read(System.Byte[], System.Int32, System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Seek_System_Int64_System_IO_SeekOrigin_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Seek(System.Int64%2CSystem.IO.SeekOrigin)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L297">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Seek_" data-uid="Npgsql.NpgsqlRawCopyStream.Seek*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Seek_System_Int64_System_IO_SeekOrigin_" data-uid="Npgsql.NpgsqlRawCopyStream.Seek(System.Int64,System.IO.SeekOrigin)">Seek(Int64, SeekOrigin)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long Seek(long offset, SeekOrigin origin)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.IO.SeekOrigin</span></td>
+        <td><span class="parametername">origin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Seek(System.Int64, System.IO.SeekOrigin)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_SetLength_System_Int64_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.SetLength(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L302">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_SetLength_" data-uid="Npgsql.NpgsqlRawCopyStream.SetLength*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_SetLength_System_Int64_" data-uid="Npgsql.NpgsqlRawCopyStream.SetLength(System.Int64)">SetLength(Int64)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void SetLength(long value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.SetLength(System.Int64)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream_Write_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream.Write(System.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L108">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlRawCopyStream_Write_" data-uid="Npgsql.NpgsqlRawCopyStream.Write*"></a>
+  <h4 id="Npgsql_NpgsqlRawCopyStream_Write_System_Byte___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlRawCopyStream.Write(System.Byte[],System.Int32,System.Int32)">Write(Byte[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Write(byte[] buffer, int offset, int count)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.IO.Stream.Write(System.Byte[], System.Int32, System.Int32)</span></div>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -642,10 +643,10 @@ a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.h
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/undefined//new?filename=Npgsql_NpgsqlRawCopyStream.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_NpgsqlRawCopyStream.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlRawCopyStream%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlRawCopyStream.cs/#L45" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/NpgsqlRawCopyStream.cs/#L45" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
