@@ -85,8 +85,9 @@ This feature is by default disabled, and must be enabled via the
 event if the keepalive fails.</p>
 <p>Note that you should only turn this feature on if you need it. Unless you know you&#39;ll have long-lived idle connections, and that your
 backend (or network equipment) will interfere with these connections, it&#39;s better to leave this off.</p>
-<p>Note: Npgsql does not turn on TCP keepalive because that feature isn&#39;t universally reliable across all network
-equipment.</p>
+<h2 id="tcp-keepalives">TCP Keepalives</h2>
+<p>Npgsql also supports TCP keepalive, which is different from the application-level keepalive described above. To better understand the different kinds of keepalives, see <a href="http://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html">this blog post</a>. In a nutshell, while application-level keepalive will always work, TCP keepalive depends on your networking stack properly supporting it, etc.</p>
+<p>One known case in which TCP keepalive may be necessary, is when you need keepalives during query processing, as opposed to between queries; this is the case if you send a query for processing, and plan to spend a lot of time before getting any response from the server (see <a href="https://github.com/npgsql/npgsql/issues/1596">#1596</a> for an example). TCP keepalive may also be helpful in some other cases.</p>
 </article>
           </div>
           
