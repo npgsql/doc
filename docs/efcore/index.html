@@ -79,34 +79,22 @@
 <p>Development happens in the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">Npgsql.EntityFrameworkCore.PostgreSQL</a> repository, all issues should be reported there.</p>
 <h2 id="using-the-npgsql-ef-core-provider">Using the Npgsql EF Core Provider</h2>
 <p>To use the Npgsql EF Core provider, simply add a dependency on <code>Npgsql.EntityFrameworkCore.PostgreSQL</code>. You can follow the instructions in the general <a href="https://docs.microsoft.com/en-us/ef/core/get-started/">EF Core Getting Started docs</a>.</p>
-<p>Following is an example project.json using Npgsql EF Core:</p>
-<pre><code class="lang-json">{
-  &quot;version&quot;: &quot;1.0.0-*&quot;,
-  &quot;buildOptions&quot;: {
-    &quot;debugType&quot;: &quot;portable&quot;,
-    &quot;emitEntryPoint&quot;: true
-  },
-  &quot;dependencies&quot;: {
-    &quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot;: &quot;1.1.0&quot;,
-    &quot;Microsoft.EntityFrameworkCore.Design&quot;: {
-      &quot;version&quot;: &quot;1.1.0&quot;,
-      &quot;type&quot;: &quot;build&quot;
-    }
-  },
-  &quot;frameworks&quot;: {
-    &quot;netcoreapp1.1&quot;: {
-      &quot;dependencies&quot;: {
-        &quot;Microsoft.NETCore.App&quot;: {
-          &quot;type&quot;: &quot;platform&quot;,
-          &quot;version&quot;: &quot;1.1.0&quot;
-        }
-      }
-    }
-  },
-  &quot;tools&quot;: {
-    &quot;Microsoft.EntityFrameworkCore.Tools.DotNet&quot;: &quot;1.1.0-preview4-final&quot;
-  }
-}
+<p>Following is an example (new-style) csproj using Npgsql EF Core:</p>
+<pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
+  &lt;PropertyGroup&gt;
+    &lt;OutputType&gt;Exe&lt;/OutputType&gt;
+    &lt;TargetFramework&gt;netcoreapp1.1&lt;/TargetFramework&gt;
+  &lt;/PropertyGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;1.1.0&quot; /&gt;
+    &lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Design&quot; Version=&quot;1.1.2&quot; PrivateAssets=&quot;All&quot; /&gt;
+    &lt;!-- For scaffolding support --&gt;
+    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL.Design&quot; Version=&quot;1.1.0&quot; PrivateAssets=&quot;All&quot; /&gt;
+  &lt;/ItemGroup&gt;
+  &lt;ItemGroup&gt;
+    &lt;DotNetCliToolReference Include=&quot;Microsoft.EntityFrameworkCore.Tools.DotNet&quot; Version=&quot;1.0.1&quot; /&gt;
+  &lt;/ItemGroup&gt;
+&lt;/Project&gt;
 </code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, add a dependency on Npgsql.EntityFrameworkCore.PostgreSQL.Design. Then, execute the following if you&#39;re using dotnet cli:</p>
 <pre><code class="lang-bash">dotnet ef dbcontext scaffold &quot;Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword&quot; Npgsql.EntityFrameworkCore.PostgreSQL
@@ -120,7 +108,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/cc7c80807ccf3b6d0a8cefbd1d61e19a081ecdcf/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/969420c10e8af76e187e5b560b5be383eda1a4ab/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
