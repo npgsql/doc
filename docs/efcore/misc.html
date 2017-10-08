@@ -8,7 +8,7 @@
     <title>Misc | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Misc | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.17.7.15">
+    <meta name="generator" content="docfx 2.24.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     <meta property="docfx:rel" content="../">
     
   </head>
@@ -83,14 +84,35 @@ Simply use HasPostgresExtension in your context&#39;s OnModelCreating:</p>
 }
 </code></pre><h2 id="optimistic-concurrency-and-concurrency-tokens">Optimistic Concurrency and Concurrency Tokens</h2>
 <p>Entity Framework supports the concept of optimistic concurrency - a property on your entity is designated as a concurrency token, and EF detects concurrent modifications by checking whether that token has changed since the entity was read. You can read more about this in the <a href="https://docs.microsoft.com/en-us/ef/core/modeling/concurrency">EF docs</a>.</p>
-<p>Although applications can update concurrency tokens themselves, we frequently rely on the database automatically updating a column on update - a &quot;last modified&quot; timestamp, an SQL Server <code>rowversion</code>, etc. Unfortunately PostgreSQL doesn&#39;t have such auto-updating columns - but there is one feature that can be used for concurrency token. All PostgreSQL have a set of <a href="https://www.postgresql.org/docs/current/static/ddl-system-columns.htm://www.postgresql.org/docs/current/static/ddl-system-columns.html">implicit and hidden system columns</a>, among which <code>xmin</code> holds the ID of the latest updating transaction. Since this value automatically gets updated every time the row is changed, it is ideal for use as a concurrency token.</p>
-<p>To enable this feature on an entity, insert the following code into your models&#39; <code>OnModelCreating</code> method:</p>
+<p>Although applications can update concurrency tokens themselves, we frequently rely on the database automatically updating a column on update - a &quot;last modified&quot; timestamp, an SQL Server <code>rowversion</code>, etc. Unfortunately PostgreSQL doesn&#39;t have such auto-updating columns - but there is one feature that can be used for concurrency token. All PostgreSQL tables have a set of <a href="https://www.postgresql.org/docs/current/static/ddl-system-columns.htm://www.postgresql.org/docs/current/static/ddl-system-columns.html">implicit and hidden system columns</a>, among which <code>xmin</code> holds the ID of the latest updating transaction. Since this value automatically gets updated every time the row is changed, it is ideal for use as a concurrency token.</p>
+<p>To enable this feature on an entity, insert the following code into your model&#39;s <code>OnModelCreating</code> method:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;MyEntity&gt;().ForNpgsqlUseXminAsConcurrencyToken();
+</code></pre><h2 id="execution-strategy">Execution Strategy</h2>
+<p>Since 2.0.0, the Npgsql provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context&#39;s <code>OnModelConfiguring</code>:</p>
+<pre><code class="lang-c#">.UseNpgsql(
+    &quot;&lt;connection string&gt;&quot;,
+    options =&gt; options.EnableRetryOnFailure());
+</code></pre><p>This strategy relies on NpgsqlException&#39;s <code>IsTransient</code> property. Both this property and the retrying strategy are new and should be considered somewhat experimental - please report any issues.</p>
+<h2 id="comments">Comments</h2>
+<p>PostgreSQL allows you to <a href="https://www.postgresql.org/docs/current/static/sql-syntax.html">attach comments</a> to database objects, which can help explain their purpose for someone examining the schema. The EF Core provider supports this for tables or columns, simply set the comment in your model&#39;s <code>OnModelCreating</code> as follows:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;MyEntity&gt;().ForNpgsqlHasComment(&quot;Some comment&quot;);
+</code></pre><h2 id="specifying-the-administrative-db">Specifying the administrative db</h2>
+<p>When the Npgsql EF Core provider creates or deletes a database (EnsureCreated(), EnsureDeleted()), it must connect to an administrative database which already exists (with PostgreSQL you always have to be connected to some database, even when creating/deleting another database). Up to now the <code>postgres</code> database was used, which is supposed to always be present.</p>
+<p>However, there are some PostgreSQL-like databases where the postgres database isn&#39;t available. For these cases you can specify the administrative database as follows:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    optionsBuilder.UseNpgsql(&quot;&lt;connection_string&gt;&quot;,
+        b =&gt; b.UseAdminDatabase(&quot;&lt;admin_db&gt;&quot;));
+}
 </code></pre><h2 id="using-a-database-template">Using a database template</h2>
 <p>When creating a new database,
 <a href="http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html">PostgreSQL allows specifying another &quot;template database&quot;</a>
 which will be copied as the basis for the new one. This can be useful for including database entities which aren&#39;t managed by Entity Framework. You can trigger this by using HasDatabaseTemplate in your context&#39;s <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">modelBuilder.HasDatabaseTemplate(&quot;my_template_db&quot;);
+</code></pre><h1 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h1>
+<p>If you&#39;re using CockroachDB, the Npgsql provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Customer&gt;()
+    .ForCockroachDbInterleaveInParent(typeof(ParentEntityType), new List&lt;string&gt; { &quot;prefix_column_1&quot;, &quot;prefix_column_2&quot; });
 </code></pre></article>
           </div>
           
@@ -99,7 +121,7 @@ which will be copied as the basis for the new one. This can be useful for includ
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/969420c10e8af76e187e5b560b5be383eda1a4ab/doc/misc.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/misc.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

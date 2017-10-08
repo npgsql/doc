@@ -8,7 +8,7 @@
     <title>Getting Started | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Getting Started | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.17.7.15">
+    <meta name="generator" content="docfx 2.24.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     <meta property="docfx:rel" content="../">
     
   </head>
@@ -83,18 +84,29 @@
 <pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
   &lt;PropertyGroup&gt;
     &lt;OutputType&gt;Exe&lt;/OutputType&gt;
-    &lt;TargetFramework&gt;netcoreapp1.1&lt;/TargetFramework&gt;
+    &lt;TargetFramework&gt;netcoreapp2.0&lt;/TargetFramework&gt;
   &lt;/PropertyGroup&gt;
   &lt;ItemGroup&gt;
-    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;1.1.0&quot; /&gt;
-    &lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Design&quot; Version=&quot;1.1.2&quot; PrivateAssets=&quot;All&quot; /&gt;
-    &lt;!-- For scaffolding support --&gt;
-    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL.Design&quot; Version=&quot;1.1.0&quot; PrivateAssets=&quot;All&quot; /&gt;
+    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;2.0.0&quot; /&gt;
+    &lt;PackageReference Include=&quot;Microsoft.EntityFrameworkCore.Design&quot; Version=&quot;2.0.0&quot; /&gt;
   &lt;/ItemGroup&gt;
   &lt;ItemGroup&gt;
-    &lt;DotNetCliToolReference Include=&quot;Microsoft.EntityFrameworkCore.Tools.DotNet&quot; Version=&quot;1.0.1&quot; /&gt;
+    &lt;DotNetCliToolReference Include=&quot;Microsoft.EntityFrameworkCore.Tools.DotNet&quot; Version=&quot;2.0.0&quot; /&gt;
   &lt;/ItemGroup&gt;
 &lt;/Project&gt;
+</code></pre><h2 id="using-the-npgsql-provider">Using the Npgsql provider</h2>
+<pre><code>public class BlogContext : DbContext
+{
+    // When used with ASP.net core, add these lines to Startup.cs
+    //   var connectionString = Configuration.GetConnectionString(&quot;BlogContext&quot;);
+    //   services.AddEntityFrameworkNpgsql().AddDbContext&lt;BlogContext&gt;(options =&gt; options.UseNpgsql(connectionString));
+    // and add this to appSettings.json
+    // &quot;ConnectionStrings&quot;: { &quot;BlogContext&quot;: &quot;Server=localhost;Database=blog&quot; }
+
+    public BlogContext(DbContextOptions&lt;BlogContext&gt; options) : base(options) { }
+
+    public DbSet&lt;BlogPost&gt; BlogPosts { get; set; }     
+}
 </code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, add a dependency on Npgsql.EntityFrameworkCore.PostgreSQL.Design. Then, execute the following if you&#39;re using dotnet cli:</p>
 <pre><code class="lang-bash">dotnet ef dbcontext scaffold &quot;Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword&quot; Npgsql.EntityFrameworkCore.PostgreSQL
@@ -108,7 +120,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/969420c10e8af76e187e5b560b5be383eda1a4ab/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

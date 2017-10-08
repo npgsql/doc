@@ -5,21 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum NpgsqlLogLevel
-   | Npgsql Documentation </title>
+    <title>Migration Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum NpgsqlLogLevel
-   | Npgsql Documentation ">
+    <meta name="title" content="Migration Notes | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.24.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -35,8 +33,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" src="../img/logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -75,56 +73,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.Logging.NpgsqlLogLevel">
-  
-  
-  <h1 id="Npgsql_Logging_NpgsqlLogLevel" data-uid="Npgsql.Logging.NpgsqlLogLevel" class="text-break">Enum NpgsqlLogLevel
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Logging.html">Npgsql.Logging</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_Logging_NpgsqlLogLevel_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum NpgsqlLogLevel</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Debug">Debug</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Error">Error</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Fatal">Fatal</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Info">Info</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Trace">Trace</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Warn">Warn</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </thead></thead></table>
-</article>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-33">Npgsql 3.3</h1>
+
+<p>Npgsql 3.3 is out and available on nuget.org. This is a major release with substantial internal changes and should be deployed with care. For critical applications it may be advisable to wait until 3.3.1 is out.</p>
+<p><type handling="">
+<async avoidance=""><p>
+<h2 id="major-changes">Major Changes</h2>
+<h2 id="breaking-changes-from-32">Breaking Changes from 3.2</h2>
+<div class="WARNING"><h5>Warning</h5><p>The API for binary import (COPY IN) has changed substantially in a breaking way, and code from 3.2 will <em>not</em> work as-is on 3.3.</p>
+<p>You must now call <code>NpgsqlBinaryImporter.Commit()</code> to save your imported data; not doing so will roll the operation back. <code>NpgsqlBinaryImporter.Cancel()</code> has been removed - simply closing/disposing the importer will implicitly cancel the import. This is similar to how <code>TransactionScope</code> works and is necessary to prevent accidental commit of data on exception. See <a href="https://github.com/npgsql/npgsql/issues/1646">#1646</a>.</p>
+</div>
+<ul>
+<li>Parameter types have become more strict. Previous versions allowed to you pass arbitrary value types, such as writing CLR string to int columns, or anything that implemented IConvertible. Although some implicit conversions are still supported (e.g. long -&gt; int, short -&gt; int), some have been removed.</li>
+<li>The following APIs &quot;connection capability&quot; APIs have been removed from NpgsqlConnection: <code>UseConformantStrings</code>, <code>SupportsEStringPrefix</code>, <code>UseSslStream</code>.</li>
+</ul>
+</async></type></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -132,10 +96,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_Logging_NpgsqlLogLevel.md&amp;value=---%0Auid%3A%20Npgsql.Logging.NpgsqlLogLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/Logging/NpgsqlLogLevel.cs/#L27" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/migration/3.3.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -161,8 +122,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Entity Framework 6 | Npgsql Documentation </title>
+    <title>2.0 Release Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Entity Framework 6 | Npgsql Documentation ">
+    <meta name="title" content="2.0 Release Notes | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.24.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,8 +33,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" src="../img/logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -74,24 +74,23 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
+<h1 id="20-release-notes">2.0 Release Notes</h1>
 
-<p>Npgsql has an Entity Framework 6 provider. You can use it by installing the
-<a href="https://www.nuget.org/packages/EntityFramework6.Npgsql/">EntityFramework6.Npgsql</a> nuget.</p>
-<h2 id="guid-support">Guid Support</h2>
-<p>Npgsql EF migrations support uses <code>uuid_generate_v4()</code> function to generate guids.
-In order to have access to this function, you have to install the extension uuid-ossp through the following command:</p>
-<pre><code class="lang-sql">create extension &quot;uuid-ossp&quot;;
-</code></pre><p>If you don&#39;t have this extension installed, when you run Npgsql migrations you will get the following error message:</p>
-<pre><code>ERROR:  function uuid_generate_v4() does not exist
-</code></pre><p>If the database is being created by Npgsql Migrations, you will need to
-<a href="http://stackoverflow.com/a/11584751">run the <code>create extension</code> command in the <code>template1</code> database</a>.
-This way, when the new database is created, the extension will be installed already.</p>
-<h2 id="template-database">Template Database</h2>
-<p>When the Entity Framework 6 provider creates a database, it issues a simple <code>CREATE DATABASE</code> command.
-In PostgreSQL, this implicitly uses <code>template1</code> as the template - anything existing in <code>template1</code> will
-be copied to your new database. If you wish to change the database used as a template, you can specify
-the <code>EF Template Database</code> connection string parameter. For more info see the
-<a href="https://www.postgresql.org/docs/current/static/sql-createdatabase.html">PostgreSQL docs</a>.</p>
+<p>Version 2.0.0 of the Npgsql Entity Framework Core provider has been released and is available on nuget. This version works with version 2.0.0 of Entity Framework Core (LINK), and contains some new Npgsql features as well. </p>
+<h2 id="new-features">New Features</h2>
+<p>Aside from general EF Core features new in 2.0.0 (LINK), the Npgsql provider contains the following major new features:</p>
+<ul>
+<li>PostgreSQL array operation translation (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/120">#120</a>). While array properties have been supported since 1.1, operations on those arrays where client-evaluated. Version 2.0 will now translate array indexing, <code>.Contains()</code>, <code>.SequenceEquals()</code> and <code>.Length</code>. See the <a href="../mapping-and-translation.html">mapping and translation docs</a> for more details.</li>
+<li>A retrying execution strategy (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/155">#155</a>), which will automatically retry operations on exceptions which are considered transient.</li>
+<li>PostgreSQL extensions are now included in scaffolded models (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/102">#102</a>).</li>
+<li>More LINQ operations are translated to SQL, and more database scenarios are scaffolded correctly.</li>
+</ul>
+<p>Here&#39;s the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/6?closed=1">full list of issues</a>. Please report any problems to <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL</a>.</p>
+<h2 id="upgrading-from-1x">Upgrading from 1.x</h2>
+<ul>
+<li>Previously an Npgsql.EntityFrameworkCore.PostgreSQL.Design nuget package existed alongside the main package. Its contents have been merged into the main Npgsql.EntityFrameworkCore.PostgreSQL and no new version has been released.</li>
+<li>Specifying versions when specifying PostgreSQL extensions on your model is no longer supported - this was a very rarely-used feature which interfered with extension scaffolding.</li>
+</ul>
 </article>
           </div>
           
@@ -100,7 +99,7 @@ the <code>EF Template Database</code> connection string parameter. For more info
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/EntityFramework6.Npgsql/blob/ccf3aa84e833bc707b8cd2da635ef84ecd7527b1/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/migration/2.0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -126,8 +125,8 @@ the <code>EF Template Database</code> connection string parameter. For more info
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

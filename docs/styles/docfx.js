@@ -20,6 +20,8 @@ $(function () {
   renderFooter();
   renderLogo();
 
+  breakText();
+
   window.refresh = function (article) {
     // Update markup result
     if (typeof article == 'undefined' || typeof article.content == 'undefined')
@@ -30,6 +32,16 @@ $(function () {
     renderTables();
     renderAlerts();
     renderAffix();
+  }
+
+  function breakText() {
+    $(".xref").addClass("text-break");
+    var texts = $(".text-break");
+    texts.each(function () {
+      $(this).text(function (index, text) {
+        return util.breakText(text);
+      })
+    });
   }
 
   // Styling for tables in conceptual documents using Bootstrap.
@@ -45,16 +57,14 @@ $(function () {
     $('.IMPORTANT, .CAUTION').addClass('alert alert-danger');
   }
 
-  // Anchorjs 3.2.2 fails when title content contains '<' and '>'.
-  // TODO: enable this when anchorjs fixes this issue
   // Enable anchors for headings.
-  // (function () {
-  //   anchors.options = {
-  //     placement: 'left',
-  //     visible: 'touch'
-  //   };
-  //   anchors.add('article h2, article h3, article h4, article h5, article h6');
-  // })();
+  (function () {
+    anchors.options = {
+      placement: 'left',
+      visible: 'touch'
+    };
+    anchors.add('article h2:not(.no-anchor), article h3:not(.no-anchor), article h4:not(.no-anchor)');
+  })();
 
   // Open links to different host in a new window.
   function renderLinks() {
@@ -114,7 +124,7 @@ $(function () {
     }
     try {
       var worker = new Worker(relHref + 'styles/search-worker.js');
-      if (!worker || !window.worker) {
+      if (!worker && !window.worker) {
         localSearch();
       } else {
         webWorkerSearch();

@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>NodaTime Type Plugin | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="NodaTime Type Plugin | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.24.0.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="nodatime-type-plugin">NodaTime Type Plugin</h1>
+
+<p>Since 3.3, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
+<h2 id="why-nodatime">Why NodaTime?</h2>
+<p>The .NET date/time types (<code>DateTime</code>, <code>DateTimeOffset</code>) are flawed in many ways; regardless of PostgreSQL or databases, if your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post</a> by Jon Skeet.</p>
+<p>For PostgreSQL specifically, the NodaTime types map more naturally to the database types - everything is simpler and works in a more predictable way.</p>
+<h2 id="setup">Setup</h2>
+<p>To use the NodaTime plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up:</p>
+<pre><code class="lang-c#">using Npgsql;
+
+// Place this at the beginning of your program to use NodaTime everywhere (recommended)
+NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+
+// Or to temporarily use NodaTime on a single connection only:
+conn.TypeMapper.UseNodaTime();
+</code></pre><h2 id="mapping-table">Mapping Table</h2>
+<div class="WARNING"><h5>Warning</h5><p><em>Warning</em>: a common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database. This is not the case: only the t
+imestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL Type</th>
+<th>Default NodaTime Type</th>
+<th>Additional NodaTime Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>Instant</td>
+<td>LocalDateTime</td>
+<td>It&#39;s common to store UTC timestamps in databases - you can simply do so and read/write Instant values. You also have the option of readin/writing LocalDateTime, which is a date/time with no information about timezones; this makes sense if you&#39;re storing the timezone in a different column and want to read both into a NodaTime ZonedDateTime.</td>
+</tr>
+<tr>
+<td>timestamptz</td>
+<td>Instant</td>
+<td>ZonedDateTime</td>
+<td>This PostgreSQL type stores only a timestamp, assumed to be in UTC. If you read/write this as an Instant, it will be provided as stored with no timezone conversions whatsoever. If, however, you read/write as a ZonedDateTime, the plugin will automatically convert to and from UTC according to your PostgreSQL session&#39;s timezone.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>LocalDate</td>
+<td></td>
+<td>A simple date with no timezone or offset information.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>LocalTime</td>
+<td></td>
+<td>A simple time-of-day, with no timezone or offset information.</td>
+</tr>
+<tr>
+<td>timetz</td>
+<td>OffsetDateTime</td>
+<td></td>
+<td>This is a PostgreSQL type that actually stores a time and an offset (odd and generally not recommended for use by PostgreSQL). As there&#39;s no corresponding NodaTime type, you can read/write this as OffsetDateTime with the date component zeroed out.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>Period</td>
+<td></td>
+<td>This is a human interval which does not have a fixed absolute length (&quot;two months&quot; can vary depending on the months in question), and so it is mapped to NodaTime&#39;s Period (and not Duration or TimeSpan).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-notes">Additional Notes</h2>
+<ul>
+<li>The plugin automatically converts <code>timestamptz</code> to and from your PostgreSQL session&#39;s configured timezone; this is unlike Npgsql&#39;s default mapping which uses your machine&#39;s local timezone instead. The NodaTime plugin behavior matches the regular PostgreSQL behavior when interacting with <code>timestamptz</code> values.</li>
+<li>To read and write <code>timestamp</code> or <code>date</code> infinity values, set the <code>Convert Infinity DateTime</code> connection string parameter to true and read/write MaxValue/MinValue.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/types/nodatime.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2017 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

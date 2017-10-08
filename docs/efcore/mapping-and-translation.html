@@ -8,7 +8,7 @@
     <title>Type Mapping | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Type Mapping | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.17.7.15">
+    <meta name="generator" content="docfx 2.24.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     <meta property="docfx:rel" content="../">
     
   </head>
@@ -94,10 +95,47 @@
 </code></pre><p>Or, if you prefer annotations, use the <code>[Column]</code> attribute:</p>
 <pre><code class="lang-c#">[Column(TypeName=&quot;jsonb&quot;)]
 public string SomeStringProperty { get; set; }
-</code></pre><h2 id="translating-regular-expressions">Translating Regular Expressions</h2>
-<p>PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations in the database</a>, and the Npgsql EF Core provider provides some support for evaluating C# regex operations at the backend. All you have to do is use <code>Regex.IsMatch</code> in your where clause:</p>
-<pre><code class="lang-c#">var customersStartingWithA = context.Customers.Where(c =&gt; Regex.IsMatch(c.CompanyName, &quot;^A&quot;));
-</code></pre><p>Since this regular expression is evaluated at the server, the EF Core provider doesn&#39;t need to load all the customers from the database, saving lots of transfer bandwidth.</p>
+</code></pre><h2 id="operation-translation-to-sql">Operation Translation to SQL</h2>
+<p>Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations</a>, and the Npgsql EF Core provider automatically translates .NET&#39;s <code>Regex.IsMatch()</code> to use this feature. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and in some cases indices can be used to speed things up. The same C# code on other providers will trigger client evaluation.</p>
+<p>Below are some Npgsql-specific translations, many additional standard ones are supported as well.</p>
+<table>
+<thead>
+<tr>
+<th>This C# expression...</th>
+<th>... gets translated to this SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.Where(c =&gt; Regex.IsMatch(c.Name, &quot;^A+&quot;)</td>
+<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">WHERE &quot;c&quot;.&quot;Name&quot; ~ &#39;^A+&#39;</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.SomeArray[1] = &quot;foo&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/arrays.html#ARRAYS-ACCESSING">WHERE &quot;c&quot;.&quot;SomeArray&quot;[1] = &#39;foo&#39;</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.SomeArray.SequenceEqual(new[] { 1, 2, 3 })</td>
+<td><a href="https://www.postgresql.org/docs/current/static/arrays.html">WHERE &quot;c&quot;.&quot;SomeArray&quot; = ARRAY[1, 2, 3])</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.SomeArray.Contains(3))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104">WHERE 3 = ANY(&quot;c&quot;.&quot;SomeArray&quot;)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.SomeArray.Length == 3)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE">WHERE array_length(&quot;c&quot;.&quot;SomeArray, 1) == 3</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; EF.Functions.Like(c.Name, &quot;foo%&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-LIKE">WHERE &quot;c&quot;.&quot;Name&quot; LIKE &#39;foo%&#39;</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; EF.Functions.ILike(c.Name, &quot;foo%&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-LIKE">WHERE &quot;c&quot;.&quot;Name&quot; ILIKE &#39;foo%&#39;</a> (case-insensitive LIKE)</td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           
@@ -106,7 +144,7 @@ public string SomeStringProperty { get; set; }
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/969420c10e8af76e187e5b560b5be383eda1a4ab/doc/mapping-and-translation.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/mapping-and-translation.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
