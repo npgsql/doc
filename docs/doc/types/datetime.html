@@ -76,15 +76,15 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="date-and-time-handling">Date and Time Handling</h1>
 
-<div class="NOTE"><h5>Note</h5><p>Since 3.3 the recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>.</p>
-</div>
 <p>Handling date and time values usually isn&#39;t hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates.
 It&#39;s worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize
 yourself with PostgreSQL&#39;s types.</p>
+<p><em>Warning</em>: a common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database.
+This is not the case: only the timestamp is stored. There is no one PostgreSQL type that stores both a date/time and a timezone,
+similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>.</p>
 <h2 id="net-types-and-postgresql-types">.NET types and PostgreSQL types</h2>
-<div class="WARNING"><h5>Warning</h5><p><em>Warning</em>: a common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database. This is not the case: only the timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>.</p>
-</div>
-<p>The .NET and PostgreSQL types differ in the resolution and range they provide; the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:</p>
+<p>The .NET and PostgreSQL types differ in the resolution and range they provide;
+the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:</p>
 <table>
 <thead>
 <tr>
