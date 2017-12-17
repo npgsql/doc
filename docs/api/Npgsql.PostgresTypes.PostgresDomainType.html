@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class PostgresDomainType
    | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.28.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -148,7 +148,7 @@
   </div>
   <h5 id="Npgsql_PostgresTypes_PostgresDomainType_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-createdomain.html">https://www.postgresql.org/docs/current/static/sql-createdomain.html</a>.</p>
-<p>When PostgreSQL returns a RowDescription for a domain type, the type OID is the base type&#39;s
+<p>When PostgreSQL returns a RowDescription for a domain type, the type OID is the base type&apos;s
 (so fetching a domain type over text returns a RowDescription for text).
 However, when a composite type is returned, the type OID there is that of the domain,
 so we provide &quot;clean&quot; support for domain types.</p>
@@ -157,10 +157,10 @@ so we provide &quot;clean&quot; support for domain types.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_PostgresTypes_PostgresDomainType__ctor_System_String_System_String_System_UInt32_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.PostgresTypes.PostgresDomainType.%23ctor(System.String%2CSystem.String%2CSystem.UInt32%2CNpgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_PostgresTypes_PostgresDomainType__ctor_System_String_System_String_System_UInt32_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.PostgresTypes.PostgresDomainType.%23ctor(System.String%2CSystem.String%2CSystem.UInt32%2CNpgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/PostgresTypes/PostgresDomainType.cs/#L44">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/PostgresTypes/PostgresDomainType.cs/#L50">View Source</a>
   </span>
   <a id="Npgsql_PostgresTypes_PostgresDomainType__ctor_" data-uid="Npgsql.PostgresTypes.PostgresDomainType.#ctor*"></a>
   <h4 id="Npgsql_PostgresTypes_PostgresDomainType__ctor_System_String_System_String_System_UInt32_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.PostgresTypes.PostgresDomainType.#ctor(System.String,System.String,System.UInt32,Npgsql.PostgresTypes.PostgresType)">PostgresDomainType(String, String, UInt32, PostgresType)</h4>
@@ -169,7 +169,7 @@ so we provide &quot;clean&quot; support for domain types.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected PostgresDomainType(string ns, string name, uint oid, PostgresType basePostgresType)</code></pre>
+    <pre><code class="lang-csharp hljs">protected PostgresDomainType(string ns, string name, uint oid, PostgresType baseType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,7 +198,40 @@ so we provide &quot;clean&quot; support for domain types.</p>
       </tr>
       <tr>
         <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
-        <td><span class="parametername">basePostgresType</span></td>
+        <td><span class="parametername">baseType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_PostgresTypes_PostgresDomainType_BaseType.md&amp;value=---%0Auid%3A%20Npgsql.PostgresTypes.PostgresDomainType.BaseType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/PostgresTypes/PostgresDomainType.cs/#L44">View Source</a>
+  </span>
+  <a id="Npgsql_PostgresTypes_PostgresDomainType_BaseType_" data-uid="Npgsql.PostgresTypes.PostgresDomainType.BaseType*"></a>
+  <h4 id="Npgsql_PostgresTypes_PostgresDomainType_BaseType" data-uid="Npgsql.PostgresTypes.PostgresDomainType.BaseType">BaseType</h4>
+  <div class="markdown level1 summary"><p>The PostgreSQL data type of the base type, i.e. the type this domain is based on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PostgresType BaseType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -211,10 +244,10 @@ so we provide &quot;clean&quot; support for domain types.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/77a597d22a2b435d7994e871265955e57036f166/apiSpec/new?filename=Npgsql_PostgresTypes_PostgresDomainType.md&amp;value=---%0Auid%3A%20Npgsql.PostgresTypes.PostgresDomainType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_PostgresTypes_PostgresDomainType.md&amp;value=---%0Auid%3A%20Npgsql.PostgresTypes.PostgresDomainType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/77a597d22a2b435d7994e871265955e57036f166/src/Npgsql/PostgresTypes/PostgresDomainType.cs/#L37" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/PostgresTypes/PostgresDomainType.cs/#L39" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
