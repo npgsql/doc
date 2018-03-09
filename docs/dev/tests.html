@@ -8,7 +8,7 @@
     <title>Tests | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Tests | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.28.3.0">
+    <meta name="generator" content="docfx 2.32.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,18 +76,18 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="overview">Overview</h2>
 
-<p>Npgsql comes with an extensive test suite to make sure no regressions occur. All tests are run on our build server on all supported .NET versions (including a recent version of mono) and all supported Postgresql backends.</p>
+<p>Npgsql comes with an extensive test suite to make sure no regressions occur. All tests are run on our build server on all supported .NET versions (including a recent version of mono) and all supported PostgreSQL backends.</p>
 <p>There is also a growing suite of speed tests to be able to measure performance. These tests are currently marked [Explicit] and aren&#39;t executed automatically.</p>
 <h2 id="simple-setup">Simple setup</h2>
-<p>The Npgsql test suite requires a PostgreSQL backend to test against. Simply use the latest version of Postgresql on your dev machine on the default port (5432).
+<p>The Npgsql test suite requires a PostgreSQL backend to test against. Simply use the latest version of PostgreSQL on your dev machine on the default port (5432).
 By default, all tests will be run using user <em>npgsql_tests</em>, and password <em>npgsql_tests</em>. Npgsql will automatically create a database called <em>npgsql_tests</em> and
 run its tests against this.</p>
 <p>To set this up, connect to PostgreSQL as the admin user as follows:</p>
-<pre><code>psql -h localhost -U postgresql
+<pre><code>psql -h localhost -U postgres
 &lt;enter the admin password&gt;
 create user npgsql_tests password &#39;npgsql_tests&#39; superuser;
 </code></pre><p>And you&#39;re done.</p>
-<p>Superuser access is needed for some tests, e.g. loading the <code>hstore</code> extension, creatig and dropping test databases in the Entity Framework tests...</p>
+<p>Superuser access is needed for some tests, e.g. loading the <code>hstore</code> extension, creating and dropping test databases in the Entity Framework tests...</p>
 </article>
           </div>
           
