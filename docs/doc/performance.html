@@ -8,7 +8,7 @@
     <title>Performance | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Performance | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.32.1.0">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -109,6 +109,8 @@ using (var reader = cmd.ExecuteReader())
 <h2 id="writing-large-values">Writing Large Values</h2>
 <p>Writing is somewhat similar - Npgsql has an internally write buffer (also 8K by default). When writing your query&#39;s SQL and parameters to PostgreSQL, Npgsql always writes &quot;sequentially&quot;, that is, filling up the 8K buffer and flushing it when full. You can use <code>Write Buffer Size</code> to control the buffer&#39;s size.</p>
 <p>You can also control the socket&#39;s receive buffer size (not to be confused with Npgsql&#39;s internal buffer) by setting the <code>Socket Receive Buffer Size</code> connection string parameter.</p>
+<h2 id="avoiding-boxing-when-writing-parameter-values">Avoiding boxing when writing parameter values</h2>
+<p>See <a href="parameters.html">this page</a>.</p>
 <h2 id="unix-domain-socket">Unix Domain Socket</h2>
 <p>If you&#39;re on Linux or macOS and are connecting to a PostgreSQL server on the same machine, you can boost performance a little by connecting via Unix domain socket rather than via a regular TCP/IP socket. To do this, simply specify the directory of your PostgreSQL sockets in the <code>Host</code> connection string parameter - if this parameter starts with a slash, it will be taken to mean a filesystem path.</p>
 </article>

@@ -8,7 +8,7 @@
     <title>Security and Encryption | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Security and Encryption | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.32.1.0">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -78,6 +78,7 @@
 
 <h2 id="logging-in">Logging in</h2>
 <p>The simplest way to log into PostgreSQL is by specifying a <code>Username</code> and a <code>Password</code> in your connection string. Depending on how your PostgreSQL is configured (in the <code>pg_hba.conf</code> file), Npgsql will send the password in MD5 or in cleartext (not recommended).</p>
+<p>If a <code>Password</code> is not specified and your PostgreSQL is configured to request a password (plain or MD5), Npgsql will look for a <a href="https://www.postgresql.org/docs/current/static/libpq-pgpass.html">standard PostgreSQL password file</a>. If you specify the <code>Passfile</code> connection string parameter, the file it specifies will be used. If that parameter isn&#39;t defined, Npgsql will look under the path taken from <code>PGPASSFILE</code> environment variable. If the environment variable isn&#39;t defined, Npgsql will fall back to the system-dependent default directory which is <code>$HOME/.pgpass</code> for Unix and <code>%APPDATA%\postgresql\pgpass.conf</code> for Windows.</p>
 <p>For documentation about all auth methods supported by PostgreSQL, <a href="http://www.postgresql.org/docs/current/static/auth-methods.html">see this page</a>. Note that Npgsql supports Unix-domain sockets (auth method <code>local</code>), simply set your <code>Host</code> parameter to the absolute path of your PostgreSQL socket directory, as configred in your <code>postgresql.conf</code>.</p>
 <h2 id="integrated-security-gsssspikerberos">Integrated Security (GSS/SSPI/Kerberos)</h2>
 <p>Logging in with a username and password isn&#39;t recommended, since your application must have access to your password. An alternate way of authenticating is &quot;Integrated Security&quot;, which uses GSS or SSPI to negotiate Kerberos. The advantage of this method is that authentication is handed off to your operating system, using your already-open login session. Your application never needs to handle a password. You can use this method for a Kerberos login, Windows Active Directory or a local Windows session. Note that since 3.2, this method of authentication also works on non-Windows platforms.</p>

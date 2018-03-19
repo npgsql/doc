@@ -8,7 +8,7 @@
     <title>NodaTime Type Plugin | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="NodaTime Type Plugin | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.24.0.0">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -76,7 +76,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="nodatime-type-plugin">NodaTime Type Plugin</h1>
 
-<p>Since 3.3, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
+<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
+</div>
+<p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
 <h2 id="why-nodatime">Why NodaTime?</h2>
 <p>The .NET date/time types (<code>DateTime</code>, <code>DateTimeOffset</code>) are flawed in many ways; regardless of PostgreSQL or databases, if your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post</a> by Jon Skeet.</p>
 <p>For PostgreSQL specifically, the NodaTime types map more naturally to the database types - everything is simpler and works in a more predictable way.</p>
@@ -173,7 +175,7 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2017 The Npgsql Development Team
+            © Copyright 2018 The Npgsql Development Team
             
           </div>
         </div>

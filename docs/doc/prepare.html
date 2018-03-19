@@ -8,7 +8,7 @@
     <title>Prepared Statements | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Prepared Statements | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.32.1.0">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -229,15 +229,15 @@ cmd.Prepare();
 <pre><code class="lang-c#">using (var conn = new NpgsqlConnection(...)
 using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
     conn.Open();
-    cmd.Prepare();   // First time on this physical connection, Npgsql prepares with PostgreSQL
-    cmd.ExecuteNonQuery();
+    conn.Prepare();   // First time on this physical connection, Npgsql prepares with PostgreSQL
+    conn.ExecuteNonQuery();
 }
 
 using (var conn = new NpgsqlConnection(...)
 using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
     conn.Open();      // We assume the pool returned the same physical connection used above
-    cmd.Prepare();   // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn&#39;t need to do anything
-    cmd.ExecuteNonQuery();
+    conn.Prepare();   // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn&#39;t need to do anything
+    conn.ExecuteNonQuery();
 }
 </code></pre><p>You can still choose to close a prepared statement by calling <code>NpgsqlCommand.Unprepare()</code>. You can also unprepare all statements on a given connection by calling <code>NpgsqlConnection.UnprepareAll()</code>.</p>
 <h2 id="automatic-preparation">Automatic Preparation</h2>

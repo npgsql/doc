@@ -8,7 +8,7 @@
     <title>Connection String Parameters | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Connection String Parameters | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.32.1.0">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -110,6 +110,11 @@
 <tr>
 <td>Password</td>
 <td>The password to connect with. Not required if using IntegratedSecurity.</td>
+<td></td>
+</tr>
+<tr>
+<td>Passfile</td>
+<td>Path to a PostgreSQL password file (PGPASSFILE), from which the password is taken.</td>
 <td></td>
 </tr>
 </tbody>
@@ -234,6 +239,11 @@
 <td>disabled</td>
 </tr>
 <tr>
+<td>Tcp Keepalive</td>
+<td>Whether to use TCP keepalive with system defaults if overrides isn&#39;t specified.</td>
+<td>disabled</td>
+</tr>
+<tr>
 <td>Tcp Keepalive Time</td>
 <td>The number of milliseconds of connection inactivity before a TCP keepalive query is sent. Use of this option is discouraged, use KeepAlive instead if possible. Supported only on Windows.</td>
 <td>disabled</td>
@@ -328,9 +338,19 @@
 <td></td>
 </tr>
 <tr>
+<td>Timezone</td>
+<td>Gets or sets the session timezone, PGTZ environment variable can be used instead. Since 3.3.</td>
+<td></td>
+</tr>
+<tr>
 <td>EF Template Database</td>
 <td>The database template to specify when creating a database in Entity Framework.</td>
 <td>template1</td>
+</tr>
+<tr>
+<td>Load Table Composites</td>
+<td>Load table composite type definitions, and not just free-standing composite types.</td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
@@ -346,7 +366,7 @@
 <tbody>
 <tr>
 <td>Server Compatibility Mode</td>
-<td>A compatibility mode for special PostgreSQL server types. Currently only &quot;Redshift&quot; is supported.</td>
+<td>A compatibility mode for special PostgreSQL server types. Currently &quot;Redshift&quot; is supported, as well as &quot;NoTypeLoading&quot;, which will bypass the normal type loading mechanism from the PostgreSQL catalog tables and supports a hardcoded list of basic types .</td>
 <td>none</td>
 </tr>
 <tr>
