@@ -317,7 +317,7 @@
       "output": {
         ".html": {
           "relative_path": "doc/release-notes/4.0.html",
-          "hash": "TkvuEcN9tN/LikfxE6K88A=="
+          "hash": "E/Vcg37MK1JFOilLL/YWYA=="
         }
       },
       "is_incremental": false,
@@ -365,7 +365,7 @@
       "output": {
         ".html": {
           "relative_path": "doc/types/basic.html",
-          "hash": "9cjn7qOe+7AjVoP6o4ienQ=="
+          "hash": "K9qZHycI/BBPsAdD5fXTdQ=="
         }
       },
       "is_incremental": false,
@@ -402,6 +402,18 @@
         ".html": {
           "relative_path": "doc/types/jsonnet.html",
           "hash": "SeryuGfOXpQLxguWxCVrcw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Npgsql/doc/types/legacy-postgis.md",
+      "output": {
+        ".html": {
+          "relative_path": "doc/types/legacy-postgis.html",
+          "hash": "0bxJcuRtLH+MSd6HImXUfA=="
         }
       },
       "is_incremental": false,
@@ -1709,6 +1721,11 @@
         "incrementalPhase": "build"
       },
       "processors": {
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -1720,11 +1737,6 @@
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
-          "incrementalPhase": "build"
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }
