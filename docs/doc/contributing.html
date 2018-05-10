@@ -5,19 +5,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>PostGIS Legacy Type Plugin | Npgsql Documentation </title>
+    <title>Contributing to Npgsql | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="PostGIS Legacy Type Plugin | Npgsql Documentation ">
+    <meta name="title" content="Contributing to Npgsql | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.32.2.0">
     
-    <link rel="shortcut icon" href="../../favicon.ico">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="../toc.html">
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
     
-    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,8 +33,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" src="../../img/logo.svg" alt="">
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -74,38 +74,10 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="postgis-legacy-type-plugin">PostGIS Legacy Type Plugin</h1>
+<h1 id="contributing-to-npgsql">Contributing to Npgsql</h1>
 
-<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
-</div>
-<p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. The previous support for <a href="https://postgis.net/">PostGIS spatial types</a> has been moved out of Npgsql and into the plugin Npgsql.LegacyPostgis. The recommended way to read and write spatial types is now <a href="nts.html">Npgsql.NetTopologySuite</a>, which maps PostGIS types to <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a>, a more complete library dedicated to spatial. The NetTopologySuite plugin is now the recommended way to do spatial in Npgsql, but the Npgsql.LegacyPostgis still exists to provide support for the previous types.</p>
-<p>At this time, the legacy types only support geometry, not geography, and only XY (not XYZ, XYM or XYZM).</p>
-<h2 id="setup">Setup</h2>
-<p>To use the PostGIS legacy plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.LegacyPostgis">Npgsql.LegacyPostgis</a> and set it up:</p>
-<pre><code class="lang-c#">using Npgsql;
-
-// Place this at the beginning of your program to use legacy PostGIS everywhere (recommended):
-NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis();
-
-// Or to temporarily use legacy PostGIS on a single connection only:
-conn.TypeMapper.UseLegacyPostgis();
-</code></pre><h2 id="usage">Usage</h2>
-<p>If you&#39;ve used the internal PostGIS types in Npgsql 3.2 or earlier, the plugin works in the same way:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseLegacyPostgis();
-
-// Write
-var cmd = new NpgsqlCommand(&quot;INSERT INTO table (pg_point, pg_polygon) VALUES (@point, @polygon)&quot;, conn);
-cmd.Parameters.AddWithValue(&quot;point&quot;, new PostgisPoint(3.5, 4.5));
-cmd.ExecuteNonQuery();
-
-// Read
-var cmd = new NpgsqlCommand(&quot;SELECT * FROM table&quot;, conn);
-var reader = cmd.ExecuteReader();
-while (reader.Read()) {
-    var point = reader.GetFieldValue&lt;PostgisPoint&gt;(0);
-    var polygon = reader.GetFieldValue&lt;PostgisPolygon&gt;(1);
-}
-</code></pre></article>
+<p>As a general rule, Npgsql makes no attempt to validate what it sends to PostgreSQL. For all cases where PostgreSQL would simply return a reasonable error, we prefer that to happen rather than checking replicating validation checks client-side.</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -113,7 +85,7 @@ while (reader.Read()) {
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/types/legacy-postgis.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/contributing.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -139,8 +111,8 @@ while (reader.Read()) {
       </footer>
     </div>
     
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
   </body>
 </html>
