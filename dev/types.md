@@ -329,8 +329,10 @@ tsquery:
 	binary: the tree written in prefix notation:
 		First the number of tokens (a token is an operand or an operator).
 		For each token:
-			UInt8 type (1 = val, 2 = oper)
-			UInt8 weight + UInt8 prefix (1/0) + null-terminated string, or UInt8 oper (1 = not, 2 = and, 3 = or)
+			UInt8 type (1 = val, 2 = oper) followed by
+			For val: UInt8 weight + UInt8 prefix (1 = yes / 0 = no) + null-terminated string,
+			For oper: UInt8 oper (1 = not, 2 = and, 3 = or, 4 = phrase). 
+			In case of phrase oper code, an additional UInt16 field is sent (distance value of operator). Default is 1 for <->, otherwise the n value in '<n>'.
 
 enum:
 	Simple text
