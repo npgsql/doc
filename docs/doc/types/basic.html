@@ -78,7 +78,13 @@
 
 <p>The following lists the built-in mappings when reading and writing CLR types to PostgreSQL types.</p>
 <p>Note that in addition to the below, enum and composite mappings are documented <a href="enums_and_composites.html">in a separate page</a>. Note also that several plugins exist to add support for more mappings (e.g. spatial support for PostGIS), these are listed in the Types menu.</p>
-<h2 id="type-mappings-when-reading-values-sent-from-the-backend">Type mappings when reading values sent from the backend</h2>
+<h2 id="read-mappings">Read mappings</h2>
+<p>The following shows the mappings used when reading values.</p>
+<ul>
+<li>The default type is returned when using <code>NpgsqlCommand.ExecuteScalar()</code>, <code>NpgsqlDataReader.GetValue()</code> and similar methods.</li>
+<li>You can read as other types by calling <code>NpgsqlDataReader.GetFieldValue&lt;T&gt;()</code>.</li>
+<li>Provider-specific types are returne by <code>NpgsqlDataReader.GetProviderSpecificValue()</code>.</li>
+</ul>
 <table>
 <thead>
 <tr>
@@ -99,19 +105,19 @@
 <td>int2</td>
 <td>short</td>
 <td></td>
-<td>byte, sbyte, int, long, float, double, decimal, string</td>
+<td>byte, sbyte, int, long, float, double, decimal</td>
 </tr>
 <tr>
 <td>int4</td>
 <td>int</td>
 <td></td>
-<td>byte, short, long, float, double, decimal, string</td>
+<td>byte, short, long, float, double, decimal</td>
 </tr>
 <tr>
 <td>int8</td>
 <td>long</td>
 <td></td>
-<td>long, byte, short, int, float, double, decimal, string</td>
+<td>long, byte, short, int, float, double, decimal</td>
 </tr>
 <tr>
 <td>float4</td>
@@ -129,7 +135,7 @@
 <td>numeric</td>
 <td>decimal</td>
 <td></td>
-<td>byte, short, int, long, float, double, string</td>
+<td>byte, short, int, long, float, double</td>
 </tr>
 <tr>
 <td>money</td>
@@ -400,15 +406,15 @@
 <p>The Default .NET type column specifies the data type <code>NpgsqlDataReader.GetValue()</code> will return.</p>
 <p><code>NpgsqlDataReader.GetProviderSpecificValue</code> will return a value of a data type specified in the Provider-specific type column, or the Default .NET type if there is no specialization.</p>
 <p>Finally, the third column specifies other CLR types which Npgsql supports for the PostgreSQL data type. These can be retrieved by calling <code>NpgsqlDataReader.GetBoolean()</code>, <code>GetByte()</code>, <code>GetDouble()</code> etc. or via <code>GetFieldValue&lt;T&gt;()</code>.</p>
-<h2 id="type-mappings-when-sending-parameters-to-the-backend">Type mappings when sending parameters to the backend</h2>
+<h2 id="write-mappings">Write mappings</h2>
 <p>There are three rules that determine the PostgreSQL type sent for a parameter:</p>
 <ol>
 <li>If the parameter&#39;s <code>NpgsqlDbType</code> is set, it is used.</li>
+<li>If the parameter&#39;s <code>DataType</code> is set, it is used.</li>
 <li>If the parameter&#39;s <code>DbType</code> is set, it is used.</li>
-<li>If neither of the above is set, the backend type will be inferred from the CLR value type.</li>
+<li>If none of the above is set, the backend type will be inferred from the CLR value type.</li>
 </ol>
-<p>Note that for DateTime and NpgsqlDateTime, the <code>Kind</code> attribute determines whether to use <code>timestamp</code> or <code>timestamptz</code>.</p>
-<p>Note that when <code>NpgsqlDbType</code> or <code>DbType</code> is set to a primitive type (bool, numbers and string), most other primitive types are accepted since they all implement the IConvertible interface, which is what Npgsql uses to convert the value to the target type.</p>
+<p>Note that for <code>DateTime</code> and <code>NpgsqlDateTime</code>, the <code>Kind</code> attribute determines whether to use <code>timestamp</code> or <code>timestamptz</code>.</p>
 <table>
 <thead>
 <tr>

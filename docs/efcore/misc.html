@@ -104,7 +104,13 @@ Simply use HasPostgresExtension in your context&#39;s OnModelCreating:</p>
 <h2 id="comments">Comments</h2>
 <p>PostgreSQL allows you to <a href="https://www.postgresql.org/docs/current/static/sql-syntax.html">attach comments</a> to database objects, which can help explain their purpose for someone examining the schema. The EF Core provider supports this for tables or columns, simply set the comment in your model&#39;s <code>OnModelCreating</code> as follows:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;MyEntity&gt;().ForNpgsqlHasComment(&quot;Some comment&quot;);
-</code></pre><h2 id="specifying-the-administrative-db">Specifying the administrative db</h2>
+</code></pre><h2 id="certificate-authentication">Certificate authentication</h2>
+<p>Npgsql allows you to provide a callback for verifying the server-provided certificates, and to provide a callback for providing certificates to the server. The latter, if properly set up on the PostgreSQL side, allows you to do client certificate authentication - see <a href="http://www.npgsql.org/doc/security.html#encryption-ssltls">the Npgsql docs</a> and also <a href="https://www.postgresql.org/docs/current/static/ssl-tcp.html#SSL-CLIENT-CERTIFICATES">the PostgreSQL docs</a> on setting this up.</p>
+<p>The Npgsql EF Core provider allows you to set these two callbacks on the <code>DbContextOptionsBuilder</code> as follows:</p>
+<pre><code class="lang-c#">builder.UseNpgsql(&quot;&lt;connection string&gt;&quot;, opts =&gt; opts.RemoteCertificateValidationCallback(x));
+</code></pre><p>You may also consider passing <code>Trust Server Certificate=true</code> in your connection string to make Npgsql accept whatever certificate your PostgreSQL provides (useful for self-signed certificates).</p>
+<h2 id="database-creation">Database Creation</h2>
+<h3 id="specifying-the-administrative-db">Specifying the administrative db</h3>
 <p>When the Npgsql EF Core provider creates or deletes a database (EnsureCreated(), EnsureDeleted()), it must connect to an administrative database which already exists (with PostgreSQL you always have to be connected to some database, even when creating/deleting another database). Up to now the <code>postgres</code> database was used, which is supposed to always be present.</p>
 <p>However, there are some PostgreSQL-like databases where the postgres database isn&#39;t available. For these cases you can specify the administrative database as follows:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -112,12 +118,16 @@ Simply use HasPostgresExtension in your context&#39;s OnModelCreating:</p>
     optionsBuilder.UseNpgsql(&quot;&lt;connection_string&gt;&quot;,
         b =&gt; b.UseAdminDatabase(&quot;&lt;admin_db&gt;&quot;));
 }
-</code></pre><h2 id="using-a-database-template">Using a database template</h2>
+</code></pre><h3 id="using-a-database-template">Using a database template</h3>
 <p>When creating a new database,
 <a href="http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html">PostgreSQL allows specifying another &quot;template database&quot;</a>
 which will be copied as the basis for the new one. This can be useful for including database entities which aren&#39;t managed by Entity Framework. You can trigger this by using HasDatabaseTemplate in your context&#39;s <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">modelBuilder.HasDatabaseTemplate(&quot;my_template_db&quot;);
-</code></pre><h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
+</code></pre><h3 id="setting-a-tablespace">Setting a tablespace</h3>
+<p>PostgreSQL allows you to locate your database in different parts of your filesystem, <a href="https://www.postgresql.org/docs/10/static/manage-ag-tablespaces.html">via tablespaces</a>. Npgsql allows you to specify your database&#39;s namespace:</p>
+<pre><code class="lang-c#">modelBuilder.ForNpgsqlUseTablespace(&quot;my_tablespace&quot;);
+</code></pre><p>You must have created your tablespace prior to this via the <code>CREATE TABLESPACE</code> command - the EF Core provider doesn&#39;t do this for you. Note also that specifying a tablespace on specific tables isn&#39;t supported.</p>
+<h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
 <p>If you&#39;re using CockroachDB, the Npgsql provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Customer&gt;()
     .ForCockroachDbInterleaveInParent(typeof(ParentEntityType), new List&lt;string&gt; { &quot;prefix_column_1&quot;, &quot;prefix_column_2&quot; });

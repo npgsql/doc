@@ -119,6 +119,10 @@ string. Optionally holds a set of synonyms for the property.</p>
       <h4><a class="xref" href="Npgsql.NpgsqlDataAdapter.html">NpgsqlDataAdapter</a></h4>
       <section><p>This class represents an adapter from many commands: select, update, insert and delete to fill <span class="xref">System.Data.DataSet</span></p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a></h4>
+      <section><p>Base class for implementations which provide information about PostgreSQL and PostgreSQL-like databases
+(e.g. type definitions, capabilities...).</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a></h4>
       <section><p>Reads a forward-only stream of rows from a data source.</p>
 </section>
@@ -135,6 +139,12 @@ string. Optionally holds a set of synonyms for the property.</p>
       <section><p>An interface to remotely control the seekable stream for an opened large object on a PostgreSQL server.
 Note that the OpenRead/OpenReadWrite method as well as all operations performed on this stream must be wrapped inside a database transaction.</p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></h4>
+      <section><p>An array of cached lengths for the parameters sending process.</p>
+<p>When sending parameters, lengths need to be calculated more than once (once for Bind, once for
+an array, once for the string within that array). This cache optimized that. Lengths are added
+to the cache, and then retrieved at the same order.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlNoticeEventArgs.html">NpgsqlNoticeEventArgs</a></h4>
       <section><p>Provides data for a notice event.</p>
 </section>
@@ -148,6 +158,10 @@ Provides information on the already-executing operation to help with debugging.<
       <h4><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></h4>
       <section><p>This class represents a parameter to a command that will be sent to server</p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlParameter-1.html">NpgsqlParameter&lt;T&gt;</a></h4>
+      <section><p>A generic version of <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> which provides more type safety and
+avoids boxing of value types. Use <a class="xref" href="Npgsql.NpgsqlParameter-1.html#Npgsql_NpgsqlParameter_1_TypedValue">TypedValue</a> instead of <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Value">Value</a>.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a></h4>
       <section><p>Represents a collection of parameters relevant to a <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>
 as well as their respective mappings to columns in a DataSet.
@@ -157,14 +171,14 @@ This class cannot be inherited.</p>
       <section><p>Provides an API for a raw binary COPY operation, a high-performance data import/export mechanism to
 a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginRawBinaryCopy_System_String_">BeginRawBinaryCopy(String)</a></p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></h4>
+      <section><p>A buffer used by Npgsql to read data from the socket efficiently.
+Provides methods which decode different values types and tracks the current position.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatedEventArgs.html">NpgsqlRowUpdatedEventArgs</a></h4>
       <section></section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatingEventArgs.html">NpgsqlRowUpdatingEventArgs</a></h4>
       <section></section>
-      <h4><a class="xref" href="Npgsql.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></h4>
-      <section><p>A name translator which converts standard CLR names (e.g. SomeClass) to snake-case database
-names (some_class)</p>
-</section>
       <h4><a class="xref" href="Npgsql.NpgsqlStatement.html">NpgsqlStatement</a></h4>
       <section><p>Represents a single SQL statement within Npgsql.</p>
 <p>Instances aren&apos;t constructed directly; users should construct an <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>
@@ -177,6 +191,10 @@ and access information about statement execution (e.g. affected rows).</p>
       <h4><a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></h4>
       <section><p>Represents a transaction to be made in a PostgreSQL database. This class cannot be inherited.</p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></h4>
+      <section><p>A buffer used by Npgsql to write data to the socket efficiently.
+Provides methods which encode different values types and tracks the current position.</p>
+</section>
       <h4><a class="xref" href="Npgsql.PostgresException.html">PostgresException</a></h4>
       <section><p>The exception that is thrown when the PostgreSQL backend reports errors (e.g. query
 SQL issues, constraint violations).</p>
@@ -186,8 +204,18 @@ SQL issues, constraint violations).</p>
 Can be synchronous (i.e. in response to a query) or asynchronous (a totally unrelated
 backend-side event).</p>
 </section>
+    <h3 id="structs">Structs
+  </h3>
+      <h4><a class="xref" href="Npgsql.NpgsqlTimeout.html">NpgsqlTimeout</a></h4>
+      <section><p>Represents a timeout that will expire at some point.</p>
+</section>
     <h3 id="interfaces">Interfaces
   </h3>
+      <h4><a class="xref" href="Npgsql.INpgsqlDatabaseInfoFactory.html">INpgsqlDatabaseInfoFactory</a></h4>
+      <section><p>A factory which get generate instances of <a class="xref" href="Npgsql.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>, which describe a database
+and the types it contains. When first connecting to a database, Npgsql will attempt to load information
+about it via this factory.</p>
+</section>
       <h4><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></h4>
       <section><p>A component which translates a CLR name (e.g. SomeClass) into a database name (e.g. some_class)
 according to some scheme.

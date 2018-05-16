@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Spatial Mapping with NetTopologySuite | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Spatial Mapping with NetTopologySuite | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.32.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h2 id="spatial-mapping-with-nettopologysuite">Spatial Mapping with NetTopologySuite</h2>
+
+<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql EF Core 2.1, which is currently in preview.</p>
+</div>
+<p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn&#39;t provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is quite a good candidate. The Npgsql EF Core provider has a plugin which allows you to map NetTopologySuite&#39;s types PostGIS columns, and even translate many useful spatial operations to SQL. This is the recommended way to interact with spatial types in Npgsql.</p>
+<p>Note that the EF Core NetTopologySuite plugin depends on <a href="http://www.npgsql.org/doc/types/nts.html">the Npgsql ADO.NET NetTopology plugin</a>, which provides NetTopologySuite support at the lower level. The EF Core plugin automatically arranged for the ADO.NET plugin to be set up.</p>
+<h1 id="setup">Setup</h1>
+<p>To set up the NetTopologySuite plugin, add the <a href="https://www.nuget.org/packages/Npgsql.NetTopologySuite">Npgsql.NetTopologySuite nuget</a> to your project. Then, make the following modification to your <code>UseNpgsql()</code> line:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+{
+    builder.UseNpgsql(&quot;Host=localhost;Database=test;Username=npgsql_tests;Password=npgsql_tests&quot;,
+        o =&gt; o.UseNetTopologySuite());
+}
+</code></pre><p>This will set up all the necessary mappings and operation translators. In addition, to make sure that the PostGIS extension is installed in your database, add the following to your DbContext:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
+{
+    builder.HasPostgresExtension(&quot;postgis&quot;);
+}
+</code></pre><p>At this point spatial support is set up. You can now use NetTopologySuite types as regular properties in your entities, and even perform some operations:</p>
+<pre><code class="lang-c#">public class City
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public Point Location { get; set; }
+}
+
+var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
+</code></pre><h2 id="operation-translation">Operation translation</h2>
+<p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and cases indices can be used to speed things up.</p>
+<p>Note that the plugin is far from covering all spatial operations. If an operation you need is missing, please open an issue to request for it.</p>
+<table>
+<thead>
+<tr>
+<th>This C# expression...</th>
+<th>... gets translated to this SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Area() &gt; x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Area.html">WHERE ST_Area(c.&quot;Polygon&quot;) &gt; x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.AsText() = x</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_AsText.html">WHERE ST_AsText(c.&quot;Polygon&quot;) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Boundary = x</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Boundary.html">WHERE ST_AsCoundary(c.&quot;Polygon&quot;) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Contains(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Contains.html">WHERE ST_Contains(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Covers(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Covers.html">WHERE ST_Covers(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.CoveredBy(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_CoveredBy.html">WHERE ST_CoveredBy(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Crosses(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Crosses.html">WHERE ST_Crosses(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Difference(x) = y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Difference.html">WHERE ST_Difference(c.&quot;Polygon&quot;, x) = y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Disjoint(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Disjoint.html">WHERE ST_Disjoint(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Point.Distance(x) &gt; y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Distance.html">WHERE ST_Distance(c.&quot;Polygon&quot;, x) &gt; y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Equals(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Geometry_EQ.html">WHERE c.&quot;Polygon&quot; = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.EqualsExact(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Geometry_EQ.html">WHERE c.&quot;Polygon&quot; = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.EqualsTopologically(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Equals.html">WHERE ST_Equals(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Geometry.GeometryType() = x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/GeometryType.html">WHERE GeometryType(c.&quot;GeomCollection&quot;) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.GeomCollection.GetGeometryN(2) = x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_GeometryN.html">WHERE ST_GeometryN(c.&quot;GeomCollection&quot;, 3) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Intersection(x) = y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Intersection.html">WHERE ST_Intersection(c.&quot;Polygon&quot;, x) = y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Intersects(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Intersects.html">WHERE ST_Intersects(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.LineString.IsClosed())</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_IsClosed.html">WHERE ST_IsClosed(c.&quot;LineString&quot;)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.GeomCollection.IsEmpty())</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_IsEmpty.html">WHERE ST_IsEmpty(c.&quot;GeomCollection&quot;)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.IsSimple())</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_IsSimple.html">WHERE ST_IsSimple(c.&quot;Polygon&quot;)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.IsValid())</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_IsValid.html">WHERE ST_IsValid(c.&quot;Polygon&quot;)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.LineString.Length &gt; x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Length.html">WHERE ST_Length(c.&quot;LineString&quot;) &gt; x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.GeomCollection.NumGeometries &gt; x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_NumGeometries.html">WHERE ST_NumGeometries(c.&quot;GeomCollection&quot;) &gt; x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.LineString.NumPoints &gt; x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_NumPoints.html">WHERE ST_NumPoints(c.&quot;LineString&quot;) &gt; x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Overlaps(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Overlaps.html">WHERE ST_Overlaps(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Relate(x) == y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Relate.html">WHERE ST_Relate(c.&quot;Polygon&quot;, x) = y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.LineString.Reverse() == x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Reverse.html">WHERE ST_Reverse(c.&quot;Polygon&quot;) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.SymmetricDifference(x) == y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_SymDifference.html">WHERE ST_SymDifference(c.&quot;Polygon&quot;, x) = y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Touches(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Touches.html">WHERE ST_Touches(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.ToText() = x)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_AsText.html">WHERE ST_AsText(c.&quot;Polygon&quot;) = x</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Union(x) = y)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Union.html">WHERE ST_Union(c.&quot;Polygon&quot;, x) = y</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Polygon.Within(x))</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Within.html">WHERE ST_Within(c.&quot;Polygon&quot;, x)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Point.X == 3)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_X.html">WHERE ST_X(c.&quot;Point&quot;) = 3</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Point.Y == 3)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Y.html">WHERE ST_Y(c.&quot;Point&quot;) = 3</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.Point.Z == 3)</td>
+<td><a href="https://postgis.net/docs/manual-2.4/ST_Z.html">WHERE ST_Z(c.&quot;Point&quot;) = 3</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="geography-geodetic-support">Geography (geodetic) support</h2>
+<p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
+<p>The Npgsql provider will be default map all NetTopologySuite types to PostGIS <code>geometry</code>. However, you can instruct it to map certain properties to <code>geography</code> instead:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
+{
+    builder.Entity&lt;City&gt;().Property(b =&gt; b.Location).HasColumnType(&quot;geography&quot;);
+}
+</code></pre><p>or via an attribute:</p>
+<pre><code class="lang-c#">public class City
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    [Column(TypeName=&quot;geography&quot;)]
+    public Point Location { get; set; }
+}
+</code></pre><p>Once you do this, your column will be created as <code>geography</code>, and spatial operations will behave as expected.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/mapping/nts.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2018 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

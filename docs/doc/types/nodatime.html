@@ -79,9 +79,14 @@
 <div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
 </div>
 <p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
-<h2 id="why-nodatime">Why NodaTime?</h2>
-<p>The .NET date/time types (<code>DateTime</code>, <code>DateTimeOffset</code>) are flawed in many ways; regardless of PostgreSQL or databases, if your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post</a> by Jon Skeet.</p>
-<p>For PostgreSQL specifically, the NodaTime types map more naturally to the database types - everything is simpler and works in a more predictable way.</p>
+<h1 id="what-is-nodatime">What is NodaTime?</h1>
+<p>By default, <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">the PostgreSQL date/time types</a> are mapped to the built-in .NET types (<code>DateTime</code>, <code>TimeSpan</code>). Unfortunately, these built-in types are flawed in many ways. The <a href="http://nodatime.org/">NodaTime library</a> was created to solve many of these problems, and if your application handles dates and times in anything but the most basic way, you should consider using it. To learn more <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">read this blog post by Jon Skeet</a>.</p>
+<p>Beyond NodaTime&#39;s general advantages, some specific advantages NodaTime for PostgreSQL date/time mapping include:</p>
+<ul>
+<li>NodaTime defines some types which are missing from the BCL, such as <code>LocalDate</code>, <code>LocalTime</code>, and <code>OffsetTime</code>. These cleanly correspond to PostgreSQL <code>date</code>, <code>time</code> and <code>timetz</code>.</li>
+<li><code>Period</code> is much more suitable for mapping PostgreSQL <code>interval</code> than <code>TimeSpan</code>.</li>
+<li>NodaTime types can fully represent PostgreSQL&#39;s microsecond precision, and can represent dates outside the BCL&#39;s date limit (1AD-9999AD).</li>
+</ul>
 <h2 id="setup">Setup</h2>
 <p>To use the NodaTime plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up:</p>
 <pre><code class="lang-c#">using Npgsql;
@@ -92,7 +97,7 @@ NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 // Or to temporarily use NodaTime on a single connection only:
 conn.TypeMapper.UseNodaTime();
 </code></pre><h2 id="mapping-table">Mapping Table</h2>
-<div class="WARNING"><h5>Warning</h5><p><em>Warning</em>: a common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database. This is not the case: only the t
+<div class="WARNING"><h5>Warning</h5><p>A common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database. This is not the case: only the t
 imestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>.</p>
 </div>
 <table>
@@ -114,8 +119,8 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 <tr>
 <td>timestamptz</td>
 <td>Instant</td>
-<td>ZonedDateTime</td>
-<td>This PostgreSQL type stores only a timestamp, assumed to be in UTC. If you read/write this as an Instant, it will be provided as stored with no timezone conversions whatsoever. If, however, you read/write as a ZonedDateTime, the plugin will automatically convert to and from UTC according to your PostgreSQL session&#39;s timezone.</td>
+<td>ZonedDateTime, OffsetDateTime</td>
+<td>This PostgreSQL type stores only a timestamp, assumed to be in UTC. If you read/write this as an Instant, it will be provided as stored with no timezone conversions whatsoever. If, however, you read/write as a ZonedDateTime or OffsetDateTime, the plugin will automatically convert to and from UTC according to your PostgreSQL session&#39;s timezone.</td>
 </tr>
 <tr>
 <td>date</td>
@@ -131,9 +136,9 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 </tr>
 <tr>
 <td>timetz</td>
-<td>OffsetDateTime</td>
+<td>OffsetTime</td>
 <td></td>
-<td>This is a PostgreSQL type that actually stores a time and an offset (odd and generally not recommended for use by PostgreSQL). As there&#39;s no corresponding NodaTime type, you can read/write this as OffsetDateTime with the date component zeroed out.</td>
+<td>This is a PostgreSQL type that stores a time and an offset.</td>
 </tr>
 <tr>
 <td>interval</td>

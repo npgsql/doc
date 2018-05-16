@@ -74,44 +74,45 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="npgsql-40-preview1">Npgsql 4.0 (preview1)</h1>
+<h1 id="npgsql-40-preview">Npgsql 4.0 (preview)</h1>
 
 <div class="WARNING"><h5>Warning</h5><p>These release notes are for a prerelease version of Npgsql. It is being released to gather community feedback and assess stability, and should not be used in a critical production environment.</p>
 </div>
-<p>The first preview of Npgsql 4.0 is out and available at nuget.org.</p>
-<p>Special thanks goes out to @YohDeadfall, @Brar and @rwasef1830 for their contributions.</p>
+<p>A preview of Npgsql 4.0 is out and available at nuget.org.</p>
+<p>A special thanks goes out to @YohDeadfall. Thanks also to @Brar, @kspeakman, @rwasef1830, @shortspider, @StillLearnin, @uhayat for their valuable contributions.</p>
 <h2 id="high-performance">High performance</h2>
 <p>A concentrated effort has substantially increased Npgsql performance, especially in highly concurrent, low-latency scenarios. Improvements include:</p>
 <ul>
 <li>Rewriting of the connection pool to be lock-free, since contention started to be an issue in highly concurrent, short-lived connection scenarios (<a href="https://github.com/npgsql/npgsql/issues/1839">#1839</a>).</li>
+<li>Significant reduction of allocations through more recycling and other techniques.</li>
 <li>New API for generically providing parameters, avoiding boxing of value type (<a href="https://github.com/npgsql/npgsql/issues/1639">#1639</a>).</li>
-<li>Significant reduction of allocations through recycling and other techniques.</li>
 <li>Avoiding numerous internal async calls where they weren&#39;t needed.</li>
 <li>... many others</li>
 </ul>
-<p>Does the new Npgsql run faster for you? If so, let us know! Is it running slower?? Let us know even more urgently by opening an issue.</p>
+<p>Some first runs show that Linux/.NET Core 2.1/ASP.NET Core/Npgsql may be the fastest mainstream development stack! Please let us know how the new version works for you - both positive and negative comments are welcome.</p>
 <p>If you&#39;re interested in Npgsql performance and haven&#39;t yet seen <a href="../performance.html">the performance page</a>, it&#39;s a good opportunity to check it out (it&#39;s valid also for 3.2 users).</p>
-<h2 id="extensibility">Extensibility</h2>
-<p>Npgsql now provides an extensibility API for adding PostgreSQL type support and changing mappings, opening Npgsql up to new possibilities (<a href="https://github.com/npgsql/npgsql/issues/1475">#1475</a>). Current plugins are:</p>
+<h2 id="improved-spatial-support-postgis">Improved spatial support (PostGIS)</h2>
+<p>Previous versions have allowed basic usage of PostGIS&#39;s spatial types via built-in Npgsql types, which were limited in many ways. Thanks to a new plugin infrastructure, you can now use the <a href="../types/nts.html">Npgsql.NetTopologySuite</a> plugin, which maps PostGIS types to the <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> spatial library&#39;s types. NetTopologySuite&#39;s types are more complete, and support a variety of spatial operations and conversions you can perform after loading your spatial data from PostgreSQL.</p>
+<p>If you prefer to use JSON for your spatial types, the <a href="../types/geojson.html">Npgsql.GeoJSON</a> plugin maps PostGIS types to <a href="https://github.com/GeoJSON-Net/GeoJSON.Net">GeoJSON.NET types</a>. GeoJSON is a standard JSON format for spatial data.</p>
+<p>Finally, if you prefer to use the previous Npgsql types (e.g. <code>PostgisPoint</code>), these are available via the <a href="../types/legacy-postgis.html">Npgsql.LegacyPostgis</a> plugin.</p>
+<p>Thanks to @YohDeadfall for implementing both the NetTopologySuite and GeoJSON plugins.</p>
+<h2 id="nodatime-datetime-support">NodaTime date/time support</h2>
+<p><a href="https://nodatime.org">NodaTime</a> is a powerful alternative to .NET&#39;s built-in date/time types, such as <code>DateTime</code>. The built-in types are flawed in many ways: they have problematic support for timezones, don&#39;t have a date-only or time-only types, and promote problematic programming but not making the right distinctions. If your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="https://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post by Jon Skeet</a>.</p>
+<p>You can now use the new <a href="../types/nodatime.html">Npgsql.NodaTime</a> to have Npgsql map PostgreSQL date/time types to NodaTime types.</p>
+<h2 id="jsonnet">Json.NET</h2>
+<p>Another plugin, <a href="../types/jsonnet.html">Npgsql.Json.NET</a>, works with <a href="https://www.newtonsoft.com/json">Newtonsoft Json.NET</a> to automatically serialize and deserialize PostgreSQL&#39;s <code>jsonb</code> and <code>json</code> types to your objects, providing a seamless database JSON programming experience. Instead of working with strings which you have to serialize and deserialize, Npgsql does it for you.</p>
+<h2 id="other-improvements">Other improvements</h2>
 <ul>
-<li><a href="../types/jsonnet.html">Npgsql.Json.NET</a>: works with <a href="https://www.newtonsoft.com/json">Newtonsoft Json.NET</a> to automatically serialize and deserialize PostgreSQL&#39;s <code>jsonb</code> and <code>json</code> types to your objects, providing a seamless database JSON programming experience.</li>
-<li><a href="../types/nodatime.html">Npgsql.Nodatime</a>: makes Npgsql read and write <a href="https://nodatime.org/">Nodatime</a> types instead of the standard built-in ones (e.g. <code>DateTime</code>). The Nodatime types are safer and address many issues in the built-in types, and are now the recommended way of doing date/time with Npgsql.</li>
-<li>Npgsql.NetTopologySuite (in progress): makes Npgsql map <a href="https://postgis.net/">PostGIS spatial types</a> to <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> instead of the internal types previously provided by Npgsql (these types are available via <a href="../types/legacy-postgis.html">Npgsql.LegacyPostgis</a>). NetTopologySuite is a full-fledged .NET spatial library which makes much more sense for interacting with PostGIS, and also includes converters to other formats and libraries (<a href="http://geojson.org/">GeoJSON</a>, <a href="http://odata.github.io/odata.net/#03-01-define-spatial-property">Microsoft.Spatial</a>). Thanks @YohDeadfall.</li>
-<li><a href="../types/legacy-postgis.html">Npgsql.LegacyPostgis</a>: contains the previous PostGIS support (e.g. <code>PostgisPoint</code>), which has been moved out into its own plugin.</li>
-<li>In addition, a type loading extensibility point has been added to improve support for non-PostgreSQL databases which don&#39;t fully support the PostgreSQL system tables (<a href="https://github.com/npgsql/npgsql/issues/1486">#1486</a>).</li>
-</ul>
-<p>Please give us ideas for more plugins by opening an issue! If you plan to try to write one yourself, be aware that it&#39;s quite low-level (you need to handle PostgreSQL binary encoding of types), and that the API is likely to evolve and break.</p>
-<h2 id="others">Others</h2>
-<ul>
+<li>Fix the binary COPY API to make it interact better with exceptions (<a href="https://github.com/npgsql/npgsql/issues/1646">#1646</a>).</li>
+<li>Npgsql better supports working with enums and composites, even without mapping them, and better supports new types introduced via plugins (<a href="https://github.com/npgsql/npgsql/issues/1792">#1792</a>).</li>
 <li>Better &quot;reflection&quot; capabilities. Continuing work from 3.2, Npgsql now exposes more information about PostgreSQL types, allowing you to dynamically reflect on columns types returned by queries, or required as parameters (<a href="https://github.com/npgsql/npgsql/issues/1276">#1276</a>, <a href="https://github.com/npgsql/npgsql/issues/1779">#1779</a>).</li>
 <li>Derive parameters for queries. You can now also use <code>NpgsqlCommandBuilder</code> to dynamically understand which parameters and types are required for arbitrary queries (previously supported only for functions) (<a href="https://github.com/npgsql/npgsql/pull/1698">#1698</a>, thanks @Brar!).</li>
-<li>Npgsql better supports working with enums and composites, even without mapping them, and better supports new types introduced via plugins (<a href="https://github.com/npgsql/npgsql/issues/1792">#1792</a>).</li>
-<li>Fix the binary COPY API to make it interact better with exceptions (<a href="https://github.com/npgsql/npgsql/issues/1646">#1646</a>).</li>
 <li>Allow reading a single character from a PostgreSQL text column (<a href="https://github.com/npgsql/npgsql/issues/1188">#1188</a>).</li>
+<li>Decimals read from PostgreSQL will now have the correct scale (<a href="https://github.com/npgsql/npgsql/pull/1925">#1925</a>). Thanks @StillLearnin and @YohDeadfall.</li>
 </ul>
 <p>In addition to more documentation, several blog posts are planned to explain the above in more details (to be announced on <a href="https://twitter.com/shayrojansky">@shayrojansky</a>).</p>
-<h2 id="breaking-changes-from-32">Breaking Changes from 3.2</h2>
-<div class="CAUTION"><h5>Caution</h5><p>The API for binary import (COPY IN) has changed substantially in a breaking way, and code from 3.2 will <em>not</em> work as-is on 3.3.</p>
+<h2 id="breaking-changes-from-32">Breaking changes from 3.2</h2>
+<div class="CAUTION"><h5>Caution</h5><p>The API for binary import (COPY IN) has changed substantially in a breaking way, and code from 3.2 will <em>not</em> work as-is on 4.0.</p>
 <p>You must now call <code>NpgsqlBinaryImporter.Complete()</code> to save your imported data; not doing so will roll the operation back. <code>NpgsqlBinaryImporter.Cancel()</code> has been removed - simply closing/disposing the importer will implicitly cancel the import. This is similar to how <code>TransactionScope</code> works and is necessary to prevent accidental commit of data on exception. See <a href="https://github.com/npgsql/npgsql/issues/1646">#1646</a>.</p>
 </div>
 <ul>
