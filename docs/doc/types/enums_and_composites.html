@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Accessing PostgreSQL Enums and Composites | Npgsql Documentation </title>
+    <title>PostgreSQL enums and composites | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Accessing PostgreSQL Enums and Composites | Npgsql Documentation ">
+    <meta name="title" content="PostgreSQL enums and composites | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -74,26 +74,32 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="accessing-postgresql-enums-and-composites">Accessing PostgreSQL Enums and Composites</h1>
+<h1 id="postgresql-enums-and-composites">PostgreSQL enums and composites</h1>
 
 <p>PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/datatype-enum.html">enum types</a> and <a href="http://www.postgresql.org/docs/current/static/rowtypes.html">composite types</a> as database columns, and Npgsql supports reading and writing these. This allows you to seamlessly read and write enum and composite values to the database without worrying about conversions.</p>
-<div class="NOTE"><h5>Note</h5><p>If you&#39;re using version 3.2, skip to &quot;Mapping your CLR Types&quot; below.</p>
-</div>
-<p>As of version 4.0 (currently in preview), you&#39;re no longer required to map your enums and composites in order to use them. Here&#39;s a quick code sample to get you started:</p>
+<h1 id="mapping-your-clr-types">Mapping your CLR types</h1>
+<p>The recommended way to work with enums and composites is to set up a mapping for your CLR types. Doing so provides the following advantages:</p>
+<p>o set up a global mapping for all your connections, put this code before your first open:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum&quot;);
+NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite&quot;);
+</code></pre><p>This sets up a mapping between your CLR types <code>SomeEnum</code> and <code>SomeType</code> to the PostgreSQL types <code>some_enum</code> and <code>some_composite</code>.</p>
+<p>If you don&#39;t want to set up a mapping for all your connections, you can set it up one connection only:</p>
+<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
+conn.TypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum&quot;);
+conn.TypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite&quot;);
+</code></pre><p>After mapping, you can read and write your CLR types as usual:</p>
 <pre><code class="lang-c#">// Writing
 using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum, some_composite) VALUES (@p1, @p2)&quot;, Conn))
 {
     cmd.Parameters.Add(new NpgsqlParameter
     {
         ParameterName = &quot;some_enum&quot;,
-        Value = SomeEnum.Good,
-        DataTypeName = &quot;pg_enum_type&quot;
+        Value = SomeEnum.Good
     });
     cmd.Parameters.Add(new NpgsqlParameter
     {
         ParameterName = &quot;some_composite&quot;,
-        Value = new SomeType { ... },
-        DataTypeName = &quot;pg_composite_type&quot;
+        Value = new SomeType { ... }
     });
     cmd.ExecuteNonQuery();
 }
@@ -105,24 +111,8 @@ using (var reader = cmd.ExecuteReader()) {
     var enumValue = reader.GetFieldValue&lt;SomeEnum&gt;(0);
     var compositeValue = reader.GetFieldValue&lt;SomeType&gt;(1);
 }
-</code></pre><p>As long as you CLR types <code>SomeEnum</code> and <code>SomeType</code> contain fields/properties which correspond to the PostgreSQL type being read/written, everything will work as expected. Note that the default name translator is used (see name translation below).</p>
-<p>Note that your PostgreSQL enum and composites types (<code>pg_enum_type</code> and <code>pg_composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
-<h2 id="mapping-your-clr-types">Mapping your CLR Types</h2>
-<p>It is still possible, and in some cases necessary, to set up an explicit mapping for your CLR types. Doing so provides the following advantages:</p>
-<ol>
-<li>You know longer need to specify the <code>DataTypeName</code> property on your parameter. Npgsql will infer the data type from your provided CLR type.</li>
-<li>Untyped read methods such as <code>NpgsqlDataReader.GetValue()</code> will return your CLR type, instead of a dynamic object (see below). In general you should be using the typed <code>NpgsqlDataReader.GetFieldValue()</code>, so this shouldn&#39;t be important.</li>
-<li>You can customize the name mapping on a per-type basis (see below).</li>
-</ol>
-<p>To set up a global mapping for all your connections, put this code before your first open:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum&quot;);
-NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite&quot;);
-</code></pre><p>This sets up a mapping between your CLR types <code>SomeEnum</code> and <code>SomeType</code> to the PostgreSQL types <code>some_enum</code> and <code>some_composite</code>.</p>
-<p>If you don&#39;t want to set up a mapping for all your connections, you can set it up one connection only:</p>
-<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
-conn.TypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum&quot;);
-conn.TypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite&quot;);
-</code></pre><h2 id="name-translation">Name Translation</h2>
+</code></pre><p>Note that your PostgreSQL enum and composites types (<code>pg_enum_type</code> and <code>pg_composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
+<h1 id="name-translation">Name Translation</h1>
 <p>CLR type and field names are usually camelcase (e.g. <code>SomeType</code>), whereas in PostgreSQL they are snake_case (e.g. <code>some_type</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifyin a name translator when setting up a mapping:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_type&quot;, new NpgsqlNullNameTranslator());
 </code></pre><p>Finally, you may control mappings on a field-by-field basis via the <code>[PgName]</code> attribute. This will override the name translator.</p>
@@ -134,9 +124,7 @@ enum SomeEnum {
    [PgName(&quot;sad&quot;)]
    Bad
 }
-</code></pre><h2 id="reading-and-writing-dynamically-without-clr-types">Reading and Writing Dynamically (without CLR types)</h2>
-<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
-</div>
+</code></pre><h1 id="reading-and-writing-dynamically-without-clr-types">Reading and Writing Dynamically (without CLR types)</h1>
 <p>In some cases, it may be desirable to interact with PostgreSQL enums and composites without a pre-existing CLR type - this is useful mainly if your program doesn&#39;t know the database schema and types in advance, and needs to interact with any enum/composite type. Note that using CLR types is safer and faster (for composites), and should be preferred when possible.</p>
 <p>Enums can be read and written as simple strings:</p>
 <pre><code class="lang-c#">// Writing enum as string
@@ -181,7 +169,8 @@ using (var reader = cmd.ExecuteReader()) {
     Console.WriteLine(compositeValue.Foo);
     Console.WriteLine(compositeValue.Bar);
 }
-</code></pre></article>
+</code></pre><p>As long as you CLR types <code>SomeEnum</code> and <code>SomeType</code> contain fields/properties which correspond to the PostgreSQL type being read/written, everything will work as expected. Note that the default name translator is used (see the section about name translation).</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

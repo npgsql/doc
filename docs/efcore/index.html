@@ -108,7 +108,7 @@
     public DbSet&lt;BlogPost&gt; BlogPosts { get; set; }     
 }
 </code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
-<p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, add a dependency on Npgsql.EntityFrameworkCore.PostgreSQL.Design. Then, execute the following if you&#39;re using dotnet cli:</p>
+<p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, execute the following if you&#39;re using dotnet cli:</p>
 <pre><code class="lang-bash">dotnet ef dbcontext scaffold &quot;Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword&quot; Npgsql.EntityFrameworkCore.PostgreSQL
 </code></pre><p>Or with Powershell:</p>
 <pre><code class="lang-powershell">Scaffold-DbContext &quot;Host=localhost;Database=mydatabase;Username=myuser;Password=mypassword&quot; Npgsql.EntityFrameworkCore.PostgreSQL

@@ -96,37 +96,37 @@
 </thead>
 <tbody>
 <tr>
-<td>bool</td>
+<td>boolean</td>
 <td>bool</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>int2</td>
+<td>smallint</td>
 <td>short</td>
 <td></td>
 <td>byte, sbyte, int, long, float, double, decimal</td>
 </tr>
 <tr>
-<td>int4</td>
+<td>integer</td>
 <td>int</td>
 <td></td>
 <td>byte, short, long, float, double, decimal</td>
 </tr>
 <tr>
-<td>int8</td>
+<td>bigint</td>
 <td>long</td>
 <td></td>
 <td>long, byte, short, int, float, double, decimal</td>
 </tr>
 <tr>
-<td>float4</td>
+<td>real</td>
 <td>float</td>
 <td></td>
 <td>double</td>
 </tr>
 <tr>
-<td>float8</td>
+<td>double precision</td>
 <td>double</td>
 <td></td>
 <td></td>
@@ -150,13 +150,13 @@
 <td>char[]</td>
 </tr>
 <tr>
-<td>varchar</td>
+<td>character varying</td>
 <td>string</td>
 <td></td>
 <td>char[]</td>
 </tr>
 <tr>
-<td>bpchar</td>
+<td>character</td>
 <td>string</td>
 <td></td>
 <td>char[]</td>
@@ -189,13 +189,13 @@
 <td>point</td>
 <td>NpgsqlPoint</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>lseg</td>
 <td>NpgsqlLSeg</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>path</td>
@@ -213,19 +213,19 @@
 <td>line</td>
 <td>NpgsqlLine</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>circle</td>
 <td>NpgsqlCircle</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>box</td>
 <td>NpgsqlBox</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>bit(1)</td>
@@ -240,7 +240,7 @@
 <td></td>
 </tr>
 <tr>
-<td>varbit</td>
+<td>bit varying</td>
 <td>BitArray</td>
 <td></td>
 <td></td>
@@ -249,31 +249,31 @@
 <td>hstore</td>
 <td>IDictionary&lt;string, string&gt;</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>uuid</td>
 <td>Guid</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>cidr</td>
-<td>NpgsqlInet</td>
+<td>ValueTuple&lt;IPAddress, int&gt;</td>
 <td></td>
-<td>string</td>
+<td>NpgsqlInet</td>
 </tr>
 <tr>
 <td>inet</td>
 <td>IPAddress</td>
+<td>ValueTuple&lt;IPAddress, int&gt;</td>
 <td>NpgsqlInet</td>
-<td>string</td>
 </tr>
 <tr>
 <td>macaddr</td>
 <td>PhysicalAddress</td>
 <td></td>
-<td>string</td>
+<td></td>
 </tr>
 <tr>
 <td>tsquery</td>
@@ -306,7 +306,7 @@
 <td></td>
 </tr>
 <tr>
-<td>timestamptz</td>
+<td>timestamp with time zone</td>
 <td>DateTime</td>
 <td>NpgsqlDateTime</td>
 <td>DateTimeOffset</td>
@@ -318,7 +318,7 @@
 <td></td>
 </tr>
 <tr>
-<td>timetz</td>
+<td>time with time zone</td>
 <td>DateTimeOffset</td>
 <td></td>
 <td>DateTimeOffset, DateTime, TimeSpan</td>
@@ -385,7 +385,7 @@
 </tr>
 <tr>
 <td>range subtypes</td>
-<td>NpgsqlRange<telement></telement></td>
+<td>NpgsqlRange&lt;TElement&gt;</td>
 <td></td>
 <td></td>
 </tr>
@@ -428,92 +428,92 @@
 <tr>
 <td>Boolean</td>
 <td>Boolean</td>
+<td>boolean</td>
 <td>bool</td>
-<td>bool, IConvertible</td>
 </tr>
 <tr>
 <td>Smallint</td>
 <td>Int16</td>
-<td>int2</td>
-<td>short, IConvertible</td>
+<td>smallint</td>
+<td>short</td>
 </tr>
 <tr>
 <td>Integer</td>
 <td>Int32</td>
-<td>int4</td>
-<td>int, IConvertible</td>
+<td>integer</td>
+<td>int</td>
 </tr>
 <tr>
 <td>Bigint</td>
 <td>Int64</td>
-<td>int8</td>
-<td>long, IConvertible</td>
+<td>bigint</td>
+<td>long</td>
 </tr>
 <tr>
 <td>Real</td>
 <td>Single</td>
-<td>float4</td>
-<td>float, IConvertible</td>
+<td>real</td>
+<td>float</td>
 </tr>
 <tr>
 <td>Double</td>
 <td>Double</td>
-<td>float8</td>
-<td>double, IConvertible</td>
+<td>double precision</td>
+<td>double</td>
 </tr>
 <tr>
 <td>Numeric</td>
 <td>Decimal, VarNumeric</td>
 <td>numeric</td>
-<td>decimal, IConvertible</td>
+<td>decimal</td>
 </tr>
 <tr>
 <td>Money</td>
 <td>Currency</td>
 <td>money</td>
-<td>decimal, IConvertible</td>
+<td>decimal</td>
 </tr>
 <tr>
 <td>Text</td>
 <td>String, StringFixedLength, AnsiString, AnsiStringFixedLength</td>
 <td>text</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Varchar</td>
 <td></td>
-<td>varchar</td>
-<td>string, char[], char, IConvertible</td>
+<td>character varying</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Char</td>
 <td></td>
-<td>char</td>
-<td>string, char[], char, IConvertible</td>
+<td>character</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Citext</td>
 <td></td>
 <td>citext</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Json</td>
 <td></td>
 <td>json</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Jsonb</td>
 <td></td>
 <td>jsonb</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Xml</td>
 <td></td>
 <td>xml</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>Point</td>
@@ -566,7 +566,7 @@
 <tr>
 <td>Varbit</td>
 <td></td>
-<td>varbit</td>
+<td>bit varying</td>
 <td>BitArray, bool, string</td>
 </tr>
 <tr>
@@ -579,19 +579,19 @@
 <td>Uuid</td>
 <td></td>
 <td>uuid</td>
-<td>Guid, string</td>
+<td>Guid</td>
 </tr>
 <tr>
 <td>Cidr</td>
 <td></td>
 <td>cidr</td>
-<td>IPAddress, NpgsqlInet</td>
+<td>ValueTuple&lt;IPAddress, int&gt;, IPAddress, NpgsqlInet</td>
 </tr>
 <tr>
 <td>Inet</td>
 <td></td>
 <td>inet</td>
-<td>IPAddress, NpgsqlInet</td>
+<td>ValueTuple&lt;IPAddress, int&gt;, IPAddress, NpgsqlInet</td>
 </tr>
 <tr>
 <td>MacAddr</td>
@@ -615,61 +615,61 @@
 <td>Date</td>
 <td>Date</td>
 <td>date</td>
-<td>DateTime, NpgsqlDate, IConvertible</td>
+<td>DateTime, NpgsqlDate</td>
 </tr>
 <tr>
 <td>Interval</td>
 <td></td>
 <td>interval</td>
-<td>TimeSpan, NpgsqlTimeSpan, string</td>
+<td>TimeSpan, NpgsqlTimeSpan</td>
 </tr>
 <tr>
 <td>Timestamp</td>
 <td>DateTime, DateTime2</td>
 <td>timestamp</td>
-<td>DateTime, DateTimeOffset, NpgsqlDateTime, IConvertible</td>
+<td>DateTime, DateTimeOffset, NpgsqlDateTime</td>
 </tr>
 <tr>
-<td>TimestampTZ</td>
+<td>TimestampTz</td>
 <td>DateTimeOffset</td>
-<td>timestamptz</td>
-<td>DateTime, DateTimeOffset, NpgsqlDateTime, IConvertible</td>
+<td>timestamp with time zone</td>
+<td>DateTime, DateTimeOffset, NpgsqlDateTime</td>
 </tr>
 <tr>
 <td>Time</td>
 <td>Time</td>
 <td>time</td>
-<td>TimeSpan, string</td>
+<td>TimeSpan</td>
 </tr>
 <tr>
-<td>TimeTZ</td>
+<td>TimeTz</td>
 <td></td>
-<td>timetz</td>
+<td>time with time zone</td>
 <td>DateTimeOffset, DateTime, TimeSpan</td>
 </tr>
 <tr>
 <td>Bytea</td>
 <td>Binary</td>
 <td>bytea</td>
-<td>byte[], ArraySegment<byte></byte></td>
+<td>byte[], ArraySegment&lt;byte&gt;</td>
 </tr>
 <tr>
 <td>Oid</td>
 <td></td>
 <td>oid</td>
-<td>uint, IConvertible</td>
+<td>uint</td>
 </tr>
 <tr>
 <td>Xid</td>
 <td></td>
 <td>xid</td>
-<td>uint, IConvertible</td>
+<td>uint</td>
 </tr>
 <tr>
 <td>Cid</td>
 <td></td>
 <td>cid</td>
-<td>uint, IConvertible</td>
+<td>uint</td>
 </tr>
 <tr>
 <td>Oidvector</td>
@@ -681,13 +681,13 @@
 <td>Name</td>
 <td></td>
 <td>name</td>
-<td>string, char[], char, IConvertible</td>
+<td>string, char[], char</td>
 </tr>
 <tr>
 <td>InternalChar</td>
 <td></td>
 <td>(internal) char</td>
-<td>byte, IConvertible</td>
+<td>byte</td>
 </tr>
 <tr>
 <td>Composite</td>
@@ -699,7 +699,7 @@
 <td>Range | (other NpgsqlDbType)</td>
 <td></td>
 <td>range types</td>
-<td>NpgsqlRange<telement></telement></td>
+<td>NpgsqlRange&lt;TElement&gt;</td>
 </tr>
 <tr>
 <td>Enum</td>
@@ -711,7 +711,7 @@
 <td>Array | (other NpgsqlDbType)</td>
 <td></td>
 <td>array types</td>
-<td>Array, IList<t>, IList</t></td>
+<td>Array, IList&lt;T&gt;, IList</td>
 </tr>
 </tbody>
 </table>
@@ -727,35 +727,35 @@
 <tbody>
 <tr>
 <td>bool</td>
-<td>bool</td>
+<td>boolean</td>
 </tr>
 <tr>
 <td>byte</td>
-<td>int2</td>
+<td>smallint</td>
 </tr>
 <tr>
 <td>sbyte</td>
-<td>int2</td>
+<td>smallint</td>
 </tr>
 <tr>
 <td>short</td>
-<td>int2</td>
+<td>smallint</td>
 </tr>
 <tr>
 <td>int</td>
-<td>int4</td>
+<td>integer</td>
 </tr>
 <tr>
 <td>long</td>
-<td>int8</td>
+<td>bigint</td>
 </tr>
 <tr>
 <td>float</td>
-<td>float4</td>
+<td>real</td>
 </tr>
 <tr>
 <td>double</td>
-<td>float8</td>
+<td>double precision</td>
 </tr>
 <tr>
 <td>decimal</td>
@@ -803,7 +803,7 @@
 </tr>
 <tr>
 <td>BitArray</td>
-<td>varbit</td>
+<td>bit varying</td>
 </tr>
 <tr>
 <td>Guid</td>
@@ -834,24 +834,16 @@
 <td>date</td>
 </tr>
 <tr>
-<td>NpgsqlDateTime(Kind=Local,Unspecified)</td>
+<td>NpgsqlDateTime</td>
 <td>timestamp</td>
 </tr>
 <tr>
-<td>NpgsqlDateTime(Kind=Utc)</td>
-<td>timestamptz</td>
-</tr>
-<tr>
-<td>DateTime(Kind=Local,Unspecified)</td>
+<td>DateTime</td>
 <td>timestamp</td>
-</tr>
-<tr>
-<td>DateTime(Kind=Utc)</td>
-<td>timestamptz</td>
 </tr>
 <tr>
 <td>DateTimeOffset</td>
-<td>timestamptz</td>
+<td>timestamp with time zone</td>
 </tr>
 <tr>
 <td>TimeSpan</td>
@@ -866,7 +858,7 @@
 <td>composite types</td>
 </tr>
 <tr>
-<td>NpgsqlRange<telement></telement></td>
+<td>NpgsqlRange&lt;TElement&gt;</td>
 <td>range types</td>
 </tr>
 <tr>

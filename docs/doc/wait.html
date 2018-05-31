@@ -97,6 +97,10 @@ is still delivered via the <code>Notification</code> event as before.</p>
 conn.Open();
 conn.Notification += (o, e) =&gt; Console.WriteLine(&quot;Received notification&quot;);
 
+using (var cmd = new NpgsqlCommand(&quot;LISTEN channel_name&quot;, conn)) {
+  cmd.ExecuteNonQuery();
+}
+
 while (true) {
   conn.Wait();   // Thread will block here
 }

@@ -74,12 +74,10 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="npgsql-40-preview">Npgsql 4.0 (preview)</h1>
+<h1 id="npgsql-40">Npgsql 4.0</h1>
 
-<div class="WARNING"><h5>Warning</h5><p>These release notes are for a prerelease version of Npgsql. It is being released to gather community feedback and assess stability, and should not be used in a critical production environment.</p>
-</div>
-<p>A preview of Npgsql 4.0 is out and available at nuget.org.</p>
-<p>A special thanks goes out to @YohDeadfall. Thanks also to @Brar, @kspeakman, @rwasef1830, @shortspider, @StillLearnin, @uhayat for their valuable contributions.</p>
+<p>Npgsql 4.0 is out and available at nuget.org. This is a major version with significant changes, upgrade with care, consult the breaking changes section below and test well before deploying to production.</p>
+<p>A special thanks goes out to @YohDeadfall for his many contributions and reviews. Thanks also (alphabetically) to @austindrenski, @Brar, @kspeakman, @rwasef1830, @shortspider, @StillLearnin, @uhayat for their valuable contributions.</p>
 <h2 id="high-performance">High performance</h2>
 <p>A concentrated effort has substantially increased Npgsql performance, especially in highly concurrent, low-latency scenarios. Improvements include:</p>
 <ul>
@@ -112,6 +110,13 @@
 </ul>
 <p>In addition to more documentation, several blog posts are planned to explain the above in more details (to be announced on <a href="https://twitter.com/shayrojansky">@shayrojansky</a>).</p>
 <h2 id="breaking-changes-from-32">Breaking changes from 3.2</h2>
+<div class="CAUTION"><h5>Caution</h5><p>The date/time behavior has changed in the following ways:</p>
+<ol>
+<li><code>Datetime</code> is <em>always</em> sent as <code>timestamp</code> by default, regardless of its kind. You can still specify <code>NpgsqlDbType.TimestampTz</code>, in which case local <code>DateTime</code> gets converted to UTC before sending.</li>
+<li>When reading <code>timestamptz</code> as a <code>DateTimeOffset</code>, the machine local offset will be used. Previously a <code>DateTimeOffset</code> in UTC was returned.</li>
+<li>It is no longer possible to read or write <code>DateTimeOffset</code> as <code>timestamp</code>, only as <code>timestamptz</code>.</li>
+</ol>
+</div>
 <div class="CAUTION"><h5>Caution</h5><p>The API for binary import (COPY IN) has changed substantially in a breaking way, and code from 3.2 will <em>not</em> work as-is on 4.0.</p>
 <p>You must now call <code>NpgsqlBinaryImporter.Complete()</code> to save your imported data; not doing so will roll the operation back. <code>NpgsqlBinaryImporter.Cancel()</code> has been removed - simply closing/disposing the importer will implicitly cancel the import. This is similar to how <code>TransactionScope</code> works and is necessary to prevent accidental commit of data on exception. See <a href="https://github.com/npgsql/npgsql/issues/1646">#1646</a>.</p>
 </div>
@@ -122,6 +127,7 @@
 <li>The <code>Min Pool Size</code> parameter will no longer make the pool create new connections internally - it will only have an effect on how many connections are pruned. Previously, in various points the pool would check if the current number of connections was below <code>Min Pool Size</code>, and if so, automatically created new ones - this no longer happens.</li>
 <li>Parameter types have become more strict. Previous versions allowed to you pass arbitrary value types, such as writing CLR string to int columns, or anything that implemented IConvertible. Although some implicit conversions are still supported (e.g. long -&gt; int, short -&gt; int), some have been removed.</li>
 <li>Column names are no longer case-insensitive and must be specified exactly as retrieved from the database (e.g. <code>NpgsqlDataReader.GetOrdinal()</code>).</li>
+<li>Data type names returned from <code>NpgsqlDataReader.GetDataTypeName()</code> and other APIs are now more standards-conforming (e.g. <code>integer[]</code> instead of <code>_int4</code>), and properly include type modifiers (e.g. <code>character varying(10)</code>) (<a href="https://github.com/npgsql/npgsql/issues/1919">#1919</a>).</li>
 <li><code>NpgsqlParameter.EnumType</code> and <code>NpgsqlParameter.SpecificType</code> have been removed. See <a href="../types/enums_and_composites.html">Composites and Enums</a> for more details.</li>
 <li>Parameter names are no longer trimmed, set your names to the exact parameter name specified in your SQL.</li>
 <li>If a parameter&#39;s name isn&#39;t set, it will no longer default to Parameter1, Parameter2, etc.</li>
@@ -130,6 +136,7 @@
 <li>If you are reading tables as composites (<a href="https://github.com/npgsql/npgsql/issues/990">#990</a>), you will have to add the new <code>Load Table Composites</code> to your connection string.</li>
 <li><code>NpgsqlConnection.GetSchema()</code> will no longer return system tables (i.e. tables in schemas <code>pg_catalog</code> and <code>information_schema</code>), <a href="https://github.com/npgsql/npgsql/issues/1831">#1831</a>.</li>
 <li>You may no longer have multiple streams or text readers open on a reader (this was previously supported with non-sequential readers). Accessing a new column closes any open stream or text reader.</li>
+<li>The <code>DateTimeOffset</code> instances returned for PostgreSQL <code>timetz</code> now have their date set to 0001-01-02 instead of the previous 0001-01-01 (<a href="https://github.com/npgsql/npgsql/pull/1924">#1924</a>).</li>
 </ul>
 </article>
           </div>

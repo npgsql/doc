@@ -76,8 +76,6 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="nodatime-type-plugin">NodaTime Type Plugin</h1>
 
-<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
-</div>
 <p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
 <h1 id="what-is-nodatime">What is NodaTime?</h1>
 <p>By default, <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">the PostgreSQL date/time types</a> are mapped to the built-in .NET types (<code>DateTime</code>, <code>TimeSpan</code>). Unfortunately, these built-in types are flawed in many ways. The <a href="http://nodatime.org/">NodaTime library</a> was created to solve many of these problems, and if your application handles dates and times in anything but the most basic way, you should consider using it. To learn more <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">read this blog post by Jon Skeet</a>.</p>
@@ -117,7 +115,7 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 <td>It&#39;s common to store UTC timestamps in databases - you can simply do so and read/write Instant values. You also have the option of readin/writing LocalDateTime, which is a date/time with no information about timezones; this makes sense if you&#39;re storing the timezone in a different column and want to read both into a NodaTime ZonedDateTime.</td>
 </tr>
 <tr>
-<td>timestamptz</td>
+<td>timestamp with time zone</td>
 <td>Instant</td>
 <td>ZonedDateTime, OffsetDateTime</td>
 <td>This PostgreSQL type stores only a timestamp, assumed to be in UTC. If you read/write this as an Instant, it will be provided as stored with no timezone conversions whatsoever. If, however, you read/write as a ZonedDateTime or OffsetDateTime, the plugin will automatically convert to and from UTC according to your PostgreSQL session&#39;s timezone.</td>
@@ -135,7 +133,7 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 <td>A simple time-of-day, with no timezone or offset information.</td>
 </tr>
 <tr>
-<td>timetz</td>
+<td>time with time zone</td>
 <td>OffsetTime</td>
 <td></td>
 <td>This is a PostgreSQL type that stores a time and an offset.</td>
@@ -150,7 +148,7 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 </table>
 <h2 id="additional-notes">Additional Notes</h2>
 <ul>
-<li>The plugin automatically converts <code>timestamptz</code> to and from your PostgreSQL session&#39;s configured timezone; this is unlike Npgsql&#39;s default mapping which uses your machine&#39;s local timezone instead. The NodaTime plugin behavior matches the regular PostgreSQL behavior when interacting with <code>timestamptz</code> values.</li>
+<li>The plugin automatically converts <code>timestamp with time zone</code> to and from your PostgreSQL session&#39;s configured timezone; this is unlike Npgsql&#39;s default mapping which uses your machine&#39;s local timezone instead. The NodaTime plugin behavior matches the regular PostgreSQL behavior when interacting with <code>timestamptz</code> values.</li>
 <li>To read and write <code>timestamp</code> or <code>date</code> infinity values, set the <code>Convert Infinity DateTime</code> connection string parameter to true and read/write MaxValue/MinValue.</li>
 </ul>
 </article>

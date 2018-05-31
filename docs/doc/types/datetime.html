@@ -76,7 +76,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="date-and-time-handling">Date and Time Handling</h1>
 
-<div class="NOTE"><h5>Note</h5><p>Since 4.0 (currently in preview) the recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>.</p>
+<div class="NOTE"><h5>Note</h5><p>Since 4.0 the recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>.</p>
 </div>
 <p>Handling date and time values usually isn&#39;t hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates.
 It&#39;s worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize
@@ -165,44 +165,24 @@ Accordingly, your DateTime&#39;s Kind will determine the the timezone sent to th
 </thead>
 <tbody>
 <tr>
-<td>DateTime(Kind=UTC)</td>
-<td>timestamp</td>
-<td>Send as-is</td>
-</tr>
-<tr>
-<td>DateTime(Kind=Local)</td>
+<td>DateTime</td>
 <td>timestamp (default)</td>
 <td>Send as-is</td>
 </tr>
 <tr>
-<td>DateTime(Kind=Unspecified)</td>
-<td>timestamp (default)</td>
-<td>Send as-is</td>
-</tr>
-<tr>
-<td>DateTimeOffset</td>
-<td>timestamp</td>
-<td>Strip offset, send as-is</td>
-</tr>
-<tr>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>DateTime(Kind=UTC)</td>
-<td>timestamptz (default)</td>
+<td>DateTime(Kind=UTC,Unspecified)</td>
+<td>timestamptz</td>
 <td>Send as-is</td>
 </tr>
 <tr>
 <td>DateTime(Kind=Local)</td>
 <td>timestamptz</td>
 <td>Convert to UTC locally before sending</td>
-</tr>
-<tr>
-<td>DateTime(Kind=Unspecified)</td>
-<td>timestamptz</td>
-<td>Send as-is</td>
 </tr>
 <tr>
 <td>DateTimeOffset</td>
@@ -262,11 +242,6 @@ Accordingly, your DateTime&#39;s Kind will determine the the timezone sent to th
 <td>Kind=Unspecified</td>
 </tr>
 <tr>
-<td>timestamp</td>
-<td>DateTimeOffset</td>
-<td>Should throw an exception?</td>
-</tr>
-<tr>
 <td></td>
 <td></td>
 <td></td>
@@ -274,12 +249,12 @@ Accordingly, your DateTime&#39;s Kind will determine the the timezone sent to th
 <tr>
 <td>timestamptz</td>
 <td>DateTime (default)</td>
-<td>Kind=Local (according to system tz)</td>
+<td>Kind=Local (according to system timezone)</td>
 </tr>
 <tr>
 <td>timestamptz</td>
 <td>DateTimeOffset</td>
-<td><strong>Offset=UTC</strong></td>
+<td>In local timezone offset</td>
 </tr>
 <tr>
 <td></td>

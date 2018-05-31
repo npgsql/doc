@@ -80,7 +80,8 @@
   
   <h1 id="NpgsqlTypes_NpgsqlRange_1" data-uid="NpgsqlTypes.NpgsqlRange`1" class="text-break">Struct NpgsqlRange&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents a PostgreSQL range type.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div classs="implements">
     <h5>Implements</h5>
@@ -115,10 +116,14 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td></td>
+        <td><p>The element type of the values in the range.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="NpgsqlTypes_NpgsqlRange_1_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">https://www.postgresql.org/docs/current/static/rangetypes.html</a></p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
@@ -126,11 +131,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0__0_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2C%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L94">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L168">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0__0_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,`0)">NpgsqlRange(T, T)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> with inclusive and definite bounds.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -149,12 +155,14 @@
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">lowerBound</span></td>
-        <td></td>
+        <td><p>The lower bound of the range.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">upperBound</span></td>
-        <td></td>
+        <td><p>The upper bound of the range.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -163,11 +171,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean__0_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2CSystem.Boolean%2C%600%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L97">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L178">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean__0_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,`0,System.Boolean)">NpgsqlRange(T, Boolean, T, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> with definite bounds.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -186,22 +195,26 @@
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">lowerBound</span></td>
-        <td></td>
+        <td><p>The lower bound of the range.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">lowerBoundIsInclusive</span></td>
-        <td></td>
+        <td><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">upperBound</span></td>
-        <td></td>
+        <td><p>The upper bound of the range.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">upperBoundIsInclusive</span></td>
-        <td></td>
+        <td><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -210,11 +223,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean_System_Boolean__0_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2CSystem.Boolean%2CSystem.Boolean%2C%600%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L100">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L190">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean_System_Boolean__0_System_Boolean_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,System.Boolean,`0,System.Boolean,System.Boolean)">NpgsqlRange(T, Boolean, Boolean, T, Boolean, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -233,53 +247,59 @@
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">lowerBound</span></td>
-        <td></td>
+        <td><p>The lower bound of the range.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">lowerBoundIsInclusive</span></td>
-        <td></td>
+        <td><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">lowerBoundInfinite</span></td>
-        <td></td>
+        <td><p>True if the lower bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">T</span></td>
         <td><span class="parametername">upperBound</span></td>
-        <td></td>
+        <td><p>The upper bound of the range.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">upperBoundIsInclusive</span></td>
-        <td></td>
+        <td><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">upperBoundInfinite</span></td>
-        <td></td>
+        <td><p>True if the upper bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
+  <h3 id="fields">Fields
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Empty.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Empty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L36">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L119">View Source</a>
   </span>
-  <a id="NpgsqlTypes_NpgsqlRange_1_Empty_" data-uid="NpgsqlTypes.NpgsqlRange`1.Empty*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_Empty" data-uid="NpgsqlTypes.NpgsqlRange`1.Empty">Empty</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Represents the empty range. This field is read-only.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static NpgsqlRange&lt;T&gt; Empty { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static readonly NpgsqlRange&lt;T&gt; Empty</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -294,16 +314,19 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="properties">Properties
+  </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_IsEmpty.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.IsEmpty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L92">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L161">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_IsEmpty_" data-uid="NpgsqlTypes.NpgsqlRange`1.IsEmpty*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_IsEmpty" data-uid="NpgsqlTypes.NpgsqlRange`1.IsEmpty">IsEmpty</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>True if the range is empty; otherwise, false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -329,11 +352,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBound.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBound%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L39">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L124">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBound_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBound*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBound" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBound">LowerBound</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The lower bound of the range. Only valid when <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html#NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite">LowerBoundInfinite</a> is false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -359,11 +383,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBoundInfinite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L68">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L151">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundInfinite*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundInfinite">LowerBoundInfinite</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>True if the lower bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -389,11 +414,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBoundIsInclusive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L44">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L141">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundIsInclusive*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundIsInclusive">LowerBoundIsInclusive</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>True if the lower bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -419,11 +445,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBound.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBound%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L40">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L130">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBound_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBound*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBound" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBound">UpperBound</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The upper bound of the range. Only valid when <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html#NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite">UpperBoundInfinite</a> is false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -449,11 +476,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBoundInfinite%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L80">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L156">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundInfinite*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundInfinite">UpperBoundInfinite</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>True if the upper bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -479,11 +507,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBoundIsInclusive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L56">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L146">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundIsInclusive*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundIsInclusive">UpperBoundIsInclusive</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -511,7 +540,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Equals_NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Equals(NpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L138">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L327">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_Equals_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_Equals_NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(NpgsqlTypes.NpgsqlRange{`0})">Equals(NpgsqlRange&lt;T&gt;)</h4>
@@ -558,7 +587,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Equals_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L136">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L324">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_Equals_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(System.Object)">Equals(Object)</h4>
@@ -607,7 +636,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L140">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L343">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlRange`1.GetHashCode*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_GetHashCode" data-uid="NpgsqlTypes.NpgsqlRange`1.GetHashCode">GetHashCode()</h4>
@@ -636,10 +665,94 @@
   <div><span class="xref">System.ValueType.GetHashCode()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Parse_System_String_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Parse(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L392">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlRange_1_Parse_" data-uid="NpgsqlTypes.NpgsqlRange`1.Parse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlRange`1.Parse(System.String)">Parse(String)</h4>
+  <div class="markdown level1 summary"><p>Parses the well-known text representation of a PostgreSQL range type into a <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlRange&lt;T&gt; Parse(string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>A PosgreSQL range type in a well-known text format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> represented by the <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">https://www.postgresql.org/docs/current/static/rangetypes.html</a></p>
+</div>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Malformed range literal.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Malformed range literal. Missing left parenthesis or bracket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Malformed range literal. Missing right parenthesis or bracket.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>Malformed range literal. Missing comma after lower bound.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L145">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L347">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_ToString_" data-uid="NpgsqlTypes.NpgsqlRange`1.ToString*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_ToString" data-uid="NpgsqlTypes.NpgsqlRange`1.ToString">ToString()</h4>
@@ -673,11 +786,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_op_Equality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.op_Equality(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L125">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L311">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_op_Equality_" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Equality*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_op_Equality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Equality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">Equality(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates whether the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -696,12 +810,14 @@
       <tr>
         <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
         <td><span class="parametername">y</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -716,7 +832,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -725,11 +842,12 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_op_Inequality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.op_Inequality(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L134">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L321">View Source</a>
   </span>
   <a id="NpgsqlTypes_NpgsqlRange_1_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Inequality*"></a>
   <h4 id="NpgsqlTypes_NpgsqlRange_1_op_Inequality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Inequality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">Inequality(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Indicates whether the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is not equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -748,12 +866,14 @@
       <tr>
         <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
         <td><span class="parametername">x</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
         <td><span class="parametername">y</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -768,7 +888,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is not equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -787,7 +908,7 @@
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L33" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L42" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

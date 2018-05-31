@@ -76,8 +76,6 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="postgisnettopologysuite-type-plugin">PostGIS/NetTopologySuite Type Plugin</h1>
 
-<div class="NOTE"><h5>Note</h5><p>This feature is only available in Npgsql 4.0, which is currently in preview. </p>
-</div>
 <p>Before 4.0, Npgsql has supported reading and writing PostGIS types via some bundled .NET classes: <code>PostgisPoint</code>, <code>PostgisLineString</code>, etc. While this model provided some basic support, a proper representation of spatial types is a complicated task that&#39;s beyond Npgsql&#39;s scope, and should be handled by a specialized spatial library instead. The leading spatial library in the .NET world is currently <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a>, and with the introduction of <em>type plugins</em> in Npgsql 4.0, it is now possible to map PostGIS types directly to NetTopologySuite types. This is now the recommended way to store and load PostGIS types.</p>
 <p>If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.html">Npgsql.LegacyPostgis plugin</a>.</p>
 <h2 id="adding-the-nettopologysuite-myget-feed">Adding the NetTopologySuite MyGet feed</h2>
@@ -124,7 +122,7 @@ using (var reader = cmd.ExecuteReader())
     cmd.ExecuteNonQuery();
 }
 </code></pre><p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseGeoJSON(geographyAsDefault: true);
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite(geographyAsDefault: true);
 </code></pre></article>
           </div>
           
