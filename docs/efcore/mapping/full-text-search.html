@@ -77,11 +77,123 @@
 <h1 id="full-text-search">Full Text Search</h1>
 
 <p>PostgreSQL has <a href="https://www.postgresql.org/docs/current/static/textsearch.html">built-in support for full-text search</a>, which allows you to conveniently and efficiently query natural language documents.</p>
-<p><em>TO BE COMPLETED</em></p>
-<!--
-You can now use the PostgreSQL Full Text Search functions and operators from LINQ queries (except for ```array_to_tsquery```, which is not possible to implement currently due to Entity Framework Core limitations). ```NpgsqlTsQuery``` and ```NpgsqlTsVector``` are now fully supported property types that will create ```tsquery``` and ```tsvector``` columns. Full text search functions are implemented as extensions on ```DbFunctions``` and both full text types. Raw SQL migrations are still needed to create and drop update triggers however.
--->
-</article>
+<h2 id="mapping">Mapping</h2>
+<p>PostgreSQL full text search types are mapped onto .NET types built-in to Npgsql. The <code>tsvector</code> type is mapped to <code>NpgsqlTsVector</code> and <code>tsquery</code> is mapped to <code>NpgsqlTsQuery</code>. This means you can use properties of type <code>NpgsqlTsVector</code> directly in your model to create <code>tsvector</code> columns. The <code>NpgsqlTsQuery</code> type on the other hand, is used in LINQ queries.</p>
+<pre><code class="lang-c#">public class BlogPost
+{
+    public string Title { get; set; }
+    public string Content { get; set; }
+    public NpgsqlTsVector SearchVector { get; set; }
+}
+</code></pre><h2 id="operation-translation">Operation translation</h2>
+<p>Almost all PostgreSQL full text search functions can be called through LINQ queries. All supported EF Core LINQ methods are defined in extension classes in the <code>Microsoft.EntityFrameworkCore</code> namespace, so simply referencing the Npgsql provider will light up these methods. Here is a table showing translations for some operations; if an operation you need is missing, please open an issue to request for it.</p>
+<table>
+<thead>
+<tr>
+<th>This C# expression...</th>
+<th>... gets translated to this SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.Select(c =&gt; EF.Functions.ToTsVector(&quot;english&quot;, c.Name))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">SELECT to_tsvector(&#39;english&#39;::regconfig, c.&quot;Name&quot;)</a></td>
+</tr>
+<tr>
+<td>.Select(c =&gt; NpgsqlTsVector.Parse(&quot;b&quot;))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">SELECT CAST(&#39;b&#39; AS tsvector)</a></td>
+</tr>
+<tr>
+<td>.Select(c =&gt; EF.Functions.ToTsQuery(&quot;english&quot;, &quot;pgsql&quot;))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">SELECT to_tsquery(&#39;english&#39;::regconfig, &#39;pgsql&#39;)`</a></td>
+</tr>
+<tr>
+<td>.Select(c =&gt; NpgsqlTsQuery.Parse(&quot;b&quot;))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">SELECT CAST(&#39;b&#39; AS tsquery)</a></td>
+</tr>
+<tr>
+<td>.Where(c =&gt; c.SearchVector.Matches(&quot;Npgsql&quot;))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">WHERE c.&quot;SearchVector&quot; @@ &#39;Npgsql&#39;</a></td>
+</tr>
+<tr>
+<td>.Select(c =&gt; EF.Functions.ToTsQuery(c.SearchQuery).ToNegative())</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">SELECT !! to_tsquery(c.&quot;SearchQuery&quot;)</a></td>
+</tr>
+<tr>
+<td>.Select(c =&gt; EF.Functions.ToTsVector(c.Name).SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">SELECT setweight(to_tsvector(c.&quot;Name&quot;), &#39;A&#39;)</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="setting-up-and-querying-a-full-text-search-index-on-an-entity">Setting up and querying a full text search index on an entity</h2>
+<p>As <a href="https://www.postgresql.org/docs/current/static/textsearch-tables.html">the PostgreSQL documentation</a> explains, full-text search requires an index to run efficiently. This section will show two ways to do this, both (currently) requiring raw SQL in your migrations. Read the PostgreSQL docs for more information on the different approaches.</p>
+<h3 id="method-1-expression-index">Method 1: Expression index</h3>
+<p>The simpler method to use full-text search is to set up an expression index. Let&#39;s take the following entity:</p>
+<pre><code class="lang-c#">public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+}
+</code></pre><p>Create a migration which will contain the index creation SQL (<code>dotnet ef migrations add ...</code>). At this point, open the generated migration with your editor and add the following:</p>
+<pre><code class="lang-c#">protected override void Up(MigrationBuilder migrationBuilder)
+{
+    migrationBuilder.Sql(@&quot;CREATE INDEX fts_idx ON &quot;&quot;Product&quot;&quot; USING GIN (to_tsvector(&#39;english&#39;, &quot;&quot;Name&quot;&quot; || &#39; &#39; || &quot;&quot;Description&quot;&quot;));&quot;);
+}
+
+protected override void Down(MigrationBuilder migrationBuilder)
+    migrationBuilder.Sql(@&quot;DROP INDEX fts_idx;&quot;);
+}
+</code></pre><p>This will create a full-text search index on the <code>Name</code> and <code>Description</code> columns. You can query as follows:</p>
+<pre><code class="lang-c#">var context = new ProductDbContext();
+var npgsql = context.Products
+    .Where(p =&gt; EF.Functions.ToTsVector(&quot;english&quot;, p.Name + &quot; &quot; + p.Description).Matches(&quot;Npgsql&quot;))
+    .ToList();
+</code></pre><h3 id="method-2-tsvector-column">Method 2: tsvector column</h3>
+<p>Instead of an expression index, this method will add a <code>tsvector</code> column on your table that updates itself with a trigger.</p>
+<p>First, add an <code>NpgsqlTsVector</code> property to your entity:</p>
+<pre><code class="lang-c#">public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public NpgsqlTsVector SearchVector { get; set; }
+}
+</code></pre><p>and modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&lt;Product&gt;()
+        .HasIndex(p =&gt; p.SearchVector)
+        .ForNpgsqlHasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
+}
+</code></pre><p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
+<pre><code class="lang-c#">public partial class CreateProductTable : Migration
+{
+    protected override void Up(MigrationBuilder migrationBuilder)
+    {
+        // Migrations for creation of the column and the index will appear here, all we need to do is set up the trigger to update the column:
+
+        migrationBuilder.Sql(
+            @&quot;CREATE TRIGGER product_search_vector_update BEFORE INSERT OR UPDATE
+              ON &quot;&quot;Products&quot;&quot; FOR EACH ROW EXECUTE PROCEDURE
+              tsvector_update_trigger(&quot;&quot;SearchVector&quot;&quot;, &#39;pg_catalog.english&#39;, &quot;&quot;Name&quot;&quot;, &quot;&quot;Description&quot;&quot;);&quot;);
+
+        // If you were adding a tsvector to an existing table, you should populate the column using an UPDATE
+        // migrationBuilder.Sql(&quot;UPDATE \&quot;Products\&quot; SET \&quot;Name\&quot; = \&quot;Name\&quot;;&quot;);
+    }
+
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        // Migrations for dropping of the column and the index will appear here, all we need to do is drop the trigger:
+        migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector&quot;);
+    }
+}
+</code></pre><p>Any inserts or updates on the <code>Products</code> table will now update the <code>SearchVector</code> column and maintain it automatically. You can query it as follows:</p>
+<pre><code class="lang-c#">var context = new ProductDbContext();
+var npgsql = context.Products
+    .Where(p =&gt; p.SearchVector.Matches(&quot;Npgsql&quot;))
+    .ToList();
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

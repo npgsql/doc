@@ -119,26 +119,6 @@ public string SomeStringProperty { get; set; }
 <td><code>.Where(c =&gt; EF.Functions.ILike(c.Name, &quot;foo%&quot;)</code></td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-LIKE"><code>WHERE &quot;c&quot;.&quot;Name&quot; ILIKE &#39;foo%&#39;</code></a> (case-insensitive LIKE)</td>
 </tr>
-<tr>
-<td><code>.Select(c =&gt; EF.Functions.ToTsVector(&quot;english&quot;, c.Name))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS"><code>SELECT to_tsvector(&#39;english&#39;::regconfig, &quot;c&quot;.&quot;Name&quot;)</code></a></td>
-</tr>
-<tr>
-<td><code>.Select(c =&gt; EF.Functions.ToTsQuery(&quot;english&quot;, &quot;pgsql&quot;))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES"><code>SELECT to_tsquery(&#39;english&#39;::regconfig, &#39;pgsql&#39;)</code></a></td>
-</tr>
-<tr>
-<td><code>.Where(c =&gt; c.SearchVector.Matches(&quot;Npgsql&quot;))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING"><code>WHERE &quot;c&quot;.&quot;SearchVector&quot; @@ &#39;Npgsql&#39;</code></a></td>
-</tr>
-<tr>
-<td><code>.Select(c =&gt; EF.Functions.ToTsQuery(c.SearchQuery).ToNegative())</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY"><code>SELECT (!! to_tsquery(&quot;c&quot;.&quot;SearchQuery&quot;))</code></a></td>
-</tr>
-<tr>
-<td><code>.Select(c =&gt; EF.Functions.ToTsVector(c.Name).SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR"><code>SELECT setweight(to_tsvector(&quot;c&quot;.&quot;Name&quot;), &#39;A&#39;)</code></a></td>
-</tr>
 </tbody>
 </table>
 </article>
