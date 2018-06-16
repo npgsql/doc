@@ -83,11 +83,11 @@
 <ul>
 <li>Rewriting of the connection pool to be lock-free, since contention started to be an issue in highly concurrent, short-lived connection scenarios (<a href="https://github.com/npgsql/npgsql/issues/1839">#1839</a>).</li>
 <li>Significant reduction of allocations through more recycling and other techniques.</li>
-<li>New API for generically providing parameters, avoiding boxing of value type (<a href="https://github.com/npgsql/npgsql/issues/1639">#1639</a>).</li>
+<li>New API for generically providing parameters, avoiding boxing of value types (<a href="https://github.com/npgsql/npgsql/issues/1639">#1639</a>).</li>
 <li>Avoiding numerous internal async calls where they weren&#39;t needed.</li>
 <li>... many others</li>
 </ul>
-<p>Some first runs show that Linux/.NET Core 2.1/ASP.NET Core/Npgsql may be the fastest mainstream development stack! Please let us know how the new version works for you - both positive and negative comments are welcome.</p>
+<p>In round 16 of the TechEmpower benchmark, .NET Core/ASP.NET Core <a href="https://www.techempower.com/benchmarks/#section=data-r16&amp;hw=ph&amp;test=fortune">came in 7th place running with Npgsql</a>, making it one of the fastest mainstream web stacks available - see <a href="http://www.roji.org/npgsql-4-perf">this blog post for more info</a>. Please let us know how the new version works for you - both positive and negative comments are welcome.</p>
 <p>If you&#39;re interested in Npgsql performance and haven&#39;t yet seen <a href="../performance.html">the performance page</a>, it&#39;s a good opportunity to check it out (it&#39;s valid also for 3.2 users).</p>
 <h2 id="improved-spatial-support-postgis">Improved spatial support (PostGIS)</h2>
 <p>Previous versions have allowed basic usage of PostGIS&#39;s spatial types via built-in Npgsql types, which were limited in many ways. Thanks to a new plugin infrastructure, you can now use the <a href="../types/nts.html">Npgsql.NetTopologySuite</a> plugin, which maps PostGIS types to the <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> spatial library&#39;s types. NetTopologySuite&#39;s types are more complete, and support a variety of spatial operations and conversions you can perform after loading your spatial data from PostgreSQL.</p>
