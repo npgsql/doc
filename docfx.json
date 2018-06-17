@@ -3,14 +3,27 @@
     {
       "src": [
         {
-          "files": [ "Npgsql.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**" ],
-          "cwd": "Npgsql/src/Npgsql"
+          "files": [ "src/**/*.csproj" ],
+          "exclude": [ "src/MSI/**", "src/VSIX/**", "**/bin/**", "**/obj/**" ],
+          "cwd": "Npgsql/"
         }
       ],
-      "dest": "obj/api",
+      "dest": "obj/api/Npgsql",
       "properties": {
         "TargetFramework": "net45"
+      }
+    },
+    {
+      "src": [
+        {
+          "files": [ "src/**/*.csproj" ],
+          "exclude": [ "**/bin/**", "**/obj/**", "Properties/NpgsqlStrings.*" ],
+          "cwd": "Npgsql.EntityFrameworkCore.PostgreSQL"
+        }
+      ],
+      "dest": "obj/api/EFCore.PG",
+      "properties": {
+        "TargetFramework": "netstandard2.0"
       }
     }
   ],
@@ -18,8 +31,13 @@
     "content": [
       {
         "files": [ "**/*.yml" ],
-        "cwd": "obj/api",
-        "dest": "api"
+        "cwd": "obj/api/Npgsql",
+        "dest": "doc/api"
+      },
+      {
+        "files": [ "**/*.yml" ],
+        "cwd": "obj/api/EFCore.PG",
+        "dest": "efcore/api"
       },
       {
         "files": [ "**.md" ],
