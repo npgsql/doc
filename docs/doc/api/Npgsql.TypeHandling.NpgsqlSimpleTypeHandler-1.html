@@ -1,0 +1,892 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class NpgsqlSimpleTypeHandler&lt;TDefault&gt;
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class NpgsqlSimpleTypeHandler&lt;TDefault&gt;
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.32.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1">
+  
+  
+  <h1 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1" class="text-break">Class NpgsqlSimpleTypeHandler&lt;TDefault&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Base class for all simple type handlers, which read and write short, non-arbitrary lengthed
+values to PostgreSQL. Provides a simpler API to implement when compared to <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a> -
+Npgsql takes care of all I/O before calling into this type, so no I/O needs to be performed by it.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></div>
+    <div class="level2"><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html">NpgsqlTypeHandler</a>&lt;TDefault&gt;</div>
+    <div class="level3"><span class="xref">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</span></div>
+      <div class="level4"><a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandlerWithPsv-2.html">NpgsqlSimpleTypeHandlerWithPsv&lt;TDefault, TPsv&gt;</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Npgsql.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;TDefault&gt;</div>
+    <div><a class="xref" href="Npgsql.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler</a>&lt;TDefault&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_WriteWithLength__1___0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_">NpgsqlTypeHandler&lt;TDefault&gt;.WriteWithLength&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_CreateArrayHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler&lt;TDefault&gt;.CreateArrayHandler(PostgresType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateConversionButNoParamException_System_Type_">NpgsqlTypeHandler.CreateConversionButNoParamException(Type)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.TypeHandling.html">Npgsql.TypeHandling</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class NpgsqlSimpleTypeHandler&lt;TDefault&gt; : NpgsqlTypeHandler&lt;TDefault&gt;, INpgsqlTypeHandler&lt;TDefault&gt;, INpgsqlSimpleTypeHandler&lt;TDefault&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TDefault</span></td>
+        <td><p>The default CLR type that this handler will read and write. For example, calling <span class="xref">System.Data.Common.DbDataReader.GetValue(System.Int32)</span>
+on a column with this handler will return a value with type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code>.
+Type handlers can support additional types by implementing <a class="xref" href="Npgsql.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1__ctor.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L59">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1__ctor_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.#ctor*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1__ctor" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.#ctor">NpgsqlSimpleTypeHandler()</h4>
+  <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected NpgsqlSimpleTypeHandler()</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L80">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read(Npgsql.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, FieldDescription)</h4>
+  <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
+with the assumption that it is entirely present in the provided memory buffer and no I/O will be
+required.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract TDefault Read(NpgsqlReadBuffer buf, int len, FieldDescription fieldDescription = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer from which to read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The byte length of the value. The buffer might not contain the full length, requiring I/O to be performed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDefault</span></td>
+        <td><p>The fully-read value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L92">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
+using either sync or async I/O. This method is sealed for <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</a>,
+override <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_">Read(NpgsqlReadBuffer, Int32, FieldDescription)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override sealed ValueTask&lt;TDefault&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer from which to read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The byte length of the value. The buffer might not contain the full length, requiring I/O to be performed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O is required to read the full length of the value, whether it should be performed synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;TDefault&gt;</td>
+        <td><p>The fully-read value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.Read(Npgsql.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.Read%60%601(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L104">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Read``1(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
+using either sync or async I/O. This method is sealed for <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override sealed ValueTask&lt;TAny&gt; Read&lt;TAny&gt;(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer from which to read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The byte length of the value. The buffer might not contain the full length, requiring I/O to be performed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O is required to read the full length of the value, whether it should be performed synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;TAny&gt;</td>
+        <td><p>The fully-read value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TAny</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.Read&lt;TAny&gt;(Npgsql.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.ValidateAndGetLength(%600%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L226">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength(`0,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(TDefault, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Simple type handlers override <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_">ValidateAndGetLength(TDefault, NpgsqlParameter)</a> instead of this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override sealed int ValidateAndGetLength(TDefault value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDefault</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.ValidateAndGetLength(TDefault, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.ValidateAndGetLength(%600%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L153">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength(`0,Npgsql.NpgsqlParameter)">ValidateAndGetLength(TDefault, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
+written for PostgreSQL - if the value cannot be written for any reason, an exception shold be thrown.
+Also returns the byte length needed to write the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract int ValidateAndGetLength(TDefault value, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDefault</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to be written to PostgreSQL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of bytes required to write the value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.ValidateAndGetLength%60%601(%60%600%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L170">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateAndGetLength``1(``0,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength&lt;TAny&gt;(TAny, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>This method is sealed, override <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_">ValidateAndGetLength(TDefault, NpgsqlParameter)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override int ValidateAndGetLength&lt;TAny&gt;(TAny value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TAny</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TAny</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.ValidateAndGetLength&lt;TAny&gt;(TAny, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.ValidateObjectAndGetLength(System.Object%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L235">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateObjectAndGetLength_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateObjectAndGetLength*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.ValidateObjectAndGetLength(System.Object,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateObjectAndGetLength(Object, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Called to validate and get the length of a value of a non-generic <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a>.
+Type handlers generally don&apos;t need to override this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override int ValidateObjectAndGetLength(object value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.ValidateObjectAndGetLength(System.Object, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.Write(%600%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L220">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Write*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Write(`0,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(TDefault, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Simple type handlers override <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_">Write(TDefault, NpgsqlWriteBuffer, NpgsqlParameter)</a> instead of this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override sealed Task Write(TDefault value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDefault</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.Write(TDefault, Npgsql.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.Write(%600%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L165">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Write*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.Write(`0,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(TDefault, NpgsqlWriteBuffer, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Writes a value to the provided buffer, with the assumption that there is enough space in the buffer
+(no I/O will occur). The Npgsql core will have taken care of that.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract void Write(TDefault value, NpgsqlWriteBuffer buf, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TDefault</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer to which to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601.WriteObjectWithLength(System.Object%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L244">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_WriteObjectWithLength_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.WriteObjectWithLength*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler`1.WriteObjectWithLength(System.Object,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Called to write the value of a non-generic <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a>.
+Type handlers generally don&apos;t need to override this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Task WriteObjectWithLength(object value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;TDefault&gt;.WriteObjectWithLength(System.Object, Npgsql.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Npgsql.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Npgsql.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler&lt;T&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlSimpleTypeHandler_1.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlSimpleTypeHandler%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlSimpleTypeHandler.cs/#L46" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2018 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

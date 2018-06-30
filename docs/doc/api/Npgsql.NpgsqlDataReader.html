@@ -1,0 +1,2734 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class NpgsqlDataReader
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class NpgsqlDataReader
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.32.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlDataReader">
+  
+  
+  <h1 id="Npgsql_NpgsqlDataReader" data-uid="Npgsql.NpgsqlDataReader" class="text-break">Class NpgsqlDataReader
+  </h1>
+  <div class="markdown level0 summary"><p>Reads a forward-only stream of rows from a data source.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.MarshalByRefObject</span></div>
+    <div class="level2"><span class="xref">System.Data.Common.DbDataReader</span></div>
+    <div class="level3"><span class="xref">NpgsqlDataReader</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+    <div><span class="xref">System.Data.IDataReader</span></div>
+    <div><span class="xref">System.Data.IDataRecord</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.GetDbDataReader(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.GetFieldValueAsync&lt;T&gt;(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.GetFieldValueAsync&lt;T&gt;(System.Int32, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.GetFieldValue&lt;T&gt;(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.GetValue(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.IsDBNull(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.IsDBNullAsync(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.IsDBNullAsync(System.Int32, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.NextResultAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.ReadAsync()</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.System.Data.IDataRecord.GetData(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbDataReader.VisibleFieldCount</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.InitializeLifetimeService()</span>
+    </div>
+    <div>
+      <span class="xref">System.MarshalByRefObject.MemberwiseClone(System.Boolean)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_NpgsqlDataReader_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class NpgsqlDataReader : DbDataReader, IEnumerable, IDataReader, IDataRecord, IDisposable</code></pre>
+  </div>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Behavior.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Behavior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L69">View Source</a>
+  </span>
+  <h4 id="Npgsql_NpgsqlDataReader_Behavior" data-uid="Npgsql.NpgsqlDataReader.Behavior">Behavior</h4>
+  <div class="markdown level1 summary"><p>The behavior of the command with which this reader was executed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected CommandBehavior Behavior</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.CommandBehavior</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Depth.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Depth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L561">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Depth_" data-uid="Npgsql.NpgsqlDataReader.Depth*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Depth" data-uid="Npgsql.NpgsqlDataReader.Depth">Depth</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating the depth of nesting for the current row.  Always returns zero.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int Depth { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Depth</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_FieldCount.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.FieldCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L619">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_FieldCount_" data-uid="Npgsql.NpgsqlDataReader.FieldCount*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_FieldCount" data-uid="Npgsql.NpgsqlDataReader.FieldCount">FieldCount</h4>
+  <div class="markdown level1 summary"><p>Gets the number of columns in the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int FieldCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.FieldCount</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_HasRows.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.HasRows%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L589">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_HasRows_" data-uid="Npgsql.NpgsqlDataReader.HasRows*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_HasRows" data-uid="Npgsql.NpgsqlDataReader.HasRows">HasRows</h4>
+  <div class="markdown level1 summary"><p>Gets a value that indicates whether this DbDataReader contains one or more rows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool HasRows { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.HasRows</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_IsClosed.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.IsClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L566">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_IsClosed_" data-uid="Npgsql.NpgsqlDataReader.IsClosed*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_IsClosed" data-uid="Npgsql.NpgsqlDataReader.IsClosed">IsClosed</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the data reader is closed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool IsClosed { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.IsClosed</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_IsOnRow.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.IsOnRow%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L600">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_IsOnRow_" data-uid="Npgsql.NpgsqlDataReader.IsOnRow*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_IsOnRow" data-uid="Npgsql.NpgsqlDataReader.IsOnRow">IsOnRow</h4>
+  <div class="markdown level1 summary"><p>Indicates whether the reader is currently positioned on a row, i.e. whether reading a
+column is possible.
+This property is different from <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_HasRows">HasRows</a> in that <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_HasRows">HasRows</a> will
+return true even if attempting to read a column will fail, e.g. before <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read">Read()</a>
+has been called</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsOnRow { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L861">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Item_" data-uid="Npgsql.NpgsqlDataReader.Item*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Item_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an instance of <span class="xref">System.Object</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object this[int ordinal] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Item[System.Int32]</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Item_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1195">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Item_" data-uid="Npgsql.NpgsqlDataReader.Item*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Item_System_String_" data-uid="Npgsql.NpgsqlDataReader.Item(System.String)">Item[String]</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an instance of <span class="xref">System.Object</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object this[string name] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Item[System.String]</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_RecordsAffected.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.RecordsAffected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L571">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_RecordsAffected_" data-uid="Npgsql.NpgsqlDataReader.RecordsAffected*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_RecordsAffected" data-uid="Npgsql.NpgsqlDataReader.RecordsAffected">RecordsAffected</h4>
+  <div class="markdown level1 summary"><p>Gets the number of rows changed, inserted, or deleted by execution of the SQL statement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int RecordsAffected { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.RecordsAffected</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Statements.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Statements%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L584">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Statements_" data-uid="Npgsql.NpgsqlDataReader.Statements*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Statements" data-uid="Npgsql.NpgsqlDataReader.Statements">Statements</h4>
+  <div class="markdown level1 summary"><p>Returns details about each statement that this reader will or has executed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;NpgsqlStatement&gt; Statements { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<a class="xref" href="Npgsql.NpgsqlStatement.html">NpgsqlStatement</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_Statements_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Note that some fields (i.e. rows and oid) are only populated as the reader
+traverses the result.</p>
+<p>For commands with multiple queries, this exposes the number of rows affected on
+a statement-by-statement basis, unlike <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_RecordsAffected">RecordsAffected</a>
+which exposes an aggregation across all statements.</p>
+</div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Close.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Close%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L645">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Close_" data-uid="Npgsql.NpgsqlDataReader.Close*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Close" data-uid="Npgsql.NpgsqlDataReader.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Closes the <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> reader, allowing a new command to be executed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Close()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Close()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_CloseAsync.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.CloseAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L650">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_CloseAsync_" data-uid="Npgsql.NpgsqlDataReader.CloseAsync*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_CloseAsync" data-uid="Npgsql.NpgsqlDataReader.CloseAsync">CloseAsync()</h4>
+  <div class="markdown level1 summary"><p>Closes the <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> reader, allowing a new command to be executed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CloseAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L640">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Dispose_" data-uid="Npgsql.NpgsqlDataReader.Dispose*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Dispose_System_Boolean_" data-uid="Npgsql.NpgsqlDataReader.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Releases the resources used by the <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Dispose(System.Boolean)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetBoolean_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetBoolean(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L760">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetBoolean_" data-uid="Npgsql.NpgsqlDataReader.GetBoolean*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetBoolean_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetBoolean(System.Int32)">GetBoolean(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a Boolean.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool GetBoolean(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetBoolean(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetByte_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetByte(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L767">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetByte_" data-uid="Npgsql.NpgsqlDataReader.GetByte*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetByte_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetByte(System.Int32)">GetByte(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a byte.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override byte GetByte(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetByte(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetBytes_System_Int32_System_Int64_System_Byte___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetBytes(System.Int32%2CSystem.Int64%2CSystem.Byte%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L942">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetBytes_" data-uid="Npgsql.NpgsqlDataReader.GetBytes*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetBytes_System_Int32_System_Int64_System_Byte___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)">GetBytes(Int32, Int64, Byte[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Reads a stream of bytes from the specified column, starting at location indicated by dataOffset, into the buffer, starting at the location indicated by bufferOffset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long GetBytes(int ordinal, long dataOffset, byte[] buffer, int bufferOffset, int length)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">dataOffset</span></td>
+        <td><p>The index within the row from which to begin the read operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer into which to copy the data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferOffset</span></td>
+        <td><p>The index with the buffer to which the data will be copied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The maximum number of characters to read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The actual number of bytes read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetBytes(System.Int32, System.Int64, System.Byte[], System.Int32, System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetChar_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetChar(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L774">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetChar_" data-uid="Npgsql.NpgsqlDataReader.GetChar*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetChar_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetChar(System.Int32)">GetChar(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a single character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override char GetChar(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Char</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetChar(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetChars_System_Int32_System_Int64_System_Char___System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetChars(System.Int32%2CSystem.Int64%2CSystem.Char%5B%5D%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1047">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetChars_" data-uid="Npgsql.NpgsqlDataReader.GetChars*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetChars_System_Int32_System_Int64_System_Char___System_Int32_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)">GetChars(Int32, Int64, Char[], Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Reads a stream of characters from the specified column, starting at location indicated by dataOffset, into the buffer, starting at the location indicated by bufferOffset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long GetChars(int ordinal, long dataOffset, char[] buffer, int bufferOffset, int length)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">dataOffset</span></td>
+        <td><p>The index within the row from which to begin the read operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Char</span>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>The buffer into which to copy the data.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferOffset</span></td>
+        <td><p>The index with the buffer to which the data will be copied.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">length</span></td>
+        <td><p>The maximum number of characters to read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The actual number of characters read.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetChars(System.Int32, System.Int64, System.Char[], System.Int32, System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetColumnSchema.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetColumnSchema%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1314">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetColumnSchema_" data-uid="Npgsql.NpgsqlDataReader.GetColumnSchema*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetColumnSchema" data-uid="Npgsql.NpgsqlDataReader.GetColumnSchema">GetColumnSchema()</h4>
+  <div class="markdown level1 summary"><p>Returns schema information for the columns in the current resultset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlyCollection&lt;NpgsqlDbColumn&gt; GetColumnSchema()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.ObjectModel.ReadOnlyCollection</span>&lt;<a class="xref" href="Npgsql.Schema.NpgsqlDbColumn.html">NpgsqlDbColumn</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDataTypeName_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDataTypeName(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1231">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDataTypeName_" data-uid="Npgsql.NpgsqlDataReader.GetDataTypeName*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDataTypeName_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDataTypeName(System.Int32)">GetDataTypeName(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the data type information for the specified field.
+This will be the PostgreSQL type name (e.g. double precision), not the .NET type
+(see <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetFieldType_System_Int32_">GetFieldType(Int32)</a> for that).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetDataTypeName(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetDataTypeName(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDataTypeOID_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDataTypeOID(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1247">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDataTypeOID_" data-uid="Npgsql.NpgsqlDataReader.GetDataTypeOID*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDataTypeOID_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDataTypeOID(System.Int32)">GetDataTypeOID(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the OID for the PostgreSQL type for the specified field, as it appears in the pg_type table.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint GetDataTypeOID(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_GetDataTypeOID_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is a PostgreSQL-internal value that should not be relied upon and should only be used for
+debugging purposes.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDate_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDate(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L880">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDate_" data-uid="Npgsql.NpgsqlDataReader.GetDate*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDate_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDate(System.Int32)">GetDate(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an <a class="xref" href="NpgsqlTypes.NpgsqlDate.html">NpgsqlDate</a>,
+Npgsql&apos;s provider-specific type for dates.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlDate GetDate(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlDate.html">NpgsqlDate</a></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_GetDate_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PostgreSQL&apos;s date type represents dates from 4713 BC to 5874897 AD, while .NET&apos;s DateTime
+only supports years from 1 to 1999. If you require years outside this range use this accessor.
+The standard <span class="xref">System.Data.Common.DbDataReader.GetProviderSpecificValue(System.Int32)</span> method will also return this type, but has
+the disadvantage of boxing the value.
+See <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">http://www.postgresql.org/docs/current/static/datatype-datetime.html</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDateTime_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDateTime(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L802">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDateTime_" data-uid="Npgsql.NpgsqlDataReader.GetDateTime*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDateTime_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDateTime(System.Int32)">GetDateTime(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a <span class="xref">System.DateTime</span> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override DateTime GetDateTime(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetDateTime(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDecimal_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDecimal(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L816">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDecimal_" data-uid="Npgsql.NpgsqlDataReader.GetDecimal*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDecimal_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDecimal(System.Int32)">GetDecimal(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a <span class="xref">System.Decimal</span> object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override decimal GetDecimal(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Decimal</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetDecimal(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetDouble_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetDouble(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L823">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetDouble_" data-uid="Npgsql.NpgsqlDataReader.GetDouble*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetDouble_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetDouble(System.Int32)">GetDouble(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a double-precision floating point number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override double GetDouble(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetDouble(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetEnumerator.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1305">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetEnumerator_" data-uid="Npgsql.NpgsqlDataReader.GetEnumerator*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetEnumerator" data-uid="Npgsql.NpgsqlDataReader.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"><p>Returns an <span class="xref">System.Collections.IEnumerator</span> that can be used to iterate through the rows in the data reader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IEnumerator GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td><p>An <span class="xref">System.Collections.IEnumerator</span> that can be used to iterate through the rows in the data reader.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetEnumerator()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetFieldType_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetFieldType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1260">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetFieldType_" data-uid="Npgsql.NpgsqlDataReader.GetFieldType*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetFieldType_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetFieldType(System.Int32)">GetFieldType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the data type of the specified column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Type GetFieldType(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><p>The data type of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetFieldType(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetFloat_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetFloat(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L830">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetFloat_" data-uid="Npgsql.NpgsqlDataReader.GetFloat*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetFloat_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetFloat(System.Int32)">GetFloat(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a single-precision floating point number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override float GetFloat(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Single</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetFloat(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetGuid_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetGuid(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L837">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetGuid_" data-uid="Npgsql.NpgsqlDataReader.GetGuid*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetGuid_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetGuid(System.Int32)">GetGuid(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a globally-unique identifier (GUID).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Guid GetGuid(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetGuid(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetInt16_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetInt16(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L781">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetInt16_" data-uid="Npgsql.NpgsqlDataReader.GetInt16*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetInt16_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetInt16(System.Int32)">GetInt16(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a 16-bit signed integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override short GetInt16(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetInt16(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetInt32_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetInt32(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L788">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetInt32_" data-uid="Npgsql.NpgsqlDataReader.GetInt32*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetInt32_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetInt32(System.Int32)">GetInt32(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a 32-bit signed integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetInt32(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetInt32(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetInt64_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetInt64(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L795">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetInt64_" data-uid="Npgsql.NpgsqlDataReader.GetInt64*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetInt64_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetInt64(System.Int32)">GetInt64(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a 64-bit signed integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override long GetInt64(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetInt64(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetInterval_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetInterval(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L910">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetInterval_" data-uid="Npgsql.NpgsqlDataReader.GetInterval*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetInterval_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetInterval(System.Int32)">GetInterval(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>,
+Npgsql&apos;s provider-specific type for time spans.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan GetInterval(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_GetInterval_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PostgreSQL&apos;s interval type has has a resolution of 1 microsecond and ranges from
+-178000000 to 178000000 years, while .NET&apos;s TimeSpan has a resolution of 100 nanoseconds
+and ranges from roughly -29247 to 29247 years. If you require values from outside TimeSpan&apos;s
+range use this accessor.
+The standard ADO.NET <span class="xref">System.Data.Common.DbDataReader.GetProviderSpecificValue(System.Int32)</span> method will also return this
+type, but has the disadvantage of boxing the value.
+See <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">http://www.postgresql.org/docs/current/static/datatype-datetime.html</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetName_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetName(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L608">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetName_" data-uid="Npgsql.NpgsqlDataReader.GetName*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetName_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetName(System.Int32)">GetName(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the column, given the zero-based column ordinal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetName(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The name of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetName(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetOrdinal_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetOrdinal(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1202">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetOrdinal_" data-uid="Npgsql.NpgsqlDataReader.GetOrdinal*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetOrdinal_System_String_" data-uid="Npgsql.NpgsqlDataReader.GetOrdinal(System.String)">GetOrdinal(String)</h4>
+  <div class="markdown level1 summary"><p>Gets the column ordinal given the name of the column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetOrdinal(string name)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetOrdinal(System.String)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetPostgresType_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetPostgresType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1216">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetPostgresType_" data-uid="Npgsql.NpgsqlDataReader.GetPostgresType*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetPostgresType_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetPostgresType(System.Int32)">GetPostgresType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a representation of the PostgreSQL data type for the specified field.
+The returned representation can be used to access various information about the field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PostgresType GetPostgresType(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetProviderSpecificFieldType_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetProviderSpecificFieldType(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1275">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetProviderSpecificFieldType_" data-uid="Npgsql.NpgsqlDataReader.GetProviderSpecificFieldType*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetProviderSpecificFieldType_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetProviderSpecificFieldType(System.Int32)">GetProviderSpecificFieldType(Int32)</h4>
+  <div class="markdown level1 summary"><p>Returns the provider-specific field type of the specified column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Type GetProviderSpecificFieldType(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><p>The Type object that describes the data type of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetProviderSpecificFieldType(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetProviderSpecificValues_System_Object___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetProviderSpecificValues(System.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1289">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetProviderSpecificValues_" data-uid="Npgsql.NpgsqlDataReader.GetProviderSpecificValues*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetProviderSpecificValues_System_Object___" data-uid="Npgsql.NpgsqlDataReader.GetProviderSpecificValues(System.Object[])">GetProviderSpecificValues(Object[])</h4>
+  <div class="markdown level1 summary"><p>Gets all provider-specific attribute columns in the collection for the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetProviderSpecificValues(object[] values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>An array of Object into which to copy the attribute columns.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of instances of <span class="xref">System.Object</span> in the array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetProviderSpecificValues(System.Object[])</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetSchemaTable.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetSchemaTable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1330">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetSchemaTable_" data-uid="Npgsql.NpgsqlDataReader.GetSchemaTable*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetSchemaTable" data-uid="Npgsql.NpgsqlDataReader.GetSchemaTable">GetSchemaTable()</h4>
+  <div class="markdown level1 summary"><p>Returns a System.Data.DataTable that describes the column metadata of the DataReader.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override DataTable GetSchemaTable()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Data.DataTable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetSchemaTable()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetStream_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetStream(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L986">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetStream_" data-uid="Npgsql.NpgsqlDataReader.GetStream*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetStream_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetStream(System.Int32)">GetStream(Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves data as a <span class="xref">System.IO.Stream</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Stream GetStream(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.Stream</span></td>
+        <td><p>The returned object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetStream(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetStreamAsync_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetStreamAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L993">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetStreamAsync_" data-uid="Npgsql.NpgsqlDataReader.GetStreamAsync*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetStreamAsync_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetStreamAsync(System.Int32)">GetStreamAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves data as a <span class="xref">System.IO.Stream</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Stream&gt; GetStreamAsync(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.IO.Stream</span>&gt;</td>
+        <td><p>The returned object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetString_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetString(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L809">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetString_" data-uid="Npgsql.NpgsqlDataReader.GetString*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetString_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetString(System.Int32)">GetString(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an instance of <span class="xref">System.String</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string GetString(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetString(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetTextReader_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetTextReader(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1159">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetTextReader_" data-uid="Npgsql.NpgsqlDataReader.GetTextReader*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetTextReader_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetTextReader(System.Int32)">GetTextReader(Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves data as a <span class="xref">System.IO.TextReader</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override TextReader GetTextReader(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.TextReader</span></td>
+        <td><p>The returned object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetTextReader(System.Int32)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetTextReaderAsync_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetTextReaderAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L1167">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetTextReaderAsync_" data-uid="Npgsql.NpgsqlDataReader.GetTextReaderAsync*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetTextReaderAsync_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetTextReaderAsync(System.Int32)">GetTextReaderAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves data as a <span class="xref">System.IO.TextReader</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TextReader&gt; GetTextReaderAsync(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.IO.TextReader</span>&gt;</td>
+        <td><p>The returned object.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetTimeSpan_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetTimeSpan(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L893">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetTimeSpan_" data-uid="Npgsql.NpgsqlDataReader.GetTimeSpan*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetTimeSpan_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetTimeSpan(System.Int32)">GetTimeSpan(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as a TimeSpan,</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan GetTimeSpan(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_GetTimeSpan_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PostgreSQL&apos;s interval type has has a resolution of 1 microsecond and ranges from
+-178000000 to 178000000 years, while .NET&apos;s TimeSpan has a resolution of 100 nanoseconds
+and ranges from roughly -29247 to 29247 years.
+See <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">http://www.postgresql.org/docs/current/static/datatype-datetime.html</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetTimeStamp_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetTimeStamp(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L927">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetTimeStamp_" data-uid="Npgsql.NpgsqlDataReader.GetTimeStamp*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetTimeStamp_System_Int32_" data-uid="Npgsql.NpgsqlDataReader.GetTimeStamp(System.Int32)">GetTimeStamp(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the value of the specified column as an <a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html">NpgsqlDateTime</a>,
+Npgsql&apos;s provider-specific type for date/time timestamps. Note that this type covers
+both PostgreSQL&apos;s &quot;timestamp with time zone&quot; and &quot;timestamp without time zone&quot; types,
+which differ only in how they are converted upon input/output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlDateTime GetTimeStamp(int ordinal)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">ordinal</span></td>
+        <td><p>The zero-based column ordinal.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html">NpgsqlDateTime</a></td>
+        <td><p>The value of the specified column.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlDataReader_GetTimeStamp_System_Int32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PostgreSQL&apos;s timestamp type represents dates from 4713 BC to 5874897 AD, while .NET&apos;s DateTime
+only supports years from 1 to 1999. If you require years outside this range use this accessor.
+The standard <span class="xref">System.Data.Common.DbDataReader.GetProviderSpecificValue(System.Int32)</span> method will also return this type, but has
+the disadvantage of boxing the value.
+See <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">http://www.postgresql.org/docs/current/static/datatype-datetime.html</a></p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_GetValues_System_Object___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.GetValues(System.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L844">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_GetValues_" data-uid="Npgsql.NpgsqlDataReader.GetValues*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_GetValues_System_Object___" data-uid="Npgsql.NpgsqlDataReader.GetValues(System.Object[])">GetValues(Object[])</h4>
+  <div class="markdown level1 summary"><p>Populates an array of objects with the column values of the current row.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetValues(object[] values)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">values</span></td>
+        <td><p>An array of Object into which to copy the attribute columns.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The number of instances of <span class="xref">System.Object</span> in the array.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.GetValues(System.Object[])</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_NextResult.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.NextResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L328">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_NextResult_" data-uid="Npgsql.NpgsqlDataReader.NextResult*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_NextResult" data-uid="Npgsql.NpgsqlDataReader.NextResult">NextResult()</h4>
+  <div class="markdown level1 summary"><p>Advances the reader to the next result when reading the results of a batch of statements.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override sealed bool NextResult()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.NextResult()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_NextResult_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.NextResult(System.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L369">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_NextResult_" data-uid="Npgsql.NpgsqlDataReader.NextResult*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_NextResult_System_Boolean_System_Boolean_" data-uid="Npgsql.NpgsqlDataReader.NextResult(System.Boolean,System.Boolean)">NextResult(Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Internal implementation of NextResult</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual Task&lt;bool&gt; NextResult(bool async, bool isConsuming = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">isConsuming</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_NextResultAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.NextResultAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L350">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_NextResultAsync_" data-uid="Npgsql.NpgsqlDataReader.NextResultAsync*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_NextResultAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlDataReader.NextResultAsync(System.Threading.CancellationToken)">NextResultAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>This is the asynchronous version of NextResult.
+The <code data-dev-comment-type="paramref" class="paramref">cancellationToken</code> parameter is currently ignored.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task&lt;bool&gt; NextResultAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Currently ignored.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>A task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.NextResultAsync(System.Threading.CancellationToken)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_Read.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.Read%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L159">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_Read_" data-uid="Npgsql.NpgsqlDataReader.Read*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_Read" data-uid="Npgsql.NpgsqlDataReader.Read">Read()</h4>
+  <div class="markdown level1 summary"><p>Advances the reader to the next record in a result set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Read()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><strong>true</strong> if there are more rows; otherwise <strong>false</strong>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.Read()</span></div>
+  <h5 id="Npgsql_NpgsqlDataReader_Read_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The default position of a data reader is before the first record. Therefore, you must call Read to begin accessing data.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_ReadAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.ReadAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L166">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlDataReader_ReadAsync_" data-uid="Npgsql.NpgsqlDataReader.ReadAsync*"></a>
+  <h4 id="Npgsql_NpgsqlDataReader_ReadAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlDataReader.ReadAsync(System.Threading.CancellationToken)">ReadAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>This is the asynchronous version of <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read">Read()</a> The cancellation token is currently ignored.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task&lt;bool&gt; ReadAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>Ignored for now.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>A task representing the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.Data.Common.DbDataReader.ReadAsync(System.Threading.CancellationToken)</span></div>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader_ReaderClosed.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader.ReaderClosed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L113">View Source</a>
+  </span>
+  <h4 id="Npgsql_NpgsqlDataReader_ReaderClosed" data-uid="Npgsql.NpgsqlDataReader.ReaderClosed">ReaderClosed</h4>
+  <div class="markdown level1 summary"><p>Is raised whenever Close() is called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event EventHandler ReaderClosed</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.EventHandler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <div>
+      <span class="xref">System.Data.IDataReader</span>
+  </div>
+  <div>
+      <span class="xref">System.Data.IDataRecord</span>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_NpgsqlDataReader.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataReader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlDataReader.cs/#L56" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2018 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

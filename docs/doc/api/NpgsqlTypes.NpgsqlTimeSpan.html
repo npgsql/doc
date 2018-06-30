@@ -1,0 +1,3720 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct NpgsqlTimeSpan
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct NpgsqlTimeSpan
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.32.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NpgsqlTypes.NpgsqlTimeSpan">
+  
+  
+  <h1 id="NpgsqlTypes_NpgsqlTimeSpan" data-uid="NpgsqlTypes.NpgsqlTimeSpan" class="text-break">Struct NpgsqlTimeSpan
+  </h1>
+  <div class="markdown level0 summary"><p>Represents the PostgreSQL interval datatype.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IComparable</span></div>
+    <div><span class="xref">System.Collections.IComparer</span></div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>&gt;</div>
+    <div><span class="xref">System.IComparable</span>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IComparer</span>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="NpgsqlTypes_NpgsqlTimeSpan_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Serializable]
+public struct NpgsqlTimeSpan : IComparable, IComparer, IEquatable&lt;NpgsqlTimeSpan&gt;, IComparable&lt;NpgsqlTimeSpan&gt;, IComparer&lt;NpgsqlTimeSpan&gt;</code></pre>
+  </div>
+  <h5 id="NpgsqlTypes_NpgsqlTimeSpan_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>PostgreSQL differs from .NET in how it&apos;s interval type doesn&apos;t assume 24 hours in a day
+(to deal with 23- and 25-hour days caused by daylight savings adjustments) and has a concept
+of months that doesn&apos;t exist in .NET&apos;s <span class="xref">System.TimeSpan</span> class. (Neither datatype
+has any concessions for leap-seconds).
+<p>For most uses just casting to and from TimeSpan will work correctly — in particular,
+the results of subtracting one <span class="xref">System.DateTime</span> or the PostgreSQL date, time and
+timestamp types from another should be the same whether you do so in .NET or PostgreSQL —
+but if the handling of days and months in PostgreSQL is important to your application then you
+should use this class instead of <span class="xref">System.TimeSpan</span>.</p>
+<p>If you don&apos;t know whether these differences are important to your application, they
+probably arent! Just use <span class="xref">System.TimeSpan</span> and do not use this class directly ☺</p>
+<p>To avoid forcing unnecessary provider-specific concerns on users who need not be concerned
+with them a call to <span class="xref">System.Data.IDataRecord.GetValue(System.Int32)</span> on a field containing an
+<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> value will return a <span class="xref">System.TimeSpan</span> rather than an
+<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>. If you need the extra functionality of <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>
+then use <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInterval_System_Int32_">GetInterval(Int32)</a>.</p></p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L179">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">NpgsqlTimeSpan(Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of
+days, hours, minutes &amp; seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(int days, int hours, int minutes, int seconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>Number of days.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td><p>Number of hours.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>Number of minutes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>Number of seconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L193">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">NpgsqlTimeSpan(Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of
+days, hours, minutes, seconds &amp; milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(int days, int hours, int minutes, int seconds, int milliseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>Number of days.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td><p>Number of hours.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>Number of minutes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>Number of seconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">milliseconds</span></td>
+        <td><p>Number of milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L208">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">NpgsqlTimeSpan(Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of
+months, days, hours, minutes, seconds &amp; milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(int months, int days, int hours, int minutes, int seconds, int milliseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">months</span></td>
+        <td><p>Number of months.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>Number of days.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td><p>Number of hours.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>Number of minutes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>Number of seconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">milliseconds</span></td>
+        <td><p>Number of milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L225">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">NpgsqlTimeSpan(Int32, Int32, Int32, Int32, Int32, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of
+years, months, days, hours, minutes, seconds &amp; milliseconds.
+<p>Years are calculated exactly equivalent to 12 months.</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(int years, int months, int days, int hours, int minutes, int seconds, int milliseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">years</span></td>
+        <td><p>Number of years.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">months</span></td>
+        <td><p>Number of months.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>Number of days.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td><p>Number of hours.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>Number of minutes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>Number of seconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">milliseconds</span></td>
+        <td><p>Number of milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int64_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int32%2CSystem.Int32%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L164">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int32_System_Int32_System_Int64_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int32,System.Int32,System.Int64)">NpgsqlTimeSpan(Int32, Int32, Int64)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of months, days
+&amp; ticks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(int months, int days, long ticks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">months</span></td>
+        <td><p>Number of months.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>Number of days.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">ticks</span></td>
+        <td><p>Number of 100ns units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int64_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L143">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_Int64_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.Int64)">NpgsqlTimeSpan(Int64)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to the specified number of ticks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(long ticks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">ticks</span></td>
+        <td><p>A time period expressed in 100ns units.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan__ctor_System_TimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.%23ctor(System.TimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L152">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan__ctor_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan__ctor_System_TimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.#ctor(System.TimeSpan)">NpgsqlTimeSpan(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to hold the same time as a <span class="xref">System.TimeSpan</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan(TimeSpan timespan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timespan</span></td>
+        <td><p>A time period expressed in a <span class="xref">System.TimeSpan</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_DaysPerMonth.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.DaysPerMonth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L104">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_DaysPerMonth" data-uid="NpgsqlTypes.NpgsqlTimeSpan.DaysPerMonth">DaysPerMonth</h4>
+  <div class="markdown level1 summary"><p>Represents the number of days assumed in one month if month justification or unjustifcation is performed.
+This is set to 30 for consistency with PostgreSQL. Note that this is means that month adjustments cause
+a year to be taken as 30 × 12 = 360 rather than 356/366 days.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int DaysPerMonth = 30</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_HoursPerDay.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.HoursPerDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L97">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_HoursPerDay" data-uid="NpgsqlTypes.NpgsqlTimeSpan.HoursPerDay">HoursPerDay</h4>
+  <div class="markdown level1 summary"><p>Represents the number of hours in one day (assuming no daylight savings adjustments). This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int HoursPerDay = 24</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_MaxValue.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.MaxValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L119">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_MaxValue" data-uid="NpgsqlTypes.NpgsqlTimeSpan.MaxValue">MaxValue</h4>
+  <div class="markdown level1 summary"><p>Represents the maximum <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>. This field is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly NpgsqlTimeSpan MaxValue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_MinValue.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.MinValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L124">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_MinValue" data-uid="NpgsqlTypes.NpgsqlTimeSpan.MinValue">MinValue</h4>
+  <div class="markdown level1 summary"><p>Represents the minimum <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>. This field is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly NpgsqlTimeSpan MinValue</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_MonthsPerYear.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.MonthsPerYear%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L114">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_MonthsPerYear" data-uid="NpgsqlTypes.NpgsqlTimeSpan.MonthsPerYear">MonthsPerYear</h4>
+  <div class="markdown level1 summary"><p>Represents the number of months in a year. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int MonthsPerYear = 12</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerDay.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerDay%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L92">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerDay" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerDay">TicksPerDay</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one day. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerDay = 864000000000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerHour.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerHour%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L87">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerHour" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerHour">TicksPerHour</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one hour. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerHour = 36000000000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerMicrosecond.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerMicrosecond%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L67">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerMicrosecond" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerMicrosecond">TicksPerMicrosecond</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one microsecond. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerMicrosecond = 10L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerMillsecond.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerMillsecond%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L72">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerMillsecond" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerMillsecond">TicksPerMillsecond</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one millisecond. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerMillsecond = 10000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerMinute.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerMinute%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L82">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerMinute" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerMinute">TicksPerMinute</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one minute. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerMinute = 600000000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerMonth.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerMonth%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L109">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerMonth" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerMonth">TicksPerMonth</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one day, assuming 30 days per month. <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_DaysPerMonth">DaysPerMonth</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerMonth = 25920000000000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TicksPerSecond.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TicksPerSecond%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L77">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TicksPerSecond" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TicksPerSecond">TicksPerSecond</h4>
+  <div class="markdown level1 summary"><p>Represents the number of ticks (100ns periods) in one second. This field is constant.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const long TicksPerSecond = 10000000L</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Zero.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Zero%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L129">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Zero" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Zero">Zero</h4>
+  <div class="markdown level1 summary"><p>Represents the zero <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>. This field is read-only.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly NpgsqlTimeSpan Zero</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Days.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Days%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L316">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Days_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Days*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Days" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Days">Days</h4>
+  <div class="markdown level1 summary"><p>Gets the number of days held in the instance.
+<remarks>Note that this does not pay attention to a time component with -24 or less hours or
+24 or more hours, unless <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyDays">JustifyDays()</a> has been called to produce this instance.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Days { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Hours.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Hours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L309">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Hours_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Hours*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Hours" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Hours">Hours</h4>
+  <div class="markdown level1 summary"><p>Gets the number of whole hours held in the instance.
+<remarks>Note that this can be less than -23 or greater than 23 unless <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyDays">JustifyDays()</a>
+has been used to produce this instance.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Hours { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Microseconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Microseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L284">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Microseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Microseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Microseconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Microseconds">Microseconds</h4>
+  <div class="markdown level1 summary"><p>Gets the number of whole microseconds held in the instance.
+<returns>An  in the range [-999999, 999999].</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Microseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Milliseconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Milliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L290">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Milliseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Milliseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Milliseconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Milliseconds">Milliseconds</h4>
+  <div class="markdown level1 summary"><p>Gets the number of whole milliseconds held in the instance.
+<returns>An  in the range [-999, 999].</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Milliseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Minutes.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Minutes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L302">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Minutes_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Minutes*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Minutes" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Minutes">Minutes</h4>
+  <div class="markdown level1 summary"><p>Gets the number of whole minutes held in the instance.
+<returns>An  in the range [-59, 59].</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Minutes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Months.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Months%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L323">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Months_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Months*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Months" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Months">Months</h4>
+  <div class="markdown level1 summary"><p>Gets the number of months held in the instance.
+<remarks>Note that this does not pay attention to a day component with -30 or less days or
+30 or more days, unless <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyMonths">JustifyMonths()</a> has been called to produce this instance.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Months { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Seconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Seconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L296">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Seconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Seconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Seconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Seconds">Seconds</h4>
+  <div class="markdown level1 summary"><p>Gets the number of whole seconds held in the instance.
+<returns>An  in the range [-59, 59].</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Seconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Ticks.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Ticks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L278">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Ticks_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Ticks*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Ticks" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Ticks">Ticks</h4>
+  <div class="markdown level1 summary"><p>The total number of ticks(100ns units) contained. This is the resolution of the
+<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>  type. This ignores the number of days and
+months held. If you want them included use <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_UnjustifyInterval">UnjustifyInterval()</a> first.
+<remarks>The resolution of the PostgreSQL
+interval type is by default 1µs = 1,000 ns. It may be smaller as follows:
+<ol><li>interval(0)resolution of 1s (1 second)</li><li>interval(1)resolution of 100ms = 0.1s (100 milliseconds)</li><li>interval(2)resolution of 10ms = 0.01s (10 milliseconds)</li><li>interval(3)resolution of 1ms = 0.001s (1 millisecond)</li><li>interval(4)resolution of 100µs = 0.0001s (100 microseconds)</li><li>interval(5)resolution of 10µs = 0.00001s (10 microseconds)</li><li>interval(6) or intervalresolution of 1µs = 0.000001s (1 microsecond)</li></ol>
+<p>As such, if the 100-nanosecond resolution is significant to an application, a PostgreSQL interval will
+not suffice for those purposes.</p>
+<p>In more frequent cases though, the resolution of the interval suffices.
+<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> will always suffice to handle the resolution of any interval value, and upon
+writing to the database, will be rounded to the resolution used.</p>
+</remarks>
+<returns>The number of ticks in the instance.</returns></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long Ticks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Time.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Time%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L330">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Time_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Time*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Time" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Time">Time</h4>
+  <div class="markdown level1 summary"><p>Returns a <span class="xref">System.TimeSpan</span> representing the time component of the instance.
+<remarks>Note that this may have a value beyond the range ±23:59:59.9999999 unless
+<a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyDays">JustifyDays()</a> has been called to produce this instance.</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan Time { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalDays.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L376">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalDays_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalDays*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalDays" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalDays">TotalDays</h4>
+  <div class="markdown level1 summary"><p>The total number of days in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalDays { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalHours.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalHours%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L370">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalHours_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalHours*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalHours" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalHours">TotalHours</h4>
+  <div class="markdown level1 summary"><p>The total number of hours in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalHours { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalMicroseconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalMicroseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L346">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalMicroseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMicroseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalMicroseconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMicroseconds">TotalMicroseconds</h4>
+  <div class="markdown level1 summary"><p>The total number of microseconds in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalMicroseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalMilliseconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalMilliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L352">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalMilliseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMilliseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalMilliseconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMilliseconds">TotalMilliseconds</h4>
+  <div class="markdown level1 summary"><p>The total number of milliseconds in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalMilliseconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalMinutes.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalMinutes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L364">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalMinutes_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMinutes*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalMinutes" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMinutes">TotalMinutes</h4>
+  <div class="markdown level1 summary"><p>The total number of minutes in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalMinutes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalMonths.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalMonths%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L382">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalMonths_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMonths*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalMonths" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalMonths">TotalMonths</h4>
+  <div class="markdown level1 summary"><p>The total number of months in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalMonths { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalSeconds.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalSeconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L358">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalSeconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalSeconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalSeconds" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalSeconds">TotalSeconds</h4>
+  <div class="markdown level1 summary"><p>The total number of seconds in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double TotalSeconds { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TotalTicks.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TotalTicks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L340">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TotalTicks_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalTicks*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TotalTicks" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TotalTicks">TotalTicks</h4>
+  <div class="markdown level1 summary"><p>The total number of ticks (100ns units) in the instance, assuming 24 hours in each day and
+30 days in a month.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long TotalTicks { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Add_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Add(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L453">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Add_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Add*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Add_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Add(NpgsqlTypes.NpgsqlTimeSpan)">Add(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Adds another interval to this instance and returns the result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan Add(NpgsqlTimeSpan interval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">interval</span></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to add to this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose values are the sums of the two instances.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Canonicalize.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Canonicalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L561">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Canonicalize_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Canonicalize*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Canonicalize" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Canonicalize">Canonicalize()</h4>
+  <div class="markdown level1 summary"><p>Produces a canonical NpgslInterval with 0 months and hours in the range of [-23, 23].
+<remarks>
+<p>
+While the fact that for many purposes, two different <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances could be considered
+equivalent (e.g. one with 2days, 3hours and one with 1day 27hours) there are different possible canonical forms.
+</p><p>
+E.g. we could move all excess hours into days and all excess days into months and have the most readable form,
+or we could move everything into the ticks and have the form that allows for the easiest arithmetic) the form
+chosen has two important properties that make it the best choice.
+</p><p>First, it is closest two how
+<span class="xref">System.TimeSpan</span> objects are most often represented. Second, it is compatible with results of many
+PostgreSQL functions, particularly with age() and the results of subtracting one date, time or timestamp from
+another.
+</p>
+<p>Note that the results of casting a <span class="xref">System.TimeSpan</span> to <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is
+canonicalised.</p>
+</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan Canonicalize()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with months converted to multiples of ±30days and with any hours outside of the range [-23, 23]
+converted into days.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Compare_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Compare(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L628">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Compare_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Compare*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Compare_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Compare(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">Compare(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int Compare(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 if the two are equal or equivalent. A value greater than zero if x is greater than y,
+a value less than zero if x is less than y.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_CompareTo_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.CompareTo(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L667">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_CompareTo_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.CompareTo*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_CompareTo_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.CompareTo(NpgsqlTypes.NpgsqlTimeSpan)">CompareTo(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares this instance with another/</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(NpgsqlTimeSpan other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare this with.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 if the instances are equal or equivalent. A value less than zero if
+this instance is less than the argument. A value greater than zero if this instance
+is greater than the instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_CompareTo_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.CompareTo(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L683">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_CompareTo_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.CompareTo*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_CompareTo_System_Object_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.CompareTo(System.Object)">CompareTo(Object)</h4>
+  <div class="markdown level1 summary"><p>Compares this instance with another/</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(object other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>An object to compare this with.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 if the argument is an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> and the instances are equal or equivalent.
+A value less than zero if the argument is an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> and
+this instance is less than the argument.
+A value greater than zero if the argument is an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> and this instance
+is greater than the instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>The argument is not an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Duration.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Duration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L475">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Duration_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Duration*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Duration" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Duration">Duration()</h4>
+  <div class="markdown level1 summary"><p>This absolute value of this instance. In the case of some, but not all, components being negative,
+the rules used for justification are used to determine if the instance is positive or negative.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan Duration()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose value is the absolute value of this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Equals_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Equals(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L606">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Equals_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Equals*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Equals_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Equals(NpgsqlTypes.NpgsqlTimeSpan)">Equals(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Returns true if another <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is exactly the same as this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlTimeSpan other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> for comparison.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances are exactly the same,
+false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Equals_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L618">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Equals_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Equals*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"><p>Returns true if another object is an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>, that is exactly the same as
+this instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>An <span class="xref">System.Object</span> for comparison.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the argument is an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> and is exactly the same
+as this one, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.Equals(System.Object)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromDays_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromDays(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L435">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromDays_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromDays*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromDays_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromDays(System.Double)">FromDays(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of days.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromDays(double days)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">days</span></td>
+        <td><p>The number of days in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of days.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromHours_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromHours(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L428">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromHours_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromHours*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromHours_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromHours(System.Double)">FromHours(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of hours.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromHours(double hours)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">hours</span></td>
+        <td><p>The number of hours in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of hours.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromMicroseconds_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromMicroseconds(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L400">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromMicroseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMicroseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromMicroseconds_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMicroseconds(System.Double)">FromMicroseconds(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromMicroseconds(double micro)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">micro</span></td>
+        <td><p>The number of microseconds in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromMilliseconds_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromMilliseconds(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L407">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromMilliseconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMilliseconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromMilliseconds_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMilliseconds(System.Double)">FromMilliseconds(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of milliseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromMilliseconds(double milli)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">milli</span></td>
+        <td><p>The number of milliseconds in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of milliseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromMinutes_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromMinutes(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L421">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromMinutes_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMinutes*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromMinutes_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMinutes(System.Double)">FromMinutes(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of minutes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromMinutes(double minutes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">minutes</span></td>
+        <td><p>The number of minutes in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of minutes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromMonths_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromMonths(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L442">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromMonths_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMonths*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromMonths_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromMonths(System.Double)">FromMonths(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of months.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromMonths(double months)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">months</span></td>
+        <td><p>The number of months in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of months.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromSeconds_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromSeconds(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L414">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromSeconds_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromSeconds*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromSeconds_System_Double_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromSeconds(System.Double)">FromSeconds(Double)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromSeconds(double seconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>The number of seconds in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of seconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_FromTicks_System_Int64_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.FromTicks(System.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L393">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_FromTicks_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromTicks*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_FromTicks_System_Int64_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.FromTicks(System.Int64)">FromTicks(Int64)</h4>
+  <div class="markdown level1 summary"><p>Creates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from a number of ticks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan FromTicks(long ticks)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int64</span></td>
+        <td><span class="parametername">ticks</span></td>
+        <td><p>The number of ticks (100ns units) in the interval.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a>d <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> with the given number of ticks.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L655">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.GetHashCode*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_GetHashCode" data-uid="NpgsqlTypes.NpgsqlTimeSpan.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>A hash code suitable for uses with hashing algorithms.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>An signed integer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.GetHashCode()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_JustifyDays.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.JustifyDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L487">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_JustifyDays_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyDays*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_JustifyDays" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyDays">JustifyDays()</h4>
+  <div class="markdown level1 summary"><p>Equivalent to PostgreSQL&apos;s justify_days function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan JustifyDays()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with any hours outside of the range [-23, 23]
+converted into days.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_JustifyInterval.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.JustifyInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L526">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_JustifyInterval_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyInterval*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_JustifyInterval" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyInterval">JustifyInterval()</h4>
+  <div class="markdown level1 summary"><p>Equivalent to PostgreSQL&apos;s justify_interval function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan JustifyInterval()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one,
+but with any months converted to multiples of ±30days
+and then with any days converted to multiples of ±24hours</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_JustifyMonths.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.JustifyMonths%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L506">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_JustifyMonths_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyMonths*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_JustifyMonths" data-uid="NpgsqlTypes.NpgsqlTimeSpan.JustifyMonths">JustifyMonths()</h4>
+  <div class="markdown level1 summary"><p>Equivalent to PostgreSQL&apos;s justify_months function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan JustifyMonths()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with any days outside of the range [-30, 30]
+converted into months.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Negate.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Negate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L468">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Negate_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Negate*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Negate" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Negate">Negate()</h4>
+  <div class="markdown level1 summary"><p>Returns an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose value is the negated value of this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan Negate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose value is the negated value of this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Parse_System_String_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Parse(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L705">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Parse_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Parse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Parse(System.String)">Parse(String)</h4>
+  <div class="markdown level1 summary"><p>Parses a <span class="xref">System.String</span> and returns a <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instance.
+Designed to use the formats generally returned by PostgreSQL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan Parse(string str)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">str</span></td>
+        <td><p>The <span class="xref">System.String</span> to parse.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> represented by the argument.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>The string was null.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.OverflowException</span></td>
+        <td><p>A value obtained from parsing the string exceeded the values allowed for the relevant component.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p>The string was not in a format that could be parsed to produce an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Plus_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Plus(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L932">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Plus_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Plus*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Plus_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Plus(NpgsqlTypes.NpgsqlTimeSpan)">Plus(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Returns the instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan Plus(NpgsqlTimeSpan x)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_Subtract_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.Subtract(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L461">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_Subtract_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Subtract*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_Subtract_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.Subtract(NpgsqlTypes.NpgsqlTimeSpan)">Subtract(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Subtracts another interval from this instance and returns the result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan Subtract(NpgsqlTimeSpan interval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">interval</span></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to subtract from this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose values are the differences of the two instances.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_ToNpgsqlTimeSpan_System_TimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.ToNpgsqlTimeSpan(System.TimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L580">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_ToNpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToNpgsqlTimeSpan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_ToNpgsqlTimeSpan_System_TimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToNpgsqlTimeSpan(System.TimeSpan)">ToNpgsqlTimeSpan(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Casts a <span class="xref">System.TimeSpan</span> to an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan ToNpgsqlTimeSpan(TimeSpan timespan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timespan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L803">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_ToString_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToString*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_ToString" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Create a <span class="xref">System.String</span> representation of the <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instance.
+The format returned is of the form:
+[M mon[s]] [d day[s]] [HH:mm:ss[.f[f[f[f[f[f[f[f[f]]]]]]]]]]
+A zero <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is represented as 00:00:00
+<remarks>
+Ticks are 100ns, Postgress resolution is only to 1µs at most. Hence we lose 1 or more decimal
+precision in storing values in the database. Despite this, this method will output that extra
+digit of precision. It&apos;s forward-compatible with any future increases in resolution up to 100ns,
+and also makes this ToString() more applicable to any other use-case.
+</remarks></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><p>The <span class="xref">System.String</span> representation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">System.ValueType.ToString()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_ToTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.ToTimeSpan(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L593">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_ToTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToTimeSpan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_ToTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.ToTimeSpan(NpgsqlTypes.NpgsqlTimeSpan)">ToTimeSpan(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Casts an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to a <span class="xref">System.TimeSpan</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TimeSpan ToTimeSpan(NpgsqlTimeSpan interval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">interval</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_TryParse_System_String_NpgsqlTypes_NpgsqlTimeSpan__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.TryParse(System.String%2CNpgsqlTypes.NpgsqlTimeSpan%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L779">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_TryParse_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TryParse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_TryParse_System_String_NpgsqlTypes_NpgsqlTimeSpan__" data-uid="NpgsqlTypes.NpgsqlTimeSpan.TryParse(System.String,NpgsqlTypes.NpgsqlTimeSpan@)">TryParse(String, out NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Attempt to parse a <span class="xref">System.String</span> to produce an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryParse(string str, out NpgsqlTimeSpan result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">str</span></td>
+        <td><p>The <span class="xref">System.String</span> to parse.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>(out) The <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> produced, or <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Zero">Zero</a> if the parsing failed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the parsing succeeded, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_UnjustifyDays.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.UnjustifyDays%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L496">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyDays_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyDays*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyDays" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyDays">UnjustifyDays()</h4>
+  <div class="markdown level1 summary"><p>Opposite to PostgreSQL&apos;s justify_days function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan UnjustifyDays()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with any days converted to multiples of ±24hours.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_UnjustifyInterval.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.UnjustifyInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L535">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyInterval_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyInterval*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyInterval" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyInterval">UnjustifyInterval()</h4>
+  <div class="markdown level1 summary"><p>Opposite to PostgreSQL&apos;s justify_interval function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan UnjustifyInterval()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with any months converted to multiples of ±30days and then any days converted to multiples of ±24hours;</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_UnjustifyMonths.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.UnjustifyMonths%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L515">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyMonths_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyMonths*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_UnjustifyMonths" data-uid="NpgsqlTypes.NpgsqlTimeSpan.UnjustifyMonths">UnjustifyMonths()</h4>
+  <div class="markdown level1 summary"><p>Opposite to PostgreSQL&apos;s justify_months function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlTimeSpan UnjustifyMonths()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> based on this one, but with any months converted to multiples of ±30days.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Addition_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Addition(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L842">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Addition_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Addition*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Addition_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Addition(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">Addition(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Adds two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> together.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan operator +(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to add.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose values are the sum of the arguments.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Equality_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Equality(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L864">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Equality_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Equality*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Equality_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Equality(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">Equality(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Returns true if two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> are exactly the same.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the two arguments are exactly the same, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Explicit_NpgsqlTypes_NpgsqlTimeSpan__System_TimeSpan.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Explicit(NpgsqlTypes.NpgsqlTimeSpan)~System.TimeSpan%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L587">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Explicit_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Explicit*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Explicit_NpgsqlTypes_NpgsqlTimeSpan__System_TimeSpan" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Explicit(NpgsqlTypes.NpgsqlTimeSpan)~System.TimeSpan">Explicit(NpgsqlTimeSpan to TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Explicit cast of an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to a <span class="xref">System.TimeSpan</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator TimeSpan(NpgsqlTimeSpan interval)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">interval</span></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><p>An equivalent <span class="xref">System.TimeSpan</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThan_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThan(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L908">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThan_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThan(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">GreaterThan(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances to see if the first is greater than the second</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator&gt;(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is greater than second, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThanOrEqual(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L919">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThanOrEqual*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_GreaterThanOrEqual(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">GreaterThanOrEqual(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances to see if the first is greater than or equivalent the second</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;=(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is greater than or equivalent to the second, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Implicit_System_TimeSpan__NpgsqlTypes_NpgsqlTimeSpan.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Implicit(System.TimeSpan)~NpgsqlTypes.NpgsqlTimeSpan%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L575">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Implicit_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Implicit*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Implicit_System_TimeSpan__NpgsqlTypes_NpgsqlTimeSpan" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Implicit(System.TimeSpan)~NpgsqlTypes.NpgsqlTimeSpan">Implicit(TimeSpan to NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Implicit cast of a <span class="xref">System.TimeSpan</span> to an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator NpgsqlTimeSpan(TimeSpan timespan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timespan</span></td>
+        <td><p>A <span class="xref">System.TimeSpan</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An eqivalent, canonical, <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Inequality_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Inequality(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L875">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Inequality*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Inequality_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Inequality(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">Inequality(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Returns false if two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> are exactly the same.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>false if the two arguments are exactly the same, true otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_LessThan_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_LessThan(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L886">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_LessThan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_LessThan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_LessThan_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_LessThan(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">LessThan(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances to see if the first is less than the second</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is less than second, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_LessThanOrEqual_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_LessThanOrEqual(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L897">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_LessThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_LessThanOrEqual*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_LessThanOrEqual_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_LessThanOrEqual(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">LessThanOrEqual(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instances to see if the first is less than or equivalent to the second</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;=(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true if the first <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> is less than or equivalent to second, false otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_Subtraction_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_Subtraction(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L853">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_Subtraction_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Subtraction*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_Subtraction_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_Subtraction(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">Subtraction(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Subtracts one <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> from another.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan operator -(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to subtract the other from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> to subtract from the other.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> whose values are the difference of the arguments</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_UnaryNegation_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_UnaryNegation(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L939">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_UnaryNegation_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_UnaryNegation*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_UnaryNegation_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_UnaryNegation(NpgsqlTypes.NpgsqlTimeSpan)">UnaryNegation(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Negates an <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan operator -(NpgsqlTimeSpan x)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>An <a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><p>The negation of the argument.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_op_UnaryPlus_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.op_UnaryPlus(NpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L927">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_op_UnaryPlus_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_UnaryPlus*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_op_UnaryPlus_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.op_UnaryPlus(NpgsqlTypes.NpgsqlTimeSpan)">UnaryPlus(NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Returns the instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlTimeSpan operator +(NpgsqlTimeSpan x)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_System_Collections_Generic_IComparer_NpgsqlTypes_NpgsqlTimeSpan__Compare_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.System%23Collections%23Generic%23IComparer%7BNpgsqlTypes%23NpgsqlTimeSpan%7D%23Compare(NpgsqlTypes.NpgsqlTimeSpan%2CNpgsqlTypes.NpgsqlTimeSpan)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L633">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_System_Collections_Generic_IComparer_NpgsqlTypes_NpgsqlTimeSpan__Compare_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.System#Collections#Generic#IComparer{NpgsqlTypes#NpgsqlTimeSpan}#Compare*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_System_Collections_Generic_IComparer_NpgsqlTypes_NpgsqlTimeSpan__Compare_NpgsqlTypes_NpgsqlTimeSpan_NpgsqlTypes_NpgsqlTimeSpan_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.System#Collections#Generic#IComparer{NpgsqlTypes#NpgsqlTimeSpan}#Compare(NpgsqlTypes.NpgsqlTimeSpan,NpgsqlTypes.NpgsqlTimeSpan)">IComparer&lt;NpgsqlTimeSpan&gt;.Compare(NpgsqlTimeSpan, NpgsqlTimeSpan)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IComparer&lt;NpgsqlTimeSpan&gt;.Compare(NpgsqlTimeSpan x, NpgsqlTimeSpan y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html">NpgsqlTimeSpan</a></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan_System_Collections_IComparer_Compare_System_Object_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan.System%23Collections%23IComparer%23Compare(System.Object%2CSystem.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L638">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlTimeSpan_System_Collections_IComparer_Compare_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.System#Collections#IComparer#Compare*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlTimeSpan_System_Collections_IComparer_Compare_System_Object_System_Object_" data-uid="NpgsqlTypes.NpgsqlTimeSpan.System#Collections#IComparer#Compare(System.Object,System.Object)">IComparer.Compare(Object, Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int IComparer.Compare(object x, object y)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">x</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">y</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IComparable</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IComparer</span>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.IComparable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IComparer&lt;T&gt;</span>
+  </div>
+  <h3 id="seealso">See Also</h3>
+  <div class="seealso">
+      <div><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Ticks">Ticks</a></div>
+      <div><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyDays">JustifyDays()</a></div>
+      <div><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_JustifyMonths">JustifyMonths()</a></div>
+      <div><a class="xref" href="NpgsqlTypes.NpgsqlTimeSpan.html#NpgsqlTypes_NpgsqlTimeSpan_Canonicalize">Canonicalize()</a></div>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=NpgsqlTypes_NpgsqlTimeSpan.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlTimeSpan%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/NpgsqlTypes/NpgsqlTimeSpan.cs/#L58" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2018 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
