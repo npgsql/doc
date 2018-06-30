@@ -22,10 +22,6 @@ If you think you've encountered a bug or want to request a feature, open an issu
 
 Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/master/LICENSE.txt), a liberal OSI-approved open source license.
 
-## Thanks
-
-A special thanks to Rowan Miller, Scott Hanselman and Martin Woodward at Microsoft for generously donating an Azure subscription for Npgsql’s continuous integration platform.
-
 ## Contributors
 
 Current active contributors to Npgsql are:
