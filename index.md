@@ -46,6 +46,12 @@ Past contributors to Npgsql:
 * Hiroshi Saito
 * Kenji Uno
 
-## Developer Resources
+## Thanks
 
-For information on development see [this page](dev/index.md).
+A special thanks to [Jetbrains](http://jetbrains.com/) for donating licenses to the project - Npgsql is developed with love on Rider on Linux.
+
+Thanks also to [Appveyor](http://appveyor.com/) and [Travis](http://travis-ci.org/) for their build platforms.
+
+<a href="http://jetbrains.com"><img src="img/jetbrains-logo.svg" width="75" height="75" /></a>
+<a href="http://appveyor.com"><img src="img/appveyor-logo.svg" width="75" height="75" /></a>
+<a href="http://travis-ci.org"><img src="img/travis-logo.svg" width="75" height="75" /></a>
