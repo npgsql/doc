@@ -30,6 +30,7 @@ Current active contributors to Npgsql are:
 * Yohdeadfall
 * Raif Atef
 * Austin Drenski
+* Emil Lenngren
 
 Past contributors to Npgsql:
 
@@ -38,7 +39,6 @@ Past contributors to Npgsql:
 * Francisco Figueiredo Jr.
 * Federico Di Gregorio
 * Jon Hanna
-* Emil Lenngren
 * Chris Morgan
 * Dave Page
 * Glen Parker
