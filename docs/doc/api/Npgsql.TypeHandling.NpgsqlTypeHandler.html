@@ -91,6 +91,7 @@ or <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html">Npg
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">NpgsqlTypeHandler</span></div>
       <div class="level2"><a class="xref" href="Npgsql.TypeHandlers.ArrayHandler.html">ArrayHandler</a></div>
+      <div class="level2"><a class="xref" href="Npgsql.TypeHandlers.RangeHandler.html">RangeHandler</a></div>
       <div class="level2"><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html">NpgsqlTypeHandler&lt;TDefault&gt;</a></div>
   </div>
   <div class="inheritedMembers">
@@ -139,7 +140,7 @@ or <a class="xref" href="Npgsql.TypeHandling.NpgsqlSimpleTypeHandler-1.html">Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract ArrayHandler CreateArrayHandler(PostgresType arrayBackendType)</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract ArrayHandler CreateArrayHandler(PostgresType arrayBackendType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,6 +220,54 @@ instance of <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</
     <tbody>
       <tr>
         <td><span class="xref">System.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandler.cs/#L176">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlTypeHandler_CreateRangeHandler_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandler.CreateRangeHandler*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlTypeHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)">CreateRangeHandler(PostgresType)</h4>
+  <div class="markdown level1 summary"><p>Creates a type handler for ranges of this handler&apos;s type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract RangeHandler CreateRangeHandler(PostgresType rangeBackendType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">rangeBackendType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.TypeHandlers.RangeHandler.html">RangeHandler</a></td>
         <td></td>
       </tr>
     </tbody>

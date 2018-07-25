@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Migration Notes | Npgsql Documentation </title>
+    <title>Tests | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Migration Notes | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.32.1.0">
+    <meta name="title" content="Tests | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.32.2.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -74,25 +74,20 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="migrating-from-30-to-31">Migrating from 3.0 to 3.1</h1>
+<h2 id="overview">Overview</h2>
 
-<ul>
-<li>CommandTimeout used to be implemented with PostgreSQL&#39;s <code>statement_timeout</code> parameter, but this wasn&#39;t a very reliable method and has been removed. CommandTimeout is now implemented via socket timeouts only, see <a href="https://github.com/npgsql/npgsql/issues/689">#689</a> for more details. Note that if a socket timeout occurs, the connection is broken and must be reopened.</li>
-<li>The <a href="../connection-string-parameters.html#security-and-encryption"><code>Persist Security Info</code></a> parameter has been implemented and is false by default. This means that once a connection has been opened, you will not be able to get its password.</li>
-<li>Removed ContinuousProcessing mode, and replaced it with <a href="../wait.html">Wait</a>, a simpler and less bug-prone mechanism for consuming asynchronous notifications (<a href="https://github.com/npgsql/npgsql/issues/1024">#1024</a>).</li>
-<li>The <code>Maximum Pool Size</code> connection is parameter is now 100 default instead of 20 (this is default in SqlClient, pg_bouncer...).</li>
-<li>The <code>Connection Lifetime</code> parameter has been renamed to <code>Connection Idle Lifetime</code>, and its default has been changed from 15 to 300. Also, once the number of seconds has elapsed the connection is closed immediately; the previous behavior closed half of the connections.</li>
-<li><code>RegisterEnum</code> and <code>RegisterEnumGlobally</code> have been renamed to <code>MapEnum</code> and <code>MapEnumGlobally</code> respectively.</li>
-<li>If you used enum mapping in 3.0, the strategy for translating between CLR and PostgreSQL type names has changed. In 3.0 Npgsql simply used the CLR name (e.g. SomeField) as the PostgreSQL name; Npgsql 3.1 uses a user-definable name translator, default to snake case (e.g. some_field). See <a href="https://github.com/npgsql/npgsql/issues/859">#859</a>.</li>
-<li>The <code>EnumLabel</code> attribute has been replaced by the <code>PgName</code> attribute (which is also used for the new composite type support).</li>
-<li>When PostgreSQL sends an error, it is no longer raised by an NpgsqlException but by a PostgresException. PostgresException is a subclass of NpgsqlException so code catching NpgsqlException should still work, but the PostgreSQL-specific exception properties will only be available on PostgresException.</li>
-<li>The Code property on NpgsqlException has been renamed to SqlState. It has also been moved to PostgresException.</li>
-<li>NpgsqlNotice has been renamed to PostgresNotice</li>
-<li>For multistatement commands, PostgreSQL parse errors will now be thrown only when the user calls NextResult() and gets to the problematic statement.</li>
-<li>It is no longer possible to dispose a prepared statement while a reader is still open. Since disposing a prepared statement includes database interaction, the connection must be idle.</li>
-<li>Removed <code>NpgsqlConnection.SupportsHexByteFormat</code>.</li>
-<li>Renamed <code>NpgsqlConnection.Supports_E_StringPrefix</code> to <code>SupportsEStringPrefix</code>.</li>
-</ul>
+<p>Npgsql comes with an extensive test suite to make sure no regressions occur. All tests are run on our build server on all supported .NET versions (including a recent version of mono) and all supported PostgreSQL backends.</p>
+<p>There is also a growing suite of speed tests to be able to measure performance. These tests are currently marked [Explicit] and aren&#39;t executed automatically.</p>
+<h2 id="simple-setup">Simple setup</h2>
+<p>The Npgsql test suite requires a PostgreSQL backend to test against. Simply use the latest version of PostgreSQL on your dev machine on the default port (5432).
+By default, all tests will be run using user <em>npgsql_tests</em>, and password <em>npgsql_tests</em>. Npgsql will automatically create a database called <em>npgsql_tests</em> and
+run its tests against this.</p>
+<p>To set this up, connect to PostgreSQL as the admin user as follows:</p>
+<pre><code>psql -h localhost -U postgres
+&lt;enter the admin password&gt;
+create user npgsql_tests password &#39;npgsql_tests&#39; superuser;
+</code></pre><p>And you&#39;re done.</p>
+<p>Superuser access is needed for some tests, e.g. loading the <code>hstore</code> extension, creating and dropping test databases in the Entity Framework tests...</p>
 </article>
           </div>
           
@@ -101,7 +96,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/migration/3.1.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/dev/tests.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
