@@ -77,7 +77,27 @@
 
 <p>Npgsql has an Entity Framework 6 provider. You can use it by installing the
 <a href="https://www.nuget.org/packages/EntityFramework6.Npgsql/">EntityFramework6.Npgsql</a> nuget.</p>
-<h2 id="guid-support">Guid Support</h2>
+<h2 id="basic-configuration">Basic Configuration</h2>
+<p>To use Entity Framework with Npgsql, define a class that inherits from <code>DbConfiguration</code> in the same assembly as your class inheriting <code>DbContext</code>. Ensure that you configure provider services, a provider factory, a default connection factory as shown below:</p>
+<pre><code class="lang-csharp">using Npgsql;
+using System.Data.Entity;
+
+class NpgSqlConfiguration : DbConfiguration
+{
+    public NpgSqlConfiguration()
+    {
+        var name = &quot;Npgsql&quot;;
+
+        SetProviderFactory(providerInvariantName: name, 
+        providerFactory: NpgsqlFactory.Instance);
+
+        SetProviderServices(providerInvariantName: name, 
+        provider: NpgsqlServices.Instance);
+
+        SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
+    }
+}
+</code></pre><h2 id="guid-support">Guid Support</h2>
 <p>Npgsql EF migrations support uses <code>uuid_generate_v4()</code> function to generate guids.
 In order to have access to this function, you have to install the extension uuid-ossp through the following command:</p>
 <pre><code class="lang-sql">create extension &quot;uuid-ossp&quot;;
@@ -92,7 +112,61 @@ In PostgreSQL, this implicitly uses <code>template1</code> as the template - any
 be copied to your new database. If you wish to change the database used as a template, you can specify
 the <code>EF Template Database</code> connection string parameter. For more info see the
 <a href="https://www.postgresql.org/docs/current/static/sql-createdatabase.html">PostgreSQL docs</a>.</p>
-</article>
+<h2 id="customizing-datareader-behavior">Customizing DataReader Behavior</h2>
+<p>You can use <a href="https://msdn.microsoft.com/en-us/library/dn469464(v=vs.113).aspx">an Entity Framework 6 IDbCommandInterceptor</a> to wrap the <code>DataReader</code> instance returned by Npgsql when Entity Framework executes queries. This is possible using a <code>DbConfiguration</code> class.</p>
+<p>Example use cases:</p>
+<ul>
+<li>Forcing all returned <code>DateTime</code> and <code>DateTimeOffset</code> values to be in the UTC timezone.</li>
+<li>Preventing accidental insertion of DateTime values having <code>DateTimeKind.Unspecified</code>.</li>
+<li>Forcing all postgres date/time types to be returned to Entity Framework as <code>DateTimeOffset</code>.</li>
+</ul>
+<pre><code class="lang-c#">[DbConfigurationType(typeof(AppDbContextConfiguration))]
+public class AppDbContext : DbContext
+{
+    // ...
+}
+
+public class AppDbContextConfiguration : DbConfiguration
+{
+    public AppDbContextConfiguration()
+    {
+        this.AddInterceptor(new MyEntityFrameworkInterceptor());
+    }
+}
+
+class MyEntityFrameworkInterceptor : DbCommandInterceptor
+{
+    public override void ReaderExecuted(
+        DbCommand command,
+        DbCommandInterceptionContext&lt;DbDataReader&gt; interceptionContext)
+    {
+        if (interceptionContext.Result == null) return;
+        interceptionContext.Result = new WrappingDbDataReader(interceptionContext.Result);
+    }
+
+    public override void ScalarExecuted(
+        DbCommand command,
+        DbCommandInterceptionContext&lt;object&gt; interceptionContext)
+    {
+        interceptionContext.Result = ModifyReturnValues(interceptionContext.Result);
+    }
+
+    static object ModifyReturnValues(object result)
+    {
+        // Transform and then
+        return result;
+    }
+}
+
+class WrappingDbDataReader : DbDataReader, IDataReader
+{
+    // Wrap an existing DbDataReader, proxy all calls to the underlying instance, 
+    // modify return values and/or parameters as needed...
+    public WrappingDbDataReader(DbDataReader reader)
+    {
+    }
+}
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
