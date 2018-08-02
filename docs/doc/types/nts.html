@@ -78,15 +78,6 @@
 
 <p>Before 4.0, Npgsql has supported reading and writing PostGIS types via some bundled .NET classes: <code>PostgisPoint</code>, <code>PostgisLineString</code>, etc. While this model provided some basic support, a proper representation of spatial types is a complicated task that&#39;s beyond Npgsql&#39;s scope, and should be handled by a specialized spatial library instead. The leading spatial library in the .NET world is currently <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a>, and with the introduction of <em>type plugins</em> in Npgsql 4.0, it is now possible to map PostGIS types directly to NetTopologySuite types. This is now the recommended way to store and load PostGIS types.</p>
 <p>If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.html">Npgsql.LegacyPostgis plugin</a>.</p>
-<h2 id="adding-the-nettopologysuite-myget-feed">Adding the NetTopologySuite MyGet feed</h2>
-<p>Unfortunately, the version of NetTopologySuite currently required by Npgsql (1.15.0) is still in preview. As a result, you will have to add the NetTopologySuite MyGet feed by dropping the following <code>NuGet.Config</code> file at the root of your project:</p>
-<pre><code class="lang-xml">&lt;configuration&gt;
-  &lt;packageSources&gt;
-    &lt;add key=&quot;NuGet&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
-    &lt;add key=&quot;NetTopologySuite&quot; value=&quot;https://www.myget.org/F/nettopologysuite/api/v3/index.json&quot; /&gt;
-  &lt;/packageSources&gt;
-&lt;/configuration&gt;
-</code></pre><p>You will be able to remove this when NetTopologySuite make a final release.</p>
 <h2 id="setup">Setup</h2>
 <p>To use the NetTopologySuite plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NetTopologySuite">Npgsql.NetTopologySuite</a> and set it up:</p>
 <pre><code class="lang-c#">using Npgsql;
@@ -94,8 +85,20 @@
 // Place this at the beginning of your program to use NetTopologySuite everywhere (recommended)
 NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
 
-// Or to temporarily use NetTopologySuite on a single connection only:
+// Or to temporarily use NetTopologySuite on a single connection only
 conn.TypeMapper.UseNetTopologySuite();
+</code></pre><p>By default the plugin handles only ordinates provided by the <code>DefaultCoordinateSequenceFactory</code> of <code>GeometryServiceProvider.Instance</code>. If <code>GeometryServiceProvider</code> is initialized automatically the X and Y ordinates are handled. To change the behavior specify the <code>handleOrdinates</code> parameter like in the following example:</p>
+<pre><code class="lang-c#">conn.TypeMapper.UseNetTopologySuite(handleOrdinates: Ordinates.XYZ);
+</code></pre><p>To process the M ordinate, you must initialize <code>GeometryServiceProvider.Instance</code> to a new <code>NtsGeometryServices</code> instance with <code>coordinateSequenceFactory</code> set to a <code>DotSpatialAffineCoordinateSequenceFactory</code>. Or you can specify the factory when calling <code>UseNetTopologySuite</code>.</p>
+<pre><code class="lang-c#">// Place this at the beginning of your program to use the specified settings everywhere (recommended)
+GeometryServiceProvider.Instance = new NtsGeometryServices(
+    new DotSpatialAffineCoordinateSequenceFactory(Ordinates.XYM),
+    new PrecisionModel(PrecisionModels.Floating),
+    -1);
+
+// Or specify settings for Npgsql only
+conn.TypeMapper.UseNetTopologySuite(
+    new DotSpatialAffineCoordinateSequenceFactory(Ordinates.XYM));
 </code></pre><h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
 <p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate NetTopologySuite types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize NetTopologySuite&#39;s types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a NetTopologySuite <code>Point</code> to the database:</p>
 <pre><code class="lang-c#">var point = new Point(new Coordinate(1d, 1d));

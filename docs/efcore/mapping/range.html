@@ -145,16 +145,16 @@
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>WHERE x.&quot;SomeRange&quot; -\|- @__otherRange_0</code></a></td>
 </tr>
 <tr>
-<td><code>.Where(c =&gt; c.SomeRange.Union(otherRange))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>WHERE x.&quot;SomeRange&quot; + @__otherRange_0</code></a></td>
+<td><code>.Select(c =&gt; c.SomeRange.Union(otherRange))</code></td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>SELECT x.&quot;SomeRange&quot; + @__otherRange_0</code></a></td>
 </tr>
 <tr>
-<td><code>.Where(c =&gt; c.SomeRange.Intersect(otherRange))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>WHERE x.&quot;SomeRange&quot; * @__otherRange_0</code></a></td>
+<td><code>.Select(c =&gt; c.SomeRange.Intersect(otherRange))</code></td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>SELECT x.&quot;SomeRange&quot; * @__otherRange_0</code></a></td>
 </tr>
 <tr>
-<td><code>.Where(c =&gt; c.SomeRange.Except(otherRange))</code></td>
-<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>WHERE x.&quot;SomeRange&quot; - @__otherRange_0</code></a></td>
+<td><code>.Select(c =&gt; c.SomeRange.Except(otherRange))</code></td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE"><code>SELECT x.&quot;SomeRange&quot; - @__otherRange_0</code></a></td>
 </tr>
 </tbody>
 </table>
