@@ -27,7 +27,7 @@ Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgs
 Current active contributors to Npgsql are:
 
 * Shay Rojansky
-* Yohdeadfall
+* Yoh Deadfall
 * Raif Atef
 * Austin Drenski
 * Emil Lenngren
