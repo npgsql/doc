@@ -91,31 +91,31 @@ conn.TypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum&quot;);
 conn.TypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite&quot;);
 </code></pre><p>After mapping, you can read and write your CLR types as usual:</p>
 <pre><code class="lang-c#">// Writing
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum, some_composite) VALUES (@p1, @p2)&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum_column, some_composite_column) VALUES (@p1, @p2)&quot;, Conn))
 {
     cmd.Parameters.Add(new NpgsqlParameter
     {
-        ParameterName = &quot;some_enum&quot;,
+        ParameterName = &quot;p1&quot;,
         Value = SomeEnum.Good
     });
     cmd.Parameters.Add(new NpgsqlParameter
     {
-        ParameterName = &quot;some_composite&quot;,
+        ParameterName = &quot;p2&quot;,
         Value = new SomeType { ... }
     });
     cmd.ExecuteNonQuery();
 }
 
 // Reading
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum, some_composite FROM some_table&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum_column, some_composite_column FROM some_table&quot;, Conn))
 using (var reader = cmd.ExecuteReader()) {
     reader.Read();
     var enumValue = reader.GetFieldValue&lt;SomeEnum&gt;(0);
     var compositeValue = reader.GetFieldValue&lt;SomeType&gt;(1);
 }
-</code></pre><p>Note that your PostgreSQL enum and composites types (<code>pg_enum_type</code> and <code>pg_composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
+</code></pre><p>Note that your PostgreSQL enum and composites types (<code>enum_type</code> and <code>composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
 <h1 id="name-translation">Name Translation</h1>
-<p>CLR type and field names are usually camelcase (e.g. <code>SomeType</code>), whereas in PostgreSQL they are snake_case (e.g. <code>some_type</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifying a name translator when setting up a mapping:</p>
+<p>CLR type and field names are usually camel case (e.g. <code>SomeType</code>), whereas in PostgreSQL they are snake case (e.g. <code>some_type</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifying a name translator when setting up a mapping:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_type&quot;, new NpgsqlNullNameTranslator());
 </code></pre><p>Finally, you may control mappings on a field-by-field basis via the <code>[PgName]</code> attribute. This will override the name translator.</p>
 <pre><code class="lang-c#">using NpgsqlTypes;
@@ -130,48 +130,48 @@ enum SomeEnum {
 <p>In some cases, it may be desirable to interact with PostgreSQL enums and composites without a pre-existing CLR type - this is useful mainly if your program doesn&#39;t know the database schema and types in advance, and needs to interact with any enum/composite type. Note that using CLR types is safer and faster (for composites), and should be preferred when possible.</p>
 <p>Enums can be read and written as simple strings:</p>
 <pre><code class="lang-c#">// Writing enum as string
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum) VALUES (@p1)&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum_column) VALUES (@p1)&quot;, Conn))
 {
     cmd.Parameters.Add(new NpgsqlParameter
     {
-        ParameterName = &quot;some_enum&quot;,
+        ParameterName = &quot;p1&quot;,
         Value = &quot;Good&quot;
-        DataTypeName = &quot;pg_enum_type&quot;
+        DataTypeName = &quot;some_enum&quot;
     });
     cmd.ExecuteNonQuery();
 }
 
 // Reading enum as string
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum FROM some_table&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum_column FROM some_table&quot;, Conn))
 using (var reader = cmd.ExecuteReader()) {
     reader.Read();
     var enumValue = reader.GetFieldValue&lt;string&gt;(0);
 }
 </code></pre><p>Composites can be read and written as C# dynamic ExpandoObjects:</p>
 <pre><code class="lang-c#">// Writing composite as ExpandoObject
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_composite) VALUES (@p1)&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_composite_column) VALUES (@p1)&quot;, Conn))
 {
     var someComposite = new ExpandoObject();
     some_composite.Foo = 8;
     some_composite.Bar = &quot;hello&quot;;
     cmd.Parameters.Add(new NpgsqlParameter
     {
-        ParameterName = &quot;some_enum&quot;,
+        ParameterName = &quot;p1&quot;,
         Value = someComposite,
-        DataTypeName = &quot;pg_enum_type&quot;
+        DataTypeName = &quot;some_composite&quot;
     });
     cmd.ExecuteNonQuery();
 }
 
 // Reading composite as ExpandoObject
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_composite FROM some_table&quot;, Conn))
+using (var cmd = new NpgsqlCommand(&quot;SELECT some_composite_column FROM some_table&quot;, Conn))
 using (var reader = cmd.ExecuteReader()) {
     reader.Read();
     var compositeValue = (dynamic)reader.GetValue(0);
     Console.WriteLine(compositeValue.Foo);
     Console.WriteLine(compositeValue.Bar);
 }
-</code></pre><p>As long as you CLR types <code>SomeEnum</code> and <code>SomeType</code> contain fields/properties which correspond to the PostgreSQL type being read/written, everything will work as expected. Note that the default name translator is used (see the section about name translation).</p>
+</code></pre><p>As long as your CLR types <code>SomeEnum</code> and <code>SomeType</code> contain fields/properties which correspond to the PostgreSQL type being read/written, everything will work as expected. Note that the default name translator is used (see the section about name translation).</p>
 </article>
           </div>
           

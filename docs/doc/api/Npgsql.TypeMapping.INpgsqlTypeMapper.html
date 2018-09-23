@@ -222,6 +222,7 @@ A type mapper exists for each connection, as well as a single global type mapper
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapComposite&lt;T&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
+
     where T : new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -304,6 +305,7 @@ an exception will be raised.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapEnum&lt;TEnum&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
+
     where TEnum : struct, Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -452,6 +454,7 @@ after removal will result in an exception.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool UnmapComposite&lt;T&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
+
     where T : new()</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -525,6 +528,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool UnmapEnum&lt;TEnum&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
+
     where TEnum : struct, Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
