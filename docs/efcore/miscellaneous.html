@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Miscellaneous | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Miscellaneous | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.39.1.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="miscellaneous">Miscellaneous</h1>
+
+<h2 id="postgresql-extensions">PostgreSQL extensions</h2>
+<p>The Npgsql EF Core provider allows you to specify PostgreSQL extensions that should be set up in your database.
+Simply use <code>HasPostgresExtension</code> in your context&#39;s <code>OnModelCreating</code> method:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.HasPostgresExtension(&quot;hstore&quot;);
+</code></pre><h2 id="optimistic-concurrency-and-concurrency-tokens">Optimistic Concurrency and Concurrency Tokens</h2>
+<p>Entity Framework Core supports the concept of optimistic concurrency - a property on your entity is designated as a concurrency token, and EF Core detects concurrent modifications by checking whether that token has changed since the entity was read. You can read more about this in the <a href="https://docs.microsoft.com/en-us/ef/core/modeling/concurrency">EF Core docs</a>.</p>
+<p>Although applications can update concurrency tokens themselves, we frequently rely on the database automatically updating a column on update - a &quot;last modified&quot; timestamp, an SQL Server <code>rowversion</code>, etc. Unfortunately PostgreSQL doesn&#39;t have such auto-updating columns - but there is one feature that can be used for concurrency token. All PostgreSQL tables have a set of <a href="https://www.postgresql.org/docs/current/static/ddl-system-columns.htm://www.postgresql.org/docs/current/static/ddl-system-columns.html">implicit and hidden system columns</a>, among which <code>xmin</code> holds the ID of the latest updating transaction. Since this value automatically gets updated every time the row is changed, it is ideal for use as a concurrency token.</p>
+<p>To enable this feature on an entity, insert the following code into your context&#39;s <code>OnModelCreating</code> method:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Blog&gt;()
+                   .ForNpgsqlUseXminAsConcurrencyToken();
+</code></pre><h2 id="postgresql-index-methods">PostgreSQL Index Methods</h2>
+<p>PostgreSQL supports a number of <em>index methods</em>, or <em>types</em>. These are specified at index creation time via the <code>USING _method_</code> clause, see the <a href="https://www.postgresql.org/docs/current/static/sql-createindex.html">PostgreSQL docs for <code>CREATE INDEX</code></a> and <a href="https://www.postgresql.org/docs/current/static/indexes-types.html">this page</a> for information on the different types.</p>
+<p>The Npgsql EF Core provider allows you to specify the index method to be used by specifying <code>ForNpgsqlHasMethod()</code> on your index in your context&#39;s <code>OnModelCreating</code> method:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Blog&gt;()
+                   .HasIndex(b =&gt; b.Url)
+                   .ForNpgsqlHasMethod(&quot;gin&quot;);
+</code></pre><h2 id="execution-strategy">Execution Strategy</h2>
+<p>Since 2.0.0, the Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context&#39;s <code>OnModelConfiguring</code>:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt; options.EnableRetryOnFailure());
+</code></pre><p>This strategy relies on the <code>IsTransient</code> property of <code>NpgsqlException</code>. Both this property and the retrying strategy are new and should be considered somewhat experimental - please report any issues.</p>
+<h2 id="comments">Comments</h2>
+<p>PostgreSQL allows you to <a href="https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS">attach comments</a> to database objects, which can help explain their purpose for someone examining the schema. The Npgsql EF Core provider supports this for tables or columns, simply set the comment in your model&#39;s <code>OnModelCreating</code> as follows:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;MyEntity&gt;()
+                   .ForNpgsqlHasComment(&quot;Some comment&quot;);
+</code></pre><h2 id="certificate-authentication">Certificate authentication</h2>
+<p>The Npgsql allows you to provide a callback for verifying the server-provided certificates, and to provide a callback for providing certificates to the server. The latter, if properly set up on the PostgreSQL side, allows you to do client certificate authentication - see <a href="http://www.npgsql.org/doc/security.html#encryption-ssltls">the Npgsql docs</a> and also <a href="https://www.postgresql.org/docs/current/static/ssl-tcp.html#SSL-CLIENT-CERTIFICATES">the PostgreSQL docs</a> on setting this up.</p>
+<p>The Npgsql EF Core provider allows you to set these two callbacks on the <code>DbContextOptionsBuilder</code> as follows:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt;
+        {
+            options.RemoteCertificateValidationCallback(MyCallback1);
+            options.ProvideClientCertificatesCallback(MyCallback2);
+        });
+</code></pre><p>You may also consider passing <code>Trust Server Certificate=true</code> in your connection string to make Npgsql accept whatever certificate your PostgreSQL provides (useful for self-signed certificates).</p>
+<h2 id="database-creation">Database Creation</h2>
+<h3 id="specifying-the-administrative-db">Specifying the administrative db</h3>
+<p>When the Npgsql EF Core provider creates or deletes a database (<code>EnsureCreated()</code>, <code>EnsureDeleted()</code>), it must connect to an administrative database which already exists (with PostgreSQL you always have to be connected to some database, even when creating/deleting another database). Up to now the <code>postgres</code> database was used, which is supposed to always be present.</p>
+<p>However, there are some PostgreSQL-like databases where the <code>postgres</code> database is not available. For these cases you can specify the administrative database as follows:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt; options.UseAdminDatabase(&quot;my_admin_db&quot;));
+</code></pre><h3 id="using-a-database-template">Using a database template</h3>
+<p>When creating a new database,
+<a href="http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html">PostgreSQL allows specifying another &quot;template database&quot;</a>
+which will be copied as the basis for the new one. This can be useful for including database entities which are not managed by Entity Framework Core. You can trigger this by using <code>HasDatabaseTemplate</code> in your context&#39;s <code>OnModelCreating</code>:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.HasDatabaseTemplate(&quot;my_template_db&quot;);
+</code></pre><h3 id="setting-a-tablespace">Setting a tablespace</h3>
+<p>PostgreSQL allows you to locate your database in different parts of your filesystem, <a href="https://www.postgresql.org/docs/current/static/manage-ag-tablespaces.html">via tablespaces</a>. The Npgsql EF Core provider allows you to specify your database&#39;s namespace:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.ForNpgsqlUseTablespace(&quot;my_tablespace&quot;);
+</code></pre><p>You must have created your tablespace prior to this via the <code>CREATE TABLESPACE</code> command - the Npgsql EF Core provider does not do this for you. Note also that specifying a tablespace on specific tables is not supported.</p>
+<h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
+<p>If you&#39;re using CockroachDB, the Npgsql EF Core provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Customer&gt;()
+                   .ForCockroachDbInterleaveInParent(
+                        typeof(ParentEntityType),
+                        new List&lt;string&gt; { &quot;prefix_column_1&quot;, &quot;prefix_column_2&quot; });
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/dev/doc/miscellaneous.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2018 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

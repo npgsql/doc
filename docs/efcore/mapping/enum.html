@@ -82,9 +82,26 @@
 <p>However, the Npgsql provider also allows you to map your CLR enums to <a href="https://www.postgresql.org/docs/current/static/datatype-enum.html">database enum types</a>. This option, unique to PostgreSQL, provides the best of both worlds: the enum is internally stored in the database as a number (minimal storage), but is handled like a string (more usable, no need to remember numeric values) and has type safety.</p>
 <h2 id="creating-your-database-enum">Creating your database enum</h2>
 <p>First, you must specify the PostgreSQL enum type on your model, just like you would with tables, sequences or other databases objects:</p>
+<div class="tabGroup" id="tabgroup_vE+ljN1+t5">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_vE+ljN1+t5_tabid-1" role="tab" aria-controls="tabpanel_vE+ljN1+t5_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 2.2</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_vE+ljN1+t5_tabid-2" role="tab" aria-controls="tabpanel_vE+ljN1+t5_tabid-2" data-tab="tabid-2" tabindex="-1">Version 2.1</a>
+</li>
+</ul>
+<section id="tabpanel_vE+ljN1+t5_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.ForNpgsqlHasEnum&lt;Mood&gt;();
-</code></pre><p>This causes the EF Core provider to create your data enum type, <code>Mood</code>, with two labels: <code>happy</code> and <code>sad</code>. This will cause the appropriate migration to be created.</p>
+</code></pre></section>
+<section id="tabpanel_vE+ljN1+t5_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
+    =&gt; builder.ForNpgsqlHasEnum(&quot;Mood&quot;, new[] { &quot;happy&quot;, &quot;sad&quot; });
+</code></pre></section>
+</div>
+<p><br></p>
+<p>This causes the EF Core provider to create your data enum type, <code>Mood</code>, with two labels: <code>happy</code> and <code>sad</code>. This will cause the appropriate migration to be created.</p>
 <h2 id="mapping-your-enum">Mapping your enum</h2>
 <p>Even if your database enum is created, Npgsql has to know about it, and especially about your CLR enum type that should be mapped to it. This is done by adding the following code, <em>before</em> any EF Core operations take place. An appropriate place for this is in the static constructor on your DbContext class:</p>
 <pre><code class="lang-c#">static MyDbContext()

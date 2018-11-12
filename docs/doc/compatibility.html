@@ -101,9 +101,10 @@ error about <code>ssl_renegotiation_limit</code>.</li>
 (see issue <a href="https://github.com/npgsql/npgsql/issues/544">#544</a>).</li>
 </ul>
 <h2 id="pgbouncer">pgbouncer</h2>
-<p>Npgsql works well with pgbouncer, but there are some quirks to be aware of.</p>
+<p>Npgsql works well with PgBouncer, but there are some quirks to be aware of.</p>
 <ul>
-<li>Don&#39;t forget to turn off Npgsql&#39;s internal connection pool by specifying <code>Pooling=false</code> on the connection string.</li>
+<li>In many cases, you&#39;ll want to turn off Npgsql&#39;s internal connection pool by specifying <code>Pooling=false</code> on the connection string.</li>
+<li>If you decide to keep Npgsql pooling on along with PgBouncer, and are using PgBouncer&#39;s transaction or statement mode, then you  need to specify <code>No Reset On Close=true</code> on the connection string. This disables Npgsql&#39;s connection reset logic (<code>DISCARD ALL</code>), which gets executed when a connection is return to Npgsql&#39;s pool, and which makes no sense in these modes.</li>
 <li>Prior to version 3.1, Npgsql sends the <code>statement_timeout</code> startup parameter when it connects, but this parameter isn&#39;t supported by pgbouncer.
 You can get around this by specifying <code>CommandTimeout=0</code> on the connection string, and then manually setting the <code>CommandTimeout</code>
 property on your <code>NpgsqlCommand</code> objects. Version 3.1 no longer sends <code>statement_timeout</code>.</li>
