@@ -78,7 +78,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h2 id="spatial-mapping-with-nettopologysuite">Spatial Mapping with NetTopologySuite</h2>
 
-<div class="NOTE"><h5>Note</h5><p>It&#39;s recommended that you start by reading the general <a href="https://docs.microsoft.com/en-us/ef/core/modeling/spatial">Entity Framework Core docs on spatial support</a>.</p>
+<div class="NOTE"><h5>Note</h5><p>It&#39;s recommended that you start by reading the general <a href="https://docs.microsoft.com/ef/core/modeling/spatial">Entity Framework Core docs on spatial support</a>.</p>
 </div>
 <p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn&#39;t provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is quite a good candidate. The Npgsql EF Core provider has a plugin which allows you to map NetTopologySuite&#39;s types PostGIS columns, and even translate many useful spatial operations to SQL. This is the recommended way to interact with spatial types in Npgsql.</p>
 <p>Note that the EF Core NetTopologySuite plugin depends on <a href="http://www.npgsql.org/doc/types/nts.html">the Npgsql ADO.NET NetTopology plugin</a>, which provides NetTopologySuite support at the lower level. The EF Core plugin automatically arranged for the ADO.NET plugin to be set up.</p>
@@ -104,7 +104,7 @@
 
 var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
 </code></pre><h2 id="operation-translation">Operation translation</h2>
-<p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and cases indices can be used to speed things up.</p>
+<p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up.</p>
 <p>Note that the plugin is far from covering all spatial operations. If an operation you need is missing, please open an issue to request for it.</p>
 <table>
 <thead>

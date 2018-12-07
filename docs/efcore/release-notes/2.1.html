@@ -78,7 +78,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="21-release-notes">2.1 Release Notes</h1>
 
-<p>Version 2.1.0 of the Npgsql Entity Framework Core provider has been released and is available on nuget. This version works with <a href="https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-2.1">version 2.1.0 of Entity Framework Core</a>, and contains some new Npgsql features as well.</p>
+<p>Version 2.1.0 of the Npgsql Entity Framework Core provider has been released and is available on nuget. This version works with <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.1">version 2.1.0 of Entity Framework Core</a>, and contains some new Npgsql features as well.</p>
 <p>Thanks to <a href="https://github.com/rwasef1830">@rwasef1830</a> and <a href="https://github.com/austindrenski">@austindrenski</a> for their valuable contributions.</p>
 <h2 id="new-features">New Features</h2>
 <p>Aside from general EF Core features new in 2.1.0, the Npgsql provider contains the following major new features:</p>
@@ -97,7 +97,7 @@
 <p>Thanks to a new plugin infrastructure, it is now possible to set up the EF Core provider to use NodaTime&#39;s types instead of the built-in .NET ones; instead of having <code>DateTime</code> properties on your entities, you can now have <a href="https://nodatime.org/2.2.x/userguide/core-types">Instant</a> properties instead.</p>
 <p>See <a href="../mapping/nodatime.html">the full documentation for more information</a>.</p>
 <h3 id="postgresql-10-identity-columns">PostgreSQL 10 IDENTITY columns</h3>
-<p>PostgreSQL 10 introduced a new IDENTITY column as an alternative to traditional SERIAL columns, and these are now supported by the EF Core provider. IDENTITY columns conform to the SQL standard and are in general safer than SERIAL columns, <a href="https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-2.1">read this blog post for more info</a>. It&#39;s recommended that all new projects use IDENTITY, but Npgsql even provides seamless migration of your existing SERIAL-based model!.</p>
+<p>PostgreSQL 10 introduced a new IDENTITY column as an alternative to traditional SERIAL columns, and these are now supported by the EF Core provider. IDENTITY columns conform to the SQL standard and are in general safer than SERIAL columns, <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.1">read this blog post for more info</a>. It&#39;s recommended that all new projects use IDENTITY, but Npgsql even provides seamless migration of your existing SERIAL-based model!.</p>
 <p>Read <a href="../value-generation.html">the full documentation for more information</a>.</p>
 <h3 id="enum-support">Enum support</h3>
 <p>It is now possible to map your CLR enums to <a href="https://www.postgresql.org/docs/current/static/datatype-enum.html">native PostgreSQL enums</a>. This is a unique PostgreSQL feature that provides the best of both worlds: the enum is internally stored in the database as a number (minimal storage), but is handled like a string (more usable, no need to remember numeric values) and has type safety.</p>
@@ -122,7 +122,7 @@
 </div>
 <ul>
 <li>Columns of type <code>timestamp with time zone</code>/<code>timestamptz</code> will now be scaffolded as <code>DateTime</code> properties, and not <code>DateTimeOffset</code> properties. The general use of <code>timestamp with time zone</code>/<code>timestamptz</code> is discouraged (this type does <em>not</em> store the timezone in the database), consider using <code>timestamp without time zone</code>/<code>timestamp</code> instead.</li>
-<li>If you&#39;re specifying index methods with <code>ForNpgsqlHasMethod()</code>, then you will have to fix migrations which generate those indices. In these migrations, you will find code such as <code>.Annotation(&quot;Npgsql:Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>. You must remove the extra <code>Npgsql:</code>, leaving <code>.Annotation(&quot;Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>.</li>
+<li>If you&#39;re specifying index methods with <code>ForNpgsqlHasMethod()</code>, then you will have to fix migrations which generate those indexes. In these migrations, you will find code such as <code>.Annotation(&quot;Npgsql:Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>. You must remove the extra <code>Npgsql:</code>, leaving <code>.Annotation(&quot;Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>.</li>
 <li>Specifying versions when specifying PostgreSQL extensions on your model is no longer supported - this was a very rarely-used feature which interfered with extension scaffolding.</li>
 <li>If you&#39;re still referencing the nuget package Npgsql.EntityFrameworkCore.PostgreSQL.Design, please remove it - it&#39;s no longer needed or up to date.</li>
 </ul>
