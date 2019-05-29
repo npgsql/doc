@@ -8,7 +8,7 @@
     <title>COPY | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="COPY | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.42.4.0">
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -139,8 +139,7 @@ using (var outStream = conn.BeginRawBinaryCopy(&quot;COPY table2 FROM STDIN (FOR
     outStream.Write(data, 0, len);
 }
 </code></pre><h2 id="cancel">Cancel</h2>
-<p>Import operations can be cancelled at any time by calling the <code>Cancel()</code> method on the importer object. No data is committed to the database before the importer is closed or disposed.</p>
-<p>Export operations can be cancelled as well, also by calling <code>Cancel()</code>.</p>
+<p>Import operations can be cancelled at any time by disposing <code>NpgsqlBinaryImporter</code> without calling <code>Complete()</code> on it. Export operations can be cancelled as well, by calling <code>Cancel()</code>.</p>
 <h2 id="other">Other</h2>
 <p>See the CopyTests.cs test fixture for more usage samples.</p>
 </article>

@@ -8,7 +8,7 @@
     <title>Getting Started | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Getting Started | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.42.4.0">
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -92,10 +92,10 @@
 <p>Below is a <code>.csproj</code> file for a console application that uses the Npgsql EF Core provider:</p>
 <pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
   &lt;PropertyGroup&gt;
-    &lt;TargetFramework&gt;netcoreapp2.1&lt;/TargetFramework&gt;
+    &lt;TargetFramework&gt;netcoreapp2.2&lt;/TargetFramework&gt;
   &lt;/PropertyGroup&gt;
   &lt;ItemGroup&gt;
-    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;2.1.2&quot; /&gt;
+    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;2.2.0&quot; /&gt;
   &lt;/ItemGroup&gt;
 &lt;/Project&gt;
 </code></pre><h2 id="defining-a-dbcontext">Defining a <code>DbContext</code></h2>
@@ -136,7 +136,7 @@ namespace ConsoleApp.PostgreSQL
 <p>Modify the <code>ConfigureServices</code> method in <code>Startup.cs</code>:</p>
 <pre><code class="lang-c#">public IServiceProvider ConfigureServices(IServiceCollection services)
     =&gt; services.AddEntityFrameworkNpgsql()
-               .AddDbContext&lt;BlogContext&gt;()
+               .AddDbContext&lt;BloggingContext&gt;()
                .BuildServiceProvider();
 </code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, use dotnet CLI to execute the following:</p>
@@ -149,7 +149,7 @@ namespace ConsoleApp.PostgreSQL
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/f1c4633cbf981b28b07093e6e03e52dffc3dd3b2/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/b7397ef19282bc0ceb58396ecb5fa0094fb3ab10/doc/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

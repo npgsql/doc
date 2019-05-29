@@ -8,7 +8,7 @@
     <title>Logging | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Logging | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.42.4.0">
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,7 +84,7 @@
 <p>Npgsql logging is disabled by default and must be turned on. Logging can be turned on by setting <code>NpgsqlLogManager.Provider</code> to a class implementing the <code>INpgsqlLoggingProvider</code> interface. Npgsql comes with a console implementation which can be set up as follows:</p>
 <pre><code class="lang-c#">NpgsqlLogManager.Provider = new ???
 </code></pre><p><em>Note: you must set the logging provider before invoking any other Npgsql method, at the very start of your program.</em></p>
-<p>It&#39;s trivial to create a logging provider that passes log messages to whatever logging framework you use. You can find such an adaptor for NLog <a href="http://ni">here</a>.</p>
+<p>It&#39;s trivial to create a logging provider that passes log messages to whatever logging framework you use, you can find such an adapter for NLog below.</p>
 <p><em>Note:</em> the logging API is a first implementation and will probably improve/change - don&#39;t treat it as a stable part of the Npgsql API. Let us know if you think there are any missing messages or features!</p>
 <h2 id="consoleloggingprovider">ConsoleLoggingProvider</h2>
 <p>Npgsql comes with one built-in logging provider: ConsoleLoggingProvider. It will simply dump all log messages with a given level or above to stdanrd output.

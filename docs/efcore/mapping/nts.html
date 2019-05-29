@@ -8,7 +8,7 @@
     <title>Spatial Mapping with NetTopologySuite | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Spatial Mapping with NetTopologySuite | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.42.4.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -104,7 +104,12 @@
 }
 
 var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
-</code></pre><h2 id="operation-translation">Operation translation</h2>
+</code></pre><h2 id="constraining-your-type-names">Constraining your type names</h2>
+<p>With the code above, the provider will create a database column of type <code>geometry</code>. This is perfectly fine, but be aware that this type accepts any geometry type (point, polygon...), with any coordinate system (XY, XYZ...). It&#39;s good practice to constrain the column to the exact type of data you will be storing, but unfortunately the provider isn&#39;t aware of your required coordinate system and therefore can&#39;t do that for you. Consider explicitly specifying your column types on your properties as follows:</p>
+<pre><code class="lang-c#">[Column(TypeName=&quot;geometry (point)&quot;)]
+public Point Location { get; set; }
+</code></pre><p>This will constrain your column to XY points only. The same can be done via the fluent API with <code>HasColumnType()</code>.</p>
+<h2 id="operation-translation">Operation translation</h2>
 <p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up.</p>
 <p>Note that the plugin is far from covering all spatial operations. If an operation you need is missing, please open an issue to request for it.</p>
 <table>
@@ -262,7 +267,7 @@ var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &
 <p>The Npgsql provider will be default map all NetTopologySuite types to PostGIS <code>geometry</code>. However, you can instruct it to map certain properties to <code>geography</code> instead:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
 {
-    builder.Entity&lt;City&gt;().Property(b =&gt; b.Location).HasColumnType(&quot;geography&quot;);
+    builder.Entity&lt;City&gt;().Property(b =&gt; b.Location).HasColumnType(&quot;geography (point)&quot;);
 }
 </code></pre><p>or via an attribute:</p>
 <pre><code class="lang-c#">public class City
@@ -281,7 +286,7 @@ var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/f1c4633cbf981b28b07093e6e03e52dffc3dd3b2/doc/mapping/nts.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/b7397ef19282bc0ceb58396ecb5fa0094fb3ab10/doc/mapping/nts.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

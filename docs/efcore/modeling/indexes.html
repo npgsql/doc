@@ -8,7 +8,7 @@
     <title>Indexes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Indexes | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.40.11.0">
+    <meta name="generator" content="docfx 2.42.4.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -82,7 +82,7 @@
 <p>PostgreSQL and the Npgsql provider support the standard index modeling described in <a href="https://docs.microsoft.com/ef/core/modeling/indexes">the EF Core docs</a>. This page describes some supported PostgreSQL-specific features.</p>
 <h2 id="postgresql-covering-indexes-include">PostgreSQL covering indexes (INCLUDE)</h2>
 <p>Since version 11, PostgreSQL supports <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
                    .ForNpgsqlHasIndex(b =&gt; b.Id)
                    .ForNpgsqlInclude(b =&gt; b.Name);
@@ -111,7 +111,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/f1c4633cbf981b28b07093e6e03e52dffc3dd3b2/doc/modeling/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/b7397ef19282bc0ceb58396ecb5fa0094fb3ab10/doc/modeling/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
