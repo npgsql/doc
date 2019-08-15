@@ -8,7 +8,7 @@
     <title>Compatibility Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Compatibility Notes | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -96,13 +96,9 @@ We try to support Redshift as much as we can, please let us know about issues yo
 contains lots of useful compatibility information.</p>
 <p>Additional known issues:</p>
 <ul>
-<li>If you want to connect over SSL, your connection string must contain <code>Server Compatibility Mode=Redshift</code>, otherwise you&#39;ll get a connection
-error about <code>ssl_renegotiation_limit</code>.</li>
 <li>Entity Framework with database-computed identity values don&#39;t work with Redshift, since it doesn&#39;t support sequences
 (see issue <a href="https://github.com/npgsql/npgsql/issues/544">#544</a>).</li>
 </ul>
-<h2 id="digitalocean-managed-database">DigitalOcean Managed Database</h2>
-<p>DigitalOcean&#39;s Managed Database services requires you to connect to PostgreSQL over SSL.  Unfortunately when you enable it in your connection string, you will get the same error regarding <code>ssl_renegotiation_limit</code> as Amazon Redshift.  The Redshift compatibility mode setting resolves the issue on DigitalOcean.</p>
 <h2 id="pgbouncer">pgbouncer</h2>
 <p>Npgsql works well with PgBouncer, but there are some quirks to be aware of.</p>
 <ul>

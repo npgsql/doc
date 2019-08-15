@@ -8,7 +8,7 @@
     <title>Json.NET Type Plugin | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Json.NET Type Plugin | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -139,7 +139,7 @@ using (var reader = cmd.ExecuteReader())
     var someValue = reader.GetFieldValue&lt;int[]&gt;(0);
 }
 </code></pre><p>And for extra credit, you can specify JSON by default for array types just like for regular CLR types:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseJsonNet(new[] { typeof(int[] });
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseJsonNet(new[] { typeof(int[]) });
 </code></pre><p>This overwrites the default array mapping (which sends <a href="https://www.postgresql.org/docs/current/static/arrays.html">PostgreSQL arrays</a>), making Npgsql send int arrays as JSON by default.</p>
 </article>
           </div>

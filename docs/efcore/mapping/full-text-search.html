@@ -8,7 +8,7 @@
     <title>Full Text Search | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Full Text Search | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -188,7 +188,7 @@ var npgsql = context.Products
     protected override void Down(MigrationBuilder migrationBuilder)
     {
         // Migrations for dropping of the column and the index will appear here, all we need to do is drop the trigger:
-        migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector&quot;);
+        migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector_update&quot;);
     }
 }
 </code></pre><p>Any inserts or updates on the <code>Products</code> table will now update the <code>SearchVector</code> column and maintain it automatically. You can query it as follows:</p>
@@ -204,7 +204,7 @@ var npgsql = context.Products
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/b7397ef19282bc0ceb58396ecb5fa0094fb3ab10/doc/mapping/full-text-search.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/doc/mapping/full-text-search.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

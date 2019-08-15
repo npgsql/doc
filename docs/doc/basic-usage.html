@@ -8,7 +8,7 @@
     <title>Npgsql Basic Usage | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Npgsql Basic Usage | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../img/favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -142,7 +142,7 @@ using (var reader = cmd.ExecuteReader()) { ... }
 {
     cmd.Parameters.Add(new NpgsqlParameter(&quot;p_out&quot;, DbType.String) { Direction = ParameterDirection.Output });
     cmd.ExecuteNonQuery();
-    Console.WriteLine(c.Parameters[0].Value);
+    Console.WriteLine(cmd.Parameters[0].Value);
 }
 </code></pre><p>When Npgsql sees a parameter with <code>ParameterDirection.Output</code> (or <code>InputOutput</code>), it will simply search the function&#39;s resultset for a column whose name matches the parameter, and copy the first row&#39;s value into the output parameter. This provides no value whatsoever over processing the resultset yourself, and is discouraged - you should only use output parameters in Npgsql if you need to maintain portability with other databases which require it.</p>
 </article>

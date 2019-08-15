@@ -8,7 +8,7 @@
     <title>PostGIS/NetTopologySuite Type Plugin | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="PostGIS/NetTopologySuite Type Plugin | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.42.4.0">
+    <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -81,15 +81,6 @@
 
 <p>Before 4.0, Npgsql has supported reading and writing PostGIS types via some bundled .NET classes: <code>PostgisPoint</code>, <code>PostgisLineString</code>, etc. While this model provided some basic support, a proper representation of spatial types is a complicated task that&#39;s beyond Npgsql&#39;s scope, and should be handled by a specialized spatial library instead. The leading spatial library in the .NET world is currently <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a>, and with the introduction of <em>type plugins</em> in Npgsql 4.0, it is now possible to map PostGIS types directly to NetTopologySuite types. This is now the recommended way to store and load PostGIS types.</p>
 <p>If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.html">Npgsql.LegacyPostgis plugin</a>.</p>
-<h2 id="adding-the-nettopologysuite-myget-feed">Adding the NetTopologySuite MyGet feed</h2>
-<p>Unfortunately, the version of NetTopologySuite currently required by Npgsql (1.15.0) is still in preview. As a result, you will have to add the NetTopologySuite MyGet feed by dropping the following <code>NuGet.Config</code> file at the root of your project:</p>
-<pre><code class="lang-xml">&lt;configuration&gt;
-  &lt;packageSources&gt;
-    &lt;add key=&quot;NuGet&quot; value=&quot;https://api.nuget.org/v3/index.json&quot; /&gt;
-    &lt;add key=&quot;NetTopologySuite&quot; value=&quot;https://www.myget.org/F/nettopologysuite/api/v3/index.json&quot; /&gt;
-  &lt;/packageSources&gt;
-&lt;/configuration&gt;
-</code></pre><p>You will be able to remove this when NetTopologySuite make a final release.</p>
 <h2 id="setup">Setup</h2>
 <p>To use the NetTopologySuite plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NetTopologySuite">Npgsql.NetTopologySuite</a> and set it up:</p>
 <pre><code class="lang-c#">using Npgsql;
