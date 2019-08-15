@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>3.0 Release Notes (preview) | Npgsql Documentation </title>
+    <title>JSON Mapping | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="3.0 Release Notes (preview) | Npgsql Documentation ">
+    <meta name="title" content="JSON Mapping | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.44.0.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -77,29 +77,50 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="30-release-notes-preview">3.0 Release Notes (preview)</h1>
+<h2 id="json-mapping">JSON Mapping</h2>
 
-<p>3.0 preview versions of the Npgsql Entity Framework Core provider are available on nuget. These work with the corresponding preview versions of <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-3.0">Entity Framework Core</a>, and bring new Npgsql features in addition to the general EF Core changes.</p>
-<div class="CAUTION"><h5>Caution</h5><p>Use these versions with care and do not deploy to production without thorough testing. Read the breaking changes section below.</p>
+<div class="NOTE"><h5>Note</h5><p>This capability was introduced in 3.0.0-preview8, and shouldn&#39;t be considered stable yet.</p>
 </div>
-<p>The full list of issues for this release is <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/20?closed=1">available here</a>.</p>
-<h2 id="new-features">New Features</h2>
-<p>Aside from general EF Core features new in 3.0.0, the Npgsql EF Core provider contains the following major new features:</p>
-<ul>
-<li>It is now possible to map POCOs to JSON columns and query them, <a href="../mapping/json.html">see the docs for more info</a> (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/981">#981</a>)</li>
-<li>PostgreSQL identity columns are now the default - see breaking changes below) (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/804">#804</a>)</li>
-<li>Sequence options can now be managed on identity columns (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/819">#819</a>)</li>
-<li>Support has been added for the upcoming <a href="https://www.postgresql.org/docs/12/ddl-generated-columns.html">PostgreSQL 12 generated columns feature</a> (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/939">#939</a>)</li>
-<li>Index sort options (ascending/descending, null sort order...) can now be specified (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/326">#326</a>)</li>
-<li>Indexes can now be created concurrently (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/967">#967</a>)</li>
-<li>Views are now reverse-engineered (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/878">#878</a>)</li>
-</ul>
-<h2 id="breaking-changes">Breaking changes</h2>
-<div class="CAUTION"><h5>Caution</h5><p>The default value generation strategy has changed from the older SERIAL columns to the newer IDENTITY columns.</p>
-<p>When producing a migration with 3.0, the Npgsql provider will attempt to automatically generate SQL to alter your tables and convert serial columns
-to identity ones. This is a sensitive, one-time migration operation that should be done with care, and carefully tested before deployment to production.
-You may also explicitly opt out of this change, more information is available in <a href="../modeling/value-generation.html">the doc page about generated properties</a>.</p>
+<p>PostgreSQL has rich, built-in support for storing JSON columns and efficiently performing complex queries operations on them. Newcomers can read more about the PostgreSQL support on <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>, and on the <a href="https://www.postgresql.org/docs/current/functions-json.html">functions and operators page</a>.</p>
+<h1 id="mapping-poco-types-to-json-columns">Mapping POCO types to JSON columns</h1>
+<p>The Npgsql provider allows you to seamlessly map your own complex .NET types to PostgreSQL JSON columns, and then use LINQ to query them efficiently.</p>
+<pre><code class="lang-c#">// A regular EF entity object that will be mapped to a PostgreSQL table
+public class CustomerEntry
+{
+    public int Id { get; set; }
+
+    [Column(TypeName = &quot;jsonb&quot;)]
+    public Customer Customer { get; set; }    
+}
+</code></pre><p>The <code>[Column]</code> attribute tells EF Core to map <code>Customer</code> to a <code>jsonb</code> columnn, and not to another database table. <code>Customer</code> can be any regular .NET type, and can nest other types and arrays:</p>
+<pre><code>public class Customer
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Order[] Orders { get; set; }
+}
+
+public class Order
+{
+    public decimal Price { get; set; }
+    public string ShippingAddress { get; set; }
+}
+</code></pre><p>You can now assign a <code>Customer</code> instance to the property, and once you call <code>SaveChanges()</code> it will be serialized to database using <a href="https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/">the new <code>System.Text.Json</code> APIs</a>. For example, your database column will contain a document similar to the following:</p>
+<pre><code class="lang-json">{&quot;Age&quot;: 25, &quot;Name&quot;: &quot;Joe&quot;, &quot;Orders&quot;: [{&quot;Price&quot;: 99.5, &quot;ShippingAddress&quot;: &quot;Some address 1&quot;}, {&quot;Price&quot;: 23, &quot;ShippingAddress&quot;: &quot;Some address 2&quot;}]}
+</code></pre><p>When you load your entities, the JSON documents will be seamlessly (and efficiently) materialized back into <code>Customer</code> and <code>Order</code> instances. </p>
+<p>Note that PostgreSQL supports two flavors of JSON types: the binary <code>jsonb</code> and the textual <code>json</code>. In almost all cases the <code>jsonb</code> type is preferred for efficiency reasons, more detail is available in <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>.</p>
+<h1 id="querying-json-columns">Querying JSON columns</h1>
+<p>Saving and loading these documents wouldn&#39;t be much use without the ability to query them. You can express your queries via the same LINQ constructs you are already using in EF Core:</p>
+<pre><code class="lang-c#">var joes = context.CustomerEntries
+    .Where(e =&gt; e.Customer.Name == &quot;Joe&quot;)
+    .ToList();
+</code></pre><p>This will produce the following PostgreSQL-specific SQL:</p>
+<pre><code class="lang-sql">SELECT c.&quot;&quot;Id&quot;&quot;, c.&quot;&quot;Customer&quot;&quot;
+FROM &quot;&quot;CustomerEntries&quot;&quot; AS c
+WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
+</code></pre><div class="NOTE"><h5>Note</h5><p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
 </div>
+<p>These are early days for EF Core JSON support, and you&#39;ll likely run into some limitations. Please let us know how the current features are working for you and what you&#39;d like to see.</p>
 </article>
           </div>
           
@@ -108,7 +129,7 @@ You may also explicitly opt out of this change, more information is available in
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/8f372e845742d18de60a3618934384d98318dd6e/doc/release-notes/3.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/145bc134fa05b7c7e1ae06a8d6be06c5688c9668/doc/mapping/json.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
