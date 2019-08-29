@@ -99,7 +99,7 @@
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ArrayAnyAllExpression : Expression, IEquatable&lt;ArrayAnyAllExpression&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class ArrayAnyAllExpression : SqlExpression, IEquatable&lt;ArrayAnyAllExpression&gt;</code></pre>
   </div>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/functions-comparisons.html">https://www.postgresql.org/docs/current/static/functions-comparisons.html</a></p>
@@ -111,19 +111,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression__ctor_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayComparisonType_System_String_Expression_Expression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.%23ctor(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayComparisonType%2CSystem.String%2CExpression%2CExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression__ctor_SqlExpression_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayComparisonType_System_String_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.%23ctor(SqlExpression%2CSqlExpression%2CNpgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayComparisonType%2CSystem.String%2CRelationalTypeMapping)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L57">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L57">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression__ctor_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayComparisonType_System_String_Expression_Expression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.#ctor(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayComparisonType,System.String,Expression,Expression)">ArrayAnyAllExpression(ArrayComparisonType, String, Expression, Expression)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression__ctor_SqlExpression_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayComparisonType_System_String_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.#ctor(SqlExpression,SqlExpression,Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayComparisonType,System.String,RelationalTypeMapping)">ArrayAnyAllExpression(SqlExpression, SqlExpression, ArrayComparisonType, String, RelationalTypeMapping)</h4>
   <div class="markdown level1 summary"><p>Constructs a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.html">ArrayAnyAllExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ArrayAnyAllExpression(ArrayComparisonType arrayComparisonType, string operatorSymbol, Expression operand, Expression array)</code></pre>
+    <pre><code class="lang-csharp hljs">public ArrayAnyAllExpression(SqlExpression operand, SqlExpression array, ArrayComparisonType arrayComparisonType, string operator, RelationalTypeMapping typeMapping)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,6 +136,18 @@
     </thead>
     <tbody>
       <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">operand</span></td>
+        <td><p>The value to find.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">array</span></td>
+        <td><p>The array to search.</p>
+</td>
+      </tr>
+      <tr>
         <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayComparisonType.html">ArrayComparisonType</a></td>
         <td><span class="parametername">arrayComparisonType</span></td>
         <td><p>The comparison type.</p>
@@ -143,20 +155,14 @@
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">operatorSymbol</span></td>
+        <td><span class="parametername">operator</span></td>
         <td><p>The operator symbol to the array expression.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Expression</span></td>
-        <td><span class="parametername">operand</span></td>
-        <td><p>The value to find.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Expression</span></td>
-        <td><span class="parametername">array</span></td>
-        <td><p>The array to search.</p>
+        <td><span class="xref">RelationalTypeMapping</span></td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td><p>The type mapping for the expression.</p>
 </td>
       </tr>
     </tbody>
@@ -165,10 +171,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Array.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Array%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Array.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Array%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L35">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L35">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Array_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Array*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Array" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Array">Array</h4>
@@ -177,7 +183,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Expression Array { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual SqlExpression Array { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -189,17 +195,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ArrayComparisonType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ArrayComparisonType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ArrayComparisonType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ArrayComparisonType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L47">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L47">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ArrayComparisonType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ArrayComparisonType*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ArrayComparisonType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ArrayComparisonType">ArrayComparisonType</h4>
@@ -227,40 +233,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_NodeType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.NodeType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operand.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L21">View Source</a>
-  </span>
-  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_NodeType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.NodeType*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_NodeType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.NodeType">NodeType</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ExpressionType NodeType { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ExpressionType</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operand.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L29">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L29">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operand_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operand*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operand" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operand">Operand</h4>
@@ -269,7 +245,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Expression Operand { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual SqlExpression Operand { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -281,17 +257,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operator.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operator.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L41">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L41">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operator_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operator*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Operator" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Operator">Operator</h4>
@@ -319,10 +295,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Type.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Type.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L24">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L24">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Type_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Type*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Type" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Type">Type</h4>
@@ -351,10 +327,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Accept_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Accept(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Accept_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Accept(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L70">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L75">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Accept_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Accept*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Accept_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Accept(ExpressionVisitor)">Accept(ExpressionVisitor)</h4>
@@ -398,10 +374,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L92">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L93">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression)">Equals(ArrayAnyAllExpression)</h4>
@@ -445,10 +421,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L88">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L90">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Equals_System_Object_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Equals(System.Object)">Equals(Object)</h4>
@@ -492,10 +468,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_GetHashCode.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_GetHashCode.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L99">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L103">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_GetHashCode_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.GetHashCode*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_GetHashCode" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.GetHashCode">GetHashCode()</h4>
@@ -522,10 +498,42 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ToString.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Print_ExpressionPrinter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Print(ExpressionPrinter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L106">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L107">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Print_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Print*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Print_ExpressionPrinter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Print(ExpressionPrinter)">Print(ExpressionPrinter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Print(ExpressionPrinter expressionPrinter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ExpressionPrinter</span></td>
+        <td><span class="parametername">expressionPrinter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ToString.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L116">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ToString_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ToString*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_ToString" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.ToString">ToString()</h4>
@@ -552,10 +560,62 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_VisitChildren_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.VisitChildren(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Update_SqlExpression_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Update(SqlExpression%2CSqlExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L76">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L80">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Update_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Update*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_Update_SqlExpression_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.Update(SqlExpression,SqlExpression)">Update(SqlExpression, SqlExpression)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ArrayAnyAllExpression Update(SqlExpression operand, SqlExpression array)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">operand</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">array</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.html">ArrayAnyAllExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_VisitChildren_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.VisitChildren(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L86">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_VisitChildren_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.VisitChildren*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression_VisitChildren_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression.VisitChildren(ExpressionVisitor)">VisitChildren(ExpressionVisitor)</h4>
@@ -609,10 +669,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_ArrayAnyAllExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.ArrayAnyAllExpression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L18" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/ArrayAnyAllExpression.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -631,7 +691,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2018 The Npgsql Development Team
+            © Copyright 2019 The Npgsql Development Team
             
           </div>
         </div>

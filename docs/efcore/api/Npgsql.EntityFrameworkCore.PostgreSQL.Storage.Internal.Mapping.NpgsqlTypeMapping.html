@@ -83,7 +83,9 @@
   
   <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping" class="text-break">Class NpgsqlTypeMapping
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>The base class for mapping Npgsql-specific types. It configures parameters with the
+<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType">NpgsqlDbType</a> provider-specific type enum.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -95,13 +97,11 @@
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoxTypeMapping.html">NpgsqlBoxTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCidrTypeMapping.html">NpgsqlCidrTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCircleTypeMapping.html">NpgsqlCircleTypeMapping</a></div>
-      <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCitextTypeMapping.html">NpgsqlCitextTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateTypeMapping.html">NpgsqlDateTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlHstoreTypeMapping.html">NpgsqlHstoreTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.html">NpgsqlInetTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlIntervalTypeMapping.html">NpgsqlIntervalTypeMapping</a></div>
-      <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonbTypeMapping.html">NpgsqlJsonbTypeMapping</a></div>
-      <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonTypeMapping.html">NpgsqlJsonTypeMapping</a></div>
+      <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonObjectTypeMapping.html">NpgsqlJsonObjectTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineSegmentTypeMapping.html">NpgsqlLineSegmentTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineTypeMapping.html">NpgsqlLineTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMacaddr8TypeMapping.html">NpgsqlMacaddr8TypeMapping</a></div>
@@ -120,7 +120,6 @@
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsVectorTypeMapping.html">NpgsqlTsVectorTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlUintTypeMapping.html">NpgsqlUintTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlVarbitTypeMapping.html">NpgsqlVarbitTypeMapping</a></div>
-      <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlXmlTypeMapping.html">NpgsqlXmlTypeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.TimeMapping.html">TimeMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.TimestampInstantMapping.html">TimestampInstantMapping</a></div>
       <div class="level2"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.TimestampLocalDateTimeMapping.html">TimestampLocalDateTimeMapping</a></div>
@@ -139,14 +138,15 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_RelationalTypeMappingParameters_NpgsqlDbType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.%23ctor(RelationalTypeMappingParameters%2CNpgsqlDbType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_RelationalTypeMappingParameters_NpgsqlDbType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.%23ctor(RelationalTypeMappingParameters%2CNpgsqlDbType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L19">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L36">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.#ctor*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_RelationalTypeMappingParameters_NpgsqlDbType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.#ctor(RelationalTypeMappingParameters,NpgsqlDbType)">NpgsqlTypeMapping(RelationalTypeMappingParameters, NpgsqlDbType)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constructs an instance of the <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -165,25 +165,28 @@
       <tr>
         <td><span class="xref">RelationalTypeMappingParameters</span></td>
         <td><span class="parametername">parameters</span></td>
-        <td></td>
+        <td><p>The parameters for this mapping.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">NpgsqlDbType</span></td>
         <td><span class="parametername">npgsqlDbType</span></td>
-        <td></td>
+        <td><p>The database type of the range subtype.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_System_String_Type_NpgsqlDbType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.%23ctor(System.String%2CType%2CNpgsqlDbType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_System_String_Type_NpgsqlDbType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.%23ctor(System.String%2CType%2CNpgsqlDbType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L13">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L27">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.#ctor*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping__ctor_System_String_Type_NpgsqlDbType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.#ctor(System.String,Type,NpgsqlDbType)">NpgsqlTypeMapping(String, Type, NpgsqlDbType)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Constructs an instance of the <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a> class.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -202,17 +205,20 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">storeType</span></td>
-        <td></td>
+        <td><p>The database type to map.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">Type</span></td>
         <td><span class="parametername">clrType</span></td>
-        <td></td>
+        <td><p>The CLR type to map.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">NpgsqlDbType</span></td>
         <td><span class="parametername">npgsqlDbType</span></td>
-        <td></td>
+        <td><p>The database type used by Npgsql.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -220,14 +226,15 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.NpgsqlDbType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.NpgsqlDbType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L11">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L18">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.NpgsqlDbType*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.NpgsqlDbType">NpgsqlDbType</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The database type used by Npgsql.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -252,10 +259,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_ConfigureParameter_DbParameter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.ConfigureParameter(DbParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_ConfigureParameter_DbParameter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.ConfigureParameter(DbParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L25">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L40">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_ConfigureParameter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.ConfigureParameter*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_ConfigureParameter_DbParameter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.ConfigureParameter(DbParameter)">ConfigureParameter(DbParameter)</h4>
@@ -290,10 +297,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlTypeMapping.cs/#L13" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -312,7 +319,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2018 The Npgsql Development Team
+            © Copyright 2019 The Npgsql Development Team
             
           </div>
         </div>

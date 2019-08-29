@@ -90,29 +90,33 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">RegexMatchExpression</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IEquatable</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.html">RegexMatchExpression</a>&gt;</div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.html">Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RegexMatchExpression : Expression</code></pre>
+    <pre><code class="lang-csharp hljs">public class RegexMatchExpression : SqlExpression, IEquatable&lt;RegexMatchExpression&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression__ctor_Expression_Expression_RegexOptions_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.%23ctor(Expression%2CExpression%2CRegexOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression__ctor_SqlExpression_SqlExpression_RegexOptions_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.%23ctor(SqlExpression%2CSqlExpression%2CRegexOptions%2CRelationalTypeMapping)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L42">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L41">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression__ctor_Expression_Expression_RegexOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.#ctor(Expression,Expression,RegexOptions)">RegexMatchExpression(Expression, Expression, RegexOptions)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression__ctor_SqlExpression_SqlExpression_RegexOptions_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.#ctor(SqlExpression,SqlExpression,RegexOptions,RelationalTypeMapping)">RegexMatchExpression(SqlExpression, SqlExpression, RegexOptions, RelationalTypeMapping)</h4>
   <div class="markdown level1 summary"><p>Constructs a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.html">RegexMatchExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RegexMatchExpression(Expression match, Expression pattern, RegexOptions options)</code></pre>
+    <pre><code class="lang-csharp hljs">public RegexMatchExpression(SqlExpression match, SqlExpression pattern, RegexOptions options, RelationalTypeMapping typeMapping)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -125,13 +129,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td><span class="parametername">match</span></td>
         <td><p>The expression to match.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td><span class="parametername">pattern</span></td>
         <td><p>The pattern to match.</p>
 </td>
@@ -142,16 +146,22 @@
         <td><p>The options for regular expression evaluation.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">RelationalTypeMapping</span></td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td><p>The type mapping for the expression.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Match.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Match%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Match.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Match%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L21">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L20">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Match_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Match*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Match" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Match">Match</h4>
@@ -160,7 +170,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Expression Match { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual SqlExpression Match { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -172,47 +182,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_NodeType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.NodeType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Options.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Options%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L13">View Source</a>
-  </span>
-  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_NodeType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.NodeType*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_NodeType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.NodeType">NodeType</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ExpressionType NodeType { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ExpressionType</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Options.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Options%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L33">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L32">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Options_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Options*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Options" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Options">Options</h4>
@@ -240,10 +220,10 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Pattern.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Pattern%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Pattern.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Pattern%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L27">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L26">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Pattern_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Pattern*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Pattern" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Pattern">Pattern</h4>
@@ -252,7 +232,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual Expression Pattern { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual SqlExpression Pattern { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -264,17 +244,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Expression</span></td>
+        <td><span class="xref">SqlExpression</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Type.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Type.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Type%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L16">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L15">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Type_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Type*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Type" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Type">Type</h4>
@@ -303,10 +283,10 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Accept_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Accept(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Accept_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Accept(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L50">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L54">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Accept_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Accept*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Accept_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Accept(ExpressionVisitor)">Accept(ExpressionVisitor)</h4>
@@ -350,10 +330,166 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_ToString.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L68">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L68">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression)">Equals(RegexMatchExpression)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(RegexMatchExpression other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.html">RegexMatchExpression</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L76">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Equals_System_Object_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Equals(System.Object)">Equals(Object)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_GetHashCode.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.GetHashCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L79">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_GetHashCode_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.GetHashCode*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_GetHashCode" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Print_ExpressionPrinter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Print(ExpressionPrinter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L83">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Print_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Print*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Print_ExpressionPrinter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Print(ExpressionPrinter)">Print(ExpressionPrinter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Print(ExpressionPrinter expressionPrinter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ExpressionPrinter</span></td>
+        <td><span class="parametername">expressionPrinter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_ToString.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L91">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_ToString_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.ToString*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_ToString" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.ToString">ToString()</h4>
@@ -380,10 +516,62 @@
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_VisitChildren_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.VisitChildren(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Update_SqlExpression_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Update(SqlExpression%2CSqlExpression)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L56">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L63">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Update_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Update*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_Update_SqlExpression_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.Update(SqlExpression,SqlExpression)">Update(SqlExpression, SqlExpression)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RegexMatchExpression Update(SqlExpression match, SqlExpression pattern)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">match</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SqlExpression</span></td>
+        <td><span class="parametername">pattern</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.html">RegexMatchExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_VisitChildren_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.VisitChildren(ExpressionVisitor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L60">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_VisitChildren_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.VisitChildren*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression_VisitChildren_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression.VisitChildren(ExpressionVisitor)">VisitChildren(ExpressionVisitor)</h4>
@@ -425,6 +613,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IEquatable&lt;&gt;</span>
+  </div>
 </article>
           </div>
           
@@ -433,10 +625,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_RegexMatchExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.RegexMatchExpression%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/Query/Expressions/Internal/RegexMatchExpression.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -455,7 +647,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2018 The Npgsql Development Team
+            © Copyright 2019 The Npgsql Development Team
             
           </div>
         </div>

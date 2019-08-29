@@ -100,18 +100,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector__ctor_ValueGeneratorSelectorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.%23ctor(ValueGeneratorSelectorDependencies%2CNpgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory%2CNpgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector__ctor_ValueGeneratorSelectorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_IRawSqlCommandBuilder_IDiagnosticsLogger_DbLoggerCategory_Database_Command__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.%23ctor(ValueGeneratorSelectorDependencies%2CNpgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory%2CNpgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection%2CIRawSqlCommandBuilder%2CIDiagnosticsLogger%7BDbLoggerCategory.Database.Command%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L18">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L21">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector__ctor_ValueGeneratorSelectorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.#ctor(ValueGeneratorSelectorDependencies,Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory,Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection)">NpgsqlValueGeneratorSelector(ValueGeneratorSelectorDependencies, INpgsqlSequenceValueGeneratorFactory, INpgsqlRelationalConnection)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector__ctor_ValueGeneratorSelectorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_IRawSqlCommandBuilder_IDiagnosticsLogger_DbLoggerCategory_Database_Command__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.#ctor(ValueGeneratorSelectorDependencies,Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory,Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection,IRawSqlCommandBuilder,IDiagnosticsLogger{DbLoggerCategory.Database.Command})">NpgsqlValueGeneratorSelector(ValueGeneratorSelectorDependencies, INpgsqlSequenceValueGeneratorFactory, INpgsqlRelationalConnection, IRawSqlCommandBuilder, IDiagnosticsLogger&lt;DbLoggerCategory.Database.Command&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NpgsqlValueGeneratorSelector(ValueGeneratorSelectorDependencies dependencies, INpgsqlSequenceValueGeneratorFactory sequenceFactory, INpgsqlRelationalConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public NpgsqlValueGeneratorSelector(ValueGeneratorSelectorDependencies dependencies, INpgsqlSequenceValueGeneratorFactory sequenceFactory, INpgsqlRelationalConnection connection, IRawSqlCommandBuilder rawSqlCommandBuilder, IDiagnosticsLogger&lt;DbLoggerCategory.Database.Command&gt; commandLogger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,16 +138,26 @@
         <td><span class="parametername">connection</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><span class="xref">IRawSqlCommandBuilder</span></td>
+        <td><span class="parametername">rawSqlCommandBuilder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IDiagnosticsLogger</span>&lt;<span class="xref">DbLoggerCategory.Database.Command</span>&gt;</td>
+        <td><span class="parametername">commandLogger</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Cache.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Cache%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Cache.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Cache%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L32">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L39">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Cache_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Cache*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Cache" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Cache">Cache</h4>
@@ -178,10 +188,10 @@ directly from your code. This API may change or be removed in future releases.</
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Create_IProperty_IEntityType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Create(IProperty%2CIEntityType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Create_IProperty_IEntityType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Create(IProperty%2CIEntityType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L45">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L57">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Create_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Create*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Create_IProperty_IEntityType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Create(IProperty,IEntityType)">Create(IProperty, IEntityType)</h4>
@@ -230,10 +240,10 @@ directly from your code. This API may change or be removed in future releases.</
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Select_IProperty_IEntityType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Select(IProperty%2CIEntityType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Select_IProperty_IEntityType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Select(IProperty%2CIEntityType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L34">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L41">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Select_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Select*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector_Select_IProperty_IEntityType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector.Select(IProperty,IEntityType)">Select(IProperty, IEntityType)</h4>
@@ -288,10 +298,10 @@ directly from your code. This API may change or be removed in future releases.</
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/78c01a1c4f1fc32d93691a538092653a285fb2ac/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlValueGeneratorSelector.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlValueGeneratorSelector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/src/EFCore.PG/ValueGeneration/Internal/NpgsqlValueGeneratorSelector.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
@@ -310,7 +320,7 @@ directly from your code. This API may change or be removed in future releases.</
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2018 The Npgsql Development Team
+            © Copyright 2019 The Npgsql Development Team
             
           </div>
         </div>

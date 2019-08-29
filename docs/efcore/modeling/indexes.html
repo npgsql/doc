@@ -84,7 +84,7 @@
 <p>Since version 11, PostgreSQL supports <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .ForNpgsqlHasIndex(b =&gt; b.Id)
+                   .HasIndex(b =&gt; b.Id)
                    .ForNpgsqlInclude(b =&gt; b.Name);
 </code></pre><p>This will create an index for searching on <code>Id</code>, but containing also the column <code>Name</code>, so that reading the latter will not involve accessing the table. The SQL generated is as follows:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_Blog_Id&quot; ON blogs (&quot;Id&quot;) INCLUDE (&quot;Name&quot;);
@@ -111,7 +111,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/doc/modeling/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/doc/modeling/indexes.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -130,7 +130,7 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2018 The Npgsql Development Team
+            © Copyright 2019 The Npgsql Development Team
             
           </div>
         </div>
