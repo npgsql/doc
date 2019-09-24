@@ -8,7 +8,7 @@
     <title>JSON Mapping | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="JSON Mapping | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.44.0.0">
+    <meta name="generator" content="docfx 2.45.1.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -77,12 +77,12 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="json-mapping">JSON Mapping</h2>
+<h1 id="json-mapping">JSON Mapping</h1>
 
-<div class="NOTE"><h5>Note</h5><p>This capability was introduced in 3.0.0-preview8, and shouldn&#39;t be considered stable yet.</p>
+<div class="NOTE"><h5>Note</h5><p>This feature was introduced in 3.0.0.</p>
 </div>
 <p>PostgreSQL has rich, built-in support for storing JSON columns and efficiently performing complex queries operations on them. Newcomers can read more about the PostgreSQL support on <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>, and on the <a href="https://www.postgresql.org/docs/current/functions-json.html">functions and operators page</a>.</p>
-<h1 id="mapping-poco-types-to-json-columns">Mapping POCO types to JSON columns</h1>
+<h2 id="mapping-poco-types-to-json-columns">Mapping POCO types to JSON columns</h2>
 <p>The Npgsql provider allows you to seamlessly map your own complex .NET types to PostgreSQL JSON columns, and then use LINQ to query them efficiently.</p>
 <pre><code class="lang-c#">// A regular EF entity object that will be mapped to a PostgreSQL table
 public class CustomerEntry
@@ -109,7 +109,7 @@ public class Order
 <pre><code class="lang-json">{&quot;Age&quot;: 25, &quot;Name&quot;: &quot;Joe&quot;, &quot;Orders&quot;: [{&quot;Price&quot;: 99.5, &quot;ShippingAddress&quot;: &quot;Some address 1&quot;}, {&quot;Price&quot;: 23, &quot;ShippingAddress&quot;: &quot;Some address 2&quot;}]}
 </code></pre><p>When you load your entities, the JSON documents will be seamlessly (and efficiently) materialized back into <code>Customer</code> and <code>Order</code> instances. </p>
 <p>Note that PostgreSQL supports two flavors of JSON types: the binary <code>jsonb</code> and the textual <code>json</code>. In almost all cases the <code>jsonb</code> type is preferred for efficiency reasons, more detail is available in <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>.</p>
-<h1 id="querying-json-columns">Querying JSON columns</h1>
+<h2 id="querying-json-columns">Querying JSON columns</h2>
 <p>Saving and loading these documents wouldn&#39;t be much use without the ability to query them. You can express your queries via the same LINQ constructs you are already using in EF Core:</p>
 <pre><code class="lang-c#">var joes = context.CustomerEntries
     .Where(e =&gt; e.Customer.Name == &quot;Joe&quot;)
@@ -118,7 +118,8 @@ public class Order
 <pre><code class="lang-sql">SELECT c.&quot;&quot;Id&quot;&quot;, c.&quot;&quot;Customer&quot;&quot;
 FROM &quot;&quot;CustomerEntries&quot;&quot; AS c
 WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
-</code></pre><div class="NOTE"><h5>Note</h5><p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
+</code></pre><h2 id="indexing-json-columns">Indexing JSON columns</h2>
+<div class="NOTE"><h5>Note</h5><p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
 </div>
 <p>These are early days for EF Core JSON support, and you&#39;ll likely run into some limitations. Please let us know how the current features are working for you and what you&#39;d like to see.</p>
 </article>
@@ -129,7 +130,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/doc/mapping/json.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/mapping/json.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

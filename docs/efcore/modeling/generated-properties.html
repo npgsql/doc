@@ -8,7 +8,7 @@
     <title>Value Generation | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Value Generation | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.44.0.0">
+    <meta name="generator" content="docfx 2.45.1.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -79,7 +79,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="value-generation">Value Generation</h1>
 
-<div class="CAUTION"><h5>Caution</h5><p>In 3.0.0 (preview), the default value generation strategy has changed from the older SERIAL columns to the newer IDENTITY columns. Read the below carefully if you are migrating an existing database.</p>
+<div class="CAUTION"><h5>Caution</h5><p>In 3.0.0, the default value generation strategy has changed from the older SERIAL columns to the newer IDENTITY columns. Read the below carefully if you are migrating an existing database.</p>
 </div>
 <div class="NOTE"><h5>Note</h5><p>It&#39;s recommended that you start by reading the general <a href="https://docs.microsoft.com/en-us/ef/core/modeling/generated-properties">Entity Framework Core docs on generated properties</a>.</p>
 </div>
@@ -134,7 +134,9 @@
                    .HasDefaultValueSql(&quot;uuid_generate_v4()&quot;);
 </code></pre><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
 <h2 id="computed-columns-on-add-or-update">Computed Columns (On Add or Update)</h2>
-<p>Version 3.0 (preview) adds support for the upcoming PostgreSQL 12 generated columns. The following </p>
+<div class="NOTE"><h5>Note</h5><p>This feature was introduced in 3.0.0.</p>
+</div>
+<p>The upcoming PostgreSQL 12 is adding support for <a href="https://www.postgresql.org/docs/12/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well. The following configuration:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Person&gt;()
@@ -152,7 +154,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/9a67be7a2f8d89aa929fab58b7a6eddf71afef36/doc/modeling/generated-properties.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/doc/modeling/generated-properties.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class NpgsqlException
    | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.44.0.0">
+    <meta name="generator" content="docfx 2.45.1.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -98,8 +98,8 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
     <div><span class="xref">System.Runtime.InteropServices._Exception</span></div>
+    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -119,28 +119,28 @@
       <span class="xref">System.Exception.GetType()</span>
     </div>
     <div>
-      <span class="xref">System.Exception.Message</span>
-    </div>
-    <div>
       <span class="xref">System.Exception.Data</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.InnerException</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.TargetSite</span>
-    </div>
-    <div>
-      <span class="xref">System.Exception.StackTrace</span>
     </div>
     <div>
       <span class="xref">System.Exception.HelpLink</span>
     </div>
     <div>
+      <span class="xref">System.Exception.HResult</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.InnerException</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Message</span>
+    </div>
+    <div>
       <span class="xref">System.Exception.Source</span>
     </div>
     <div>
-      <span class="xref">System.Exception.HResult</span>
+      <span class="xref">System.Exception.StackTrace</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.TargetSite</span>
     </div>
     <div>
       <span class="xref">System.Exception.SerializeObjectState</span>
@@ -152,13 +152,13 @@
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
       <span class="xref">System.Object.GetHashCode()</span>
     </div>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
@@ -166,7 +166,7 @@
   <h5 id="Npgsql_NpgsqlException_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Serializable]
-public class NpgsqlException : DbException, ISerializable, _Exception</code></pre>
+public class NpgsqlException : DbException, _Exception, ISerializable</code></pre>
   </div>
   <h5 id="Npgsql_NpgsqlException_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>PostgreSQL errors (e.g. query SQL issues, constraint violations) are raised via
@@ -342,10 +342,10 @@ succeed (e.g. a network error).</p>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">System.Runtime.Serialization.ISerializable</span>
+      <span class="xref">System.Runtime.InteropServices._Exception</span>
   </div>
   <div>
-      <span class="xref">System.Runtime.InteropServices._Exception</span>
+      <span class="xref">System.Runtime.Serialization.ISerializable</span>
   </div>
 </article>
           </div>
