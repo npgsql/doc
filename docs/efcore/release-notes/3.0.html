@@ -105,7 +105,7 @@
 <p>If you wish to opt out of using IDENTITY columns and continue using SERIAL columns, set the following on your model:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseSerialColumns();
-</code></pre><p>If you are using a PostgreSQL version older than 10, setting the compatibility mode is a better to to switch the default back to SERIAL columns:</p>
+</code></pre><p>If you are using a PostgreSQL version older than 10, setting the compatibility mode is a better way to switch the default back to SERIAL columns:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(&quot;...&quot;, o =&gt; o.SetPostgresVersion(9, 6));
 </code></pre><p>More information is available in <a href="../modeling/generated-properties.html">the page about generated properties</a>.</p>
