@@ -99,7 +99,7 @@
 <li>Previously, Npgsql allowed writing a NULL by setting NpgsqlParameter.Value to <code>null</code>. This is <a href="https://msdn.microsoft.com/en-us/library/system.data.common.dbparameter.value%28v=vs.110%29.aspx">not allowed in ADO.NET</a> and is no longer supported, set to <code>DBNull.Value</code> instead.</li>
 <li>In some cases, you will now be required to explicitly set a parameter&#39;s type although you didn&#39;t have to before (you&#39;ll get an error 42804 explaining this). This can happen especially in Dapper custom custom type handlers (<a href="https://github.com/npgsql/npgsql/issues/694">#694</a>).  Simply set the NpgsqlDbType property on the parameter.</li>
 <li>Removed support for writing a parameter with an <code>IEnumerable&lt;T&gt;</code> value, since that would require Npgsql to enumerate it multiple times internally. <code>IList&lt;T&gt;</code> and IList are permitted.</li>
-<li>It is no longer possible to write a .NET enum to an integral PostgreSQL column (e.g. int4). Proper enum support has been added which allows writing to PostgreSQL enum columns (see <a href="http://www.npgsql.org/doc/enum.html">the docs</a>. To continue writing enums to integral columns as before, simply add an explicit cast to the integral type in your code.</li>
+<li>It is no longer possible to write a .NET enum to an integral PostgreSQL column (e.g. int4). Proper enum support has been added which allows writing to PostgreSQL enum columns (see <a href="https://www.npgsql.org/doc/enum.html">the docs</a>. To continue writing enums to integral columns as before, simply add an explicit cast to the integral type in your code.</li>
 <li>NpgsqlMacAddress has been removed and replaced by the standard .NET PhysicalAddress.</li>
 <li>Npgsql&#39;s BitString has been removed and replaced by the standard .NET BitArray.</li>
 <li>NpgsqlTime has been removed and replaced by the standard .NET TimeSpan.</li>
@@ -143,7 +143,7 @@ Previously they returned int[], even for multidimensional arrays.</li>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/release-notes/3.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/master/conceptual/Npgsql/release-notes/3.0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

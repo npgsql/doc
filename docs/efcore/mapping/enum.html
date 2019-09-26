@@ -83,20 +83,20 @@
 <p>However, the Npgsql provider also allows you to map your CLR enums to <a href="https://www.postgresql.org/docs/current/static/datatype-enum.html">database enum types</a>. This option, unique to PostgreSQL, provides the best of both worlds: the enum is internally stored in the database as a number (minimal storage), but is handled like a string (more usable, no need to remember numeric values) and has type safety.</p>
 <h2 id="creating-your-database-enum">Creating your database enum</h2>
 <p>First, you must specify the PostgreSQL enum type on your model, just like you would with tables, sequences or other databases objects:</p>
-<div class="tabGroup" id="tabgroup_vE+ljN1+t5">
+<div class="tabGroup" id="tabgroup_vEXnu0+Id2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_vE+ljN1+t5_tabid-1" role="tab" aria-controls="tabpanel_vE+ljN1+t5_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 2.2</a>
+<a href="#tabpanel_vEXnu0+Id2_tabid-1" role="tab" aria-controls="tabpanel_vEXnu0+Id2_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 2.2</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_vE+ljN1+t5_tabid-2" role="tab" aria-controls="tabpanel_vE+ljN1+t5_tabid-2" data-tab="tabid-2" tabindex="-1">Version 2.1</a>
+<a href="#tabpanel_vEXnu0+Id2_tabid-2" role="tab" aria-controls="tabpanel_vEXnu0+Id2_tabid-2" data-tab="tabid-2" tabindex="-1">Version 2.1</a>
 </li>
 </ul>
-<section id="tabpanel_vE+ljN1+t5_tabid-1" role="tabpanel" data-tab="tabid-1">
+<section id="tabpanel_vEXnu0+Id2_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.ForNpgsqlHasEnum&lt;Mood&gt;();
 </code></pre></section>
-<section id="tabpanel_vE+ljN1+t5_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_vEXnu0+Id2_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.ForNpgsqlHasEnum(&quot;Mood&quot;, new[] { &quot;happy&quot;, &quot;sad&quot; });
 </code></pre></section>
@@ -139,7 +139,7 @@ using (var ctx = new MyDbContext())
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/78c01a1c4f1fc32d93691a538092653a285fb2ac/doc/mapping/enum.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/master/conceptual/EFCore.PG/mapping/enum.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

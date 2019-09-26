@@ -96,9 +96,13 @@ We try to support Redshift as much as we can, please let us know about issues yo
 contains lots of useful compatibility information.</p>
 <p>Additional known issues:</p>
 <ul>
+<li>If you want to connect over SSL, your connection string must contain <code>Server Compatibility Mode=Redshift</code>, otherwise you&#39;ll get a connection
+error about <code>ssl_renegotiation_limit</code>.</li>
 <li>Entity Framework with database-computed identity values don&#39;t work with Redshift, since it doesn&#39;t support sequences
 (see issue <a href="https://github.com/npgsql/npgsql/issues/544">#544</a>).</li>
 </ul>
+<h2 id="digitalocean-managed-database">DigitalOcean Managed Database</h2>
+<p>DigitalOcean&#39;s Managed Database services requires you to connect to PostgreSQL over SSL.  Unfortunately when you enable it in your connection string, you will get the same error regarding <code>ssl_renegotiation_limit</code> as Amazon Redshift.  The Redshift compatibility mode setting resolves the issue on DigitalOcean.</p>
 <h2 id="pgbouncer">pgbouncer</h2>
 <p>Npgsql works well with PgBouncer, but there are some quirks to be aware of.</p>
 <ul>
@@ -116,7 +120,7 @@ property on your <code>NpgsqlCommand</code> objects. Version 3.1 no longer sends
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/blob/master/doc/compatibility.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/master/conceptual/Npgsql/compatibility.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
