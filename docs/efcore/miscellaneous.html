@@ -95,7 +95,7 @@ Simply use <code>HasPostgresExtension</code> in your context&#39;s <code>OnModel
 <p>PostgreSQL allows you to <a href="https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS">attach comments</a> to database objects, which can help explain their purpose for someone examining the schema. The Npgsql EF Core provider supports this for tables or columns, simply set the comment in your model&#39;s <code>OnModelCreating</code> as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;MyEntity&gt;()
-                   .ForNpgsqlHasComment(&quot;Some comment&quot;);
+                   .HasComment(&quot;Some comment&quot;);
 </code></pre><h2 id="certificate-authentication">Certificate authentication</h2>
 <p>The Npgsql allows you to provide a callback for verifying the server-provided certificates, and to provide a callback for providing certificates to the server. The latter, if properly set up on the PostgreSQL side, allows you to do client certificate authentication - see <a href="http://www.npgsql.org/doc/security.html#encryption-ssltls">the Npgsql docs</a> and also <a href="https://www.postgresql.org/docs/current/static/ssl-tcp.html#SSL-CLIENT-CERTIFICATES">the PostgreSQL docs</a> on setting this up.</p>
 <p>The Npgsql EF Core provider allows you to set these two callbacks on the <code>DbContextOptionsBuilder</code> as follows:</p>
@@ -125,13 +125,13 @@ which will be copied as the basis for the new one. This can be useful for includ
 </code></pre><h3 id="setting-a-tablespace">Setting a tablespace</h3>
 <p>PostgreSQL allows you to locate your database in different parts of your filesystem, <a href="https://www.postgresql.org/docs/current/static/manage-ag-tablespaces.html">via tablespaces</a>. The Npgsql EF Core provider allows you to specify your database&#39;s namespace:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.ForNpgsqlUseTablespace(&quot;my_tablespace&quot;);
+    =&gt; modelBuilder.UseTablespace(&quot;my_tablespace&quot;);
 </code></pre><p>You must have created your tablespace prior to this via the <code>CREATE TABLESPACE</code> command - the Npgsql EF Core provider does not do this for you. Note also that specifying a tablespace on specific tables is not supported.</p>
 <h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
 <p>If you&#39;re using CockroachDB, the Npgsql EF Core provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Customer&gt;()
-                   .ForCockroachDbInterleaveInParent(
+                   .UseCockroachDbInterleaveInParent(
                         typeof(ParentEntityType),
                         new List&lt;string&gt; { &quot;prefix_column_1&quot;, &quot;prefix_column_2&quot; });
 </code></pre></article>

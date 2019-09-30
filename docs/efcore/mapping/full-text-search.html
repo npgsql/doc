@@ -167,7 +167,7 @@ var npgsql = context.Products
 {
     modelBuilder.Entity&lt;Product&gt;()
         .HasIndex(p =&gt; p.SearchVector)
-        .ForNpgsqlHasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
+        .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
 </code></pre><p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
 <pre><code class="lang-c#">public partial class CreateProductTable : Migration

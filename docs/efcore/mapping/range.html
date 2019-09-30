@@ -101,8 +101,8 @@
 </code></pre><p>This allows you to have properties of type <code>NpgsqlRange&lt;float&gt;</code>, which will be mapped to PostgreSQL <code>floatrange</code>.</p>
 <p>The above does <em>not</em> create the <code>floatrange</code> type for you. In order to do that, include the following in your context&#39;s <code>OnModelCreating()</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.ForNpgsqlHasRange(&quot;floatrange&quot;, &quot;real&quot;);
-</code></pre><p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>ForNpgsqlHasRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
+    =&gt; modelBuilder.HasPostgresRange(&quot;floatrange&quot;, &quot;real&quot;);
+</code></pre><p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
 <h1 id="operation-translation">Operation translation</h1>
 <p>Ranges can be queried via extensions methods on <code>NpgsqlRange</code>:</p>
 <pre><code class="lang-c#">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));

@@ -85,22 +85,22 @@
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
                    .HasIndex(b =&gt; b.Id)
-                   .ForNpgsqlInclude(b =&gt; b.Name);
+                   .IncludeProperties(b =&gt; b.Name);
 </code></pre><p>This will create an index for searching on <code>Id</code>, but containing also the column <code>Name</code>, so that reading the latter will not involve accessing the table. The SQL generated is as follows:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_Blog_Id&quot; ON blogs (&quot;Id&quot;) INCLUDE (&quot;Name&quot;);
 </code></pre><h2 id="postgresql-index-methods">PostgreSQL index methods</h2>
 <p>PostgreSQL supports a number of <em>index methods</em>, or <em>types</em>. These are specified at index creation time via the <code>USING _method_</code> clause, see the <a href="https://www.postgresql.org/docs/current/static/sql-createindex.html">PostgreSQL docs for <code>CREATE INDEX</code></a> and <a href="https://www.postgresql.org/docs/current/static/indexes-types.html">this page</a> for information on the different types.</p>
-<p>The Npgsql EF Core provider allows you to specify the index method to be used by calling <code>ForNpgsqlHasMethod()</code> on your index in your context&#39;s <code>OnModelCreating</code> method:</p>
+<p>The Npgsql EF Core provider allows you to specify the index method to be used by calling <code>HasMethod()</code> on your index in your context&#39;s <code>OnModelCreating</code> method:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
                    .HasIndex(b =&gt; b.Url)
-                   .ForNpgsqlHasMethod(&quot;gin&quot;);
+                   .HasMethod(&quot;gin&quot;);
 </code></pre><h2 id="postgresql-index-operator-classes">PostgreSQL index operator classes</h2>
 <p>PostgreSQL allows you to specify <a href="https://www.postgresql.org/docs/current/indexes-opclass.html">operator classes on your indexes</a>, to allow tweaking how the index should work. Use the following code to specify an operator class:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .ForNpgsqlHasIndex(b =&gt; new { b.Id, b.Name })
-                   .ForNpgsqlHasOperators(null, &quot;text_pattern_ops&quot;);
+                   .HasIndex(b =&gt; new { b.Id, b.Name })
+                   .HasOperators(null, &quot;text_pattern_ops&quot;);
 </code></pre><p>Note that each operator class is used for the corresponding index column, by order. In the example above, the <code>text_pattern_ops</code> class will be used for the <code>Name</code> column, while the <code>Id</code> column will use the default class (unspecified), producing the following SQL:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_blogs_Id_Name&quot; ON blogs (&quot;Id&quot;, &quot;Name&quot; text_pattern_ops);
 </code></pre></article>

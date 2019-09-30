@@ -94,11 +94,11 @@
 </ul>
 <section id="tabpanel_vEXnu0+Id2_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
-    =&gt; builder.ForNpgsqlHasEnum&lt;Mood&gt;();
+    =&gt; builder.HasPostgresEnum&lt;Mood&gt;();
 </code></pre></section>
 <section id="tabpanel_vEXnu0+Id2_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
-    =&gt; builder.ForNpgsqlHasEnum(&quot;Mood&quot;, new[] { &quot;happy&quot;, &quot;sad&quot; });
+    =&gt; builder.HasPostgresEnum(&quot;Mood&quot;, new[] { &quot;happy&quot;, &quot;sad&quot; });
 </code></pre></section>
 </div>
 <p><br></p>
@@ -129,7 +129,7 @@ using (var ctx = new MyDbContext())
 </code></pre><h2 id="altering-enum-definitions">Altering enum definitions</h2>
 <p>Although PostgreSQL allows <a href="https://www.postgresql.org/docs/current/static/sql-altertype.html">altering enum types</a>, the Npgsql provider currently does not generate SQL for those operations (beyond creating and dropping the entire type). If you to add, remove or rename enum values, you&#39;ll have to include raw SQL in your migrations (this is quite easy to do). As always, test your migrations carefully before running them on production databases.</p>
 <h2 id="scaffolding-from-an-existing-database">Scaffolding from an existing database</h2>
-<p>If you&#39;re creating your model from an existing database, the provider will recognize enums in your database, and scaffold the appropriate <code>ForNpgsqlHasEnum()</code> lines in your model. However, since the scaffolding process has no knowledge of your CLR type, and will therefore skip your enum columns (warnings will be logged). You will have to create the CLR type, add the global mapping and add the properties to your entities.</p>
+<p>If you&#39;re creating your model from an existing database, the provider will recognize enums in your database, and scaffold the appropriate <code>HasPostgresEnum()</code> lines in your model. However, since the scaffolding process has no knowledge of your CLR type, and will therefore skip your enum columns (warnings will be logged). You will have to create the CLR type, add the global mapping and add the properties to your entities.</p>
 <p>In the future it may be possible to scaffold the actual enum type (and with it the properties), but this doesn&#39;t happen at the moment.</p>
 </article>
           </div>
