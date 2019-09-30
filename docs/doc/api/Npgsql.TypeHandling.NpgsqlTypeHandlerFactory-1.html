@@ -85,7 +85,7 @@
   </h1>
   <div class="markdown level0 summary"><p>Base class for all type handler factories, which construct type handlers that know how
 to read and write CLR types from/to PostgreSQL types. Type handler factories are set up
-via <a class="xref" href="Npgsql.TypeMapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a> in either the global or connection-specific type mapper.</p>
+via <span class="xref">NpgsqlTypeMapping</span> in either the global or connection-specific type mapper.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -97,7 +97,6 @@ via <a class="xref" href="Npgsql.TypeMapping.NpgsqlTypeMapping.html">NpgsqlTypeM
       <div class="level3"><a class="xref" href="Npgsql.Json.NET.JsonbHandlerFactory.html">JsonbHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.Json.NET.JsonHandlerFactory.html">JsonHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.LegacyPostgis.LegacyPostgisHandlerFactory.html">LegacyPostgisHandlerFactory</a></div>
-      <div class="level3"><a class="xref" href="Npgsql.LegacyPostgis.PostgisRawHandlerFactory.html">PostgisRawHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.NetTopologySuite.NetTopologySuiteHandlerFactory.html">NetTopologySuiteHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.NodaTime.DateHandlerFactory.html">DateHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.NodaTime.IntervalHandlerFactory.html">IntervalHandlerFactory</a></div>
@@ -105,7 +104,16 @@ via <a class="xref" href="Npgsql.TypeMapping.NpgsqlTypeMapping.html">NpgsqlTypeM
       <div class="level3"><a class="xref" href="Npgsql.NodaTime.TimestampHandlerFactory.html">TimestampHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.NodaTime.TimestampTzHandlerFactory.html">TimestampTzHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.NodaTime.TimeTzHandlerFactory.html">TimeTzHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.RawPostgis.PostgisRawHandlerFactory.html">PostgisRawHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.DateHandlerFactory.html">DateHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.IntervalHandlerFactory.html">IntervalHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.TimeHandlerFactory.html">TimeHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.TimestampHandlerFactory.html">TimestampHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.TimestampTzHandlerFactory.html">TimestampTzHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.DateTimeHandlers.TimeTzHandlerFactory.html">TimeTzHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.HstoreHandlerFactory.html">HstoreHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.JsonbHandlerFactory.html">JsonbHandlerFactory</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.JsonHandlerFactory.html">JsonHandlerFactory</a></div>
       <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.TextHandlerFactory.html">TextHandlerFactory</a></div>
   </div>
   <div class="inheritedMembers">
@@ -154,24 +162,58 @@ via <a class="xref" href="Npgsql.TypeMapping.NpgsqlTypeMapping.html">NpgsqlTypeM
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandlerFactory%601.Create(Npgsql.NpgsqlConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_DefaultValueType.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandlerFactory%601.DefaultValueType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L68">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L48">View Source</a>
   </span>
-  <a id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.Create*"></a>
-  <h4 id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_Npgsql_NpgsqlConnection_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.Create(Npgsql.NpgsqlConnection)">Create(NpgsqlConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a type handler. The provided connection can be examined to modify type handler
-behavior based on server settings, etc.</p>
+  <a id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_DefaultValueType_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.DefaultValueType*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_DefaultValueType" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.DefaultValueType">DefaultValueType</h4>
+  <div class="markdown level1 summary"><p>The default CLR type that handlers produced by this factory will read and write.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected abstract NpgsqlTypeHandler&lt;TDefault&gt; Create(NpgsqlConnection conn)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Type DefaultValueType { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory.html#Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_DefaultValueType">NpgsqlTypeHandlerFactory.DefaultValueType</a></div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandlerFactory%601.Create(Npgsql.PostgresTypes.PostgresType%2CNpgsql.NpgsqlConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L41">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.Create*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_Create_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.Create(Npgsql.PostgresTypes.PostgresType,Npgsql.NpgsqlConnection)">Create(PostgresType, NpgsqlConnection)</h4>
+  <div class="markdown level1 summary"><p>Creates a type handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract NpgsqlTypeHandler&lt;TDefault&gt; Create(PostgresType pgType, NpgsqlConnection conn)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -183,6 +225,11 @@ behavior based on server settings, etc.</p>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">pgType</span></td>
+        <td></td>
+      </tr>
       <tr>
         <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
         <td><span class="parametername">conn</span></td>
@@ -205,9 +252,64 @@ behavior based on server settings, etc.</p>
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_CreateNonGeneric_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandlerFactory%601.CreateNonGeneric(Npgsql.PostgresTypes.PostgresType%2CNpgsql.NpgsqlConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L44">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_CreateNonGeneric_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.CreateNonGeneric*"></a>
+  <h4 id="Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_CreateNonGeneric_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_" data-uid="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory`1.CreateNonGeneric(Npgsql.PostgresTypes.PostgresType,Npgsql.NpgsqlConnection)">CreateNonGeneric(PostgresType, NpgsqlConnection)</h4>
+  <div class="markdown level1 summary"><p>Creates a type handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override NpgsqlTypeHandler CreateNonGeneric(PostgresType pgType, NpgsqlConnection conn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">pgType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
+        <td><span class="parametername">conn</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory.html#Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_CreateNonGeneric_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_">NpgsqlTypeHandlerFactory.CreateNonGeneric(PostgresType, NpgsqlConnection)</a></div>
   <h3 id="seealso">See Also</h3>
   <div class="seealso">
-      <div><a class="xref" href="Npgsql.TypeMapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a></div>
+      <div><span class="xref">NpgsqlTypeMapping</span></div>
       <div><a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GlobalTypeMapper">GlobalTypeMapper</a></div>
       <div><a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_TypeMapper">TypeMapper</a></div>
   </div>
@@ -222,7 +324,7 @@ behavior based on server settings, etc.</p>
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.NpgsqlTypeHandlerFactory%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L55" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/NpgsqlTypeHandlerFactory.cs/#L36" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -95,6 +95,12 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory-1.html#Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_CreateNonGeneric_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_">NpgsqlTypeHandlerFactory&lt;GeoJSONObject&gt;.CreateNonGeneric(PostgresType, NpgsqlConnection)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandlerFactory-1.html#Npgsql_TypeHandling_NpgsqlTypeHandlerFactory_1_DefaultValueType">NpgsqlTypeHandlerFactory&lt;GeoJSONObject&gt;.DefaultValueType</a>
+    </div>
+    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
@@ -129,7 +135,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_GeoJSON_GeoJSONHandlerFactory__ctor_Npgsql_GeoJSON_GeoJSONOptions_.md&amp;value=---%0Auid%3A%20Npgsql.GeoJSON.GeoJSONHandlerFactory.%23ctor(Npgsql.GeoJSON.GeoJSONOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L51">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L29">View Source</a>
   </span>
   <a id="Npgsql_GeoJSON_GeoJSONHandlerFactory__ctor_" data-uid="Npgsql.GeoJSON.GeoJSONHandlerFactory.#ctor*"></a>
   <h4 id="Npgsql_GeoJSON_GeoJSONHandlerFactory__ctor_Npgsql_GeoJSON_GeoJSONOptions_" data-uid="Npgsql.GeoJSON.GeoJSONHandlerFactory.#ctor(Npgsql.GeoJSON.GeoJSONOptions)">GeoJSONHandlerFactory(GeoJSONOptions)</h4>
@@ -160,18 +166,18 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_GeoJSON_GeoJSONHandlerFactory_Create_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.GeoJSON.GeoJSONHandlerFactory.Create(Npgsql.NpgsqlConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_GeoJSON_GeoJSONHandlerFactory_Create_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.GeoJSON.GeoJSONHandlerFactory.Create(Npgsql.PostgresTypes.PostgresType%2CNpgsql.NpgsqlConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L56">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L34">View Source</a>
   </span>
   <a id="Npgsql_GeoJSON_GeoJSONHandlerFactory_Create_" data-uid="Npgsql.GeoJSON.GeoJSONHandlerFactory.Create*"></a>
-  <h4 id="Npgsql_GeoJSON_GeoJSONHandlerFactory_Create_Npgsql_NpgsqlConnection_" data-uid="Npgsql.GeoJSON.GeoJSONHandlerFactory.Create(Npgsql.NpgsqlConnection)">Create(NpgsqlConnection)</h4>
+  <h4 id="Npgsql_GeoJSON_GeoJSONHandlerFactory_Create_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_" data-uid="Npgsql.GeoJSON.GeoJSONHandlerFactory.Create(Npgsql.PostgresTypes.PostgresType,Npgsql.NpgsqlConnection)">Create(PostgresType, NpgsqlConnection)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override NpgsqlTypeHandler&lt;GeoJSONObject&gt; Create(NpgsqlConnection conn)</code></pre>
+    <pre><code class="lang-csharp hljs">public override NpgsqlTypeHandler&lt;GeoJSONObject&gt; Create(PostgresType postgresType, NpgsqlConnection conn)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -183,6 +189,11 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">postgresType</span></td>
+        <td></td>
+      </tr>
       <tr>
         <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
         <td><span class="parametername">conn</span></td>
@@ -206,7 +217,7 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandlerFactory&lt;GeoJSONObject&gt;.Create(Npgsql.NpgsqlConnection)</span></div>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandlerFactory&lt;GeoJSONObject&gt;.Create(Npgsql.PostgresTypes.PostgresType, Npgsql.NpgsqlConnection)</span></div>
 </article>
           </div>
           
@@ -218,7 +229,7 @@
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_GeoJSON_GeoJSONHandlerFactory.md&amp;value=---%0Auid%3A%20Npgsql.GeoJSON.GeoJSONHandlerFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L47" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql.GeoJSON/GeoJSONHandler.cs/#L25" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

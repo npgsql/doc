@@ -97,20 +97,20 @@ directly from your code. This API may change or be removed in future releases.</
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Create_IProperty_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlSequenceValueGeneratorState_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory.Create(IProperty%2CNpgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlSequenceValueGeneratorState%2CNpgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Create_IProperty_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlSequenceValueGeneratorState_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_IRawSqlCommandBuilder_IDiagnosticsLogger_DbLoggerCategory_Database_Command__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory.Create(IProperty%2CNpgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlSequenceValueGeneratorState%2CNpgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection%2CIRawSqlCommandBuilder%2CIDiagnosticsLogger%7BDbLoggerCategory.Database.Command%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/src/EFCore.PG/ValueGeneration/Internal/INpgsqlSequenceValueGeneratorFactory.cs/#L18">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/src/EFCore.PG/ValueGeneration/Internal/INpgsqlSequenceValueGeneratorFactory.cs/#L21">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Create_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory.Create*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Create_IProperty_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlSequenceValueGeneratorState_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory.Create(IProperty,Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlSequenceValueGeneratorState,Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection)">Create(IProperty, NpgsqlSequenceValueGeneratorState, INpgsqlRelationalConnection)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory_Create_IProperty_Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_NpgsqlSequenceValueGeneratorState_Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_INpgsqlRelationalConnection_IRawSqlCommandBuilder_IDiagnosticsLogger_DbLoggerCategory_Database_Command__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory.Create(IProperty,Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.NpgsqlSequenceValueGeneratorState,Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection,IRawSqlCommandBuilder,IDiagnosticsLogger{DbLoggerCategory.Database.Command})">Create(IProperty, NpgsqlSequenceValueGeneratorState, INpgsqlRelationalConnection, IRawSqlCommandBuilder, IDiagnosticsLogger&lt;DbLoggerCategory.Database.Command&gt;)</h4>
   <div class="markdown level1 summary"><p>This API supports the Entity Framework Core infrastructure and is not intended to be used
 directly from your code. This API may change or be removed in future releases.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueGenerator Create(IProperty property, NpgsqlSequenceValueGeneratorState generatorState, INpgsqlRelationalConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">ValueGenerator Create(IProperty property, NpgsqlSequenceValueGeneratorState generatorState, INpgsqlRelationalConnection connection, IRawSqlCommandBuilder rawSqlCommandBuilder, IDiagnosticsLogger&lt;DbLoggerCategory.Database.Command&gt; commandLogger)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -135,6 +135,16 @@ directly from your code. This API may change or be removed in future releases.</
       <tr>
         <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.INpgsqlRelationalConnection.html">INpgsqlRelationalConnection</a></td>
         <td><span class="parametername">connection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IRawSqlCommandBuilder</span></td>
+        <td><span class="parametername">rawSqlCommandBuilder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IDiagnosticsLogger</span>&lt;<span class="xref">DbLoggerCategory.Database.Command</span>&gt;</td>
+        <td><span class="parametername">commandLogger</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -165,7 +175,7 @@ directly from your code. This API may change or be removed in future releases.</
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_ValueGeneration_Internal_INpgsqlSequenceValueGeneratorFactory.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.ValueGeneration.Internal.INpgsqlSequenceValueGeneratorFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/src/EFCore.PG/ValueGeneration/Internal/INpgsqlSequenceValueGeneratorFactory.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/master/src/EFCore.PG/ValueGeneration/Internal/INpgsqlSequenceValueGeneratorFactory.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -83,28 +83,30 @@
   
   <h1 id="Npgsql_TypeHandlers_ArrayHandler" data-uid="Npgsql.TypeHandlers.ArrayHandler" class="text-break">Class ArrayHandler
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Non-generic base class for all type handlers which handle PostgreSQL arrays.
+Extend from <a class="xref" href="Npgsql.TypeHandlers.ArrayHandler-1.html">ArrayHandler&lt;TElement&gt;</a> instead.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></div>
     <div class="level2"><span class="xref">ArrayHandler</span></div>
-      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.ArrayHandler-1.html">ArrayHandler&lt;TElement&gt;</a></div>
+      <div class="level3"><a class="xref" href="Npgsql.TypeHandlers.ArrayHandler-1.html">ArrayHandler</a>&lt;TElement&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_">NpgsqlTypeHandler.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_System_Nullable_Npgsql_BackendMessages_FieldDescription__">NpgsqlTypeHandler.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, Boolean, Nullable&lt;FieldDescription&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_">NpgsqlTypeHandler.ValidateAndGetLength&lt;TAny&gt;(TAny, NpgsqlLengthCache, NpgsqlParameter)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_ValidateAndGetLength__1___0_System_Nullable_Npgsql_NpgsqlLengthCache___System_Nullable_Npgsql_NpgsqlParameter__">NpgsqlTypeHandler.ValidateAndGetLength&lt;TAny&gt;(TAny, Nullable&lt;NpgsqlLengthCache&gt;, Nullable&lt;NpgsqlParameter&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_">NpgsqlTypeHandler.ValidateObjectAndGetLength(Object, NpgsqlLengthCache, NpgsqlParameter)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_ValidateObjectAndGetLength_System_Object_System_Nullable_Npgsql_NpgsqlLengthCache___System_Nullable_Npgsql_NpgsqlParameter__">NpgsqlTypeHandler.ValidateObjectAndGetLength(Object, Nullable&lt;NpgsqlLengthCache&gt;, Nullable&lt;NpgsqlParameter&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_">NpgsqlTypeHandler.WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_System_Nullable_Npgsql_NpgsqlLengthCache__System_Nullable_Npgsql_NpgsqlParameter__System_Boolean_">NpgsqlTypeHandler.WriteObjectWithLength(Object, NpgsqlWriteBuffer, Nullable&lt;NpgsqlLengthCache&gt;, Nullable&lt;NpgsqlParameter&gt;, Boolean)</a>
     </div>
     <div>
       <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateConversionButNoParamException_System_Type_">NpgsqlTypeHandler.CreateConversionButNoParamException(Type)</a>
@@ -137,23 +139,28 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class ArrayHandler : NpgsqlTypeHandler</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h5 id="Npgsql_TypeHandlers_ArrayHandler_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p><a href="http://www.postgresql.org/docs/current/static/arrays.html">http://www.postgresql.org/docs/current/static/arrays.html</a>.</p>
+<p>The type handler API allows customizing Npgsql&apos;s behavior in powerful ways. However, although it is public, it
+should be considered somewhat unstable, and  may change in breaking ways, including in non-major releases.
+Use it at your own risk.</p>
+</div>
+  <h3 id="constructors">Constructors
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler__ctor_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler.%23ctor(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L45">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L27">View Source</a>
   </span>
-  <a id="Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler*"></a>
-  <h4 id="Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresType)">CreateArrayHandler(PostgresType)</h4>
-  <div class="markdown level1 summary"><p>Creates a type handler for arrays of this handler&apos;s type.</p>
-</div>
+  <a id="Npgsql_TypeHandlers_ArrayHandler__ctor_" data-uid="Npgsql.TypeHandlers.ArrayHandler.#ctor*"></a>
+  <h4 id="Npgsql_TypeHandlers_ArrayHandler__ctor_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.TypeHandlers.ArrayHandler.#ctor(Npgsql.PostgresTypes.PostgresType)">ArrayHandler(PostgresType)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ArrayHandler CreateArrayHandler(PostgresType arrayBackendType)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ArrayHandler(PostgresType arrayPostgresType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,6 +174,41 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">arrayPostgresType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L35">View Source</a>
+  </span>
+  <a id="Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler*"></a>
+  <h4 id="Npgsql_TypeHandlers_ArrayHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType)">CreateArrayHandler(PostgresArrayType)</h4>
+  <div class="markdown level1 summary"><p>Creates a type handler for arrays of this handler&apos;s type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ArrayHandler CreateArrayHandler(PostgresArrayType arrayBackendType)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresArrayType.html">PostgresArrayType</a></td>
         <td><span class="parametername">arrayBackendType</span></td>
         <td></td>
       </tr>
@@ -188,22 +230,22 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler.CreateArrayHandler(PostgresType)</a></div>
+  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_">NpgsqlTypeHandler.CreateArrayHandler(PostgresArrayType)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresRangeType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresRangeType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L49">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L39">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_ArrayHandler_CreateRangeHandler_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateRangeHandler*"></a>
-  <h4 id="Npgsql_TypeHandlers_ArrayHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)">CreateRangeHandler(PostgresType)</h4>
+  <h4 id="Npgsql_TypeHandlers_ArrayHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresRangeType_" data-uid="Npgsql.TypeHandlers.ArrayHandler.CreateRangeHandler(Npgsql.PostgresTypes.PostgresRangeType)">CreateRangeHandler(PostgresRangeType)</h4>
   <div class="markdown level1 summary"><p>Creates a type handler for ranges of this handler&apos;s type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override RangeHandler CreateRangeHandler(PostgresType rangeBackendType)</code></pre>
+    <pre><code class="lang-csharp hljs">public override RangeHandler CreateRangeHandler(PostgresRangeType rangeBackendType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,7 +258,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresRangeType.html">PostgresRangeType</a></td>
         <td><span class="parametername">rangeBackendType</span></td>
         <td></td>
       </tr>
@@ -238,7 +280,7 @@
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler.CreateRangeHandler(PostgresType)</a></div>
+  <div><a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateRangeHandler_Npgsql_PostgresTypes_PostgresRangeType_">NpgsqlTypeHandler.CreateRangeHandler(PostgresRangeType)</a></div>
 </article>
           </div>
           
@@ -250,7 +292,7 @@
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandlers_ArrayHandler.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.ArrayHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L37" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandlers/ArrayHandler.cs/#L24" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

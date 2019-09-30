@@ -112,20 +112,20 @@ implement this interface for all those types.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_System_Nullable_Npgsql_BackendMessages_FieldDescription__.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CSystem.Nullable%7BNpgsql.BackendMessages.FieldDescription%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L45">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L21">View Source</a>
   </span>
   <a id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Read_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Read*"></a>
-  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_System_Nullable_Npgsql_BackendMessages_FieldDescription__" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,System.Nullable{Npgsql.BackendMessages.FieldDescription})">Read(NpgsqlReadBuffer, Int32, Boolean, Nullable&lt;FieldDescription&gt;)</h4>
   <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> with the given length from the provided buffer,
 using either sync or async I/O.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;T&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">ValueTask&lt;T&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription? fieldDescription = default(FieldDescription? ))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -156,7 +156,7 @@ using either sync or async I/O.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a>&gt;</td>
         <td><span class="parametername">fieldDescription</span></td>
         <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
 </td>
@@ -181,21 +181,21 @@ using either sync or async I/O.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.ValidateAndGetLength(%600%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_ValidateAndGetLength__0_System_Nullable_Npgsql_NpgsqlLengthCache___System_Nullable_Npgsql_NpgsqlParameter__.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.ValidateAndGetLength(%600%2CSystem.Nullable%7BNpgsql.NpgsqlLengthCache%7D%40%2CSystem.Nullable%7BNpgsql.NpgsqlParameter%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L59">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L35">View Source</a>
   </span>
   <a id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.ValidateAndGetLength*"></a>
-  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.ValidateAndGetLength(`0,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(T, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_ValidateAndGetLength__0_System_Nullable_Npgsql_NpgsqlLengthCache___System_Nullable_Npgsql_NpgsqlParameter__" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.ValidateAndGetLength(`0,System.Nullable{Npgsql.NpgsqlLengthCache}@,System.Nullable{Npgsql.NpgsqlParameter})">ValidateAndGetLength(T, ref Nullable&lt;NpgsqlLengthCache&gt;, Nullable&lt;NpgsqlParameter&gt;)</h4>
   <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
-written for PostgreSQL - if the value cannot be written for any reason, an exception shold be thrown.
+written for PostgreSQL - if the value cannot be written for any reason, an exception should be thrown.
 Also returns the byte length needed to write the value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int ValidateAndGetLength(T value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+    <pre><code class="lang-csharp hljs">int ValidateAndGetLength(T value, ref NpgsqlLengthCache? lengthCache, NpgsqlParameter? parameter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -214,13 +214,13 @@ Also returns the byte length needed to write the value.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a>&gt;</td>
         <td><span class="parametername">lengthCache</span></td>
         <td><p>A cache where the length calculated during the validation phase can be stored for use at the writing phase.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a>&gt;</td>
         <td><span class="parametername">parameter</span></td>
         <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
 information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
@@ -246,19 +246,19 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.Write(%600%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_System_Nullable_Npgsql_NpgsqlLengthCache__System_Nullable_Npgsql_NpgsqlParameter__System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601.Write(%600%2CNpgsql.NpgsqlWriteBuffer%2CSystem.Nullable%7BNpgsql.NpgsqlLengthCache%7D%2CSystem.Nullable%7BNpgsql.NpgsqlParameter%7D%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L74">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L50">View Source</a>
   </span>
   <a id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Write_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Write*"></a>
-  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Write(`0,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(T, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <h4 id="Npgsql_TypeHandling_INpgsqlTypeHandler_1_Write__0_Npgsql_NpgsqlWriteBuffer_System_Nullable_Npgsql_NpgsqlLengthCache__System_Nullable_Npgsql_NpgsqlParameter__System_Boolean_" data-uid="Npgsql.TypeHandling.INpgsqlTypeHandler`1.Write(`0,Npgsql.NpgsqlWriteBuffer,System.Nullable{Npgsql.NpgsqlLengthCache},System.Nullable{Npgsql.NpgsqlParameter},System.Boolean)">Write(T, NpgsqlWriteBuffer, Nullable&lt;NpgsqlLengthCache&gt;, Nullable&lt;NpgsqlParameter&gt;, Boolean)</h4>
   <div class="markdown level1 summary"><p>Writes a value to the provided buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task Write(T value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">Task Write(T value, NpgsqlWriteBuffer buf, NpgsqlLengthCache? lengthCache, NpgsqlParameter? parameter, bool async)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -283,13 +283,13 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a>&gt;</td>
         <td><span class="parametername">lengthCache</span></td>
         <td><p>A cache where the length calculated during the validation phase can be stored for use at the writing phase.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="xref">System.Nullable</span>&lt;<a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a>&gt;</td>
         <td><span class="parametername">parameter</span></td>
         <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
 information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
@@ -329,7 +329,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
                     <a href="https://github.com/npgsql/Npgsql/new/master/apiSpec/new?filename=Npgsql_TypeHandling_INpgsqlTypeHandler_1.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandling.INpgsqlTypeHandler%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L34" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/master/src/Npgsql/TypeHandling/INpgsqlTypeHandler.cs/#L10" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
