@@ -87,7 +87,6 @@ at any point. For more detail about this feature, see the PostgreSQL <a href="ht
 Some other asynchronous message types are notices (e.g. database shutdown imminent) and parameter changes, see the
 <a href="http://www.postgresql.org/docs/current/static/protocol-flow.html#PROTOCOL-ASYNC">PostgreSQL protocol docs</a> for more details.</p>
 <p>Note that despite the word &quot;asynchronous&quot;, this page has nothing to do with ADO.NET async operations (e.g. ExecuteReaderAsync).</p>
-<hr>
 <h2 id="processing-of-notifications">Processing of Notifications</h2>
 <p>Npgsql exposes notification messages via the <code>Notification</code> event on NpgsqlConnection.</p>
 <p>Since asynchronous notifications are rarely used and processing can be complex, Npgsql only processes notification messages as

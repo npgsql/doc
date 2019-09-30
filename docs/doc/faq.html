@@ -102,14 +102,12 @@ The fetch all the columns in the resultset as text,</p>
   var reader = cmd.ExecuteReader();
   // Read everything as strings
 }
-</code></pre><hr>
-<h3 id="a-namejsonbim-trying-to-write-a-jsonb-type-and-am-getting-column-xxx-is-of-type-jsonb-but-expression-is-of-type-texta"><a name="jsonb">I&#39;m trying to write a JSONB type and am getting &#39;column &quot;XXX&quot; is of type jsonb but expression is of type text&#39;</a></h3>
+</code></pre><h3 id="a-namejsonbim-trying-to-write-a-jsonb-type-and-am-getting-column-xxx-is-of-type-jsonb-but-expression-is-of-type-texta"><a name="jsonb">I&#39;m trying to write a JSONB type and am getting &#39;column &quot;XXX&quot; is of type jsonb but expression is of type text&#39;</a></h3>
 <p>When sending a JSONB parameter, you must explicitly specify its type to be JSONB with NpgsqlDbType:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO foo (col) VALUES (@p)&quot;, conn)) {
   cmd.Parameters.AddWithValue(&quot;p&quot;, NpgsqlDbType.Jsonb, jsonText);
 }
-</code></pre><hr>
-<h3 id="im-trying-to-apply-an-entity-framework-6-migration-and-i-get-type-is-not-resolved-for-member-npgsqlnpgsqlexceptionnpgsql">I&#39;m trying to apply an Entity Framework 6 migration and I get <code>Type is not resolved for member &#39;Npgsql.NpgsqlException,Npgsql&#39;</code>!</h3>
+</code></pre><h3 id="im-trying-to-apply-an-entity-framework-6-migration-and-i-get-type-is-not-resolved-for-member-npgsqlnpgsqlexceptionnpgsql">I&#39;m trying to apply an Entity Framework 6 migration and I get <code>Type is not resolved for member &#39;Npgsql.NpgsqlException,Npgsql&#39;</code>!</h3>
 <p>Unfortunately, a shortcoming of EF6 requires you to have Npgsql.dll in the Global Assembly Cache (GAC), otherwise you can&#39;t see
 migration-triggered exceptions. You can add Npgsql.dll to the GAC by opening a VS Developer Command Prompt as administator and
 running the command <code>gacutil /i Npgsql.dll</code>. You can remove it from the GAC with <code>gacutil /u Npgsql</code>.</p>
