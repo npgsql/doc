@@ -54,4 +54,3 @@ Thanks also to [Appveyor](http://appveyor.com/) and [Travis](http://travis-ci.or
 
 <a href="http://jetbrains.com"><img src="img/jetbrains-logo.svg" width="75" height="75" /></a>
 <a href="http://appveyor.com"><img src="img/appveyor-logo.svg" width="75" height="75" /></a>
-<a href="http://travis-ci.org"><img src="img/travis-logo.svg" width="75" height="75" /></a>
