@@ -132,11 +132,14 @@ namespace ConsoleApp.PostgreSQL
     }
 }
 </code></pre><h2 id="additional-configuration-for-aspnet-core-applications">Additional configuration for ASP.NET Core applications</h2>
-<p>Modify the <code>ConfigureServices</code> method in <code>Startup.cs</code>:</p>
-<pre><code class="lang-c#">public IServiceProvider ConfigureServices(IServiceCollection services)
-    =&gt; services.AddEntityFrameworkNpgsql()
-               .AddDbContext&lt;BloggingContext&gt;()
-               .BuildServiceProvider();
+<p>Consult <a href="https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro">this tutorial</a> for general information on how to make ASP.NET work with EF Core. For Npgsql specifically, simply place the following in your <code>ConfigureServices</code> method in <code>Startup.cs</code>:</p>
+<pre><code class="lang-c#">public void ConfigureServices(IServiceCollection services)
+{
+    // Other DI initializations
+
+    services.AddDbContext&lt;BloggingContext&gt;(options =&gt;
+            options.UseNpgsql(Configuration.GetConnectionString(&quot;BloggingContext&quot;)));
+}
 </code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, use dotnet CLI to execute the following:</p>
 <pre><code class="lang-bash">dotnet ef dbcontext scaffold &quot;Host=my_host;Database=my_db;Username=my_user;Password=my_pw&quot; Npgsql.EntityFrameworkCore.PostgreSQL
