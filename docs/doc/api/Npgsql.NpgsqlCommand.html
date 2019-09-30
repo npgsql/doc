@@ -100,6 +100,7 @@ against a PostgreSQL database. This class cannot be inherited.</p>
     <div><span class="xref">System.ComponentModel.IComponent</span></div>
     <div><span class="xref">System.Data.IDbCommand</span></div>
     <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.IAsyncDisposable</span></div>
     <div><span class="xref">System.ICloneable</span></div>
   </div>
   <div class="inheritedMembers">
@@ -130,6 +131,9 @@ against a PostgreSQL database. This class cannot be inherited.</p>
     </div>
     <div>
       <span class="xref">System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(System.Data.CommandBehavior)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbCommand.DisposeAsync()</span>
     </div>
     <div>
       <span class="xref">System.Data.Common.DbCommand.System.Data.IDbCommand.Connection</span>
@@ -168,9 +172,6 @@ against a PostgreSQL database. This class cannot be inherited.</p>
       <span class="xref">System.ComponentModel.Component.Disposed</span>
     </div>
     <div>
-      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
-    </div>
-    <div>
       <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
     </div>
     <div>
@@ -202,7 +203,7 @@ against a PostgreSQL database. This class cannot be inherited.</p>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlCommand_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlCommand : DbCommand, IComponent, IDbCommand, IDisposable, ICloneable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlCommand : DbCommand, IComponent, IDbCommand, IDisposable, IAsyncDisposable, ICloneable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -1537,6 +1538,9 @@ automatically prepared statements.</p>
   </div>
   <div>
       <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
   </div>
   <div>
       <span class="xref">System.ICloneable</span>

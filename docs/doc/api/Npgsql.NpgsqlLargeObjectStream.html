@@ -96,6 +96,7 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
   </div>
   <div classs="implements">
     <h5>Implements</h5>
+    <div><span class="xref">System.IAsyncDisposable</span></div>
     <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
@@ -125,10 +126,16 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
       <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Int32, System.Threading.CancellationToken)</span>
     </div>
     <div>
+      <span class="xref">System.IO.Stream.CopyToAsync(System.IO.Stream, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
       <span class="xref">System.IO.Stream.CreateWaitHandle()</span>
     </div>
     <div>
       <span class="xref">System.IO.Stream.Dispose()</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.DisposeAsync()</span>
     </div>
     <div>
       <span class="xref">System.IO.Stream.EndRead(System.IAsyncResult)</span>
@@ -146,7 +153,13 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
       <span class="xref">System.IO.Stream.ObjectInvariant()</span>
     </div>
     <div>
+      <span class="xref">System.IO.Stream.Read(System.Span&lt;System.Byte&gt;)</span>
+    </div>
+    <div>
       <span class="xref">System.IO.Stream.ReadAsync(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.ReadAsync(System.Memory&lt;System.Byte&gt;, System.Threading.CancellationToken)</span>
     </div>
     <div>
       <span class="xref">System.IO.Stream.ReadByte()</span>
@@ -155,7 +168,13 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
       <span class="xref">System.IO.Stream.Synchronized(System.IO.Stream)</span>
     </div>
     <div>
+      <span class="xref">System.IO.Stream.Write(System.ReadOnlySpan&lt;System.Byte&gt;)</span>
+    </div>
+    <div>
       <span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.IO.Stream.WriteAsync(System.ReadOnlyMemory&lt;System.Byte&gt;, System.Threading.CancellationToken)</span>
     </div>
     <div>
       <span class="xref">System.IO.Stream.WriteByte(System.Byte)</span>
@@ -165,9 +184,6 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
     </div>
     <div>
       <span class="xref">System.IO.Stream.WriteTimeout</span>
-    </div>
-    <div>
-      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
     </div>
     <div>
       <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
@@ -204,7 +220,7 @@ Note that the OpenRead/OpenReadWrite method as well as all operations performed 
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlLargeObjectStream_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlLargeObjectStream : Stream, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlLargeObjectStream : Stream, IAsyncDisposable, IDisposable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -1006,6 +1022,9 @@ For PostgreSQL versions earlier than 9.3, the value must fit in an Int32.</p>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">System.IO.Stream.WriteAsync(System.Byte[], System.Int32, System.Int32, System.Threading.CancellationToken)</span></div>
   <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
+  </div>
   <div>
       <span class="xref">System.IDisposable</span>
   </div>

@@ -99,10 +99,17 @@
     <div><span class="xref">System.ComponentModel.IComponent</span></div>
     <div><span class="xref">System.Data.IDbConnection</span></div>
     <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.IAsyncDisposable</span></div>
     <div><span class="xref">System.ICloneable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Data.Common.DbConnection.ChangeDatabaseAsync(System.String, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbConnection.CloseAsync()</span>
+    </div>
     <div>
       <span class="xref">System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)</span>
     </div>
@@ -116,7 +123,19 @@
       <span class="xref">System.Data.Common.DbConnection.System.Data.IDbConnection.BeginTransaction(System.Data.IsolationLevel)</span>
     </div>
     <div>
+      <span class="xref">System.Data.Common.DbConnection.BeginDbTransactionAsync(System.Data.IsolationLevel, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbConnection.BeginTransactionAsync(System.Threading.CancellationToken)</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbConnection.BeginTransactionAsync(System.Data.IsolationLevel, System.Threading.CancellationToken)</span>
+    </div>
+    <div>
       <span class="xref">System.Data.Common.DbConnection.System.Data.IDbConnection.CreateCommand()</span>
+    </div>
+    <div>
+      <span class="xref">System.Data.Common.DbConnection.DisposeAsync()</span>
     </div>
     <div>
       <span class="xref">System.Data.Common.DbConnection.StateChange</span>
@@ -147,9 +166,6 @@
     </div>
     <div>
       <span class="xref">System.ComponentModel.Component.Disposed</span>
-    </div>
-    <div>
-      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
     </div>
     <div>
       <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
@@ -183,7 +199,7 @@
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlConnection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlConnection : DbConnection, IComponent, IDbConnection, IDisposable, ICloneable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlConnection : DbConnection, IComponent, IDbConnection, IDisposable, IAsyncDisposable, ICloneable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -2692,6 +2708,9 @@ LISTEN command. NOTIFY can be used to generate such notifications, allowing for 
   </div>
   <div>
       <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
   </div>
   <div>
       <span class="xref">System.ICloneable</span>

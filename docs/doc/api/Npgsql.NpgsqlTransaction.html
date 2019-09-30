@@ -97,6 +97,7 @@
     <h5>Implements</h5>
     <div><span class="xref">System.Data.IDbTransaction</span></div>
     <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">System.IAsyncDisposable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -104,10 +105,10 @@
       <span class="xref">System.Data.Common.DbTransaction.Dispose()</span>
     </div>
     <div>
-      <span class="xref">System.Data.Common.DbTransaction.System.Data.IDbTransaction.Connection</span>
+      <span class="xref">System.Data.Common.DbTransaction.DisposeAsync()</span>
     </div>
     <div>
-      <span class="xref">System.MarshalByRefObject.CreateObjRef(System.Type)</span>
+      <span class="xref">System.Data.Common.DbTransaction.System.Data.IDbTransaction.Connection</span>
     </div>
     <div>
       <span class="xref">System.MarshalByRefObject.GetLifetimeService()</span>
@@ -144,7 +145,7 @@
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlTransaction_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlTransaction : DbTransaction, IDbTransaction, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlTransaction : DbTransaction, IDbTransaction, IDisposable, IAsyncDisposable</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -617,6 +618,9 @@ The default is <strong>ReadCommitted</strong>.</p>
   </div>
   <div>
       <span class="xref">System.IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">System.IAsyncDisposable</span>
   </div>
 </article>
           </div>
