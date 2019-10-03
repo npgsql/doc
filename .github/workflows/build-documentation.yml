@@ -1,6 +1,10 @@
 name: Build Documentation
 
-on: [push, repository_dispatch]
+on:
+ repository_dispatch:  # This is used to trigger the flow from Npgsql/EFCore.PG via HTTP POST
+ push:
+    branches:
+      - master  # We don't want branches in doc to trigger builds
 
 jobs:
   build:
