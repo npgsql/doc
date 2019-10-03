@@ -25,6 +25,8 @@ jobs:
         ref: master
         fetch-depth: 1
         path: docs/docs
+    - name: Clear live docs repo
+      run: rm -rf docs/*
     - name: Checkout Npgsql
       uses: actions/checkout@v1
       with:
