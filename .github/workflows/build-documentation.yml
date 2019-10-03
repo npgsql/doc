@@ -1,0 +1,66 @@
+name: Build Documentation
+
+on: [push, repository_dispatch]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+    # Checkout all repos
+    - name: Checkout repo
+      uses: actions/checkout@v1
+      with:
+        path: docs
+        fetch-depth: 1
+    - name: Checkout live docs repo
+      uses: actions/checkout@v1
+      with:
+        repository: npgsql/livedocs
+        ref: master
+        fetch-depth: 1
+        path: docs/docs
+    - name: Checkout Npgsql
+      uses: actions/checkout@v1
+      with:
+        repository: npgsql/npgsql
+        ref: master
+        fetch-depth: 1
+        path: docs/Npgsql
+    - name: Checkout EFCore.PG
+      uses: actions/checkout@v1
+      with:
+        repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
+        ref: master
+        fetch-depth: 1
+        path: docs/EFCore.PG
+
+    # Setup software
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
+    - name: Get mono
+      run: |
+        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+        echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+        sudo apt-get update
+        sudo apt-get install mono-complete --yes
+    - name: Get docfx
+      run: |
+        curl -L https://github.com/dotnet/docfx/releases/latest/download/docfx.zip -o docfx.zip
+        unzip -d .docfx docfx.zip
+
+    # Build
+    - name: Build docs
+      run:  mono .docfx/docfx.exe
+    - name: Commit and push
+      run: |
+        cd docs
+        git config --global user.email "noreply@npgsql.org"
+        git config --global user.name "Automated System"
+        git add .
+        git commit -m "Automated update" --author $GITHUB_ACTOR
+        header=$(echo -n "ad-m:${{ secrets.DOC_MGMT_TOKEN }}" | base64)
+        git -c http.extraheader="AUTHORIZATION: basic $header" push origin HEAD:master
