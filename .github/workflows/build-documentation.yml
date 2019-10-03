@@ -24,9 +24,9 @@ jobs:
         repository: npgsql/livedocs
         ref: master
         fetch-depth: 1
-        path: docs/docs
+        path: docs/live
     - name: Clear live docs repo
-      run: rm -rf docs/*
+      run: rm -rf live/*
     - name: Checkout Npgsql
       uses: actions/checkout@v1
       with:
@@ -63,7 +63,7 @@ jobs:
       run:  mono .docfx/docfx.exe
     - name: Commit and push
       run: |
-        cd docs
+        cd live
         git config --global user.email "noreply@npgsql.org"
         git config --global user.name "Automated System"
         git add .
