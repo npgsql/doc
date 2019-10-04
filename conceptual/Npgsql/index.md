@@ -4,7 +4,7 @@ title: Documentation
 ---
 
 [![stable](https://img.shields.io/nuget/v/Npgsql.svg?label=stable)](https://www.nuget.org/packages/Npgsql/) [![unstable](https://img.shields.io/myget/npgsql-unstable/v/npgsql.svg?label=unstable)](https://www.myget.org/feed/npgsql-unstable/package/nuget/Npgsql) [![next patch](https://img.shields.io/myget/npgsql/v/npgsql.svg?label=next%20patch)](https://www.myget.org/feed/npgsql/package/nuget/Npgsql) 
-[![appveyor](https://img.shields.io/appveyor/ci/roji/npgsql/dev.svg?label=appveyor)](https://ci.appveyor.com/project/roji/npgsql) [![travis](https://img.shields.io/travis/npgsql/npgsql.svg?label=travis)](https://travis-ci.org/npgsql/npgsql) [![gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/npgsql/npgsql)
+[![appveyor](https://img.shields.io/appveyor/ci/roji/npgsql/dev.svg?label=appveyor)](https://ci.appveyor.com/project/roji/npgsql) [![travis](https://img.shields.io/travis/npgsql/npgsql.svg?label=travis)](https://travis-ci.org/npgsql/npgsql) [![gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/npgsql/npgsql) [![github stars](https://img.shields.io/github/stars/npgsql/npgsql?style=social)](https://github.com/npgsql/npgsql)
 
 ## Getting Started
 

@@ -2,6 +2,7 @@
 layout: doc
 title: Entity Framework 6
 ---
+ [![github stars](https://img.shields.io/github/stars/npgsql/EntityFramework6.Npgsql?style=social)](https://github.com/npgsql/EntityFramework6.Npgsql)
 
 Npgsql has an Entity Framework 6 provider. You can use it by installing the
 [EntityFramework6.Npgsql](https://www.nuget.org/packages/EntityFramework6.Npgsql/) nuget.

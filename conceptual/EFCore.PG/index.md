@@ -3,7 +3,7 @@
 [![next patch](https://img.shields.io/myget/npgsql/v/Npgsql.EntityFrameworkCore.PostgreSQL.svg?label=next%20patch)](https://www.myget.org/feed/npgsql/package/nuget/Npgsql.EntityFrameworkCore.PostgreSQL)
 [![appveyor](https://img.shields.io/appveyor/ci/roji/npgsql-entityframeworkcore-postgresql/dev.svg?label=appveyor)](https://ci.appveyor.com/project/roji/npgsql-entityframeworkcore-postgresql)
 [![travis](https://img.shields.io/travis/npgsql/npgsql.svg?label=travis)](https://travis-ci.org/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL)
-[![gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/npgsql/npgsql)
+[![gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg)](https://gitter.im/npgsql/npgsql) [![github stars](https://img.shields.io/github/stars/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL?style=social)](https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL)
 
 # Getting Started
 
