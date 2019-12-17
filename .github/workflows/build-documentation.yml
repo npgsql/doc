@@ -63,10 +63,14 @@ jobs:
       run:  mono .docfx/docfx.exe
     - name: Commit and push
       run: |
+        export GIT_COMMITTER_NAME=$(git show -s --format='%cn')
+        export GIT_COMMITTER_EMAIL=$(git show -s --format='%ce')
+        export GIT_AUTHOR_NAME=$(git show -s --format='%an')
+        export GIT_AUTHOR_EMAIL=$(git show -s --format='%ae')
+        export COMMIT_HASH=$(git show -s --format='%H')
+        export SUBJECT=$(git show -s --format='%s')
         cd live
-        git config --global user.email "noreply@npgsql.org"
-        git config --global user.name "Automated System"
         git add .
-        git commit -m "Automated update" --author $GITHUB_ACTOR
+        git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
         header=$(echo -n "ad-m:${{ secrets.DOC_MGMT_TOKEN }}" | base64)
         git -c http.extraheader="AUTHORIZATION: basic $header" push origin HEAD:master
