@@ -20,7 +20,7 @@ If you think you've encountered a bug or want to request a feature, open an issu
 
 ## License
 
-Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/master/LICENSE.txt), a liberal OSI-approved open source license.
+Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgsql/blob/master/LICENSE), a liberal OSI-approved open source license.
 
 ## Contributors
 
