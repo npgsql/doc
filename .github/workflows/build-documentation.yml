@@ -14,39 +14,34 @@ jobs:
     steps:
     # Checkout all repos
     - name: Checkout repo
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         path: docs
         fetch-depth: 1
     - name: Checkout live docs repo
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         repository: npgsql/livedocs
-        ref: master
-        fetch-depth: 1
         path: docs/live
     - name: Clear live docs repo
       run: rm -rf live/*
     - name: Checkout Npgsql
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         repository: npgsql/npgsql
-        ref: master
-        fetch-depth: 1
         path: docs/Npgsql
     - name: Checkout EFCore.PG
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
       with:
         repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
-        ref: master
-        fetch-depth: 1
         path: docs/EFCore.PG
 
     # Setup software
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.100
+        dotnet-version: 3.1.x
+
     - name: Get mono
       run: |
         apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
