@@ -15,26 +15,23 @@ jobs:
     # Checkout all repos
     - name: Checkout repo
       uses: actions/checkout@v2
-      with:
-        path: docs
-        fetch-depth: 1
     - name: Checkout live docs repo
       uses: actions/checkout@v2
       with:
         repository: npgsql/livedocs
-        path: docs/live
+        path: live
     - name: Clear live docs repo
       run: rm -rf live/*
     - name: Checkout Npgsql
       uses: actions/checkout@v2
       with:
         repository: npgsql/npgsql
-        path: docs/Npgsql
+        path: Npgsql
     - name: Checkout EFCore.PG
       uses: actions/checkout@v2
       with:
         repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
-        path: docs/EFCore.PG
+        path: EFCore.PG
 
     # Setup software
     - name: Setup .NET Core
