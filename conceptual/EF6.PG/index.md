@@ -20,10 +20,10 @@ class NpgSqlConfiguration : DbConfiguration
         var name = "Npgsql";
 
         SetProviderFactory(providerInvariantName: name,
-        providerFactory: NpgsqlFactory.Instance);
+                           providerFactory: NpgsqlFactory.Instance);
 
         SetProviderServices(providerInvariantName: name,
-        provider: NpgsqlServices.Instance);
+                            provider: NpgsqlServices.Instance);
 
         SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
     }
