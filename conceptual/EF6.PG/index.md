@@ -49,6 +49,54 @@ If the database is being created by Npgsql Migrations, you will need to
 [run the `create extension` command in the `template1` database](http://stackoverflow.com/a/11584751).
 This way, when the new database is created, the extension will be installed already.
 
+## Optimistic Concurrency ##
+
+EntityFramework supports [optimistic concurrency](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application), through the [system column `xmin`](https://www.postgresql.org/docs/current/ddl-system-columns.html). To use this column as the concurrency token, some [customization is needed](https://github.com/npgsql/EntityFramework6.Npgsql/issues/8). The following code will setup `Department.Version` to map to `xmin`, while the `SqlGenerator` will generate `CREATE/ALTER TABLE` statements omitting system columns.
+
+```csharp
+public class Department {
+    public string Version { get; private set; }
+}
+
+[DbConfigurationType(typeof(Configuration))]
+public class UniversityDbContext : DbContext
+{
+    public DbSet<Department> Departments { get; set; }
+
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Department>()
+            .Property(p => p.Version)
+                .HasColumnName("xmin")
+                .HasColumnType("text")
+                .IsConcurrencyToken()
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
+        base.OnModelCreating(modelBuilder);
+    }
+}
+
+internal class Configuration : DbConfiguration
+{
+    public Configuration()
+    {
+        SetMigrationSqlGenerator("Npgsql", () => new SqlGenerator());
+    }
+}
+
+public class SqlGenerator : NpgsqlMigrationSqlGenerator
+{
+    private readonly string[] systemColumnNames = { "oid", "tableoid", "xmin", "cmin", "xmax", "cmax", "ctid" };
+
+    protected override void Convert(CreateTableOperation createTableOperation)
+    {
+        var systemColumns = createTableOperation.Columns.Where(x => systemColumnNames.Contains(x.Name)).ToArray();
+        foreach (var systemColumn in systemColumns)
+            createTableOperation.Columns.Remove(systemColumn);
+        base.Convert(createTableOperation);
+    }
+}
+```
+
 ## Template Database ##
 
 When the Entity Framework 6 provider creates a database, it issues a simple `CREATE DATABASE` command.
