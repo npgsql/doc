@@ -7,6 +7,11 @@ Npgsql has an Entity Framework 6 provider. You can use it by installing the
 [EntityFramework6.Npgsql](https://www.nuget.org/packages/EntityFramework6.Npgsql/) nuget.
 
 ## Basic Configuration ##
+
+Configuration for an Entity Framework application can be specified in a config file (app.config/web.config) or through code. The latter is known as code-based configuration.
+
+### Code-based ###
+
 To use Entity Framework with Npgsql, define a class that inherits from `DbConfiguration` in the same assembly as your class inheriting `DbContext`. Ensure that you configure provider services, a provider factory, a default connection factory as shown below:
 
 ```csharp
@@ -28,6 +33,30 @@ class NpgSqlConfiguration : DbConfiguration
         SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
     }
 }
+```
+
+### Config file ###
+
+When installing `EntityFramework6.Npgsql` nuget package, the relevant sections in `App.config` / `Web.config` are usually automatically updated. You typically only have to add your `connectionString` with the correct `providerName`.
+
+```xml
+<configuration>
+    <connectionStrings>
+        <add name="BlogDbContext" connectionString="Server=localhost;port=5432;Database=Blog;User Id=postgres;Password=postgres;" providerName="Npgsql" />
+    </connectionStrings>
+    <entityFramework>
+        <providers>
+            <provider invariantName="Npgsql" type="Npgsql.NpgsqlServices, EntityFramework6.Npgsql" />
+        </providers>
+        <!-- setting the default connection factory is optional -->
+        <defaultConnectionFactory type="Npgsql.NpgsqlConnectionFactory, EntityFramework6.Npgsql" />
+    </entityFramework>
+    <system.data>
+        <DbProviderFactories>
+            <add name="Npgsql Provider" invariant="Npgsql" description=".NET Framework Data Provider for PostgreSQL" type="Npgsql.NpgsqlFactory, Npgsql, Version=4.1.3.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" />
+        </DbProviderFactories>
+    </system.data>
+</configuration>
 ```
 
 ## Guid Support ##
