@@ -1,15 +1,11 @@
 name: Build Documentation
 
-on:
- repository_dispatch:  # This is used to trigger the flow from Npgsql/EFCore.PG via HTTP POST
- push:
-    branches:
-      - main  # We don't want branches in doc to trigger builds
+# repository_dispatch is used to trigger the flow from Npgsql/EFCore.PG via HTTP POST
+on: [push, pull_request, repository_dispatch]
 
 jobs:
   build:
-
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
     # Checkout all repos
@@ -50,10 +46,11 @@ jobs:
         curl -L https://github.com/dotnet/docfx/releases/download/v2.51/docfx.zip -o docfx.zip
         unzip -d .docfx docfx.zip
 
-    # Build
     - name: Build docs
       run:  mono .docfx/docfx.exe
+
     - name: Commit and push
+      if: github.event_name == 'push' && github.repository == 'npgsql/doc' && github.ref == 'refs/heads/main'
       run: |
         export GIT_COMMITTER_NAME=$(git show -s --format='%cn')
         export GIT_COMMITTER_EMAIL=$(git show -s --format='%ce')
