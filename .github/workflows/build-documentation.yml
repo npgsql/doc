@@ -16,6 +16,7 @@ jobs:
       with:
         repository: npgsql/livedocs
         path: live
+        token: ${{ secrets.DOC_MGMT_TOKEN }}
     - name: Clear live docs repo
       run: rm -rf live/*
     - name: Checkout Npgsql
@@ -61,5 +62,4 @@ jobs:
         cd live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        header=$(echo -n "ad-m:${{ secrets.DOC_MGMT_TOKEN }}" | base64)
-        git -c http.extraheader="AUTHORIZATION: basic $header" push origin HEAD:main
+        git push origin HEAD:main
