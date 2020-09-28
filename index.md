@@ -26,31 +26,29 @@ Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgs
 
 Current active contributors to Npgsql are:
 
-* Shay Rojansky
-* Yoh Deadfall
-* Raif Atef
-* Austin Drenski
-* Emil Lenngren
+* Shay Rojansky ([@roji](https://github.com/roji))
+* Yoh Deadfall ([@YohDeadfall](https://github.com/YohDeadfall))
+* Brar Piening ([@Brar](https://github.com/Brar))
+* Kazmin Nikita ([@vonzshik](https://github.com/vonzshik))
+* Emmanuel André ([@manandre](https://github.com/manandre))
+* Warcha ([@warcha](https://github.com/warcha))
 
 Past contributors to Npgsql:
 
 * Jon Asher
+* Raif Atef
 * Josh Cooley
+* Austin Drenski
 * Francisco Figueiredo Jr.
 * Federico Di Gregorio
 * Jon Hanna
+* Emil Lenngren
 * Chris Morgan
 * Dave Page
 * Glen Parker
-* Brar Piening
 * Hiroshi Saito
 * Kenji Uno
 
 ## Thanks
 
-A special thanks to [Jetbrains](http://jetbrains.com/) for donating licenses to the project - Npgsql is developed with love on Rider on Linux.
-
-Thanks also to [Appveyor](http://appveyor.com/) and [Travis](http://travis-ci.org/) for their build platforms.
-
-<a href="http://jetbrains.com"><img src="img/jetbrains-logo.svg" width="75" height="75" /></a>
-<a href="http://appveyor.com"><img src="img/appveyor-logo.svg" width="75" height="75" /></a>
+A special thanks to [Jetbrains](http://jetbrains.com/) for donating licenses to the project.
