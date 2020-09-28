@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql Basic Usage | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql Basic Usage | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-basic-usage">Npgsql Basic Usage</h1>
+
+<h2 id="parameters">Parameters</h2>
+<p>When sending data values to the database, you should use parameters rather than including the values in the SQL as follows:</p>
+<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p)&quot;, conn))
+{
+    cmd.Parameters.AddWithValue(&quot;p&quot;, &quot;some_value&quot;);
+    cmd.ExecuteNonQuery();
+}
+</code></pre><p>The <code>@p</code> in your SQL is called a parameter <em>placeholder</em>; Npgsql will expect to find a parameter with that name in the command&#39;s parameter list, and will send it along with your query. This has the following advantages over embedding the value in your SQL:</p>
+<ol>
+<li>Avoid SQL injection for user-provided inputs: the parameter data is sent to PostgreSQL separately from the SQL, and is never interpreted as SQL.</li>
+<li>Required to make use of <a href="prepare.html">prepared statements</a>, which dramatically improve performance if you execute the same SQL many times.</li>
+<li>Parameter data is sent in an efficient, binary format, rather than being represented as a string in your SQL.</li>
+</ol>
+<p>Note that PostgreSQL does not support parameters in arbitrary locations - you can only parameterize data values. For example, trying to parameterize a table or column name will fail - parameters aren&#39;t a simple way to stick an arbitrary string in your SQL.</p>
+<h3 id="parameter-types">Parameter types</h3>
+<p>PostgreSQL has a strongly-typed type system; columns and parameters have a type, and types are usually not implicitly converted to other types. This means you have to think about which type you will be sending: trying to insert a string into an integer column (or vice versa) will fail.</p>
+<p>In the example above, we let Npgsql <em>infer</em> the PostgreSQL data type from the .NET type: when Npgsql sees a .NET <code>string</code>, it automatically sends a parameter of type <code>text</code> (note that this isn&#39;t the same as, say <code>varchar</code>). In many cases this will work just fine, and you don&#39;t need to worry. In some cases, however, you will need to explicitly set the parameter type. For example, Npgsql sends .NET <code>DateTime</code> as <code>timestamp without time zone</code>, but you may want to send a PostgreSQL <code>date</code> instead, which doesn&#39;t have a direct counterpart in .NET. For more information on supported types and their mappings, see <a href="types/basic.html">this page</a>.</p>
+<p><code>NpgsqlParameter</code> exposes several properties that allow you to specify the parameter&#39;s data type:</p>
+<h4 id="dbtype">DbType</h4>
+<p><code>DbType</code> is a portable enum that can be used to specify database types. While this approach will allow you to write portable code across databases, it obviously won&#39;t let you specify types that are specific to PostgreSQL.</p>
+<h4 id="npgsqldbtype">NpgsqlDbType</h4>
+<p><code>NpgsqlDbType</code> is an Npgsql-specific enum that contains (almost) all PostgreSQL types supported by Npgsql.</p>
+<h4 id="datatypename">DataTypeName</h4>
+<p><code>DataTypeName</code> is an Npgsql-specific string property which allows to directly set a PostgreSQL type name on the parameter. This is rarely needed - <code>NpgsqlDbType</code> should be suitable for the majority of cases. However, it may be useful if you&#39;re using unmapped user-defined types (<a href="types/enums_and_composites.html">enums or composites</a>) or some PostgreSQL type which isn&#39;t included in <code>NpgsqlDbType</code> (because it&#39;s supported via an external plugin).</p>
+<h3 id="strongly-typed-parameters">Strongly-typed parameters</h3>
+<p>The standard ADO.NET parameter API is unfortunately weakly-typed: parameter values are set on <code>NpgsqlParameter.Value</code>, which, being an <code>object</code>, will box value types such as <code>int</code>. If you&#39;re sending lots of value types to the database, this will create large amounts of useless heap allocations and strain the garbage collector.</p>
+<p>As an alternative, you can use <code>NpgsqlParameter&lt;T&gt;</code>. This generic class has a <code>TypedValue</code> member, which is similar to <code>NpgsqlParameter.Value</code> but is strongly-typed, thus avoiding the boxing and heap allocation. Note that this strongly-typed parameter API is entirely Npgsql-specific, and will make your code non-portable to other database. See <a href="https://github.com/dotnet/corefx/issues/8955">#8955</a> for an issue discussing this at the ADO.NET level.</p>
+<h2 id="stored-functions-and-procedures">Stored functions and procedures</h2>
+<p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">stored (or server-side) functions</a>, and since PostgreSQL 11 also <a href="">stored procedures</a>. These can be written in SQL (similar to views), or in <a href="https://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a> (PostgreSQL&#39;s procedural language), <a href="https://www.postgresql.org/docs/current/static/plpython.html">PL/Python</a> or several other server-side languages.</p>
+<p>Once a function or procedure has been defined, calling it is a simple matter of executing a regular command:</p>
+<pre><code class="lang-c#">// For functions
+using (var cmd = new NpgsqlCommand(&quot;SELECT my_func(1, 2)&quot;, conn))
+using (var reader = cmd.ExecuteReader()) { ... }
+
+// For procedures
+using (var cmd = new NpgsqlCommand(&quot;CALL my_proc(1, 2)&quot;, conn))
+using (var reader = cmd.ExecuteReader()) { ... }
+</code></pre><p>You can replace the parameter values above with regular placeholders (e.g. <code>@p1</code>), just like with a regular query.</p>
+<p>In some other databases, calling a stored procedures involves setting the command&#39;s <em>behavior</em>:</p>
+<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;my_func&quot;, conn))
+{
+    cmd.CommandType = CommandType.StoredProcedure;
+    cmd.Parameters.AddWithValue(&quot;p1&quot;, &quot;some_value&quot;);
+    using (var reader = cmd.ExecuteReader()) { ... }
+}
+</code></pre><p>Npgsql supports this mainly for portability, but this style of calling has no advantage over the regular command shown above. When <code>CommandType.StoredProcedure</code> is set, Npgsql will simply generate the appropriate <code>SELECT my_func()</code> for you, nothing more. Unless you have specific portability requirements, it is recommended you simply avoid <code>CommandType.StoredProcedure</code> and construct the SQL yourself.</p>
+<p>Note that if <code>CommandType.StoredProcedure</code> is set and your parameter instances have names, Npgsql will generate parameters with <code>named notation</code>: <code>SELECT my_func(p1 =&gt; &#39;some_value&#39;)</code>. This means that your NpgsqlParameter names must match your PostgreSQL function parameters, or the function call will fail. If you omit the names on your NpgsqlParameters, positional notation will be used instead. <a href="https://www.postgresql.org/docs/current/static/sql-syntax-calling-funcs.html">See the PostgreSQL docs for more info</a>.</p>
+<p>Be aware that <code>CommandType.StoredProcedure</code> will generate a <code>SELECT</code> command - suitable for functions - and not a <code>CALL</code> command suitable for procedures. Npgsql has behaved this way since long before stored procedures were introduced, and changing this behavior would break backwards compatibility for many applications. The only way to call a stored procedure is to write your own <code>CALL my_proc(...)</code> command, without setting <code>CommandBehavior.StoredProcedure</code>.</p>
+<h3 id="inout-parameters">In/out parameters</h3>
+<p>In SQL Server (and possibly other databases), functions can have output parameters, input/output parameters, and a return value, which can be either a scalar or a table (TVF). To call functions with special parameter types, the <code>Direction</code> property must be set on the appropriate <code>DbParameter</code>. PostgreSQL functions, on the hand, always return a single table - they can all be considered TVFs. Somewhat confusingly, PostgreSQL does allow your functions to be defined with input/and output parameters:</p>
+<pre><code class="lang-c#">CREATE FUNCTION dup(in int, out f1 int, out f2 text)
+    AS $$ SELECT $1, CAST($1 AS text) || &#39; is text&#39; $$
+    LANGUAGE SQL;
+</code></pre><p>However, the above syntax is nothing more than a definition of the function&#39;s resultset, and is identical to the following (<a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">see the PostgreSQL docs</a>):</p>
+<pre><code class="lang-c#">CREATE FUNCTION dup(int) RETURNS TABLE(f1 int, f2 text)
+    AS $$ SELECT $1, CAST($1 AS text) || &#39; is text&#39; $$
+    LANGUAGE SQL;
+</code></pre><p>In other words, PostgreSQL functions don&#39;t have output parameters that are distinct from the resultset they return - output parameters are just a syntax for describing that resultset. Because of this, on the Npgsql side there&#39;s no need to think about output (or input/output) parameters: simply invoke the function and process its resultset just like you would any regular resultset.</p>
+<p>However, to help portability, Npgsql does provide support for output parameters as follows:</p>
+<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;SELECT my_func()&quot;, conn))
+{
+    cmd.Parameters.Add(new NpgsqlParameter(&quot;p_out&quot;, DbType.String) { Direction = ParameterDirection.Output });
+    cmd.ExecuteNonQuery();
+    Console.WriteLine(cmd.Parameters[0].Value);
+}
+</code></pre><p>When Npgsql sees a parameter with <code>ParameterDirection.Output</code> (or <code>InputOutput</code>), it will simply search the function&#39;s resultset for a column whose name matches the parameter, and copy the first row&#39;s value into the output parameter. This provides no value whatsoever over processing the resultset yourself, and is discouraged - you should only use output parameters in Npgsql if you need to maintain portability with other databases which require it.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/basic-usage.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2020 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

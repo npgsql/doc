@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Date and Time Handling | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Date and Time Handling | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="date-and-time-handling">Date and Time Handling</h1>
+
+<div class="NOTE"><h5>Note</h5><p>Since 4.0 the recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>.</p>
+</div>
+<p>Handling date and time values usually isn&#39;t hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates.
+It&#39;s worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize
+yourself with PostgreSQL&#39;s types.</p>
+<h2 id="net-types-and-postgresql-types">.NET types and PostgreSQL types</h2>
+<div class="WARNING"><h5>Warning</h5><p>A common mistake is for users to think that the PostgreSQL <code>timestamp with timezone</code> type stores the timezone in the database. This is not the case: only the timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>.</p>
+</div>
+<p>The .NET and PostgreSQL types differ in the resolution and range they provide; the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:</p>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Precision/Range</th>
+<th>.NET Native Type</th>
+<th>Precision/Range</th>
+<th>Npgsql .NET Provider-Specific Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp without time zone</td>
+<td>1 microsecond, 4713BC-294276AD</td>
+<td>DateTime</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+<td>NpgsqlDateTime</td>
+</tr>
+<tr>
+<td>timestamp with time zone</td>
+<td>1 microsecond, 4713BC-294276AD</td>
+<td>DateTime</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+<td>NpgsqlDateTime</td>
+</tr>
+<tr>
+<td>date</td>
+<td>1 day, 4713BC-5874897AD</td>
+<td>DateTime</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+<td>NpgsqlDate</td>
+</tr>
+<tr>
+<td>time without time zone</td>
+<td>1 microsecond, 0-24 hours</td>
+<td>TimeSpan</td>
+<td>100 nanoseconds, -10,675,199 - 10,675,199 days</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>time with time zone</td>
+<td>1 microsecond, 0-24 hours</td>
+<td>DateTimeOffset (ignore date)</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>1 microsecond, -178000000-178000000 years</td>
+<td>TimeSpan</td>
+<td>100 nanoseconds, -10,675,199 - 10,675,199 days</td>
+<td>NpgsqlTimeSpan</td>
+</tr>
+</tbody>
+</table>
+<p>If your needs are met by the .NET native types, it is best that you use them directly with Npgsql.
+If, however, you require the extended range of a PostgreSQL type you can use Npgsql&#39;s provider-specific types, which represent PostgreSQL types in an exact way.</p>
+<h2 id="timezones">Timezones</h2>
+<p>It&#39;s critical to understand exactly how timezones and timezone conversions are handled between .NET types and PostgreSQL.
+In particular, .NET&#39;s DateTime has a <a href="https://msdn.microsoft.com/en-us/library/system.datetime.kind(v=vs.110).aspx">Kind</a> property which impacts how
+Npgsql reads and writes the value.</p>
+<p>By default, <code>DateTime</code> is sent to PostgreSQL as a <code>timestamp without time zone</code> - no timezone conversion of any kind will occur, and your <code>DateTime</code> instance will be transferred as-is to PostgreSQL. This is the recommended way to store timestamps in the database. Note that you may still send <code>DateTime</code> as <code>timestamp with time zone</code> by setting <code>NpgsqlDbType.TimestampTz</code> on your <code>NpgsqlParameter</code>; in this case, if the <code>Kind</code> is <code>Local</code>, Npgsql will convert the value to UTC before sending it to PostgreSQL. Otherwise, it will be sent as-is.</p>
+<p>You can also send <code>DateTimeOffset</code> values, which are written as <code>timestamptz</code> and are converted to UTC before sending.</p>
+<p>PostgreSQL <code>time with time zone</code> is the only date/time type which actually stores a timezone in the database. You can use a <code>DateTimeOffset</code> to send one to PostgreSQL, in which case the date component is dropped and the time and timezone are preserved. You can also send a <code>DateTime</code>, in which case the <code>Kind</code> will determine the the timezone sent to the database.</p>
+<h2 id="detailed-behavior-sending-values-to-the-database">Detailed Behavior: Sending values to the database</h2>
+<table>
+<thead>
+<tr>
+<th>.NET value</th>
+<th>NpgsqlDbType</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DateTime</td>
+<td>NpgsqlDbType.Timestamp (default)</td>
+<td>Send as-is</td>
+</tr>
+<tr>
+<td>DateTime(Kind=UTC,Unspecified)</td>
+<td>NpgsqlDbType.TimestampTz</td>
+<td>Send as-is</td>
+</tr>
+<tr>
+<td>DateTime(Kind=Local)</td>
+<td>NpgsqlDbType.TimestampTz</td>
+<td>Convert to UTC locally before sending</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>NpgsqlDbType.TimestampTz (default)</td>
+<td>Convert to UTC locally before sending</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>TimeSpan</td>
+<td>NpgsqlDbType.Time (default)</td>
+<td>Send as-is</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>DateTimeOffset</td>
+<td>NpgsqlDbType.TimeTz</td>
+<td>Send time and timezone</td>
+</tr>
+<tr>
+<td>DateTime(Kind=UTC)</td>
+<td>NpgsqlDbType.TimeTz</td>
+<td>Send time and UTC timezone</td>
+</tr>
+<tr>
+<td>DateTime(Kind=Local)</td>
+<td>NpgsqlDbType.TimeTz</td>
+<td>Send time and local system timezone</td>
+</tr>
+<tr>
+<td>DateTime(Kind=Unspecified)</td>
+<td>NpgsqlDbType.TimeTz</td>
+<td>Assume local, send time and local system timezone</td>
+</tr>
+</tbody>
+</table>
+<h2 id="detailed-behavior-reading-values-from-the-database">Detailed Behavior: Reading values from the database</h2>
+<table>
+<thead>
+<tr>
+<th>PG type</th>
+<th>.NET value</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>DateTime (default)</td>
+<td>Kind=Unspecified</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>timestamptz</td>
+<td>DateTime (default)</td>
+<td>Kind=Local (according to system timezone)</td>
+</tr>
+<tr>
+<td>timestamptz</td>
+<td>DateTimeOffset</td>
+<td>In local timezone offset</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td>TimeSpan (default)</td>
+<td>As-is</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>timetz</td>
+<td>DateTimeOffset (default)</td>
+<td>Date component is empty</td>
+</tr>
+<tr>
+<td>timetz</td>
+<td>TimeSpan</td>
+<td>Strip offset, read as-is</td>
+</tr>
+<tr>
+<td>timetz</td>
+<td>DateTime</td>
+<td>Strip offset, date is empty</td>
+</tr>
+</tbody>
+</table>
+<h2 id="further-reading">Further Reading</h2>
+<p>If you&#39;re really interested in some of the mapping decisions above, check out <a href="https://github.com/npgsql/npgsql/issues/347">this issue</a>.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/datetime.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2020 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>PostGIS/GeoJSON Type Plugin | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="PostGIS/GeoJSON Type Plugin | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.51.0.0">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="postgisgeojson-type-plugin">PostGIS/GeoJSON Type Plugin</h1>
+
+<p>Before 4.0, Npgsql has supported reading and writing PostGIS types via some bundled .NET classes: <code>PostgisPoint</code>, <code>PostgisLineString</code>, etc. While this model provided some basic support, a proper representation of spatial types is a complicated task that&#39;s beyond Npgsql&#39;s scope, and should be handled by a specialized spatial library instead.</p>
+<p>The <a href="https://nuget.org/packages/Npgsql.GeoJSON">Npgsql.GeoJSON</a> plugin makes Npgsql read and write PostGIS spatial types as <a href="http://geojson.org/">GeoJSON (RFC7946) types</a>, via the <a href="https://github.com/GeoJSON-Net/GeoJSON.Net">GeoJSON.NET</a> library.</p>
+<p>As an alternative, you can use <a href="nts.html">Npgsql.NetTopologySuite</a>, which is a full-fledged .NET spatial library with many features. If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.html">Npgsql.LegacyPostgis plugin</a>.</p>
+<h2 id="setup">Setup</h2>
+<p>To use the GeoJSON plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.GeoJSON">Npgsql.GeoJSON</a> and set it up:</p>
+<pre><code class="lang-c#">using Npgsql;
+
+// Place this at the beginning of your program to use NetTopologySuite everywhere (recommended)
+NpgsqlConnection.GlobalTypeMapper.UseGeoJSON();
+
+// Or to temporarily use GeoJSON on a single connection only:
+conn.TypeMapper.UseGeoJSON();
+</code></pre><h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
+<p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate GeoJSON types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize GeoJSON&#39;s types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a GeoJSON <code>Point</code> to the database:</p>
+<pre><code class="lang-c#">var point = new Point(new Position(51.899523, -2.124156));
+conn.ExecuteNonQuery(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
+using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geom) VALUES (@p)&quot;, conn))
+{
+    cmd.Parameters.AddWithValue(&quot;@p&quot;, point);
+    cmd.ExecuteNonQuery();
+}
+
+using (var cmd = new NpgsqlCommand(&quot;SELECT geom FROM data&quot;, conn))
+using (var reader = cmd.ExecuteReader())
+{
+    reader.Read();
+    Assert.That(reader[0], Is.EqualTo(point));
+}
+</code></pre><p>You may also explicitly specify a parameter&#39;s type by setting <code>NpgsqlDbType.Geometry</code>.</p>
+<h2 id="geography-geodetic-support">Geography (geodetic) Support</h2>
+<p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
+<p>Npgsql uses the same GeoJSON types to represent both <code>geometry</code> and <code>geography</code> - the <code>Point</code> type represents a point in either Cartesian or geodetic space. You usually don&#39;t need to worry about this distinction because PostgreSQL will usually cast types back and forth as needed. However, it&#39;s worth noting that Npgsql sends Cartesian <code>geometry</code> by default, because that&#39;s the usual requirement. You have the option of telling Npgsql to send <code>geography</code> instead by specifying <code>NpgsqlDbType.Geography</code>:</p>
+<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES (@p)&quot;, conn))
+{
+    cmd.Parameters.AddWithValue(&quot;@p&quot;, NpgsqlDbType.Geography, point);
+    cmd.ExecuteNonQuery();
+}
+</code></pre><p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseGeoJSON(geographyAsDefault: true);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/geojson.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2020 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
