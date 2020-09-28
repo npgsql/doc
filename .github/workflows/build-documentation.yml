@@ -11,12 +11,11 @@ jobs:
     # Checkout all repos
     - name: Checkout repo
       uses: actions/checkout@v2
-    - name: Checkout live docs repo
+    - name: Checkout live branch
       uses: actions/checkout@v2
       with:
-        repository: npgsql/livedocs
+        ref: live
         path: live
-        token: ${{ secrets.DOC_MGMT_TOKEN }}
     - name: Clear live docs repo
       run: rm -rf live/*
     - name: Checkout Npgsql
@@ -62,4 +61,4 @@ jobs:
         cd live
         git add .
         git commit -m "$SUBJECT" -m "Original commit: $COMMIT_HASH"
-        git push origin HEAD:main
+        git push origin HEAD:live
