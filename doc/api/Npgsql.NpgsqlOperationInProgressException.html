@@ -90,14 +90,57 @@ Provides information on the already-executing operation to help with debugging.<
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">NpgsqlOperationInProgressException</span></div>
+    <div class="level1"><a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a></div>
+    <div class="level2"><span class="xref">NpgsqlOperationInProgressException</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Npgsql.NpgsqlException.html#Npgsql_NpgsqlException_IsTransient">NpgsqlException.IsTransient</a>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlOperationInProgressException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlOperationInProgressException : InvalidOperationException</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlOperationInProgressException : NpgsqlException</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlOperationInProgressException__ctor_Npgsql_NpgsqlCommand_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlOperationInProgressException.%23ctor(Npgsql.NpgsqlCommand)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlOperationInProgressException.cs/#L15">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlOperationInProgressException__ctor_" data-uid="Npgsql.NpgsqlOperationInProgressException.#ctor*"></a>
+  <h4 id="Npgsql_NpgsqlOperationInProgressException__ctor_Npgsql_NpgsqlCommand_" data-uid="Npgsql.NpgsqlOperationInProgressException.#ctor(Npgsql.NpgsqlCommand)">NpgsqlOperationInProgressException(NpgsqlCommand)</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Npgsql.NpgsqlOperationInProgressException.html">NpgsqlOperationInProgressException</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlOperationInProgressException(NpgsqlCommand command)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>A command which was in progress when the operation which triggered this exception was executed.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -105,12 +148,13 @@ Provides information on the already-executing operation to help with debugging.<
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlOperationInProgressException_CommandInProgress.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlOperationInProgressException.CommandInProgress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlOperationInProgressException.cs/#L26">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlOperationInProgressException.cs/#L31">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlOperationInProgressException_CommandInProgress_" data-uid="Npgsql.NpgsqlOperationInProgressException.CommandInProgress*"></a>
   <h4 id="Npgsql_NpgsqlOperationInProgressException_CommandInProgress" data-uid="Npgsql.NpgsqlOperationInProgressException.CommandInProgress">CommandInProgress</h4>
   <div class="markdown level1 summary"><p>If the connection is busy with another command, this will contain a reference to that command.
-Otherwise, if the connection if busy with another type of operation (e.g. COPY), contains null.</p>
+Otherwise, if the connection if busy with another type of operation (e.g. COPY), contains
+<span class="xref">null</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -143,7 +187,7 @@ Otherwise, if the connection if busy with another type of operation (e.g. COPY),
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlOperationInProgressException.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlOperationInProgressException%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/NpgsqlOperationInProgressException.cs/#L9" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlOperationInProgressException.cs/#L7" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

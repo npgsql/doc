@@ -97,6 +97,38 @@
 <p>First, Npgsql 1.0.x used a problematic method to identify serial (autoincrement) columns in migrations. If you look at your migration code you&#39;ll see <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code> on various columns. Unfortunately this annotation is also present on non-serial columns, e.g. columns with default values. This causes various issues and has been replaced in 1.1. However, you&#39;ll have to manually remove <code>.Annotation(&quot;Npgsql:ValueGeneratedOnAdd&quot;, true)</code>, and replace it with <code>.Annotation(&quot;Npgsql:ValueGenerationStrategy&quot;, NpgsqlValueGenerationStrategy.SerialColumn)</code> but <em>only</em> on columns which should be serial (e.g. not on columns with defaults). If you attempt to run a migration that has the old annotation, Npgsql will throw an exception and refuse to run your migrations.</p>
 <p>Unfortunately, this change will cause some incorrect changes the first time you add a migration after the upgrade. To avoid this, simply add a dummy migration right after upgrading to 1.1 and then delete the two new files generated for the dummy migration, <em>but keep the changes made to your ModelSnapshot.cs</em>. From this point on everything should be fine. <em>Make sure you have no pending changes to your model before doing this!</em>.</p>
 <p>Apologies for this problematic upgrade procedure, it should at least keep things clean going forward.</p>
+<h2 id="contributors">Contributors:</h2>
+<p>Thank you very much to the following people who have contributed to the individual 1.1.x. releases.</p>
+<h3 id="milestone-111httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a111"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A1.1.1">Milestone 1.1.1</a>:</h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align:right">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A1.1.1+is%3Aclosed+assignee%3Aroji">8</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-110httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a110"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A1.1.0">Milestone 1.1.0</a>:</h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align:right">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A1.1.0+is%3Aclosed+assignee%3Aroji">11</a></td>
+</tr>
+</tbody>
+</table>
 </article>
           </div>
           

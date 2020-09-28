@@ -103,22 +103,25 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_">NpgsqlTypeHandler&lt;BitArray&gt;.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_">NpgsqlTypeHandler&lt;BitArray&gt;.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, Boolean, FieldDescription, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_Read__1_Npgsql_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_">NpgsqlTypeHandler&lt;BitArray&gt;.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, FieldDescription)</a>
     </div>
     <div>
       <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_">NpgsqlTypeHandler&lt;BitArray&gt;.ValidateAndGetLength&lt;TAny&gt;(TAny, NpgsqlLengthCache, NpgsqlParameter)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_WriteWithLength__1___0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_">NpgsqlTypeHandler&lt;BitArray&gt;.WriteWithLength&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_WriteWithLength__1___0_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">NpgsqlTypeHandler&lt;BitArray&gt;.WriteWithLength&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a>
     </div>
     <div>
       <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_">NpgsqlTypeHandler&lt;BitArray&gt;.ValidateObjectAndGetLength(Object, NpgsqlLengthCache, NpgsqlParameter)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_">NpgsqlTypeHandler&lt;BitArray&gt;.WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_WriteObjectWithLength_System_Object_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">NpgsqlTypeHandler&lt;BitArray&gt;.WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a>
     </div>
     <div>
-      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresRangeType_">NpgsqlTypeHandler&lt;BitArray&gt;.CreateRangeHandler(PostgresRangeType)</a>
+      <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_TypeHandling_NpgsqlTypeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler&lt;BitArray&gt;.CreateRangeHandler(PostgresType)</a>
     </div>
     <div>
       <a class="xref" href="Npgsql.TypeHandling.NpgsqlTypeHandler.html#Npgsql_TypeHandling_NpgsqlTypeHandler_CreateConversionButNoParamException_Type_">NpgsqlTypeHandler.CreateConversionButNoParamException(Type)</a>
@@ -131,7 +134,7 @@
     <pre><code class="lang-csharp hljs">public class BitStringHandler : NpgsqlTypeHandler&lt;BitArray&gt;, INpgsqlTypeHandler&lt;BitArray&gt;, INpgsqlTypeHandler&lt;BitVector32&gt;, INpgsqlTypeHandler&lt;bool&gt;, INpgsqlTypeHandler&lt;string&gt;</code></pre>
   </div>
   <h5 id="Npgsql_TypeHandlers_BitStringHandler_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>See <a href="http://www.postgresql.org/docs/current/static/datatype-bit.html">http://www.postgresql.org/docs/current/static/datatype-bit.html</a>.</p>
+  <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-bit.html">https://www.postgresql.org/docs/current/static/datatype-bit.html</a>.</p>
 <p>Note that for BIT(1), this handler will return a bool by default, to align with SQLClient
 (see discussion <a href="https://github.com/npgsql/npgsql/pull/362#issuecomment-59622101">https://github.com/npgsql/npgsql/pull/362#issuecomment-59622101</a>).</p>
 <p>The type handler API allows customizing Npgsql&apos;s behavior in powerful ways. However, although it is public, it
@@ -145,7 +148,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler__ctor_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.%23ctor(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L35">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L36">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler__ctor_" data-uid="Npgsql.TypeHandlers.BitStringHandler.#ctor*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler__ctor_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.TypeHandlers.BitStringHandler.#ctor(Npgsql.PostgresTypes.PostgresType)">BitStringHandler(PostgresType)</h4>
@@ -179,7 +182,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L45">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L46">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_CreateArrayHandler_" data-uid="Npgsql.TypeHandlers.BitStringHandler.CreateArrayHandler*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_" data-uid="Npgsql.TypeHandlers.BitStringHandler.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType)">CreateArrayHandler(PostgresArrayType)</h4>
@@ -226,20 +229,20 @@ Use it at your own risk.</p>
   <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;BitArray&gt;.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L51">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L52">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Read_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Read*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription,CancellationToken)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
 using either sync or async I/O.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ValueTask&lt;BitArray&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public override ValueTask&lt;BitArray&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -275,6 +278,12 @@ using either sync or async I/O.</p>
         <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to cancel the operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -294,13 +303,13 @@ using either sync or async I/O.</p>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;BitArray&gt;.Read(Npgsql.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription)</span></div>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;BitArray&gt;.Read(Npgsql.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription, CancellationToken)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_BitArray_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(BitArray%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L141">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L142">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_BitArray_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(BitArray,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(BitArray, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -360,7 +369,7 @@ using either sync or async I/O.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_BitVector32_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(BitVector32%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L145">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L146">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_BitVector32_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(BitVector32,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(BitVector32, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -424,7 +433,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_System_Boolean_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(System.Boolean%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L149">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L150">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_System_Boolean_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(System.Boolean,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(Boolean, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -488,7 +497,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_System_String_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(System.String%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L153">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L154">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_TypeHandlers_BitStringHandler_ValidateAndGetLength_System_String_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.TypeHandlers.BitStringHandler.ValidateAndGetLength(System.String,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(String, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -549,19 +558,19 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_BitArray_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(BitArray%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_BitArray_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(BitArray%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L161">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L162">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Write_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_BitArray_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(BitArray,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(BitArray, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_BitArray_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(BitArray,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(BitArray, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Called to write the value of a generic <a class="xref" href="Npgsql.NpgsqlParameter-1.html">NpgsqlParameter&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task Write(BitArray value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Task Write(BitArray value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -598,6 +607,11 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
         <td><span class="parametername">async</span></td>
         <td></td>
       </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -616,22 +630,22 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
-  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;BitArray&gt;.Write(BitArray, Npgsql.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean)</span></div>
+  <div><span class="xref">Npgsql.TypeHandling.NpgsqlTypeHandler&lt;BitArray&gt;.Write(BitArray, Npgsql.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean, CancellationToken)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_BitVector32_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(BitVector32%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_BitVector32_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(BitVector32%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L189">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L190">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Write_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_BitVector32_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(BitVector32,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(BitVector32, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_BitVector32_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(BitVector32,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(BitVector32, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Writes a value to the provided buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Write(BitVector32 value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task Write(BitVector32 value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -673,6 +687,12 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
         <td><p>If I/O will be necessary (i.e. the buffer is full), determines whether it will be done synchronously or asynchronously.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to cancel the operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -692,19 +712,19 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_System_Boolean_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(System.Boolean%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_System_Boolean_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(System.Boolean%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L204">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L205">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Write_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_System_Boolean_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(System.Boolean,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(Boolean, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_System_Boolean_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(System.Boolean,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(Boolean, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Writes a value to the provided buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Write(bool value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task Write(bool value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -746,6 +766,12 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
         <td><p>If I/O will be necessary (i.e. the buffer is full), determines whether it will be done synchronously or asynchronously.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to cancel the operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -765,19 +791,19 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_System_String_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(System.String%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Write_System_String_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Write(System.String%2CNpgsql.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L213">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L214">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Write_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_System_String_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(System.String,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean)">Write(String, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Write_System_String_Npgsql_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Write(System.String,Npgsql.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(String, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Writes a value to the provided buffer.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Write(string value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task Write(string value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -819,6 +845,12 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
         <td><p>If I/O will be necessary (i.e. the buffer is full), determines whether it will be done synchronously or asynchronously.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The <see cref="!:CancellationToken"></see> that can be used to cancel the operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -840,18 +872,18 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_BitVector32__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BBitVector32%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_BitVector32__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BBitVector32%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L100">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L101">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_BitVector32__Read_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{BitVector32}#Read*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_BitVector32__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{BitVector32}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;BitVector32&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_BitVector32__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{BitVector32}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription,CancellationToken)">INpgsqlTypeHandler&lt;BitVector32&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;BitVector32&gt; INpgsqlTypeHandler&lt;BitVector32&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">ValueTask&lt;BitVector32&gt; INpgsqlTypeHandler&lt;BitVector32&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -881,6 +913,11 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
       <tr>
         <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
         <td><span class="parametername">fieldDescription</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -902,18 +939,18 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_Boolean__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BSystem%23Boolean%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_Boolean__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BSystem%23Boolean%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L113">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L114">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_Boolean__Read_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#Boolean}#Read*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_Boolean__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#Boolean}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;Boolean&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_Boolean__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#Boolean}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription,CancellationToken)">INpgsqlTypeHandler&lt;Boolean&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;bool&gt; INpgsqlTypeHandler&lt;bool&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">ValueTask&lt;bool&gt; INpgsqlTypeHandler&lt;bool&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -943,6 +980,11 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
       <tr>
         <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
         <td><span class="parametername">fieldDescription</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -964,18 +1006,18 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_String__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BSystem%23String%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_String__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler.Npgsql%23TypeHandling%23INpgsqlTypeHandler%7BSystem%23String%7D%23Read(Npgsql.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L123">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L124">View Source</a>
   </span>
   <a id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_String__Read_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#String}#Read*"></a>
-  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_String__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#String}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;String&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <h4 id="Npgsql_TypeHandlers_BitStringHandler_Npgsql_TypeHandling_INpgsqlTypeHandler_System_String__Read_Npgsql_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_CancellationToken_" data-uid="Npgsql.TypeHandlers.BitStringHandler.Npgsql#TypeHandling#INpgsqlTypeHandler{System#String}#Read(Npgsql.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription,CancellationToken)">INpgsqlTypeHandler&lt;String&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription, CancellationToken)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; INpgsqlTypeHandler&lt;string&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">ValueTask&lt;string&gt; INpgsqlTypeHandler&lt;string&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription, CancellationToken cancellationToken)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1005,6 +1047,11 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
       <tr>
         <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
         <td><span class="parametername">fieldDescription</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1048,7 +1095,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeHandlers_BitStringHandler.md&amp;value=---%0Auid%3A%20Npgsql.TypeHandlers.BitStringHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/dev/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L29" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/TypeHandlers/BitStringHandler.cs/#L30" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
