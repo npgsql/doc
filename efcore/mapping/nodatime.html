@@ -79,7 +79,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="datetime-mapping-with-nodatime">Date/Time Mapping with NodaTime</h1>
 
-<h1 id="what-is-nodatime">What is NodaTime?</h1>
+<h2 id="what-is-nodatime">What is NodaTime?</h2>
 <p>By default, <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">the PostgreSQL date/time types</a> are mapped to the built-in .NET types (<code>DateTime</code>, <code>TimeSpan</code>). Unfortunately, these built-in types are flawed in many ways. The <a href="http://nodatime.org/">NodaTime library</a> was created to solve many of these problems, and if your application handles dates and times in anything but the most basic way, you should consider using it. To learn more <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">read this blog post by Jon Skeet</a>.</p>
 <p>Beyond NodaTime&#39;s general advantages, some specific advantages NodaTime for PostgreSQL date/time mapping include:</p>
 <ul>
@@ -87,7 +87,7 @@
 <li><code>Period</code> is much more suitable for mapping PostgreSQL <code>interval</code> than <code>TimeSpan</code>.</li>
 <li>NodaTime types can fully represent PostgreSQL&#39;s microsecond precision, and can represent dates outside the BCL&#39;s date limit (1AD-9999AD).</li>
 </ul>
-<h1 id="setup">Setup</h1>
+<h2 id="setup">Setup</h2>
 <p>To set up the NodaTime plugin, add the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime">Npgsql.EntityFrameworkCore.PostgreSQL.NodaTime nuget</a> to your project. Then, make the following modification to your <code>UseNpgsql()</code> line:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
 {
