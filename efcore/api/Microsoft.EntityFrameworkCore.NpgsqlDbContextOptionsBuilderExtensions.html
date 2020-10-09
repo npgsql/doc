@@ -292,6 +292,86 @@ state then EF will open and close the connection as needed.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseNpgsql__1_DbContextOptionsBuilder___0__Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseNpgsql%60%601(DbContextOptionsBuilder%7B%60%600%7D%2CAction%7BNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlDbContextOptionsBuilderExtensions.cs/#L122">View Source</a>
+  </span>
+  <a id="Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseNpgsql_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseNpgsql*"></a>
+  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseNpgsql__1_DbContextOptionsBuilder___0__Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseNpgsql``1(DbContextOptionsBuilder{``0},Action{Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder})">UseNpgsql&lt;TContext&gt;(DbContextOptionsBuilder&lt;TContext&gt;, Action&lt;NpgsqlDbContextOptionsBuilder&gt;)</h4>
+  <div class="markdown level1 summary"><p>
+Configures the context to connect to a PostgreSQL server with Npgsql, but without initially setting any
+<see cref="!:DbConnection"></see> or connection string.
+</p>
+<p>
+The connection or connection string must be set before the <see cref="!:DbContext"></see> is used to connect
+to a database. Set a connection using <see cref="!:RelationalDatabaseFacadeExtensions.SetDbConnection"></see>.
+Set a connection string using <see cref="!:RelationalDatabaseFacadeExtensions.SetConnectionString"></see>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static DbContextOptionsBuilder&lt;TContext&gt; UseNpgsql&lt;TContext&gt;(this DbContextOptionsBuilder&lt;TContext&gt; optionsBuilder, Action&lt;NpgsqlDbContextOptionsBuilder&gt; npgsqlOptionsAction = null)
+    where TContext : DbContext</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DbContextOptionsBuilder</span>&lt;TContext&gt;</td>
+        <td><span class="parametername">optionsBuilder</span></td>
+        <td><p>The builder being used to configure the context.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder.html">NpgsqlDbContextOptionsBuilder</a>&gt;</td>
+        <td><span class="parametername">npgsqlOptionsAction</span></td>
+        <td><p>An optional action to allow additional Npgsql-specific configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DbContextOptionsBuilder</span>&lt;TContext&gt;</td>
+        <td><p>The options builder so that further configuration can be chained.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TContext</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseNpgsql__1_DbContextOptionsBuilder___0__DbConnection_Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseNpgsql%60%601(DbContextOptionsBuilder%7B%60%600%7D%2CDbConnection%2CAction%7BNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -413,86 +493,6 @@ state then EF will open and close the connection as needed.</p>
         <td><span class="xref">Action</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder.html">NpgsqlDbContextOptionsBuilder</a>&gt;</td>
         <td><span class="parametername">npgsqlOptionsAction</span></td>
         <td><p>An optional action to allow additional Npgsql-configuration.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DbContextOptionsBuilder</span>&lt;TContext&gt;</td>
-        <td><p>The options builder so that further configuration can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TContext</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseSqlServer__1_DbContextOptionsBuilder___0__Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseSqlServer%60%601(DbContextOptionsBuilder%7B%60%600%7D%2CAction%7BNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlDbContextOptionsBuilderExtensions.cs/#L122">View Source</a>
-  </span>
-  <a id="Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseSqlServer_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseSqlServer*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlDbContextOptionsBuilderExtensions_UseSqlServer__1_DbContextOptionsBuilder___0__Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlDbContextOptionsBuilderExtensions.UseSqlServer``1(DbContextOptionsBuilder{``0},Action{Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder})">UseSqlServer&lt;TContext&gt;(DbContextOptionsBuilder&lt;TContext&gt;, Action&lt;NpgsqlDbContextOptionsBuilder&gt;)</h4>
-  <div class="markdown level1 summary"><p>
-Configures the context to connect to a PostgreSQL server with Npgsql, but without initially setting any
-<see cref="!:DbConnection"></see> or connection string.
-</p>
-<p>
-The connection or connection string must be set before the <see cref="!:DbContext"></see> is used to connect
-to a database. Set a connection using <see cref="!:RelationalDatabaseFacadeExtensions.SetDbConnection"></see>.
-Set a connection string using <see cref="!:RelationalDatabaseFacadeExtensions.SetConnectionString"></see>.
-</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static DbContextOptionsBuilder&lt;TContext&gt; UseSqlServer&lt;TContext&gt;(this DbContextOptionsBuilder&lt;TContext&gt; optionsBuilder, Action&lt;NpgsqlDbContextOptionsBuilder&gt; npgsqlOptionsAction = null)
-    where TContext : DbContext</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">DbContextOptionsBuilder</span>&lt;TContext&gt;</td>
-        <td><span class="parametername">optionsBuilder</span></td>
-        <td><p>The builder being used to configure the context.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Action</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder.html">NpgsqlDbContextOptionsBuilder</a>&gt;</td>
-        <td><span class="parametername">npgsqlOptionsAction</span></td>
-        <td><p>An optional action to allow additional Npgsql-specific configuration.</p>
 </td>
       </tr>
     </tbody>

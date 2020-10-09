@@ -89,55 +89,7 @@
     public string Description { get; set; }
     public NpgsqlTsVector SearchVector { get; set; }
 }
-</code></pre><h2 id="operation-translation">Operation translation</h2>
-<p>Almost all PostgreSQL full text search functions can be called through LINQ queries. All supported EF Core LINQ methods are defined in extension classes in the <code>Microsoft.EntityFrameworkCore</code> namespace, so simply referencing the Npgsql provider will light up these methods. Here is a table showing translations for some operations; if an operation you need is missing, please open an issue to request for it.</p>
-<table>
-<thead>
-<tr>
-<th>This C# expression...</th>
-<th>... gets translated to this SQL</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.Select(c =&gt; EF.Functions.ToTsVector(&quot;english&quot;, c.Name))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">SELECT to_tsvector(&#39;english&#39;::regconfig, c.&quot;Name&quot;)</a></td>
-</tr>
-<tr>
-<td>.Select(c =&gt; NpgsqlTsVector.Parse(&quot;b&quot;))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">SELECT CAST(&#39;b&#39; AS tsvector)</a></td>
-</tr>
-<tr>
-<td>.Select(c =&gt; EF.Functions.ToTsQuery(&quot;english&quot;, &quot;pgsql&quot;))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">SELECT to_tsquery(&#39;english&#39;::regconfig, &#39;pgsql&#39;)`</a></td>
-</tr>
-<tr>
-<td>.Select(c =&gt; NpgsqlTsQuery.Parse(&quot;b&quot;))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">SELECT CAST(&#39;b&#39; AS tsquery)</a></td>
-</tr>
-<tr>
-<td>.Where(c =&gt; c.SearchVector.Matches(&quot;Npgsql&quot;))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">WHERE c.&quot;SearchVector&quot; @@ &#39;Npgsql&#39;</a></td>
-</tr>
-<tr>
-<td>.Where(c =&gt; c.SearchVector.Matches(EF.Functions.ToTsQuery(&quot;Npgsql&quot;)))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">WHERE c.&quot;SearchVector&quot; @@ to_tsquery(&#39;Npgsql&#39;)</a></td>
-</tr>
-<tr>
-<td>.Select(c =&gt; EF.Functions.ToTsQuery(c.SearchQuery).ToNegative())</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">SELECT !! to_tsquery(c.&quot;SearchQuery&quot;)</a></td>
-</tr>
-<tr>
-<td>.Select(c =&gt; EF.Functions.ToTsVector(c.Name).SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">SELECT setweight(to_tsvector(c.&quot;Name&quot;), &#39;A&#39;)</a></td>
-</tr>
-<tr>
-<td>.Where(c =&gt; c.SearchVector.Matches(EF.Functions.ToTsQuery(&quot;Npgsql&quot;))) <br> .OrderByDescending(c =&gt; c.SearchVector.Rank(EF.Functions.ToTsQuery(&quot;Npgsql&quot;)))</td>
-<td>WHERE (c.&quot;SearchVector&quot; @@ to_tsquery(&#39;Npgsql&#39;)) <br> ORDER BY ts_rank(c.&quot;SearchVector&quot;, to_tsquery(&#39;Npgsql&#39;)) DESC</td>
-</tr>
-</tbody>
-</table>
-<h2 id="setting-up-and-querying-a-full-text-search-index-on-an-entity">Setting up and querying a full text search index on an entity</h2>
+</code></pre><h2 id="setting-up-and-querying-a-full-text-search-index-on-an-entity">Setting up and querying a full text search index on an entity</h2>
 <p><a href="https://www.postgresql.org/docs/current/static/textsearch-tables.html">As the PostgreSQL documentation explains</a>, full-text search requires an index to run efficiently. This section will show two ways to do this, each having its benefits and drawbacks. Please read the PostgreSQL docs for more information on the two different approaches.</p>
 <h3 id="method-1-tsvector-column">Method 1: tsvector column</h3>
 <p>This method adds a <code>tsvector</code> column to your table, that is automatically updated when the row is modified. First, add an <code>NpgsqlTsVector</code> property to your entity:</p>
@@ -243,7 +195,55 @@ var npgsql = context.Products
     .Where(p =&gt; EF.Functions.ToTsVector(&quot;english&quot;, p.Title + &quot; &quot; + p.Description)
         .Matches(&quot;Npgsql&quot;))
     .ToList();
-</code></pre></article>
+</code></pre><h2 id="operation-translation">Operation translation</h2>
+<p>Almost all PostgreSQL full text search functions can be called through LINQ queries. All supported EF Core LINQ methods are defined in extension classes in the <code>Microsoft.EntityFrameworkCore</code> namespace, so simply referencing the Npgsql provider will light up these methods. Here is a table showing translations for some operations; if an operation you need is missing, please open an issue to request for it.</p>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.ToTsVector(&quot;english&quot;, string)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">to_tsvector(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>NpgsqlTsVector.Parse(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">CAST(string AS tsvector)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ToTsQuery(&quot;english&quot;, queryString))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery(&#39;english&#39;::regconfig, queryString)</a></td>
+</tr>
+<tr>
+<td>NpgsqlTsQuery.Parse(queryString))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">CAST(queryString AS tsquery)</a></td>
+</tr>
+<tr>
+<td>tsVector.Matches(queryString))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">tsVector @@ queryString</a></td>
+</tr>
+<tr>
+<td>tsVector.Matches(tsQuery)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">tsVector @@ tsQuery</a></td>
+</tr>
+<tr>
+<td>tsQuery.ToNegative()</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">!! tsQuery</a></td>
+</tr>
+<tr>
+<td>tsVector.SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">setweight(tsVector, &#39;A&#39;)</a></td>
+</tr>
+<tr>
+<td>tsVector.Rank(tsQuery)</td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING">ts_rank(tsVector, tsQuery)</a></td>
+</tr>
+</tbody>
+</table>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
