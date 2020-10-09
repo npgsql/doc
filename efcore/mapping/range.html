@@ -79,9 +79,9 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="range-type-mapping">Range Type Mapping</h1>
 
-<p>PostgreSQL has the unique feature of supporting <a href="https://www.postgresql.org/docs/current/static/rangetypes.html"><em>range data types</em></a>. Ranges represent a range of numbers, dates or other data types, and allow you to easily query ranges which contain a value, perform set operations (e.g. query ranges which contain other ranges), and other similar operations. The range operations supported by PostgreSQL are listed <a href="https://www.postgresql.org/docs/current/static/functions-range.html">in this page</a>. The Npgsql EF Core provider allows you to seemlessly map PostgreSQL ranges, and even perform operations on them that get translated to SQL for server evaluation.</p>
-<h1 id="mapping-ranges">Mapping ranges</h1>
-<p>Npgsql maps PostgreSQL ranges to the generic CLR type <code>NpgqslRange&lt;T&gt;</code>:</p>
+<p>PostgreSQL has the unique feature of supporting <a href="https://www.postgresql.org/docs/current/static/rangetypes.html"><em>range data types</em></a>. Ranges represent a range of numbers, dates or other data types, and allow you to easily query ranges which contain a value, perform set operations (e.g. query ranges which contain other ranges), and other similar operations. The range operations supported by PostgreSQL are listed <a href="https://www.postgresql.org/docs/current/static/functions-range.html">in this page</a>. The Npgsql EF Core provider allows you to seamlessly map PostgreSQL ranges, and even perform operations on them that get translated to SQL for server evaluation.</p>
+<h2 id="mapping-ranges">Mapping ranges</h2>
+<p>Npgsql maps PostgreSQL ranges to the generic CLR type <code>NpgsqlRange&lt;T&gt;</code>:</p>
 <pre><code class="lang-c#">public class Event
 {
     public int Id { get; set; }
@@ -89,7 +89,7 @@
     public NpgsqlRange&lt;DateTime&gt; Duration { get; set; }
 }
 </code></pre><p>This will create a column of type <code>daterange</code> in your database. You can similarly have properties of type <code>NpgsqlRange&lt;int&gt;</code>, <code>NpgsqlRange&lt;long&gt;</code>, etc.</p>
-<h1 id="user-defined-ranges">User-defined ranges</h1>
+<h2 id="user-defined-ranges">User-defined ranges</h2>
 <div class="NOTE"><h5>Note</h5><p>This feature was introduced in version 2.2</p>
 </div>
 <p>PostgreSQL comes with 6 built-in ranges: <code>int4range</code>, <code>int8range</code>, <code>numrange</code>, <code>tsrange</code>, <code>tstzrange</code>, <code>daterange</code>; these can be used simply by adding the appropriate <code>NpgsqlRange&lt;T&gt;</code> property in your entities as shown above. You can also define your own range types over arbitrary types, and use those in EF Core as well.</p>
@@ -103,10 +103,10 @@
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.HasPostgresRange(&quot;floatrange&quot;, &quot;real&quot;);
 </code></pre><p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
-<h1 id="operation-translation">Operation translation</h1>
+<h2 id="operation-translation">Operation translation</h2>
 <p>Ranges can be queried via extensions methods on <code>NpgsqlRange</code>:</p>
 <pre><code class="lang-c#">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));
-</code></pre><p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transfering the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
+</code></pre><p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transferring the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
 <p>The following table lists the range operations that currently get translated. If you run into a missing operation, please open an issue.</p>
 <table>
 <thead>
