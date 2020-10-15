@@ -80,7 +80,7 @@
 <h2 id="overview">Overview</h2>
 
 <p>The following are notes by Emil Lenngren on PostgreSQL wire representation of types:</p>
-<pre><code>bool:
+<pre><code class="lang-text">bool:
     text: t or f
     binary: a byte: 1 or 0
 
@@ -402,7 +402,7 @@ tsquery:
         For each token:
             UInt8 type (1 = val, 2 = oper) followed by
             For val: UInt8 weight + UInt8 prefix (1 = yes / 0 = no) + null-terminated string,
-            For oper: UInt8 oper (1 = not, 2 = and, 3 = or, 4 = phrase). 
+            For oper: UInt8 oper (1 = not, 2 = and, 3 = or, 4 = phrase).
             In case of phrase oper code, an additional UInt16 field is sent (distance value of operator). Default is 1 for &lt;-&gt;, otherwise the n value in &#39;&lt;n&gt;&#39;.
 
 enum:

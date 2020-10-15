@@ -89,9 +89,11 @@ var manager = new NpgsqlLargeObjectManager(Conn);
 uint oid = manager.Create();
 
 // Reading and writing Large Objects requires the use of a transaction
-using (var transaction = Conn.BeginTransaction()) {
+using (var transaction = Conn.BeginTransaction())
+{
     // Open the file for reading and writing
-    using (var stream = manager.OpenReadWrite(oid)) {
+    using (var stream = manager.OpenReadWrite(oid))
+    {
         var buf = new byte[] { 1, 2, 3 };
         stream.Write(buf, 0, buf.Length);
         stream.Seek(0, System.IO.SeekOrigin.Begin);

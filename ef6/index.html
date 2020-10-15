@@ -126,7 +126,7 @@ class NpgSqlConfiguration : DbConfiguration
 In order to have access to this function, you have to install the extension uuid-ossp through the following command:</p>
 <pre><code class="lang-sql">create extension &quot;uuid-ossp&quot;;
 </code></pre><p>If you don&#39;t have this extension installed, when you run Npgsql migrations you will get the following error message:</p>
-<pre><code>ERROR:  function uuid_generate_v4() does not exist
+<pre><code class="lang-text">ERROR:  function uuid_generate_v4() does not exist
 </code></pre><p>If the database is being created by Npgsql Migrations, you will need to
 <a href="http://stackoverflow.com/a/11584751">run the <code>create extension</code> command in the <code>template1</code> database</a>.
 This way, when the new database is created, the extension will be installed already.</p>
@@ -180,7 +180,7 @@ be copied to your new database. If you wish to change the database used as a tem
 the <code>EF Template Database</code> connection string parameter. For more info see the
 <a href="https://www.postgresql.org/docs/current/static/sql-createdatabase.html">PostgreSQL docs</a>.</p>
 <h2 id="customizing-datareader-behavior">Customizing DataReader Behavior</h2>
-<p>You can use <a href="https://msdn.microsoft.com/en-us/library/dn469464(v=vs.113).aspx">an Entity Framework 6 IDbCommandInterceptor</a> to wrap the <code>DataReader</code> instance returned by Npgsql when Entity Framework executes queries. This is possible using a <code>DbConfiguration</code> class.</p>
+<p>You can use <a href="https://msdn.microsoft.com/library/dn469464(v=vs.113).aspx">an Entity Framework 6 IDbCommandInterceptor</a> to wrap the <code>DataReader</code> instance returned by Npgsql when Entity Framework executes queries. This is possible using a <code>DbConfiguration</code> class.</p>
 <p>Example use cases:</p>
 <ul>
 <li>Forcing all returned <code>DateTime</code> and <code>DateTimeOffset</code> values to be in the UTC timezone.</li>
@@ -227,7 +227,7 @@ class MyEntityFrameworkInterceptor : DbCommandInterceptor
 
 class WrappingDbDataReader : DbDataReader, IDataReader
 {
-    // Wrap an existing DbDataReader, proxy all calls to the underlying instance, 
+    // Wrap an existing DbDataReader, proxy all calls to the underlying instance,
     // modify return values and/or parameters as needed...
     public WrappingDbDataReader(DbDataReader reader)
     {

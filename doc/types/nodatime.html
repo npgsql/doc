@@ -80,7 +80,7 @@
 <h1 id="nodatime-type-plugin">NodaTime Type Plugin</h1>
 
 <p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the NodaTime plugin, which makes Npgsql read and write <a href="http://nodatime.org">NodaTime</a> types. The NodaTime plugin is now the recommended way to interact with PostgreSQL date/time types, and isn&#39;t the default only because of the added dependency on the NodaTime library.</p>
-<h1 id="what-is-nodatime">What is NodaTime?</h1>
+<h2 id="what-is-nodatime">What is NodaTime</h2>
 <p>By default, <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">the PostgreSQL date/time types</a> are mapped to the built-in .NET types (<code>DateTime</code>, <code>TimeSpan</code>). Unfortunately, these built-in types are flawed in many ways. The <a href="http://nodatime.org/">NodaTime library</a> was created to solve many of these problems, and if your application handles dates and times in anything but the most basic way, you should consider using it. To learn more <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">read this blog post by Jon Skeet</a>.</p>
 <p>Beyond NodaTime&#39;s general advantages, some specific advantages NodaTime for PostgreSQL date/time mapping include:</p>
 <ul>
