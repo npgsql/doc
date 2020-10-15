@@ -70,7 +70,7 @@ create extension "uuid-ossp";
 
 If you don't have this extension installed, when you run Npgsql migrations you will get the following error message:
 
-```
+```text
 ERROR:  function uuid_generate_v4() does not exist
 ```
 
@@ -136,9 +136,10 @@ the `EF Template Database` connection string parameter. For more info see the
 
 ## Customizing DataReader Behavior ##
 
-You can use [an Entity Framework 6 IDbCommandInterceptor](https://msdn.microsoft.com/en-us/library/dn469464(v=vs.113).aspx) to wrap the `DataReader` instance returned by Npgsql when Entity Framework executes queries. This is possible using a ```DbConfiguration``` class.
+You can use [an Entity Framework 6 IDbCommandInterceptor](https://msdn.microsoft.com/library/dn469464(v=vs.113).aspx) to wrap the `DataReader` instance returned by Npgsql when Entity Framework executes queries. This is possible using a ```DbConfiguration``` class.
 
 Example use cases:
+
 - Forcing all returned ```DateTime``` and ```DateTimeOffset``` values to be in the UTC timezone.
 - Preventing accidental insertion of DateTime values having ```DateTimeKind.Unspecified```.
 - Forcing all postgres date/time types to be returned to Entity Framework as ```DateTimeOffset```.
@@ -184,7 +185,7 @@ class MyEntityFrameworkInterceptor : DbCommandInterceptor
 
 class WrappingDbDataReader : DbDataReader, IDataReader
 {
-    // Wrap an existing DbDataReader, proxy all calls to the underlying instance, 
+    // Wrap an existing DbDataReader, proxy all calls to the underlying instance,
     // modify return values and/or parameters as needed...
     public WrappingDbDataReader(DbDataReader reader)
     {
