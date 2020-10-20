@@ -41,9 +41,10 @@ jobs:
         echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
         sudo apt-get update
         sudo apt-get install mono-complete --yes
+
     - name: Get docfx
       run: |
-        curl -L https://github.com/dotnet/docfx/releases/download/v2.51/docfx.zip -o docfx.zip
+        curl -L https://github.com/dotnet/docfx/releases/download/v2.56.4/docfx.zip -o docfx.zip
         unzip -d .docfx docfx.zip
 
     - name: Build docs
