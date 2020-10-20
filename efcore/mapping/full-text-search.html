@@ -100,14 +100,14 @@
     public string Description { get; set; }
     public NpgsqlTsVector SearchVector { get; set; }
 }
-</code></pre><p>Setting up the column to be auto-updated depends on your PostgreSQL version. On PostgreSQL 12 and above, the column can be a simple <a href="../modeling/generated-properties#computed-columns-on-add-or-update">generated column</a>, and version 5.0.0 contains sugar for setting that up. In previous versions, you must manually set up database triggers that update the column instead.</p>
+</code></pre><p>Setting up the column to be auto-updated depends on your PostgreSQL version. On PostgreSQL 12 and above, the column can be a simple <a href="../modeling/generated-properties.html#computed-columns-on-add-or-update">generated column</a>, and version 5.0.0 contains sugar for setting that up. In previous versions, you must manually set up database triggers that update the column instead.</p>
 <div class="tabGroup" id="tabgroup_YDY9L5wnLQ">
 <ul role="tablist">
 <li role="presentation">
 <a href="#tabpanel_YDY9L5wnLQ_pg12" role="tab" aria-controls="tabpanel_YDY9L5wnLQ_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ_pgold" role="tab" aria-controls="tabpanel_YDY9L5wnLQ_pgold" data-tab="pgold" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_YDY9L5wnLQ_older" role="tab" aria-controls="tabpanel_YDY9L5wnLQ_older" data-tab="older" tabindex="-1">Older Versions</a>
 </li>
 </ul>
 <section id="tabpanel_YDY9L5wnLQ_pg12" role="tabpanel" data-tab="pg12">
@@ -124,7 +124,7 @@
         .HasIndex(b =&gt; b.TsVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 </code></pre></section>
-<section id="tabpanel_YDY9L5wnLQ_pgold" role="tabpanel" data-tab="pgold" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_YDY9L5wnLQ_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 <p>First, modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -132,7 +132,9 @@
         .HasIndex(p =&gt; p.SearchVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
-</code></pre><p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
+</code></pre></section>
+</div>
+<p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
 <pre><code class="lang-c#">public partial class CreateProductTable : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
@@ -154,8 +156,7 @@
         migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector_update&quot;);
     }
 }
-</code></pre></section>
-</div>
+</code></pre><hr>
 <p>Once your auto-updated <code>tsvector</code> column is set up, any inserts or updates on the <code>Products</code> table will now update the <code>SearchVector</code> column and maintain it automatically. You can query it as follows:</p>
 <pre><code class="lang-c#">var context = new ProductDbContext();
 var npgsql = context.Products
@@ -166,10 +167,10 @@ var npgsql = context.Products
 <div class="tabGroup" id="tabgroup_YDY9L5wnLQ-1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ-1_pg12" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_pg12" data-tab="pg12" tabindex="0" aria-selected="true">EF Core 5+</a>
+<a href="#tabpanel_YDY9L5wnLQ-1_pg12" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ-1_efold" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_efold" data-tab="efold" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_YDY9L5wnLQ-1_older" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_older" data-tab="older" tabindex="-1">Older Versions</a>
 </li>
 </ul>
 <section id="tabpanel_YDY9L5wnLQ-1_pg12" role="tabpanel" data-tab="pg12">
@@ -177,7 +178,7 @@ var npgsql = context.Products
     .HasIndex(b =&gt; new { b.Title, b.Description })
     .IsTsVectorExpressionIndex(&quot;english&quot;);
 </code></pre></section>
-<section id="tabpanel_YDY9L5wnLQ-1_efold" role="tabpanel" data-tab="efold" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_YDY9L5wnLQ-1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 <p>Create a migration which will contain the index creation SQL (<code>dotnet ef migrations add ...</code>). At this point, open the generated migration with your editor and add the following:</p>
 <pre><code class="lang-c#">protected override void Up(MigrationBuilder migrationBuilder)
 {
