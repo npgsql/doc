@@ -41,7 +41,7 @@ namespace ConsoleApp.PostgreSQL
         public DbSet<Post> Posts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=my_host;Database=my_db;Username=my_user;Password=my_pw");
+            => optionsBuilder.UseNpgsql("Host=my_host;Port=5432;Database=my_db;Username=my_user;Password=my_pw");
     }
 
     public class Blog
@@ -83,5 +83,5 @@ public void ConfigureServices(IServiceCollection services)
 The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database ("database-first"). To do so, use dotnet CLI to execute the following:
 
 ```bash
-dotnet ef dbcontext scaffold "Host=my_host;Database=my_db;Username=my_user;Password=my_pw" Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet ef dbcontext scaffold "Host=my_host;Port=5432;Database=my_db;Username=my_user;Password=my_pw" Npgsql.EntityFrameworkCore.PostgreSQL
 ```
