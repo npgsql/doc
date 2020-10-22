@@ -160,7 +160,7 @@
 </tr>
 <tr>
 <td>Persist Security Info</td>
-<td>Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state. Since 3.1 only.</td>
+<td>Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state. Introduced in 3.1.</td>
 <td>false</td>
 </tr>
 <tr>
@@ -176,7 +176,7 @@
 <tr>
 <td>Include Error Detail</td>
 <td>When enabled, PostgreSQL error and notice details are included on <a class="xref" href="api/Npgsql.PostgresException.html#Npgsql_PostgresException_Detail">PostgresException.Detail</a> and <a class="xref" href="api/Npgsql.PostgresNotice.html#Npgsql_PostgresNotice_Detail">PostgresNotice.Detail</a>. These can contain sensitive data.</td>
-<td></td>
+<td>false</td>
 </tr>
 </tbody>
 </table>
@@ -207,12 +207,12 @@
 </tr>
 <tr>
 <td>Connection Idle Lifetime</td>
-<td>The time (in seconds) to wait before closing idle connections in the pool if the count of all connections exceeds <code>Minimum Pool Size</code>. Since 3.1 only.</td>
+<td>The time (in seconds) to wait before closing idle connections in the pool if the count of all connections exceeds <code>Minimum Pool Size</code>. Introduced in 3.1.</td>
 <td>300</td>
 </tr>
 <tr>
 <td>Connection Pruning Interval</td>
-<td>How many seconds the pool waits before attempting to prune idle connections that are beyond idle lifetime (see <code>Connection Idle Lifetime</code>). Since 3.1 only.</td>
+<td>How many seconds the pool waits before attempting to prune idle connections that are beyond idle lifetime (see <code>Connection Idle Lifetime</code>). Introduced in 3.1.</td>
 <td>10</td>
 </tr>
 </tbody>
@@ -286,8 +286,8 @@
 </tr>
 <tr>
 <td>Use Perf Counters</td>
-<td>Makes Npgsql write performance information about connection use to Windows Performance Counters. <a href="performance.html#performance-counters">Read the docs</a> for more info.</td>
-<td></td>
+<td>Makes Npgsql write performance information about connection use to Windows Performance Counters. <a href="performance.html#performance-counters">Read the docs</a> for more info. Removed in 5.0.</td>
+<td>false</td>
 </tr>
 <tr>
 <td>Read Buffer Size</td>
@@ -343,12 +343,12 @@
 </tr>
 <tr>
 <td>Client Encoding</td>
-<td>Gets or sets the client_encoding parameter. Since 3.1.</td>
+<td>Gets or sets the client_encoding parameter. Introduced in 3.1.</td>
 <td></td>
 </tr>
 <tr>
 <td>Timezone</td>
-<td>Gets or sets the session timezone, PGTZ environment variable can be used instead. Since 3.3.</td>
+<td>Gets or sets the session timezone, PGTZ environment variable can be used instead. Introduced in 3.3.</td>
 <td></td>
 </tr>
 <tr>
