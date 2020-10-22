@@ -27,7 +27,7 @@ Integrated Security      | Whether to use integrated security to log in (GSS/SSP
 Persist Security Info    | Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state. Since 3.1 only. | false
 Kerberos Service Name    | The Kerberos service name to be used for authentication. [See docs for more info](security.md). | postgres
 Include Realm            | The Kerberos realm to be used for authentication. [See docs for more info](security.md).
-Include Error Detail     | When enabled, PostgreSQL error and notice details are included on <xref:Npgsql.PostgresException.Detail?displayProperty=nameWithType> and <xref:Npgsql.PostgresNotice.Detail?displayProperty=nameWithType>. These can contain sensitive data.
+Include Error Detail     | When enabled, PostgreSQL error and notice details are included on <xref:Npgsql.PostgresException.Detail?displayProperty=nameWithType> and <xref:Npgsql.PostgresNotice.Detail?displayProperty=nameWithType>. These can contain sensitive data. | false
 
 ## Pooling
 
@@ -57,7 +57,7 @@ Parameter                  | Description                                        
 -------------------------- | ------------------------------------------------------------ | -------
 Max Auto Prepare           | The maximum number SQL statements that can be automatically prepared at any given point. Beyond this number the least-recently-used statement will be recycled. Zero disables automatic preparation. | 0
 Auto Prepare Min Usages    | The minimum number of usages an SQL statement is used before it's automatically prepared. | 5
-Use Perf Counters          | Makes Npgsql write performance information about connection use to Windows Performance Counters. [Read the docs](performance.md#performance-counters) for more info.
+Use Perf Counters          | Makes Npgsql write performance information about connection use to Windows Performance Counters. [Read the docs](performance.md#performance-counters) for more info. | false
 Read Buffer Size           | Determines the size of the internal buffer Npgsql uses when reading. Increasing may improve performance if transferring large values from the database. | 8192
 Write Buffer Size          | Determines the size of the internal buffer Npgsql uses when writing. Increasing may improve performance if transferring large values to the database. | 8192
 Socket Receive Buffer Size | Determines the size of socket receive buffer. | System-dependent
