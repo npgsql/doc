@@ -125,6 +125,8 @@ geom1.Overlaps(geom2))           | [ST_Overlaps(geom1, geom2)](https://postgis.n
 geom.PointOnSurface              | [ST_PointOnSurface(geom)](https://postgis.net/docs/manual-3.0/ST_PointOnSurface.html)
 geom1.Relate(geom2)              | [ST_Relate(geom1, geom2)](https://postgis.net/docs/manual-3.0/ST_Relate.html)
 geom.Reverse()                   | [ST_Reverse(geom)](https://postgis.net/docs/manual-3.0/ST_Reverse.html)
+geom.ToText()                    | [ST_AsText(geom)](https://postgis.net/docs/manual-3.0/ST_AsText.html)
+geom.ToBinary()                  | [ST_AsBinary(geom)](https://postgis.net/docs/manual-3.0/ST_AsBinary.html)
 geom1.SRID                       | [ST_SRID(geom1)](https://postgis.net/docs/manual-3.0/ST_SRID.html)
 lineString.StartPoint            | [ST_StartPoint(lineString)](https://postgis.net/docs/manual-3.0/ST_StartPoint.html)
 geom1.SymmetricDifference(geom2) | [ST_SymDifference(geom1, geom2)](https://postgis.net/docs/manual-3.0/ST_SymDifference.html)
