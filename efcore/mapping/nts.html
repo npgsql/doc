@@ -141,6 +141,10 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Area.html">ST_Area(geom)</a></td>
 </tr>
 <tr>
+<td>geom.AsBinary()</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_AsBinary.html">ST_AsBinary(geom)</a></td>
+</tr>
+<tr>
 <td>geom.AsText()</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_AsText.html">ST_AsText(geom)</a></td>
 </tr>
@@ -149,8 +153,28 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Boundary.html">ST_Boundary(geom)</a></td>
 </tr>
 <tr>
+<td>geom.Buffer(d)</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Buffer.html">ST_Buffer(geom,d)</a></td>
+</tr>
+<tr>
+<td>geom.Centroid</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Centroid.html">ST_Centroid(geom)</a></td>
+</tr>
+<tr>
 <td>geom1.Contains(geom2))</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Contains.html">ST_Contains(geom1, geom2)</a></td>
+</tr>
+<tr>
+<td>geomCollection.Count</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_NumGeometries.html">ST_NumGeometries(geom1)</a></td>
+</tr>
+<tr>
+<td>linestring.Count</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_NumPoints.html">ST_NumPoints(linestring)</a></td>
+</tr>
+<tr>
+<td>geom1.ConvexHull()</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_ConvexHull.html">ST_ConvexHull(geom1)</a></td>
 </tr>
 <tr>
 <td>geom1.Covers(geom2))</td>
@@ -169,12 +193,32 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Difference.html">ST_Difference(geom1, geom2)</a></td>
 </tr>
 <tr>
+<td>geom1.Dimension</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Dimension.html">ST_Dimension(geom1)</a></td>
+</tr>
+<tr>
 <td>geom1.Disjoint(geom2))</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Disjoint.html">ST_Disjoint(geom1, geom2)</a></td>
 </tr>
 <tr>
 <td>geom1.Distance(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Distance.html">ST_Distance(geom1, geom2)</a></td>
+</tr>
+<tr>
+<td>geom1.Envelope</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Envelope.html">ST_Envelope(geom1)</a></td>
+</tr>
+<tr>
+<td>geom1.ExactEquals(geom2)</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_OrderingEquals.html">ST_OrderingEquals(geom1, geom2)</a></td>
+</tr>
+<tr>
+<td>lineString.EndPoint</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_EndPoint.html">ST_EndPoint(lineString)</a></td>
+</tr>
+<tr>
+<td>polygon.ExteriorRing</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_ExteriorRing.html">ST_ExteriorRing(polygon)</a></td>
 </tr>
 <tr>
 <td>geom1.Equals(geom2)</td>
@@ -189,7 +233,7 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Equals.html">ST_Equals(geom1, geom2)</a></td>
 </tr>
 <tr>
-<td>geom.GeometryType()</td>
+<td>geom.GeometryType</td>
 <td><a href="https://postgis.net/docs/manual-3.0/GeometryType.html">GeometryType(geom)</a></td>
 </tr>
 <tr>
@@ -197,12 +241,20 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_GeometryN.html">ST_GeometryN(geomCollection, i)</a></td>
 </tr>
 <tr>
+<td>linestring.GetPointN(i)</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_PointN.html">ST_PointN(linestring, i)</a></td>
+</tr>
+<tr>
 <td>geom1.Intersection(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Intersection.html">ST_Intersection(geom1, geom2)</a></td>
 </tr>
 <tr>
-<td>geom2.Intersects(geom2)</td>
+<td>geom1.Intersects(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Intersects.html">ST_Intersects(geom1, geom2)</a></td>
+</tr>
+<tr>
+<td>geom.InteriorPoint</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_PointOnSurface.html">ST_PointOnSurface(geom)</a></td>
 </tr>
 <tr>
 <td>lineString.IsClosed()</td>
@@ -211,6 +263,14 @@ public Point Location { get; set; }
 <tr>
 <td>geomCollection.IsEmpty()</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_IsEmpty.html">ST_IsEmpty(geomCollection)</a></td>
+</tr>
+<tr>
+<td>linestring.IsRing</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_IsRing.html">ST_IsRing(linestring)</a></td>
+</tr>
+<tr>
+<td>geom.IsWithinDistance(geom2,d)</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_DWithin.html">ST_DWithin(geom1,geom2,d)</a></td>
 </tr>
 <tr>
 <td>geom.IsSimple()</td>
@@ -225,8 +285,16 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Length.html">ST_Length(lineString)</a></td>
 </tr>
 <tr>
+<td>geom.Normalized</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Normalize.html">ST_Normalize(geom)</a></td>
+</tr>
+<tr>
 <td>geomCollection.NumGeometries</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_NumGeometries.html">ST_NumGeometries(geomCollection)</a></td>
+</tr>
+<tr>
+<td>polygon.NumInteriorRings</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_NumInteriorRings.html">ST_NumInteriorRings(polygon)</a></td>
 </tr>
 <tr>
 <td>lineString.NumPoints</td>
@@ -237,6 +305,10 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Overlaps.html">ST_Overlaps(geom1, geom2)</a></td>
 </tr>
 <tr>
+<td>geom.PointOnSurface</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_PointOnSurface.html">ST_PointOnSurface(geom)</a></td>
+</tr>
+<tr>
 <td>geom1.Relate(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Relate.html">ST_Relate(geom1, geom2)</a></td>
 </tr>
@@ -245,16 +317,28 @@ public Point Location { get; set; }
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Reverse.html">ST_Reverse(geom)</a></td>
 </tr>
 <tr>
+<td>geom1.SRID</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_SRID.html">ST_SRID(geom1)</a></td>
+</tr>
+<tr>
+<td>lineString.StartPoint</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_StartPoint.html">ST_StartPoint(lineString)</a></td>
+</tr>
+<tr>
 <td>geom1.SymmetricDifference(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_SymDifference.html">ST_SymDifference(geom1, geom2)</a></td>
 </tr>
 <tr>
-<td>geom1.Touches(geom2))</td>
-<td><a href="https://postgis.net/docs/manual-3.0/ST_Touches.html">ST_Touches(geom1, geom2)</a></td>
+<td>geom.ToBinary()</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_AsBinary.html">ST_AsBinary(geom)</a></td>
 </tr>
 <tr>
 <td>geom.ToText()</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_AsText.html">ST_AsText(geom)</a></td>
+</tr>
+<tr>
+<td>geom1.Touches(geom2))</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_Touches.html">ST_Touches(geom1, geom2)</a></td>
 </tr>
 <tr>
 <td>geom1.Union(geom2)</td>
@@ -263,6 +347,10 @@ public Point Location { get; set; }
 <tr>
 <td>geom1.Within(geom2)</td>
 <td><a href="https://postgis.net/docs/manual-3.0/ST_Within.html">ST_Within(geom1, geom2)</a></td>
+</tr>
+<tr>
+<td>point.M</td>
+<td><a href="https://postgis.net/docs/manual-3.0/ST_M.html">ST_M(point)</a></td>
 </tr>
 <tr>
 <td>point.X</td>
