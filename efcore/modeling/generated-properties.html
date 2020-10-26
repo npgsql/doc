@@ -145,17 +145,26 @@
                    .Property(e =&gt; e.SomeGuidProperty)
                    .HasDefaultValueSql(&quot;uuid_generate_v4()&quot;);
 </code></pre><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
-<h2 id="computed-columns-on-add-or-update">Computed Columns (On Add or Update)</h2>
+<h2 id="computed-columns">Computed Columns</h2>
 <div class="NOTE"><h5>Note</h5><p>This feature works only on PostgreSQL 12 or above, and was introduced in version 3.0.0 of the provider.</p>
 </div>
-<p>PostgreSQL 12 added support for <a href="https://www.postgresql.org/docs/12/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well. The following configuration:</p>
+<p>PostgreSQL 12 added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well. The following configuration:</p>
+<h3 id="version-50tabefcore50"><a href="#tab/efcore5.0">Version 5.0</a></h3>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&lt;Person&gt;()
+      .Property(p =&gt; p.DisplayName)
+      .HasComputedColumnSql(@&quot;&quot;&quot;FirstName&quot;&quot; || &#39; &#39; || &quot;&quot;LastName&quot;&quot;&quot;, stored: true);
+}
+</code></pre><h3 id="version-3xtabefcore3x"><a href="#tab/efcore3.x">Version 3.x</a></h3>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Person&gt;()
       .Property(p =&gt; p.DisplayName)
       .HasComputedColumnSql(@&quot;&quot;&quot;FirstName&quot;&quot; || &#39; &#39; || &quot;&quot;LastName&quot;&quot;&quot;);
 }
-</code></pre><p>Will cause the following migration SQL to be generated</p>
+</code></pre><hr>
+<p>Will cause the following migration SQL to be generated</p>
 <pre><code class="lang-sql">ALTER TABLE &quot;&quot;Person&quot;&quot; ADD &quot;&quot;DisplayName&quot;&quot; text GENERATED ALWAYS AS (&quot;&quot;FirstName&quot;&quot; || &#39; &#39; || &quot;&quot;LastName&quot;&quot;) STORED;
 </code></pre><p>Note that this is a <em>stored</em> column - it is computed once when the row is updated, and takes space on disk. Virtual computed columns, which are computed on each select, are not yet supported by PostgreSQL.</p>
 </article>

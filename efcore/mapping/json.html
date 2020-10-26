@@ -189,6 +189,7 @@ public class Customer    // Mapped to a JSON column in the table
 
 public class Order       // Part of the JSON column
 {
+    [JsonPropertyName(&quot;OrderPrice&quot;)] // Controls the JSON property name
     public decimal Price { get; set; }
     public string ShippingAddress { get; set; }
 }
@@ -199,8 +200,8 @@ public class Order       // Part of the JSON column
     &quot;Age&quot;: 25,
     &quot;Name&quot;: &quot;Joe&quot;,
     &quot;Orders&quot;: [
-        {&quot;Price&quot;: 9, &quot;ShippingAddress&quot;: &quot;Some address 1&quot;},
-        {&quot;Price&quot;: 23, &quot;ShippingAddress&quot;: &quot;Some address 2&quot;}
+        { &quot;OrderPrice&quot;: 9, &quot;ShippingAddress&quot;: &quot;Some address 1&quot; },
+        { &quot;OrderPrice&quot;: 23, &quot;ShippingAddress&quot;: &quot;Some address 2&quot; }
     ]
 }
 </code></pre><p>Reading is just as simple:</p>
