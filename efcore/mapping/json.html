@@ -218,7 +218,7 @@ Console.WriteLine(someEntity.Customer.Orders[0].Price)
 </code></pre><p>Note that neither a data annotation nor the fluent API are required, as <code>JsonDocument</code> is automatically recognized and mapped to <code>jsonb</code>.</p>
 <p>Once a document is loaded from the database, you can traverse it:</p>
 <pre><code class="lang-c#">var someEntity = context.Entities.First();
-Console.WriteLine(someEntity.Customer.GetProperty(&quot;Orders&quot;)[0].GetProperty(&quot;Price&quot;).GetInt32());
+Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;)[0].GetProperty(&quot;Price&quot;).GetInt32());
 </code></pre><h2 id="querying-json-columns">Querying JSON columns</h2>
 <p>Saving and loading documents these documents wouldn&#39;t be much use without the ability to query them. You can express your queries via the same LINQ constructs you are already using in EF Core:</p>
 <div class="tabGroup" id="tabgroup_coJ5uQK3k+-2">
@@ -237,7 +237,7 @@ Console.WriteLine(someEntity.Customer.GetProperty(&quot;Orders&quot;)[0].GetProp
 </code></pre></section>
 <section id="tabpanel_coJ5uQK3k+-2_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">var joes = context.CustomerEntries
-    .Where(e =&gt; e.Customer.GetProperty(&quot;Name&quot;).GetString() == &quot;Joe&quot;)
+    .Where(e =&gt; e.Customer.RootElement.GetProperty(&quot;Name&quot;).GetString() == &quot;Joe&quot;)
     .ToList();
 </code></pre></section>
 </div>
@@ -314,15 +314,15 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
 </thead>
 <tbody>
 <tr>
-<td>customer.GetProperty(&quot;Name&quot;).GetString()</td>
+<td>customer.RootElement.GetProperty(&quot;Name&quot;).GetString()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;</a></td>
 </tr>
 <tr>
-<td>customer.GetProperty(&quot;Orders&quot;)[1].GetProperty(&quot;Price&quot;).GetInt32()</td>
+<td>customer.RootElement.GetProperty(&quot;Orders&quot;)[1].GetProperty(&quot;Price&quot;).GetInt32()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer#&gt;&gt;&#39;{Orders,0,Price}&#39;[1] = 8</a></td>
 </tr>
 <tr>
-<td>customer.GetProperty(&quot;Orders&quot;).GetArrayLength()</td>
+<td>customer.RootElement.GetProperty(&quot;Orders&quot;).GetArrayLength()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_array_length(customer-&gt;&#39;Orders&#39;</a></td>
 </tr>
 <tr>
