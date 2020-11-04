@@ -215,6 +215,11 @@
 <td>How many seconds the pool waits before attempting to prune idle connections that are beyond idle lifetime (see <code>Connection Idle Lifetime</code>). Introduced in 3.1.</td>
 <td>10</td>
 </tr>
+<tr>
+<td>ConnectionLifetime</td>
+<td>The total maximum lifetime of connections (in seconds). Connections which have exceeded this value will be destroyed instead of returned from the pool. This is useful in clustered configurations to force load balancing between a running server and a server just brought online.</td>
+<td>0 (disabled)</td>
+</tr>
 </tbody>
 </table>
 <h2 id="timeouts-and-keepalive">Timeouts and Keepalive</h2>
