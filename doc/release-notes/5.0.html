@@ -87,7 +87,6 @@
 <p>This major feature was developed by <a href="https://github.com/Brar">@Brar</a>, many thanks!</p>
 <p>Issue: <a href="https://github.com/npgsql/npgsql/issues/1520">#1520</a></p>
 <h3 id="improved-support-for-cancellation-and-timeout">Improved support for cancellation and timeout</h3>
-<p>This release revamps how Npgsql deals with user cancellation and timeouts </p>
 <p>When the user requests cancellation (via a cancellation token or <a class="xref" href="../api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Cancel">NpgsqlCommand.Cancel()</a>), or when the <a href="http://www.npgsql.org/doc/connection-string-parameters.html#timeouts-and-keepalive">Command Timeout</a> expires, Npgsql now takes the following steps:</p>
 <ol>
 <li>Contact PostgreSQL and attempt to cancel the running command. If successful, PostgreSQL immediately stops processing the command and is free to do other work. In previous versions, queries were sometimes left running on the server.</li>
