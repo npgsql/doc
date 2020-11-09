@@ -1,0 +1,810 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ReplicationConnection
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ReplicationConnection
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.56.4.0">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.Replication.ReplicationConnection">
+  
+  
+  <h1 id="Npgsql_Replication_ReplicationConnection" data-uid="Npgsql.Replication.ReplicationConnection" class="text-break">Class ReplicationConnection
+  </h1>
+  <div class="markdown level0 summary"><p>Defines the core behavior of replication connections and provides the base class for
+<a class="xref" href="Npgsql.Replication.LogicalReplicationConnection.html">LogicalReplicationConnection</a> and
+<a class="xref" href="Npgsql.Replication.PhysicalReplicationConnection.html">PhysicalReplicationConnection</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">ReplicationConnection</span></div>
+      <div class="level2"><a class="xref" href="Npgsql.Replication.LogicalReplicationConnection.html">LogicalReplicationConnection</a></div>
+      <div class="level2"><a class="xref" href="Npgsql.Replication.PhysicalReplicationConnection.html">PhysicalReplicationConnection</a></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Replication.html">Npgsql.Replication</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_Replication_ReplicationConnection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class ReplicationConnection : IAsyncDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_CommandTimeout.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.CommandTimeout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L166">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_CommandTimeout_" data-uid="Npgsql.Replication.ReplicationConnection.CommandTimeout*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_CommandTimeout" data-uid="Npgsql.Replication.ReplicationConnection.CommandTimeout">CommandTimeout</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the wait time before terminating the attempt  to execute a command and generating an error.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan CommandTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeSpan</span></td>
+        <td><p>The time to wait for the command to execute. The default value is 30 seconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_ConnectionString.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.ConnectionString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L87">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_ConnectionString_" data-uid="Npgsql.Replication.ReplicationConnection.ConnectionString*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_ConnectionString" data-uid="Npgsql.Replication.ReplicationConnection.ConnectionString">ConnectionString</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the string used to connect to a PostgreSQL database. See the manual for details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ConnectionString { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><p>The connection string that includes the server name, the database name, and other parameters needed to establish the initial
+connection. The default value is an empty string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_Replication_ReplicationConnection_ConnectionString_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Since replication connections are a special kind of connection,
+<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html#Npgsql_NpgsqlConnectionStringBuilder_Pooling">Pooling</a>, <a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html#Npgsql_NpgsqlConnectionStringBuilder_Enlist">Enlist</a>,
+<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html#Npgsql_NpgsqlConnectionStringBuilder_Multiplexing">Multiplexing</a> and <a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html#Npgsql_NpgsqlConnectionStringBuilder_KeepAlive">KeepAlive</a>
+are always disabled no matter what you set them to in your connection string.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_Encoding.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.Encoding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L187">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_Encoding_" data-uid="Npgsql.Replication.ReplicationConnection.Encoding*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_Encoding" data-uid="Npgsql.Replication.ReplicationConnection.Encoding">Encoding</h4>
+  <div class="markdown level1 summary"><p>The client encoding for the connection
+This can only be called when there is an active connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Encoding Encoding { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Encoding</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_LastAppliedLsn.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.LastAppliedLsn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L126">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_LastAppliedLsn_" data-uid="Npgsql.Replication.ReplicationConnection.LastAppliedLsn*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_LastAppliedLsn" data-uid="Npgsql.Replication.ReplicationConnection.LastAppliedLsn">LastAppliedLsn</h4>
+  <div class="markdown level1 summary"><p>The location of the last WAL byte + 1 applied (e. g. written to disk) in the standby.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlLogSequenceNumber LastAppliedLsn { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_LastFlushedLsn.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.LastFlushedLsn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L117">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_LastFlushedLsn_" data-uid="Npgsql.Replication.ReplicationConnection.LastFlushedLsn*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_LastFlushedLsn" data-uid="Npgsql.Replication.ReplicationConnection.LastFlushedLsn">LastFlushedLsn</h4>
+  <div class="markdown level1 summary"><p>The location of the last WAL byte + 1 flushed to disk in the standby.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlLogSequenceNumber LastFlushedLsn { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_LastReceivedLsn.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.LastReceivedLsn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L108">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_LastReceivedLsn_" data-uid="Npgsql.Replication.ReplicationConnection.LastReceivedLsn*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_LastReceivedLsn" data-uid="Npgsql.Replication.ReplicationConnection.LastReceivedLsn">LastReceivedLsn</h4>
+  <div class="markdown level1 summary"><p>The location of the last WAL byte + 1 received in the standby.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlLogSequenceNumber LastReceivedLsn { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_ProcessID.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.ProcessID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L193">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_ProcessID_" data-uid="Npgsql.Replication.ReplicationConnection.ProcessID*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_ProcessID" data-uid="Npgsql.Replication.ReplicationConnection.ProcessID">ProcessID</h4>
+  <div class="markdown level1 summary"><p>Process id of backend server.
+This can only be called when there is an active connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ProcessID { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_WalReceiverStatusInterval.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.WalReceiverStatusInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L136">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_WalReceiverStatusInterval_" data-uid="Npgsql.Replication.ReplicationConnection.WalReceiverStatusInterval*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_WalReceiverStatusInterval" data-uid="Npgsql.Replication.ReplicationConnection.WalReceiverStatusInterval">WalReceiverStatusInterval</h4>
+  <div class="markdown level1 summary"><p>Send replies at least this often.
+Timeout.<see cref="!:Timeout.InfiniteTimeSpan"></see> disables automated replies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan WalReceiverStatusInterval { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_WalReceiverTimeout.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.WalReceiverTimeout%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L142">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_WalReceiverTimeout_" data-uid="Npgsql.Replication.ReplicationConnection.WalReceiverTimeout*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_WalReceiverTimeout" data-uid="Npgsql.Replication.ReplicationConnection.WalReceiverTimeout">WalReceiverTimeout</h4>
+  <div class="markdown level1 summary"><p>Time that receiver waits for communication from master.
+Timeout.<see cref="!:Timeout.InfiniteTimeSpan"></see> disables the timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan WalReceiverTimeout { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_DisposeAsync.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.DisposeAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L224">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_DisposeAsync_" data-uid="Npgsql.Replication.ReplicationConnection.DisposeAsync*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_DisposeAsync" data-uid="Npgsql.Replication.ReplicationConnection.DisposeAsync">DisposeAsync()</h4>
+  <div class="markdown level1 summary"><p>Closes the replication connection and performs tasks associated
+with freeing, releasing, or resetting its unmanaged resources asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span></td>
+        <td><p>A task that represents the asynchronous dispose operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_DropReplicationSlot_System_String_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.DropReplicationSlot(System.String%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L654">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_DropReplicationSlot_" data-uid="Npgsql.Replication.ReplicationConnection.DropReplicationSlot*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_DropReplicationSlot_System_String_System_Boolean_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.DropReplicationSlot(System.String,System.Boolean,CancellationToken)">DropReplicationSlot(String, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Drops a replication slot, freeing any reserved server-side resources.
+If the slot is a logical slot that was created in a database other than
+the database the walsender is connected to, this command fails.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DropReplicationSlot(string slotName, bool wait = false, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">slotName</span></td>
+        <td><p>The name of the slot to drop.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">wait</span></td>
+        <td><p><span class="xref">true</span> causes the command to wait until the slot becomes
+inactive if it currently is active instead of the default behavior of raising an error.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The token to monitor for cancellation requests.
+The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task representing the asynchronous drop operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_IdentifySystem_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.IdentifySystem(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L261">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_IdentifySystem_" data-uid="Npgsql.Replication.ReplicationConnection.IdentifySystem*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_IdentifySystem_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.IdentifySystem(CancellationToken)">IdentifySystem(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Requests the server to identify itself.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ReplicationSystemIdentification&gt; IdentifySystem(CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The token to monitor for cancellation requests.
+The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Npgsql.Replication.ReplicationSystemIdentification.html">ReplicationSystemIdentification</a>&gt;</td>
+        <td><p>A <a class="xref" href="Npgsql.Replication.ReplicationSystemIdentification.html">ReplicationSystemIdentification</a> containing information
+about the system we are connected to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_Open_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.Open(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L207">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_Open_" data-uid="Npgsql.Replication.ReplicationConnection.Open*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_Open_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.Open(CancellationToken)">Open(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Opens a database replication connection with the property settings specified by the
+<a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_ConnectionString">ConnectionString</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Open(CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The token to monitor for cancellation requests.
+The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A task representing the asynchronous open operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.SendStatusUpdate(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L553">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_SendStatusUpdate_" data-uid="Npgsql.Replication.ReplicationConnection.SendStatusUpdate*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.SendStatusUpdate(CancellationToken)">SendStatusUpdate(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Sends a forced status update to PostgreSQL with the current WAL tracking information.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SendStatusUpdate(CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td><p>A Task representing the sending of the status update (and not any PostgreSQL response).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_Show_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.Show(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L284">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_Show_" data-uid="Npgsql.Replication.ReplicationConnection.Show*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_Show_System_String_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.Show(System.String,CancellationToken)">Show(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Requests the server to send the current setting of a run-time parameter.
+This is similar to the SQL command SHOW.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; Show(string parameterName, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">parameterName</span></td>
+        <td><p>The name of a run-time parameter.
+Available parameters are documented in <a href="https://www.postgresql.org/docs/current/runtime-config.html">https://www.postgresql.org/docs/current/runtime-config.html</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The token to monitor for cancellation requests.
+The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><p>The current setting of the run-time parameter specified in <code data-dev-comment-type="paramref" class="paramref">parameterName</code> as <see cref="!:System.String"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_TimelineHistory_System_UInt32_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.TimelineHistory(System.UInt32%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L303">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_TimelineHistory_" data-uid="Npgsql.Replication.ReplicationConnection.TimelineHistory*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_TimelineHistory_System_UInt32_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.TimelineHistory(System.UInt32,CancellationToken)">TimelineHistory(UInt32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Requests the server to send over the timeline history file for timeline tli.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TimelineHistoryFile&gt; TimelineHistory(uint tli, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
+        <td><span class="parametername">tli</span></td>
+        <td><p>The timeline for which the history file should be sent.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The token to monitor for cancellation requests.
+The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Npgsql.Replication.TimelineHistoryFile.html">TimelineHistoryFile</a>&gt;</td>
+        <td><p>The timeline history file for timeline tli</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L28" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2020 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

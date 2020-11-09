@@ -102,6 +102,11 @@
 </ul>
 </li>
 <li>Improved null semantics for PostgreSQL-specific operations results in tighter and more efficient SQL (<a href="https://github.com/npgsql/efcore.pg/issues/1142">#1142</a>).</li>
+<li>Better support for NodaTime:<ul>
+<li>It is now possible to map NodaTime <code>Duration</code> to PostgreSQL <code>interval</code>, previously only <code>Period</code> could be mapped (<a href="https://github.com/npgsql/efcore.pg/issues/1567">#1567</a>.</li>
+<li>Some additional arithmetic operation are now translated (<a href="https://github.com/npgsql/efcore.pg/issues/1565">#1565</a>).</li>
+</ul>
+</li>
 <li>It is now possible to add labels to existing enums (but not remove or modify existing ones). The provider will generate the appropriate migrations (<a href="https://github.com/npgsql/efcore.pg/issues/1182">#1182</a>).</li>
 </ul>
 <h2 id="breaking-changes">Breaking changes</h2>
