@@ -113,7 +113,7 @@ using (var reader = cmd.ExecuteReader())
 <p>You can also control the socket&#39;s receive buffer size (not to be confused with Npgsql&#39;s internal buffer) by setting the <code>Socket Receive Buffer Size</code> connection string parameter.</p>
 <h2 id="writing-large-values">Writing Large Values</h2>
 <p>Writing is somewhat similar - Npgsql has an internally write buffer (also 8K by default). When writing your query&#39;s SQL and parameters to PostgreSQL, Npgsql always writes &quot;sequentially&quot;, that is, filling up the 8K buffer and flushing it when full. You can use <code>Write Buffer Size</code> to control the buffer&#39;s size.</p>
-<p>You can also control the socket&#39;s receive buffer size (not to be confused with Npgsql&#39;s internal buffer) by setting the <code>Socket Receive Buffer Size</code> connection string parameter.</p>
+<p>You can also control the socket&#39;s send buffer size (not to be confused with Npgsql&#39;s internal buffer) by setting the <code>Socket Send Buffer Size</code> connection string parameter.</p>
 <h2 id="avoiding-boxing-when-writing-parameter-values">Avoiding boxing when writing parameter values</h2>
 <p>See <a href="basic-usage.html#strongly-typed-parameters">this section</a>.</p>
 <h2 id="unix-domain-socket">Unix Domain Socket</h2>
