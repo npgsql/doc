@@ -115,7 +115,7 @@ using (var reader = cmd.ExecuteReader()) {
     var compositeValue = reader.GetFieldValue&lt;SomeType&gt;(1);
 }
 </code></pre><p>Note that your PostgreSQL enum and composites types (<code>some_enum_type</code> and <code>some_composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
-<h2 id="name-translation">Name Translation</h2>
+<h2 id="name-translation">Name translation</h2>
 <p>CLR type and field names are usually camel case (e.g. <code>SomeType</code>), whereas in PostgreSQL they are snake case (e.g. <code>some_type</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifying a name translator when setting up a mapping:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_type&quot;, new NpgsqlNullNameTranslator());
 </code></pre><p>Finally, you may control mappings on a field-by-field basis via the <code>[PgName]</code> attribute. This will override the name translator.</p>
@@ -127,9 +127,9 @@ enum SomeEnum {
    [PgName(&quot;sad&quot;)]
    Bad
 }
-</code></pre><h2 id="reading-and-writing-dynamically-without-clr-types">Reading and Writing Dynamically (without CLR types)</h2>
-<p>In some cases, it may be desirable to interact with PostgreSQL enums and composites without a pre-existing CLR type - this is useful mainly if your program doesn&#39;t know the database schema and types in advance, and needs to interact with any enum/composite type. Note that using CLR types is safer and faster (for composites), and should be preferred when possible.</p>
-<p>Enums can be read and written as simple strings:</p>
+</code></pre><h2 id="reading-and-writing-unmapped-enums">Reading and writing unmapped enums</h2>
+<p>In some cases, it may be desirable to interact with PostgreSQL enums without a pre-existing CLR enum type - this is useful mainly if your program doesn&#39;t know the database schema and types in advance, and needs to interact with any enum/composite type.</p>
+<p>Npgsql allows reading and writing enums as simple strings:</p>
 <pre><code class="lang-c#">// Writing enum as string
 using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum_column) VALUES (@p1)&quot;, conn))
 {
@@ -148,32 +148,7 @@ using (var reader = cmd.ExecuteReader()) {
     reader.Read();
     var enumValue = reader.GetFieldValue&lt;string&gt;(0);
 }
-</code></pre><p>Composites can be read and written as C# dynamic ExpandoObjects:</p>
-<pre><code class="lang-c#">// Writing composite as ExpandoObject
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_composite_column) VALUES (@p1)&quot;, Conn))
-{
-    var someComposite = new ExpandoObject();
-    some_composite.Foo = 8;
-    some_composite.Bar = &quot;hello&quot;;
-    cmd.Parameters.Add(new NpgsqlParameter
-    {
-        ParameterName = &quot;p1&quot;,
-        Value = someComposite,
-        DataTypeName = &quot;some_composite_type&quot;
-    });
-    cmd.ExecuteNonQuery();
-}
-
-// Reading composite as ExpandoObject
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_composite_column FROM some_table&quot;, conn))
-using (var reader = cmd.ExecuteReader()) {
-    reader.Read();
-    var compositeValue = (dynamic)reader.GetValue(0);
-    Console.WriteLine(compositeValue.Foo);
-    Console.WriteLine(compositeValue.Bar);
-}
-</code></pre><p>As long as your CLR types <code>SomeEnum</code> and <code>SomeType</code> contain fields/properties which correspond to the PostgreSQL type being read/written, everything will work as expected. Note that the default name translator is used (see the section about name translation).</p>
-</article>
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
