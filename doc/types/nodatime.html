@@ -160,8 +160,8 @@ imestamp is stored. There is no single PostgreSQL type that stores both a date/t
 <tr>
 <td>interval</td>
 <td>Period</td>
-<td></td>
-<td>This is a human interval which does not have a fixed absolute length (&quot;two months&quot; can vary depending on the months in question), and so it is mapped to NodaTime&#39;s Period (and not Duration or TimeSpan).</td>
+<td>Duration</td>
+<td>Represents an interval of time, from sub-second units to years. NodaTime <code>Duration</code> is supported for intervals with days and smaller, but not with years or months (as these have no absolute duration). <code>Period</code> can be used with any interval unit.</td>
 </tr>
 </tbody>
 </table>
