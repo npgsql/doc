@@ -68,8 +68,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-***
-
 Now generate a migration (`dotnet ef migrations add ....`), and open it with your favorite editor, adding the following:
 
 ```c#
@@ -95,6 +93,7 @@ public partial class CreateProductTable : Migration
     }
 }
 ```
+
 
 ***
 
