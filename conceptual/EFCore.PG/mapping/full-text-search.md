@@ -94,6 +94,7 @@ public partial class CreateProductTable : Migration
 }
 ```
 
+
 ***
 
 Once your auto-updated `tsvector` column is set up, any inserts or updates on the `Products` table will now update the `SearchVector` column and maintain it automatically. You can query it as follows:
