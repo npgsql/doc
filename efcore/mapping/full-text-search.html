@@ -118,11 +118,12 @@
 {
     modelBuilder.Entity&lt;Product&gt;()
         .HasGeneratedTsVectorColumn(
-            p =&gt; b.TsVector,
+            p =&gt; p.TsVector,
             &quot;english&quot;,  // Text search config
             p =&gt; new { p.Name, p.Description })  // Included properties
-        .HasIndex(b =&gt; b.TsVector)
+        .HasIndex(p =&gt; p.TsVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
+}
 </code></pre></section>
 <section id="tabpanel_YDY9L5wnLQ_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 <p>First, modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
