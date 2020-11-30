@@ -132,9 +132,7 @@
         .HasIndex(p =&gt; p.SearchVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
-</code></pre></section>
-</div>
-<p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
+</code></pre><p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
 <pre><code class="lang-c#">public partial class CreateProductTable : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
@@ -156,7 +154,8 @@
         migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector_update&quot;);
     }
 }
-</code></pre><hr>
+</code></pre></section>
+</div>
 <p>Once your auto-updated <code>tsvector</code> column is set up, any inserts or updates on the <code>Products</code> table will now update the <code>SearchVector</code> column and maintain it automatically. You can query it as follows:</p>
 <pre><code class="lang-c#">var context = new ProductDbContext();
 var npgsql = context.Products
