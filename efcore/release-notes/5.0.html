@@ -117,7 +117,8 @@
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Customer&gt;()
     .Property(p =&gt; p.FullName)
     .HasComputedColumnSql(&quot;...&quot;, stored: true);
-</code></pre><h3 id="iscreatedconcurrently-defaults-to-true-1212httpsgithubcomnpgsqlefcorepgissues1212">IsCreatedConcurrently defaults to true (<a href="https://github.com/npgsql/efcore.pg/issues/1212">#1212</a>)</h3>
+</code></pre><p>If you have existing migrations which were created with previous versions of EF Core, the column definitions in those also need to be fixed up with <code>stored: true</code>.</p>
+<h3 id="iscreatedconcurrently-defaults-to-true-1212httpsgithubcomnpgsqlefcorepgissues1212">IsCreatedConcurrently defaults to true (<a href="https://github.com/npgsql/efcore.pg/issues/1212">#1212</a>)</h3>
 <p>Previously, when <code>IsCreatedConcurrently</code> was used to configure an index without parameters, the default was <code>false</code> - this has changed to <code>true</code>. Note that indexes are never configured for for concurrent creation unless <code>IsCreatedConcurrently</code> is specified.</p>
 <h2 id="contributors">Contributors</h2>
 <p>A big thank you to all the following people who contributed to the 5.0 release!</p>
