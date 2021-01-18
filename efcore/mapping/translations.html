@@ -644,6 +644,76 @@
 </tr>
 </tbody>
 </table>
+<h2 id="trigram-functions">Trigram functions</h2>
+<p>The below translations provide functionality for determining the similarity of alphanumeric text based on trigram matching, using the <a href="https://www.postgresql.org/docs/current/pgtrgm.html"><code>pg_trgm</code></a> extension which is bundled with standard PostgreSQL distributions. All the below parameters are strings.</p>
+<div class="NOTE"><h5>Note</h5><p>To use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call &lt;xref:Microsoft.EntityFrameworkCore.NpgsqlTrigramsDbContextOptionsBuilderExtensions.UseTrigrams&gt; in your <code>OnModelConfiguring</code>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.TrigramsShow(s)</td>
+<td>show_trgm(s)</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsSimilarity(s1, s2)</td>
+<td>similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>TrigramsWordSimilarity(s1, s2)</td>
+<td>word_similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>TrigramsStrictWordSimilarity(s1, s2)</td>
+<td>strict_word_similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>TrigramsAreSimilar(s1, s2)</td>
+<td>s1 % s2</td>
+</tr>
+<tr>
+<td>TrigramsAreWordSimilar(s1, s2)</td>
+<td>s1 &lt;% s2</td>
+</tr>
+<tr>
+<td>TrigramsAreNotWordSimilar(s1, s2)</td>
+<td>s1 %&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsAreStrictWordSimilar(s1, s2)</td>
+<td>s1 &lt;&lt;% s2</td>
+</tr>
+<tr>
+<td>TrigramsAreNotStrictWordSimilar(s1, s2)</td>
+<td>s1 %&gt;&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsWordSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;&lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsWordSimilarityDistanceInverted(s1, s2)</td>
+<td>s1 &lt;-&gt;&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsStrictWordSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;&lt;&lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>TrigramsStrictWordSimilarityDistanceInverted(s1, s2)</td>
+<td>s1 &lt;-&gt;&gt;&gt; s2</td>
+</tr>
+</tbody>
+</table>
 <h2 id="miscellaneous-functions">Miscellaneous functions</h2>
 <table>
 <thead>
