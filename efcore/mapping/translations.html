@@ -646,7 +646,7 @@
 </table>
 <h2 id="trigram-functions">Trigram functions</h2>
 <p>The below translations provide functionality for determining the similarity of alphanumeric text based on trigram matching, using the <a href="https://www.postgresql.org/docs/current/pgtrgm.html"><code>pg_trgm</code></a> extension which is bundled with standard PostgreSQL distributions. All the below parameters are strings.</p>
-<div class="NOTE"><h5>Note</h5><p>To use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call &lt;xref:Microsoft.EntityFrameworkCore.NpgsqlTrigramsDbContextOptionsBuilderExtensions.UseTrigrams%2A&gt; in your <code>OnModelConfiguring</code>.</p>
+<div class="NOTE"><h5>Note</h5><p>Prior to version 6.0, to use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call &lt;xref:Microsoft.EntityFrameworkCore.NpgsqlTrigramsDbContextOptionsBuilderExtensions.UseTrigrams%2A&gt; in your <code>OnModelConfiguring</code>.</p>
 </div>
 <table>
 <thead>
@@ -711,6 +711,104 @@
 <tr>
 <td>EF.Functions.TrigramsStrictWordSimilarityDistanceInverted(s1, s2)</td>
 <td>s1 &lt;-&gt;&gt;&gt; s2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ltree-functions">LTree functions</h2>
+<p>The below translations are for working with label trees from the PostgreSQL <a href="https://www.postgresql.org/docs/current/ltree.html"><code>ltree</code></a> extension. Use the &lt;xref:Microsoft.EntityFrameworkCore.LTree&gt; type to represent ltree and invoke methods on it in EF Core LINQ queries.</p>
+<div class="NOTE"><h5>Note</h5><p>LTree support was introduced in version 6.0 of the provider.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ltree1.IsAncestorOf(ltree2)</td>
+<td>ltree1 @&gt; ltree2</td>
+</tr>
+<tr>
+<td>ltree1.IsDescendant(ltree2)</td>
+<td>ltree1 &amp;lt;@ ltree2</td>
+</tr>
+<tr>
+<td>ltree.MatchesLQuery(lquery)</td>
+<td>ltree ~ lquery</td>
+</tr>
+<tr>
+<td>ltree.MatchesLTxtQuery(ltxtquery)</td>
+<td>ltree @ ltxtquery</td>
+</tr>
+<tr>
+<td>lqueries.Any(q =&gt; ltree.MatchesLQuery(q))</td>
+<td>ltree ? lqueries</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.IsAncestorOf(ltree))</td>
+<td>ltrees @&gt; ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.IsDescendant(ltree))</td>
+<td>ltrees &amp;lt;@ ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.MatchesLQuery(lquery))</td>
+<td>ltrees ~ ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.MatchesLTxtQuery(ltxtquery))</td>
+<td>ltrees @ ltxtquery</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; lqueries.Any(q =&gt; t.MatchesLQuery(q)))</td>
+<td>ltrees ? lqueries</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.IsAncestorOf(ltree))</td>
+<td>ltrees ?@&gt; ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.IsDescendant(ltree))</td>
+<td>ltrees ?&amp;lt;@ ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.MatchesLQuery(lquery))</td>
+<td>ltrees ?~ ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.MatchesLTxtQuery(ltxtquery))</td>
+<td>ltrees ?@ ltree</td>
+</tr>
+<tr>
+<td>ltree.Subtree(0, 1)</td>
+<td>subltree(ltree, 0, 1)</td>
+</tr>
+<tr>
+<td>ltree.Subpath(0, 1)</td>
+<td>sublpath(ltree, 0, 1)</td>
+</tr>
+<tr>
+<td>ltree.Subpath(2)</td>
+<td>sublpath(ltree, 2)</td>
+</tr>
+<tr>
+<td>ltree.NLevel</td>
+<td>nlevel(ltree)</td>
+</tr>
+<tr>
+<td>ltree.Index(subpath)</td>
+<td>index(ltree, subpath)</td>
+</tr>
+<tr>
+<td>ltree.Index(subpath, 2)</td>
+<td>index(ltree, subpath, 2)</td>
+</tr>
+<tr>
+<td>LTree.LongestCommonAncestor(ltree1, ltree2)</td>
+<td>lca(index(ltree1, ltree2)</td>
 </tr>
 </tbody>
 </table>
