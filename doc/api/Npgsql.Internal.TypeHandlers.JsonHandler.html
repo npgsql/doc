@@ -1,0 +1,885 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class JsonHandler
+   | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class JsonHandler
+   | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.56.4.0">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler">
+  
+  
+  <h1 id="Npgsql_Internal_TypeHandlers_JsonHandler" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler" class="text-break">Class JsonHandler
+  </h1>
+  <div class="markdown level0 summary"><p>A type handler for the PostgreSQL json and jsonb data type.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></div>
+    <div class="level2"><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html">NpgsqlTypeHandler</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</div>
+    <div class="level3"><span class="xref">JsonHandler</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_Read__1_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_">NpgsqlTypeHandler&lt;String&gt;.Read&lt;TAny&gt;(NpgsqlReadBuffer, Int32, FieldDescription)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_WriteWithLengthInternal__1___0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">NpgsqlTypeHandler&lt;String&gt;.WriteWithLengthInternal&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_Npgsql_ArrayNullabilityMode_">NpgsqlTypeHandler&lt;String&gt;.CreateArrayHandler(PostgresArrayType, ArrayNullabilityMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler&lt;String&gt;.CreateRangeHandler(PostgresType)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_CreateConversionButNoParamException_Type_">NpgsqlTypeHandler.CreateConversionButNoParamException(Type)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Internal.TypeHandlers.html">Npgsql.Internal.TypeHandlers</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_Internal_TypeHandlers_JsonHandler_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class JsonHandler : NpgsqlTypeHandler&lt;string&gt;, INpgsqlTypeHandler&lt;string&gt;, ITextReaderHandler</code></pre>
+  </div>
+  <h5 id="Npgsql_Internal_TypeHandlers_JsonHandler_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/datatype-json.html">https://www.postgresql.org/docs/current/datatype-json.html</a>.</p>
+<p>The type handler API allows customizing Npgsql&apos;s behavior in powerful ways. However, although it is public, it
+should be considered somewhat unstable, and may change in breaking ways, including in non-major releases.
+Use it at your own risk.</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_System_Boolean_System_Nullable_JsonSerializerOptions__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.%23ctor(Npgsql.PostgresTypes.PostgresType%2CNpgsql.NpgsqlConnection%2CSystem.Boolean%2CSystem.Nullable%7BJsonSerializerOptions%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L91">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler__ctor_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.#ctor*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_NpgsqlConnection_System_Boolean_System_Nullable_JsonSerializerOptions__" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.#ctor(Npgsql.PostgresTypes.PostgresType,Npgsql.NpgsqlConnection,System.Boolean,System.Nullable{JsonSerializerOptions})">JsonHandler(PostgresType, NpgsqlConnection, Boolean, Nullable&lt;JsonSerializerOptions&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected JsonHandler(PostgresType postgresType, NpgsqlConnection connection, bool isJsonb, JsonSerializerOptions? serializerOptions = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
+        <td><span class="parametername">postgresType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
+        <td><span class="parametername">connection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">isJsonb</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">JsonSerializerOptions</span>&gt;</td>
+        <td><span class="parametername">serializerOptions</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_GetTextReader_Stream_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.GetTextReader(Stream)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L260">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_GetTextReader_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.GetTextReader*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_GetTextReader_Stream_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.GetTextReader(Stream)">GetTextReader(Stream)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextReader GetTextReader(Stream stream)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">stream</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TextReader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L256">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_Read_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Read*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
+using either sync or async I/O.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override ValueTask&lt;string&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer from which to read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">len</span></td>
+        <td><p>The byte length of the value. The buffer might not contain the full length, requiring I/O to be performed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O is required to read the full length of the value, whether it should be performed synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a>&gt;</td>
+        <td><p>The fully-read value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.Read(Npgsql.Internal.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_Read__1_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.Read%60%601(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L227">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_Read_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Read*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_Read__1_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Read``1(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read&lt;T&gt;(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">TDefault</code> with the given length from the provided buffer,
+using either sync or async I/O. Type handlers typically don&apos;t need to override this -
+override <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</a> - but may do
+so in exceptional cases where reading of arbitrary types is required.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override ValueTask&lt;T&gt; Read&lt;T&gt;(NpgsqlReadBuffer buf, int byteLen, bool async, FieldDescription fieldDescription = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer from which to read.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">byteLen</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O is required to read the full length of the value, whether it should be performed synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td><p>Additional PostgreSQL information about the type, such as the length in varchar(30).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;T&gt;</td>
+        <td><p>The fully-read value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.Read&lt;TAny&gt;(Npgsql.Internal.NpgsqlReadBuffer, System.Int32, System.Boolean, Npgsql.BackendMessages.FieldDescription)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength_System_String_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength(System.String%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L175">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength_System_String_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength(System.String,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(String, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Called to validate and get the length of a value of a generic <a class="xref" href="Npgsql.NpgsqlParameter-1.html">NpgsqlParameter&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int ValidateAndGetLength(string value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.ValidateAndGetLength(System.String, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength%60%601(%60%600%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L101">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateAndGetLength__1___0_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateAndGetLength``1(``0,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength&lt;TAny&gt;(TAny, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Called to validate and get the length of a value of an arbitrary type.
+Checks that the current handler supports that type and throws an exception otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override int ValidateAndGetLength&lt;TAny&gt;(TAny value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TAny</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TAny</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.ValidateAndGetLength&lt;TAny&gt;(TAny, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.ValidateObjectAndGetLength(System.Object%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L192">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateObjectAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateObjectAndGetLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.ValidateObjectAndGetLength(System.Object,Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateObjectAndGetLength(Object, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
+written for PostgreSQL - if the value cannot be written for any reason, an exception shold be thrown.
+Also returns the byte length needed to write the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int ValidateObjectAndGetLength(object value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to be written to PostgreSQL</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td><p>If the byte length calculation is costly (e.g. for UTF-8 strings), its result can be stored in the
+length cache to be reused in the writing process, preventing recalculation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The number of bytes required to write the value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_ValidateObjectAndGetLength_System_Object_Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_">NpgsqlTypeHandler.ValidateObjectAndGetLength(Object, ref NpgsqlLengthCache, NpgsqlParameter)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_Write_System_String_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.Write(System.String%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L179">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Write*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_Write_System_String_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.Write(System.String,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(String, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Called to write the value of a generic <a class="xref" href="Npgsql.NpgsqlParameter-1.html">NpgsqlParameter&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task Write(string value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.Write(System.String, Npgsql.Internal.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean, CancellationToken)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_WriteObjectWithLength_System_Object_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.WriteObjectWithLength(System.Object%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L207">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_WriteObjectWithLength_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.WriteObjectWithLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_WriteObjectWithLength_System_Object_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.WriteObjectWithLength(System.Object,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Writes a value to the provided buffer, using either sync or async I/O.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override Task WriteObjectWithLength(object value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer to which to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O is required to read the full length of the value, whether it should be performed synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>An optional token to cancel the asynchronous operation. The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_WriteObjectWithLength_System_Object_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">NpgsqlTypeHandler.WriteObjectWithLength(Object, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler_WriteWithLength__1___0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler.WriteWithLength%60%601(%60%600%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L134">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_JsonHandler_WriteWithLength_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.WriteWithLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_JsonHandler_WriteWithLength__1___0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.JsonHandler.WriteWithLength``1(``0,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">WriteWithLength&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Typically does not need to be overridden by type handlers, but may be needed in some
+cases (e.g. <a class="xref" href="Npgsql.Internal.TypeHandlers.ArrayHandler.html">ArrayHandler</a>.
+Note that this method assumes it can write 4 bytes of length (already verified by
+<a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_WriteWithLengthInternal__1___0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">WriteWithLengthInternal&lt;TAny&gt;(TAny, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a>).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Task WriteWithLength&lt;TAny&gt;(TAny value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TAny</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TAny</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlTypeHandler&lt;System.String&gt;.WriteWithLength&lt;TAny&gt;(TAny, Npgsql.Internal.NpgsqlWriteBuffer, Npgsql.NpgsqlLengthCache, Npgsql.NpgsqlParameter, System.Boolean, CancellationToken)</span></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_JsonHandler.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.JsonHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/JsonHandler.cs/#L76" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2020 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

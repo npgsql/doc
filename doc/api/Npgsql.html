@@ -89,11 +89,11 @@
   </h3>
       <h4><a class="xref" href="Npgsql.NpgsqlBinaryExporter.html">NpgsqlBinaryExporter</a></h4>
       <section><p>Provides an API for a binary COPY TO operation, a high-performance data export mechanism from
-a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginBinaryExport_System_String_">BeginBinaryExport(String)</a></p>
+a PostgreSQL table. Initiated by <see cref="!:NpgsqlConnection.BeginBinaryExport(string)"></see></p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlBinaryImporter.html">NpgsqlBinaryImporter</a></h4>
       <section><p>Provides an API for a binary COPY FROM operation, a high-performance data import mechanism to
-a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginBinaryImport_System_String_">BeginBinaryImport(String)</a></p>
+a PostgreSQL table. Initiated by <see cref="!:NpgsqlConnection.BeginBinaryImport(string)"></see></p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a></h4>
       <section><p>Represents a SQL statement or function (stored procedure) to execute
@@ -114,10 +114,10 @@ the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> cla
 string. Optionally holds a set of synonyms for the property.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlCopyTextReader.html">NpgsqlCopyTextReader</a></h4>
-      <section><p>Reader for a text export, initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTextExport_System_String_">BeginTextExport(String)</a>.</p>
+      <section><p>Reader for a text export, initiated by <see cref="!:NpgsqlConnection.BeginTextExport(string)"></see>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlCopyTextWriter.html">NpgsqlCopyTextWriter</a></h4>
-      <section><p>Writer for a text import, initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTextImport_System_String_">BeginTextImport(String)</a>.</p>
+      <section><p>Writer for a text import, initiated by <see cref="!:NpgsqlConnection.BeginTextImport(string)"></see>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataAdapter.html">NpgsqlDataAdapter</a></h4>
       <section><p>This class represents an adapter from many commands: select, update, insert and delete to fill a <see cref="!:System.Data.DataSet"></see>.</p>
@@ -188,11 +188,7 @@ a <see cref="!:DataSet"></see>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlRawCopyStream.html">NpgsqlRawCopyStream</a></h4>
       <section><p>Provides an API for a raw binary COPY operation, a high-performance data import/export mechanism to
-a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginRawBinaryCopy_System_String_">BeginRawBinaryCopy(String)</a></p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></h4>
-      <section><p>A buffer used by Npgsql to read data from the socket efficiently.
-Provides methods which decode different values types and tracks the current position.</p>
+a PostgreSQL table. Initiated by <see cref="!:NpgsqlConnection.BeginRawBinaryCopy(string)"></see></p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatedEventArgs.html">NpgsqlRowUpdatedEventArgs</a></h4>
       <section></section>
@@ -209,10 +205,6 @@ and access information about statement execution (e.g. affected rows).</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></h4>
       <section><p>Represents a transaction to be made in a PostgreSQL database. This class cannot be inherited.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></h4>
-      <section><p>A buffer used by Npgsql to write data to the socket efficiently.
-Provides methods which encode different values types and tracks the current position.</p>
 </section>
       <h4><a class="xref" href="Npgsql.PostgresErrorCodes.html">PostgresErrorCodes</a></h4>
       <section><p>Provides constants for PostgreSQL error codes.</p>
@@ -245,6 +237,8 @@ Used for mapping enum and composite types.</p>
 <a href="https://docs.microsoft.com/dotnet/csharp/language-reference/builtin-types/value-types">value types</a>
 behaves with respect to nullability when they are requested via an API returning an <see cref="!:System.Object"></see>.</p>
 </section>
+      <h4><a class="xref" href="Npgsql.GeoJSONOptions.html">GeoJSONOptions</a></h4>
+      <section></section>
       <h4><a class="xref" href="Npgsql.ServerCompatibilityMode.html">ServerCompatibilityMode</a></h4>
       <section><p>An option specified in the connection string that activates special compatibility features.</p>
 </section>
@@ -256,23 +250,11 @@ behaves with respect to nullability when they are requested via an API returning
 </section>
     <h3 id="delegates">Delegates
   </h3>
-      <h4><a class="xref" href="Npgsql.NoticeEventHandler.html">NoticeEventHandler</a></h4>
-      <section><p>Represents a method that handles the <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Notice">Notice</a> event.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NotificationEventHandler.html">NotificationEventHandler</a></h4>
-      <section><p>Represents a method that handles the <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Notification">Notification</a> event.</p>
-</section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatedEventHandler.html">NpgsqlRowUpdatedEventHandler</a></h4>
       <section><p>Represents the method that handles the <a class="xref" href="Npgsql.NpgsqlDataAdapter.html#Npgsql_NpgsqlDataAdapter_RowUpdated">RowUpdated</a> events.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatingEventHandler.html">NpgsqlRowUpdatingEventHandler</a></h4>
       <section><p>Represents the method that handles the <a class="xref" href="Npgsql.NpgsqlDataAdapter.html#Npgsql_NpgsqlDataAdapter_RowUpdating">RowUpdating</a> events.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.ProvideClientCertificatesCallback.html">ProvideClientCertificatesCallback</a></h4>
-      <section><p>Represents the method that allows the application to provide a certificate collection to be used for SSL client authentication</p>
-</section>
-      <h4><a class="xref" href="Npgsql.ProvidePasswordCallback.html">ProvidePasswordCallback</a></h4>
-      <section><p>Represents the method that allows the application to provide a password at connection time in code rather than configuration</p>
 </section>
 </article>
           </div>
