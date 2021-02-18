@@ -104,7 +104,7 @@ The default implementation that is used by PostgreSQL itself to perform logical 
 </code></pre><p>If your application goes down, the slot persistently records the last data streamed to it, and allows resuming the application at the point where it left off.</p>
 <p>At this point, everything is ready to start replicating! Create this simple .NET program with Npgsql:</p>
 <pre><code class="lang-csharp">await using var conn = new LogicalReplicationConnection(&quot;&lt;connection_string&gt;&quot;);
-await conn.Open();
+await conn.OpenAsync();
 
 var slot = new PgOutputReplicationSlot(&quot;blog_slot&quot;);
 
