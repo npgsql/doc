@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion
-   | Npgsql Documentation </title>
+    <title>6.0 Release Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion
-   | Npgsql Documentation ">
+    <meta name="title" content="6.0 Release Notes | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -17,7 +15,7 @@
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     <meta property="docfx:rel" content="../../">
     
@@ -78,32 +76,28 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion">
-  
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_ValueConversion" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion" class="text-break">Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion.NpgsqlArrayConverter-2.html">NpgsqlArrayConverter&lt;TModelArray, TProviderArray&gt;</a></h4>
-      <section><p>A value converter that can convert between array types, given another <see cref="!:ValueConverter"></see> for the
-elements.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion.NpgsqlValueConverterSelector.html">NpgsqlValueConverterSelector</a></h4>
-      <section></section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.ValueConversion.INpgsqlArrayConverter.html">INpgsqlArrayConverter</a></h4>
-      <section></section>
-</article>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="60-release-notes">6.0 Release Notes</h1>
+
+<p>Version 6.0 of the Npgsql Entity Framework Core provider is in development, and will be released at the same time as EF Core 6.0. Monthly previews are available on nuget.org, which work with the corresponding EF Core preview.</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<h3 id="value-converters-for-arraylist-properties-need-to-use-a-specia-new-api">Value converters for array/list properties need to use a specia new API</h3>
+<p>Previously, it was possible to configure value converters for array/list properties with the general EF Core API:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
+    .HasConversion(w =&gt; w.Select(x =&gt; x.Value).ToArray(), v =&gt; v.Select(x =&gt; new IntWrapper(x)).ToArray());
+</code></pre><p>This is no longer possible and will cause an exception to be thrown. Instead, use the new <code>HasPostgresArrayConversion</code> API, providing conversion lambdas for the array&#39;s <em>elements</em>:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
+    .HasPostgresArrayConversion(w =&gt; w.Value, v =&gt; new IntWrapper(v));
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/6.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

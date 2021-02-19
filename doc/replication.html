@@ -126,7 +126,7 @@ Received message type: CommitMessage
 <h3 id="test-decoding-testdecoding-plugin">Test decoding (test_decoding plugin)</h3>
 <p>An additional logical replication plugin which Npgsql supports is <code>test_decoding</code>. This plugin outputs textual representations of events, which are less efficient and need to be parsed; it is meant for testing that replication works rather than for building robust production apps. However, it can still be useful in some scenarios, especially in older PostgreSQL versions where <code>pgoutput</code> wasn&#39;t yet introduced.</p>
 <p>To use <code>test_decoding</code>, first create a logical replication slot with <code>test_decoding</code> as the plugin type.</p>
-<pre><code class="lang-sql">SELECT * FROM pg_create_logical_replication_slot(&#39;blog_slot&#39;, &#39;`test_decoding`&#39;);
+<pre><code class="lang-sql">SELECT * FROM pg_create_logical_replication_slot(&#39;blog_slot&#39;, &#39;test_decoding&#39;);
 </code></pre><p>After that use the following:</p>
 <pre><code class="lang-csharp">await using var conn = new LogicalReplicationConnection(&quot;Host=localhost;Username=test;Password=test&quot;);
 await conn.Open();
