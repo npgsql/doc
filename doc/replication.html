@@ -114,6 +114,11 @@ await foreach (var message in conn.StartReplication(
     slot, new PgOutputReplicationOptions(&quot;blog_pub&quot;), cancellationTokenSource.Token))
 {
     Console.WriteLine($&quot;Received message type: {message.GetType().Name}&quot;);
+
+    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsql can inform the
+    // server which WAL files can be removed/recycled.
+    conn.LastAppliedLsn = message.WalEnd;
+    conn.LastFlushedLsn = message.WalEnd;
 }
 </code></pre><p>For example, if you insert a new row into your <code>blogs</code> table, you should see the following output:</p>
 <pre><code class="lang-output">Received message type: BeginMessage
@@ -138,6 +143,11 @@ var cancellationTokenSource = new CancellationTokenSource();
 await foreach (var message in conn.StartReplication(slot, cancellationTokenSource.Token))
 {
     Console.WriteLine($&quot;Message: {message.Data}&quot;);
+
+    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsql can inform the
+    // server which WAL files can be removed/recycled.
+    conn.LastAppliedLsn = message.WalEnd;
+    conn.LastFlushedLsn = message.WalEnd;
 }
 </code></pre><p>Inserting a row will produce the following string messages:</p>
 <pre><code class="lang-output">Message: BEGIN 230413
