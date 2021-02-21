@@ -66,7 +66,7 @@ await foreach (var message in conn.StartReplication(
 {
     Console.WriteLine($"Received message type: {message.GetType().Name}");
 
-    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsq can inform the
+    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsql can inform the
     // server which WAL files can be removed/recycled.
     conn.LastAppliedLsn = message.WalEnd;
     conn.LastFlushedLsn = message.WalEnd;
@@ -111,7 +111,7 @@ await foreach (var message in conn.StartReplication(slot, cancellationTokenSourc
 {
     Console.WriteLine($"Message: {message.Data}");
 
-    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsq can inform the
+    // Always assign LastAppliedLsn and LastFlushedLsn so that Npgsql can inform the
     // server which WAL files can be removed/recycled.
     conn.LastAppliedLsn = message.WalEnd;
     conn.LastFlushedLsn = message.WalEnd;
