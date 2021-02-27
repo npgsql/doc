@@ -16,7 +16,7 @@ Please let us know if you notice any non-standard behavior.
 
 Npgsql 4.* targets .NET Framework 4.6.1, as well as [.NET Standard 2.0](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) which allows it to run on .NET Core. It is also tested and runs well on mono.
 
-Npgsql 5.* targets .NET Standard 2.0 and .NET 5. Starting with this version, we no longer run regression tests on .NET Framework and mono.
+Npgsql 5.* targets .NET Standard 2.0 and .NET 5. Starting with this version, we no longer run regression tests on .NET Framework and mono. In addition, the Visual Studio extension (VSIX) and the MSI GAC installer have been discontinued.
 
 ## Amazon Redshift
 
