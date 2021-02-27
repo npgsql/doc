@@ -87,7 +87,8 @@ Earlier versions may still work but we don&#39;t perform continuous testing on t
 <p>Npgsql is an ADO.NET-compatible provider, so it has the same APIs as other .NET database drivers and should behave the same.
 Please let us know if you notice any non-standard behavior.</p>
 <h2 id="net-frameworknet-coremono">.NET Framework/.NET Core/mono</h2>
-<p>Npgsql currently targets .NET Framework 4.6.1, as well as the <a href="https://docs.microsoft.com/en-us/dotnet/standard/net-standard">.NET Standard 2.0</a> which allows it to run on .NET Core. It is also tested and runs well on mono.</p>
+<p>Npgsql 4.* targets .NET Framework 4.6.1, as well as <a href="https://docs.microsoft.com/en-us/dotnet/standard/net-standard">.NET Standard 2.0</a> which allows it to run on .NET Core. It is also tested and runs well on mono.</p>
+<p>Npgsql 5.* targets .NET Standard 2.0 and .NET 5. Starting with this version, we no longer run regression tests on .NET Framework and mono. In addition, the Visual Studio extension (VSIX) and the MSI GAC installer have been discontinued.</p>
 <h2 id="amazon-redshift">Amazon Redshift</h2>
 <p>Amazon Redshift is a cloud-based data warehouse originally based on PostgreSQL 8.0.2.
 In addition, due to its nature some features have been removed and others changed in ways that make them incompatible with PostgreSQL.
@@ -111,6 +112,7 @@ error about <code>ssl_renegotiation_limit</code>.</li>
 <li>Prior to version 3.1, Npgsql sends the <code>statement_timeout</code> startup parameter when it connects, but this parameter isn&#39;t supported by pgbouncer.
 You can get around this by specifying <code>CommandTimeout=0</code> on the connection string, and then manually setting the <code>CommandTimeout</code>
 property on your <code>NpgsqlCommand</code> objects. Version 3.1 no longer sends <code>statement_timeout</code>.</li>
+<li>PgBouncer below 1.12 doesn&#39;t support SASL authentication.</li>
 </ul>
 </article>
           </div>
