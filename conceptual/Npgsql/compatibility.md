@@ -47,4 +47,4 @@ Npgsql works well with PgBouncer, but there are some quirks to be aware of.
 * Prior to version 3.1, Npgsql sends the `statement_timeout` startup parameter when it connects, but this parameter isn't supported by pgbouncer.
   You can get around this by specifying `CommandTimeout=0` on the connection string, and then manually setting the `CommandTimeout`
   property on your `NpgsqlCommand` objects. Version 3.1 no longer sends `statement_timeout`.
-* Starting with version 5.0, Npgsql no longer supports SASL authentication with PgBouncer below 1.12.
+* PgBouncer below 1.12 doesn't support SASL authentication.
