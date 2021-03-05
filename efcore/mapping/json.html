@@ -210,12 +210,14 @@ Console.WriteLine(someEntity.Customer.Orders[0].Price)
 </code></pre><p>This provides a seamless mapping approach, and supports embedding nested types and arrays, resulting in complex JSON document schemas as shown above. This approach also allows you to traverse loaded JSON documents in a type-safe way, using regular C# syntax, and to use LINQ to query inside database JSON documents (see <a href="#querying-json-columns">Querying JSON columns</a> below).</p>
 <h2 id="jsondocument-dom-mapping">JsonDocument DOM mapping</h2>
 <p>If your column JSON schema isn&#39;t stable, a strongly-typed POCO mapping may not be appropriate. The Npgsql provider also allows you to map the DOM document type provided by <a href="https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/">System.Text.Json APIs</a>.</p>
-<pre><code class="lang-c#">public class SomeEntity
+<pre><code class="lang-c#">public class SomeEntity : IDisposable
 {
     public int Id { get; set; }
     public JsonDocument Customer { get; set; }
+
+    public void Dispose() =&gt; Customer?.Dispose();
 }
-</code></pre><p>Note that neither a data annotation nor the fluent API are required, as <code>JsonDocument</code> is automatically recognized and mapped to <code>jsonb</code>.</p>
+</code></pre><p>Note that neither a data annotation nor the fluent API are required, as <a href="https://docs.microsoft.com/dotnet/api/system.text.json.jsondocument">JsonDocument</a> is automatically recognized and mapped to <code>jsonb</code>. Note also that <code>JsonDocument</code> is disposable, so the entity type is made disposable as well; not dispose the <code>JsonDocument</code> will result in the memory not being returned to the pool, which will increase GC impact across various parts of the framework.</p>
 <p>Once a document is loaded from the database, you can traverse it:</p>
 <pre><code class="lang-c#">var someEntity = context.Entities.First();
 Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;)[0].GetProperty(&quot;Price&quot;).GetInt32());
