@@ -80,7 +80,7 @@
 <h1 id="connection-string-parameters">Connection String Parameters</h1>
 
 <p>To connect to a database, the application provides a connection string which specifies parameters such as the host, the username, the password, etc. Connection strings have the form <code>keyword1=value; keyword2=value;</code> and are case-insensitive. Values containing special characters (e.g. semicolons) can be double-quoted. For more information, <a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-strings">see the official doc page on connection strings</a>.</p>
-<p>Below are the connection string parameters which Npgsql understands.</p>
+<p>Below are the connection string parameters which Npgsql understands, as well as some standard PostgreSQL environment variables.</p>
 <h2 id="basic-connection">Basic Connection</h2>
 <table>
 <thead>
@@ -109,17 +109,17 @@
 <tr>
 <td>Username</td>
 <td>The username to connect with. Not required if using IntegratedSecurity.</td>
-<td></td>
+<td>PGUSER</td>
 </tr>
 <tr>
 <td>Password</td>
 <td>The password to connect with. Not required if using IntegratedSecurity.</td>
-<td></td>
+<td>PGPASSWORD</td>
 </tr>
 <tr>
 <td>Passfile</td>
 <td>Path to a PostgreSQL password file (PGPASSFILE), from which the password is taken.</td>
-<td></td>
+<td>PGPASSFILE</td>
 </tr>
 </tbody>
 </table>
@@ -145,8 +145,18 @@
 </tr>
 <tr>
 <td>Client Certificate</td>
-<td>Location of a client certificate to be sent to the server.</td>
-<td><a href="security.html">See docs</a></td>
+<td>Location of a client certificate to be sent to the server. <a href="security.html">See docs</a></td>
+<td>PGSSLCERT</td>
+</tr>
+<tr>
+<td>Client Certificate Key</td>
+<td>Location of a client key for a client certificate to be sent to the server.</td>
+<td>PGSSLKEY</td>
+</tr>
+<tr>
+<td>Root Certificate</td>
+<td>Location of a CA certificate used to validate the server certificate.</td>
+<td>PGSSLROOTCERT</td>
 </tr>
 <tr>
 <td>Check Certificate Revocation</td>
@@ -334,7 +344,7 @@
 <tr>
 <td>Options</td>
 <td>Specifies any valid <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS">PostgreSQL connection options</a>, surrounded by single ticks. Introduced in 5.0.</td>
-<td></td>
+<td>PGOPTIONS</td>
 </tr>
 <tr>
 <td>Application Name</td>
@@ -353,13 +363,13 @@
 </tr>
 <tr>
 <td>Client Encoding</td>
-<td>Gets or sets the client_encoding parameter. Introduced in 3.1.</td>
-<td></td>
+<td>Gets or sets the client_encoding parameter.</td>
+<td>PGCLIENTENCODING</td>
 </tr>
 <tr>
 <td>Timezone</td>
-<td>Gets or sets the session timezone, PGTZ environment variable can be used instead. Introduced in 3.3.</td>
-<td></td>
+<td>Gets or sets the session timezone.</td>
+<td>PGTZ</td>
 </tr>
 <tr>
 <td>EF Template Database</td>
@@ -392,6 +402,54 @@
 <td>Convert Infinity DateTime</td>
 <td>Makes MaxValue and MinValue timestamps and dates readable as infinity and negative infinity.</td>
 <td>false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="environment-variables">Environment variables</h2>
+<p>In addition to the connection string parameters above, Npgsql also recognizes the standard PostgreSQL environment variables below. This helps Npgsql-based applications behave similar to other, non-.NET PostgreSQL client applications. The PostgreSQL doc page on environment variables recognized by libpq can be found <a href="https://www.postgresql.org/docs/current/libpq-envars.html">here</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Environment variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PGUSER</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-USER">user</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGPASSWORD</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-PASSWORD">password</a> connection parameter. Use of this environment variable is not recommended for security reasons, as some operating systems allow non-root users to see process environment variables via ps; instead consider using a password file (see <a href="https://www.postgresql.org/docs/current/libpq-pgpass.html">Section 33.15</a>).</td>
+</tr>
+<tr>
+<td>PGPASSFILE</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-PASSFILE">passfile</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGSSLCERT</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLCERT">sslcert</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGSSLKEY</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLKEY">sslkey</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGSSLROOTCERT</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLROOTCERT">sslrootcert</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGCLIENTENCODING</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-CLIENT-ENCODING">client_encoding</a> connection parameter.</td>
+</tr>
+<tr>
+<td>PGTZ</td>
+<td>Sets the default time zone. (Equivalent to SET timezone TO ....)</td>
+</tr>
+<tr>
+<td>PGOPTIONS</td>
+<td>Behaves the same as the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS">options</a> connection parameter.</td>
 </tr>
 </tbody>
 </table>
