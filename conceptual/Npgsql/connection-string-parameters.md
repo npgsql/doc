@@ -74,6 +74,7 @@ For more information, [see the dedicated docs page](failover-and-load-balancing.
 Parameter                 | Description                                                                | Default
 ------------------------- | -------------------------------------------------------------------------- | -------------------------
 Target Session Attributes | Determines the preferred PostgreSQL target server type.                    | PGTARGETSESSIONATTRS, Any
+Load Balance Hosts        | Enables balancing between multiple hosts by round-robin.                   | false
 Host Recheck Seconds      | Controls for how long the host's cached state will be considered as valid. | 10
 
 ## Misc
