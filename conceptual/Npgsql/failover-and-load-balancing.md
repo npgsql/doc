@@ -15,7 +15,7 @@ Host=server1,server2;Username=test;Password=test
 
 Different ports may be specified per host with the standard colon syntax: `Host=server1:5432,server2:5433`.
 
-By default, Npgsql will try to connect to the servers in the order in which they were specified. In the above example, `server2` is only used if a connection could not be established to `server1`. This allows a simple *failover* setup, where Npgsql always connects to a single, primary server, but can connect to a standby in case the primary is down; this improves the reliability of your application. In this configuration, we sometimes refer to the standby as "warm" - it is always up and in sync with the primary, but is only used when the primary is down.
+By default, Npgsql will try to connect to the servers in the order in which they were specified. In the above example, `server2` is only used if a connection could not be established to `server1` (or if the connection pool for `server1` has been exhausted). This allows a simple *failover* setup, where Npgsql always connects to a single, primary server, but can connect to a standby in case the primary is down; this improves the reliability of your application. In this configuration, we sometimes refer to the standby as "warm" - it is always up and in sync with the primary, but is only used when the primary is down.
 
 ## Specifying server types
 
