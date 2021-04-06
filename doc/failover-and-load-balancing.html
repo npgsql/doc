@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Multiple Hosts, Failover and Load Balancing | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Multiple Hosts, Failover and Load Balancing | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="multiple-hosts-failover-and-load-balancing">Multiple Hosts, Failover and Load Balancing</h1>
+
+<div class="NOTE"><h5>Note</h5><p>The functionality described in this page is being introduced in Npgsql 6.0, which is still in preview.</p>
+</div>
+<p>Npgsql 6.0 allows specifying multiple hosts in your application&#39;s connection strings, allowing various failover and load balancing scenarios to be supported without the need for any additional component such as pgpool or pgbouncer. This typically requires setting up replication between your multiple PostgreSQL servers, to keep your standby servers in sync with your primary; this can be done with the help of PostgreSQL logical or physical replication, and some cloud providers provide this out of the box. Whatever the solution chosen, it&#39;s important to understand that this is out of Npgsql&#39;s scope - Npgsql is only responsible for connecting to your multiple servers as described below, and not for keeping your servers in sync.</p>
+<h2 id="multiple-servers-and-failover">Multiple servers and failover</h2>
+<p>Npgsql allows you to specify multiple servers in your connection string as follows:</p>
+<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test
+</code></pre><p>Different ports may be specified per host with the standard colon syntax: <code>Host=server1:5432,server2:5433</code>.</p>
+<p>By default, Npgsql will try to connect to the servers in the order in which they were specified. In the above example, <code>server2</code> is only used if a connection could not be established to <code>server1</code> (or if the connection pool for <code>server1</code> has been exhausted). This allows a simple <em>failover</em> setup, where Npgsql always connects to a single, primary server, but can connect to a standby in case the primary is down; this improves the reliability of your application. In this configuration, we sometimes refer to the standby as &quot;warm&quot; - it is always up and in sync with the primary, but is only used when the primary is down.</p>
+<h2 id="specifying-server-types">Specifying server types</h2>
+<p>In the failover scenario above, if <code>server1</code> goes down, <code>server2</code> is typically promoted to being the new primary. However, <code>server1</code> may be brought back up and assume the role of standby - the servers will have switched roles - and Npgsql will continue to connect to <code>server1</code> whenever possible. To mitigate this, you can tell Npgsql which server type you wish to connect to:</p>
+<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary
+</code></pre><p>This will make Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
+<h2 id="load-distribution">Load distribution</h2>
+<p>Going a step further, it&#39;s important to understand that applications don&#39;t always make use of the database in the same way; some parts of your application only need to read data from the database, while others need to write data. If you have one or more standby servers, Npgsql can dispatch read-only queries to those servers to reduce the load on your primary. While the failover setup described above improves <em>reliability</em>, this technique improves <em>performance</em>.</p>
+<p>The <code>Target Session Attributes</code> parameter can be used to ask for a connection to a Standby, whenever possible:</p>
+<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby
+</code></pre><p>With <code>prefer-standby</code>, as long as at least one standby server is available, Npgsql will return connections to that server. However, if all standby servers are down (or have exhausted their <code>Max Pool Size</code> setting), a connection to the primary will be returned instead.</p>
+<p><code>Target Session Attributes</code> supports the following options:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>any</td>
+<td>Any successful connection is acceptable.</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>Server must not be in hot standby mode (<code>pg_is_in_recovery()</code> must return false).</td>
+</tr>
+<tr>
+<td>standby</td>
+<td>Server must be in hot standby mode (<code>pg_is_in_recovery()</code> must return true).</td>
+</tr>
+<tr>
+<td>prefer-primary</td>
+<td>First try to find a primary server, but if none of the listed hosts is a primary server, try again in <code>Any</code> mode.</td>
+</tr>
+<tr>
+<td>prefer-standby</td>
+<td>First try to find a standby server, but if none of the listed hosts is a standby server, try again in <code>Any</code> mode.</td>
+</tr>
+<tr>
+<td>read-write</td>
+<td>Session must accept read-write transactions by default (that is, the server must not be in hot standby mode and the <code>default_transaction_read_only</code> parameter must be off).</td>
+</tr>
+<tr>
+<td>read-only</td>
+<td>Session must not accept read-write transactions by default (the converse).</td>
+</tr>
+</tbody>
+</table>
+<p>Npgsql detects whether a server is a primary or a standby by occasionally querying <code>pg_is_in_recovery()</code>, and whether a server is read-write or read-only by querying <a href="TODO"><code>default_transaction_read_only</code></a> - this is consistent with how PostgreSQL&#39;s libpq implements <code>target_session_attributes</code>. Servers are queried just before a connection is returned from the pool; the query intervals can be controlled via the <code>Host Recheck Seconds</code> parameter (10 seconds by default). PostgreSQL 14 reports state changes automatically, so querying isn&#39;t needed (except when a host is done).</p>
+<div class="NOTE"><h5>Note</h5><p>If you choose to distribute load across multiple servers, make sure you understand what consistency guarantees are provided by PostgreSQL in your particular setup. In some cases, hot standbys lag behind their primary servers, and will therefore return slightly out-of-date results. This is usually OK, but if you require up-to-date results at all times, synchronous commit may provide a good solution (but has a performance cost).</p>
+</div>
+<h2 id="load-balancing">Load balancing</h2>
+<p>We have seen how to select servers based on the type of workload we want to execute. However, in the above examples, Npgsql still attempts to return connections based on the host order specified in the connection string; this concentrates load on a single primary and possibly a single secondary, and does balance load across multiple servers of the same type.</p>
+<p>You can specify <code>Load Balance Hosts=true</code> in the connection string to instruct Npgsql to load balance across all servers, by returning connections in round-robbin fashion:</p>
+<pre><code class="lang-text">Host=server1,server2,server3,server4,server5;Username=test;Password=test;Load Balance Hosts=true;Target Session Attributes=prefer-standby
+</code></pre><p>With this connection string, every time a connection is opened, Npgsql will start at a different point in the list. For example, in the 3rd connection attempt, Npgsql will first try to return a connection to <code>server3</code>; if that server is reachable and is a standby, it will be selected. This allows spreading your (typically read-only) application load across all available servers, and can greatly improve your scalability.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/failover-and-load-balancing.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2021 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

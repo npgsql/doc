@@ -81,7 +81,7 @@
 
 <p>To connect to a database, the application provides a connection string which specifies parameters such as the host, the username, the password, etc. Connection strings have the form <code>keyword1=value; keyword2=value;</code> and are case-insensitive. Values containing special characters (e.g. semicolons) can be double-quoted. For more information, <a href="https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-strings">see the official doc page on connection strings</a>.</p>
 <p>Below are the connection string parameters which Npgsql understands, as well as some standard PostgreSQL environment variables.</p>
-<h2 id="basic-connection">Basic Connection</h2>
+<h2 id="basic-connection">Basic connection</h2>
 <table>
 <thead>
 <tr>
@@ -93,7 +93,7 @@
 <tbody>
 <tr>
 <td>Host</td>
-<td>Specifies the host name of the machine on which the server is running. If the value begins with a slash, it is used as the directory for the Unix-domain socket (specifying a <code>Port</code> is still required).</td>
+<td>Specifies the host name - and optionally port - on which PostgreSQL is running. Multiple hosts may be specified, <a href="failover-and-load-balancing.html">see the docs for more info</a>. If the value begins with a slash, it is used as the directory for the Unix-domain socket (specifying a <code>Port</code> is still required).</td>
 <td><em>Required</em></td>
 </tr>
 <tr>
@@ -123,7 +123,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="security-and-encryption">Security and Encryption</h2>
+<h2 id="security-and-encryption">Security and encryption</h2>
 <table>
 <thead>
 <tr>
@@ -232,7 +232,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="timeouts-and-keepalive">Timeouts and Keepalive</h2>
+<h2 id="timeouts-and-keepalive">Timeouts and keepalive</h2>
 <table>
 <thead>
 <tr>
@@ -328,6 +328,34 @@
 <td>No Reset On Close</td>
 <td>Improves performance in some cases by not resetting the connection state when it is returned to the pool, at the cost of leaking state. Use only if benchmarking shows a performance improvement</td>
 <td>false</td>
+</tr>
+</tbody>
+</table>
+<h2 id="failover-and-load-balancing">Failover and load balancing</h2>
+<p>For more information, <a href="failover-and-load-balancing.html">see the dedicated docs page</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Target Session Attributes</td>
+<td>Determines the preferred PostgreSQL target server type.</td>
+<td>PGTARGETSESSIONATTRS, Any</td>
+</tr>
+<tr>
+<td>Load Balance Hosts</td>
+<td>Enables balancing between multiple hosts by round-robin.</td>
+<td>false</td>
+</tr>
+<tr>
+<td>Host Recheck Seconds</td>
+<td>Controls for how long the host&#39;s cached state will be considered as valid.</td>
+<td>10</td>
 </tr>
 </tbody>
 </table>
