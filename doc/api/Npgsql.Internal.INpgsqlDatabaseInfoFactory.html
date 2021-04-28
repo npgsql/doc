@@ -78,19 +78,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.INpgsqlDatabaseInfoFactory">
+            <article class="content wrap" id="_content" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory">
   
   
-  <h1 id="Npgsql_INpgsqlDatabaseInfoFactory" data-uid="Npgsql.INpgsqlDatabaseInfoFactory" class="text-break">Interface INpgsqlDatabaseInfoFactory
+  <h1 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory" class="text-break">Interface INpgsqlDatabaseInfoFactory
   </h1>
-  <div class="markdown level0 summary"><p>A factory which get generate instances of <a class="xref" href="Npgsql.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>, which describe a database
+  <div class="markdown level0 summary"><p>A factory which get generate instances of <a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>, which describe a database
 and the types it contains. When first connecting to a database, Npgsql will attempt to load information
 about it via this factory.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Internal.html">Npgsql.Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_INpgsqlDatabaseInfoFactory_syntax">Syntax</h5>
+  <h5 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface INpgsqlDatabaseInfoFactory</code></pre>
   </div>
@@ -98,20 +98,20 @@ about it via this factory.</p>
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_INpgsqlDatabaseInfoFactory_Load_Npgsql_NpgsqlConnection_Npgsql_Util_NpgsqlTimeout_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.INpgsqlDatabaseInfoFactory.Load(Npgsql.NpgsqlConnection%2CNpgsql.Util.NpgsqlTimeout%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector%2CNpgsql.Util.NpgsqlTimeout%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/INpgsqlDatabaseInfoFactory.cs/#L21">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L21">View Source</a>
   </span>
-  <a id="Npgsql_INpgsqlDatabaseInfoFactory_Load_" data-uid="Npgsql.INpgsqlDatabaseInfoFactory.Load*"></a>
-  <h4 id="Npgsql_INpgsqlDatabaseInfoFactory_Load_Npgsql_NpgsqlConnection_Npgsql_Util_NpgsqlTimeout_System_Boolean_" data-uid="Npgsql.INpgsqlDatabaseInfoFactory.Load(Npgsql.NpgsqlConnection,Npgsql.Util.NpgsqlTimeout,System.Boolean)">Load(NpgsqlConnection, NpgsqlTimeout, Boolean)</h4>
+  <a id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load*"></a>
+  <h4 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector,Npgsql.Util.NpgsqlTimeout,System.Boolean)">Load(NpgsqlConnector, NpgsqlTimeout, Boolean)</h4>
   <div class="markdown level1 summary"><p>Given a connection, loads all necessary information about the connected database, e.g. its types.
 A factory should only handle the exact database type it was meant for, and return null otherwise.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;NpgsqlDatabaseInfo&gt; Load(NpgsqlConnection conn, NpgsqlTimeout timeout, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;NpgsqlDatabaseInfo&gt; Load(NpgsqlConnector conn, NpgsqlTimeout timeout, bool async)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -124,7 +124,7 @@ A factory should only handle the exact database type it was meant for, and retur
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlConnector.html">NpgsqlConnector</a></td>
         <td><span class="parametername">conn</span></td>
         <td></td>
       </tr>
@@ -150,7 +150,7 @@ A factory should only handle the exact database type it was meant for, and retur
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Npgsql.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>&gt;</td>
         <td><p>An object describing the database to which <code data-dev-comment-type="paramref" class="paramref">conn</code> is connected, or null if the
 database isn&apos;t of the correct type and isn&apos;t handled by this factory.</p>
 </td>
@@ -165,10 +165,10 @@ database isn&apos;t of the correct type and isn&apos;t handled by this factory.<
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_INpgsqlDatabaseInfoFactory.md&amp;value=---%0Auid%3A%20Npgsql.INpgsqlDatabaseInfoFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/INpgsqlDatabaseInfoFactory.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L11" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -103,11 +103,12 @@
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Distance_DbFunctions_Geometry_Geometry_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Distance(DbFunctions%2CGeometry%2CGeometry%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L41">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L47">View Source</a>
   </span>
   <a id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Distance_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Distance*"></a>
   <h4 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Distance_DbFunctions_Geometry_Geometry_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Distance(DbFunctions,Geometry,Geometry,System.Boolean)">Distance(DbFunctions, Geometry, Geometry, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Returns the minimum distance between the origin geometry and another geometry g.</p>
+  <div class="markdown level1 summary"><p>Returns the minimum distance between the origin geometry and another geometry g.
+Translates to <code>ST_Distance</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -165,16 +166,85 @@
       </tr>
     </tbody>
   </table>
+  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Distance_DbFunctions_Geometry_Geometry_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://postgis.net/docs/ST_Distance.html">https://postgis.net/docs/ST_Distance.html</a>.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_DistanceKnn_DbFunctions_Geometry_Geometry_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.DistanceKnn(DbFunctions%2CGeometry%2CGeometry)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L60">View Source</a>
+  </span>
+  <a id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_DistanceKnn_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.DistanceKnn*"></a>
+  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_DistanceKnn_DbFunctions_Geometry_Geometry_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.DistanceKnn(DbFunctions,Geometry,Geometry)">DistanceKnn(DbFunctions, Geometry, Geometry)</h4>
+  <div class="markdown level1 summary"><p>Returns the 2D distance between two geometries. Used in the &quot;ORDER BY&quot; clause, provides index-assisted nearest-neighbor result
+sets. Translates to <code>&lt;-&gt;</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double DistanceKnn(this DbFunctions _, Geometry geometry, Geometry anotherGeometry)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DbFunctions</span></td>
+        <td><span class="parametername">_</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Geometry</span></td>
+        <td><span class="parametername">geometry</span></td>
+        <td><p>The origin geometry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Geometry</span></td>
+        <td><span class="parametername">anotherGeometry</span></td>
+        <td><p>The geometry from which to compute the distance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.double">Double</a></td>
+        <td><p>The 2D distance between the geometries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_DistanceKnn_DbFunctions_Geometry_Geometry__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://postgis.net/docs/ST_Distance.html">https://postgis.net/docs/ST_Distance.html</a>.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_IsWithinDistance_DbFunctions_Geometry_Geometry_System_Double_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.IsWithinDistance(DbFunctions%2CGeometry%2CGeometry%2CSystem.Double%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L30">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L33">View Source</a>
   </span>
   <a id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_IsWithinDistance_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.IsWithinDistance*"></a>
   <h4 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_IsWithinDistance_DbFunctions_Geometry_Geometry_System_Double_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.IsWithinDistance(DbFunctions,Geometry,Geometry,System.Double,System.Boolean)">IsWithinDistance(DbFunctions, Geometry, Geometry, Double, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Tests whether the distance from the origin geometry to another is less than or equal to a specified value.</p>
+  <div class="markdown level1 summary"><p>Tests whether the distance from the origin geometry to another is less than or equal to a specified value.
+Translates to <code>ST_DWithin</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -233,21 +303,25 @@
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
-        <td><p>True if the geometries are less than distance apart.</p>
+        <td><p><span class="xref">true</span> if the geometries are less than distance apart.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_IsWithinDistance_DbFunctions_Geometry_Geometry_System_Double_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://postgis.net/docs/ST_DWithin.html">https://postgis.net/docs/ST_DWithin.html</a>.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Transform__1_DbFunctions___0_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Transform%60%601(DbFunctions%2C%60%600%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L18">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG.NTS/Extensions/NpgsqlNetTopologySuiteDbFunctionsExtensions.cs/#L17">View Source</a>
   </span>
   <a id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Transform_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Transform*"></a>
   <h4 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Transform__1_DbFunctions___0_System_Int32_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Transform``1(DbFunctions,``0,System.Int32)">Transform&lt;TGeometry&gt;(DbFunctions, TGeometry, Int32)</h4>
-  <div class="markdown level1 summary"><p>Returns a new geometry with its coordinates transformed to a different spatial reference system.</p>
+  <div class="markdown level1 summary"><p>Returns a new geometry with its coordinates transformed to a different spatial reference system.
+Translates to <code>ST_Transform(geometry, srid)</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -313,8 +387,7 @@
     </tbody>
   </table>
   <h5 id="Microsoft_EntityFrameworkCore_NpgsqlNetTopologySuiteDbFunctionsExtensions_Transform__1_DbFunctions___0_System_Int32__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>The method call is translated to <code>ST_Transform(geometry, srid)</code>.</p>
-<p>See <a href="https://postgis.net/docs/ST_Transform.html">https://postgis.net/docs/ST_Transform.html</a>.</p>
+  <div class="markdown level1 remarks"><p>See <a href="https://postgis.net/docs/ST_Transform.html">https://postgis.net/docs/ST_Transform.html</a>.</p>
 </div>
 </article>
           </div>
