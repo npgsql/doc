@@ -94,12 +94,13 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">IAsyncDisposable</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_NpgsqlCopyTextReader_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlCopyTextReader : StreamReader, ICancelable, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlCopyTextReader : StreamReader, ICancelable, IDisposable, IAsyncDisposable</code></pre>
   </div>
   <h5 id="Npgsql_NpgsqlCopyTextReader_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-copy.html">https://www.postgresql.org/docs/current/static/sql-copy.html</a>.</p>
@@ -111,11 +112,11 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCopyTextReader_Cancel.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCopyTextReader.Cancel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L548">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L564">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlCopyTextReader_Cancel_" data-uid="Npgsql.NpgsqlCopyTextReader.Cancel*"></a>
   <h4 id="Npgsql_NpgsqlCopyTextReader_Cancel" data-uid="Npgsql.NpgsqlCopyTextReader.Cancel">Cancel()</h4>
-  <div class="markdown level1 summary"><p>Cancels and terminates an ongoing import.</p>
+  <div class="markdown level1 summary"><p>Cancels and terminates an ongoing export.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -127,11 +128,11 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCopyTextReader_CancelAsync.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCopyTextReader.CancelAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L554">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L570">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlCopyTextReader_CancelAsync_" data-uid="Npgsql.NpgsqlCopyTextReader.CancelAsync*"></a>
   <h4 id="Npgsql_NpgsqlCopyTextReader_CancelAsync" data-uid="Npgsql.NpgsqlCopyTextReader.CancelAsync">CancelAsync()</h4>
-  <div class="markdown level1 summary"><p>Cancels and terminates an ongoing import. Any data already written will be discarded.</p>
+  <div class="markdown level1 summary"><p>Asynchronously cancels and terminates an ongoing export.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -153,9 +154,42 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCopyTextReader_DisposeAsync.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCopyTextReader.DisposeAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L576">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlCopyTextReader_DisposeAsync_" data-uid="Npgsql.NpgsqlCopyTextReader.DisposeAsync*"></a>
+  <h4 id="Npgsql_NpgsqlCopyTextReader_DisposeAsync" data-uid="Npgsql.NpgsqlCopyTextReader.DisposeAsync">DisposeAsync()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <span class="xref">IDisposable</span>
+  </div>
+  <div>
+      <span class="xref">IAsyncDisposable</span>
   </div>
 </article>
           </div>
@@ -168,7 +202,7 @@
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCopyTextReader.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCopyTextReader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L537" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlRawCopyStream.cs/#L553" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
