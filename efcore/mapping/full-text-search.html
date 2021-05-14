@@ -118,10 +118,10 @@
 {
     modelBuilder.Entity&lt;Product&gt;()
         .HasGeneratedTsVectorColumn(
-            p =&gt; p.TsVector,
+            p =&gt; p.SearchVector,
             &quot;english&quot;,  // Text search config
             p =&gt; new { p.Name, p.Description })  // Included properties
-        .HasIndex(p =&gt; p.TsVector)
+        .HasIndex(p =&gt; p.SearchVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
 </code></pre></section>
