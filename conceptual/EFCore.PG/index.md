@@ -32,6 +32,7 @@ Below is a `.csproj` file for a console application that uses the Npgsql EF Core
 ```c#
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace ConsoleApp.PostgreSQL
 {
