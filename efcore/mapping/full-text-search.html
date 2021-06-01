@@ -8,7 +8,7 @@
     <title>Full Text Search | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Full Text Search | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -101,16 +101,16 @@
     public NpgsqlTsVector SearchVector { get; set; }
 }
 </code></pre><p>Setting up the column to be auto-updated depends on your PostgreSQL version. On PostgreSQL 12 and above, the column can be a simple <a href="../modeling/generated-properties.html#computed-columns-on-add-or-update">generated column</a>, and version 5.0.0 contains sugar for setting that up. In previous versions, you must manually set up database triggers that update the column instead.</p>
-<div class="tabGroup" id="tabgroup_YDY9L5wnLQ">
+<div class="tabGroup" id="tabgroup_bKs3zHtvcW">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ_pg12" role="tab" aria-controls="tabpanel_YDY9L5wnLQ_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
+<a href="#tabpanel_bKs3zHtvcW_pg12" role="tab" aria-controls="tabpanel_bKs3zHtvcW_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ_older" role="tab" aria-controls="tabpanel_YDY9L5wnLQ_older" data-tab="older" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bKs3zHtvcW_older" role="tab" aria-controls="tabpanel_bKs3zHtvcW_older" data-tab="older" tabindex="-1">Older Versions</a>
 </li>
 </ul>
-<section id="tabpanel_YDY9L5wnLQ_pg12" role="tabpanel" data-tab="pg12">
+<section id="tabpanel_bKs3zHtvcW_pg12" role="tabpanel" data-tab="pg12">
 <div class="NOTE"><h5>Note</h5><p>The below only works on PostgreSQL 12 and version 5.0.0 of the EF Core provider.</p>
 </div>
 <p>The following will set up a generated <code>tsvector</code> column, over which you can easily create an index:</p>
@@ -125,7 +125,7 @@
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
 </code></pre></section>
-<section id="tabpanel_YDY9L5wnLQ_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bKs3zHtvcW_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 <p>First, modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -164,21 +164,21 @@ var npgsql = context.Products
     .ToList();
 </code></pre><h3 id="method-2-expression-index">Method 2: Expression index</h3>
 <p>Version 5.0.0 of the provider includes sugar for defining the appropriate expression index; if you&#39;re using an older version, you&#39;ll have to define a raw SQL migration yourself.</p>
-<div class="tabGroup" id="tabgroup_YDY9L5wnLQ-1">
+<div class="tabGroup" id="tabgroup_bKs3zHtvcW-1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ-1_v5" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_v5" data-tab="v5" tabindex="0" aria-selected="true">Version 5.0.0</a>
+<a href="#tabpanel_bKs3zHtvcW-1_v5" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_v5" data-tab="v5" tabindex="0" aria-selected="true">Version 5.0.0</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_YDY9L5wnLQ-1_older" role="tab" aria-controls="tabpanel_YDY9L5wnLQ-1_older" data-tab="older" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bKs3zHtvcW-1_older" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_older" data-tab="older" tabindex="-1">Older Versions</a>
 </li>
 </ul>
-<section id="tabpanel_YDY9L5wnLQ-1_v5" role="tabpanel" data-tab="v5">
+<section id="tabpanel_bKs3zHtvcW-1_v5" role="tabpanel" data-tab="v5">
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;()
     .HasIndex(b =&gt; new { b.Title, b.Description })
     .IsTsVectorExpressionIndex(&quot;english&quot;);
 </code></pre></section>
-<section id="tabpanel_YDY9L5wnLQ-1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bKs3zHtvcW-1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 <p>Create a migration which will contain the index creation SQL (<code>dotnet ef migrations add ...</code>). At this point, open the generated migration with your editor and add the following:</p>
 <pre><code class="lang-c#">protected override void Up(MigrationBuilder migrationBuilder)
 {

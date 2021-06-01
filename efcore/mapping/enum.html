@@ -8,7 +8,7 @@
     <title>Enum Type Mapping | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Enum Type Mapping | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -83,20 +83,20 @@
 <p>However, the Npgsql provider also allows you to map your CLR enums to <a href="https://www.postgresql.org/docs/current/static/datatype-enum.html">database enum types</a>. This option, unique to PostgreSQL, provides the best of both worlds: the enum is internally stored in the database as a number (minimal storage), but is handled like a string (more usable, no need to remember numeric values) and has type safety.</p>
 <h2 id="creating-your-database-enum">Creating your database enum</h2>
 <p>First, you must specify the PostgreSQL enum type on your model, just like you would with tables, sequences or other databases objects:</p>
-<div class="tabGroup" id="tabgroup_vEXnu0+Id2">
+<div class="tabGroup" id="tabgroup_BCxPCA0u4t">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_vEXnu0+Id2_tabid-1" role="tab" aria-controls="tabpanel_vEXnu0+Id2_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 2.2+</a>
+<a href="#tabpanel_BCxPCA0u4t_tabid-1" role="tab" aria-controls="tabpanel_BCxPCA0u4t_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 2.2+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_vEXnu0+Id2_tabid-2" role="tab" aria-controls="tabpanel_vEXnu0+Id2_tabid-2" data-tab="tabid-2" tabindex="-1">Version 2.1</a>
+<a href="#tabpanel_BCxPCA0u4t_tabid-2" role="tab" aria-controls="tabpanel_BCxPCA0u4t_tabid-2" data-tab="tabid-2" tabindex="-1">Version 2.1</a>
 </li>
 </ul>
-<section id="tabpanel_vEXnu0+Id2_tabid-1" role="tabpanel" data-tab="tabid-1">
+<section id="tabpanel_BCxPCA0u4t_tabid-1" role="tabpanel" data-tab="tabid-1">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.HasPostgresEnum&lt;Mood&gt;();
 </code></pre></section>
-<section id="tabpanel_vEXnu0+Id2_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_BCxPCA0u4t_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.HasPostgresEnum(&quot;Mood&quot;, new[] { &quot;happy&quot;, &quot;sad&quot; });
 </code></pre></section>
