@@ -435,7 +435,7 @@ with freeing, releasing, or resetting its unmanaged resources asynchronously.</p
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_DropReplicationSlot_System_String_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.DropReplicationSlot(System.String%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L687">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L710">View Source</a>
   </span>
   <a id="Npgsql_Replication_ReplicationConnection_DropReplicationSlot_" data-uid="Npgsql.Replication.ReplicationConnection.DropReplicationSlot*"></a>
   <h4 id="Npgsql_Replication_ReplicationConnection_DropReplicationSlot_System_String_System_Boolean_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.DropReplicationSlot(System.String,System.Boolean,CancellationToken)">DropReplicationSlot(String, Boolean, CancellationToken)</h4>
@@ -601,7 +601,7 @@ inactive if it currently is active instead of the default behavior of raising an
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.SendStatusUpdate(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L584">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L607">View Source</a>
   </span>
   <a id="Npgsql_Replication_ReplicationConnection_SendStatusUpdate_" data-uid="Npgsql.Replication.ReplicationConnection.SendStatusUpdate*"></a>
   <h4 id="Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_" data-uid="Npgsql.Replication.ReplicationConnection.SendStatusUpdate(CancellationToken)">SendStatusUpdate(CancellationToken)</h4>
@@ -645,6 +645,53 @@ inactive if it currently is active instead of the default behavior of raising an
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_SetReplicationStatus_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.SetReplicationStatus(NpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Replication/ReplicationConnection.cs/#L596">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_ReplicationConnection_SetReplicationStatus_" data-uid="Npgsql.Replication.ReplicationConnection.SetReplicationStatus*"></a>
+  <h4 id="Npgsql_Replication_ReplicationConnection_SetReplicationStatus_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="Npgsql.Replication.ReplicationConnection.SetReplicationStatus(NpgsqlTypes.NpgsqlLogSequenceNumber)">SetReplicationStatus(NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Sets the current status of the replication as it is interpreted by the consuming client. The value supplied
+in <see paramref="lastAppliedAndFlushedLsn"></see> will be sent to the server via <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_LastAppliedLsn">LastAppliedLsn</a> and
+<a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_LastFlushedLsn">LastFlushedLsn</a> with the next status update.
+<p>
+A status update which will happen upon server request, upon expiration of <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_WalReceiverStatusInterval">WalReceiverStatusInterval</a>
+our upon an enforced status update via <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_">SendStatusUpdate(CancellationToken)</a>, whichever happens first.
+If you want the value you set here to be pushed to the server immediately (e. g. in synchronous replication scenarios),
+call <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_SendStatusUpdate_CancellationToken_">SendStatusUpdate(CancellationToken)</a> after calling this method.
+</p></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetReplicationStatus(NpgsqlLogSequenceNumber lastAppliedAndFlushedLsn)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">lastAppliedAndFlushedLsn</span></td>
+        <td><p>The location of the last WAL byte + 1 applied (e. g. processed or written to disk) and flushed to disk in the standby.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_Replication_ReplicationConnection_SetReplicationStatus_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This is a convenience method setting both <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_LastAppliedLsn">LastAppliedLsn</a> and <a class="xref" href="Npgsql.Replication.ReplicationConnection.html#Npgsql_Replication_ReplicationConnection_LastFlushedLsn">LastFlushedLsn</a> in one operation.
+You can use it if your application processes replication messages in  a way that doesn&apos;t care about the difference between
+writing a message and flushing it to a permanent storage medium.</p>
+</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_ReplicationConnection_Show_System_String_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.ReplicationConnection.Show(System.String%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
