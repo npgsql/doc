@@ -81,7 +81,7 @@
 
 <p>Some clients keep idle connections for long periods of time - this is especially frequent when waiting for PostgreSQL notifications.
 In this scenario, how can the client know the connection is still up, and hasn&#39;t been broken by a server or network outage?
-For this purpose, Npgsql has a keepalive feature, which makes it send periodic <code>SELECT NULL</code> queries.
+For this purpose, Npgsql has a keepalive feature, which makes it initiate periodic ping roundtrips.
 This feature is by default disabled, and must be enabled via the
 <a href="connection-string-parameters.html#timeouts-and-keepalive">Keepalive</a> connection string parameter, setting the number of seconds between each keepalive.</p>
 <p>When keepalive is enabled, Npgsql will emit an
@@ -90,7 +90,7 @@ event if the keepalive fails.</p>
 <p>Note that you should only turn this feature on if you need it. Unless you know you&#39;ll have long-lived idle connections, and that your
 backend (or network equipment) will interfere with these connections, it&#39;s better to leave this off.</p>
 <h2 id="tcp-keepalives">TCP Keepalives</h2>
-<p>The keepalive mechanism above is ideal for long-standing idle connections, but it cannot be used during query processing. With some PostgreSQL-like data warehouse products such as <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html">Amazon Redshift</a> or <a href="http://greenplum.org/">Greenplum</a>, it is not uncommon for a single SQL statement to take a long time to execute, and during that time it is not possible to send <code>SELECT NULL</code>. For these cases you may want to turn on <em>TCP keepalive</em>, which is quite different from the application-level keepalive described above. To better understand the different kinds of keepalives, see <a href="http://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html">this blog post</a>. As that article explains, TCP keepalive depends on networking stack support and might not always work, but it is your only option during query processing.</p>
+<p>The keepalive mechanism above is ideal for long-standing idle connections, but it cannot be used during query processing. With some PostgreSQL-like data warehouse products such as <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html">Amazon Redshift</a> or <a href="http://greenplum.org/">Greenplum</a>, it is not uncommon for a single SQL statement to take a long time to execute, and during that time it is not possible to send application-level pings. For these cases you may want to turn on <em>TCP keepalive</em>, which is quite different from the application-level keepalive described above. To better understand the different kinds of keepalives, see <a href="http://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html">this blog post</a>. As that article explains, TCP keepalive depends on networking stack support and might not always work, but it is your only option during query processing.</p>
 <p>On Linux, you turn keepalives simply by specifying <code>Tcp Keepalive=true</code> in your connection string. The default system-wide settings will be used (for interval, count...) - it is currently impossible to specify these at the application level. On Windows, you can also specify <code>Tcp Keepalive Time</code> and <code>Tcp Keepalive Interval</code> to tweak these settings.</p>
 </article>
           </div>
