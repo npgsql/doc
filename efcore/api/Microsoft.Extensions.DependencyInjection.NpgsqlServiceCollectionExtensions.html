@@ -104,7 +104,7 @@
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddEntityFrameworkNpgsql_IServiceCollection_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddEntityFrameworkNpgsql(IServiceCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlServiceCollectionExtensions.cs/#L55">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlServiceCollectionExtensions.cs/#L99">View Source</a>
   </span>
   <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddEntityFrameworkNpgsql_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddEntityFrameworkNpgsql*"></a>
   <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddEntityFrameworkNpgsql_IServiceCollection_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddEntityFrameworkNpgsql(IServiceCollection)">AddEntityFrameworkNpgsql(IServiceCollection)</h4>
@@ -159,6 +159,109 @@
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsql__1_IServiceCollection_System_String_System_Nullable_Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder___System_Nullable_Action_DbContextOptionsBuilder___.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsql%60%601(IServiceCollection%2CSystem.String%2CSystem.Nullable%7BAction%7BNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder%7D%7D%2CSystem.Nullable%7BAction%7BDbContextOptionsBuilder%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlServiceCollectionExtensions.cs/#L66">View Source</a>
+  </span>
+  <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsql_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsql*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsql__1_IServiceCollection_System_String_System_Nullable_Action_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_NpgsqlDbContextOptionsBuilder___System_Nullable_Action_DbContextOptionsBuilder___" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsql``1(IServiceCollection,System.String,System.Nullable{Action{Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder}},System.Nullable{Action{DbContextOptionsBuilder}})">AddNpgsql&lt;TContext&gt;(IServiceCollection, String, Nullable&lt;Action&lt;NpgsqlDbContextOptionsBuilder&gt;&gt;, Nullable&lt;Action&lt;DbContextOptionsBuilder&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>
+    Registers the given Entity Framework context as a service in the <see cref="!:IServiceCollection"></see>
+    and configures it to connect to a PostgreSQL database.
+</p>
+<p>
+    Use this method when using dependency injection in your application, such as with ASP.NET Core.
+    For applications that don&apos;t use dependency injection, consider creating <see cref="!:DbContext"></see>
+    instances directly with its constructor. The <see cref="!:DbContext.OnConfiguring"></see> method can then be
+    overridden to configure the SQL Server provider and connection string.
+</p>
+<p>
+    To configure the <see cref="!:DbContextOptions&lt;TContext>"></see> for the context, either override the
+<see cref="!:DbContext.OnConfiguring"></see> method in your derived context, or supply
+an optional action to configure the <see cref="!:DbContextOptions"></see> for the context.
+</p>
+<p>
+    For more information on how to use this method, see the Entity Framework Core documentation at <a href="https://aka.ms/efdocs">https://aka.ms/efdocs</a>.
+    For more information on using dependency injection, see <a href="https://go.microsoft.com/fwlink/?LinkId=526890">https://go.microsoft.com/fwlink/?LinkId=526890</a>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddNpgsql&lt;TContext&gt;(this IServiceCollection serviceCollection, string connectionString, Action&lt;NpgsqlDbContextOptionsBuilder&gt;? npgsqlOptionsAction = null, Action&lt;DbContextOptionsBuilder&gt;? optionsAction = null)
+    where TContext : DbContext</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td><p>The <see cref="!:IServiceCollection"></see> to add services to. </p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td><p>The connection string of the database to connect to. </p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">Action</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder.html">NpgsqlDbContextOptionsBuilder</a>&gt;&gt;</td>
+        <td><span class="parametername">npgsqlOptionsAction</span></td>
+        <td><p>An optional action to allow additional SQL Server specific configuration. </p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">Action</span>&lt;<span class="xref">DbContextOptionsBuilder</span>&gt;&gt;</td>
+        <td><span class="parametername">optionsAction</span></td>
+        <td><p>An optional action to configure the <see cref="!:DbContextOptions"></see> for the context. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><p>The same service collection so that multiple calls can be chained. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TContext</span></td>
+        <td><p>The type of context to be registered. </p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -170,7 +273,7 @@
                     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlServiceCollectionExtensions.cs/#L36" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/NpgsqlServiceCollectionExtensions.cs/#L37" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
