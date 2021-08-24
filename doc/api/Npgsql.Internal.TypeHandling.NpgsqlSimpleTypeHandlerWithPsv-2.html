@@ -132,6 +132,9 @@ from calls to <see cref="!:DbDataReader.GetProviderSpecificValue"></see>.</p>
       <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_">NpgsqlTypeHandler&lt;TDefault&gt;.CreateRangeHandler(PostgresType)</a>
     </div>
     <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_CreateMultirangeHandler_Npgsql_PostgresTypes_PostgresMultirangeType_">NpgsqlTypeHandler&lt;TDefault&gt;.CreateMultirangeHandler(PostgresMultirangeType)</a>
+    </div>
+    <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_PostgresType">NpgsqlTypeHandler.PostgresType</a>
     </div>
     <div>
@@ -209,7 +212,7 @@ Type handlers can support additional types by implementing <a class="xref" href=
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ArrayHandler CreateArrayHandler(PostgresArrayType arrayBackendType, ArrayNullabilityMode arrayNullabilityMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public override ArrayHandler CreateArrayHandler(PostgresArrayType pgArrayType, ArrayNullabilityMode arrayNullabilityMode)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -223,7 +226,7 @@ Type handlers can support additional types by implementing <a class="xref" href=
     <tbody>
       <tr>
         <td><a class="xref" href="Npgsql.PostgresTypes.PostgresArrayType.html">PostgresArrayType</a></td>
-        <td><span class="parametername">arrayBackendType</span></td>
+        <td><span class="parametername">pgArrayType</span></td>
         <td></td>
       </tr>
       <tr>

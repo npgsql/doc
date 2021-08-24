@@ -83,7 +83,7 @@
   
   <h1 id="Npgsql_Internal_TypeHandlers_RangeHandler_2" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`2" class="text-break">Class RangeHandler&lt;TElement1, TElement2&gt;
   </h1>
-  <div class="markdown level0 summary"><p>Type handler for PostgreSQL range types</p>
+  <div class="markdown level0 summary"><p>Type handler for PostgreSQL range types.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -119,6 +119,9 @@
     </div>
     <div>
       <a class="xref" href="Npgsql.Internal.TypeHandlers.RangeHandler-1.html#Npgsql_Internal_TypeHandlers_RangeHandler_1_Write_NpgsqlTypes_NpgsqlRange__0__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_">RangeHandler&lt;TElement1&gt;.Write(NpgsqlRange&lt;TElement1&gt;, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler-1.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_1_CreateMultirangeHandler_Npgsql_PostgresTypes_PostgresMultirangeType_">NpgsqlTypeHandler&lt;NpgsqlRange&lt;TElement1&gt;&gt;.CreateMultirangeHandler(PostgresMultirangeType)</a>
     </div>
     <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html#Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_PostgresType">NpgsqlTypeHandler.PostgresType</a>
@@ -168,12 +171,12 @@
     <tbody>
       <tr>
         <td><span class="parametername">TElement1</span></td>
-        <td><p>the main range subtype</p>
+        <td><p>The main range subtype.</p>
 </td>
       </tr>
       <tr>
         <td><span class="parametername">TElement2</span></td>
-        <td><p>an alternative range subtype</p>
+        <td><p>An alternative range subtype.</p>
 </td>
       </tr>
     </tbody>
@@ -197,7 +200,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RangeHandler(PostgresType rangePostgresType, NpgsqlTypeHandler elementHandler)</code></pre>
+    <pre><code class="lang-csharp hljs">public RangeHandler(PostgresType rangePostgresType, NpgsqlTypeHandler subtypeHandler)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -216,7 +219,7 @@
       </tr>
       <tr>
         <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></td>
-        <td><span class="parametername">elementHandler</span></td>
+        <td><span class="parametername">subtypeHandler</span></td>
         <td></td>
       </tr>
     </tbody>
