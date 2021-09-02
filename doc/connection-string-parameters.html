@@ -188,6 +188,11 @@
 <td>When enabled, PostgreSQL error and notice details are included on <a class="xref" href="api/Npgsql.PostgresException.html#Npgsql_PostgresException_Detail">PostgresException.Detail</a> and <a class="xref" href="api/Npgsql.PostgresNotice.html#Npgsql_PostgresNotice_Detail">PostgresNotice.Detail</a>. These can contain sensitive data.</td>
 <td>false</td>
 </tr>
+<tr>
+<td>Log Parameters</td>
+<td>When enabled, parameter values are logged when commands are executed.</td>
+<td>false</td>
+</tr>
 </tbody>
 </table>
 <h2 id="pooling">Pooling</h2>
@@ -259,23 +264,23 @@
 </tr>
 <tr>
 <td>Cancellation Timeout</td>
-<td>The time to wait (in milliseconds) while trying to read a response for a cancellation request for a timed out or cancelled query, before terminating the attempt and generating an error. -1 skips the wait, 0 means infinite wait. Added in 5.0.</td>
+<td>The time to wait (in milliseconds) while trying to read a response for a cancellation request for a timed out or cancelled query, before terminating the attempt and generating an error. -1 skips the wait, 0 means infinite wait. Introduced in 5.0.</td>
 <td>2000</td>
 </tr>
 <tr>
 <td>Keepalive</td>
 <td>The number of seconds of connection inactivity before Npgsql sends a keepalive query.</td>
-<td>disabled</td>
+<td>0 (disabled)</td>
 </tr>
 <tr>
 <td>Tcp Keepalive</td>
 <td>Whether to use TCP keepalive with system defaults if overrides isn&#39;t specified.</td>
-<td>disabled</td>
+<td>false</td>
 </tr>
 <tr>
 <td>Tcp Keepalive Time</td>
 <td>The number of milliseconds of connection inactivity before a TCP keepalive query is sent. Use of this option is discouraged, use KeepAlive instead if possible. Supported only on Windows.</td>
-<td>disabled</td>
+<td>0 (disabled)</td>
 </tr>
 <tr>
 <td>Tcp Keepalive Interval</td>
@@ -400,6 +405,11 @@
 <td>PGCLIENTENCODING</td>
 </tr>
 <tr>
+<td>Encoding</td>
+<td>Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data.</td>
+<td>UTF8</td>
+</tr>
+<tr>
 <td>Timezone</td>
 <td>Gets or sets the session timezone.</td>
 <td>PGTZ</td>
@@ -410,9 +420,19 @@
 <td>template1</td>
 </tr>
 <tr>
+<td>EF Admin Database</td>
+<td>The database admin to specify when creating and dropping a database in Entity Framework.</td>
+<td>template1</td>
+</tr>
+<tr>
 <td>Load Table Composites</td>
 <td>Load table composite type definitions, and not just free-standing composite types.</td>
 <td>false</td>
+</tr>
+<tr>
+<td>Array Nullability Mode</td>
+<td>Configure the way arrays of value types are returned when requested as object instances. Possible values are: Never (arrays of value types are always returned as non-nullable arrays), Always (arrays of value types are always returned as nullable arrays) and PerInstance (the type of array that gets returned is determined at runtime).</td>
+<td>Never</td>
 </tr>
 </tbody>
 </table>
