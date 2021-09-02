@@ -79,13 +79,6 @@ Target Session Attributes | Determines the preferred PostgreSQL target server ty
 Load Balance Hosts        | Enables balancing between multiple hosts by round-robin.                   | false
 Host Recheck Seconds      | Controls for how long the host's cached state will be considered as valid. | 10
 
-## Multiplexing
-
-Parameter                                      | Description                                                                                                  | Default
----------------------------------------------- | -----------------------------------------------------------------------------------------------------------  | -------------------------
-Multiplexing                                   | Enables multiplexing, which allows more efficient use of connections. Introduced in 5.0.                     | false
-Write Coalescing Buffer Threshold Bytes        | Determines the maximum number of outgoing bytes to buffer before flushing to the network. Introduced in 5.0. | 1000
-
 ## Misc
 
 Parameter                | Description                                                                                          | Default
@@ -100,7 +93,7 @@ Timezone                 | Gets or sets the session timezone.                   
 EF Template Database     | The database template to specify when creating a database in Entity Framework.                       | template1
 EF Admin Database        | The database admin to specify when creating and dropping a database in Entity Framework.             | template1
 Load Table Composites    | Load table composite type definitions, and not just free-standing composite types.                   | false
-ArrayNullabilityMode     | Configure the way arrays of value types are returned when requested as object instances. Possible values are: Never (arrays of value types are always returned as non-nullable arrays), Always (arrays of value types are always returned as nullable arrays) and PerInstance (the type of array that gets returned is determined at runtime).             | Never
+Array Nullability Mode   | Configure the way arrays of value types are returned when requested as object instances. Possible values are: Never (arrays of value types are always returned as non-nullable arrays), Always (arrays of value types are always returned as nullable arrays) and PerInstance (the type of array that gets returned is determined at runtime).             | Never
 
 ## Compatibility
 
