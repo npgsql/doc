@@ -97,7 +97,6 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;TElement&gt;&gt;</div>
-    <div><a class="xref" href="Npgsql.Internal.TypeHandlers.IRangeHandler.html">IRangeHandler</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -142,7 +141,7 @@
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RangeHandler&lt;TElement&gt; : NpgsqlTypeHandler&lt;NpgsqlRange&lt;TElement&gt;&gt;, INpgsqlTypeHandler&lt;NpgsqlRange&lt;TElement&gt;&gt;, IRangeHandler</code></pre>
+    <pre><code class="lang-csharp hljs">public class RangeHandler&lt;TElement&gt; : NpgsqlTypeHandler&lt;NpgsqlRange&lt;TElement&gt;&gt;, INpgsqlTypeHandler&lt;NpgsqlRange&lt;TElement&gt;&gt;</code></pre>
   </div>
   <h5 class="typeParameters">Type Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,7 +172,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.%23ctor(Npgsql.PostgresTypes.PostgresType%2CNpgsql.Internal.TypeHandling.NpgsqlTypeHandler)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L46">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L31">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.#ctor*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.#ctor(Npgsql.PostgresTypes.PostgresType,Npgsql.Internal.TypeHandling.NpgsqlTypeHandler)">RangeHandler(PostgresType, NpgsqlTypeHandler)</h4>
@@ -205,81 +204,6 @@ Use it at your own risk.</p>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_Type___.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.%23ctor(Npgsql.PostgresTypes.PostgresType%2CNpgsql.Internal.TypeHandling.NpgsqlTypeHandler%2CType%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L50">View Source</a>
-  </span>
-  <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.#ctor*"></a>
-  <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1__ctor_Npgsql_PostgresTypes_PostgresType_Npgsql_Internal_TypeHandling_NpgsqlTypeHandler_Type___" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.#ctor(Npgsql.PostgresTypes.PostgresType,Npgsql.Internal.TypeHandling.NpgsqlTypeHandler,Type[])">RangeHandler(PostgresType, NpgsqlTypeHandler, Type[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected RangeHandler(PostgresType rangePostgresType, NpgsqlTypeHandler subtypeHandler, Type[] supportedSubtypeClrTypes)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.PostgresTypes.PostgresType.html">PostgresType</a></td>
-        <td><span class="parametername">rangePostgresType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></td>
-        <td><span class="parametername">subtypeHandler</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Type</span>[]</td>
-        <td><span class="parametername">supportedSubtypeClrTypes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_SupportedRangeClrTypes.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.SupportedRangeClrTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L43">View Source</a>
-  </span>
-  <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_SupportedRangeClrTypes_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.SupportedRangeClrTypes*"></a>
-  <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_SupportedRangeClrTypes" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.SupportedRangeClrTypes">SupportedRangeClrTypes</h4>
-  <div class="markdown level1 summary"><p>Exposes the range CLR types supported by this handler.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Type[] SupportedRangeClrTypes { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Type</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   <span class="small pull-right mobile-hide">
@@ -287,7 +211,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_Npgsql_ArrayNullabilityMode_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType%2CNpgsql.ArrayNullabilityMode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L58">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L36">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateArrayHandler_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.CreateArrayHandler*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateArrayHandler_Npgsql_PostgresTypes_PostgresArrayType_Npgsql_ArrayNullabilityMode_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.CreateArrayHandler(Npgsql.PostgresTypes.PostgresArrayType,Npgsql.ArrayNullabilityMode)">CreateArrayHandler(PostgresArrayType, ArrayNullabilityMode)</h4>
@@ -296,7 +220,7 @@ Use it at your own risk.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ArrayHandler CreateArrayHandler(PostgresArrayType pgArrayType, ArrayNullabilityMode arrayNullabilityMode)</code></pre>
+    <pre><code class="lang-csharp hljs">public override NpgsqlTypeHandler CreateArrayHandler(PostgresArrayType pgArrayType, ArrayNullabilityMode arrayNullabilityMode)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -330,7 +254,7 @@ Use it at your own risk.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.Internal.TypeHandlers.ArrayHandler.html">ArrayHandler</a></td>
+        <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -342,7 +266,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L65">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L43">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateRangeHandler_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.CreateRangeHandler*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_CreateRangeHandler_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.CreateRangeHandler(Npgsql.PostgresTypes.PostgresType)">CreateRangeHandler(PostgresType)</h4>
@@ -351,7 +275,7 @@ Use it at your own risk.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IRangeHandler CreateRangeHandler(PostgresType pgRangeType)</code></pre>
+    <pre><code class="lang-csharp hljs">public override NpgsqlTypeHandler CreateRangeHandler(PostgresType pgRangeType)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -380,7 +304,7 @@ Use it at your own risk.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.Internal.TypeHandlers.IRangeHandler.html">IRangeHandler</a></td>
+        <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -392,7 +316,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L71">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L49">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_Read_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
@@ -463,7 +387,7 @@ using either sync or async I/O.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_ValidateAndGetLength_NpgsqlTypes_NpgsqlRange__0__Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.ValidateAndGetLength(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsql.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L99">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L77">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_ValidateAndGetLength_NpgsqlTypes_NpgsqlRange__0__Npgsql_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.ValidateAndGetLength(NpgsqlTypes.NpgsqlRange{`0},Npgsql.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(NpgsqlRange&lt;TElement&gt;, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -523,7 +447,7 @@ using either sync or async I/O.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1_Write_NpgsqlTypes_NpgsqlRange__0__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601.Write(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L132">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L110">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_RangeHandler_1_Write_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_RangeHandler_1_Write_NpgsqlTypes_NpgsqlRange__0__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.RangeHandler`1.Write(NpgsqlTypes.NpgsqlRange{`0},Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(NpgsqlRange&lt;TElement&gt;, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
@@ -597,9 +521,6 @@ using either sync or async I/O.</p>
   <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
   </div>
-  <div>
-      <a class="xref" href="Npgsql.Internal.TypeHandlers.IRangeHandler.html">IRangeHandler</a>
-  </div>
 </article>
           </div>
           
@@ -611,7 +532,7 @@ using either sync or async I/O.</p>
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_RangeHandler_1.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.RangeHandler%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L35" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/RangeHandler.cs/#L23" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
