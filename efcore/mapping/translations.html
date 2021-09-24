@@ -87,151 +87,213 @@
 <tr>
 <th>.NET</th>
 <th>SQL</th>
-<th>Added in</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>bytes[i]</td>
 <td>get_byte(bytes, i)</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>bytes.Contains(value)</td>
 <td>position(value IN bytes) &gt; 0</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>bytes.Length</td>
 <td>length(@bytes)</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>bytes1.SequenceEqual(bytes2)</td>
 <td>@bytes = @second</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 </tbody>
 </table>
 <h2 id="date-and-time-functions">Date and time functions</h2>
+<div class="NOTE"><h5>Note</h5><p>Since version 6.0, many of the below DateTime translations are also supported on DateTimeOffset.</p>
+</div>
 <table>
 <thead>
 <tr>
 <th>.NET</th>
 <th>SQL</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>DateTime.Now</td>
+<td>DateTime.UtcNow (6.0+)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()</a></td>
+<td>See 6.0 release notes</td>
 </tr>
 <tr>
-<td>DateTime.Today</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, now())</a></td>
+<td>DateTime.Now (6.0+)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()::timestamp</a></td>
+<td>See 6.0 release notes</td>
 </tr>
 <tr>
-<td>DateTime.UtcNow</td>
+<td>DateTime.Today (6.0+)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, now()::timestamp)</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.UtcNow (legacy)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now() AT TIME ZONE &#39;UTC&#39;</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Now (legacy)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Today (legacy)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, now())</a></td>
+<td>See 6.0 release notes</td>
 </tr>
 <tr>
 <td>dateTime.AddDays(1)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 days&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.AddHours(value)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 hours&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.AddMinutes(1)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 minutes&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.AddMonths(1)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 months&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.AddSeconds(1)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 seconds&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.AddYears(1)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 years&#39;</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Date</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, dateTime)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Day</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;day&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.DayOfWeek</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;dow&#39;, dateTime))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.DayOfYear</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;doy&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Hour</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;hour&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Minute</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;minute&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Month</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;month&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Second</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;second&#39;, dateTime)::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime.Year</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;year&#39;, dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.ToUniversalTime</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-datetime.html#id-1.5.7.13.18.7">dateTime::timestamptz</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTime.ToLocalTime</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-datetime.html#id-1.5.7.13.18.7">dateTime::timestamp</a></td>
+<td>Added in 6.0</td>
 </tr>
 <tr>
 <td>timeSpan.Days</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;day&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>timeSpan.Hours</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;hour&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>timeSpan.Minutes</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;minute&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>timeSpan.Seconds</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;second&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>timeSpan.Milliseconds</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;millisecond&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>timeSpan.Milliseconds</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;millisecond&#39;, timeSpan))::INT</a></td>
+<td></td>
 </tr>
 <tr>
 <td>dateTime1 - dateTime2</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime1 - dateTime2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>new DateTime(year, month, day)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_date(year, month, day)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>new DateTime(y, m, d, h, m, s)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_timestamp(y, m, d, h, m, s)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>new DateTime(y, m, d, h, m, s, kind)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_timestamp or make_timestamptz</a>, based on <code>king</code></td>
+<td>Added in 6.0</td>
 </tr>
 </tbody>
 </table>
+<div class="NOTE"><h5>Note</h5><p>See also Npgsql&#39;s <a href="/efcore/mapping/nodatime.html">NodaTime support</a>.</p>
+</div>
 <h2 id="network-functions">Network functions</h2>
 <table>
 <thead>
@@ -468,14 +530,14 @@
 <tr>
 <th>.NET</th>
 <th>SQL</th>
-<th>Added in</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>EF.Functions.Collate(operand, collation)</td>
 <td>operand COLLATE collation</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>EF.Functions.Like(matchExpression, pattern)</td>
@@ -535,7 +597,7 @@
 <tr>
 <td>stringValue.FirstOrDefault()</td>
 <td>substr(stringValue, 1, 1)</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>stringValue.IndexOf(value)</td>
@@ -545,7 +607,7 @@
 <tr>
 <td>stringValue.LastOrDefault()</td>
 <td>substr(stringValue, length(stringValue), 1)</td>
-<td>EF Core 5.0</td>
+<td>Added in 5.0</td>
 </tr>
 <tr>
 <td>stringValue.Length</td>

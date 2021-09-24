@@ -103,14 +103,213 @@
 }
 
 var recentPosts = context.Posts.Where(p =&gt; p.CreationTime &gt; someInstant);
-</code></pre><h2 id="member-translation">Member translation</h2>
-<p>Currently, the EF Core provider knows how to translate the most date/time component members of NodaTime&#39;s <code>LocalDateTime</code>, <code>LocalDate</code>, <code>LocalTime</code> and <code>Period</code>. In other words, the following query will be translated to SQL and evaluated server-side:</p>
+</code></pre><h2 id="operation-translation">Operation translation</h2>
+<p>The provider knows how to translate many members and methods on mapped NodaTime types. For example, the following query will be translated to SQL and evaluated server-side:</p>
 <pre><code class="lang-c#">// Get all events which occurred on a Monday
 var mondayEvents = context.Events.Where(p =&gt; p.SomeDate.DayOfWeek == DayOfWeek.Monday);
 
 // Get all events which occurred before the year 2000
 var oldEvents = context.Events.Where(p =&gt; p.SomeDate.Year &lt; 2000);
-</code></pre><p>Note that the plugin is far from covering all translations. If a translation you need is missing, please open an issue to request for it.</p>
+</code></pre><p>Following is the list of supported NodaTime translations; If an operation you need is missing, please open an issue to request for it.</p>
+<div class="NOTE"><h5>Note</h5><p>Most translations on ZonedDateTime and Period were added in version 6.0</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SystemClock.Instance.GetCurrentInstant()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Date</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, timestamp)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Second (also LocalTime, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;second&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Minute (also LocalTime, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;minute&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Hour (also LocalTime, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;hour&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Day, (also LocalDate, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;day&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Month (also LocalDate, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;month&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.Year (also LocalDate, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;year&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.DayOfWeek (also LocalDate, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;dow&#39;, timestamp))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>LocalDateTime.DayOfYear (also LocalDate, ZonedDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;doy&#39;, timestamp)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Seconds (also Duration)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;second&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Minutes (also Duration)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;minute&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Hours (also Duration)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;hour&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Days (also Duration)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;day&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Months</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;month&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.Years</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;year&#39;, interval)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromSeconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(seconds =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromMinutes</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(minutes =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromHours</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(hours =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromDays</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(days =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromWeeks</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(weeks =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromMonths</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(months =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Period.FromYears</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_interval(years =&gt; int)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Duration.TotalMilliseconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 0.001</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Duration.TotalSeconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Duration.TotalMinutes</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 60.0</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Duration.TotalDays</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 86400.0</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Duration.TotalHours</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 3600.0</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ZonedDateTime.LocalDateTime</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">timestamptz AT TIME ZONE &#39;UTC&#39;</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Length</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">upper(daterange) - lower(daterange)</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Start</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">lower(daterange)</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.End</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">upper(daterange) - INTERVAL &#39;P1D&#39;</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Contains(LocalDate)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">daterange @&gt; date</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Contains(DateInterval)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">daterange @&gt; daterange</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Intersection(DateInterval)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">daterange * daterange</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>DateInterval.Union(DateInterval)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html">daterange + daterange</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>Instant.InUtc</td>
+<td>No PG operation (.NET-side conversion from Instant to ZonedDateTime only)</td>
+<td>Added in 6.0</td>
+</tr>
+</tbody>
+</table>
+<p>In addition to the above, most arithmetic operators are also translated (e.g. LocalDate + Period).</p>
 </article>
           </div>
           
