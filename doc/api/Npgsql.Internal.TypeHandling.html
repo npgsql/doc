@@ -87,6 +87,12 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
   </h3>
+      <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlLengthCache.html">NpgsqlLengthCache</a></h4>
+      <section><p>An array of cached lengths for the parameters sending process.</p>
+<p>When sending parameters, lengths need to be calculated more than once (once for Bind, once for
+an array, once for the string within that array). This cache optimized that. Lengths are added
+to the cache, and then retrieved at the same order.</p>
+</section>
       <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlSimpleTypeHandler-1.html">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</a></h4>
       <section><p>Base class for all simple type handlers, which read and write short, non-arbitrary lengthed
 values to PostgreSQL. Provides a simpler API to implement when compared to <a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a> -
