@@ -38,12 +38,12 @@ Versions prior to 6.0 supported the following `SSL Mode` values:
 SSL Mode    | Eavesdropping protection | Man-in-the-middle protection | Statement
 ----------- | ------------------------ | ---------------------------- | ---------
 Disable     | No                       | No                           | I don't care about security, and I don't want to pay the overhead of encryption.
-Prefer      | Maybe                    | No                           | I don't care about encryption, but I wish to pay the overhead of encryption if the server supports it.
-Require     | Yes                      | No                           | I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it's the one I specify.
+Prefer      | Maybe                    | Maybe                        | I don't care about encryption, but I wish to pay the overhead of encryption if the server supports it.
+Require     | Yes                      | Yes                          | I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it's the one I specify.
 
 The default mode prior was 6.0 is `Disable`.
 
-To disable certificate validation when using `Require`, set `Trust Server Certificate` to true; this allows connecting to servers with e.g. self-signed certificates.
+To disable certificate validation when using `Require`, set `Trust Server Certificate` to true; this allows connecting to servers with e.g. self-signed certificates, while requiring encryption.
 
 ### Advanced server certificate validation
 
