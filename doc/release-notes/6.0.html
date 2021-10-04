@@ -97,7 +97,7 @@
 <li>A compatibility switch enables opting out of the new behavior, to maintain backwards compatibility.</li>
 </ul>
 <h3 id="raw-sql-mode-and-new-batching-api">Raw SQL mode and new batching API</h3>
-<p>It is now possible to use PostgreSQL positional parameters, allowing Npgsql to skip rewriting your SQL and send it directly to PostgreSQL (<a href="https://github.com/npgsql/npgsql/pull/3852">#3852</a>):</p>
+<p>It is now possible to use PostgreSQL positional parameters, allowing Npgsql to skip rewriting your SQL and send it directly to PostgreSQL (<a href="https://github.com/npgsql/npgsql/issues/1042">#1042</a>):</p>
 <pre><code class="lang-sql">SELECT * FROM blogs WHERE b.name = @p; -- Before Npgsql 6.0
 SELECT * FROM blogs WHERE b.name = $1; -- Npgsql 6.0
 </code></pre><p>This is more efficient, is safer (since Npgsql doesn&#39;t have to parse SQL), and aligns your SQL with the actual PostgreSQL SQL. Note that named parameters are still supported for backwards compatibility.</p>
