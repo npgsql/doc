@@ -25,7 +25,7 @@ Client Certificate           | Location of a client certificate to be sent to th
 Client Certificate Key       | Location of a client key for a client certificate to be sent to the server.                                                                 | PGSSLKEY
 Root Certificate             | Location of a CA certificate used to validate the server certificate.                                                                       | PGSSLROOTCERT
 Check Certificate Revocation | Whether to check the certificate revocation list during authentication.                                                                     | true in 6.0, false previously
-Integrated Security          | Whether to use integrated security to log in (GSS/SSPI), currently supported on Windows only. [See docs for more info](security.md).        | false
+Integrated Security          | Whether to use integrated security to log in (GSS/SSPI). [See docs for more info](security.md).                                             | false
 Persist Security Info        | Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state. Introduced in 3.1. | false
 Kerberos Service Name        | The Kerberos service name to be used for authentication. [See docs for more info](security.md).                                             | postgres
 Include Realm                | The Kerberos realm to be used for authentication. [See docs for more info](security.md).
