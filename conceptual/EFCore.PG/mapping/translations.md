@@ -144,7 +144,7 @@ stringValue.PadLeft(length, char)                             | lpad(stringValue
 stringValue.PadRight(length)                                  | rpad(stringValue, length)
 stringValue.PadRight(length, char)                            | rpad(stringValue, length, char)
 stringValue.Replace(oldValue, newValue)                       | replace(stringValue, oldValue, newValue)
-stringValue.StartsWith(value)                                 | stringValue LIKE value \|\| '%'
+stringValue.StartsWith(value)                                 | starts_with(stringValue, value)
 stringValue.Substring(startIndex, length)                     | substr(stringValue, startIndex + 1, @length)
 stringValue.ToLower()                                         | lower(stringValue)
 stringValue.ToUpper()                                         | upper(stringValue)
