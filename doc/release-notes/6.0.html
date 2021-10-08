@@ -89,12 +89,18 @@
 </code></pre><p>This will make Npgsql load balance connections across 5 different servers, in round-robbin fashion; connections to read-only standby servers is preferred in order to offload as much read-only load from the primary server, but if only the primary server is up it will still be used.</p>
 <p>The multiple hosts feature is highly configurable, <a href="/doc/failover-and-load-balancing.html">see the full documentation for more details</a>.</p>
 <h3 id="timestamp-rationalization-and-improvements">Timestamp rationalization and improvements</h3>
-<p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. This involves breaking changes, although a compatibility flag can be used to opt out and revert to the previous behavior.</p>
+<p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. In particular, the &quot;UTC everywhere&quot; pattern is much better supported via the PostgreSQL <code>timestamp with time zone</code> type, which is the recommended way to handle timestamps.</p>
 <ul>
 <li>UTC timestamps have been cleanly separated from non-UTC timestamps, aligning with the PostgreSQL types. The former are represented by <code>timestamp with time zone</code> and DateTime with Kind UTC, the latter by <code>timestamp without time zone</code> and DateTime with Kind Local or Unspecified. It is recommended to use UTC timestamps where possible.</li>
 <li>Npgsql no longer performs any implicit timezone conversions when reading or writing any timestamp value - the value in the database is what you get, and the machine timezone no longer plays any role when reading/writing values.</li>
 <li>Npgsql no longer supports date/time representations which cannot be fully round-tripped to the database. If it can&#39;t be fully stored as-is, you can&#39;t write it.</li>
 <li>A compatibility switch enables opting out of the new behavior, to maintain backwards compatibility.</li>
+</ul>
+<p>This change introduces significant breaking changes (see below), although a compatibility flag can be used to opt out and revert to the previous behavior.</p>
+<p>Other date/time improvements include:</p>
+<ul>
+<li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a> (<a href="https://github.com/npgsql/npgsql/issues/3616">#3616</a>).</li>
+<li>PostgreSQL <code>daterange</code> is now mapped to NodaTime <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>).</li>
 </ul>
 <h3 id="raw-sql-mode-and-new-batching-api">Raw SQL mode and new batching API</h3>
 <p>It is now possible to use PostgreSQL positional parameters, allowing Npgsql to skip rewriting your SQL and send it directly to PostgreSQL (<a href="https://github.com/npgsql/npgsql/issues/1042">#1042</a>):</p>
@@ -116,7 +122,6 @@ var reader = await batch.ExecuteReaderAsync();
 <p>To learn more about positional parameters and batching, <a href="https://www.roji.org/parameters-batching-and-sql-rewriting">see this blog post</a>.</p>
 <h3 id="other-new-features">Other new features</h3>
 <ul>
-<li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a> (<a href="https://github.com/npgsql/npgsql/issues/3616">#3616</a>).</li>
 <li>Full support for the upcoming PostgreSQL <a href="https://www.postgresql.org/docs/14/rangetypes.html">multirange type</a>, mapped to arrays of <code>NpgsqlRange&lt;T&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3868">#3868</a>).</li>
 <li>PostgreSQL <code>decimal</code> can now be mapped to .NET <a href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a> (<a href="https://github.com/npgsql/npgsql/issues/3665">#3665</a>).</li>
 <li>Bulk import/export now includes a fully asynchronous API (<a href="https://github.com/npgsql/npgsql/issues/3309">#3309</a>).</li>
@@ -128,7 +133,13 @@ var reader = await batch.ExecuteReaderAsync();
 <h3 id="major-changes-to-timestamp-mapping">Major changes to timestamp mapping</h3>
 <div class="NOTE"><h5>Note</h5><p>It is possible to opt out of these changes to maintain backwards compatibility, see below.</p>
 </div>
-<p>Note: The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
+<h4 id="quick-summary">Quick summary</h4>
+<ul>
+<li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
+<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code></li>
+</ul>
+<h4 id="detailed-notes">Detailed notes</h4>
+<p>The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
 <ul>
 <li>UTC DateTime is now strictly mapped to <code>timestamptz</code>, while Local/Unspecified DateTime is now strictly mapped to <code>timestamp</code>.<ul>
 <li>DateTime with Kind=UTC are now written as PostgreSQL <code>timestamptz</code>; previously, DateTime was always written as <code>timestamp</code>.</li>
@@ -148,11 +159,7 @@ var reader = await batch.ExecuteReaderAsync();
 </ul>
 <div class="NOTE"><h5>Note</h5><p>In most cases, storing UTC timestamps is the recommended practice. If this is what you&#39;re doing, it&#39;s strongly recommended to migrate all relevant columns from <code>timestamp</code> columns to <code>timestamptz</code>. See below for how to do this.</p>
 </div>
-<h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
-<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>:</p>
-<p>To revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
-</code></pre><h4 id="migrating-columns-from-timestamp-to-timestamptz">Migrating columns from timestamp to timestamptz</h4>
+<h4 id="migrating-columns-from-timestamp-to-timestamptz">Migrating columns from timestamp to timestamptz</h4>
 <p>Migrating <code>timestamp</code> columns to <code>timestamptz</code> is a simple procedure, but care must be taken, depending on the current contents of your column.</p>
 <p>As a starting point, let&#39;s assume your existing <code>timestamp</code> column has the timestamp <code>2020-01-01 12:00:00</code>:</p>
 <pre><code class="lang-sql">SELECT &quot;created_on&quot;, pg_typeof(&quot;created_on&quot;) AS type FROM &quot;Blogs&quot;;
@@ -166,13 +173,16 @@ var reader = await batch.ExecuteReaderAsync();
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
  2020-01-01 12:00:00+02 | timestamp with time zone
-</code></pre><p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, with only the column type changing. To do this, set <code>TimeZone</code> to <code>UTC</code> before executing the <code>ALTER TABLE</code>:</p>
+</code></pre><p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, changing only the column type. To do this, set <code>TimeZone</code> to <code>UTC</code> before executing the <code>ALTER TABLE</code>:</p>
 <pre><code class="lang-sql">SET TimeZone=&#39;UTC&#39;;
 ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 </code></pre><p>This will ensure that no time zone conversions will be applied when converting the columns:</p>
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
  2020-01-01 14:00:00+02 | timestamp with time zone
+</code></pre><h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
+<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre><h3 id="nodatime-daterange-is-mapped-to-dateinterval-by-default">NodaTime: daterange is mapped to DateInterval by default</h3>
 <p>When using NodaTime, reading a PostgreSQL <code>daterange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> instead of <code>NpgsqlRange&lt;LocalDateTime&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>). It is still possible to read the latter by invoking <code>reader.GetFieldValue&lt;NpgsqlRange&lt;LocalDateTime&gt;&gt;</code>.</p>
 <h3 id="npgsqllegacypostgis-has-been-removed">Npgsql.LegacyPostgis has been removed</h3>

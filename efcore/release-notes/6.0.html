@@ -83,24 +83,25 @@
 <p>Npgsql 6.0 brings some major breaking changes and is not a simple in-place upgrade. Carefully read the breaking change notes below and upgrade with care.</p>
 <h2 id="new-features">New features</h2>
 <h3 id="timestamp-rationalization-and-improvements">Timestamp rationalization and improvements</h3>
-<p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. This involves breaking changes, although a compatibility flag can be used to opt out and revert to the previous behavior.</p>
+<p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. In particular, the &quot;UTC everywhere&quot; pattern is much better supported via the PostgreSQL <code>timestamp with time zone</code> type, which is the recommended way to handle timestamps.</p>
 <ul>
 <li>UTC timestamps have been cleanly separated from non-UTC timestamps, aligning with the PostgreSQL types. The former are represented by <code>timestamp with time zone</code> and DateTime with Kind UTC, the latter by <code>timestamp without time zone</code> and DateTime with Kind Local or Unspecified. It is recommended to use UTC timestamps where possible.</li>
 <li>Npgsql no longer performs any implicit timezone conversions when reading or writing any timestamp value - the value in the database is what you get, and the machine timezone no longer plays any role when reading/writing values.</li>
 <li>Npgsql no longer supports date/time representations which cannot be fully round-tripped to the database. If it can&#39;t be fully stored as-is, you can&#39;t write it.</li>
 <li>A compatibility switch enables opting out of the new behavior, to maintain backwards compatibility.</li>
 </ul>
+<p>This change introduces significant breaking changes (see below), although a compatibility flag can be used to opt out and revert to the previous behavior.</p>
 <p>Other date/time improvements include:</p>
 <ul>
 <li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a>.</li>
 <li>Most <a href="https://docs.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a> members and methods are now translated.</li>
 <li>Many NodaTime translations have been added for <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a>, <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a>, <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> and others.</li>
-<li>PostgreSQL <code>daterange</code> is now mapped to NodaTime <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a>, and most methods on it are translated.</li>
+<li>PostgreSQL <code>daterange</code> is now mapped to NodaTime <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a>, and most methods on it are translated (<a href="https://github.com/npgsql/efcore.pg/issues/1998">#1998</a>).</li>
 </ul>
 <h3 id="other-new-features">Other new features</h3>
 <ul>
 <li>The provider is now fully annotated for nullable reference types.</li>
-<li>Support for the PostgreSQL <a href="https://www.postgresql.org/docs/current/ltree.html">ltree</a> type, which represents labels of data stored in a hierarchical tree-like structure.</li>
+<li>Support for the PostgreSQL <a href="https://www.postgresql.org/docs/current/ltree.html">ltree</a> type, which represents labels of data stored in a hierarchical tree-like structure. Requires PostgreSQL 13 and above.</li>
 <li>Multiple spatial translations have been added for NetTopologySuite (<a href="https://github.com/npgsql/efcore.pg/issues/1827">DistanceKnn, &lt;-&gt;</a>, <a href="https://github.com/npgsql/efcore.pg/issues/1917">ST_Force2D</a>, <a href="https://github.com/npgsql/efcore.pg/issues/1638">ST_Distance and ST_DWithin with spheriod</a>).</li>
 </ul>
 <p>The full list of issues for this release is <a href="https://github.com/npgsql/efcore.pg/milestone/34?closed=1">available here</a>.</p>
@@ -108,10 +109,16 @@
 <h3 id="major-changes-to-timestamp-mapping">Major changes to timestamp mapping</h3>
 <div class="NOTE"><h5>Note</h5><p>It is possible to opt out of these changes to maintain backwards compatibility, see below.</p>
 </div>
-<p>Note: The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
+<h4 id="quick-summary">Quick summary</h4>
 <ul>
-<li>DateTime properties now map to <code>timestamptz</code> by default, instead of to <code>timestamp</code>; although storing UTC timestamps is the recommended pattern, this will cause the first migration to change your column type.<ul>
-<li>If the intention is to store point-in-time or UTC timestamps, it&#39;s recommended to allow the migration to occur (see migration notes below).</li>
+<li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
+<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code></li>
+</ul>
+<h4 id="detailed-notes">Detailed notes</h4>
+<p>The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
+<ul>
+<li>DateTime properties now map to <code>timestamptz</code> by default, instead of to <code>timestamp</code>; this follows the recommended practice of storing UTC timestamps by default, but will cause the first migration to change your column type.<ul>
+<li>If the intention is to store point-in-time or UTC timestamps, it&#39;s recommended to allow the migration to occur (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>).</li>
 <li>If the column really should store non-UTC timestamps (local or unspecified), <a href="https://docs.microsoft.com/ef/core/modeling/entity-properties#column-data-types">explicitly set the column type back to <code>timestamp</code></a>. This is usually discouraged, but can be a temporary solution before transitioning to <code>timestamptz</code>.</li>
 </ul>
 </li>
@@ -122,18 +129,14 @@
 <p>See the <a href="/doc/release-notes/5.0.html">Npgsql ADO.NET docs</a> for additional lower-level changes to timestamp handling.</p>
 <h4 id="nodatime-changes">NodaTime changes</h4>
 <ul>
-<li>Properties with type <a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> are now mapped to <code>timestamptz</code> columns, and not to <code>timestamp</code>, since they represent a universally agreed-upon point in time. Although storing UTC timestamps is the recommended pattern, this will cause the first migration to change your column type.<ul>
-<li>If the intention is to store point-in-time or UTC timestamps, it&#39;s recommended to allow the migration to occur (see migration notes below).</li>
+<li>Properties with type <a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> are now mapped to <code>timestamptz</code> columns, and not to <code>timestamp</code>, since they represent a universally agreed-upon point in time. This follows the recommended practice, but will cause the first migration to change your column type.<ul>
+<li>If the intention is to store point-in-time or UTC timestamps, it&#39;s recommended to allow the migration to occur (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>).</li>
 <li>If the column really should store non-UTC timestamps (local or unspecified), change the property&#39;s type to <a href="https://nodatime.org/3.0.x/api/NodaTime.LocalDateTime.html">LocalDateTime</a> instead; this will maintain the mapping to <code>timestamp</code>. This is usually discouraged, but can be a temporary solution before transitioning to <code>timestamptz</code>.</li>
 </ul>
 </li>
 <li>When reading <code>timestamptz</code> as <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a> or <a href="https://nodatime.org/3.0.x/api/NodaTime.OffsetDateTime.html">OffsetDateTime</a>, UTC values are always returned. Previously, local values based on the PostgreSQL <code>TimeZone</code> parameter were returned.</li>
 </ul>
-<h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
-<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>:</p>
-<p>To revert to the legacy timestamp behavior, add the following at the start of your application, before any EF Core operations are invoked:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
-</code></pre><h4 id="migrating-columns-from-timestamp-to-timestamptz">Migrating columns from timestamp to timestamptz</h4>
+<h4 id="migrating-columns-from-timestamp-to-timestamptz">Migrating columns from timestamp to timestamptz</h4>
 <p>As a result of the above changes, the first migration created after upgrading to 6.0 will alter the columns for all DateTime and Instant properties from <code>timestamp</code> to <code>timestamptz</code>. If these columns are meant to store point-in-time or UTC timestamps (the recommended practice), then it&#39;s best to let this migration proceed; but care must be taken.</p>
 <p>As a starting point, let&#39;s assume your existing <code>timestamp</code> column has the timestamp <code>2020-01-01 12:00:00</code>:</p>
 <pre><code class="lang-sql">SELECT &quot;CreatedOn&quot;, pg_typeof(&quot;CreatedOn&quot;) AS type FROM &quot;Blogs&quot;;
@@ -141,18 +144,21 @@
 <pre><code class="lang-output">      CreatedOn      |            type
 ---------------------+-----------------------------
  2020-01-01 12:00:00 | timestamp without time zone
-</code></pre><p>The migration generated by version 6.0 will cause the following SQL to be executed:</p>
+</code></pre><p>The migration generated by version 6.0 will cause the following SQL to be generated:</p>
 <pre><code class="lang-sql">ALTER TABLE &quot;Blogs&quot; ALTER COLUMN &quot;CreatedOn&quot; TYPE timestamp with time zone;
 </code></pre><p>When converting the <code>timestamp without time zone</code> column to <code>timestamp with time zone</code>, PostgreSQL will assume that existing values are local timestamps, and will convert them to UTC based on the <code>TimeZone</code> parameter. Performing the above query will result in something like:</p>
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
  2020-01-01 12:00:00+02 | timestamp with time zone
-</code></pre><p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, with only the column type changing. To do this, edit your migration and add the following to the top of your migration&#39;s Up and Down methods:</p>
+</code></pre><p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, changing only the column type. To do this, edit your migration and add the following to the top of your migration&#39;s Up and Down methods:</p>
 <pre><code class="lang-c#">migrationBuilder.Sql(&quot;SET TimeZone=&#39;UTC&#39;&quot;);
 </code></pre><p>This will ensure that no time zone conversions will be applied when converting the columns:</p>
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
  2020-01-01 14:00:00+02 | timestamp with time zone
+</code></pre><h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
+<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql or EF Core operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre><h3 id="nodatime-daterange-is-scaffolded-as-dateinterval-by-default">NodaTime: daterange is scaffolded as DateInterval by default</h3>
 <p>When using NodaTime, a PostgreSQL <code>daterange</code> column is scaffolded as a <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> property instead of a <code>NpgsqlRange&lt;LocalDateTime&gt;</code> property (<a href="https://github.com/npgsql/efcore.pg/issues/1998">#1998</a>).</p>
 <h3 id="value-converters-for-arraylist-properties-need-to-use-a-special-new-api">Value converters for array/list properties need to use a special new API</h3>
