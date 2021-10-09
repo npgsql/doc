@@ -183,6 +183,13 @@ ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 </code></pre><h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
 <p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
+</code></pre><h3 id="parameter-names-now-use-case-sensitive-matching">Parameter names now use case-sensitive matching</h3>
+<p>Parameter names used to be case-insensitive:</p>
+<pre><code class="lang-c#">using var command = new NpgsqlCommand(&quot;SELECT @foo&quot;, connection);
+command.Parameters.AddWithValue(&quot;FOO&quot;, 8);
+</code></pre><p>For performance reasons, matching is now insensitive, so parameter names must exactly match (<a href="https://github.com/npgsql/npgsql/issues/4027">#4027</a>).</p>
+<p>To revert to the legacy case-insensitive behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
 </code></pre><h3 id="nodatime-daterange-is-mapped-to-dateinterval-by-default">NodaTime: daterange is mapped to DateInterval by default</h3>
 <p>When using NodaTime, reading a PostgreSQL <code>daterange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> instead of <code>NpgsqlRange&lt;LocalDateTime&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>). It is still possible to read the latter by invoking <code>reader.GetFieldValue&lt;NpgsqlRange&lt;LocalDateTime&gt;&gt;</code>.</p>
 <h3 id="npgsqllegacypostgis-has-been-removed">Npgsql.LegacyPostgis has been removed</h3>
