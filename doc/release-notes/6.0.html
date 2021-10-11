@@ -192,6 +192,14 @@ command.Parameters.AddWithValue(&quot;FOO&quot;, 8);
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
 </code></pre><h3 id="nodatime-daterange-is-mapped-to-dateinterval-by-default">NodaTime: daterange is mapped to DateInterval by default</h3>
 <p>When using NodaTime, reading a PostgreSQL <code>daterange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> instead of <code>NpgsqlRange&lt;LocalDateTime&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>). It is still possible to read the latter by invoking <code>reader.GetFieldValue&lt;NpgsqlRange&lt;LocalDateTime&gt;&gt;</code>.</p>
+<h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
+<p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provider the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
+<p>Instead of the obsoleted types, use the following techniques:</p>
+<ul>
+<li>NodaTime can be used to interact with values which are out-of-range for the BCL types.</li>
+<li>To support values which are out-of-range for NodaTime, PostgreSQL timestamps can now be read/written as long, and dates can be read/written as int. These are the raw PostgreSQL representations, with no operations - they simply provide an &quot;escape hatch&quot; in case users need to interact with out-of-range values.</li>
+<li>For interval, a new <code>NpgsqlInterval</code> type has been introduced, which again contains the raw PostgreSQL data (months, days, time).</li>
+</ul>
 <h3 id="npgsqllegacypostgis-has-been-removed">Npgsql.LegacyPostgis has been removed</h3>
 <p>The Npgsql.LegacyPostgis plugin, which mapped legacy Npgsql types to PostGIS, has been removed and no longer ships (<a href="https://github.com/npgsql/npgsql/issues/3962">#3962</a>). Use <a href="/efcore/mapping/nts.html">Npgsql.NetTopologySuite</a> to work with PostGIS.</p>
 </article>

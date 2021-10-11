@@ -100,6 +100,7 @@
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<span class="xref">DateTime</span>&gt;</div>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler</a>&lt;<span class="xref">DateTime</span>&gt;</div>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlDate.html">NpgsqlDate</a>&gt;</div>
+    <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler</a>&lt;<a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -186,7 +187,7 @@
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DateHandler : NpgsqlSimpleTypeHandlerWithPsv&lt;DateTime, NpgsqlDate&gt;, INpgsqlTypeHandler&lt;DateTime&gt;, INpgsqlSimpleTypeHandler&lt;DateTime&gt;, INpgsqlSimpleTypeHandler&lt;NpgsqlDate&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class DateHandler : NpgsqlSimpleTypeHandlerWithPsv&lt;DateTime, NpgsqlDate&gt;, INpgsqlTypeHandler&lt;DateTime&gt;, INpgsqlSimpleTypeHandler&lt;DateTime&gt;, INpgsqlSimpleTypeHandler&lt;NpgsqlDate&gt;, INpgsqlSimpleTypeHandler&lt;int&gt;</code></pre>
   </div>
   <h5 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">https://www.postgresql.org/docs/current/static/datatype-datetime.html</a>.</p>
@@ -201,7 +202,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler__ctor_Npgsql_PostgresTypes_PostgresType_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.%23ctor(Npgsql.PostgresTypes.PostgresType%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L33">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L38">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler__ctor_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.#ctor*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler__ctor_Npgsql_PostgresTypes_PostgresType_System_Boolean_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.#ctor(Npgsql.PostgresTypes.PostgresType,System.Boolean)">DateHandler(PostgresType, Boolean)</h4>
@@ -241,7 +242,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L40">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L45">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Read_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, FieldDescription)</h4>
@@ -307,7 +308,7 @@ required.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ReadPsv_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ReadPsv(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L56">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L61">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ReadPsv_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ReadPsv*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ReadPsv_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ReadPsv(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">ReadPsv(NpgsqlReadBuffer, Int32, FieldDescription)</h4>
@@ -369,7 +370,7 @@ required.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_DateTime_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(DateTime%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L73">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L81">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_DateTime_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(DateTime,Npgsql.NpgsqlParameter)">ValidateAndGetLength(DateTime, NpgsqlParameter)</h4>
@@ -429,7 +430,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_NpgsqlTypes_NpgsqlDate_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(NpgsqlTypes.NpgsqlDate%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L76">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L84">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_NpgsqlTypes_NpgsqlDate_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(NpgsqlTypes.NpgsqlDate,Npgsql.NpgsqlParameter)">ValidateAndGetLength(NpgsqlDate, NpgsqlParameter)</h4>
@@ -486,10 +487,68 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlSimpleTypeHandlerWithPsv&lt;DateTime, NpgsqlTypes.NpgsqlDate&gt;.ValidateAndGetLength(NpgsqlTypes.NpgsqlDate, Npgsql.NpgsqlParameter)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_System_Int32_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(System.Int32%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L87">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_ValidateAndGetLength_System_Int32_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.ValidateAndGetLength(System.Int32,Npgsql.NpgsqlParameter)">ValidateAndGetLength(Int32, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
+written for PostgreSQL - if the value cannot be written for any reason, an exception should be thrown.
+Also returns the byte length needed to write the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ValidateAndGetLength(int value, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The number of bytes required to write the value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_DateTime_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(DateTime%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L79">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L90">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_DateTime_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(DateTime,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(DateTime, NpgsqlWriteBuffer, NpgsqlParameter)</h4>
@@ -538,7 +597,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_NpgsqlTypes_NpgsqlDate_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(NpgsqlTypes.NpgsqlDate%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L98">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L109">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_NpgsqlTypes_NpgsqlDate_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(NpgsqlTypes.NpgsqlDate,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(NpgsqlDate, NpgsqlWriteBuffer, NpgsqlParameter)</h4>
@@ -582,9 +641,118 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><span class="xref">Npgsql.Internal.TypeHandling.NpgsqlSimpleTypeHandlerWithPsv&lt;DateTime, NpgsqlTypes.NpgsqlDate&gt;.Write(NpgsqlTypes.NpgsqlDate, Npgsql.Internal.NpgsqlWriteBuffer, Npgsql.NpgsqlParameter)</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_System_Int32_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(System.Int32%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L120">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Write_System_Int32_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Write(System.Int32,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(Int32, NpgsqlWriteBuffer, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Writes a value to the provided buffer, with the assumption that there is enough space in the buffer
+(no I/O will occur). The Npgsql core will have taken care of that.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(int value, NpgsqlWriteBuffer buf, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer to which to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_System_Int32__Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Npgsql%23Internal%23TypeHandling%23INpgsqlSimpleTypeHandler%7BSystem%23Int32%7D%23Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L73">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_System_Int32__Read_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Npgsql#Internal#TypeHandling#INpgsqlSimpleTypeHandler{System#Int32}#Read*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler_Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_System_Int32__Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler.Npgsql#Internal#TypeHandling#INpgsqlSimpleTypeHandler{System#Int32}#Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">INpgsqlSimpleTypeHandler&lt;Int32&gt;.Read(NpgsqlReadBuffer, Int32, FieldDescription)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">int INpgsqlSimpleTypeHandler&lt;int&gt;.Read(NpgsqlReadBuffer buf, int len, FieldDescription fieldDescription)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">len</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler&lt;T&gt;</a>
   </div>
   <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler-1.html">INpgsqlSimpleTypeHandler&lt;T&gt;</a>
@@ -603,7 +771,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_DateTimeHandlers_DateHandler.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.DateTimeHandlers.DateHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L19" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/TypeHandlers/DateTimeHandlers/DateHandler.cs/#L23" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
