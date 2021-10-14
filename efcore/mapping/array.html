@@ -93,58 +93,105 @@
 }
 </code></pre><p>The provider will create <code>text[]</code> columns for the above two properties, and will properly detect changes in them - if you load an array and change one of its elements, calling <code>SaveChanges</code> will automatically update the row in the database accordingly.</p>
 <h2 id="operation-translation">Operation translation</h2>
-<p>The provider can also translate CLR array operations to the corresponding SQL operation; this allows you to efficiently work with arrays by evaluating operations in the database and avoids pulling all the data. The following table lists the range operations that currently get translated. If you run into a missing operation, please open an issue.</p>
+<p>The provider can also translate CLR array operations to the corresponding SQL operation; this allows you to efficiently work with arrays by evaluating operations in the database and avoids pulling all the data. The following table lists the range operations that currently get translated; all these translations work both for .NET arrays (<code>int[]</code>) and for generic Lists (<code>List&lt;int&gt;</code>). If you run into a missing operation, please open an issue.</p>
 <table>
 <thead>
 <tr>
 <th>.NET</th>
 <th>SQL</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>array[1]</td>
 <td><a href="https://www.postgresql.org/docs/current/static/arrays.html#ARRAYS-ACCESSING">array[1]</a></td>
+<td></td>
 </tr>
 <tr>
-<td>array.Length</td>
+<td>array.Length / list.Count</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE">cardinality(array)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>array1 == array2</td>
+<td><a href="https://www.postgresql.org/docs/current/static/arrays.html">array1 = array2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array1.SequenceEqual(array2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/arrays.html">array1 = array2</a></td>
+<td></td>
 </tr>
 <tr>
-<td>array1.Contains(element))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104">element = ANY(array)</a></td>
+<td>arrayNonColumn.Contains(element))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104">element = ANY(arrayNonColumn)</a></td>
+<td>Can use regular index</td>
+</tr>
+<tr>
+<td>arrayColumn.Contains(element)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE">arrayColumn @&gt; ARRAY[element]</a></td>
+<td>Can use GIN index</td>
+</tr>
+<tr>
+<td>array.Append(element)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_append(array, element)</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>array1.Concat(array2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_cat(array1, array2)</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>array.IndexOf(element)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_position(array, element) - 1</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>array.IndexOf(element, startIndex)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_position(array, element, startIndex + 1) - 1</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>String.Join(separator, array)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, separator, &#39;&#39;)</a></td>
+<td>Added in 6.0</td>
 </tr>
 <tr>
 <td>array.Any()</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE">cardinality(array) &gt; 0</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array1.Any(i =&gt; array2.Contains(i))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE">array1 &amp;&amp; array2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array1.All(i =&gt; array2.Contains(i))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE">array1 &lt;@ array2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array.Any(s =&gt; EF.Functions.Like(string, s))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16">string LIKE ANY (array)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array.Any(s =&gt; EF.Functions.ILike(string, s))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16">string ILIKE ANY (array)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array.All(s =&gt; EF.Functions.Like(string, s))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16">string LIKE ALL (array)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>array.All(s =&gt; EF.Functions.ILike(string, s))</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16">string ILIKE ALL (array)</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
