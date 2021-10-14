@@ -87,7 +87,12 @@
 <p>For example, consider the following connection string:</p>
 <pre><code class="lang-connection_string">Host=server1,server2,server3,server4,server5;Username=test;Password=test;Load Balance Hosts=true;Target Session Attributes=prefer-standby
 </code></pre><p>This will make Npgsql load balance connections across 5 different servers, in round-robbin fashion; connections to read-only standby servers is preferred in order to offload as much read-only load from the primary server, but if only the primary server is up it will still be used.</p>
-<p>The multiple hosts feature is highly configurable, <a href="/doc/failover-and-load-balancing.html">see the full documentation for more details</a>.</p>
+<p>The multiple hosts feature is highly configurable, <a href="../failover-and-load-balancing.html">see the full documentation for more details</a>.</p>
+<h3 id="tracing-with-opentelemetry">Tracing with OpenTelemetry</h3>
+<p>Npgsql can now report tracing data via OpenTelemetry; this can provide invaluable data on the queries your application is running, how long they&#39;re taking, and situate them in the larger context of your application. For example, you can visualize follow what percentage of your HTTP requests are spent waiting for your database query.</p>
+<p>The following is a sample timeline visualization of Npgsql-reported trace data, using <a href="https://zipkin.io/">Zipkin</a>:</p>
+<p><img src="/img/zipkin.png" alt="Zipkin UI Sample"></p>
+<p>See the full documentation in the <a href="../diagnostics.html">diagnostics page</a>.</p>
 <h3 id="timestamp-rationalization-and-improvements">Timestamp rationalization and improvements</h3>
 <p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. In particular, the &quot;UTC everywhere&quot; pattern is much better supported via the PostgreSQL <code>timestamp with time zone</code> type, which is the recommended way to handle timestamps. A detailed explanation is available in <a href="https://www.roji.org/postgresql-dotnet-timestamp-mapping">this blog post</a>, below is a summary of the main improvements.</p>
 <ul>

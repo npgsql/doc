@@ -79,13 +79,19 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="performance">Performance</h1>
 
+<h2 id="diagnostics">Diagnostics</h2>
+<p>To be able to improve performance, you first need to be able to see which queries are slow, and generally observe how your application is behaving. PostgreSQL provide some powerful features for knowing what&#39;s going on in the database; <a href="https://www.postgresql.org/docs/current/monitoring-stats.html">the statistics collector</a> is a good place to start, and in particular the <code>pg_stat_activity</code> table, which shows which queries are being executed at any given point.</p>
+<p>Beyond PostgreSQL, Npgsql provides its own set of diagnostics features for tracing, logging and producing metrics. Tracing and metrics are particularly useful for performance analysis - consider collecting this data continuously on your production platform. These features are documented in the dedicated <a href="diagnostics.html">diagnostics page</a>.</p>
 <h2 id="prepared-statements">Prepared Statements</h2>
 <p>One of the most important (and easy) ways to improve your application&#39;s performance is to prepare your commands. Even if you&#39;re not coding against ADO.NET directly (e.g. using Dapper or an O/RM), Npgsql has an automatic preparation feature which allows you to benefit from the performance gains associated with prepared statements. <a href="http://www.roji.org/prepared-statements-in-npgsql-3-2">See this blog post</a> and/or <a href="prepare.html">the documentation</a> for more details.</p>
 <h2 id="batchingpipelining">Batching/Pipelining</h2>
 <p>When you execute a command, Npgsql executes a roundtrip to the database. If you execute multiple commands (say, inserting 3 rows or performing multiple selects), you&#39;re executing multiple roundtrips; each command has to complete before the next command can start execution. Depending on your network latency, this can considerably degrade your application&#39;s performance.</p>
-<p>You can batch multiple SQL statements in a single command, executing them a single roundtrip:</p>
-<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;SELECT ...; SELECT ...&quot;))
-using (var reader = cmd.ExecuteReader())
+<p>You can batch multiple SQL statements in a single roundtrip:</p>
+<pre><code class="lang-c#">var batch = new NpgsqlBatch(connection)
+{
+    BatchCommands = { new(&quot;SELECT ...&quot;), new(&quot;SELECT ...&quot;) }
+};
+using (var reader = batch.ExecuteReader())
 {
     while (reader.Read()) {
         // Read first resultset
@@ -95,12 +101,7 @@ using (var reader = cmd.ExecuteReader())
         // Read second resultset
     }
 }
-</code></pre><h2 id="performance-counters">Performance Counters</h2>
-<p>Npgsql 3.2 includes support for <em>performance counters</em>, which provide visibility into connections and the connection pool - this helps you understand what your application is doing in real-time, whether there&#39;s a connection leak, etc. Npgsql counter support is very similar to <a href="https://msdn.microsoft.com/en-us/library/ms254503(v=vs.110).aspx">that of other ADO.NET providers, such as SqlClient</a>, it&#39;s recommended that your read that page first. The feature was removed in Npgsql 5.0.</p>
-<p>Using performance counters first involves setting them up on your Windows system. To do this you will need to install Npgsql&#39;s MSI, which is available on the <a href="https://github.com/npgsql/npgsql/releases">github releases page</a>. Note that GAC installation isn&#39;t necessary (or recommended). Once the counters are installed, fire up the Windows Performance Monitor and look for the category &quot;.NET Data Provider for PostgreSQL (Npgsql)&quot;.</p>
-<p>In addition, you will need to pass <code>Use Perf Counters=true</code> on your connection string. Once you start your Npgsql application with this addition, you should start seeing real-time data in the Performance Monitor.</p>
-<p>Performance counters are currently only available on Windows with .NET Framework (.NET Core doesn&#39;t include performance counters yet).</p>
-<h2 id="disable-enlisting-to-transactionscope">Disable enlisting to TransactionScope</h2>
+</code></pre><h2 id="disable-enlisting-to-transactionscope">Disable enlisting to TransactionScope</h2>
 <p>By default, Npgsql will enlist to ambient transactions. This occurs when a connection is opened while inside a <code>TransactionScope</code>, and can provide a powerful programming model for working with transactions. However, this involves checking whether an ambient transaction is in progress each time a (pooled) connection is open, an operation that takes more time than you&#39;d think. Scenarios where connections are very short-lived and open/close happens very frequently can benefit from removing this check - simply include <code>Enlist=false</code> in the connection string. Note that you can still enlist manually by calling <code>NpgsqlConnection.Enlist()</code>.</p>
 <h2 id="pooled-connection-reset">Pooled Connection Reset</h2>
 <p>When a pooled connection is closed, Npgsql will arrange for its state to be reset the next time it&#39;s used. This prevents leakage of state from one usage cycle of a physical connection to another one. For example, you may change certain PostgreSQL parameters (e.g. <code>statement_timeout</code>), and it&#39;s undesirable for this change to persist when the connection is closed.</p>
