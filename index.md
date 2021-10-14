@@ -11,7 +11,9 @@
 Npgsql is an open source ADO.NET Data Provider for PostgreSQL, it allows programs written in C#, Visual Basic, F# to access the PostgreSQL database server.
 It is implemented in 100% C# code, is free and is open source.
 
-In addition, providers have been written for Entity Framework Core and for Entity Framework 6.x.
+An Entity Framework Core provider is also available, and exposes some features unique to the PostgreSQL database to EF Core users.
+
+Finally, a legacy Entity Framework 6.x (non-Core) provider is also available, but is no longer being actively maintained.
 
 ## Getting Help
 
@@ -27,17 +29,17 @@ Npgsql is licensed under the [PostgreSQL License](https://github.com/npgsql/npgs
 Current active contributors to Npgsql are:
 
 * Shay Rojansky ([@roji](https://github.com/roji))
-* Yoh Deadfall ([@YohDeadfall](https://github.com/YohDeadfall))
-* Brar Piening ([@Brar](https://github.com/Brar))
 * Kazmin Nikita ([@vonzshik](https://github.com/vonzshik))
-* Emmanuel André ([@manandre](https://github.com/manandre))
-* Warcha ([@warcha](https://github.com/warcha))
+* Brar Piening ([@Brar](https://github.com/Brar))
+* Nino Floris ([@NinoFloris](https://github.com/NinoFloris/))
 
 Past contributors to Npgsql:
 
+* Emmanuel André
 * Jon Asher
 * Raif Atef
 * Josh Cooley
+* Yoh Deadfall
 * Austin Drenski
 * Francisco Figueiredo Jr.
 * Federico Di Gregorio
@@ -48,6 +50,7 @@ Past contributors to Npgsql:
 * Glen Parker
 * Hiroshi Saito
 * Kenji Uno
+* Warcha
 
 ## Thanks
 
