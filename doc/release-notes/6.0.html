@@ -89,7 +89,7 @@
 </code></pre><p>This will make Npgsql load balance connections across 5 different servers, in round-robbin fashion; connections to read-only standby servers is preferred in order to offload as much read-only load from the primary server, but if only the primary server is up it will still be used.</p>
 <p>The multiple hosts feature is highly configurable, <a href="../failover-and-load-balancing.html">see the full documentation for more details</a>.</p>
 <h3 id="tracing-with-opentelemetry">Tracing with OpenTelemetry</h3>
-<p>Npgsql can now report tracing data via OpenTelemetry; this can provide invaluable data on the queries your application is running, how long they&#39;re taking, and situate them in the larger context of your application. For example, you can visualize follow what percentage of your HTTP requests are spent waiting for your database query.</p>
+<p>Npgsql can now report tracing data via OpenTelemetry; this can provide invaluable data on the queries your application is running, how long they&#39;re taking, and situate them in the larger context of your application. For example, you can visualize what percentage of your HTTP requests are spent waiting for your database query.</p>
 <p>The following is a sample timeline visualization of Npgsql-reported trace data, using <a href="https://zipkin.io/">Zipkin</a>:</p>
 <p><img src="/img/zipkin.png" alt="Zipkin UI Sample"></p>
 <p>See the full documentation in the <a href="../diagnostics.html">diagnostics page</a>.</p>
