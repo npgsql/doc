@@ -163,6 +163,10 @@
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre><h3 id="nodatime-daterange-is-scaffolded-as-dateinterval-by-default">NodaTime: daterange is scaffolded as DateInterval by default</h3>
 <p>When using NodaTime, a PostgreSQL <code>daterange</code> column is scaffolded as a <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> property instead of a <code>NpgsqlRange&lt;LocalDateTime&gt;</code> property (<a href="https://github.com/npgsql/efcore.pg/issues/1998">#1998</a>).</p>
+<h3 id="datetime-minmax-values-are-now-converted-to-postgresql-infinity-values-by-default">Date/time min/max values are now converted to PostgreSQL infinity values by default</h3>
+<p>PostgreSQL has special <code>infinity</code> and <code>-infinity</code> values for timestamps and dates, which are later and earlier than other value. Npgsql has supported mapping <code>DateTime.MaxValue</code> and <code>MinValue</code> to these infinity values via an <code>Convert Infinity DateTime</code> connection string parameter, which was disabled by default. This behavior is now on by default, since <code>DateTime.MaxValue</code> and <code>MinValue</code> are very rarely used as actual timestamps/dates, and the <code>Convert Infinity DateTime</code> parameter has been removed. To disable infinity conversions, add the following at the start of your application:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+</code></pre><p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
 <h3 id="value-converters-for-arraylist-properties-need-to-use-a-special-new-api">Value converters for array/list properties need to use a special new API</h3>
 <p>Previously, it was possible to configure value converters for array/list properties with the general EF Core API:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
