@@ -10,21 +10,21 @@ jobs:
     steps:
     # Checkout all repos
     - name: Checkout repo
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v2.3.5
     - name: Checkout live branch
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v2.3.5
       with:
         ref: live
         path: live
     - name: Clear live docs repo
       run: rm -rf live/*
     - name: Checkout Npgsql
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v2.3.5
       with:
         repository: npgsql/npgsql
         path: Npgsql
     - name: Checkout EFCore.PG
-      uses: actions/checkout@v2.3.4
+      uses: actions/checkout@v2.3.5
       with:
         repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
         path: EFCore.PG
