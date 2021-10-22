@@ -303,6 +303,21 @@ var oldEvents = context.Events.Where(p =&gt; p.SomeDate.Year &lt; 2000);
 <td>Added in 6.0</td>
 </tr>
 <tr>
+<td>Instant.InZone(DateTimeZoneProviders.Tzdb[&quot;Europe/Berlin&quot;]).LocalDateTime</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">timestamptz AT TIME ZONE &#39;Europe/Berlin&#39;</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>LocalDateTime.InZoneLeniently(DateTimeZoneProviders.Tzdb[&quot;Europe/Berlin&quot;]).ToInstant()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">timestamp AT TIME ZONE &#39;Europe/Berlin&#39;</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>ZonedDateTime.ToInstant</td>
+<td>No PG operation (.NET-side conversion from ZonedDateTime to Instant only)</td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
 <td>Instant.InUtc</td>
 <td>No PG operation (.NET-side conversion from Instant to ZonedDateTime only)</td>
 <td>Added in 6.0</td>
