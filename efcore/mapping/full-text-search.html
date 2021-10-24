@@ -197,7 +197,7 @@ var npgsql = context.Products
         .Matches(&quot;Npgsql&quot;))
     .ToList();
 </code></pre><h2 id="operation-translation">Operation translation</h2>
-<p>Almost all PostgreSQL full text search functions can be called through LINQ queries. All supported EF Core LINQ methods are defined in extension classes in the <code>Microsoft.EntityFrameworkCore</code> namespace, so simply referencing the Npgsql provider will light up these methods. Here is a table showing translations for some operations; if an operation you need is missing, please open an issue to request for it.</p>
+<p>Almost all PostgreSQL full text search functions can be called through LINQ queries. All supported EF Core LINQ methods are defined in extension classes in the <code>Microsoft.EntityFrameworkCore</code> namespace, so simply referencing the Npgsql provider will light up these methods. The following table lists all supported operations; if an operation you need is missing, please open an issue to request for it.</p>
 <table>
 <thead>
 <tr>
@@ -207,40 +207,148 @@ var npgsql = context.Products
 </thead>
 <tbody>
 <tr>
+<td>EF.Functions.ToTsVector(string)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">to_tsvector(string)</a></td>
+</tr>
+<tr>
 <td>EF.Functions.ToTsVector(&quot;english&quot;, string)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">to_tsvector(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ToTsQuery(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery(string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ToTsQuery(&quot;english&quot;, string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.PlainToTsQuery(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">plainto_tsquery(string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.PlainToTsQuery(&quot;english&quot;, string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">plainto_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.PhraseToTsQuery(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">phraseto_tsquery(string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.PhraseToTsQuery(&quot;english&quot;, string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">phraseto_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.WebSearchToTsQuery(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">websearch_to_tsquery(string)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.WebSearchToTsQuery(&quot;english&quot;, string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">websearch_to_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+</tr>
+<tr>
+<td>EF.functions.ArrayToTsVector(new[] { &quot;a&quot;, &quot;b&quot; })</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">array_to_tsvector(ARRAY[&#39;a&#39;, &#39;b&#39;])</a></td>
 </tr>
 <tr>
 <td>NpgsqlTsVector.Parse(string))</td>
 <td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">CAST(string AS tsvector)</a></td>
 </tr>
 <tr>
-<td>EF.Functions.ToTsQuery(&quot;english&quot;, queryString))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery(&#39;english&#39;::regconfig, queryString)</a></td>
-</tr>
-<tr>
-<td>NpgsqlTsQuery.Parse(queryString))</td>
+<td>NpgsqlTsQuery.Parse(string))</td>
 <td><a href="https://www.postgresql.org/docs/current/static/sql-expressions.html#SQL-SYNTAX-TYPE-CASTS">CAST(queryString AS tsquery)</a></td>
 </tr>
 <tr>
-<td>tsVector.Matches(queryString))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">tsVector @@ queryString</a></td>
+<td>tsvector.Matches(string))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">tsvector @@ string</a></td>
 </tr>
 <tr>
-<td>tsVector.Matches(tsQuery)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">tsVector @@ tsQuery</a></td>
+<td>tsvector.Matches(tsquery)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">tsvector @@ tsquery</a></td>
 </tr>
 <tr>
-<td>tsQuery.ToNegative()</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">!! tsQuery</a></td>
+<td>tsquery1.And(tsquery2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">tsquery1 &amp;&amp; tsquery2</a></td>
 </tr>
 <tr>
-<td>tsVector.SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">setweight(tsVector, &#39;A&#39;)</a></td>
+<td>tsquery1.Or(tsquery2)</td>
+<td>[tsquery1</td>
 </tr>
 <tr>
-<td>tsVector.Rank(tsQuery)</td>
-<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING">ts_rank(tsVector, tsQuery)</a></td>
+<td>tsquery.ToNegative()</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">!! tsquery</a></td>
+</tr>
+<tr>
+<td>tsquery1.Contains(tsquery2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">tsquery1 @&gt; tsquery2</a></td>
+</tr>
+<tr>
+<td>tsquery1.IscontainedIn(tsquery2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">tsquery1 &lt;@ tsquery2</a></td>
+</tr>
+<tr>
+<td>tsquery.GetNodeCount()</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">numnode(query)</a></td>
+</tr>
+<tr>
+<td>tsquery.GetQueryTree()</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">querytree(query)</a></td>
+</tr>
+<tr>
+<td>tsquery.GetResultHeadline(&quot;a b c&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline(&#39;a b c&#39;, query)</a></td>
+</tr>
+<tr>
+<td>tsquery.GetResultHeadline(&quot;a b c&quot;, &quot;MinWords=1, MaxWords=2&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline(&#39;a b c&#39;, query, &#39;MinWords=1, MaxWords=2&#39;)</a></td>
+</tr>
+<tr>
+<td>tsquery.Rewrite(targetQuery, substituteQuery)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_rewrite(to_tsquery(tsquery), to_tsquery(targetQuery), to_tsquery(substituteQuery))</a></td>
+</tr>
+<tr>
+<td>tsquery1.ToPhrase(tsquery2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">tsquery_phrase(tsquery1, tsquery2)</a></td>
+</tr>
+<tr>
+<td>tsquery1.ToPhrase(tsquery2, distance)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">tsquery_phrase(tsquery1, tsquery2, distance)</a></td>
+</tr>
+<tr>
+<td>tsvector1.Concat(tsvector2)</td>
+<td>[tsvector1</td>
+</tr>
+<tr>
+<td>tsvector.Delete(&quot;x&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, &#39;x&#39;)</a></td>
+</tr>
+<tr>
+<td>tsvector.Delete(new[] { &quot;x&quot;, &quot;y&quot; })</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, ARRAY[&#39;x&#39;, &#39;y&#39;])</a></td>
+</tr>
+<tr>
+<td>tsvector.Filter(new[] { &quot;x&quot;, &quot;y&quot; })</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_filter(tsvector, ARRAY[&#39;x&#39;, &#39;y&#39;])</a></td>
+</tr>
+<tr>
+<td>tsvector.GetLength()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">length(tsvector)</a></td>
+</tr>
+<tr>
+<td>tsvector.Rank(tsquery)</td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING">ts_rank(tsvector, tsquery)</a></td>
+</tr>
+<tr>
+<td>tsvector.RankCoverDensity(tsquery)</td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING">ts_rank_cd(tsvector, tsquery)</a></td>
+</tr>
+<tr>
+<td>tsvector.SetWeight(NpgsqlTsVector.Lexeme.Weight.A))</td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">setweight(tsvector, &#39;A&#39;)</a></td>
+</tr>
+<tr>
+<td>tsvector.ToStripped()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">strip(tsvector)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.Unaccent(string)</td>
