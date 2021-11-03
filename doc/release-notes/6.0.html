@@ -162,6 +162,7 @@ var reader = await batch.ExecuteReaderAsync();
 <ul>
 <li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
 <li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code></li>
+<li>If you&#39;re using Dapper, use version 2.0.123 or above. Earlier versions will fail when trying to send a UTC DateTime.</li>
 </ul>
 <h4 id="detailed-notes">Detailed notes</h4>
 <p>The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
