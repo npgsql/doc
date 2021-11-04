@@ -127,12 +127,11 @@ var reader = await batch.ExecuteReaderAsync();
 </code></pre><p>As with positional parameters, this allow Npgsql to avoid parsing and splitting your SQL which is safer and more efficient.</p>
 <p>To learn more about positional parameters and batching, <a href="https://www.roji.org/parameters-batching-and-sql-rewriting">see this blog post</a>.</p>
 <h3 id="ssltls-improvements">SSL/TLS improvements</h3>
-<p>Npgsql 6.0 contains some considerable improvements to encryption support (<a href="https://github.com/npgsql/npgsql/issues/4006">#4006</a>):</p>
+<p>Npgsql 6.0 contains some considerable improvements to encryption support, here are some highlights (<a href="https://github.com/npgsql/npgsql/issues/4006">#4006</a>):</p>
 <ul>
-<li>The <a href="https://www.npgsql.org/doc/connection-string-parameters.html#security-and-encryption"><code>Ssl Mode</code></a> connection string parameter has been aligned with the standard PostgreSQL <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"><code>ssl_mode</code></a> setting (see breaking change note below for <code>SSL Mode=Require</code>).</li>
+<li>The <a href="https://www.npgsql.org/doc/connection-string-parameters.html#security-and-encryption"><code>Ssl Mode</code></a> connection string parameter has been aligned with the standard PostgreSQL <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"><code>ssl_mode</code></a> setting, and allows for more fine-grained choice in what to validate (see breaking change note below for <code>SSL Mode=Require</code>).</li>
 <li>Support has been added for PEM client certificates when running on .NET 5.0 and above.</li>
 <li>Support for specifying a root CA certificate that isn&#39;t installed in the machine store.</li>
-<li>Certificate revocation checking is now on by default when validating the server certificate (but can be disabled).</li>
 </ul>
 <p>See the updated <a href="/doc/security.html">security and encryption docs</a> for more details.</p>
 <h3 id="other-new-features">Other new features</h3>
