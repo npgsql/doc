@@ -137,15 +137,63 @@
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseHiLo();
 </code></pre><h2 id="guiduuid-generation">Guid/UUID Generation</h2>
-<p>By default, if you specify <code>ValueGeneratedOnAdd</code> on a Guid property, a random Guid value will be generated client-side and sent to the database.</p>
-<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property. Note that PostgreSQL doesn&#39;t include any Guid/UUID generation functions, you must add an extension such as <code>uuid-ossp</code> or <code>pgcrypto</code>. This can be done by placing the following code in your model&#39;s <code>OnModelCreating</code>:</p>
+<p>By default, for Guid key properties (or if you specify <code>ValueGeneratedOnAdd</code> on any Guid property), a random <code>Guid</code> value will be generated client-side and sent to the database.</p>
+<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the <code>Guid</code> in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
+<div class="tabGroup" id="tabgroup_C1U9BHOkzs">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_C1U9BHOkzs_13" role="tab" aria-controls="tabpanel_C1U9BHOkzs_13" data-tab="13" tabindex="0" aria-selected="true">PG 13+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_C1U9BHOkzs_older" role="tab" aria-controls="tabpanel_C1U9BHOkzs_older" data-tab="older" tabindex="-1">Older</a>
+</li>
+</ul>
+<section id="tabpanel_C1U9BHOkzs_13" role="tabpanel" data-tab="13">
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.HasPostgresExtension(&quot;uuid-ossp&quot;)
-                   .Entity&lt;Blog&gt;()
-                   .Property(e =&gt; e.SomeGuidProperty)
-                   .HasDefaultValueSql(&quot;uuid_generate_v4()&quot;);
-</code></pre><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
-<h2 id="computed-columns">Computed Columns</h2>
+{
+    modelBuilder
+        .Entity&lt;Blog&gt;()
+        .Property(e =&gt; e.SomeGuidProperty)
+        .HasDefaultValueSql(&quot;gen_random_uuid()&quot;);
+}
+</code></pre></section>
+<section id="tabpanel_C1U9BHOkzs_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<p>Versions of PostgreSQL prior to 13 don&#39;t include any Guid/UUID generation functions, but extensions such as <code>uuid-ossp</code> or <code>pgcrypto</code> exist to fill thie gap. This can be done by placing the following code in your model&#39;s <code>OnModelCreating</code>:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.HasPostgresExtension(&quot;uuid-ossp&quot;);    
+
+    modelBuilder
+        .Entity&lt;Blog&gt;()
+        .Property(e =&gt; e.SomeGuidProperty)
+        .HasDefaultValueSql(&quot;uuid_generate_v4()&quot;);
+}
+</code></pre></section>
+</div>
+<p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
+<h2 id="timestamp-generation">Timestamp generation</h2>
+<p>In many scenarios, it&#39;s useful to have a column containing the timestamp when the row was originally created. To do this, add a <code>DateTime</code> property to your entity type (or <code>Instant</code> if using NodaTime) , and configure its default with <code>HasDefaultValueSql</code> as follows:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity&lt;Blog&gt;()
+        .Property(e =&gt; e.SomeDateTimeProperty)
+        .HasDefaultValueSql(&quot;now()&quot;);
+}
+</code></pre><p>In other scenarios, a &quot;last updated&quot; is needed, which is automatically updated every time is modified. Unfortunately, while PostgreSQL supports <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">generated columns</a>, the use of functions such as <code>now()</code> isn&#39;t supported. It&#39;s still possible to use database trigger to set this up; triggers can be managed by <a href="https://docs.microsoft.com/ef/core/managing-schemas/migrations/managing#adding-raw-sql">adding raw SQL to your migrations</a>, as follows:</p>
+<pre><code class="lang-sql">CREATE FUNCTION &quot;Blogs_Update_Timestamp_Function&quot;() RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
+BEGIN
+    NEW.&quot;Timestamp&quot; := now();
+    RETURN NEW;
+END;
+$$
+
+CREATE TRIGGER &quot;UpdateTimestamp&quot;
+    BEFORE INSERT OR UPDATE
+    ON &quot;Blogs&quot;
+    FOR EACH ROW
+    EXECUTE FUNCTION &quot;Blogs_Update_Timestamp_Function&quot;();
+</code></pre><h2 id="computed-columns">Computed Columns</h2>
 <div class="NOTE"><h5>Note</h5><p>This feature works only on PostgreSQL 12 or above, and was introduced in version 3.0.0 of the provider.</p>
 </div>
 <p>PostgreSQL 12 added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well. The following configuration:</p>

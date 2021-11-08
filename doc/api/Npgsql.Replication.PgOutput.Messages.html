@@ -93,6 +93,9 @@
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.CommitMessage.html">CommitMessage</a></h4>
       <section><p>Logical Replication Protocol commit message</p>
 </section>
+      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.DefaultUpdateMessage.html">DefaultUpdateMessage</a></h4>
+      <section><p>Logical Replication Protocol update message for tables with REPLICA IDENTITY set to DEFAULT.</p>
+</section>
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.DeleteMessage.html">DeleteMessage</a></h4>
       <section><p>Abstract base class for Logical Replication Protocol delete message types.</p>
 </section>
@@ -100,7 +103,7 @@
       <section><p>Logical Replication Protocol delete message for tables with REPLICA IDENTITY REPLICA IDENTITY set to FULL.</p>
 </section>
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.FullUpdateMessage.html">FullUpdateMessage</a></h4>
-      <section><p>Logical Replication Protocol update message for tables with REPLICA IDENTITY REPLICA IDENTITY set to FULL.</p>
+      <section><p>Logical Replication Protocol update message for tables with REPLICA IDENTITY set to FULL.</p>
 </section>
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.IndexUpdateMessage.html">IndexUpdateMessage</a></h4>
       <section><p>Logical Replication Protocol update message for tables with REPLICA IDENTITY set to USING INDEX.</p>
@@ -148,7 +151,7 @@
       <section><p>Logical Replication Protocol type message</p>
 </section>
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.UpdateMessage.html">UpdateMessage</a></h4>
-      <section><p>Logical Replication Protocol update message for tables with REPLICA IDENTITY set to DEFAULT.</p>
+      <section><p>Abstract base class for Logical Replication Protocol delete message types.</p>
 </section>
     <h3 id="structs">Structs
   </h3>
@@ -158,16 +161,19 @@
       <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.RelationMessageColumn.html">RelationMessageColumn</a></h4>
       <section><p>Represents a column in a Logical Replication Protocol relation message</p>
 </section>
-      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.TupleData.html">TupleData</a></h4>
-      <section><p>Represents the data transmitted for a tuple in a Logical Replication Protocol message</p>
-</section>
     <h3 id="enums">Enums
   </h3>
-      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.TruncateOptions.html">TruncateOptions</a></h4>
-      <section><p>Enum representing the additional options for the TRUNCATE command as flags</p>
+      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.CommitMessage.CommitFlags.html">CommitMessage.CommitFlags</a></h4>
+      <section><p>Flags for the commit.</p>
 </section>
-      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.TupleDataKind.html">TupleDataKind</a></h4>
-      <section><p>The kind of data transmitted for a tuple in a Logical Replication Protocol message</p>
+      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.RelationMessage.Column.ColumnFlags.html">RelationMessage.Column.ColumnFlags</a></h4>
+      <section><p>Flags for the column.</p>
+</section>
+      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.RelationMessage.ReplicaIdentitySetting.html">RelationMessage.ReplicaIdentitySetting</a></h4>
+      <section><p>Replica identity setting for the relation (same as <code>relreplident</code> in <code>pg_class</code>).</p>
+</section>
+      <h4><a class="xref" href="Npgsql.Replication.PgOutput.Messages.TruncateMessage.TruncateOptions.html">TruncateMessage.TruncateOptions</a></h4>
+      <section><p>Enum representing the additional options for the TRUNCATE command as flags</p>
 </section>
 </article>
           </div>
