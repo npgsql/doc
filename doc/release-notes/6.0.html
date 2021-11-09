@@ -134,6 +134,14 @@ var reader = await batch.ExecuteReaderAsync();
 <li>Support for specifying a root CA certificate that isn&#39;t installed in the machine store.</li>
 </ul>
 <p>See the updated <a href="/doc/security.html">security and encryption docs</a> for more details.</p>
+<h3 id="improved-logical-replication-support">Improved logical replication support</h3>
+<p>The recently-released PostgreSQL 14 made significant improvements to logical replication, and Npgsql 6.0 already supports them! Here&#39;s a summary of the main changes (<a href="https://github.com/npgsql/npgsql/issues/4050">#4050</a>, thanks @Brar):</p>
+<ul>
+<li>PG14 binary logical replication - you can now read the standard .NET types from replication data; only text was possible previously (<a href="https://github.com/npgsql/npgsql/issues/4049">#4049</a>).</li>
+<li>PG14 streaming replication - incremental updates for large in-progress transactions (<a href="https://github.com/npgsql/npgsql/issues/4047">#4047</a>)</li>
+<li>The replication API now fully streams all data, including even columns; the previous API buffered rows, leading to lots of heap allocations for big rows (<a href="https://github.com/npgsql/npgsql/issues/4068">#4068</a>).</li>
+</ul>
+<p>Unfortunately, some of the above required an API redesign, leading to some breaking changes.</p>
 <h3 id="other-new-features">Other new features</h3>
 <ul>
 <li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a> (<a href="https://github.com/npgsql/npgsql/issues/3616">#3616</a>).</li>
@@ -222,6 +230,8 @@ command.Parameters.AddWithValue(&quot;FOO&quot;, 8);
 <p>PostgreSQL has special <code>infinity</code> and <code>-infinity</code> values for timestamps and dates, which are later and earlier than other value. Npgsql has supported mapping <code>DateTime.MaxValue</code> and <code>MinValue</code> to these infinity values via an <code>Convert Infinity DateTime</code> connection string parameter, which was disabled by default. This behavior is now on by default, since <code>DateTime.MaxValue</code> and <code>MinValue</code> are very rarely used as actual timestamps/dates, and the <code>Convert Infinity DateTime</code> parameter has been removed. To disable infinity conversions, add the following at the start of your application:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
 </code></pre><p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
+<h3 id="the-logical-replication-api-has-been-redone">The logical replication API has been redone</h3>
+<p>As part of the redesign around logical replication support, some major changes to the API had to be done. Applications will have to be changed to use the new API.</p>
 <h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
 <p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provider the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
 <p>Instead of the obsoleted types, use the following techniques:</p>
