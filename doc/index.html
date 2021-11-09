@@ -85,9 +85,9 @@
 <a href="https://gitter.im/npgsql/npgsql"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg" alt="gitter"></a></p>
 <h2 id="getting-started">Getting Started</h2>
 <p>The best way to use Npgsql is to install its <a href="https://www.nuget.org/packages/Npgsql/">nuget package</a>.</p>
-<p>Npgsql aims to be fully ADO.NET-compatible, its API should feel almost identical to other .NET database drivers.
-Here&#39;s a basic code snippet to get you started.</p>
-<pre><code class="lang-c#">var connString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
+<p>Npgsql aims to be fully ADO.NET-compatible, its API should feel almost identical to other .NET database drivers.</p>
+<p>Here&#39;s a basic code snippet to get you started.</p>
+<pre><code class="lang-csharp">var connString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
 
 await using var conn = new NpgsqlConnection(connString);
 await conn.OpenAsync();
@@ -102,10 +102,11 @@ await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (some_field) VAL
 // Retrieve all rows
 await using (var cmd = new NpgsqlCommand(&quot;SELECT some_field FROM data&quot;, conn))
 await using (var reader = await cmd.ExecuteReaderAsync())
-    while (await reader.ReadAsync())
-        Console.WriteLine(reader.GetString(0));
-</code></pre><p>You can find more info about the ADO.NET API in the <a href="https://msdn.microsoft.com/en-us/library/h43ks021(v=vs.110).aspx">MSDN docs</a>
-or in many tutorials on the Internet.</p>
+{
+while (await reader.ReadAsync())
+    Console.WriteLine(reader.GetString(0));
+}
+</code></pre><p>You can find more info about the ADO.NET API in the <a href="https://msdn.microsoft.com/en-us/library/h43ks021(v=vs.110).aspx">MSDN docs</a> or in many tutorials on the Internet.</p>
 </article>
           </div>
           

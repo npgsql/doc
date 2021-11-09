@@ -160,7 +160,7 @@ var reader = await batch.ExecuteReaderAsync();
 <h4 id="quick-summary">Quick summary</h4>
 <ul>
 <li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
-<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code></li>
+<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code>.</li>
 <li>If you&#39;re using Dapper, use version 2.0.123 or above. Earlier versions will fail when trying to send a UTC DateTime.</li>
 </ul>
 <h4 id="detailed-notes">Detailed notes</h4>
@@ -173,6 +173,7 @@ var reader = await batch.ExecuteReaderAsync();
 </ul>
 </li>
 <li><code>timestamptz</code> values are now read back as DateTime with Kind=UTC, without any conversions; these were previously returned as local DateTime, converted to the local machine&#39;s timezone. When reading <code>timestamptz</code> values as <a href="https://docs.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>, UTC values (offset 0) are always returned.</li>
+<li><a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTime">DbType.DateTime</a> now maps to <code>timestamptz</code>, not <code>timestamp</code>. <a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTime2">DbType.DateTime2</a> continues to map to <code>timestamp</code>, and <a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTimeOffset">DbType.DateTimeOffset</a> continues to map to <code>timestamptz</code>, as before. Unless you&#39;re writing cross-database applications, consider using <a href="https://www.npgsql.org/doc/basic-usage.html#parameter-types">NpgsqlDbType</a> instead of <code>DbType</code> to specify precise PostgreSQL types, or simply let Npgsql infer the types by not setting either.</li>
 <li>It is no longer possible to write <a href="https://docs.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a> with offsets other than 0 (UTC), since these cannot be represented in PostgreSQL. These were previously implicitly converted to UTC before sending.</li>
 <li>It is no longer possible to read or write <code>timetz</code> as DateTime or TimeSpan, as these don&#39;t have a timezone. This was previously allowed, with the offset being stripped.</li>
 </ul>
