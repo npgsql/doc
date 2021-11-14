@@ -155,10 +155,7 @@ var reader = await batch.ExecuteReaderAsync();
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="changes-to-ssl-configuration-ssl-moderequire">Changes to SSL configuration (SSL Mode=Require)</h3>
 <ul>
-<li>To validate server certificates, use <code>SSL Mode=VerifyFull</code> (or alternatively SSL <code>VerifyCA</code>) instead of <code>Require</code>.<ul>
-<li><code>VerifyFull</code>/<code>VerifyCA</code> will perform certificate revocation checking (<code>Require</code> did not do this by default). If you need to turn this off for some reason, specify <code>Check Certificate Revocation=false</code>.</li>
-</ul>
-</li>
+<li>To validate server certificates, use <code>SSL Mode=VerifyFull</code> (or alternatively SSL <code>VerifyCA</code>) instead of <code>Require</code>.</li>
 <li>To not validate server certificates (e.g. self-signed certificates), use <code>SSL Mode=Require</code> and <code>Trust Server Certificate=true</code>.</li>
 </ul>
 <p>In previous versions, specifying <code>SSL Mode=Require</code> made Npgsql validate the server certificate, but the standard PostgreSQL <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"><code>ssl_mode</code></a> setting does not. As part of aligning Npgsql with other PostgreSQL drivers and tools, 6.0 now has <code>SSL Mode=VerifyFull</code> which corresponds to the previous <code>Require</code> behavior. Stopping validation for <code>Require</code> would align Npgsql with the PostgreSQL behavior, but would silently turn off validation for current users and expose them to potential security issues. As a result, we now require <code>Trust Server Certificate=true</code> to be specified with <code>Require</code>: this forces users to explicitly opt out of validation. In a future version, we&#39;ll remove the requirement to specify <code>Trust Server Certificate</code> for <code>Require</code> (and possibly the parameter itself).</p>

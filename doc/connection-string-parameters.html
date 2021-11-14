@@ -144,14 +144,19 @@
 <td>false</td>
 </tr>
 <tr>
-<td>Client Certificate</td>
-<td>Location of a client certificate to be sent to the server. <a href="security.html">See docs</a></td>
+<td>SSL Certificate</td>
+<td>Location of a client certificate to be sent to the server. Introduced in 6.0. <a href="security.html">See docs</a></td>
 <td>PGSSLCERT</td>
 </tr>
 <tr>
-<td>Client Certificate Key</td>
-<td>Location of a client key for a client certificate to be sent to the server.</td>
+<td>SSL Key</td>
+<td>Location of a client key for a client certificate to be sent to the server. Introduced in 6.0.</td>
 <td>PGSSLKEY</td>
+</tr>
+<tr>
+<td>SSL Password</td>
+<td>Password for a key for a client certificate. Introduced in 6.0.</td>
+<td></td>
 </tr>
 <tr>
 <td>Root Certificate</td>
@@ -161,7 +166,7 @@
 <tr>
 <td>Check Certificate Revocation</td>
 <td>Whether to check the certificate revocation list during authentication.</td>
-<td>true in 6.0, false previously</td>
+<td>false</td>
 </tr>
 <tr>
 <td>Integrated Security</td>
@@ -448,8 +453,30 @@
 <tbody>
 <tr>
 <td>Server Compatibility Mode</td>
-<td>A compatibility mode for special PostgreSQL server types. Currently &quot;Redshift&quot; is supported, as well as &quot;NoTypeLoading&quot;, which will bypass the normal type loading mechanism from the PostgreSQL catalog tables and supports a hardcoded list of basic types .</td>
+<td>A compatibility mode for special PostgreSQL server types. Currently &quot;Redshift&quot; is supported, as well as &quot;NoTypeLoading&quot;, which will bypass the normal type loading mechanism from the PostgreSQL catalog tables and supports a hardcoded list of basic types.</td>
 <td>none</td>
+</tr>
+</tbody>
+</table>
+<h2 id="obsolete">Obsolete</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Client Certificate</td>
+<td>Location of a client certificate to be sent to the server. Deprecated in 6.0.</td>
+<td>PGSSLCERT</td>
+</tr>
+<tr>
+<td>Client Certificate Key</td>
+<td>Location of a client key for a client certificate to be sent to the server. Deprecated in 6.0.</td>
+<td>PGSSLKEY</td>
 </tr>
 </tbody>
 </table>
