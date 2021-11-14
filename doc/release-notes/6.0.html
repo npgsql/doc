@@ -232,7 +232,16 @@ command.Parameters.AddWithValue(&quot;FOO&quot;, 8);
 </code></pre><p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
 <h3 id="the-logical-replication-api-has-been-redone">The logical replication API has been redone</h3>
 <p>As part of the redesign around logical replication support, some major changes to the API had to be done. Applications will have to be changed to use the new API.</p>
-<h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
+<h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
+<p>PostgreSQL 14 introduced <a href="https://www.postgresql.org/docs/14/rangetypes.html">a new multirange type</a>, which is very similar to an array of ranges but supports various range-related operations efficiently. The provider now maps arrays and lists of <code>NpgsqlRange</code> to these new types by default. You can still read old-style arrays over ranges by explicitly specifying the type:</p>
+<pre><code class="lang-c#">var arrayOverRange = reader.GetFieldValue&lt;NpgsqlRange&lt;int&gt;[]&gt;(0);
+</code></pre><p>You can also write arrays over ranges by explicitly specifying the <code>NpgsqlDbType</code>:</p>
+<pre><code class="lang-c#">var parameter = new NpgsqlParameter
+{
+    Value = new NpgsqlRange&lt;int&gt;[] { ... },
+    NpgsqlDbType = NpgsqlDbType.IntegerRange | NpgsqlDbType.Array
+};
+</code></pre><h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
 <p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provider the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
 <p>Instead of the obsoleted types, use the following techniques:</p>
 <ul>

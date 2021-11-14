@@ -175,7 +175,32 @@
 </code></pre><p>This is no longer possible and will cause an exception to be thrown. Instead, use the new <code>HasPostgresArrayConversion</code> API, providing conversion lambdas for the array&#39;s <em>elements</em>:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
     .HasPostgresArrayConversion(w =&gt; w.Value, v =&gt; new IntWrapper(v));
-</code></pre></article>
+</code></pre><h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
+<p>PostgreSQL 14 introduced <a href="https://www.postgresql.org/docs/14/rangetypes.html">a new multirange type</a>, which is very similar to an array of ranges but supports various range-related operations efficiently. The provider now maps arrays and lists of <code>NpgsqlRange</code> to these new types by default. To map them to old-style arrays over ranges in PostgreSQL, <a href="https://docs.microsoft.com/ef/core/modeling/entity-properties#column-data-types">configure the column type explicitly</a>:</p>
+<div class="tabGroup" id="tabgroup_tp2JkmsPre">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_tp2JkmsPre_annotations" role="tab" aria-controls="tabpanel_tp2JkmsPre_annotations" data-tab="annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_tp2JkmsPre_fluent-api" role="tab" aria-controls="tabpanel_tp2JkmsPre_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+</li>
+</ul>
+<section id="tabpanel_tp2JkmsPre_annotations" role="tabpanel" data-tab="annotations">
+<pre><code class="lang-c#">[Column(TypeName = &quot;int4range[]&quot;)]
+public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
+</code></pre></section>
+<section id="tabpanel_tp2JkmsPre_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity&lt;Blog&gt;()
+        .Property(e =&gt; e.SomeArrayOverIntNpgsqlRange)
+        .HasColumnType(&quot;int4range[]&quot;);
+}
+</code></pre></section>
+</div>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
