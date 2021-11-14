@@ -61,12 +61,12 @@ PostgreSQL may be configured to require valid certificates from connecting clien
 * The `PGSSLCERT` environment variable.
 * The default locations of `~/.postgresql/postgresql.crt` (on Unix) or `%APPDATA%\postgresql\postgresql.crt` (on Windows)
 
-To provide a password for a client certificate, you should set either `SSL Password` (6.0 and higher) or `Client Certificate Key` (5.0 and lower) connection string parameters.
+To provide a password for a client certificate, set either the `SSL Password` (6.0 and higher) or `Client Certificate Key` (5.0 and lower) connection string parameter.
 
 Finally, you can set `ProvideClientCertificatesCallback` on `NpgsqlConnection` to further customize how client certificates are provided (this works like on the underlying .NET [`SslStream`](https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_)).
 
 > [!NOTE]
-> Npgsql supports .PFX and PEM certificates starting with 6.0. Previously, only .PFX certificates have been supported.
+> Npgsql supports .PFX and PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.
 
 ## Integrated Security (GSS/SSPI/Kerberos)
 
