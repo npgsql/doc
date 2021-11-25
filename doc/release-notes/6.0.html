@@ -164,8 +164,14 @@ var reader = await batch.ExecuteReaderAsync();
 </div>
 <h4 id="quick-summary">Quick summary</h4>
 <ul>
-<li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
-<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code>.</li>
+<li>In many cases, is makes sense to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use either DateTime with Kind=Utc or DateTimeOffset with offset 0.<ul>
+<li>If using NodaTime (recommended), use either <a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> or <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a> with time zone UTC.</li>
+</ul>
+</li>
+<li>To store non-UTC timestamps, use DateTime with Kind=Unspecified.<ul>
+<li>If using NodaTime (recommended), use <a href="https://nodatime.org/3.0.x/api/NodaTime.LocalDateTime.html">LocalDateTime</a> (no explicit column configuration is required).</li>
+</ul>
+</li>
 <li>If you&#39;re using Dapper, use version 2.0.123 or above. Earlier versions will fail when trying to send a UTC DateTime.</li>
 </ul>
 <h4 id="detailed-notes">Detailed notes</h4>

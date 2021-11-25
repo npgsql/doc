@@ -114,8 +114,14 @@
 </div>
 <h4 id="quick-summary">Quick summary</h4>
 <ul>
-<li>Most applications want to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use DateTime with Kind=Utc when interacting with Npgsql.</li>
-<li>For the few cases where non-UTC timestamps are desired, add explicit configuration to your properties to be <code>timestamp without time zone</code></li>
+<li>In many cases, is makes sense to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use either DateTime with Kind=Utc or DateTimeOffset with offset 0.<ul>
+<li>If using NodaTime (recommended), use either <a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> or <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a> with time zone UTC.</li>
+</ul>
+</li>
+<li>To store non-UTC timestamps, use DateTime with Kind=Unspecified and <a href="https://docs.microsoft.com/ef/core/modeling/entity-properties#column-data-types">add explicit configuration</a> to your properties to be <code>timestamp without time zone</code>.<ul>
+<li>If using NodaTime (recommended), use <a href="https://nodatime.org/3.0.x/api/NodaTime.LocalDateTime.html">LocalDateTime</a> (no explicit column configuration is required).</li>
+</ul>
+</li>
 </ul>
 <h4 id="detailed-notes">Detailed notes</h4>
 <p>The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
@@ -160,7 +166,7 @@
 ------------------------+--------------------------
  2020-01-01 14:00:00+02 | timestamp with time zone
 </code></pre><h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
-<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql or EF Core operations are invoked:</p>
+<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following to your context&#39;s constructor, before any Npgsql or EF Core operations are invoked:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre><h3 id="nodatime-tstzrange-and-daterange-are-mapped-to-interval-and-dateinterval-by-default">NodaTime: tstzrange and daterange are mapped to Interval and DateInterval by default</h3>
 <p>When using NodaTime, PostgreSQL <code>tstzrange</code> columns are scaffolded as <a href="https://nodatime.org/3.0.x/api/NodaTime.Interval.html">Interval</a> properties instead of <code>NpgsqlRange&lt;Instant&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/4070">#4070</a>), and <code>daterange</code> columns are scaffolded as <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> properties of <code>NpgsqlRange&lt;LocalDateTime&gt;</code> (<a href="https://github.com/npgsql/efcore.pg/issues/1998">#1998</a>).</p>
