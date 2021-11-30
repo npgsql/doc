@@ -91,7 +91,7 @@
 <a href="http://www.postgresql.org/docs/current/static/manage-ag-templatedbs.html">PostgreSQL allows specifying another &quot;template database&quot;</a>
 which will be copied as the basis for the new one. This can be useful for including database entities which are not managed by Entity Framework Core. You can trigger this by using <code>HasDatabaseTemplate</code> in your context&#39;s <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.HasDatabaseTemplate(&quot;my_template_db&quot;);
+    =&gt; modelBuilder.UseDatabaseTemplate(&quot;my_template_db&quot;);
 </code></pre><h2 id="setting-a-tablespace">Setting a tablespace</h2>
 <p>PostgreSQL allows you to locate your database in different parts of your filesystem, <a href="https://www.postgresql.org/docs/current/static/manage-ag-tablespaces.html">via tablespaces</a>. The Npgsql EF Core provider allows you to specify your database&#39;s namespace:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
