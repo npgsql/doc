@@ -246,7 +246,9 @@ command.Parameters.AddWithValue(&quot;FOO&quot;, 8);
     Value = new NpgsqlRange&lt;int&gt;[] { ... },
     NpgsqlDbType = NpgsqlDbType.IntegerRange | NpgsqlDbType.Array
 };
-</code></pre><h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
+</code></pre><h3 id="dbnull-no-longer-permitted-in-arrays">DBNull no longer permitted in arrays</h3>
+<p>Previously, it was possible to write an <code>object[]</code> containing <code>DBNull</code> as a way of indicating null; this is no longer supported. Instead, use C# null.</p>
+<h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
 <p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provider the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
 <p>Instead of the obsoleted types, use the following techniques:</p>
 <ul>
