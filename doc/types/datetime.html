@@ -182,13 +182,14 @@
 </tr>
 <tr>
 <td>interval</td>
-<td>TimeSpan</td>
-<td></td>
+<td>TimeSpan (<sup>3</sup>)</td>
+<td><a class="xref" href="../api/NpgsqlTypes.NpgsqlInterval.html">NpgsqlInterval</a></td>
 </tr>
 </tbody>
 </table>
 <p><sup>1</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> returns a Local DateTime instead of Utc. <a href="../release-notes/6.0.html#major-changes-to-timestamp-mapping">See the breaking change note for more info</a>.</p>
 <p><sup>2</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> as a DateTimeOffset returns a local offset based on the timezone of the server where Npgsql is running.</p>
+<p><sup>3</sup> PostgreSQL intervals with month or year components cannot be read as TimeSpan. Consider using NodaTime&#39;s <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, or <a class="xref" href="../api/NpgsqlTypes.NpgsqlInterval.html">NpgsqlInterval</a>.</p>
 <h2 id="detailed-behavior-sending-values-to-the-database">Detailed Behavior: Sending values to the database</h2>
 <table>
 <thead>
