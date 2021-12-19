@@ -385,8 +385,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Options</td>
-<td>Specifies any valid <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS">PostgreSQL connection options</a>, surrounded by single ticks. Introduced in 5.0.</td>
+<td>Options<sup><a href="#misc_sup_1">1</a></sup></td>
+<td>Specifies any valid <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS">PostgreSQL connection options</a> (e.g. <code>Options=-c synchronous_commit=local</code>). Introduced in 5.0.</td>
 <td>PGOPTIONS</td>
 </tr>
 <tr>
@@ -436,11 +436,15 @@
 </tr>
 <tr>
 <td>Array Nullability Mode</td>
-<td>Configure the way arrays of value types are returned when requested as object instances. Possible values are: Never (arrays of value types are always returned as non-nullable arrays), Always (arrays of value types are always returned as nullable arrays) and PerInstance (the type of array that gets returned is determined at runtime).</td>
+<td>Configure the way arrays of value types are returned when requested as object instances. Possible values are: <code>Never</code> (arrays of value types are always returned as non-nullable arrays), <code>Always</code> (arrays of value types are always returned as nullable arrays) and <code>PerInstance</code> (the type of array that gets returned is determined at runtime).</td>
 <td>Never</td>
 </tr>
 </tbody>
 </table>
+<p><sup id="misc_sup_1">1</sup>The <code>Options</code> connection string parameter is essentially the string of command line options that get passed to the <a href="https://www.postgresql.org/docs/current/app-postgres.html"><code>postgres</code></a> program when the process is started.
+It is most commonly used to set named run-time parameters via the <code>-c</code> option but other options can be used too (althoug not all of them make sense in that context).
+Setting multiple options is possible by separating them with a space character. Space and backslash characters in option values need to be escaped by prefixing a backslash character.
+Example: <code>Options=-c default_transaction_isolation=serializable -c default_transaction_deferrable=on -c foo.bar=My\\ Famous\\\\Thing</code></p>
 <h2 id="compatibility">Compatibility</h2>
 <table>
 <thead>
