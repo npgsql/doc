@@ -86,7 +86,16 @@
 <p>For documentation about all auth methods supported by PostgreSQL, <a href="http://www.postgresql.org/docs/current/static/auth-methods.html">see this page</a>. Note that Npgsql supports Unix-domain sockets (auth method <code>local</code>), simply set your <code>Host</code> parameter to the absolute path of your PostgreSQL socket directory, as configured in your <code>postgresql.conf</code>.</p>
 <h2 id="encryption-ssltls">Encryption (SSL/TLS)</h2>
 <p>By default PostgreSQL connections are unencrypted, but you can turn on SSL/TLS encryption if you wish. First, you have to set up your PostgreSQL to receive SSL/TLS connections <a href="http://www.postgresql.org/docs/current/static/ssl-tcp.html">as described here</a>. Once that&#39;s done, specify <code>SSL Mode</code> in your connection string as detailed below.</p>
-<h3 id="versions-60">Versions 6.0+</h3>
+<div class="tabGroup" id="tabgroup_jM09Sxd088">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_jM09Sxd088_tabid-1" role="tab" aria-controls="tabpanel_jM09Sxd088_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 6.0+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_jM09Sxd088_tabid-2" role="tab" aria-controls="tabpanel_jM09Sxd088_tabid-2" data-tab="tabid-2" tabindex="-1">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_jM09Sxd088_tabid-1" role="tabpanel" data-tab="tabid-1">
 <p>Starting with 6.0, the following <code>SSL Mode</code> values are supported (see the <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL docs</a> for more details):</p>
 <table>
 <thead>
@@ -117,7 +126,7 @@
 <td>I don&#39;t care about encryption, but I wish to pay the overhead of encryption if the server supports it.</td>
 </tr>
 <tr>
-<td>Require*</td>
+<td>Require<sup>1</sup></td>
 <td>Yes</td>
 <td>No</td>
 <td>I want my data to be encrypted, and I accept the overhead. I trust that the network will make sure I always connect to the server I want.</td>
@@ -136,11 +145,10 @@
 </tr>
 </tbody>
 </table>
-<ul>
-<li><code>SSL Mode=Require</code> currently requires explicitly setting <code>Trust Server Certificate=true</code> as well; this requirement will be removed in a future version. This combination should be used with e.g. self-signed certificates.</li>
-</ul>
-<p>The default mode in 6.0 is <code>Prefer</code>, which allows SSL but does not require it, and does not validate certificates.</p>
-<h3 id="older-versions">Older versions</h3>
+<p><sup>1</sup> <code>SSL Mode=Require</code> currently requires explicitly setting <code>Trust Server Certificate=true</code> as well; this requirement will be removed in a future version. This combination should be used with e.g. self-signed certificates.</p>
+<p>The default mode in 6.0+ is <code>Prefer</code>, which allows SSL but does not require it, and does not validate certificates.</p>
+</section>
+<section id="tabpanel_jM09Sxd088_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
 <p>Versions prior to 6.0 supported the following <code>SSL Mode</code> values:</p>
 <table>
 <thead>
@@ -172,8 +180,10 @@
 </tr>
 </tbody>
 </table>
-<p>The default mode prior 6.0 is <code>Disable</code>.</p>
+<p>The default mode prior to 6.0 was <code>Disable</code>.</p>
 <p>To disable certificate validation when using <code>Require</code>, set <code>Trust Server Certificate</code> to true; this allows connecting to servers with e.g. self-signed certificates, while still requiring encryption.</p>
+</section>
+</div>
 <h3 id="advanced-server-certificate-validation">Advanced server certificate validation</h3>
 <p>If the root CA of the server certificate isn&#39;t installed in your machine&#39;s CA store, validation will fail. Either install the certificate in your machine&#39;s CA store, or point to it via the <code>Root Certificate</code> connection string parameter or via the <code>PGSSLROOTCERT</code> environment variable.</p>
 <p>Note that Npgsql does not perform certificate revocation validation by default, since this is an optional extension not implemented by all providers and CAs. To turn on certificate revocation validation, specify <code>Check Certificate Revocation=true</code> on the connection string.</p>
@@ -187,7 +197,7 @@
 </ul>
 <p>To provide a password for a client certificate, set either the <code>SSL Password</code> (6.0 and higher) or <code>Client Certificate Key</code> (5.0 and lower) connection string parameter.</p>
 <p>Finally, you can set <code>ProvideClientCertificatesCallback</code> on <code>NpgsqlConnection</code> to further customize how client certificates are provided (this works like on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
-<div class="NOTE"><h5>Note</h5><p>Npgsql supports .PFX and PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.</p>
+<div class="NOTE"><h5>Note</h5><p>Npgsql supports .PFX and .PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.</p>
 </div>
 <h2 id="integrated-security-gsssspikerberos">Integrated Security (GSS/SSPI/Kerberos)</h2>
 <p>Logging in with a username and password may not be ideal, since your application must have access to your password, and raise questions around secret management. An alternate way of authenticating is &quot;Integrated Security&quot;, which uses GSS or SSPI to negotiate Kerberos. The advantage of this method is that authentication is handed off to your operating system, using your already-open login session. Your application never needs to handle a password. You can use this method for a Kerberos login, Windows Active Directory or a local Windows session. Note that since 3.2, this method of authentication also works on non-Windows platforms.</p>
