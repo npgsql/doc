@@ -79,43 +79,117 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="npgsql-basic-usage">Npgsql Basic Usage</h1>
 
-<h2 id="parameters">Parameters</h2>
-<p>When sending data values to the database, you should use parameters rather than including the values in the SQL as follows:</p>
-<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p)&quot;, conn))
+<h2 id="connections">Connections</h2>
+<p>The starting point for any database operation is acquiring an <a class="xref" href="api/Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>; this represents a connection to the database on which commands can be executed. Connections can be instantiated directly, and must then be opened before they can be used:</p>
+<pre><code class="lang-c#">var connectionString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
+
+await using var conn = new NpgsqlConnection(connectionString);
+await conn.OpenAsync();
+</code></pre><p>In .NET, the connection string is used to define which database to connect to, the authentication information to use, and various other connection-related parameters; it consists of key/value pairs, separated with semicolons. Npgsql supports many options, these are documented on the <a href="connection-string-parameters.html">connection string page</a>.</p>
+<p>Connections must be disposed when they are no longer needed - not doing so will result in a connection leak, which can crash your program. In the above code sample, this is done via the <code>await using</code> C# construct, which ensures the connection is disposed even if an exception is later thrown. It&#39;s a good idea to keep connections open for as little time a possible: database connections are scarce resources, and keeping them open for unnecessarily long times can create unnecessary load in your application and in PostgreSQL.</p>
+<h3 id="pooling">Pooling</h3>
+<p>Opening and closing physical connections to PostgreSQL is an expensive and long process. Therefore, Npgsql connections are <em>pooled</em> by default: closing or disposing a connection doesn&#39;t close the underlying physical connection, but rather returns it to an internal pool managed by Npgsql. The next time a connection is opened, that pooled connection is returned again. The makes open and close extremely fast operations; do not hesitate to perform them a lot if needed, rather than holding a connection needlessly open for a long time.</p>
+<p>For information on tweaking the pooling behavior (or turning it off), see the <a href="connection-string-parameters.html#pooling">pooling section</a> in the connection string page.</p>
+<h2 id="commands">Commands</h2>
+<p>Once you have an open connection, a command can be used to execute SQL on it:</p>
+<pre><code class="lang-c#">// Retrieve all rows
+await using var cmd = new NpgsqlCommand(&quot;SELECT some_field FROM data&quot;, conn);
+await using var reader = await cmd.ExecuteReaderAsync();
+
+while (await reader.ReadAsync())
 {
-    cmd.Parameters.AddWithValue(&quot;p&quot;, &quot;some_value&quot;);
-    cmd.ExecuteNonQuery();
+    Console.WriteLine(reader.GetString(0));
 }
-</code></pre><p>The <code>@p</code> in your SQL is called a parameter <em>placeholder</em>; Npgsql will expect to find a parameter with that name in the command&#39;s parameter list, and will send it along with your query. This has the following advantages over embedding the value in your SQL:</p>
+</code></pre><p>The command contains the SQL to be executed, as wel as any parameters (see the <a href="#parameters">parameters section</a> below). Commands can be executed in the following three ways:</p>
 <ol>
-<li>Avoid SQL injection for user-provided inputs: the parameter data is sent to PostgreSQL separately from the SQL, and is never interpreted as SQL.</li>
-<li>Required to make use of <a href="prepare.html">prepared statements</a>, which dramatically improve performance if you execute the same SQL many times.</li>
+<li><a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync">ExecuteNonQueryAsync</a>: executes SQL which doesn&#39;t return any results, typically <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> statements. Returns the number of rows affected.</li>
+<li><a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executescalarasync">ExecuteScalarAsync</a>: executes SQL which returns a single, scalar value.</li>
+<li><a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync">ExecuteReaderAsync</a>: execute SQL which returns a full resultset. Returns an <a class="xref" href="api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> which can be used to access the resultset (as in the above example).</li>
+</ol>
+<p>To execute multiple SQL statements in a single roundtrip, see <a href="#batching">batching below</a>.</p>
+<h2 id="parameters">Parameters</h2>
+<p>When sending data values to the database, always consider using parameters rather than including the values in the SQL as follows:</p>
+<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ($1), ($2)&quot;, conn)
+{
+    Parameters =
+    {
+        new() { Value = &quot;some_value&quot; },
+        new() { Value = &quot;some_other_value&quot; }
+    }
+};
+
+await cmd.ExecuteNonQueryAsync();
+</code></pre><p>The <code>$1</code> and <code>$2</code> in your SQL are <em>parameter placeholders</em>: they refer to the corresponding parameter in the command&#39;s parameter list, and are sent along with your query. This has the following advantages over embedding the value in your SQL:</p>
+<ol>
+<li>Parameters protect against SQL injection for user-provided inputs: the parameter data is sent to PostgreSQL separately from the SQL, and is never interpreted as SQL.</li>
+<li>Parameters are required to make use of <a href="prepare.html">prepared statements</a>, which significantly improve performance if you execute the same SQL many times.</li>
 <li>Parameter data is sent in an efficient, binary format, rather than being represented as a string in your SQL.</li>
 </ol>
 <p>Note that PostgreSQL does not support parameters in arbitrary locations - you can only parameterize data values. For example, trying to parameterize a table or column name will fail - parameters aren&#39;t a simple way to stick an arbitrary string in your SQL.</p>
+<h3 id="positional-and-named-placeholders">Positional and named placeholders</h3>
+<p>Starting with Npgsql 6.0, the recommended placeholder style is <em>positional</em> (<code>$1</code>, <code>$2</code>); this is the native parameter style used by PostgreSQL, and your SQL can therefore be sent to the database as-is, without any manipulation.</p>
+<p>For legacy and compatibility reasons, Npgsql also supports <em>named placeholders</em>. This allows the above code to be written as followS:</p>
+<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p1), (@p2)&quot;, conn)
+{
+    Parameters =
+    {
+        new(&quot;p1&quot;, &quot;some_value&quot;),
+        new(&quot;p2&quot;, &quot;some_other_value&quot;)
+    }
+};
+
+await cmd.ExecuteNonQueryAsync();
+</code></pre><p>Rather than matching placeholders to parameters by their position, Npgsql matches these parameter by name. This can be useful when porting database code from other databases, where named placeholders are used. However, since this placeholder style isn&#39;t natively supported by PostgreSQL, Npgsql must parse your SQL and rewrite it to use positional placeholders under the hood; this rewriting has a performance price, and some forms of SQL may not be parsed correctly. It&#39;s recommended to use positional placeholders whenever possible.</p>
+<p>For more information, see <a href="https://www.roji.org/parameters-batching-and-sql-rewriting">this blog post</a>.</p>
 <h3 id="parameter-types">Parameter types</h3>
-<p>PostgreSQL has a strongly-typed type system; columns and parameters have a type, and types are usually not implicitly converted to other types. This means you have to think about which type you will be sending: trying to insert a string into an integer column (or vice versa) will fail.</p>
-<p>In the example above, we let Npgsql <em>infer</em> the PostgreSQL data type from the .NET type: when Npgsql sees a .NET <code>string</code>, it automatically sends a parameter of type <code>text</code> (note that this isn&#39;t the same as, say <code>varchar</code>). In many cases this will work just fine, and you don&#39;t need to worry. In some cases, however, you will need to explicitly set the parameter type. For example, Npgsql sends .NET <code>DateTime</code> as <code>timestamp without time zone</code>, but you may want to send a PostgreSQL <code>date</code> instead, which doesn&#39;t have a direct counterpart in .NET. For more information on supported types and their mappings, see <a href="types/basic.html">this page</a>.</p>
-<p><code>NpgsqlParameter</code> exposes several properties that allow you to specify the parameter&#39;s data type:</p>
-<h4 id="dbtype">DbType</h4>
-<p><code>DbType</code> is a portable enum that can be used to specify database types. While this approach will allow you to write portable code across databases, it obviously won&#39;t let you specify types that are specific to PostgreSQL.</p>
-<h4 id="npgsqldbtype">NpgsqlDbType</h4>
-<p><code>NpgsqlDbType</code> is an Npgsql-specific enum that contains (almost) all PostgreSQL types supported by Npgsql.</p>
-<h4 id="datatypename">DataTypeName</h4>
-<p><code>DataTypeName</code> is an Npgsql-specific string property which allows to directly set a PostgreSQL type name on the parameter. This is rarely needed - <code>NpgsqlDbType</code> should be suitable for the majority of cases. However, it may be useful if you&#39;re using unmapped user-defined types (<a href="types/enums_and_composites.html">enums or composites</a>) or some PostgreSQL type which isn&#39;t included in <code>NpgsqlDbType</code> (because it&#39;s supported via an external plugin).</p>
+<p>PostgreSQL has a strongly-typed type system: columns and parameters have a type, and types are usually not implicitly converted to other types. This means you have to think about which type you will be sending: trying to insert a string into an integer column (or vice versa) will fail.</p>
+<p>In the example above, we let Npgsql <em>infer</em> the PostgreSQL data type from the .NET type: when Npgsql sees a .NET <code>string</code>, it automatically sends a parameter of PostgreSQL type <code>text</code> (note that this isn&#39;t the same as, say <code>varchar</code>). In many cases this will work just fine, and you don&#39;t need to worry. In some cases, however, you will need to explicitly set, or <em>coerce</em>, the parameter type. For example, although Npgsql sends .NET <code>string</code> as <code>text</code> by default, it also supports sending <code>jsonb</code>. For more information on supported types and their mappings, see <a href="types/basic.html">this page</a>.</p>
+<p><code>NpgsqlParameter</code> exposes several properties that allow you to coerce the parameter&#39;s data type:</p>
+<ul>
+<li><code>DbType</code>: a portable enum that can be used to specify database types. While this approach will allow you to write portable code across databases, it won&#39;t let you specify types that are specific to PostgreSQL. This is useful mainly if you&#39;re avoiding Npgsql-specific types, using <a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbconnection"><code>DbConnection</code></a> and <a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand"><code>DbCommand</code></a> rather than <a class="xref" href="api/Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> and <a class="xref" href="api/Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>.</li>
+<li><code>NpgsqlDbType</code>: an Npgsql-specific enum that contains (almost) all PostgreSQL types supported by Npgsql.</li>
+<li><code>DataTypeName</code>: an Npgsql-specific string property which allows to directly set a PostgreSQL type name on the parameter. This is rarely needed - <code>NpgsqlDbType</code> should be suitable for the majority of cases. However, it may be useful if you&#39;re using unmapped user-defined types (<a href="types/enums_and_composites.html">enums or composites</a>) or some PostgreSQL type which isn&#39;t included in <code>NpgsqlDbType</code> (because it&#39;s supported via an external plugin).</li>
+</ul>
 <h3 id="strongly-typed-parameters">Strongly-typed parameters</h3>
 <p>The standard ADO.NET parameter API is unfortunately weakly-typed: parameter values are set on <code>NpgsqlParameter.Value</code>, which, being an <code>object</code>, will box value types such as <code>int</code>. If you&#39;re sending lots of value types to the database, this will create large amounts of useless heap allocations and strain the garbage collector.</p>
 <p>As an alternative, you can use <code>NpgsqlParameter&lt;T&gt;</code>. This generic class has a <code>TypedValue</code> member, which is similar to <code>NpgsqlParameter.Value</code> but is strongly-typed, thus avoiding the boxing and heap allocation. Note that this strongly-typed parameter API is entirely Npgsql-specific, and will make your code non-portable to other database. See <a href="https://github.com/dotnet/corefx/issues/8955">#8955</a> for an issue discussing this at the ADO.NET level.</p>
 <h2 id="transactions">Transactions</h2>
-<h3 id="basic-transactions">Basic Transactions</h3>
+<h3 id="basic-transactions">Basic transactions</h3>
 <p>Transactions can be started by calling the standard ADO.NET method <code>NpgsqlConnection.BeginTransaction()</code>.</p>
 <p>PostgreSQL doesn&#39;t support nested or concurrent transactions - only one transaction may be in progress at any given moment. Calling <code>BeginTransaction()</code> while a transaction is already in progress will throw an exception. Because of this, it isn&#39;t necessary to pass the <code>NpgsqlTransaction</code> object returned from <code>BeginTransaction()</code> to commands you execute - calling <code>BeginTransaction()</code> means that all subsequent commands will automatically participate in the transaction, until either a commit or rollback is performed. However, for maximum portability it&#39;s recommended to set the transaction on your commands.</p>
 <p>Although concurrent transactions aren&#39;t supported, PostgreSQL supports the concept of <em>savepoints</em> - you may set named savepoints in a transaction and roll back to them later without rolling back the entire transaction. Savepoints can be created, rolled back to, and released via <code>NpgsqlTransaction.Save(name)</code>, <code>NpgsqlTransaction.Rollback(name)</code> and <code>NpgsqlTransaction.Release(name)</code> respectively. <a href="https://www.postgresql.org/docs/current/static/tutorial-transactions.html">See the PostgreSQL documentation for more details.</a>.</p>
 <p>When calling <code>BeginTransaction()</code>, you may optionally set the <em>isolation level</em>. <a href="https://www.postgresql.org/docs/current/static/transaction-iso.html">See the docs for more details.</a></p>
-<h3 id="systemtransactions-and-distributed-transactions">System.Transactions and Distributed Transactions</h3>
+<h3 id="systemtransactions-and-distributed-transactions">System.Transactions and distributed transactions</h3>
 <p>In addition to <code>DbConnection.BeginTransaction()</code>, .NET includes System.Transactions, an alternative API for managing transactions - <a href="https://msdn.microsoft.com/en-us/library/ee818746.aspx">read the MSDN docs to understand the concepts involved</a>. Npgsql fully supports this API, and starting with version 3.3 will automatically enlist to ambient TransactionScopes (you can disable enlistment by specifying <code>Enlist=false</code> in your connection string).</p>
-<p>When more than one connection (or resource) enlists in the same transaction, the transaction is said to be <em>distributed</em>. Distributed transactions allow you to perform changes atomically across more than one database (or resource) via a two-phase commit protocol - <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms681205(v=vs.85).aspx">here is the MSDN documentation</a>. Npgsql supports distributed transactions - support has been rewritten for version 3.2, fixing many previous issues. However, at this time Npgsql enlists as a <em>volatile resource manager</em>, meaning that if your application crashes while performing, recovery will not be managed properly. For more information about this, <a href="https://msdn.microsoft.com/en-us/library/ee818750.aspx">see this page and the related ones</a>. If you would like to see better distributed transaction recovery (i.e. durable resource manager enlistment), please say so <a href="https://github.com/npgsql/npgsql/issues/1378">on this issue</a> and subscribe to it for updates.</p>
-<p>Note that if you open and close connections to the same database inside an ambient transaction, without ever having two connections open <em>at the same time</em>, Npgsql will internally reuse the same connection, avoiding the escalation to a full-blown distributed transaction. This is better for performance and for general simplicity.</p>
+<p>When more than one connection (or resource) enlists in the same transaction, the transaction is said to be <em>distributed</em>. While .NET Framework supports distributed transaction and Npgsql had limited support for them, .NET Core and .NET 5.0+ do not. It is therefore currently not possible to make use of distributed transactions in modern versions of .NET</p>
+<p>Note that if you open and close connections to the same database inside an ambient transaction, without ever having two connections open <em>at the same time</em>, Npgsql internally reuses the same connection, avoiding the need for a distributed transaction.</p>
+<!-- Distributed transactions allow you to perform changes atomically across more than one database (or resource) via a two-phase commit protocol - [here is the MSDN documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms681205(v=vs.85).aspx). Npgsql supports distributed transactions - support has been rewritten for version 3.2, fixing many previous issues. However, at this time Npgsql enlists as a *volatile resource manager*, meaning that if your application crashes while performing, recovery will not be managed properly. For more information about this, [see this page and the related ones](https://msdn.microsoft.com/en-us/library/ee818750.aspx). If you would like to see better distributed transaction recovery (i.e. durable resource manager enlistment), please say so [on this issue](https://github.com/npgsql/npgsql/issues/1378) and subscribe to it for updates.
+-->
+<h2 id="batching">Batching</h2>
+<p>Let&#39;s say you need to execute two SQL statements for some reason. This can naively be done as follows:</p>
+<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (&#39;foo&#39;)&quot;, conn);
+await cmd.ExecuteNonQueryAsync();
+
+cmd.CommandText = &quot;SELECT * FROM table&quot;;
+await using var reader = await cmd.ExecuteReaderAsync();
+</code></pre><p>The above code needlessly performs two roundtrips to the database: your program will not send the <code>SELECT</code> until after the <code>INSERT</code> has completed and confirmation for that has been received. Network latency can make this very inefficient: as the distance between your .NET client and PostgreSQL increases, the time spent waiting for packets to cross the network can severely impact your application&#39;s performance.</p>
+<p>Instead, you can ask Npgsql to send the two SQL statements in a single roundtrip, by using batching:</p>
+<pre><code class="lang-c#">await using var batch = new NpgsqlBatch(conn)
+{
+    BatchCommands =
+    {
+        new(&quot;INSERT INTO table (col1) VALUES (&#39;foo&#39;)&quot;),
+        new(&quot;SELECT * FROM table&quot;)
+    }
+};
+
+await using var reader = await cmd.ExecuteReaderAsync();
+</code></pre><p>An <a class="xref" href="api/Npgsql.NpgsqlBatch.html">NpgsqlBatch</a> simply contains a list of <code>NpgsqlBatchCommands</code>, each of which has a <code>CommandText</code> and a list of parameters (much like an <a class="xref" href="api/Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>). All statements and parameters are efficiently packed into a single packet - when possible - and sent to PostgreSQL.</p>
+<h3 id="legacy-batching">Legacy batching</h3>
+<p>Prior to Npgsql 6.0, <code>NpgsqlBatch</code> did not yet exist, and batching could be done as follows:</p>
+<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (&#39;foo&#39;); SELECT * FROM table&quot;, conn);
+await using var reader = await cmd.ExecuteReaderAsync();
+</code></pre><p>This packs multiple SQL statements into the <code>CommandText</code> of a single <code>NpgsqlCommand</code>, delimiting them with semi-colons. This technique is still supported, and can be useful when porting database code from other database. However, legacy batching is generally discouraged since it isn&#39;t natively supported by PostgreSQL, forcing Npgsql to parse the SQL to find semicolons. This is similar to <em>named parameter placeholders</em>, <a href="#positional-and-named-placeholders">see this section for more details</a>.</p>
 <h2 id="stored-functions-and-procedures">Stored functions and procedures</h2>
 <p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">stored (or server-side) functions</a>, and since PostgreSQL 11 also <a href="https://www.postgresql.org/docs/current/sql-createprocedure.html">stored procedures</a>. These can be written in SQL (similar to views), or in <a href="https://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a> (PostgreSQL&#39;s procedural language), <a href="https://www.postgresql.org/docs/current/static/plpython.html">PL/Python</a> or several other server-side languages.</p>
 <p>Once a function or procedure has been defined, calling it is a simple matter of executing a regular command:</p>

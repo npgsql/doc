@@ -93,9 +93,9 @@ await using var conn = new NpgsqlConnection(connString);
 await conn.OpenAsync();
 
 // Insert some data
-await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (some_field) VALUES (@p)&quot;, conn))
+await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (some_field) VALUES ($1)&quot;, conn))
 {
-    cmd.Parameters.AddWithValue(&quot;p&quot;, &quot;Hello world&quot;);
+    cmd.Parameters.AddWithValue(&quot;Hello world&quot;);
     await cmd.ExecuteNonQueryAsync();
 }
 
@@ -103,8 +103,10 @@ await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (some_field) VAL
 await using (var cmd = new NpgsqlCommand(&quot;SELECT some_field FROM data&quot;, conn))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
-while (await reader.ReadAsync())
-    Console.WriteLine(reader.GetString(0));
+    while (await reader.ReadAsync())
+    {
+        Console.WriteLine(reader.GetString(0));
+    }
 }
 </code></pre><p>You can find more info about the ADO.NET API in the <a href="https://msdn.microsoft.com/en-us/library/h43ks021(v=vs.110).aspx">MSDN docs</a> or in many tutorials on the Internet.</p>
 </article>
