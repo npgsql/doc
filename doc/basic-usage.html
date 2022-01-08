@@ -128,7 +128,7 @@ await cmd.ExecuteNonQueryAsync();
 <p>Note that PostgreSQL does not support parameters in arbitrary locations - you can only parameterize data values. For example, trying to parameterize a table or column name will fail - parameters aren&#39;t a simple way to stick an arbitrary string in your SQL.</p>
 <h3 id="positional-and-named-placeholders">Positional and named placeholders</h3>
 <p>Starting with Npgsql 6.0, the recommended placeholder style is <em>positional</em> (<code>$1</code>, <code>$2</code>); this is the native parameter style used by PostgreSQL, and your SQL can therefore be sent to the database as-is, without any manipulation.</p>
-<p>For legacy and compatibility reasons, Npgsql also supports <em>named placeholders</em>. This allows the above code to be written as followS:</p>
+<p>For legacy and compatibility reasons, Npgsql also supports <em>named placeholders</em>. This allows the above code to be written as follows:</p>
 <pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p1), (@p2)&quot;, conn)
 {
     Parameters =
