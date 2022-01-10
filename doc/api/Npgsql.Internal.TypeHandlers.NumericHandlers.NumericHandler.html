@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class NumericHandler
    | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.57.2.0">
+    <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../../img/favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -221,7 +221,7 @@ using either sync or async I/O.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override ValueTask&lt;decimal&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public override async ValueTask&lt;decimal&gt; Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -791,7 +791,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task Write(BigInteger value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task Write(BigInteger value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -942,7 +942,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Task Write(decimal value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public override async Task Write(decimal value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1413,7 +1413,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;BigInteger&gt; INpgsqlTypeHandler&lt;BigInteger&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;BigInteger&gt; INpgsqlTypeHandler&lt;BigInteger&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1475,7 +1475,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;byte&gt; INpgsqlTypeHandler&lt;byte&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;byte&gt; INpgsqlTypeHandler&lt;byte&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1537,7 +1537,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;double&gt; INpgsqlTypeHandler&lt;double&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;double&gt; INpgsqlTypeHandler&lt;double&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1599,7 +1599,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;short&gt; INpgsqlTypeHandler&lt;short&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;short&gt; INpgsqlTypeHandler&lt;short&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1661,7 +1661,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;int&gt; INpgsqlTypeHandler&lt;int&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;int&gt; INpgsqlTypeHandler&lt;int&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1723,7 +1723,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;long&gt; INpgsqlTypeHandler&lt;long&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;long&gt; INpgsqlTypeHandler&lt;long&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1785,7 +1785,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">ValueTask&lt;float&gt; INpgsqlTypeHandler&lt;float&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+    <pre><code class="lang-csharp hljs">async ValueTask&lt;float&gt; INpgsqlTypeHandler&lt;float&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
