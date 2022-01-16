@@ -97,15 +97,15 @@
 </thead>
 <tbody>
 <tr>
-<td>timestamp without time zone</td>
+<td>timestamp with time zone</td>
 <td>1 microsecond, 4713BC-294276AD</td>
-<td>DateTime</td>
+<td>DateTime (UTC)</td>
 <td>100 nanoseconds, 1AD-9999AD</td>
 </tr>
 <tr>
-<td>timestamp with time zone</td>
+<td>timestamp without time zone</td>
 <td>1 microsecond, 4713BC-294276AD</td>
-<td>DateTime</td>
+<td>DateTime (Unspecified)</td>
 <td>100 nanoseconds, 1AD-9999AD</td>
 </tr>
 <tr>
@@ -156,14 +156,14 @@
 </thead>
 <tbody>
 <tr>
-<td>timestamp without time zone</td>
-<td>DateTime (Unspecified)</td>
-<td></td>
-</tr>
-<tr>
 <td>timestamp with time zone</td>
 <td>DateTime (Utc<sup>1</sup>)</td>
 <td>DateTimeOffset (Offset=0)<sup>2</sup></td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>DateTime (Unspecified)</td>
+<td></td>
 </tr>
 <tr>
 <td>date</td>
@@ -203,18 +203,18 @@
 </thead>
 <tbody>
 <tr>
-<td>timestamp without time zone</td>
-<td>DateTime (Local/Unspecified)<sup>1</sup></td>
-<td></td>
-<td>Timestamp</td>
-<td>DateTime, DateTime2</td>
-</tr>
-<tr>
 <td>timestamp with time zone</td>
 <td>DateTime (Utc)<sup>1</sup>, DateTimeOffset</td>
 <td></td>
 <td>TimestampTz</td>
-<td>DateTimeOffset</td>
+<td>DateTime<sup>2</sup>, DateTimeOffset</td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>DateTime (Local/Unspecified)<sup>1</sup></td>
+<td></td>
+<td>Timestamp</td>
+<td>DateTime2</td>
 </tr>
 <tr>
 <td>date</td>
@@ -247,6 +247,7 @@
 </tbody>
 </table>
 <p><sup>1</sup> UTC DateTime is written as <code>timestamp with time zone</code>, Local/Unspecified DateTimes are written as <code>timestamp without time zone</code>. In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), DateTime is always written as <code>timestamp without time zone</code>.</p>
+<p><sup>2</sup>In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), <code>DbType.DateTime</code> is mapped to <code>timestamp without time zone</code>.</p>
 </article>
           </div>
           

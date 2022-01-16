@@ -504,18 +504,18 @@
 <td>Binary</td>
 </tr>
 <tr>
-<td>timestamp without time zone</td>
-<td>DateTime (Local/Unspecified)<sup>1</sup></td>
-<td></td>
-<td>Timestamp</td>
-<td>DateTime, DateTime2</td>
-</tr>
-<tr>
 <td>timestamp with time zone</td>
 <td>DateTime (Utc)<sup>1</sup>, DateTimeOffset</td>
 <td></td>
 <td>TimestampTz</td>
-<td>DateTimeOffset</td>
+<td>DateTime<sup>2</sup>, DateTimeOffset</td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>DateTime (Local/Unspecified)<sup>1</sup></td>
+<td></td>
+<td>Timestamp</td>
+<td>DateTime2</td>
 </tr>
 <tr>
 <td>date</td>
@@ -723,6 +723,7 @@
 </tbody>
 </table>
 <p><sup>1</sup> UTC DateTime is written as <code>timestamp with time zone</code>, Local/Unspecified DateTimes are written as <code>timestamp without time zone</code>. In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), DateTime is always written as <code>timestamp without time zone</code>.</p>
+<p><sup>2</sup>In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), <code>DbType.DateTime</code> is mapped to <code>timestamp without time zone</code>.</p>
 <p>Notes when using Range and Array, bitwise-or NpgsqlDbType.Range or NpgsqlDbType.Array with the child type. For example, to construct the NpgsqlDbType for a <code>int4range</code>, write <code>NpgsqlDbType.Range | NpgsqlDbType.Integer</code>. To construct the NpgsqlDbType for an <code>int[]</code>, write <code>NpgsqlDbType.Array | NpgsqlDbType.Integer</code>.</p>
 <p>For information about enums, <a href="enums_and_composites.html">see the Enums and Composites page</a>.</p>
 </article>
