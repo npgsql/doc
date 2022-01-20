@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Exceptions, errors and notices | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Exceptions, errors and notices | Npgsql Documentation ">
+    <meta name="generator" content="docfx 2.58.9.0">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="exceptions-errors-and-notices">Exceptions, errors and notices</h1>
+
+<p>Most exceptions thrown by Npgsql are either of type <a class="xref" href="../api/Npgsql.NpgsqlException.html">NpgsqlException</a>, or wrapped by one; this allows your application to catch <code>NpgsqlException</code> where appropriate, for all database-related errors. Note that <code>NpgsqlException</code> is a sub-class of the general <a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbexception">System.Data.DbException</a>, so if your application uses more than one database type, you can catch that as well.</p>
+<p>When Npgsql itself encounters an error, it typically raises that as an <code>NpgsqlException</code> directly, possibly wrapping an inner exception. For example, if a networking error occurs while communicating with PostgreSQL, Npgsql will raise an <code>NpgsqlException</code> wrapping an <code>IOException</code>; this allow you both to identify the root cause of the problem, while still identifying it as database-related.</p>
+<p>In other cases, PostgreSQL itself will report an error to PostgreSQL; Npgsql raises these by throwing a <a class="xref" href="../api/Npgsql.PostgresException.html">PostgresExceptions</a>, which is a sub-class of <code>NpgsqlException</code> adding important contextual information on the error. Most importantly, <code>PostgresException</code> exposes the <a class="xref" href="../api/Npgsql.PostgresException.html#Npgsql_PostgresException_SqlState">SqlState</a> property, which contains the <a href="https://www.npgsql.org/doc/api/Npgsql.PostgresException.html#Npgsql_PostgresException_SqlState">PostgreSQL error code</a>. This value can be consulted to identify which error type occurred.</p>
+<p>When executing multiple commands via <a class="xref" href="../api/Npgsql.NpgsqlBatch.html">NpgsqlBatch</a>, the <a class="xref" href="../api/Npgsql.NpgsqlException.html#Npgsql_NpgsqlException_BatchCommand">BatchCommand</a> property references the command within the batch which triggered the exception. This allows you to understand exactly what happened, and access the specific SQL which triggered the error.</p>
+<p>Finally, PostgreSQL also raises &quot;notices&quot;, which contain non-critical information on command execution. Notices are not errors: they do not indicate failure and can be safely ignored, although they may contain valuable information on the execution of your commands. Npgsql exposes notices via the <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Notice">Notice</a> event, which you can use to route these messages into your logging system:</p>
+<pre><code class="lang-c#">conn.Notice += (_, args) =&gt; Console.WriteLine(args.Notice.MessageText);
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/diagnostics/exceptions_notices.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © Copyright 2022 The Npgsql Development Team
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
