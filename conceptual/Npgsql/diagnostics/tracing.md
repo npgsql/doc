@@ -29,3 +29,41 @@ For example, Zipkin visualizes traces in the following way:
 ![Zipkin UI Sample](/img/zipkin.png)
 
 In this trace, the Npgsql query (to database testdb) took around 800ms, and was nested inside the application's `work1` activity, which also had another unrelated `subtask1`. This allows understanding the relationships between the different activities, and where time is being spent.
+
+### Enrich
+
+This option allows one to enrich the activity with additional information from the `NpgsqlCommand`, or on any exception.
+The `Enrich` action is called only when `activity.IsAllDataRequested` is `true`.
+It contains the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or an exception, depending on the event name:
+
+For event name "OnStartActivity", the actual object will be `NpgsqlCommand`.
+
+For event name "OnStopActivity", the actual object will be `NpgsqlCommand`.
+
+For event name "OnException", the actual object will be `Exception`.
+
+Example:
+
+```csharp
+using System;
+using Npgsql;
+using OpenTelemetry;
+
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddNpgsql(options => options.Enrich
+        = (activity, eventName, rawObject) =>
+        {
+            switch (eventName, rawObject)
+            {
+                case ("OnStartActivity", NpgsqlCommand command):
+                    activity.SetTag("command.type", command.CommandType);
+                    break;
+                case ("OnStopActivity", NpgsqlCommand command):
+                    activity.SetTag("command.type", command.CommandType);
+                    break;
+                case ("OnException", Exception exception):
+                    activity.SetTag("stackTrace", exception.StackTrace);
+                    break;
+            }
+        }).Build();
+```
