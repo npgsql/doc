@@ -32,9 +32,12 @@ In this trace, the Npgsql query (to database testdb) took around 800ms, and was 
 
 ### Enrich
 
-This option allows one to enrich the activity with additional information from the `NpgsqlCommand`, or on any exception.
-The `Enrich` action is called only when `activity.IsAllDataRequested` is `true`.
-It contains the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or an exception, depending on the event name:
+Enrich actions on the tracing options allow activities created by Npgsql to be enriched with additional information from the raw object relating to the activity, or on any exception.
+The action is called only when `activity.IsAllDataRequested` is `true`.
+
+#### `EnrichCommandExecution`
+
+This action's parameters contain the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or an exception, depending on the event name:
 
 For event name "OnStartActivity", the actual object will be `NpgsqlCommand`.
 
@@ -48,9 +51,10 @@ Example:
 using System;
 using Npgsql;
 using OpenTelemetry;
+using OpenTelemetry.Trace;
 
 var tracerProvider = Sdk.CreateTracerProviderBuilder()
-    .AddNpgsql(options => options.Enrich
+    .AddNpgsql(options => options.EnrichCommandExecution
         = (activity, eventName, rawObject) =>
         {
             switch (eventName, rawObject)
