@@ -160,7 +160,7 @@
 ------------------------+--------------------------
  2020-01-01 12:00:00+02 | timestamp with time zone
 </code></pre><p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, changing only the column type. To do this, edit your migration and add the following to the top of your migration&#39;s Up and Down methods:</p>
-<pre><code class="lang-c#">migrationBuilder.Sql(&quot;SET TimeZone=&#39;UTC&#39;&quot;);
+<pre><code class="lang-c#">migrationBuilder.Sql(&quot;SET TimeZone=&#39;UTC&#39;;&quot;);
 </code></pre><p>This will ensure that no time zone conversions will be applied when converting the columns:</p>
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
