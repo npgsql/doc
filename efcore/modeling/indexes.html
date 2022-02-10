@@ -89,7 +89,7 @@
 </code></pre><p>This will create an index for searching on <code>Id</code>, but containing also the column <code>Name</code>, so that reading the latter will not involve accessing the table. The SQL generated is as follows:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_Blog_Id&quot; ON blogs (&quot;Id&quot;) INCLUDE (&quot;Name&quot;);
 </code></pre><h2 id="postgresql-index-methods">PostgreSQL index methods</h2>
-<p>PostgreSQL supports a number of <em>index methods</em>, or <em>types</em>. These are specified at index creation time via the <code>USING _method_</code> clause, see the <a href="https://www.postgresql.org/docs/current/static/sql-createindex.html">PostgreSQL docs for <code>CREATE INDEX</code></a> and <a href="https://www.postgresql.org/docs/current/static/indexes-types.html">this page</a> for information on the different types.</p>
+<p>PostgreSQL supports a number of <em>index methods</em>, or <em>types</em>. These are specified at index creation time via the <code>USING &lt;method&gt;</code> clause, see the <a href="https://www.postgresql.org/docs/current/static/sql-createindex.html">PostgreSQL docs for <code>CREATE INDEX</code></a> and <a href="https://www.postgresql.org/docs/current/static/indexes-types.html">this page</a> for information on the different types.</p>
 <p>The Npgsql EF Core provider allows you to specify the index method to be used by calling <code>HasMethod()</code> on your index in your context&#39;s <code>OnModelCreating</code> method:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
