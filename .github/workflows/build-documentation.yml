@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v2.4.0
+      uses: actions/checkout@v3
 
     - name: Use Node.js
       uses: actions/setup-node@v3.0.0
@@ -23,7 +23,7 @@ jobs:
         markdownlint "conceptual/**/*.md"
 
     - name: Checkout live branch
-      uses: actions/checkout@v2.4.0
+      uses: actions/checkout@v3
       with:
         ref: live
         path: live
@@ -31,14 +31,14 @@ jobs:
       run: rm -rf live/*
 
     - name: Checkout Npgsql
-      uses: actions/checkout@v2.4.0
+      uses: actions/checkout@v3
       with:
         repository: npgsql/npgsql
         ref: stable
         path: Npgsql
 
     - name: Checkout EFCore.PG
-      uses: actions/checkout@v2.4.0
+      uses: actions/checkout@v3
       with:
         repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
         ref: stable
