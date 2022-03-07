@@ -37,13 +37,13 @@ The action is called only when `activity.IsAllDataRequested` is `true`.
 
 #### `EnrichCommandExecution`
 
-This action's parameters contain the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or an exception, depending on the event name:
+This action's parameters contain the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or a tuple also containing an exception, depending on the event name:
 
 For event name "OnStartActivity", the actual object will be `NpgsqlCommand`.
 
 For event name "OnStopActivity", the actual object will be `NpgsqlCommand`.
 
-For event name "OnException", the actual object will be `Exception`.
+For event name "OnException", the actual object will be `ValueTuple<NpgsqlCommand, Exception>`.
 
 Example:
 
@@ -65,7 +65,7 @@ var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 case ("OnStopActivity", NpgsqlCommand command):
                     activity.SetTag("command.type", command.CommandType);
                     break;
-                case ("OnException", Exception exception):
+                case ("OnException", (NpgsqlCommand command, Exception exception)):
                     activity.SetTag("stackTrace", exception.StackTrace);
                     break;
             }
