@@ -176,6 +176,7 @@ var npgsql = context.Products
 <section id="tabpanel_bKs3zHtvcW-1_v5" role="tabpanel" data-tab="v5">
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;()
     .HasIndex(b =&gt; new { b.Title, b.Description })
+    .HasMethod(&quot;GIN&quot;)
     .IsTsVectorExpressionIndex(&quot;english&quot;);
 </code></pre></section>
 <section id="tabpanel_bKs3zHtvcW-1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
