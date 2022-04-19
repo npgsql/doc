@@ -30,7 +30,7 @@ For example, Zipkin visualizes traces in the following way:
 
 In this trace, the Npgsql query (to database testdb) took around 800ms, and was nested inside the application's `work1` activity, which also had another unrelated `subtask1`. This allows understanding the relationships between the different activities, and where time is being spent.
 
-### Enrich
+### Enrich Options
 
 Enrich actions on the tracing options allow activities created by Npgsql to be enriched with additional information from the raw object relating to the activity, or on any exception.
 The action is called only when `activity.IsAllDataRequested` is `true`.
@@ -40,6 +40,8 @@ The action is called only when `activity.IsAllDataRequested` is `true`.
 This action's parameters contain the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or a tuple also containing an exception, depending on the event name:
 
 For event name "OnStartActivity", the actual object will be `NpgsqlCommand`.
+
+For event name "OnFirstResponse", the actual object will be `NpgsqlCommand`.
 
 For event name "OnStopActivity", the actual object will be `NpgsqlCommand`.
 
@@ -62,6 +64,9 @@ var tracerProvider = Sdk.CreateTracerProviderBuilder()
                 case ("OnStartActivity", NpgsqlCommand command):
                     activity.SetTag("command.type", command.CommandType);
                     break;
+                case ("OnFirstResponse", NpgsqlCommand command):
+                    activity.SetTag("received-first-response", DateTime.UtcNow);
+                    break;
                 case ("OnStopActivity", NpgsqlCommand command):
                     activity.SetTag("command.type", command.CommandType);
                     break;
@@ -69,5 +74,26 @@ var tracerProvider = Sdk.CreateTracerProviderBuilder()
                     activity.SetTag("stackTrace", exception.StackTrace);
                     break;
             }
+        }).Build();
+```
+
+### Record Options
+
+Recording of an `ActivityEvent` can be disabled for exceptions or the point at which a first response is received, by setting the corresponding flags on the options.
+Note that even when disabled, the corresponding Enrich invocations will still occur ("OnException" and "OnFirstResponse" respectively, see above).
+
+Example:
+
+```csharp
+using System;
+using Npgsql;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
+
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddNpgsql(options => 
+        {
+            options.RecordCommandExecutionException = false; // Default = true
+            options.RecordCommandExecutionFirstResponse = false; // Default = true
         }).Build();
 ```
