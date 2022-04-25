@@ -102,14 +102,17 @@
 }
 </code></pre><p>This will cause all textual operators on this column to be case-insensitive.</p>
 <h3 id="database-collation">Database collation</h3>
-<p>PostgreSQL also allows you to specify collations at the database level, when it is created. While this will eventually allow specifying that all columns and operations are case-insensitive, for example, PostgreSQL currently does not support non-deterministic collations at the database level. To work around this limitation, the EF Core provider has a feature which allows you to specify the <code>default column collation</code> at the model level, and the provider will ensure it is automatically specified on all columns:</p>
+<p>PostgreSQL also allows you to specify collations at the database level, when it is created:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
-    modelBuilder.HasCollation(&quot;my_collation&quot;, locale: &quot;en-u-ks-primary&quot;, provider: &quot;icu&quot;, deterministic: false);
-
-    builder.UseDefaultColumnCollation(&quot;my_collation&quot;);
+    modelBuilder.HasCollation(&quot;&lt;collation_name&gt;&quot;);
 }
-</code></pre><p>All columns created after this directive is added will automatically have their collation specified accordingly, and all existing columns will be altered. The end result of the above is very similar to specifying a database collation: instead of telling PostgreSQL to implicit apply a collation to all columns, the EF Core provider does the same.</p>
+</code></pre><p>Unfortunately, the database collation is quote limited in PostgreSQL; it notably does not support non-deterministic collations (e.g. case-insensitive ones). To work around this limitation, you can use EF Core&#39;s <a href="https://docs.microsoft.com/ef/core/modeling/bulk-configuration#pre-convention-configuration">pre-convention model configuration</a> feature:</p>
+<pre><code class="lang-c#">protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+{
+    configurationBuilder.Properties&lt;string&gt;().UseCollation(&quot;my_collation&quot;);
+}
+</code></pre><p>All columns created with this configuration will automatically have their collation specified accordingly, and all existing columns will be altered. The end result of the above is very similar to specifying a database collation: instead of telling PostgreSQL to implicit apply a collation to all columns, EF Core will do the same for you in its migrations.</p>
 <h2 id="the-citext-type">The citext type</h2>
 <p>The older PostgreSQL method for performing case-insensitive text operations is the <code>citext</code> type; it is similar to the <code>text</code> type, but operators are functions between <code>citext</code> values are implicitly case-insensitive. <a href="https://www.postgresql.org/docs/current/citext.html">The PostgreSQL docs</a> provide more information on this type.</p>
 <p><code>citext</code> is available in a PostgreSQL-bundled extension, so you&#39;ll first have to install it:</p>
