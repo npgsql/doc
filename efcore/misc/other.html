@@ -85,7 +85,7 @@ Simply use <code>HasPostgresExtension</code> in your context&#39;s <code>OnModel
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.HasPostgresExtension(&quot;hstore&quot;);
 </code></pre><h2 id="execution-strategy">Execution Strategy</h2>
-<p>Since 2.0.0, the Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context&#39;s <code>OnModelConfiguring</code>:</p>
+<p>The Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context&#39;s <code>OnModelConfiguring</code>:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(
         &quot;&lt;connection_string&gt;&quot;,
@@ -105,12 +105,7 @@ Simply use <code>HasPostgresExtension</code> in your context&#39;s <code>OnModel
 </code></pre><p>You may also consider passing <code>Trust Server Certificate=true</code> in your connection string to make Npgsql accept whatever certificate your PostgreSQL provides (useful for self-signed certificates).</p>
 <div class="CAUTION"><h5>Caution</h5><p>When specifying the options via <code>OnConfiguring</code>, make sure that the callbacks you pass in are static methods. Passing in instance methods causes EF Core to create a new service provider for each context instance, which can degrade performance in a significant way.</p>
 </div>
-<h2 id="comments">Comments</h2>
-<p>PostgreSQL allows you to <a href="https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-COMMENTS">attach comments</a> to database objects, which can help explain their purpose for someone examining the schema. The Npgsql EF Core provider supports this for tables or columns, simply set the comment in your model&#39;s <code>OnModelCreating</code> as follows:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.Entity&lt;MyEntity&gt;()
-                   .HasComment(&quot;Some comment&quot;);
-</code></pre><h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
+<h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
 <p>If you&#39;re using CockroachDB, the Npgsql EF Core provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Customer&gt;()
