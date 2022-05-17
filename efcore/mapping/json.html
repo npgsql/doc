@@ -280,11 +280,11 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_array_length(customer-&gt;&#39;Orders&#39;)</a></td>
 </tr>
 <tr>
-<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)</td>
+<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)<sup>1</sup></td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer @&gt; &#39;{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}&#39;</a></td>
 </tr>
 <tr>
-<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, e.Customer)</td>
+<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, e.Customer)<sup>1</sup></td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">&#39;{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}&#39; &lt;@ customer</a></td>
 </tr>
 <tr>
@@ -328,11 +328,11 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_array_length(customer-&gt;&#39;Orders&#39;</a></td>
 </tr>
 <tr>
-<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)</td>
+<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)<sup>1</sup></td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer @&gt; &#39;{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}&#39;</a></td>
 </tr>
 <tr>
-<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, customer)</td>
+<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, customer)<sup>1</sup></td>
 <td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">&#39;{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}&#39; &lt;@ customer</a></td>
 </tr>
 <tr>
@@ -355,6 +355,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
 </table>
 </section>
 </div>
+<p><sup>1</sup> JSON functions which accept a .NET object require a JSON document, and do not accept scalar values. For example, to pass a scalar to <code>JsonContains</code>, wrap it in a <code>JsonElement</code>.</p>
 <h2 id="indexing-json-columns">Indexing JSON columns</h2>
 <div class="NOTE"><h5>Note</h5><p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
 </div>
