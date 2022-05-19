@@ -355,7 +355,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;&#39;Name&#39; = &#39;Joe&#39;
 </table>
 </section>
 </div>
-<p><sup>1</sup> JSON functions which accept a .NET object require a JSON document, and do not accept scalar values. For example, to pass a scalar to <code>JsonContains</code>, wrap it in a <code>JsonElement</code>.</p>
+<p><sup>1</sup> JSON functions which accept a .NET object will not accept .NET scalar values. For example, to pass a scalar to <code>JsonContains</code> wrap it in a <code>JsonElement</code> or alternatively wrap it in a string. Note: a root level JSON string value requires quotes and escaping <code>@&quot;&quot;&quot;Joe&quot;&quot;&quot;</code>, just as any nested JSON string value would.</p>
 <h2 id="indexing-json-columns">Indexing JSON columns</h2>
 <div class="NOTE"><h5>Note</h5><p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
 </div>
