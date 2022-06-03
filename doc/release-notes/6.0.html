@@ -81,7 +81,7 @@
 <p>Npgsql version 6.0 has been released and is available on nuget.</p>
 <p>Npgsql 6.0 brings some major breaking changes and is not a simple in-place upgrade. Carefully read the breaking change notes below and upgrade with care.</p>
 <h2 id="new-features">New features</h2>
-<p>The full list of issues for this release is <a href="https://github.com/npgsql/efcore.pg/milestone/24?closed=1">available here</a>.</p>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/npgsql/milestone/71?closed=1">available here</a>.</p>
 <h3 id="multiple-hosts-load-balancing-and-failover">Multiple hosts, load balancing and failover</h3>
 <p>Npgsql now includes first-class support for managing connections to multiple PostgreSQL servers, unlocking both load balancing for better performance and failover for better reliability (<a href="https://github.com/npgsql/npgsql/issues/732">#732</a>). This long-awaited feature is an important part of using PostgreSQL in scalable and mission-critical environments.</p>
 <p>For example, consider the following connection string:</p>
@@ -92,7 +92,7 @@
 <p>Npgsql can now report tracing data via OpenTelemetry; this can provide invaluable data on the queries your application is running, how long they&#39;re taking, and situate them in the larger context of your application. For example, you can visualize what percentage of your HTTP requests are spent waiting for your database query.</p>
 <p>The following is a sample timeline visualization of Npgsql-reported trace data, using <a href="https://zipkin.io/">Zipkin</a>:</p>
 <p><img src="/img/zipkin.png" alt="Zipkin UI Sample"></p>
-<p>See the full documentation in the <a href="../diagnostics.html">diagnostics page</a>.</p>
+<p>See the full documentation in the <a href="/doc/diagnostics/tracing.html">diagnostics page</a>.</p>
 <h3 id="timestamp-rationalization-and-improvements">Timestamp rationalization and improvements</h3>
 <p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. In particular, the &quot;UTC everywhere&quot; pattern is much better supported via the PostgreSQL <code>timestamp with time zone</code> type, which is the recommended way to handle timestamps. A detailed explanation is available in <a href="https://www.roji.org/postgresql-dotnet-timestamp-mapping">this blog post</a>, below is a summary of the main improvements.</p>
 <ul>
