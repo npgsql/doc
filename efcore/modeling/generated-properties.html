@@ -136,9 +136,9 @@
 </code></pre><p>You can also make your model use HiLo everywhere:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseHiLo();
-</code></pre><h2 id="guiduuid-generation">Guid/UUID Generation</h2>
-<p>By default, for Guid key properties (or if you specify <code>ValueGeneratedOnAdd</code> on any Guid property), a random <code>Guid</code> value will be generated client-side and sent to the database.</p>
-<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the <code>Guid</code> in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
+</code></pre><h2 id="guiduuid-generation">GUID/UUID Generation</h2>
+<p>By default, for GUID key properties, a random GUID is generated client-side by the EF provider and sent to the database.</p>
+<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the value in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
 <div class="tabGroup" id="tabgroup_C1U9BHOkzs">
 <ul role="tablist">
 <li role="presentation">
@@ -158,7 +158,7 @@
 }
 </code></pre></section>
 <section id="tabpanel_C1U9BHOkzs_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
-<p>Versions of PostgreSQL prior to 13 don&#39;t include any Guid/UUID generation functions, but extensions such as <code>uuid-ossp</code> or <code>pgcrypto</code> exist to fill thie gap. This can be done by placing the following code in your model&#39;s <code>OnModelCreating</code>:</p>
+<p>Versions of PostgreSQL prior to 13 don&#39;t include any GUID/UUID generation functions, but extensions such as <code>uuid-ossp</code> or <code>pgcrypto</code> exist to fill thie gap. This can be done by placing the following code in your model&#39;s <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.HasPostgresExtension(&quot;uuid-ossp&quot;);    
@@ -171,6 +171,8 @@
 </code></pre></section>
 </div>
 <p>See <a href="https://www.postgresql.org/docs/current/static/datatype-uuid.html">the PostgreSQL docs on UUID for more details</a>.</p>
+<div class="NOTE"><h5>Note</h5><p>Generating <code>Guid</code> values in the database causes an additional network roundtrip when a principal and a dependent are inserted in the same <code>SaveChanges</code>, as the principal&#39;s key needs to be fetched before inserting the dependent&#39;s.</p>
+</div>
 <h2 id="timestamp-generation">Timestamp generation</h2>
 <p>In many scenarios, it&#39;s useful to have a column containing the timestamp when the row was originally created. To do this, add a <code>DateTime</code> property to your entity type (or <code>Instant</code> if using NodaTime) , and configure its default with <code>HasDefaultValueSql</code> as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
