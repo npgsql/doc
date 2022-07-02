@@ -80,7 +80,7 @@
 <h1 id="jsonnet-type-plugin">Json.NET Type Plugin</h1>
 
 <p>Since 4.0, Npgsql supports <em>type plugins</em>, which are external nuget packages that modify how Npgsql maps PostgreSQL values to CLR types. One of these is the Json.NET plugin, which allows Npgsql to automatically make use of <a href="http://www.newtonsoft.com/json">Newtonsoft Json.NET</a> when reading and writing JSON data.</p>
-<p><a href="https://www.postgresql.org/docs/current/static/datatype-json.html">PostgreSQL natively supports two JSON types</a>: <code>jsonb</code> and <code>json</code>. Out of the box, Npgsql allows reading and writing these types as strings and provides no further processing to avoid taking a dependency on an external JSON library, forcing Npgsql users to serialize and deserialize JSON values themselves. The Json.NET plugin removes this burden from users by perform serialization/deserialization within Npgsql itself.</p>
+<p><a href="https://www.postgresql.org/docs/current/static/datatype-json.html">PostgreSQL natively supports two JSON types</a>: <code>jsonb</code> and <code>json</code>. Out of the box, Npgsql allows reading and writing these types as strings and provides no further processing to avoid taking a dependency on an external JSON library, forcing Npgsql users to serialize and deserialize JSON values themselves. The Json.NET plugin removes this burden from users by performing serialization/deserialization within Npgsql itself.</p>
 <h2 id="setup">Setup</h2>
 <p>To use the Json.NET plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.Json.NET">Npgsql.Json.NET</a> and set it up:</p>
 <pre><code class="lang-c#">using Npgsql;
