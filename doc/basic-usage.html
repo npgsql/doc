@@ -185,6 +185,8 @@ await using var reader = await cmd.ExecuteReaderAsync();
 
 await using var reader = await cmd.ExecuteReaderAsync();
 </code></pre><p>An <a class="xref" href="api/Npgsql.NpgsqlBatch.html">NpgsqlBatch</a> simply contains a list of <code>NpgsqlBatchCommands</code>, each of which has a <code>CommandText</code> and a list of parameters (much like an <a class="xref" href="api/Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>). All statements and parameters are efficiently packed into a single packet - when possible - and sent to PostgreSQL.</p>
+<div class="NOTE"><h5>Note</h5><p>If you haven&#39;t started an explicit transaction with <a class="xref" href="api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTransaction">BeginTransaction()</a>, a batch is automatically wrapped in an implicit transaction. That is, if a statement within the batch fails, all later statements are skipped and the entire batch is rolled back.</p>
+</div>
 <h3 id="legacy-batching">Legacy batching</h3>
 <p>Prior to Npgsql 6.0, <code>NpgsqlBatch</code> did not yet exist, and batching could be done as follows:</p>
 <pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (&#39;foo&#39;); SELECT * FROM table&quot;, conn);
@@ -194,12 +196,12 @@ await using var reader = await cmd.ExecuteReaderAsync();
 <p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">stored (or server-side) functions</a>, and since PostgreSQL 11 also <a href="https://www.postgresql.org/docs/current/sql-createprocedure.html">stored procedures</a>. These can be written in SQL (similar to views), or in <a href="https://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a> (PostgreSQL&#39;s procedural language), <a href="https://www.postgresql.org/docs/current/static/plpython.html">PL/Python</a> or several other server-side languages.</p>
 <p>Once a function or procedure has been defined, calling it is a simple matter of executing a regular command:</p>
 <pre><code class="lang-c#">// For functions
-using (var cmd = new NpgsqlCommand(&quot;SELECT my_func(1, 2)&quot;, conn))
-using (var reader = cmd.ExecuteReader()) { ... }
+using var cmd = new NpgsqlCommand(&quot;SELECT my_func(1, 2)&quot;, conn);
+using var reader = cmd.ExecuteReader();
 
 // For procedures
-using (var cmd = new NpgsqlCommand(&quot;CALL my_proc(1, 2)&quot;, conn))
-using (var reader = cmd.ExecuteReader()) { ... }
+using var cmd = new NpgsqlCommand(&quot;CALL my_proc(1, 2)&quot;, conn);
+using var reader = cmd.ExecuteReader();
 </code></pre><p>You can replace the parameter values above with regular placeholders (e.g. <code>@p1</code>), just like with a regular query.</p>
 <p>In some other databases, calling a stored procedures involves setting the command&#39;s <em>behavior</em>:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;my_func&quot;, conn))
