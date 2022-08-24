@@ -165,7 +165,11 @@
 <pre><code class="lang-output">        CreatedOn       |           type
 ------------------------+--------------------------
  2020-01-01 14:00:00+02 | timestamp with time zone
-</code></pre><h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
+</code></pre><h4 id="changing-timestamp-seed-data">Changing timestamp seed data</h4>
+<p>When switching from <code>timestamp without time zone</code> to <code>timezone with time zone</code>, you may have have non-UTC timestamp literals in your seeding configuration:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().HasData(new Blog { Id = 1, Timestamp = new DateTime(2020, 1, 1, 0, 0, 0) });
+</code></pre><p>If so, you&#39;ll have to change these to be UTC. In addition, all migrations code since the change must be modified in the same way, to only seed UTC DateTime into the column; the model snapshot should be changed as well.</p>
+<h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
 <p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following to your context&#39;s constructor, before any Npgsql or EF Core operations are invoked:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre><h3 id="nodatime-tstzrange-and-daterange-are-mapped-to-interval-and-dateinterval-by-default">NodaTime: tstzrange and daterange are mapped to Interval and DateInterval by default</h3>
