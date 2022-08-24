@@ -80,6 +80,16 @@
 <h1 id="70-release-notes">7.0 Release Notes</h1>
 
 <h2 id="new-features">New features</h2>
+<h3 id="extensive-support-for-aggregate-function-translation">Extensive support for aggregate function translation</h3>
+<p>EF Core 7.0 added support for translating provider-specific aggregate functions, and EFCore.PG builds on top of that to translate most major aggregate functions that PostgreSQL supports. This unlocks support for:</p>
+<ul>
+<li>string_agg: pack a column&#39;s values into a single string, with or without a delimiter.</li>
+<li>array_agg: pack a column&#39;s values into a PostgreSQL array. This can help with efficient fetching of dependent values, avoiding the so-called &quot;cartesian explosion&quot; problem.</li>
+<li>Statistical functions: standard deviation, variance and many others.</li>
+<li>Spatial functions: ST_Union, ST_Collect, ST_Extent and ST_ConvexHull.</li>
+<li>JSON functions: load values from the database as JSON documents with json_agg/jsonb_agg and json_object_agg/jsonb_object_agg.</li>
+</ul>
+<p>For the PostgreSQL documentation on aggregate functions, see <a href="https://www.postgresql.org/docs/current/functions-aggregate.html">this page</a>. The exact translations supported by the provider are documented in the <a href="../mapping/translations.html#aggregate-functions">translations page</a>.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="obsoleted-default-column-collations">Obsoleted default column collations</h3>
 <p>Versions 6.0 and below had a mechanism that allowed defining a &quot;default column collation&quot;, which is applied individually to every text column by default; this differed from the database collation, which is applied once to the database at creation time. This mechanism was introduced because in PostgreSQL, the database collation is quite limited, and for example does not allow specifying non-deterministic collations (e.g. case-insensitive ones).</p>

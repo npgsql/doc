@@ -261,6 +261,11 @@
 <td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ &#39;^A+&#39;</a> (with options)</td>
 <td></td>
 </tr>
+<tr>
+<td>string.Join(&quot;, &quot;, strings)<sup>1</sup></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(strings, &#39;, &#39;)</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="date-and-time-functions">Date and time functions</h2>
@@ -502,6 +507,16 @@
 <td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_timestamp or make_timestamptz</a>, based on <code>kind</code></td>
 <td>Added in 6.0</td>
 </tr>
+<tr>
+<td>EF.Functions.Sum(timespans)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">sum(timespans)</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
+<tr>
+<td>EF.Functions.Average(timespans)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">avg(timespans)</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="miscellaneous-functions">Miscellaneous functions</h2>
@@ -686,6 +701,45 @@
 <td>EF.Functions.Random()</td>
 <td>random()</td>
 <td>Added in 6.0</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="#aggregate-statistics-functions">Aggregate statistics functions</a>.</p>
+<h2 id="row-value-comparisons">Row value comparisons</h2>
+<p>The following allow expressing <a href="https://www.postgresql.org/docs/current/functions-comparisons.html#ROW-WISE-COMPARISON">comparisons over SQL row values</a>. This are particularly useful for implementing efficient pagination, see <a href="https://docs.microsoft.com/ef/core/querying/pagination">the EF Core docs</a> for more information.</p>
+<div class="NOTE"><h5>Note</h5><p>All of the below are being introduced in version 7.0 of the provider.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.GreaterThan(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &gt; (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.LessThan(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt; (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.GreaterThanOrEqual(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &gt;= (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.LessThanOrEqual(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt;= (c, d)</td>
+</tr>
+<tr>
+<td>ValueTuple.Create(a, b).Equals(ValueTuple.Create(c, d))</td>
+<td>(a, b) = (c, d)</td>
+</tr>
+<tr>
+<td>!ValueTuple.Create(a, b).Equals(ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt;&gt; (c, d)</td>
 </tr>
 </tbody>
 </table>
@@ -992,7 +1046,143 @@
 </tr>
 </tbody>
 </table>
-</article>
+<h2 id="aggregate-functions">Aggregate functions</h2>
+<p>The PostgreSQL aggregate functions are documented <a href="https://www.postgresql.org/docs/current/functions-aggregate.html">here</a>.</p>
+<div class="NOTE"><h5>Note</h5><p>All the below aggregate functions were added in version 7.0.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string.Join(&quot;, &quot;, strings)</td>
+<td>string_agg(strings, &#39;, &#39;)</td>
+</tr>
+<tr>
+<td>EF.Functions.ArrayAgg(values)</td>
+<td>array_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonbAgg(values)</td>
+<td>jsonb_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonAgg(values)</td>
+<td>json_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.RangeAgg(ranges)</td>
+<td>range_agg(ranges)</td>
+</tr>
+<tr>
+<td>EF.Functions.RangeIntersectAgg(ranges)</td>
+<td>range_intersect_agg(ranges)</td>
+</tr>
+<tr>
+<td>EF.Functions.Sum(timespans)</td>
+<td>sum(timespans)</td>
+</tr>
+<tr>
+<td>EF.Functions.Average(timespans)</td>
+<td>avg(timespans)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonObjectAgg(tuple_of_2)</td>
+<td>json_object_agg(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.StandardDeviationSample(values)</td>
+<td>stddev_samp(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.StandardDeviationPopulation(values)</td>
+<td>stddev_pop(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.VarianceSample(values)</td>
+<td>var_samp(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.VariancePopulation(values)</td>
+<td>var_pop(values)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.Correlation(tuple)</td>
+<td>corr(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.CovariancePopulation(tuple)</td>
+<td>covar_pop(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.CovarianceSample(tuple)</td>
+<td>covar_samp(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrAverageX(tuple)</td>
+<td>regr_avgx(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrAverageY(tuple)</td>
+<td>regr_avgy(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrCount(tuple)</td>
+<td>regr_count(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrIntercept(tuple)</td>
+<td>regr_intercept(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrR2(tuple)</td>
+<td>regr_r2(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSlope(tuple)</td>
+<td>regr_slope(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSXX(tuple)</td>
+<td>regr_sxx(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSXY(tuple)</td>
+<td>regr_sxy(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+</tbody>
+</table>
+<p>Aggregate functions can be used as follows:</p>
+<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+    .GroupBy(c =&gt; c.City)
+    .Select(
+        g =&gt; new
+        {
+            City = g.Key,
+            Companies = EF.Functions.ArrayAgg(g.Select(c =&gt; c.ContactName))
+        });
+</code></pre><p>To use functions accepting a tuple_of_2, project out from the group as follows:</p>
+<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+    .GroupBy(c =&gt; c.City)
+    .Select(
+        g =&gt; new
+        {
+            City = g.Key,
+            Companies = EF.Functions.JsonObjectAgg(g.Select(c =&gt; ValueTuple.Create(c.CompanyName, c.ContactName)))
+        });
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
