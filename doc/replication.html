@@ -104,14 +104,14 @@ The default implementation that is used by PostgreSQL itself to perform logical 
 </code></pre><p>If your application goes down, the slot persistently records the last data streamed to it, and allows resuming the application at the point where it left off.</p>
 <p>At this point, everything is ready to start replicating! Create this simple .NET program with Npgsql:</p>
 <pre><code class="lang-csharp">await using var conn = new LogicalReplicationConnection(&quot;&lt;connection_string&gt;&quot;);
-await conn.OpenAsync();
+await conn.Open();
 
 var slot = new PgOutputReplicationSlot(&quot;blog_slot&quot;);
 
 // The following will loop until the cancellation token is triggered, and will print message types coming from PostgreSQL:
 var cancellationTokenSource = new CancellationTokenSource();
 await foreach (var message in conn.StartReplication(
-    slot, new PgOutputReplicationOptions(&quot;blog_pub&quot;), cancellationTokenSource.Token))
+    slot, new PgOutputReplicationOptions(&quot;blog_pub&quot;, 1), cancellationTokenSource.Token))
 {
     Console.WriteLine($&quot;Received message type: {message.GetType().Name}&quot;);
 
