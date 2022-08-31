@@ -134,6 +134,7 @@ Previously they returned int[], even for multidimensional arrays.</li>
 <li><code>CommandType.TableDirect</code> now requires CommandText to contain the name of a table, as per the <a href="https://msdn.microsoft.com/en-us/library/system.data.commandtype%28v=vs.110%29.aspx">MSDN docs</a>. Multiple tables (join) aren&#39;t supported.</li>
 <li><code>CommandType.StoredProcedure</code> now requires CommandText contain <em>only</em> the name of a function, without parentheses or parameter information, as per the <a href="https://msdn.microsoft.com/en-us/library/system.data.commandtype%28v=vs.110%29.aspx">MSDN docs</a>.</li>
 <li>Moved the <code>LastInsertedOID</code> property from NpgsqlCommand to NpgsqlReader, like the standard ADO.NET <code>RecordsAffected</code>.</li>
+<li>A single SQL statement may no longer have more than 65535 parameters. If you&#39;re bulk-importing a large number of rows, consider using the <a href="https://www.npgsql.org/doc/copy.html">binary COPY API</a> which is considerably more efficient, or an alternative method such as <a href="https://klotzandrew.com/blog/postgres-passing-65535-parameter-limit">inserting from array parameters</a>.</li>
 </ul>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 3.0.x. releases.</p>
