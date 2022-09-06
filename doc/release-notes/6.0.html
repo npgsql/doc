@@ -253,7 +253,7 @@ ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
 </code></pre><p>Note: version 6.0.0 and 6.0.1 changed parameter matching to be case-sensitive. This change was rolled back in 6.0.2 since it could lead to data loss in some scenarios.</p>
 <h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
-<p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provider the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
+<p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provide the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
 <p>Instead of the obsoleted types, use the following techniques:</p>
 <ul>
 <li>NodaTime can be used to interact with values which are out-of-range for the BCL types.</li>
