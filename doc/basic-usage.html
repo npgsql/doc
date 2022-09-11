@@ -203,7 +203,7 @@ using var reader = cmd.ExecuteReader();
 using var cmd = new NpgsqlCommand(&quot;CALL my_proc(1, 2)&quot;, conn);
 using var reader = cmd.ExecuteReader();
 </code></pre><p>You can replace the parameter values above with regular placeholders (e.g. <code>@p1</code>), just like with a regular query.</p>
-<p>In some other databases, calling a stored procedures involves setting the command&#39;s <em>behavior</em>:</p>
+<p>In some other databases, calling a stored procedures involves setting the command&#39;s <code>CommandType</code>:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;my_func&quot;, conn))
 {
     cmd.CommandType = CommandType.StoredProcedure;
@@ -212,7 +212,7 @@ using var reader = cmd.ExecuteReader();
 }
 </code></pre><p>Npgsql supports this mainly for portability, but this style of calling has no advantage over the regular command shown above. When <code>CommandType.StoredProcedure</code> is set, Npgsql will simply generate the appropriate <code>SELECT my_func()</code> for you, nothing more. Unless you have specific portability requirements, it is recommended you simply avoid <code>CommandType.StoredProcedure</code> and construct the SQL yourself.</p>
 <p>Note that if <code>CommandType.StoredProcedure</code> is set and your parameter instances have names, Npgsql will generate parameters with <code>named notation</code>: <code>SELECT my_func(p1 =&gt; &#39;some_value&#39;)</code>. This means that your NpgsqlParameter names must match your PostgreSQL function parameters, or the function call will fail. If you omit the names on your NpgsqlParameters, positional notation will be used instead. <a href="https://www.postgresql.org/docs/current/static/sql-syntax-calling-funcs.html">See the PostgreSQL docs for more info</a>.</p>
-<p>Be aware that <code>CommandType.StoredProcedure</code> will generate a <code>SELECT</code> command - suitable for functions - and not a <code>CALL</code> command suitable for procedures. Npgsql has behaved this way since long before stored procedures were introduced, and changing this behavior would break backwards compatibility for many applications. The only way to call a stored procedure is to write your own <code>CALL my_proc(...)</code> command, without setting <code>CommandBehavior.StoredProcedure</code>.</p>
+<p>Be aware that <code>CommandType.StoredProcedure</code> will generate a <code>SELECT</code> command - suitable for functions - and not a <code>CALL</code> command suitable for procedures. Npgsql has behaved this way since long before stored procedures were introduced, and changing this behavior would break backwards compatibility for many applications. The only way to call a stored procedure is to write your own <code>CALL my_proc(...)</code> command, without setting <code>CommandType.StoredProcedure</code>.</p>
 <h3 id="inout-parameters">In/out parameters</h3>
 <p>In SQL Server (and possibly other databases), functions can have output parameters, input/output parameters, and a return value, which can be either a scalar or a table (TVF). To call functions with special parameter types, the <code>Direction</code> property must be set on the appropriate <code>DbParameter</code>. PostgreSQL functions, on the hand, always return a single table - they can all be considered TVFs. Somewhat confusingly, PostgreSQL does allow your functions to be defined with input/and output parameters:</p>
 <pre><code class="lang-c#">CREATE FUNCTION dup(in int, out f1 int, out f2 text)
