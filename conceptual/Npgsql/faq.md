@@ -27,7 +27,7 @@ Then, as a workaround, you can have your type treated as text - it will be up to
 One simple way to do this is to append ::TEXT in your query (e.g. `SELECT 3::TEXT`).
 
 If you don't want to modify your query, Npgsql also includes an API for requesting types as text.
-The fetch returns all the columns in the resultset as text:
+The following code returns all the columns in the resultset as text:
 
 ```c#
 using (var cmd = new NpgsqlCommand(...)) {
