@@ -87,10 +87,10 @@
 <pre><code class="lang-c#">using Npgsql;
 
 // Place this at the beginning of your program to use NetTopologySuite everywhere (recommended)
-NpgsqlConnection.GlobalTypeMapper.UseGeoJSON();
+NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
 
 // Or to temporarily use GeoJSON on a single connection only:
-conn.TypeMapper.UseGeoJSON();
+conn.TypeMapper.UseGeoJson();
 </code></pre><h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
 <p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate GeoJSON types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize GeoJSON&#39;s types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a GeoJSON <code>Point</code> to the database:</p>
 <pre><code class="lang-c#">var point = new Point(new Position(51.899523, -2.124156));
