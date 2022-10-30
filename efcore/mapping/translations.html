@@ -262,8 +262,18 @@
 <td></td>
 </tr>
 <tr>
-<td>string.Join(&quot;, &quot;, strings)<sup>1</sup></td>
-<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(strings, &#39;, &#39;)</a></td>
+<td>string.Join(&quot;, &quot;, a, b)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER">concat_ws(&#39;, &#39;, a, b)</a></td>
+<td>Added in 7.0 (previously array_to_string)</td>
+</tr>
+<tr>
+<td>string.Join(&quot;, &quot;, array)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, &#39;, &#39;, &#39;&#39;)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>string.Join(&quot;, &quot;, agg_strings)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(agg_strings, &#39;, &#39;)</a></td>
 <td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
 </tr>
 </tbody>
@@ -1059,8 +1069,8 @@
 </thead>
 <tbody>
 <tr>
-<td>string.Join(&quot;, &quot;, strings)</td>
-<td>string_agg(strings, &#39;, &#39;)</td>
+<td>string.Join(&quot;, &quot;, agg_strings)</td>
+<td>string_agg(agg_strings, &#39;, &#39;)</td>
 </tr>
 <tr>
 <td>EF.Functions.ArrayAgg(values)</td>

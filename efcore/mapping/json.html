@@ -79,6 +79,8 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="json-mapping">JSON Mapping</h1>
 
+<div class="NOTE"><h5>Note</h5><p>EF Core 7.0 introduced support for <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">JSON columns</a>. Npgsql&#39;s JSON support - detailed below - is different, and has been available since version 3.0. We plan to adopt EF&#39;s JSON support in version 8.0.</p>
+</div>
 <p>PostgreSQL has rich, built-in support for storing JSON columns and efficiently performing complex queries operations on them. Newcomers can read more about the PostgreSQL support on <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>, and on the <a href="https://www.postgresql.org/docs/current/functions-json.html">functions and operators page</a>. Note that the below mapping mechanisms support both the <code>jsonb</code> and <code>json</code> types, although the former is almost always preferred for efficiency reasons.</p>
 <p>The Npgsql EF Core provider allows you to map PostgreSQL JSON columns in three different ways:</p>
 <ol>
@@ -86,8 +88,6 @@
 <li>As strongly-typed user-defined types (POCOs)</li>
 <li>As <a href="https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/">System.Text.Json</a> DOM types (JsonDocument or JsonElement)</li>
 </ol>
-<div class="NOTE"><h5>Note</h5><p>Mapping to POCO or to System.Text.Json types was introduced in version 3.0.0</p>
-</div>
 <h2 id="string-mapping">String mapping</h2>
 <p>The simplest form of mapping to JSON is via a regular string property, just like an ordinary text column:</p>
 <div class="tabGroup" id="tabgroup_4MQ50Ciht1">

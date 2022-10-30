@@ -80,27 +80,35 @@
 <h1 id="indexes">Indexes</h1>
 
 <p>PostgreSQL and the Npgsql provider support the standard index modeling described in <a href="https://docs.microsoft.com/ef/core/modeling/indexes">the EF Core docs</a>. This page describes some supported PostgreSQL-specific features.</p>
-<h2 id="postgresql-covering-indexes-include">PostgreSQL covering indexes (INCLUDE)</h2>
-<p>Since version 11, PostgreSQL supports <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost:</p>
+<h2 id="covering-indexes-include">Covering indexes (INCLUDE)</h2>
+<p>PostgreSQL supports <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .HasIndex(b =&gt; b.Id)
-                   .IncludeProperties(b =&gt; b.Name);
+        .HasIndex(b =&gt; b.Id)
+        .IncludeProperties(b =&gt; b.Name);
 </code></pre><p>This will create an index for searching on <code>Id</code>, but containing also the column <code>Name</code>, so that reading the latter will not involve accessing the table. The SQL generated is as follows:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_Blog_Id&quot; ON blogs (&quot;Id&quot;) INCLUDE (&quot;Name&quot;);
-</code></pre><h2 id="postgresql-index-methods">PostgreSQL index methods</h2>
+</code></pre><h2 id="treating-nulls-as-non-distinct">Treating nulls as non-distinct</h2>
+<div class="NOTE"><h5>Note</h5><p>This feature was introduced in version 7.0, and is available starting with PostgreSQL 15.</p>
+</div>
+<p>By default, when you create a unique index, PostgreSQL treats null values as distinct; this means that a unique index can contain multiple null values in a column. When creating an index, you can also instruct PostgreSQL that nulls should be treated as <em>non-distinct</em>; this causes a unique constraint violation to be raised if a column contains multiple null values:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Blog&gt;()
+        .IsUnique()
+        .AreNullsDistinct(false);
+</code></pre><h2 id="index-methods">Index methods</h2>
 <p>PostgreSQL supports a number of <em>index methods</em>, or <em>types</em>. These are specified at index creation time via the <code>USING &lt;method&gt;</code> clause, see the <a href="https://www.postgresql.org/docs/current/static/sql-createindex.html">PostgreSQL docs for <code>CREATE INDEX</code></a> and <a href="https://www.postgresql.org/docs/current/static/indexes-types.html">this page</a> for information on the different types.</p>
 <p>The Npgsql EF Core provider allows you to specify the index method to be used by calling <code>HasMethod()</code> on your index in your context&#39;s <code>OnModelCreating</code> method:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .HasIndex(b =&gt; b.Url)
-                   .HasMethod(&quot;gin&quot;);
-</code></pre><h2 id="postgresql-index-operator-classes">PostgreSQL index operator classes</h2>
+        .HasIndex(b =&gt; b.Url)
+        .HasMethod(&quot;gin&quot;);
+</code></pre><h2 id="index-operator-classes">Index operator classes</h2>
 <p>PostgreSQL allows you to specify <a href="https://www.postgresql.org/docs/current/indexes-opclass.html">operator classes on your indexes</a>, to allow tweaking how the index should work. Use the following code to specify an operator class:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .HasIndex(b =&gt; new { b.Id, b.Name })
-                   .HasOperators(null, &quot;text_pattern_ops&quot;);
+        .HasIndex(b =&gt; new { b.Id, b.Name })
+        .HasOperators(null, &quot;text_pattern_ops&quot;);
 </code></pre><p>Note that each operator class is used for the corresponding index column, by order. In the example above, the <code>text_pattern_ops</code> class will be used for the <code>Name</code> column, while the <code>Id</code> column will use the default class (unspecified), producing the following SQL:</p>
 <pre><code class="lang-sql">CREATE INDEX &quot;IX_blogs_Id_Name&quot; ON blogs (&quot;Id&quot;, &quot;Name&quot; text_pattern_ops);
 </code></pre><h2 id="creating-indexes-concurrently">Creating indexes concurrently</h2>
@@ -108,8 +116,8 @@
 <p>The EF provider allows you to specify that an index should be created <em>concurrently</em>, partially mitigating the above issues:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .HasIndex(b =&gt; b.Url)
-                   .IsCreatedConcurrently();
+        .HasIndex(b =&gt; b.Url)
+        .IsCreatedConcurrently();
 </code></pre><div class="CAUTION"><h5>Caution</h5><p>Do not enable this feature before reading the <a href="https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY">PostgreSQL documentation</a> and understanding the full implications of concurrent index creation.</p>
 </div>
 <div class="NOTE"><h5>Note</h5><p>Prior to version 5.0, <code>IsCreatedConcurrently</code> erroneously defaulted to <code>false</code> - explicitly pass <code>true</code> to configure the index for concurrent creation</p>

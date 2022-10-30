@@ -77,8 +77,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h2 id="migrating-from-30-to-31">Migrating from 3.0 to 3.1</h2>
+<h1 id="npgsql-31-release-notes">Npgsql 3.1 Release Notes</h1>
 
+<h2 id="migrating-from-30-to-31">Migrating from 3.0 to 3.1</h2>
 <ul>
 <li>CommandTimeout used to be implemented with PostgreSQL&#39;s <code>statement_timeout</code> parameter, but this wasn&#39;t a very reliable method and has been removed. CommandTimeout is now implemented via socket timeouts only, see <a href="https://github.com/npgsql/npgsql/issues/689">#689</a> for more details. Note that if a socket timeout occurs, the connection is broken and must be reopened.</li>
 <li>The <a href="../connection-string-parameters.html#security-and-encryption"><code>Persist Security Info</code></a> parameter has been implemented and is false by default. This means that once a connection has been opened, you will not be able to get its password.</li>

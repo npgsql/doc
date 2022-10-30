@@ -80,6 +80,9 @@
 <h1 id="70-release-notes">7.0 Release Notes</h1>
 
 <h2 id="new-features">New features</h2>
+<h3 id="executeupdate-and-executedelete">ExecuteUpdate and ExecuteDelete</h3>
+<p>Support has been added for the new EF Core 7.0 <code>ExecuteUpdate</code> and <code>ExecuteDelete</code>, which allow expressing arbitrary, efficient updates via LINQ. See the EF <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#executeupdate-and-executedelete-bulk-updates">What&#39;s new section</a> for documentation.</p>
+<h3 id="basic-support-for-dbdatasource">Basic support for DbDataSource</h3>
 <h3 id="extensive-support-for-aggregate-function-translation">Extensive support for aggregate function translation</h3>
 <p>EF Core 7.0 added support for translating provider-specific aggregate functions, and EFCore.PG builds on top of that to translate most major aggregate functions that PostgreSQL supports. This unlocks support for:</p>
 <ul>
@@ -90,6 +93,12 @@
 <li>JSON functions: load values from the database as JSON documents with json_agg/jsonb_agg and json_object_agg/jsonb_object_agg.</li>
 </ul>
 <p>For the PostgreSQL documentation on aggregate functions, see <a href="https://www.postgresql.org/docs/current/functions-aggregate.html">this page</a>. The exact translations supported by the provider are documented in the <a href="../mapping/translations.html#aggregate-functions">translations page</a>.</p>
+<h3 id="row-value-expressions">Row value expressions</h3>
+<h3 id="other-new-features">Other new features</h3>
+<ul>
+<li>Support for PostgreSQL 15 non-distinct NULLs in unique indexes, causing unique constraint violations if a column contains multiple null values. <a href="../modeling/indexes.html#treating-nulls-as-non-distinct">See the documentation for more details</a>.</li>
+<li>Stored procedure mappings: PostgreSQL support has been added for <em>stored procedure mapping</em>, which is a new feature in EF Core 7.0. See the EF <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#stored-procedure-mapping">What&#39;s new section</a> for documentation. Note that PostgreSQL 14 or above is required to use this feature (for output parameters).</li>
+</ul>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="obsoleted-default-column-collations">Obsoleted default column collations</h3>
 <p>Versions 6.0 and below had a mechanism that allowed defining a &quot;default column collation&quot;, which is applied individually to every text column by default; this differed from the database collation, which is applied once to the database at creation time. This mechanism was introduced because in PostgreSQL, the database collation is quite limited, and for example does not allow specifying non-deterministic collations (e.g. case-insensitive ones).</p>
@@ -104,7 +113,9 @@
 {
     configurationBuilder.Properties&lt;string&gt;().UseCollation(&quot;&lt;collation_name&gt;&quot;);
 }
-</code></pre></article>
+</code></pre><h3 id="obsoleted-usexminasconcurrencytoken">Obsoleted UseXminAsConcurrencyToken</h3>
+<p>Starting with version 7.0, concurrency token properties can be configured via the standard EF means, rather than the PostgreSQL-specific <code>UseXminAsConcurrencyToken</code>; simply configure any <code>uint</code> property with the <code>IsRowVersion()</code> Fluent API or the <code>[Timestamp]</code> Data Annotation. <a href="../modeling/concurrency.html">See the documentation for more details</a>.</p>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">

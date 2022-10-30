@@ -84,15 +84,49 @@
 <p>Entity Framework Core supports the concept of optimistic concurrency - a property on your entity is designated as a concurrency token, and EF Core detects concurrent modifications by checking whether that token has changed since the entity was read.</p>
 <h2 id="the-postgresql-xmin-system-column">The PostgreSQL xmin system column</h2>
 <p>Although applications can update concurrency tokens themselves, we frequently rely on the database automatically updating a column on update - a &quot;last modified&quot; timestamp, an SQL Server <code>rowversion</code>, etc. Unfortunately PostgreSQL doesn&#39;t have such auto-updating columns - but there is one feature that can be used for concurrency token. All PostgreSQL tables have a set of <a href="https://www.postgresql.org/docs/current/ddl-system-columns.html">implicit and hidden system columns</a>, among which <code>xmin</code> holds the ID of the latest updating transaction. Since this value automatically gets updated every time the row is changed, it is ideal for use as a concurrency token.</p>
-<p>To enable this feature on an entity, insert the following code into your context&#39;s <code>OnModelCreating</code> method:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.Entity&lt;Blog&gt;()
-                   .UseXminAsConcurrencyToken();
-</code></pre><p>Note that by default, this will set up a <a href="https://docs.microsoft.com/ef/core/modeling/shadow-properties">shadow property</a> called <code>xmin</code> on your entity. This means that when you load an entity from the database, the value of <code>xmin</code> will be stored in the context, making it <a href="https://stackoverflow.com/a/60871156">impossible to use that instance with another context</a> (without reloading the entity). If you plan to pass instances between different contexts, consider adding an <code>xmin</code> property of type <code>uint</code> on your entity; this will automatically cause the concurrency token to be stored on the instance instead:</p>
-<pre><code class="lang-c#">class Blog
+<p>Starting with version 7.0, you can map a <code>uint</code> property to the PostgreSQL <code>xmin</code> system column using the standard EF Core mechanisms:</p>
+<div class="tabGroup" id="tabgroup_gd5S50q9EW">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_gd5S50q9EW_data-annotations" role="tab" aria-controls="tabpanel_gd5S50q9EW_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_gd5S50q9EW_fluent-api" role="tab" aria-controls="tabpanel_gd5S50q9EW_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+</li>
+</ul>
+<section id="tabpanel_gd5S50q9EW_data-annotations" role="tabpanel" data-tab="data-annotations">
+<pre><code class="lang-c#">public class SomeEntity
 {
-    ...
-    public uint xmin { get; set; }
+    public int Id { get; set; }
+
+    [Timestamp]
+    public uint Version { get; set; }
+}
+</code></pre></section>
+<section id="tabpanel_gd5S50q9EW_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-c#">class MyContext : DbContext
+{
+    public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&lt;SomeEntity&gt;()
+            .Property(b =&gt; b.Version)
+            .IsRowVersion();
+    }
+}
+
+public class SomeEntity
+{
+    public int Id { get; set; }
+    public uint Version { get; set; }
+}
+</code></pre></section>
+</div>
+<p>In older version of the provider, use the following instead:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&lt;Blog&gt;().UseXminAsConcurrencyToken();
 }
 </code></pre></article>
           </div>
