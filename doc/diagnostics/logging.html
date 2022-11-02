@@ -79,23 +79,83 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="logging">Logging</h1>
 
-<p>Npgsql includes a built-in feature for outputting logging events which can help debug issues.</p>
-<p>Npgsql logging is disabled by default and must be turned on. Logging can be turned on by setting <code>NpgsqlLogManager.Provider</code> to a class implementing the <code>INpgsqlLoggingProvider</code> interface. Npgsql comes with a console implementation which can be set up as follows:</p>
+<div class="NOTE"><h5>Note</h5><p>Starting with version 7.0, Npgsql supports standard .NET logging via <a href="https://learn.microsoft.com/dotnet/core/extensions/logging">Microsoft.Extensions.Logging</a>. If you&#39;re using an earlier version of Npgsql, skip down to <a href="#old-logging">this section</a>.</p>
+</div>
+<p>Npgsql fully supports logging various events via the standard .NET <a href="https://learn.microsoft.com/dotnet/core/extensions/logging">Microsoft.Extensions.Logging</a> package. These can help debug issues and understand what&#39;s going on as your application interacts with PostgreSQL.</p>
+<h2 id="console-programs">Console programs</h2>
+<p>To set up logging in Npgsql, create your <code>ILoggerFactory</code> as usual, and then configure an <code>NpgsqlDataSource</code> with it. Any use of connections handed out by the data source will log via your provided logger factory.</p>
+<p>The following shows a minimal console application logging to the console via <a href="https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console">Microsoft.Extensions.Logging.Console</a>:</p>
+<pre><code class="lang-csharp">// Create a Microsoft.Extensions.Logging LoggerFactory, configuring it with the providers,
+// log levels and other desired configuration.
+var loggerFactory = LoggerFactory.Create(builder =&gt; builder.AddConsole());
+
+// Create an NpgsqlDataSourceBuilder, configuring it with our LoggerFactory
+var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
+dataSourceBuilder.UseLoggerFactory(loggerFactory);
+await using var dataSource = dataSourceBuilder.Build();
+
+// Any connections handed out by the data source will log via the LoggerFactory:
+await using var connection = await dataSource.OpenConnectionAsync();
+await using var command = new NpgsqlCommand(&quot;SELECT 1&quot;, connection);
+_ = await command.ExecuteScalarAsync();
+</code></pre><p>Running this program outputs the following to the console:</p>
+<pre><code class="lang-console">info: Npgsql.Command[2001]
+      Command execution completed (duration=16ms): SELECT 1
+</code></pre><p>By default, Npgsql logs command executions at the <code>Information</code> log level, as well as various warnings and errors. To see more detailed logging, increase the log level to <code>Debug</code> or <code>Trace</code>.</p>
+<h2 id="aspnet-and-dependency-injection">ASP.NET and dependency injection</h2>
+<p>If you&#39;re using ASP.NET, you can use the additional <a href="https://www.nuget.org/packages/Npgsql.DependencyInjection">Npgsql.DependencyInjection</a> package, which provides seamless integration with dependency injection and logging:</p>
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddConsole();
+builder.Services.AddNpgsqlDataSource(&quot;Host=localhost;Username=test;Password=test&quot;);
+</code></pre><p>The <code>AddNpgsqlDataSource</code> arranges for a data source to be configured in the DI container, which automatically uses the logger factory configured via the standard ASP.NET means. This allows your endpoints to get injected with Npgsql connections which log to the same logger factory when used.</p>
+<h2 id="configuration-without-npgsqldatasource">Configuration without NpgsqlDataSource</h2>
+<p>If your application doesn&#39;t use <code>NpgsqlDataSource</code>, you can still configure Npgsql&#39;s logger factory globally, as follows:</p>
+<pre><code class="lang-csharp">var loggerFactory = LoggerFactory.Create(builder =&gt; builder.AddConsole());
+NpgsqlLoggingConfiguration.InitializeLogging(loggerFactory);
+
+await using var conn = new NpgsqlConnection(&quot;Host=localhost;Username=test;Password=test&quot;);
+conn.Execute(&quot;SELECT 1&quot;);
+</code></pre><p>Note that you must call <code>InitializeLogging</code> at the start of your program, before any other Npgsql API is used.</p>
+<h2 id="parameter-logging">Parameter logging</h2>
+<p>By default, when logging SQL statements, Npgsql does not log parameter values, since these may contain sensitive information. You can turn on parameter logging by setting <code>NpgsqlLogManager.IsParameterLoggingEnabled</code> to true.</p>
+<div class="tabGroup" id="tabgroup_MBC6RHIFr1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_MBC6RHIFr1_console" role="tab" aria-controls="tabpanel_MBC6RHIFr1_console" data-tab="console" tabindex="0" aria-selected="true">Console Program</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_MBC6RHIFr1_aspnet" role="tab" aria-controls="tabpanel_MBC6RHIFr1_aspnet" data-tab="aspnet" tabindex="-1">ASP.NET Program</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_MBC6RHIFr1_without-dbdatasource" role="tab" aria-controls="tabpanel_MBC6RHIFr1_without-dbdatasource" data-tab="without-dbdatasource" tabindex="-1">Without DbDataSource</a>
+</li>
+</ul>
+<section id="tabpanel_MBC6RHIFr1_console" role="tabpanel" data-tab="console">
+<pre><code class="lang-c#">dataSourceBuilder.EnableParameterLogging();
+</code></pre></section>
+<section id="tabpanel_MBC6RHIFr1_aspnet" role="tabpanel" data-tab="aspnet" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-c#">builder.Services.AddNpgsqlDataSource(
+    &quot;Host=localhost;Username=test;Password=test&quot;,
+    builder =&gt; builder.EnableParameterLogging());
+</code></pre></section>
+<section id="tabpanel_MBC6RHIFr1_without-dbdatasource" role="tabpanel" data-tab="without-dbdatasource" aria-hidden="true" hidden="hidden">
+<pre><code class="lang-c#">NpgsqlLoggingConfiguration.InitializeLogging(loggerFactory, parameterLoggingEnabled: true);
+</code></pre></section>
+</div>
+<div class="WARNING"><h5>Warning</h5><p>Do not leave parameter logging enabled in production, as sensitive user information may leak into your logs.</p>
+</div>
+<h2 id="a-nameold-logging-logging-in-older-versions-of-npgsql"><a name="old-logging"></a>Logging in older versions of Npgsql</h2>
+<p>Prior to 7.0, Npgsql had its own, custom logging API. To use this, statically inject a logging provider implementing the <code>INpgsqlLoggingProvider</code> interface as follows:</p>
 <pre><code class="lang-c#">NpgsqlLogManager.Provider = new ???
 </code></pre><p><em>Note: you must set the logging provider before invoking any other Npgsql method, at the very start of your program.</em></p>
 <p>It&#39;s trivial to create a logging provider that passes log messages to whatever logging framework you use, you can find such an adapter for NLog below.</p>
-<p><em>Note:</em> the logging API is a first implementation and will probably improve/change - don&#39;t treat it as a stable part of the Npgsql API. Let us know if you think there are any missing messages or features!</p>
-<h2 id="consoleloggingprovider">ConsoleLoggingProvider</h2>
-<p>Npgsql comes with one built-in logging provider: ConsoleLoggingProvider. It will simply dump all log messages with a given level or above to standard output.
+<h3 id="consoleloggingprovider">ConsoleLoggingProvider</h3>
+<p>Npgsql comes with one built-in logging provider: <code>ConsoleLoggingProvider</code>. It simply dumps all log messages with a given level or above to standard output.
 You can set it up by including the following line at the beginning of your application:</p>
 <pre><code class="lang-c#">NpgsqlLogManager.Provider = new ConsoleLoggingProvider(&lt;min level&gt;, &lt;print level?&gt;, &lt;print connector id?&gt;);
 </code></pre><p>Level defaults to <code>NpgsqlLogLevel.Info</code> (which will only print warnings and errors).
 You can also have log levels and connector IDs logged.</p>
-<h2 id="statement-and-parameter-logging">Statement and Parameter Logging</h2>
-<p>Npgsql will log all SQL statements at level Debug, this can help you debug exactly what&#39;s being sent to PostgreSQL.</p>
-<p>By default, Npgsql will not log parameter values as these may contain sensitive information. You can turn on
-parameter logging by setting <code>NpgsqlLogManager.IsParameterLoggingEnabled</code> to true.</p>
-<h2 id="nlogloggingprovider-or-implementing-your-own">NLogLoggingProvider (or implementing your own)</h2>
+<h3 id="nlogloggingprovider-or-implementing-your-own">NLogLoggingProvider (or implementing your own)</h3>
 <p>The following provider is used in the Npgsql unit tests to pass log messages to <a href="http://nlog-project.org/">NLog</a>.
 You&#39;re welcome to copy-paste it into your project, or to use it as a starting point for implementing your own custom provider.</p>
 <pre><code class="lang-c#">class NLogLoggingProvider : INpgsqlLoggingProvider
