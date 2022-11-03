@@ -124,7 +124,7 @@ using var command2 = new NpgsqlCommand(&quot;SELECT * FROM some_function($1, $2)
 {
     // Add parameters
 };
-</code></pre><h3 id="a-namecommandtypestoredprocedure-managing-type-mappings-at-the-connection-level-is-no-longer-supported"><a name="commandtype_storedprocedure"></a>Managing type mappings at the connection level is no longer supported</h3>
+</code></pre><h3 id="managing-type-mappings-at-the-connection-level-is-no-longer-supported">Managing type mappings at the connection level is no longer supported</h3>
 <p>Previous versions of Npgsql allowed mapping custom types (enums/composites) and configuring plugins (NetTopologySuite, NodaTime) at the connection level; the type mapping change would persist only for the lifetime of the connection, and would be reverted when the connection closed. This mechanism was inefficient - connections get opened and closed a lot - and added significant maintenance burden internally.</p>
 <p>With the introduction of <code>NpgsqlDataSource</code>, Npgsql now has a natural API point for managing type mappings:</p>
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
@@ -133,6 +133,18 @@ dataSourceBuilder.UseNodaTime();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre><p>All connections handed out by the data source will use the configured type mappings.</p>
 <p>Note that managing type mappings globally via <code>NpgsqlConnection.GlobalTypeMapper</code> is supported as before, but has been marked as obsolete; although we do not plan on removing global type mappings any time soon, &lt;xref:Npgsql.NpgsqlDataSourceBuilder&gt; is now the recommended way to manage type mappings.</p>
+<h3 id="npgsqldatareaderdispose-no-longer-swallows-exceptions">NpgsqlDataReader.Dispose no longer swallows exceptions</h3>
+<p>Previously, when an unconsumed <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> was disposed, any exceptions that occurred while consuming the remaining results were swallowed and <code>Dispose</code> completed successfully. These exceptions are no longer swallowed, and are thrown from Dispose. This also affects scenarios where <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> is used in a C# <code>using</code> statement.</p>
+<p>In most cases in .NET, throwing from <code>Dispose</code> is discouraged. If the instance being disposed is used in a <code>using</code> statement and some exception is thrown, that exception triggers <code>Dispose</code> being called (as per <code>using</code>), and if <code>Dispose</code> throws an exception of its own, then that exception bubbles up. As a result, the original exception is hidden, making it difficult to understand exactly what happened. As a result, it is common for <code>Dispose</code> to catch any exceptions internally and swallow them, allowing the original exception to bubble up.</p>
+<p>However, in the Npgsql case, swallowing exceptions in <code>Dispose</code> can have very problematic consequences. A reader can be disposed before it&#39;s entirely consumed, after only part of the result set has been read; when this happens, Npgsql consumes the rest of the result set as part of the disposal. If any errors occur past this point, then those exceptions were previously swallowed; this meant that the application could be unaware that part of the command failed, since no exception was raised. Throwing these exceptions from dispose ensures that the application is aware of any failures that occurred.</p>
+<p>For more context on this change, see the discussion in <a href="https://github.com/npgsql/npgsql/issues/4377">#4377</a>.</p>
+<h3 id="the-obsoleted-npgsqldatetime-npgsqldate-and-npgsqltimespan-have-been-removed">The obsoleted NpgsqlDateTime, NpgsqlDate and NpgsqlTimeSpan have been removed</h3>
+<p><code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> were &quot;provider-specific&quot; types, designed to expose the full range of the PostgreSQL date/time types, which can represent values beyond the built-in .NET types (e.g. <code>DateTime</code>). However, these types were problematic in many ways, and were seldom used. The types were obsoleted in Npgsql 6.0, and have been removed in 7.0.</p>
+<p>To deal with date/time values outside the range of the corresponding .NET types, see <a href="../types/datetime.html">Date and Time Handling</a>.</p>
+<h3 id="npgsqlconnectionsettings-has-been-removed">NpgsqlConnection.Settings has been removed</h3>
+<p>The connection&#39;s connection string is still exposed via <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_ConnectionString">NpgsqlConnection.ConnectionString</a>; this can be parsed with <a class="xref" href="../api/Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>.</p>
+<h2 id="replication-apis-now-return-utc-datetime">Replication APIs now return UTC DateTime</h2>
+<p>Previously, replication APIs returned <code>DateTime</code> instances of Kind <code>Unspecified</code>; this has been changed to <code>Utc</code> to reflect the actual type of data sent by PostgreSQL.</p>
 </article>
           </div>
           
