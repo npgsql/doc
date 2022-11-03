@@ -83,7 +83,7 @@
 <h2 id="new-features">New features</h2>
 <p>The full list of issues for this release is <a href="https://github.com/npgsql/npgsql/milestone/71?closed=1">available here</a>.</p>
 <h3 id="dbdatasource">DbDataSource</h3>
-<p>A major improvement in Npgsql 7.0 is &lt;xref:Npgsql.NpgsqlDataSource&gt;, which implements the new <a href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatasource?view=net-7.0">DbDataSource</a> abstraction in .NET System.Data. A data source represents your PostgreSQL database, and can hand out connections to it or support direct execution of SQL to it.</p>
+<p>A major improvement in Npgsql 7.0 is <a class="xref" href="../api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, which implements the new <a href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatasource?view=net-7.0">DbDataSource</a> abstraction in .NET System.Data. A data source represents your PostgreSQL database, and can hand out connections to it or support direct execution of SQL to it.</p>
 <p>Instead of directly instantiating an <code>NpgsqlConnection</code> and then executing commands against it, you now create a data source once, and then use that throughout your application:</p>
 <pre><code class="lang-csharp">await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
@@ -93,7 +93,7 @@ await command.ExecuteNonQueryAsync();
 
 // Open a connection in order to e.g. start a transaction on it:
 await using var connection = await dataSource.OpenConnectionAsync();
-</code></pre><p>Since the data source encapsulates all the necessary configuration for connecting to a database (e.g. the connection string, authentication callbacks...), it can registered in dependency injection or passed around as needed, without needing any additional information. The new &lt;xref:Npgsql.NpgsqlDataSourceBuilder&gt; also  provides the ideal API point for various configuration when building a data source:</p>
+</code></pre><p>Since the data source encapsulates all the necessary configuration for connecting to a database (e.g. the connection string, authentication callbacks...), it can registered in dependency injection or passed around as needed, without needing any additional information. The new <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> also  provides the ideal API point for various configuration when building a data source:</p>
 <pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
 dataSourceBuilder
     .UseLoggerFactory(loggerFactory) // Configure logging
@@ -132,7 +132,7 @@ dataSourceBuilder.MapEnum&lt;MyEnum&gt;();
 dataSourceBuilder.UseNodaTime();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre><p>All connections handed out by the data source will use the configured type mappings.</p>
-<p>Note that managing type mappings globally via <code>NpgsqlConnection.GlobalTypeMapper</code> is supported as before, but has been marked as obsolete; although we do not plan on removing global type mappings any time soon, &lt;xref:Npgsql.NpgsqlDataSourceBuilder&gt; is now the recommended way to manage type mappings.</p>
+<p>Note that managing type mappings globally via <code>NpgsqlConnection.GlobalTypeMapper</code> is supported as before, but has been marked as obsolete; although we do not plan on removing global type mappings any time soon, <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> is now the recommended way to manage type mappings.</p>
 <h3 id="npgsqldatareaderdispose-no-longer-swallows-exceptions">NpgsqlDataReader.Dispose no longer swallows exceptions</h3>
 <p>Previously, when an unconsumed <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> was disposed, any exceptions that occurred while consuming the remaining results were swallowed and <code>Dispose</code> completed successfully. These exceptions are no longer swallowed, and are thrown from Dispose. This also affects scenarios where <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> is used in a C# <code>using</code> statement.</p>
 <p>In most cases in .NET, throwing from <code>Dispose</code> is discouraged. If the instance being disposed is used in a <code>using</code> statement and some exception is thrown, that exception triggers <code>Dispose</code> being called (as per <code>using</code>), and if <code>Dispose</code> throws an exception of its own, then that exception bubbles up. As a result, the original exception is hidden, making it difficult to understand exactly what happened. As a result, it is common for <code>Dispose</code> to catch any exceptions internally and swallow them, allowing the original exception to bubble up.</p>

@@ -83,9 +83,7 @@
   
   <h1 id="Npgsql_TypeMapping_INpgsqlTypeMapper" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper" class="text-break">Interface INpgsqlTypeMapper
   </h1>
-  <div class="markdown level0 summary"><p>A type mapper, managing how to read and write CLR values to PostgreSQL data types.
-A type mapper exists for each connection, as well as a single global type mapper
-(accessible via <span class="xref">NpgsqlConnection.GlobalTypeMapper</span>).</p>
+  <div class="markdown level0 summary"><p>A type mapper, managing how to read and write CLR values to PostgreSQL data types.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.TypeMapping.html">Npgsql.TypeMapping</a></h6>
@@ -94,6 +92,10 @@ A type mapper exists for each connection, as well as a single global type mapper
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface INpgsqlTypeMapper</code></pre>
   </div>
+  <h5 id="Npgsql_TypeMapping_INpgsqlTypeMapper_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>The preferred way to manage type mappings is on <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>. An alternative, but discouraged, method, is to
+manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GlobalTypeMapper">GlobalTypeMapper</a>).</p>
+</div>
   <h3 id="properties">Properties
   </h3>
   <span class="small pull-right mobile-hide">
@@ -101,16 +103,16 @@ A type mapper exists for each connection, as well as a single global type mapper
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.DefaultNameTranslator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L22">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L22">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.DefaultNameTranslator*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.DefaultNameTranslator">DefaultNameTranslator</h4>
-  <div class="markdown level1 summary"><p>The default name translator to convert CLR type names and member names.</p>
+  <div class="markdown level1 summary"><p>The default name translator to convert CLR type names and member names. Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">INpgsqlNameTranslator DefaultNameTranslator { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">INpgsqlNameTranslator DefaultNameTranslator { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -134,7 +136,7 @@ A type mapper exists for each connection, as well as a single global type mapper
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_AddTypeResolverFactory_Npgsql_Internal_TypeHandling_TypeHandlerResolverFactory_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.AddTypeResolverFactory(Npgsql.Internal.TypeHandling.TypeHandlerResolverFactory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L154">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L154">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_AddTypeResolverFactory_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.AddTypeResolverFactory*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_AddTypeResolverFactory_Npgsql_Internal_TypeHandling_TypeHandlerResolverFactory_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.AddTypeResolverFactory(Npgsql.Internal.TypeHandling.TypeHandlerResolverFactory)">AddTypeResolverFactory(TypeHandlerResolverFactory)</h4>
@@ -169,7 +171,7 @@ Typically used by plugins.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_Type_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite(Type%2CSystem.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L125">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L125">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_Type_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite(Type,System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">MapComposite(Type, Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -207,7 +209,7 @@ If null, the name translator given in <code data-dev-comment-type="paramref" cla
         <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
         <td><span class="parametername">nameTranslator</span></td>
         <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
-Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
+Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -230,7 +232,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
   <h5 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_Type_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Maps CLR fields and properties by string to PostgreSQL names.
 The translation strategy can be controlled by the <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> parameter,
-which defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.
+which defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.
 If there is a discrepancy between the .NET type and database type while a composite is read or written,
 an exception will be raised.</p>
 </div>
@@ -239,7 +241,7 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite%60%601(System.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L85">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L85">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite``1(System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">MapComposite&lt;T&gt;(Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -271,7 +273,7 @@ If null, the name translator given in <code data-dev-comment-type="paramref" cla
         <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
         <td><span class="parametername">nameTranslator</span></td>
         <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
-Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
+Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -320,7 +322,7 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum%60%601(System.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L44">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L44">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum``1(System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">MapEnum&lt;TEnum&gt;(Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -353,7 +355,7 @@ If null, the name translator given in <code data-dev-comment-type="paramref" cla
         <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
         <td><span class="parametername">nameTranslator</span></td>
         <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
-Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
+Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -402,7 +404,7 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_Reset.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.Reset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L159">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L159">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_Reset_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.Reset*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_Reset" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.Reset">Reset()</h4>
@@ -418,7 +420,7 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_Type_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite(Type%2CSystem.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L143">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L143">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_Type_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite(Type,System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">UnmapComposite(Type, Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -456,7 +458,7 @@ If null, the name translator given in <code data-dev-comment-type="paramref" cla
         <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
         <td><span class="parametername">nameTranslator</span></td>
         <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
-Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
+Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -481,7 +483,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite%60%601(System.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L101">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L101">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite``1(System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">UnmapComposite&lt;T&gt;(Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -553,7 +555,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum%60%601(System.Nullable%7BSystem.String%7D%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L60">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L60">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum*"></a>
   <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum__1_System_Nullable_System_String__Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum``1(System.Nullable{System.String},Npgsql.INpgsqlNameTranslator)">UnmapEnum&lt;TEnum&gt;(Nullable&lt;String&gt;, INpgsqlNameTranslator)</h4>
@@ -586,7 +588,7 @@ If null, the name translator given in <code data-dev-comment-type="paramref" cla
         <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
         <td><span class="parametername">nameTranslator</span></td>
         <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
-Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
+Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -645,7 +647,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_TypeMapping_INpgsqlTypeMapper.md&amp;value=---%0Auid%3A%20Npgsql.TypeMapping.INpgsqlTypeMapper%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L17" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L17" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

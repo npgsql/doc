@@ -106,7 +106,7 @@ a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.h
 against a PostgreSQL database. This class cannot be inherited.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlCommandBuilder.html">NpgsqlCommandBuilder</a></h4>
-      <section><p>This class is responsible to create database commands for automatic insert, update and delete operations.</p>
+      <section><p>This class creates database commands for automatic insert, update and delete operations.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></h4>
       <section><p>This class represents a connection to a PostgreSQL server.</p>
@@ -114,10 +114,6 @@ against a PostgreSQL database. This class cannot be inherited.</p>
       <h4><a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a></h4>
       <section><p>Provides a simple way to create and manage the contents of connection strings used by
 the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> class.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlConnectionStringPropertyAttribute.html">NpgsqlConnectionStringPropertyAttribute</a></h4>
-      <section><p>Marks on <a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a> which participate in the connection
-string. Optionally holds a set of synonyms for the property.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlCopyTextReader.html">NpgsqlCopyTextReader</a></h4>
       <section><p>Reader for a text export, initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTextExport_System_String_">BeginTextExport(String)</a>.</p>
@@ -131,6 +127,13 @@ string. Optionally holds a set of synonyms for the property.</p>
       <h4><a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a></h4>
       <section><p>Reads a forward-only stream of rows from a data source.</p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></h4>
+      <section><p>Provides a simple API for configuring and creating an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, from which database connections can be obtained.</p>
+</section>
+      <h4><a class="xref" href="Npgsql.NpgsqlEventId.html">NpgsqlEventId</a></h4>
+      <section></section>
       <h4><a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a></h4>
       <section><p>The exception that is thrown when server-related issues occur.</p>
 </section>
@@ -149,6 +152,13 @@ string. Optionally holds a set of synonyms for the property.</p>
       <h4><a class="xref" href="Npgsql.NpgsqlLargeObjectStream.html">NpgsqlLargeObjectStream</a></h4>
       <section><p>An interface to remotely control the seekable stream for an opened large object on a PostgreSQL server.
 Note that the OpenRead/OpenReadWrite method as well as all operations performed on this stream must be wrapped inside a database transaction.</p>
+</section>
+      <h4><a class="xref" href="Npgsql.NpgsqlLoggingConfiguration.html">NpgsqlLoggingConfiguration</a></h4>
+      <section><p>Configures Npgsql logging</p>
+</section>
+      <h4><a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a></h4>
+      <section><p>An <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> which manages connections for multiple hosts, is aware of their states (primary, secondary,
+offline...) and can perform failover and load balancing across them.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlNestedDataReader.html">NpgsqlNestedDataReader</a></h4>
       <section><p>Reads a forward-only stream of rows from a nested data source.
@@ -239,6 +249,9 @@ behaves with respect to nullability when they are requested via an API returning
       <h4><a class="xref" href="Npgsql.StatementType.html">StatementType</a></h4>
       <section><p>Specifies the type of SQL statement, e.g. SELECT</p>
 </section>
+      <h4><a class="xref" href="Npgsql.TargetSessionAttributes.html">TargetSessionAttributes</a></h4>
+      <section><p>Specifies server type preference.</p>
+</section>
     <h3 id="delegates">Delegates
   </h3>
       <h4><a class="xref" href="Npgsql.NoticeEventHandler.html">NoticeEventHandler</a></h4>
@@ -252,12 +265,6 @@ behaves with respect to nullability when they are requested via an API returning
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlRowUpdatingEventHandler.html">NpgsqlRowUpdatingEventHandler</a></h4>
       <section><p>Represents the method that handles the <a class="xref" href="Npgsql.NpgsqlDataAdapter.html#Npgsql_NpgsqlDataAdapter_RowUpdating">RowUpdating</a> events.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.PhysicalOpenAsyncCallback.html">PhysicalOpenAsyncCallback</a></h4>
-      <section><p>Represents an asynchronous method that allows the application to setup a connection with custom commands.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.PhysicalOpenCallback.html">PhysicalOpenCallback</a></h4>
-      <section><p>Represents a method that allows the application to setup a connection with custom commands.</p>
 </section>
       <h4><a class="xref" href="Npgsql.ProvideClientCertificatesCallback.html">ProvideClientCertificatesCallback</a></h4>
       <section><p>Represents a method that allows the application to provide a certificate collection to be used for SSL client authentication</p>

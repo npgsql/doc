@@ -101,13 +101,13 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PgOutputConnectionExtensions.CreatePgOutputReplicationSlot(Npgsql.Replication.LogicalReplicationConnection%2CSystem.String%2CSystem.Boolean%2CSystem.Nullable%7BNpgsql.Replication.LogicalSlotSnapshotInitMode%7D%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PgOutputConnectionExtensions.CreatePgOutputReplicationSlot(Npgsql.Replication.LogicalReplicationConnection%2CSystem.String%2CSystem.Boolean%2CSystem.Nullable%7BNpgsql.Replication.LogicalSlotSnapshotInitMode%7D%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L50">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L55">View Source</a>
   </span>
   <a id="Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_" data-uid="Npgsql.Replication.PgOutputConnectionExtensions.CreatePgOutputReplicationSlot*"></a>
-  <h4 id="Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__CancellationToken_" data-uid="Npgsql.Replication.PgOutputConnectionExtensions.CreatePgOutputReplicationSlot(Npgsql.Replication.LogicalReplicationConnection,System.String,System.Boolean,System.Nullable{Npgsql.Replication.LogicalSlotSnapshotInitMode},CancellationToken)">CreatePgOutputReplicationSlot(LogicalReplicationConnection, String, Boolean, Nullable&lt;LogicalSlotSnapshotInitMode&gt;, CancellationToken)</h4>
+  <h4 id="Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__System_Boolean_CancellationToken_" data-uid="Npgsql.Replication.PgOutputConnectionExtensions.CreatePgOutputReplicationSlot(Npgsql.Replication.LogicalReplicationConnection,System.String,System.Boolean,System.Nullable{Npgsql.Replication.LogicalSlotSnapshotInitMode},System.Boolean,CancellationToken)">CreatePgOutputReplicationSlot(LogicalReplicationConnection, String, Boolean, Nullable&lt;LogicalSlotSnapshotInitMode&gt;, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Npgsql.Replication.Internal.LogicalReplicationSlot.html">LogicalReplicationSlot</a> class that wraps a replication slot using the
 &quot;pgoutput&quot; logical decoding plugin and can be used to start streaming replication via the logical
 streaming replication protocol.</p>
@@ -115,7 +115,7 @@ streaming replication protocol.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static async Task&lt;PgOutputReplicationSlot&gt; CreatePgOutputReplicationSlot(this LogicalReplicationConnection connection, string slotName, bool temporarySlot = false, LogicalSlotSnapshotInitMode? slotSnapshotInitMode = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static async Task&lt;PgOutputReplicationSlot&gt; CreatePgOutputReplicationSlot(this LogicalReplicationConnection connection, string slotName, bool temporarySlot = false, LogicalSlotSnapshotInitMode? slotSnapshotInitMode = null, bool twoPhase = false, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -160,6 +160,14 @@ the snapshot for logical decoding as normal but won&apos;t do anything else with
 </td>
       </tr>
       <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">twoPhase</span></td>
+        <td><p>If <span class="xref">true</span>, this logical replication slot supports decoding of two-phase transactions. With this option,
+two-phase commands like PREPARE TRANSACTION, COMMIT PREPARED and ROLLBACK PREPARED are decoded and transmitted.
+The transaction will be decoded and transmitted at PREPARE TRANSACTION time. The default is <span class="xref">false</span>.</p>
+</td>
+      </tr>
+      <tr>
         <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>An optional token to cancel the asynchronous operation. The default value is <see cref="!:CancellationToken.None"></see>.</p>
@@ -183,7 +191,7 @@ the snapshot for logical decoding as normal but won&apos;t do anything else with
       </tr>
     </tbody>
   </table>
-  <h5 id="Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__CancellationToken__remarks">Remarks</h5>
+  <h5 id="Npgsql_Replication_PgOutputConnectionExtensions_CreatePgOutputReplicationSlot_Npgsql_Replication_LogicalReplicationConnection_System_String_System_Boolean_System_Nullable_Npgsql_Replication_LogicalSlotSnapshotInitMode__System_Boolean_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>See <a href="https://www.postgresql.org/docs/current/protocol-logical-replication.html">https://www.postgresql.org/docs/current/protocol-logical-replication.html</a>
 and <a href="https://www.postgresql.org/docs/current/protocol-logicalrep-message-formats.html">https://www.postgresql.org/docs/current/protocol-logicalrep-message-formats.html</a>
 for more information.</p>
@@ -193,7 +201,7 @@ for more information.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PgOutputConnectionExtensions_StartReplication_Npgsql_Replication_LogicalReplicationConnection_Npgsql_Replication_PgOutput_PgOutputReplicationSlot_Npgsql_Replication_PgOutput_PgOutputReplicationOptions_CancellationToken_System_Nullable_NpgsqlTypes_NpgsqlLogSequenceNumber__.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PgOutputConnectionExtensions.StartReplication(Npgsql.Replication.LogicalReplicationConnection%2CNpgsql.Replication.PgOutput.PgOutputReplicationSlot%2CNpgsql.Replication.PgOutput.PgOutputReplicationOptions%2CCancellationToken%2CSystem.Nullable%7BNpgsqlTypes.NpgsqlLogSequenceNumber%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L79">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L85">View Source</a>
   </span>
   <a id="Npgsql_Replication_PgOutputConnectionExtensions_StartReplication_" data-uid="Npgsql.Replication.PgOutputConnectionExtensions.StartReplication*"></a>
   <h4 id="Npgsql_Replication_PgOutputConnectionExtensions_StartReplication_Npgsql_Replication_LogicalReplicationConnection_Npgsql_Replication_PgOutput_PgOutputReplicationSlot_Npgsql_Replication_PgOutput_PgOutputReplicationOptions_CancellationToken_System_Nullable_NpgsqlTypes_NpgsqlLogSequenceNumber__" data-uid="Npgsql.Replication.PgOutputConnectionExtensions.StartReplication(Npgsql.Replication.LogicalReplicationConnection,Npgsql.Replication.PgOutput.PgOutputReplicationSlot,Npgsql.Replication.PgOutput.PgOutputReplicationOptions,CancellationToken,System.Nullable{NpgsqlTypes.NpgsqlLogSequenceNumber})">StartReplication(LogicalReplicationConnection, PgOutputReplicationSlot, PgOutputReplicationOptions, CancellationToken, Nullable&lt;NpgsqlLogSequenceNumber&gt;)</h4>
@@ -278,7 +286,7 @@ can be used to stream WAL entries in form of <a class="xref" href="Npgsql.Replic
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PgOutputConnectionExtensions.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PgOutputConnectionExtensions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PgOutput/PgOutputConnectionExtensions.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -104,7 +104,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand__ctor.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L154">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L180">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand__ctor_" data-uid="Npgsql.NpgsqlBatchCommand.#ctor*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand__ctor" data-uid="Npgsql.NpgsqlBatchCommand.#ctor">NpgsqlBatchCommand()</h4>
@@ -120,7 +120,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand__ctor_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L160">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L186">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand__ctor_" data-uid="Npgsql.NpgsqlBatchCommand.#ctor*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand__ctor_System_String_" data-uid="Npgsql.NpgsqlBatchCommand.#ctor(System.String)">NpgsqlBatchCommand(String)</h4>
@@ -153,10 +153,61 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_AppendErrorBarrier.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.AppendErrorBarrier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L58">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlBatchCommand_AppendErrorBarrier_" data-uid="Npgsql.NpgsqlBatchCommand.AppendErrorBarrier*"></a>
+  <h4 id="Npgsql_NpgsqlBatchCommand_AppendErrorBarrier" data-uid="Npgsql.NpgsqlBatchCommand.AppendErrorBarrier">AppendErrorBarrier</h4>
+  <div class="markdown level1 summary"><p>Appends an error barrier after this batch command. Defaults to the value of <a class="xref" href="Npgsql.NpgsqlBatch.html#Npgsql_NpgsqlBatch_EnableErrorBarriers">EnableErrorBarriers</a> on the
+batch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? AppendErrorBarrier { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_NpgsqlBatchCommand_AppendErrorBarrier_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    By default, any exception in a command causes later commands in the batch to be skipped, and earlier commands to be rolled back.
+    Appending an error barrier ensures that errors from this command (or previous ones) won&apos;t cause later commands to be skipped,
+    and that errors from later commands won&apos;t cause this command (or previous ones) to be rolled back).
+</p>
+<p>
+    Note that if the batch is executed within an explicit transaction, the first error places the transaction in a failed state,
+    causing all later commands to fail in any case. As a result, this option is useful mainly when there is no explicit transaction.
+</p>
+<p>
+    At the PostgreSQL wire protocol level, this corresponds to inserting a Sync message after this command, rather than grouping
+    all the batch&apos;s commands behind a single terminating Sync.
+</p>
+<p>
+    Controlling error barriers on a command-by-command basis is an advanced feature, consider enabling error barriers for the entire
+    batch via <a class="xref" href="Npgsql.NpgsqlBatch.html#Npgsql_NpgsqlBatch_EnableErrorBarriers">EnableErrorBarriers</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_CommandText.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.CommandText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L19">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L19">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_CommandText_" data-uid="Npgsql.NpgsqlBatchCommand.CommandText*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_CommandText" data-uid="Npgsql.NpgsqlBatchCommand.CommandText">CommandText</h4>
@@ -188,7 +239,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_CommandType.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.CommandType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L27">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L27">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_CommandType_" data-uid="Npgsql.NpgsqlBatchCommand.CommandType*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_CommandType" data-uid="Npgsql.NpgsqlBatchCommand.CommandType">CommandType</h4>
@@ -220,7 +271,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_DbParameterCollection.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.DbParameterCollection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L30">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L30">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_DbParameterCollection_" data-uid="Npgsql.NpgsqlBatchCommand.DbParameterCollection*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_DbParameterCollection" data-uid="Npgsql.NpgsqlBatchCommand.DbParameterCollection">DbParameterCollection</h4>
@@ -252,7 +303,7 @@
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_OID.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.OID%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L74">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L100">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_OID_" data-uid="Npgsql.NpgsqlBatchCommand.OID*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_OID" data-uid="Npgsql.NpgsqlBatchCommand.OID">OID</h4>
@@ -284,7 +335,7 @@ the target table has OIDs; otherwise 0.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_Parameters.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.Parameters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L33">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L33">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_Parameters_" data-uid="Npgsql.NpgsqlBatchCommand.Parameters*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_Parameters" data-uid="Npgsql.NpgsqlBatchCommand.Parameters">Parameters</h4>
@@ -314,7 +365,7 @@ the target table has OIDs; otherwise 0.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_RecordsAffected.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.RecordsAffected%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L45">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L70">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_RecordsAffected_" data-uid="Npgsql.NpgsqlBatchCommand.RecordsAffected*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_RecordsAffected" data-uid="Npgsql.NpgsqlBatchCommand.RecordsAffected">RecordsAffected</h4>
@@ -346,7 +397,7 @@ the target table has OIDs; otherwise 0.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_Rows.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.Rows%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L42">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L67">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_Rows_" data-uid="Npgsql.NpgsqlBatchCommand.Rows*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_Rows" data-uid="Npgsql.NpgsqlBatchCommand.Rows">Rows</h4>
@@ -381,7 +432,7 @@ the target table has OIDs; otherwise 0.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_StatementType.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.StatementType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L68">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L94">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_StatementType_" data-uid="Npgsql.NpgsqlBatchCommand.StatementType*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_StatementType" data-uid="Npgsql.NpgsqlBatchCommand.StatementType">StatementType</h4>
@@ -414,7 +465,7 @@ the target table has OIDs; otherwise 0.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand_ToString.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L228">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L254">View Source</a>
   </span>
   <a id="Npgsql_NpgsqlBatchCommand_ToString_" data-uid="Npgsql.NpgsqlBatchCommand.ToString*"></a>
   <h4 id="Npgsql_NpgsqlBatchCommand_ToString" data-uid="Npgsql.NpgsqlBatchCommand.ToString">ToString()</h4>
@@ -451,7 +502,7 @@ the target table has OIDs; otherwise 0.</p>
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBatchCommand.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBatchCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/NpgsqlBatchCommand.cs/#L14" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlBatchCommand.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

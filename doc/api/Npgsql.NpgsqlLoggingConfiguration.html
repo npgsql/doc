@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum NpgsqlLogLevel
+    <title>Class NpgsqlLoggingConfiguration
    | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum NpgsqlLogLevel
+    <meta name="title" content="Class NpgsqlLoggingConfiguration
    | Npgsql Documentation ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -78,55 +78,75 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.Logging.NpgsqlLogLevel">
+            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlLoggingConfiguration">
   
   
-  <h1 id="Npgsql_Logging_NpgsqlLogLevel" data-uid="Npgsql.Logging.NpgsqlLogLevel" class="text-break">Enum NpgsqlLogLevel
+  <h1 id="Npgsql_NpgsqlLoggingConfiguration" data-uid="Npgsql.NpgsqlLoggingConfiguration" class="text-break">Class NpgsqlLoggingConfiguration
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Configures Npgsql logging</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Logging.html">Npgsql.Logging</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_Logging_NpgsqlLogLevel_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum NpgsqlLogLevel : int</code></pre>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">NpgsqlLoggingConfiguration</span></div>
   </div>
-  <h3 id="fields">Fields
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_NpgsqlLoggingConfiguration_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlLoggingConfiguration : object</code></pre>
+  </div>
+  <h3 id="methods">Methods
   </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlLoggingConfiguration_InitializeLogging_ILoggerFactory_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlLoggingConfiguration.InitializeLogging(ILoggerFactory%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlLoggingConfiguration.cs/#L57">View Source</a>
+  </span>
+  <a id="Npgsql_NpgsqlLoggingConfiguration_InitializeLogging_" data-uid="Npgsql.NpgsqlLoggingConfiguration.InitializeLogging*"></a>
+  <h4 id="Npgsql_NpgsqlLoggingConfiguration_InitializeLogging_ILoggerFactory_System_Boolean_" data-uid="Npgsql.NpgsqlLoggingConfiguration.InitializeLogging(ILoggerFactory,System.Boolean)">InitializeLogging(ILoggerFactory, Boolean)</h4>
+  <div class="markdown level1 summary"><p>
+Globally initializes Npgsql logging to use the provided <code data-dev-comment-type="paramref" class="paramref">loggerFactory</code>.
+Must be called before any Npgsql APIs are used.
+</p>
+<p>
+This is a legacy-only, backwards compatibility API. New applications should set the logger factory on
+<a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> and use the resulting <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> instead.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void InitializeLogging(ILoggerFactory loggerFactory, bool parameterLoggingEnabled = false)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
+        <th>Type</th>
         <th>Name</th>
         <th>Description</th>
       </tr>
-    <thead>
+    </thead>
     <tbody>
       <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Debug">Debug</td>
-        <td></td>
+        <td><span class="xref">ILoggerFactory</span></td>
+        <td><span class="parametername">loggerFactory</span></td>
+        <td><p>The logging factory to use when logging from Npgsql.</p>
+</td>
       </tr>
       <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Error">Error</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Fatal">Fatal</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Info">Info</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Trace">Trace</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Npgsql_Logging_NpgsqlLogLevel_Warn">Warn</td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">parameterLoggingEnabled</span></td>
+        <td><p>Determines whether parameter contents will be logged alongside SQL statements - this may reveal sensitive information.
+Defaults to <span class="xref">false</span>.</p>
+</td>
       </tr>
     </tbody>
-  </thead></thead></table>
+  </table>
 </article>
           </div>
           
@@ -135,10 +155,10 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Logging_NpgsqlLogLevel.md&amp;value=---%0Auid%3A%20Npgsql.Logging.NpgsqlLogLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlLoggingConfiguration.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlLoggingConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Logging/NpgsqlLogLevel.cs/#L5" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlLoggingConfiguration.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

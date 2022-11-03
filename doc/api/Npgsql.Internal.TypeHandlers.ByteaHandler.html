@@ -97,6 +97,7 @@
     <h5>Implements</h5>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>[]&gt;</div>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<span class="xref">ArraySegment</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;&gt;</div>
+    <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<span class="xref">Stream</span>&gt;</div>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<span class="xref">ReadOnlyMemory</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;&gt;</div>
     <div><a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler</a>&lt;<span class="xref">Memory</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">Byte</a>&gt;&gt;</div>
   </div>
@@ -185,7 +186,7 @@
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_Internal_TypeHandlers_ByteaHandler_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ByteaHandler : NpgsqlTypeHandler&lt;byte[]&gt;, INpgsqlTypeHandler&lt;byte[]&gt;, INpgsqlTypeHandler&lt;ArraySegment&lt;byte&gt;&gt;, INpgsqlTypeHandler&lt;ReadOnlyMemory&lt;byte&gt;&gt;, INpgsqlTypeHandler&lt;Memory&lt;byte&gt;&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class ByteaHandler : NpgsqlTypeHandler&lt;byte[]&gt;, INpgsqlTypeHandler&lt;byte[]&gt;, INpgsqlTypeHandler&lt;ArraySegment&lt;byte&gt;&gt;, INpgsqlTypeHandler&lt;Stream&gt;, INpgsqlTypeHandler&lt;ReadOnlyMemory&lt;byte&gt;&gt;, INpgsqlTypeHandler&lt;Memory&lt;byte&gt;&gt;</code></pre>
   </div>
   <h5 id="Npgsql_Internal_TypeHandlers_ByteaHandler_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/datatype-binary.html">https://www.postgresql.org/docs/current/static/datatype-binary.html</a>.</p>
@@ -200,7 +201,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler__ctor_Npgsql_PostgresTypes_PostgresType_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.%23ctor(Npgsql.PostgresTypes.PostgresType)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L25">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L26">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler__ctor_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.#ctor*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler__ctor_Npgsql_PostgresTypes_PostgresType_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.#ctor(Npgsql.PostgresTypes.PostgresType)">ByteaHandler(PostgresType)</h4>
@@ -234,7 +235,7 @@ Use it at your own risk.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L28">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L29">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Read_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
@@ -305,7 +306,7 @@ using either sync or async I/O.</p>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_ArraySegment_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(ArraySegment%7BSystem.Byte%7D%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L57">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L79">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_ArraySegment_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(ArraySegment{System.Byte},Npgsql.Internal.TypeHandling.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(ArraySegment&lt;Byte&gt;, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -369,7 +370,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_Memory_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(Memory%7BSystem.Byte%7D%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L85">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L118">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_Memory_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(Memory{System.Byte},Npgsql.Internal.TypeHandling.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(Memory&lt;Byte&gt;, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -433,7 +434,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_ReadOnlyMemory_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(ReadOnlyMemory%7BSystem.Byte%7D%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L89">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L122">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_ReadOnlyMemory_System_Byte__Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(ReadOnlyMemory{System.Byte},Npgsql.Internal.TypeHandling.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(ReadOnlyMemory&lt;Byte&gt;, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -494,10 +495,74 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_Stream_Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(Stream%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L83">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_Stream_Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(Stream,Npgsql.Internal.TypeHandling.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(Stream, ref NpgsqlLengthCache, NpgsqlParameter)</h4>
+  <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
+written for PostgreSQL - if the value cannot be written for any reason, an exception should be thrown.
+Also returns the byte length needed to write the value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ValidateAndGetLength(Stream value, ref NpgsqlLengthCache lengthCache, NpgsqlParameter parameter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td><p>A cache where the length calculated during the validation phase can be stored for use at the writing phase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><p>The number of bytes required to write the value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_System_Byte___Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(System.Byte%5B%5D%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%40%2CNpgsql.NpgsqlParameter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L53">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L75">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_ValidateAndGetLength_System_Byte___Npgsql_Internal_TypeHandling_NpgsqlLengthCache__Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.ValidateAndGetLength(System.Byte[],Npgsql.Internal.TypeHandling.NpgsqlLengthCache@,Npgsql.NpgsqlParameter)">ValidateAndGetLength(Byte[], ref NpgsqlLengthCache, NpgsqlParameter)</h4>
@@ -557,7 +622,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Write_ArraySegment_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Write(ArraySegment%7BSystem.Byte%7D%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L65">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L91">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_ArraySegment_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write(ArraySegment{System.Byte},Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.Internal.TypeHandling.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(ArraySegment&lt;Byte&gt;, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
@@ -636,7 +701,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Write_Memory_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Write(Memory%7BSystem.Byte%7D%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L111">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L144">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_Memory_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write(Memory{System.Byte},Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.Internal.TypeHandling.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(Memory&lt;Byte&gt;, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
@@ -715,7 +780,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Write_ReadOnlyMemory_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Write(ReadOnlyMemory%7BSystem.Byte%7D%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L93">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L126">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_ReadOnlyMemory_System_Byte__Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write(ReadOnlyMemory{System.Byte},Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.Internal.TypeHandling.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(ReadOnlyMemory&lt;Byte&gt;, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
@@ -791,10 +856,89 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Write_Stream_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Write(Stream%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L95">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_Stream_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write(Stream,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.Internal.TypeHandling.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(Stream, NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Writes a value to the provided buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Write(Stream value, NpgsqlWriteBuffer buf, NpgsqlLengthCache lengthCache, NpgsqlParameter parameter, bool async, CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Stream</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>The buffer to which to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlLengthCache.html">NpgsqlLengthCache</a></td>
+        <td><span class="parametername">lengthCache</span></td>
+        <td><p>A cache where the length calculated during the validation phase can be stored for use at the writing phase.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
+        <td><span class="parametername">parameter</span></td>
+        <td><p>The <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> instance where this value resides. Can be used to access additional
+information relevant to the write process (e.g. <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Size">Size</a>).</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td><p>If I/O will be necessary (i.e. the buffer is full), determines whether it will be done synchronously or asynchronously.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>An optional token to cancel the asynchronous operation. The default value is <see cref="!:CancellationToken.None"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Write_System_Byte___Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Write(System.Byte%5B%5D%2CNpgsql.Internal.NpgsqlWriteBuffer%2CNpgsql.Internal.TypeHandling.NpgsqlLengthCache%2CNpgsql.NpgsqlParameter%2CSystem.Boolean%2CCancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L61">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L87">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Write_System_Byte___Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_Internal_TypeHandling_NpgsqlLengthCache_Npgsql_NpgsqlParameter_System_Boolean_CancellationToken_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Write(System.Byte[],Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.Internal.TypeHandling.NpgsqlLengthCache,Npgsql.NpgsqlParameter,System.Boolean,CancellationToken)">Write(Byte[], NpgsqlWriteBuffer, NpgsqlLengthCache, NpgsqlParameter, Boolean, CancellationToken)</h4>
@@ -871,7 +1015,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ArraySegment_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql%23Internal%23TypeHandling%23INpgsqlTypeHandler%7BArraySegment%7BSystem%23Byte%7D%7D%23Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L44">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L45">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ArraySegment_System_Byte___Read_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{ArraySegment{System#Byte}}#Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ArraySegment_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{ArraySegment{System#Byte}}#Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;ArraySegment&lt;Byte&gt;&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
@@ -933,7 +1077,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Memory_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql%23Internal%23TypeHandling%23INpgsqlTypeHandler%7BMemory%7BSystem%23Byte%7D%7D%23Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L117">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L150">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Memory_System_Byte___Read_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{Memory{System#Byte}}#Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Memory_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{Memory{System#Byte}}#Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;Memory&lt;Byte&gt;&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
@@ -995,7 +1139,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ReadOnlyMemory_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql%23Internal%23TypeHandling%23INpgsqlTypeHandler%7BReadOnlyMemory%7BSystem%23Byte%7D%7D%23Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L114">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L147">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ReadOnlyMemory_System_Byte___Read_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{ReadOnlyMemory{System#Byte}}#Read*"></a>
   <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_ReadOnlyMemory_System_Byte___Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{ReadOnlyMemory{System#Byte}}#Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;ReadOnlyMemory&lt;Byte&gt;&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
@@ -1052,7 +1196,72 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
       </tr>
     </tbody>
   </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Stream__Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql%23Internal%23TypeHandling%23INpgsqlTypeHandler%7BStream%7D%23Read(Npgsql.Internal.NpgsqlReadBuffer%2CSystem.Int32%2CSystem.Boolean%2CNpgsql.BackendMessages.FieldDescription)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L48">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Stream__Read_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{Stream}#Read*"></a>
+  <h4 id="Npgsql_Internal_TypeHandlers_ByteaHandler_Npgsql_Internal_TypeHandling_INpgsqlTypeHandler_Stream__Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_System_Boolean_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandlers.ByteaHandler.Npgsql#Internal#TypeHandling#INpgsqlTypeHandler{Stream}#Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,System.Boolean,Npgsql.BackendMessages.FieldDescription)">INpgsqlTypeHandler&lt;Stream&gt;.Read(NpgsqlReadBuffer, Int32, Boolean, FieldDescription)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ValueTask&lt;Stream&gt; INpgsqlTypeHandler&lt;Stream&gt;.Read(NpgsqlReadBuffer buf, int len, bool async, FieldDescription fieldDescription)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></td>
+        <td><span class="parametername">buf</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">len</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="parametername">async</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.BackendMessages.FieldDescription.html">FieldDescription</a></td>
+        <td><span class="parametername">fieldDescription</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ValueTask</span>&lt;<span class="xref">Stream</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
+  </div>
   <div>
       <a class="xref" href="Npgsql.Internal.TypeHandling.INpgsqlTypeHandler-1.html">INpgsqlTypeHandler&lt;T&gt;</a>
   </div>
@@ -1076,7 +1285,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_TypeHandlers_ByteaHandler.md&amp;value=---%0Auid%3A%20Npgsql.Internal.TypeHandlers.ByteaHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L20" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandlers/ByteaHandler.cs/#L21" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

@@ -90,8 +90,8 @@
       <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlLengthCache.html">NpgsqlLengthCache</a></h4>
       <section><p>An array of cached lengths for the parameters sending process.</p>
 <p>When sending parameters, lengths need to be calculated more than once (once for Bind, once for
-an array, once for the string within that array). This cache optimized that. Lengths are added
-to the cache, and then retrieved at the same order.</p>
+an array, once for the string within that array). This cache optimizes that. Lengths are added
+to the cache, and then retrieved in the same order.</p>
 </section>
       <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlSimpleTypeHandler-1.html">NpgsqlSimpleTypeHandler&lt;TDefault&gt;</a></h4>
       <section><p>Base class for all simple type handlers, which read and write short, non-arbitrary lengthed
@@ -100,10 +100,9 @@ Npgsql takes care of all I/O before calling into this type, so no I/O needs to b
 </section>
       <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlSimpleTypeHandlerWithPsv-2.html">NpgsqlSimpleTypeHandlerWithPsv&lt;TDefault, TPsv&gt;</a></h4>
       <section><p>A simple type handler that supports a provider-specific value in addition to its default value.
-This is necessary mainly in cases where the CLR type cannot represent the full range of the
-PostgreSQL type, and a custom CLR type is needed (e.g. <see cref="!:DateTime"></see> and
-<a class="xref" href="NpgsqlTypes.NpgsqlDateTime.html">NpgsqlDateTime</a>). The provider-specific type <code data-dev-comment-type="typeparamref" class="typeparamref">TPsv</code> will be returned
-from calls to <see cref="!:DbDataReader.GetProviderSpecificValue"></see>.</p>
+This is necessary mainly in cases where the CLR type cannot represent the full range of the PostgreSQL type, and a custom CLR type
+is needed. The provider-specific type <code data-dev-comment-type="typeparamref" class="typeparamref">TPsv</code> will be returned from calls to
+<see cref="!:DbDataReader.GetProviderSpecificValue"></see>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.Internal.TypeHandling.NpgsqlTypeHandler.html">NpgsqlTypeHandler</a></h4>
       <section><p>Base class for all type handlers, which read and write CLR types into their PostgreSQL

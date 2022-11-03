@@ -108,19 +108,19 @@
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PhysicalReplicationSlot.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String_System_Nullable_NpgsqlTypes_NpgsqlLogSequenceNumber__System_Nullable_System_UInt64__.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PhysicalReplicationSlot.%23ctor(System.String%2CSystem.Nullable%7BNpgsqlTypes.NpgsqlLogSequenceNumber%7D%2CSystem.Nullable%7BSystem.UInt64%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L16">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L20">View Source</a>
   </span>
   <a id="Npgsql_Replication_PhysicalReplicationSlot__ctor_" data-uid="Npgsql.Replication.PhysicalReplicationSlot.#ctor*"></a>
-  <h4 id="Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String_" data-uid="Npgsql.Replication.PhysicalReplicationSlot.#ctor(System.String)">PhysicalReplicationSlot(String)</h4>
+  <h4 id="Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String_System_Nullable_NpgsqlTypes_NpgsqlLogSequenceNumber__System_Nullable_System_UInt64__" data-uid="Npgsql.Replication.PhysicalReplicationSlot.#ctor(System.String,System.Nullable{NpgsqlTypes.NpgsqlLogSequenceNumber},System.Nullable{System.UInt64})">PhysicalReplicationSlot(String, Nullable&lt;NpgsqlLogSequenceNumber&gt;, Nullable&lt;UInt64&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.Replication.PhysicalReplicationSlot.html">PhysicalReplicationSlot</a> instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PhysicalReplicationSlot(string slotName)</code></pre>
+    <pre><code class="lang-csharp hljs">public PhysicalReplicationSlot(string slotName, NpgsqlLogSequenceNumber? restartLsn = null, ulong? restartTimeline = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,12 +138,88 @@
         <td><p>The name of the existing replication slot</p>
 </td>
       </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>&gt;</td>
+        <td><span class="parametername">restartLsn</span></td>
+        <td><p>The replication slot&apos;s <code>restart_lsn</code></p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a>&gt;</td>
+        <td><span class="parametername">restartTimeline</span></td>
+        <td><p>The timeline ID associated to <code>restart_lsn</code>, following the current timeline history.</p>
+</td>
+      </tr>
     </tbody>
   </table>
-  <h5 id="Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String__remarks">Remarks</h5>
+  <h5 id="Npgsql_Replication_PhysicalReplicationSlot__ctor_System_String_System_Nullable_NpgsqlTypes_NpgsqlLogSequenceNumber__System_Nullable_System_UInt64___remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Create a <a class="xref" href="Npgsql.Replication.PhysicalReplicationSlot.html">PhysicalReplicationSlot</a> instance with this constructor to wrap an existing PostgreSQL replication slot
 that has been initialized for physical replication.</p>
 </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PhysicalReplicationSlot_RestartLsn.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PhysicalReplicationSlot.RestartLsn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L30">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_PhysicalReplicationSlot_RestartLsn_" data-uid="Npgsql.Replication.PhysicalReplicationSlot.RestartLsn*"></a>
+  <h4 id="Npgsql_Replication_PhysicalReplicationSlot_RestartLsn" data-uid="Npgsql.Replication.PhysicalReplicationSlot.RestartLsn">RestartLsn</h4>
+  <div class="markdown level1 summary"><p>The replication slot&apos;s <code>restart_lsn</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlLogSequenceNumber? RestartLsn { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PhysicalReplicationSlot_RestartTimeline.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PhysicalReplicationSlot.RestartTimeline%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L35">View Source</a>
+  </span>
+  <a id="Npgsql_Replication_PhysicalReplicationSlot_RestartTimeline_" data-uid="Npgsql.Replication.PhysicalReplicationSlot.RestartTimeline*"></a>
+  <h4 id="Npgsql_Replication_PhysicalReplicationSlot_RestartTimeline" data-uid="Npgsql.Replication.PhysicalReplicationSlot.RestartTimeline">RestartTimeline</h4>
+  <div class="markdown level1 summary"><p>The timeline ID associated to <code>restart_lsn</code>, following the current timeline history.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ulong? RestartTimeline { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">UInt64</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -155,7 +231,7 @@ that has been initialized for physical replication.</p>
                     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Replication_PhysicalReplicationSlot.md&amp;value=---%0Auid%3A%20Npgsql.Replication.PhysicalReplicationSlot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/stable/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Replication/PhysicalReplicationSlot.cs/#L8" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
