@@ -89,28 +89,53 @@
 <li>NodaTime types can fully represent PostgreSQL&#39;s microsecond precision, and can represent dates outside the BCL&#39;s date limit (1AD-9999AD).</li>
 </ul>
 <h2 id="setup">Setup</h2>
-<p>To use the NodaTime plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up:</p>
-<pre><code class="lang-c#">using Npgsql;
-
-// Place this at the beginning of your program to use NodaTime everywhere (recommended)
-NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
-
-// Or to temporarily use NodaTime on a single connection only:
+<p>To avoid forcing a dependency on the NetTopologySuite library for users not using spatial, NodaTime support is delivered as a separate plugin. To use the plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up in one of the following ways:</p>
+<div class="tabGroup" id="tabgroup_nw+tzBUtis">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_nw+tzBUtis_datasource" role="tab" aria-controls="tabpanel_nw+tzBUtis_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_nw+tzBUtis_global" role="tab" aria-controls="tabpanel_nw+tzBUtis_global" data-tab="global" tabindex="-1">Global mapping</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_nw+tzBUtis_connection" role="tab" aria-controls="tabpanel_nw+tzBUtis_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+</li>
+</ul>
+<section id="tabpanel_nw+tzBUtis_datasource" role="tabpanel" data-tab="datasource">
+<div class="NOTE"><h5>Note</h5><p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you&#39;re using an older version, see the other methods.</p>
+</div>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
+dataSourceBuilder.UseNodaTime();
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre></section>
+<section id="tabpanel_nw+tzBUtis_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<p>If you&#39;re using an older version of Npgsql which doesn&#39;t yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+</code></pre><p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</section>
+<section id="tabpanel_nw+tzBUtis_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+<div class="NOTE"><h5>Note</h5><p>This mapping method has been removed in Npgsql 7.0.</p>
+</div>
+<p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
+<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseNodaTime();
-</code></pre><h2 id="reading-and-writing-values">Reading and Writing Values</h2>
+</code></pre></section>
+</div>
+<h2 id="reading-and-writing-values">Reading and Writing Values</h2>
 <p>Once the plugin is set up, you can transparently read and write NodaTime objects:</p>
 <pre><code class="lang-c#">// Write NodaTime Instant to PostgreSQL &quot;timestamp with time zone&quot; (UTC)
-using (var cmd = new NpgsqlCommand(@&quot;INSERT INTO mytable (my_timestamptz) VALUES (@p)&quot;, conn))
+await using (var cmd = new NpgsqlCommand(@&quot;INSERT INTO mytable (my_timestamptz) VALUES ($1)&quot;, conn))
 {
-    cmd.Parameters.Add(new NpgsqlParameter(&quot;p&quot;, Instant.FromUtc(2011, 1, 1, 10, 30)));
-    cmd.ExecuteNonQuery();
+    cmd.Parameters.Add(new() { Value = Instant.FromUtc(2011, 1, 1, 10, 30) });
+    await cmd.ExecuteNonQueryAsync();
 }
 
 // Read timestamp back from the database as an Instant
-using (var cmd = new NpgsqlCommand(@&quot;SELECT my_timestamptz FROM mytable&quot;, conn))
-using (var reader = cmd.ExecuteReader())
+await using (var cmd = new NpgsqlCommand(@&quot;SELECT my_timestamptz FROM mytable&quot;, conn))
+await using (var reader = await cmd.ExecuteReaderAsync())
 {
-    reader.Read();
+    await reader.ReadAsync();
     var instant = reader.GetFieldValue&lt;Instant&gt;(0);
 }
 </code></pre><h2 id="mapping-table">Mapping Table</h2>

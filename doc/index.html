@@ -86,21 +86,19 @@
 <h2 id="getting-started">Getting Started</h2>
 <p>The best way to use Npgsql is to install its <a href="https://www.nuget.org/packages/Npgsql/">nuget package</a>.</p>
 <p>Npgsql aims to be fully ADO.NET-compatible, its API should feel almost identical to other .NET database drivers.</p>
-<p>Here&#39;s a basic code snippet to get you started.</p>
-<pre><code class="lang-csharp">var connString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
-
-await using var conn = new NpgsqlConnection(connString);
-await conn.OpenAsync();
+<p>Here&#39;s a basic code snippet to get you started:</p>
+<pre><code class="lang-csharp">var connectionString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
+await using var dataSource = NpgsqlDataSource.Create(connectionString);
 
 // Insert some data
-await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (some_field) VALUES ($1)&quot;, conn))
+await using (var cmd = dataSource.CreateCommand(&quot;INSERT INTO data (some_field) VALUES ($1)&quot;))
 {
     cmd.Parameters.AddWithValue(&quot;Hello world&quot;);
     await cmd.ExecuteNonQueryAsync();
 }
 
 // Retrieve all rows
-await using (var cmd = new NpgsqlCommand(&quot;SELECT some_field FROM data&quot;, conn))
+await using (var cmd = dataSource.CreateCommand(&quot;SELECT some_field FROM data&quot;))
 await using (var reader = await cmd.ExecuteReaderAsync())
 {
     while (await reader.ReadAsync())

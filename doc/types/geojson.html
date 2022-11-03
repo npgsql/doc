@@ -79,45 +79,69 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="postgisgeojson-type-plugin">PostGIS/GeoJSON Type Plugin</h1>
 
-<p>Before 4.0, Npgsql has supported reading and writing PostGIS types via some bundled .NET classes: <code>PostgisPoint</code>, <code>PostgisLineString</code>, etc. While this model provided some basic support, a proper representation of spatial types is a complicated task that&#39;s beyond Npgsql&#39;s scope, and should be handled by a specialized spatial library instead.</p>
 <p>The <a href="https://nuget.org/packages/Npgsql.GeoJSON">Npgsql.GeoJSON</a> plugin makes Npgsql read and write PostGIS spatial types as <a href="http://geojson.org/">GeoJSON (RFC7946) types</a>, via the <a href="https://github.com/GeoJSON-Net/GeoJSON.Net">GeoJSON.NET</a> library.</p>
-<p>As an alternative, you can use <a href="nts.html">Npgsql.NetTopologySuite</a>, which is a full-fledged .NET spatial library with many features. If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.html">Npgsql.LegacyPostgis plugin</a>.</p>
+<p>As an alternative, you can use <a href="nts.html">Npgsql.NetTopologySuite</a>, which is a full-fledged .NET spatial library with many features. If you prefer to work with the pre-4.0 types, you can still do so by using the <a href="legacy-postgis.md">Npgsql.LegacyPostgis plugin</a>.</p>
 <h2 id="setup">Setup</h2>
-<p>To use the GeoJSON plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.GeoJSON">Npgsql.GeoJSON</a> and set it up:</p>
-<pre><code class="lang-c#">using Npgsql;
-
-// Place this at the beginning of your program to use NetTopologySuite everywhere (recommended)
-NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
-
-// Or to temporarily use GeoJSON on a single connection only:
+<p>To avoid forcing a dependency on the GeoJSON library for users not using spatial, GeoJSON support is delivered as a separate plugin. To use the plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.GeoJSON">Npgsql.GeoJSON</a> and set it up in one of the following ways:</p>
+<div class="tabGroup" id="tabgroup_v+a4kQpK0w">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_v+a4kQpK0w_datasource" role="tab" aria-controls="tabpanel_v+a4kQpK0w_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_v+a4kQpK0w_global" role="tab" aria-controls="tabpanel_v+a4kQpK0w_global" data-tab="global" tabindex="-1">Global mapping</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_v+a4kQpK0w_connection" role="tab" aria-controls="tabpanel_v+a4kQpK0w_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+</li>
+</ul>
+<section id="tabpanel_v+a4kQpK0w_datasource" role="tabpanel" data-tab="datasource">
+<div class="NOTE"><h5>Note</h5><p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you&#39;re using an older version, see the other methods.</p>
+</div>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
+dataSourceBuilder.UseGeoJson();
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre></section>
+<section id="tabpanel_v+a4kQpK0w_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<p>If you&#39;re using an older version of Npgsql which doesn&#39;t yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
+</code></pre><p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</section>
+<section id="tabpanel_v+a4kQpK0w_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+<div class="NOTE"><h5>Note</h5><p>This mapping method has been removed in Npgsql 7.0.</p>
+</div>
+<p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
+<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseGeoJson();
-</code></pre><h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
+</code></pre></section>
+</div>
+<h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
 <p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate GeoJSON types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize GeoJSON&#39;s types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a GeoJSON <code>Point</code> to the database:</p>
-<pre><code class="lang-c#">var point = new Point(new Position(51.899523, -2.124156));
-conn.ExecuteNonQuery(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geom) VALUES (@p)&quot;, conn))
+<pre><code class="lang-c#">conn.ExecuteNonQuery(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
+
+await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geom) VALUES ($1)&quot;, conn))
 {
-    cmd.Parameters.AddWithValue(&quot;@p&quot;, point);
-    cmd.ExecuteNonQuery();
+    cmd.Parameters.Add(new() { Value = new Point(new Position(51.899523, -2.124156)) });
+    await cmd.ExecuteNonQueryAsync();
 }
 
-using (var cmd = new NpgsqlCommand(&quot;SELECT geom FROM data&quot;, conn))
-using (var reader = cmd.ExecuteReader())
+await using (var cmd = new NpgsqlCommand(&quot;SELECT geom FROM data&quot;, conn))
+await using (var reader = await cmd.ExecuteReaderAsync())
 {
-    reader.Read();
-    Assert.That(reader[0], Is.EqualTo(point));
+    await reader.ReadAsync();
+    var point2 = reader.GetFieldValue&lt;Point&gt;(0);;
 }
 </code></pre><p>You may also explicitly specify a parameter&#39;s type by setting <code>NpgsqlDbType.Geometry</code>.</p>
 <h2 id="geography-geodetic-support">Geography (geodetic) Support</h2>
 <p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
 <p>Npgsql uses the same GeoJSON types to represent both <code>geometry</code> and <code>geography</code> - the <code>Point</code> type represents a point in either Cartesian or geodetic space. You usually don&#39;t need to worry about this distinction because PostgreSQL will usually cast types back and forth as needed. However, it&#39;s worth noting that Npgsql sends Cartesian <code>geometry</code> by default, because that&#39;s the usual requirement. You have the option of telling Npgsql to send <code>geography</code> instead by specifying <code>NpgsqlDbType.Geography</code>:</p>
-<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES (@p)&quot;, conn))
+<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES ($1)&quot;, conn))
 {
-    cmd.Parameters.AddWithValue(&quot;@p&quot;, NpgsqlDbType.Geography, point);
-    cmd.ExecuteNonQuery();
+    cmd.Parameters.Add(new() { Value = point, NpgsqlDbType = NpgsqlDbType.Geography });
+    await cmd.ExecuteNonQueryAsync();
 }
 </code></pre><p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseGeoJSON(geographyAsDefault: true);
+<pre><code class="lang-c#">dataSourceBuilder.UseGeoJson(geographyAsDefault: true);
 </code></pre></article>
           </div>
           

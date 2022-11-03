@@ -80,71 +80,117 @@
 <h1 id="postgresql-enums-and-composites">PostgreSQL enums and composites</h1>
 
 <p>PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/datatype-enum.html">enum types</a> and <a href="http://www.postgresql.org/docs/current/static/rowtypes.html">composite types</a> as database columns, and Npgsql supports reading and writing these. This allows you to seamlessly read and write enum and composite values to the database without worrying about conversions.</p>
-<h2 id="mapping-your-clr-types">Mapping your CLR types</h2>
-<p>The recommended way to work with enums and composites is to set up a mapping for your CLR types. Doing so provides the following advantages:</p>
-<p>To set up a global mapping that applies to all connections, place this code before the initial connection is opened:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum_type&quot;);
-NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite_type&quot;);
-</code></pre><p>This sets up a mapping between your CLR types <code>SomeEnum</code> and <code>SomeType</code> to the PostgreSQL types <code>some_enum_type</code> and <code>some_composite_type</code>.</p>
-<p>If you don&#39;t want to set up a mapping for all your connections, you can set it up one connection only:</p>
-<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
-conn.TypeMapper.MapEnum&lt;SomeEnum&gt;(&quot;some_enum_type&quot;);
-conn.TypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_composite_type&quot;);
-</code></pre><p>After mapping, you can read and write your CLR types as usual:</p>
-<pre><code class="lang-c#">// Writing
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum_column, some_composite_column) VALUES (@p1, @p2)&quot;, conn))
+<h2 id="creating-your-types">Creating your types</h2>
+<p>Let&#39;s assume you&#39;ve created some enum and composite types in PostgreSQL:</p>
+<pre><code class="lang-sql">CREATE TYPE mood AS ENUM (&#39;sad&#39;, &#39;ok&#39;, &#39;happy&#39;);
+
+CREATE TYPE inventory_item AS (
+    name            text,
+    supplier_id     integer,
+    price           numeric
+);
+</code></pre><p>To use these types with Npgsql, you must first define corresponding CLR types that will be mapped to the PostgreSQL types:</p>
+<pre><code class="lang-csharp">public enum Mood
 {
-    cmd.Parameters.Add(new NpgsqlParameter
+    Sad,
+    Ok,
+    Happy
+}
+
+public class InventoryItem
+{
+    public string Name { get; set; } = &quot;&quot;;
+    public int SupplierId { get; set; }
+    public decimal Price { get; set; }
+}
+</code></pre><h2 id="mapping-your-clr-types">Mapping your CLR types</h2>
+<p>Once your types are defined both in PostgreSQL and in C#, you can now configure the mapping between them with Npgsql.</p>
+<div class="tabGroup" id="tabgroup_9UT09fR5F3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_9UT09fR5F3_datasource" role="tab" aria-controls="tabpanel_9UT09fR5F3_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_9UT09fR5F3_global" role="tab" aria-controls="tabpanel_9UT09fR5F3_global" data-tab="global" tabindex="-1">Global mapping</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_9UT09fR5F3_connection" role="tab" aria-controls="tabpanel_9UT09fR5F3_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+</li>
+</ul>
+<section id="tabpanel_9UT09fR5F3_datasource" role="tabpanel" data-tab="datasource">
+<div class="NOTE"><h5>Note</h5><p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you&#39;re using an older version, see the other methods.</p>
+</div>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
+dataSourceBuilder.MapEnum&lt;Mood&gt;();
+dataSourceBuilder.MapComposite&lt;InventoryItem&gt;();
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre></section>
+<section id="tabpanel_9UT09fR5F3_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<p>If you&#39;re using an older version of Npgsql which doesn&#39;t yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapEnum&lt;Mood&gt;();
+NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;InventoryItem&gt;();
+</code></pre><p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</section>
+<section id="tabpanel_9UT09fR5F3_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+<div class="NOTE"><h5>Note</h5><p>This mapping method has been removed in Npgsql 7.0.</p>
+</div>
+<p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
+<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
+conn.TypeMapper.MapEnum&lt;Mood&gt;();
+conn.TypeMapper.MapComposite&lt;InventoryItem&gt;();
+</code></pre></section>
+</div>
+<p>Whatever the method used, your CLR types <code>Mood</code> and <code>InventoryItem</code> are now mapped to the PostgreSQL types <code>mood</code> and <code>inventory_item</code>.</p>
+<h2 id="using-your-mapped-types">Using your mapped types</h2>
+<p>Once your mapping is in place, you can read and write your CLR types as usual:</p>
+<pre><code class="lang-c#">// Writing
+await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (my_enum, my_composite) VALUES ($1, $2)&quot;, conn))
+{
+    cmd.Parameters.Add(new() { Value = Mood.Happy });
+    cmd.Parameters.Add(new()
     {
-        ParameterName = &quot;p1&quot;,
-        Value = SomeEnum.Good
-    });
-    cmd.Parameters.Add(new NpgsqlParameter
-    {
-        ParameterName = &quot;p2&quot;,
-        Value = new SomeType { ... }
+        Value = new InventoryItem { ... }
     });
     cmd.ExecuteNonQuery();
 }
 
 // Reading
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum_column, some_composite_column FROM some_table&quot;, conn))
-using (var reader = cmd.ExecuteReader()) {
+await using (var cmd = new NpgsqlCommand(&quot;SELECT my_enum, my_composite FROM some_table&quot;, conn))
+await using (var reader = cmd.ExecuteReader()) {
     reader.Read();
-    var enumValue = reader.GetFieldValue&lt;SomeEnum&gt;(0);
-    var compositeValue = reader.GetFieldValue&lt;SomeType&gt;(1);
+    var enumValue = reader.GetFieldValue&lt;Mood&gt;(0);
+    var compositeValue = reader.GetFieldValue&lt;InventoryItem&gt;(1);
 }
-</code></pre><p>Note that your PostgreSQL enum and composites types (<code>some_enum_type</code> and <code>some_composite_type</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
+</code></pre><p>Note that your PostgreSQL enum and composites types (<code>mood</code> and <code>inventory_data</code> in the sample above) must be defined in your database before the first connection is created (see <code>CREATE TYPE</code>). If you&#39;re creating PostgreSQL types within your program, call <code>NpgsqlConnection.ReloadTypes()</code> to make sure Npgsql becomes properly aware of them.</p>
 <h2 id="name-translation">Name translation</h2>
-<p>CLR type and field names are usually Pascal case (e.g. <code>SomeType</code>), whereas in PostgreSQL they are snake case (e.g. <code>some_type</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifying a name translator when setting up a mapping:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;SomeType&gt;(&quot;some_type&quot;, new NpgsqlNullNameTranslator());
-</code></pre><p>Finally, you may control mappings on a field-by-field basis via the <code>[PgName]</code> attribute. This will override the name translator.</p>
-<pre><code class="lang-c#">using NpgsqlTypes;
-
-enum SomeEnum {
-   [PgName(&quot;happy&quot;)]
-   Good,
-   [PgName(&quot;sad&quot;)]
-   Bad
+<p>CLR type and field names are usually Pascal case (e.g. <code>InventoryData</code>), whereas in PostgreSQL they are snake case (e.g. <code>inventory_data</code>). To help make the mapping for enums and composites seamless, pluggable name translators are used translate all names. The default translation scheme is <code>NpgsqlSnakeCaseNameTranslator</code>, which maps names like <code>SomeType</code> to <code>some_type</code>, but you can specify others. The default name translator can be set for all your connections via <code>NpgsqlConnection.GlobalTypeMapper.DefaultNameTranslator</code>, or for a specific connection for <code>NpgsqlConnection.TypeMapper.DefaultNameTranslator</code>. You also have the option of specifying a name translator when setting up a mapping:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.MapComposite&lt;InventoryData&gt;(&quot;inventory_data&quot;, new NpgsqlNullNameTranslator());
+</code></pre><p>Finally, you may control mappings on a field-by-field basis via the <code>[PgName]</code> attribute. This overrides the name translator.</p>
+<pre><code class="lang-c#">public enum Mood
+{
+    [PgName(&quot;depressed&quot;)]
+    Sad,
+    Ok,
+    [PgName(&quot;ebullient&quot;)]
+    Happy
 }
 </code></pre><h2 id="reading-and-writing-unmapped-enums">Reading and writing unmapped enums</h2>
 <p>In some cases, it may be desirable to interact with PostgreSQL enums without a pre-existing CLR enum type - this is useful mainly if your program doesn&#39;t know the database schema and types in advance, and needs to interact with any enum/composite type.</p>
 <p>Npgsql allows reading and writing enums as simple strings:</p>
 <pre><code class="lang-c#">// Writing enum as string
-using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (some_enum_column) VALUES (@p1)&quot;, conn))
+await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO some_table (my_enum) VALUES ($1)&quot;, conn))
 {
-    cmd.Parameters.Add(new NpgsqlParameter
+    cmd.Parameters.Add(new()
     {
-        ParameterName = &quot;p1&quot;,
-        Value = &quot;Good&quot;
-        DataTypeName = &quot;some_enum_type&quot;
+        Value = &quot;Happy&quot;
+        DataTypeName = &quot;mood&quot;
     });
     cmd.ExecuteNonQuery();
 }
 
 // Reading enum as string
-using (var cmd = new NpgsqlCommand(&quot;SELECT some_enum_column FROM some_table&quot;, conn))
-using (var reader = cmd.ExecuteReader()) {
+await using (var cmd = new NpgsqlCommand(&quot;SELECT my_enum FROM some_table&quot;, conn))
+await using (var reader = cmd.ExecuteReader()) {
     reader.Read();
     var enumValue = reader.GetFieldValue&lt;string&gt;(0);
 }
