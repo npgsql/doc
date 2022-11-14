@@ -97,8 +97,8 @@ await using var connection = await dataSource.OpenConnectionAsync();
 <pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
 dataSourceBuilder
     .UseLoggerFactory(loggerFactory) // Configure logging
-    .UseNodaTime() // Use NodaTime for date/time types
-    .UsePeriodicPasswordProvider(); // Automatically rotate the password periodically
+    .UsePeriodicPasswordProvider() // Automatically rotate the password periodically
+    .UseNodaTime(); // Use NodaTime for date/time types
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre><h3 id="improved-logging-with-microsoftextensionslogging">Improved logging with Microsoft.Extensions.Logging</h3>
 <p>Previous versions had a custom logging implementation which required special adapters and was hard to use. Npgsql 7.0 fully supports the standard .NET <a href="https://learn.microsoft.com/dotnet/core/extensions/logging">Microsoft.Extensions.Logging</a> - just provide Npgsql with your <code>ILoggerFactory</code> and you&#39;re ready to go.</p>
