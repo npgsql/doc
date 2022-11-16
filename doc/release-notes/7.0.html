@@ -93,7 +93,7 @@ await command.ExecuteNonQueryAsync();
 
 // Open a connection in order to e.g. start a transaction on it:
 await using var connection = await dataSource.OpenConnectionAsync();
-</code></pre><p>Since the data source encapsulates all the necessary configuration for connecting to a database (e.g. the connection string, authentication callbacks...), it can registered in dependency injection or passed around as needed, without needing any additional information. The new <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> also  provides the ideal API point for various configuration when building a data source:</p>
+</code></pre><p>Since the data source encapsulates all the necessary configuration for connecting to a database (e.g. the connection string, authentication callbacks...), it can be registered in dependency injection or passed around as needed, without needing any additional information. The new <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> also  provides the ideal API point for various configuration when building a data source:</p>
 <pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
 dataSourceBuilder
     .UseLoggerFactory(loggerFactory) // Configure logging
