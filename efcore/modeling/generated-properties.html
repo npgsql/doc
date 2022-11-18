@@ -138,7 +138,15 @@
     =&gt; modelBuilder.UseHiLo();
 </code></pre><h2 id="guiduuid-generation">GUID/UUID Generation</h2>
 <p>By default, for GUID key properties, a random GUID is generated client-side by the EF provider and sent to the database.</p>
-<p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the value in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
+<p>To generate GUID&#39;s client-side for non-key properties, configure them as follows:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder
+        .Entity&lt;Blog&gt;()
+        .Property(b =&gt; b.SomeGuidProperty)
+        .HasValueGenerator&lt;GuidValueGenerator&gt;();
+}
+</code></pre><p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the value in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
 <div class="tabGroup" id="tabgroup_C1U9BHOkzs">
 <ul role="tablist">
 <li role="presentation">
