@@ -84,21 +84,113 @@
 <p>Npgsql 6.0 allows specifying multiple hosts in your application&#39;s connection strings, allowing various failover and load balancing scenarios to be supported without the need for any additional component such as pgpool or pgbouncer. This typically requires setting up replication between your multiple PostgreSQL servers, to keep your standby servers in sync with your primary; this can be done with the help of PostgreSQL logical or physical replication, and some cloud providers provide this out of the box. Whatever the solution chosen, it&#39;s important to understand that this is out of Npgsql&#39;s scope - Npgsql is only responsible for connecting to your multiple servers as described below, and not for keeping your servers in sync.</p>
 <h2 id="multiple-servers-and-failover">Multiple servers and failover</h2>
 <p>Npgsql allows you to specify multiple servers in your connection string as follows:</p>
-<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test
-</code></pre><p>Different ports may be specified per host with the standard colon syntax: <code>Host=server1:5432,server2:5433</code>.</p>
+<h3 id="npgsql-70tab70"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=server1,server2;Username=test;Password=test&quot;);
+await using var dataSource = dataSourceBuilder.BuildMultiHost();
+await using var connection = await dataSource.OpenConnectionAsync();
+</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0_old" role="tabpanel" data-tab="old">
+<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test&quot;);
+</code></pre></section>
+</div>
+<p>Different ports may be specified per host with the standard colon syntax: <code>Host=server1:5432,server2:5433</code>.</p>
 <p>By default, Npgsql will try to connect to the servers in the order in which they were specified. In the above example, <code>server2</code> is only used if a connection could not be established to <code>server1</code> (or if the connection pool for <code>server1</code> has been exhausted). This allows a simple <em>failover</em> setup, where Npgsql always connects to a single, primary server, but can connect to a standby in case the primary is down; this improves the reliability of your application. In this configuration, we sometimes refer to the standby as &quot;warm&quot; - it is always up and in sync with the primary, but is only used when the primary is down.</p>
 <div class="NOTE"><h5>Note</h5><p>Using failover as described above does not mean you don&#39;t have to worry about errors when your primary server is down. When opening a connection, you may get a broken connection from the pool: Npgsql has no way of knowing whether the connection is working without actually executing something on it, which would negate the perf advantages of pooling. Also, once you have an open connection, Npgsql will never implicitly retry a failed command on a failover server, since that command may be in a transaction (or otherwise depend on some state in the first connection). In other words, you must always be prepared to catch I/O-related exceptions when interacting with the database, and possibly implement a retrying strategy, opening a new connection and re-executing the series of commands.</p>
 </div>
 <h2 id="specifying-server-types">Specifying server types</h2>
-<p>In the failover scenario above, if <code>server1</code> goes down, <code>server2</code> is typically promoted to being the new primary. However, <code>server1</code> may be brought back up and assume the role of standby - the servers will have switched roles - and Npgsql will continue to connect to <code>server1</code> whenever possible. To mitigate this, you can tell Npgsql which server type you wish to connect to:</p>
-<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary
-</code></pre><p>This will make Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
+<p>In the failover scenario above, if <code>server1</code> goes down, <code>server2</code> is typically promoted to being the new primary. However, <code>server1</code> may be brought back up and assume the role of standby - the servers will have switched roles - and Npgsql will continue to connect to <code>server1</code> whenever possible. If you need to connect to a specific server type - e.g. to the primary in order to perform writes - you can do so as follows:</p>
+<h3 id="npgsql-70tab70-1"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<pre><code class="lang-c#">await using var connection = await dataSource.OpenConnectionAsync(TargetSessionAttributes.Primary);
+</code></pre><p>This makes Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
+<p>You can also get a separate data source which will only return connections to a specific server type. For example, you can create a primary-only data sources in your application startup, and use that data source as usual:</p>
+<pre><code class="lang-c#">// At startup:
+_primaryDataSource = dataSource.WithTargetSession(TargetSessionAttributes.Primary);
+
+// ... and wherever you need a connection:
+await using var connection = await _primaryDataSource.OpenConnectionAsync();
+</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-1_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-1_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-1_old" role="tabpanel" data-tab="old">
+<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary&quot;);
+</code></pre><p>This makes Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
+</section>
+</div>
 <h2 id="load-distribution">Load distribution</h2>
 <p>Going a step further, it&#39;s important to understand that applications don&#39;t always make use of the database in the same way; some parts of your application only need to read data from the database, while others need to write data. If you have one or more standby servers, Npgsql can dispatch read-only queries to those servers to reduce the load on your primary. While the failover setup described above improves <em>reliability</em>, this technique improves <em>performance</em>.</p>
-<p>The <code>Target Session Attributes</code> parameter can be used to ask for a connection to a Standby, whenever possible:</p>
-<pre><code class="lang-text">Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby
-</code></pre><p>With <code>prefer-standby</code>, as long as at least one standby server is available, Npgsql will return connections to that server. However, if all standby servers are down (or have exhausted their <code>Max Pool Size</code> setting), a connection to the primary will be returned instead.</p>
-<p><code>Target Session Attributes</code> supports the following options:</p>
+<p>You can tell Npgsql that you <em>prefer</em> a connection to a standby:</p>
+<h3 id="npgsql-70tab70-2"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<pre><code class="lang-c#">// At startup:
+_preferStandbyDatASource = dataSource.WithTargetSession(TargetSessionAttributes.PreferStandby);
+
+// ... and wherever you need a connection:
+await using var connection = await _preferStandbyDatASource.OpenConnectionAsync();
+</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-2_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-2_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-2_old" role="tabpanel" data-tab="old">
+<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby&quot;);
+</code></pre></section>
+</div>
+<p>With &quot;prefer standby&quot;, as long as at least one standby server is available, Npgsql returns connections to that server. However, if all standby servers are down (or have exhausted their <code>Max Pool Size</code> setting), a connection to the primary is returned instead.</p>
+<p>The following options are supported for the target session attributes:</p>
+<h3 id="npgsql-70tab70-3"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Any</td>
+<td>Any successful connection is acceptable.</td>
+</tr>
+<tr>
+<td>Primary</td>
+<td>Server must not be in hot standby mode (<code>pg_is_in_recovery()</code> must return false).</td>
+</tr>
+<tr>
+<td>Standby</td>
+<td>Server must be in hot standby mode (<code>pg_is_in_recovery()</code> must return true).</td>
+</tr>
+<tr>
+<td>PreferPrimary</td>
+<td>First try to find a primary server, but if none of the listed hosts is a primary server, try again in <code>Any</code> mode.</td>
+</tr>
+<tr>
+<td>PreferStandby</td>
+<td>First try to find a standby server, but if none of the listed hosts is a standby server, try again in <code>Any</code> mode.</td>
+</tr>
+<tr>
+<td>ReadWrite</td>
+<td>Session must accept read-write transactions by default (that is, the server must not be in hot standby mode and the <code>default_transaction_read_only</code> parameter must be off).</td>
+</tr>
+<tr>
+<td>ReadOnly</td>
+<td>Session must not accept read-write transactions by default (the converse).</td>
+</tr>
+</tbody>
+</table>
+<div class="tabGroup" id="tabgroup_ggDKGyA2l0-3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-3_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-3_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-3_old" role="tabpanel" data-tab="old">
 <table>
 <thead>
 <tr>
@@ -137,14 +229,16 @@
 </tr>
 </tbody>
 </table>
-<p>Npgsql detects whether a server is a primary or a standby by occasionally querying <a href="https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-RECOVERY-CONTROL"><code>pg_is_in_recovery()</code></a>, and whether a server is read-write or read-only by querying <a href="https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-READ-ONLY"><code>default_transaction_read_only</code></a> - this is consistent with how PostgreSQL&#39;s libpq implements <code>target_session_attributes</code>. Servers are queried just before a connection is returned from the pool; the query intervals can be controlled via the <code>Host Recheck Seconds</code> parameter (10 seconds by default). PostgreSQL 14 reports state changes automatically, so querying isn&#39;t needed (except when a host is down).</p>
-<div class="NOTE"><h5>Note</h5><p>If you choose to distribute load across multiple servers, make sure you understand what consistency guarantees are provided by PostgreSQL in your particular setup. In some cases, hot standbys lag behind their primary servers, and will therefore return slightly out-of-date results. This is usually OK, but if you require up-to-date results at all times, synchronous commit may provide a good solution (but has a performance cost).</p>
+</section>
+</div>
+<p>Npgsql detects whether a server is a primary or a standby by occasionally querying <a href="https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-RECOVERY-CONTROL"><code>pg_is_in_recovery()</code></a>, and whether a server is read-write or read-only by querying <a href="https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-READ-ONLY"><code>default_transaction_read_only</code></a> - this is consistent with how PostgreSQL&#39;s libpq implements <code>target_session_attributes</code>. Servers are queried just before a connection is returned from the pool; the query intervals can be controlled via the <code>Host Recheck Seconds</code> parameter (10 seconds by default).</p>
+<div class="NOTE"><h5>Note</h5><p>If you choose to distribute load across multiple servers, make sure you understand what consistency guarantees are provided by PostgreSQL in your particular setup. In some cases, hot standbys lag behind their primary servers, and will therefore return slightly out-of-date results. This is usually OK, but if you require up-to-date results at all times, synchronous commit may provide a good solution (albeit with a performance cost).</p>
 </div>
 <h2 id="load-balancing">Load balancing</h2>
 <p>We have seen how to select servers based on the type of workload we want to execute. However, in the above examples, Npgsql still attempts to return connections based on the host order specified in the connection string; this concentrates load on a single primary and possibly a single secondary, and doesn&#39;t balance load across multiple servers of the same type.</p>
 <p>You can specify <code>Load Balance Hosts=true</code> in the connection string to instruct Npgsql to load balance across all servers, by returning connections in round-robin fashion:</p>
 <pre><code class="lang-text">Host=server1,server2,server3,server4,server5;Username=test;Password=test;Load Balance Hosts=true;Target Session Attributes=prefer-standby
-</code></pre><p>With this connection string, every time a connection is opened, Npgsql will start at a different point in the list. For example, in the 3rd connection attempt, Npgsql will first try to return a connection to <code>server3</code>; if that server is reachable and is a standby, it will be selected. This allows spreading your (typically read-only) application load across all available servers, and can greatly improve your scalability.</p>
+</code></pre><p>With this connection string, every time a connection is opened, Npgsql starts at a different point in the list. For example, in the 3rd connection attempt, Npgsql first tries to return a connection to <code>server3</code>; if that server is reachable and is a standby, it is selected. This allows spreading your (typically read-only) application load across all available servers, and can greatly improve your scalability.</p>
 </article>
           </div>
           

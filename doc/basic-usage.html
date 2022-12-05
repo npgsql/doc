@@ -94,7 +94,7 @@ dataSourceBuilder
     .UsePeriodicPasswordProvider() // Automatically rotate the password periodically
     .UseNodaTime(); // Use NodaTime for date/time types
 await using var dataSource = dataSourceBuilder.Build();
-</code></pre><p>For more information on data source configuration, consult the relevant documentation pages.</p>
+</code></pre><p>You typically build a single data source, and then use that instance throughout your application; data sources are thread-safe, and (usually) correspond to a connection pool inside Npgsql. For more information on data source configuration, consult the relevant documentation pages.</p>
 <h2 id="basic-sql-execution">Basic SQL Execution</h2>
 <p>Once you have a data source, an <a class="xref" href="api/Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> can be used to execute SQL against it:</p>
 <pre><code class="lang-csharp">await using var command = dataSource.CreateCommand(&quot;SELECT some_field FROM some_table&quot;);
