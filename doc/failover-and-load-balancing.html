@@ -84,17 +84,21 @@
 <p>Npgsql 6.0 allows specifying multiple hosts in your application&#39;s connection strings, allowing various failover and load balancing scenarios to be supported without the need for any additional component such as pgpool or pgbouncer. This typically requires setting up replication between your multiple PostgreSQL servers, to keep your standby servers in sync with your primary; this can be done with the help of PostgreSQL logical or physical replication, and some cloud providers provide this out of the box. Whatever the solution chosen, it&#39;s important to understand that this is out of Npgsql&#39;s scope - Npgsql is only responsible for connecting to your multiple servers as described below, and not for keeping your servers in sync.</p>
 <h2 id="multiple-servers-and-failover">Multiple servers and failover</h2>
 <p>Npgsql allows you to specify multiple servers in your connection string as follows:</p>
-<h3 id="npgsql-70tab70"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<div class="tabGroup" id="tabgroup_ggDKGyA2l0">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0_7" role="tab" aria-controls="tabpanel_ggDKGyA2l0_7" data-tab="7" tabindex="0" aria-selected="true">Npgsql 7.0+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0_old" data-tab="old" tabindex="-1">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0_7" role="tabpanel" data-tab="7">
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=server1,server2;Username=test;Password=test&quot;);
 await using var dataSource = dataSourceBuilder.BuildMultiHost();
 await using var connection = await dataSource.OpenConnectionAsync();
-</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0">
-<ul role="tablist">
-<li role="presentation">
-<a href="#tabpanel_ggDKGyA2l0_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
-</li>
-</ul>
-<section id="tabpanel_ggDKGyA2l0_old" role="tabpanel" data-tab="old">
+</code></pre></section>
+<section id="tabpanel_ggDKGyA2l0_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test&quot;);
 </code></pre></section>
 </div>
@@ -104,7 +108,16 @@ await using var connection = await dataSource.OpenConnectionAsync();
 </div>
 <h2 id="specifying-server-types">Specifying server types</h2>
 <p>In the failover scenario above, if <code>server1</code> goes down, <code>server2</code> is typically promoted to being the new primary. However, <code>server1</code> may be brought back up and assume the role of standby - the servers will have switched roles - and Npgsql will continue to connect to <code>server1</code> whenever possible. If you need to connect to a specific server type - e.g. to the primary in order to perform writes - you can do so as follows:</p>
-<h3 id="npgsql-70tab70-1"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<div class="tabGroup" id="tabgroup_ggDKGyA2l0-1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-1_7" role="tab" aria-controls="tabpanel_ggDKGyA2l0-1_7" data-tab="7" tabindex="0" aria-selected="true">Npgsql 7.0+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-1_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-1_old" data-tab="old" tabindex="-1">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-1_7" role="tabpanel" data-tab="7">
 <pre><code class="lang-c#">await using var connection = await dataSource.OpenConnectionAsync(TargetSessionAttributes.Primary);
 </code></pre><p>This makes Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
 <p>You can also get a separate data source which will only return connections to a specific server type. For example, you can create a primary-only data sources in your application startup, and use that data source as usual:</p>
@@ -113,13 +126,8 @@ _primaryDataSource = dataSource.WithTargetSession(TargetSessionAttributes.Primar
 
 // ... and wherever you need a connection:
 await using var connection = await _primaryDataSource.OpenConnectionAsync();
-</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0-1">
-<ul role="tablist">
-<li role="presentation">
-<a href="#tabpanel_ggDKGyA2l0-1_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-1_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
-</li>
-</ul>
-<section id="tabpanel_ggDKGyA2l0-1_old" role="tabpanel" data-tab="old">
+</code></pre></section>
+<section id="tabpanel_ggDKGyA2l0-1_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary&quot;);
 </code></pre><p>This makes Npgsql return connections only to the primary server, regardless of where it&#39;s located in the host list you provide.</p>
 </section>
@@ -127,25 +135,38 @@ await using var connection = await _primaryDataSource.OpenConnectionAsync();
 <h2 id="load-distribution">Load distribution</h2>
 <p>Going a step further, it&#39;s important to understand that applications don&#39;t always make use of the database in the same way; some parts of your application only need to read data from the database, while others need to write data. If you have one or more standby servers, Npgsql can dispatch read-only queries to those servers to reduce the load on your primary. While the failover setup described above improves <em>reliability</em>, this technique improves <em>performance</em>.</p>
 <p>You can tell Npgsql that you <em>prefer</em> a connection to a standby:</p>
-<h3 id="npgsql-70tab70-2"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<div class="tabGroup" id="tabgroup_ggDKGyA2l0-2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-2_7" role="tab" aria-controls="tabpanel_ggDKGyA2l0-2_7" data-tab="7" tabindex="0" aria-selected="true">Npgsql 7.0+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-2_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-2_old" data-tab="old" tabindex="-1">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-2_7" role="tabpanel" data-tab="7">
 <pre><code class="lang-c#">// At startup:
 _preferStandbyDatASource = dataSource.WithTargetSession(TargetSessionAttributes.PreferStandby);
 
 // ... and wherever you need a connection:
 await using var connection = await _preferStandbyDatASource.OpenConnectionAsync();
-</code></pre><div class="tabGroup" id="tabgroup_ggDKGyA2l0-2">
-<ul role="tablist">
-<li role="presentation">
-<a href="#tabpanel_ggDKGyA2l0-2_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-2_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
-</li>
-</ul>
-<section id="tabpanel_ggDKGyA2l0-2_old" role="tabpanel" data-tab="old">
+</code></pre></section>
+<section id="tabpanel_ggDKGyA2l0-2_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby&quot;);
 </code></pre></section>
 </div>
 <p>With &quot;prefer standby&quot;, as long as at least one standby server is available, Npgsql returns connections to that server. However, if all standby servers are down (or have exhausted their <code>Max Pool Size</code> setting), a connection to the primary is returned instead.</p>
 <p>The following options are supported for the target session attributes:</p>
-<h3 id="npgsql-70tab70-3"><a href="#tab/7.0">Npgsql 7.0+</a></h3>
+<div class="tabGroup" id="tabgroup_ggDKGyA2l0-3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-3_7" role="tab" aria-controls="tabpanel_ggDKGyA2l0-3_7" data-tab="7" tabindex="0" aria-selected="true">Npgsql 7.0+</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_ggDKGyA2l0-3_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-3_old" data-tab="old" tabindex="-1">Older versions</a>
+</li>
+</ul>
+<section id="tabpanel_ggDKGyA2l0-3_7" role="tabpanel" data-tab="7">
 <table>
 <thead>
 <tr>
@@ -184,13 +205,8 @@ await using var connection = await _preferStandbyDatASource.OpenConnectionAsync(
 </tr>
 </tbody>
 </table>
-<div class="tabGroup" id="tabgroup_ggDKGyA2l0-3">
-<ul role="tablist">
-<li role="presentation">
-<a href="#tabpanel_ggDKGyA2l0-3_old" role="tab" aria-controls="tabpanel_ggDKGyA2l0-3_old" data-tab="old" tabindex="0" aria-selected="true">Older versions</a>
-</li>
-</ul>
-<section id="tabpanel_ggDKGyA2l0-3_old" role="tabpanel" data-tab="old">
+</section>
+<section id="tabpanel_ggDKGyA2l0-3_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 <table>
 <thead>
 <tr>
