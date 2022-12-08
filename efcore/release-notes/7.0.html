@@ -128,6 +128,7 @@ LIMIT @__p_3
 <li>Stored procedure mappings: PostgreSQL support has been added for <em>stored procedure mapping</em>, which is a new feature in EF Core 7.0. See the EF <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#stored-procedure-mapping">What&#39;s new section</a> for documentation. Note that PostgreSQL 14 or above is required to use this feature (for output parameters).</li>
 </ul>
 <h2 id="breaking-changes">Breaking changes</h2>
+<p>Note: version 7.0 of the lower-level Npgsql ADO.NET driver, which is used by the EF provider, also has some breaking changes. It&#39;s recommended to read the <a href="../../doc/release-notes/7.0.html">release notes</a> for that as well.</p>
 <h3 id="obsoleted-usexminasconcurrencytoken">Obsoleted UseXminAsConcurrencyToken</h3>
 <p>Starting with version 7.0, concurrency token properties can be configured via the standard EF means, rather than the PostgreSQL-specific <code>UseXminAsConcurrencyToken</code>; simply configure any <code>uint</code> property with the <code>IsRowVersion()</code> Fluent API or the <code>[Timestamp]</code> Data Annotation. <a href="../modeling/concurrency.html">See the documentation for more details</a>.</p>
 <h3 id="obsoleted-default-column-collations">Obsoleted default column collations</h3>
