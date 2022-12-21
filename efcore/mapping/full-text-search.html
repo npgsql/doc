@@ -8,9 +8,14 @@
     <title>Full Text Search | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Full Text Search | Npgsql Documentation ">
-    <meta name="generator" content="docfx 2.59.4.0">
     
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
@@ -35,7 +40,7 @@
               </button>
               
               <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../img/logo.svg" alt="">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -107,7 +112,7 @@
 <a href="#tabpanel_bKs3zHtvcW_pg12" role="tab" aria-controls="tabpanel_bKs3zHtvcW_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW_older" role="tab" aria-controls="tabpanel_bKs3zHtvcW_older" data-tab="older" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bKs3zHtvcW_pg-lt-12" role="tab" aria-controls="tabpanel_bKs3zHtvcW_pg-lt-12" data-tab="pg-lt-12" tabindex="-1">Older Versions</a>
 </li>
 </ul>
 <section id="tabpanel_bKs3zHtvcW_pg12" role="tabpanel" data-tab="pg12">
@@ -125,7 +130,7 @@
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
 </code></pre></section>
-<section id="tabpanel_bKs3zHtvcW_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bKs3zHtvcW_pg-lt-12" role="tabpanel" data-tab="pg-lt-12" aria-hidden="true" hidden="hidden">
 <p>First, modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -170,7 +175,7 @@ var npgsql = context.Products
 <a href="#tabpanel_bKs3zHtvcW-1_v5" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_v5" data-tab="v5" tabindex="0" aria-selected="true">Version 5.0.0</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW-1_older" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_older" data-tab="older" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bKs3zHtvcW-1_lt-v5" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_lt-v5" data-tab="lt-v5" tabindex="-1">Older Versions</a>
 </li>
 </ul>
 <section id="tabpanel_bKs3zHtvcW-1_v5" role="tabpanel" data-tab="v5">
@@ -179,7 +184,7 @@ var npgsql = context.Products
     .HasMethod(&quot;GIN&quot;)
     .IsTsVectorExpressionIndex(&quot;english&quot;);
 </code></pre></section>
-<section id="tabpanel_bKs3zHtvcW-1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bKs3zHtvcW-1_lt-v5" role="tabpanel" data-tab="lt-v5" aria-hidden="true" hidden="hidden">
 <p>Create a migration which will contain the index creation SQL (<code>dotnet ef migrations add ...</code>). At this point, open the generated migration with your editor and add the following:</p>
 <pre><code class="lang-c#">protected override void Up(MigrationBuilder migrationBuilder)
 {
