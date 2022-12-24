@@ -60,6 +60,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install mono-complete --yes
 
+    # Note:
+    # Since we use a custom template to override some properties of the docfx default template, when upgrading docfx we should check
+    # whether the default template of the new docfx version has changes we need to carry over to our modified version.
+    # You can get the docfx default template via the following command: docfx template export default
+    # This will put the default template folder into a directory called _exported_templates
     - name: Get docfx
       run: |
         curl -L https://github.com/dotnet/docfx/releases/download/v2.59.4/docfx.zip -o docfx.zip
