@@ -151,7 +151,7 @@ await using var dataSource = dataSourceBuilder.Build();
 <p>However, in the Npgsql case, swallowing exceptions in <code>Dispose</code> can have very problematic consequences. A reader can be disposed before it&#39;s entirely consumed, after only part of the result set has been read; when this happens, Npgsql consumes the rest of the result set as part of the disposal. If any errors occur past this point, then those exceptions were previously swallowed; this meant that the application could be unaware that part of the command failed, since no exception was raised. Throwing these exceptions from dispose ensures that the application is aware of any failures that occurred.</p>
 <p>For more context on this change, see the discussion in <a href="https://github.com/npgsql/npgsql/issues/4377">#4377</a>.</p>
 <h3 id="the-logging-api-has-been-replaced-by-microsoftextensionslogging">The logging API has been replaced by Microsoft.Extensions.Logging</h3>
-<p>Npgsql previously had its own logging API, requiring special adapters to the standard logging libraries. This API has been removed in 7.0, and replaced with support for the standard Microsoft.Extensions.Logging package. See <a href="../logging.md">Logging</a> for more information.</p>
+<p>Npgsql previously had its own logging API, requiring special adapters to the standard logging libraries. This API has been removed in 7.0, and replaced with support for the standard Microsoft.Extensions.Logging package. See <a href="../diagnostics/logging.html">Logging</a> for more information.</p>
 <h3 id="the-obsoleted-npgsqldatetime-npgsqldate-and-npgsqltimespan-have-been-removed">The obsoleted NpgsqlDateTime, NpgsqlDate and NpgsqlTimeSpan have been removed</h3>
 <p><code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> were &quot;provider-specific&quot; types, designed to expose the full range of the PostgreSQL date/time types, which can represent values beyond the built-in .NET types (e.g. <code>DateTime</code>). However, these types were problematic in many ways, and were seldom used. The types were obsoleted in Npgsql 6.0, and have been removed in 7.0.</p>
 <p>To deal with date/time values outside the range of the corresponding .NET types, see <a href="../types/datetime.html">Date and Time Handling</a>.</p>
@@ -161,6 +161,29 @@ await using var dataSource = dataSourceBuilder.Build();
 <p>Previously, replication APIs returned <code>DateTime</code> instances of Kind <code>Unspecified</code>; this has been changed to <code>Utc</code> to reflect the actual type of data sent by PostgreSQL.</p>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 7.0.x. releases.</p>
+<h3 id="milestone-701httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a701"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1">Milestone 7.0.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align:right">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
 <h3 id="milestone-700httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a700"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0">Milestone 7.0.0</a></h3>
 <table>
 <thead>
