@@ -5,7 +5,7 @@ on: [push, pull_request, repository_dispatch]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     permissions:
       contents: write
@@ -51,14 +51,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3.0.3
       with:
-        dotnet-version: 6.0.x
-
-    - name: Get mono
-      run: |
-        sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-        echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-        sudo apt-get update
-        sudo apt-get install mono-complete --yes
+        dotnet-version: 7.0.x
 
     # Note:
     # Since we use a custom template to override some properties of the docfx default template, when upgrading docfx we should check
@@ -66,12 +59,10 @@ jobs:
     # You can get the docfx default template via the following command: docfx template export default
     # This will put the default template folder into a directory called _exported_templates
     - name: Get docfx
-      run: |
-        curl -L https://github.com/dotnet/docfx/releases/download/v2.59.4/docfx.zip -o docfx.zip
-        unzip -d .docfx docfx.zip
+      run: dotnet tool install --version 2.60.0 -g docfx
 
     - name: Build docs
-      run:  mono .docfx/docfx.exe
+      run: docfx
 
     - name: Commit and push
       if: (github.event_name == 'push' || github.event_name == 'repository_dispatch') && github.repository == 'npgsql/doc' && github.ref == 'refs/heads/main'
