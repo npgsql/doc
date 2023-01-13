@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Security and Encryption | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Security and Encryption | Npgsql Documentation ">
-    
+  
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -22,14 +22,14 @@
     <link rel="stylesheet" href="../styles/npgsql.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    
-    <meta property="docfx:rel" content="../">
-    
+  
+  <meta property="docfx:rel" content="../">
+  
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -39,7 +39,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
@@ -53,7 +53,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -63,7 +63,7 @@
         </div>
       </header>
       <div class="container body-content">
-        
+
         <div id="search-results">
           <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -203,7 +203,7 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <h3 id="advanced-server-certificate-validation">Advanced server certificate validation</h3>
 <p>If the root CA of the server certificate isn&#39;t installed in your machine&#39;s CA store, validation will fail. Either install the certificate in your machine&#39;s CA store, or point to it via the <code>Root Certificate</code> connection string parameter or via the <code>PGSSLROOTCERT</code> environment variable.</p>
 <p>Note that Npgsql does not perform certificate revocation validation by default, since this is an optional extension not implemented by all providers and CAs. To turn on certificate revocation validation, specify <code>Check Certificate Revocation=true</code> on the connection string.</p>
-<p>Finally, if the above options aren&#39;t sufficient for your scenario, you can call &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(System.Net.Security.RemoteCertificateValidationCallback)?displayProperty=nameWithType&gt; to provide your custom server certificate validation logic (this gets set on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
+<p>Finally, if the above options aren&#39;t sufficient for your scenario, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_">NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(RemoteCertificateValidationCallback)</a> to provide your custom server certificate validation logic (this gets set on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
 <h3 id="client-certificates">Client certificates</h3>
 <p>PostgreSQL may be configured to require valid certificates from connecting clients for authentication. Npgsql automatically sends client certificates specified in the following places:</p>
 <ul>
@@ -212,7 +212,7 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <li>The default locations of <code>~/.postgresql/postgresql.crt</code> (on Unix) or <code>%APPDATA%\postgresql\postgresql.crt</code> (on Windows)</li>
 </ul>
 <p>To provide a password for a client certificate, set either the <code>SSL Password</code> (6.0 and higher) or <code>Client Certificate Key</code> (5.0 and lower) connection string parameter.</p>
-<p>Finally, you can call &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)?displayProperty=nameWithType&gt;, &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseClientCertificates(System.Security.Cryptography.X509Certificates.X509CertificateCollection)?displayProperty=nameWithType&gt; or &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseClientCertificatesCallback(System.Action{System.Security.Cryptography.X509Certificates.X509CertificateCollection})?displayProperty=nameWithType&gt; to programmatically provide a certificate, multiple certificates or a callback which returns certificates (this works like on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
+<p>Finally, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_">NpgsqlDataSourceBuilder.UseClientCertificate(X509Certificate)</a>, <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_">NpgsqlDataSourceBuilder.UseClientCertificates(X509CertificateCollection)</a> or <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__">NpgsqlDataSourceBuilder.UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;)</a> to programmatically provide a certificate, multiple certificates or a callback which returns certificates (this works like on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
 <div class="NOTE"><h5>Note</h5><p>Npgsql supports .PFX and .PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.</p>
 </div>
 <h2 id="integrated-security-gsssspikerberos">Integrated Security (GSS/SSPI/Kerberos)</h2>
@@ -221,7 +221,7 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <p>Once your PostgreSQL is configured correctly, simply include <code>Integrated Security=true</code> in your connection string and drop the <code>Password</code> parameter. However, Npgsql must still send a username to PostgreSQL. If you specify a <code>Username</code> connection string parameter, Npgsql will send that as usual. If you omit it, Npgsql will attempt to detect your system username, including the Kerberos realm. Note that by default, PostgreSQL expects your Kerberos realm to be sent in your username (e.g. <code>username@REALM</code>); you can have Npgsql detect the realm by setting <code>Include Realm</code> to true in your connection string. Alternatively, you can disable add <code>include_realm=0</code> in your PostgreSQL&#39;s pg_hba.conf entry, which will make it strip the realm. You always have the possibility of explicitly specifying the username sent to PostgreSQL yourself.</p>
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
@@ -239,7 +239,7 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -247,13 +247,13 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            © Copyright 2022 The Npgsql Development Team
-            
+      © Copyright 2022 The Npgsql Development Team
+      
           </div>
         </div>
       </footer>
     </div>
-    
+
     <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>

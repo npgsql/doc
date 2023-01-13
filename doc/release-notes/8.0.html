@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal
- | Npgsql Documentation </title>
+    <title>Npgsql 8.0 Release Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal
- | Npgsql Documentation ">
+    <meta name="title" content="Npgsql 8.0 Release Notes | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -23,7 +21,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="../../styles/npgsql.css">
     <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
   
   <meta property="docfx:rel" content="../../">
   
@@ -84,21 +82,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-80-release-notes">Npgsql 8.0 Release Notes</h1>
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Diagnostics_Internal" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal" class="text-break">Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal
-</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-</h3>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Diagnostics.Internal.NpgsqlLoggingDefinitions.html">NpgsqlLoggingDefinitions</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
-the same compatibility standards as public APIs. It may be changed or removed without notice in
-any release. You should only use it directly in your code with extreme caution and knowing that
-doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
+<p>Npgsql version 8.0 is under development, and is available as preview versions.</p>
+<h2 id="new-features">New features</h2>
+<h2 id="breaking-changes">Breaking changes</h2>
+<h3 id="systemtextjson-mapping-support-must-now-be-opted-into">System.Text.Json mapping support must now be opted into</h3>
+<p>In previous versions, transparent JSON serialization and deserialization was supported via System.Text.Json. That support hasn&#39;t changed, but you must now explicitly opt into it. If you&#39;re using <code>NpgsqlDataSource</code>, simply add the following when building your data source:</p>
+<pre><code class="lang-c#">var builder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
+builder.UseSystemTextJson();
+await using var dataSource = builder.Build();
+</code></pre><p>Or, if you&#39;re using the legacy global type mapper, add the following at the start of your application, before any Npgsql operations are performed:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseSystemTextJson();
+</code></pre><p>This change was done for several reasons. For one, as part of a push to improve the trimmability of Npgsql (for smaller sizes), the opt in ensures that System.Text.Json is only brought in for applications which use it, and gets trimmed out otherwise. In addition, the new opt-in API allows specifying configuration options, such as <a href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a>; this wasn&#39;t previously possible.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 8.0.x. releases.</p>
 </article>
           </div>
 
@@ -106,6 +105,9 @@ doing so can result in application failures when updating to a new Entity Framew
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/8.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
