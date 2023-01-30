@@ -92,7 +92,7 @@
   <div class="markdown level0 summary"><p>A type mapper, managing how to read and write CLR values to PostgreSQL data types.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.TypeMapping.html">Npgsql.TypeMapping</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.TypeMapping.html">TypeMapping</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_TypeMapping_INpgsqlTypeMapper_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -188,13 +188,13 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L125">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">MapComposite(Type, String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">MapComposite(Type, string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Maps a CLR type to a composite type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapComposite(Type clrType, string pgName = null, INpgsqlNameTranslator nameTranslator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapComposite(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -213,7 +213,7 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -258,13 +258,13 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L85">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">MapComposite&lt;T&gt;(String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">MapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Maps a CLR type to a PostgreSQL composite type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapComposite&lt;T&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapComposite&lt;T&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -277,7 +277,7 @@ an exception will be raised.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -339,14 +339,13 @@ an exception will be raised.</p>
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L44">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">MapEnum&lt;TEnum&gt;(String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.MapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">MapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Maps a CLR enum to a PostgreSQL enum type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapEnum&lt;TEnum&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
-    where TEnum : struct, Enum</code></pre>
+    <pre><code class="lang-csharp hljs">INpgsqlTypeMapper MapEnum&lt;TEnum&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null) where TEnum : struct, Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -359,7 +358,7 @@ an exception will be raised.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -441,13 +440,13 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L143">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite(Type, String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite(Type, string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Removes an existing composite mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool UnmapComposite(Type clrType, string pgName = null, INpgsqlNameTranslator nameTranslator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">bool UnmapComposite(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -466,7 +465,7 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -491,7 +490,7 @@ Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgs
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -508,13 +507,13 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L101">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite&lt;T&gt;(String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Removes an existing composite mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool UnmapComposite&lt;T&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)</code></pre>
+    <pre><code class="lang-csharp hljs">bool UnmapComposite&lt;T&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -527,7 +526,7 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -552,7 +551,7 @@ Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTran
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -584,14 +583,13 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/TypeMapping/INpgsqlTypeMapper.cs/#L60">View Source</a>
   </span>
   <a id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum*"></a>
-  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapEnum&lt;TEnum&gt;(String, INpgsqlNameTranslator)</h4>
+  <h4 id="Npgsql_TypeMapping_INpgsqlTypeMapper_UnmapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.TypeMapping.INpgsqlTypeMapper.UnmapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)</h4>
   <div class="markdown level1 summary"><p>Removes an existing enum mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool UnmapEnum&lt;TEnum&gt;(string pgName = null, INpgsqlNameTranslator nameTranslator = null)
-    where TEnum : struct, Enum</code></pre>
+    <pre><code class="lang-csharp hljs">bool UnmapEnum&lt;TEnum&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null) where TEnum : struct, Enum</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -604,7 +602,7 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">pgName</span></td>
         <td><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code data-dev-comment-type="paramref" class="paramref">nameTranslator</code> will be used.</p>
@@ -629,7 +627,7 @@ Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgs
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -655,13 +653,13 @@ manage them globally via <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgs
 </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="Npgsql.NpgsqlGeoJSONExtensions.html#Npgsql_NpgsqlGeoJSONExtensions_UseGeoJson_Npgsql_TypeMapping_INpgsqlTypeMapper_Npgsql_GeoJSONOptions_System_Boolean_">NpgsqlGeoJSONExtensions.UseGeoJson(INpgsqlTypeMapper, GeoJSONOptions, Boolean)</a>
+      <a class="xref" href="Npgsql.NpgsqlGeoJSONExtensions.html#Npgsql_NpgsqlGeoJSONExtensions_UseGeoJson_Npgsql_TypeMapping_INpgsqlTypeMapper_Npgsql_GeoJSONOptions_System_Boolean_">NpgsqlGeoJSONExtensions.UseGeoJson(INpgsqlTypeMapper, GeoJSONOptions, bool)</a>
   </div>
   <div>
-      <a class="xref" href="Npgsql.NpgsqlJsonNetExtensions.html#Npgsql_NpgsqlJsonNetExtensions_UseJsonNet_Npgsql_TypeMapping_INpgsqlTypeMapper_System_Type___System_Type___System_Nullable_JsonSerializerSettings__">NpgsqlJsonNetExtensions.UseJsonNet(INpgsqlTypeMapper, Type[], Type[], Nullable&lt;JsonSerializerSettings&gt;)</a>
+      <a class="xref" href="Npgsql.NpgsqlJsonNetExtensions.html#Npgsql_NpgsqlJsonNetExtensions_UseJsonNet_Npgsql_TypeMapping_INpgsqlTypeMapper_System_Type___System_Type___System_Nullable_JsonSerializerSettings__">NpgsqlJsonNetExtensions.UseJsonNet(INpgsqlTypeMapper, Type[]?, Type[]?, JsonSerializerSettings?)</a>
   </div>
   <div>
-      <a class="xref" href="Npgsql.NpgsqlNetTopologySuiteExtensions.html#Npgsql_NpgsqlNetTopologySuiteExtensions_UseNetTopologySuite_Npgsql_TypeMapping_INpgsqlTypeMapper_System_Nullable_CoordinateSequenceFactory__System_Nullable_PrecisionModel__Ordinates_System_Boolean_">NpgsqlNetTopologySuiteExtensions.UseNetTopologySuite(INpgsqlTypeMapper, Nullable&lt;CoordinateSequenceFactory&gt;, Nullable&lt;PrecisionModel&gt;, Ordinates, Boolean)</a>
+      <a class="xref" href="Npgsql.NpgsqlNetTopologySuiteExtensions.html#Npgsql_NpgsqlNetTopologySuiteExtensions_UseNetTopologySuite_Npgsql_TypeMapping_INpgsqlTypeMapper_System_Nullable_CoordinateSequenceFactory__System_Nullable_PrecisionModel__Ordinates_System_Boolean_">NpgsqlNetTopologySuiteExtensions.UseNetTopologySuite(INpgsqlTypeMapper, CoordinateSequenceFactory?, PrecisionModel?, Ordinates, bool)</a>
   </div>
   <div>
       <a class="xref" href="Npgsql.NpgsqlNodaTimeExtensions.html#Npgsql_NpgsqlNodaTimeExtensions_UseNodaTime_Npgsql_TypeMapping_INpgsqlTypeMapper_">NpgsqlNodaTimeExtensions.UseNodaTime(INpgsqlTypeMapper)</a>

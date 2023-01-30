@@ -96,18 +96,18 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlValueGenerationStrategyConvention</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><span class="xref">IModelFinalizingConvention</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.html">Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.html">Metadata</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.html">Conventions</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlValueGenerationStrategyConvention : IModelInitializedConvention</code></pre>
+    <pre><code class="lang-csharp hljs">public class NpgsqlValueGenerationStrategyConvention : IModelInitializedConvention, IModelFinalizingConvention</code></pre>
   </div>
   <h3 id="constructors">Constructors
 </h3>
@@ -119,13 +119,13 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Metadata/Conventions/NpgsqlValueGenerationStrategyConvention.cs/#L18">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention__ctor_ProviderConventionSetBuilderDependencies_RelationalConventionSetBuilderDependencies_System_Version_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.#ctor(ProviderConventionSetBuilderDependencies,RelationalConventionSetBuilderDependencies,System.Version)">NpgsqlValueGenerationStrategyConvention(ProviderConventionSetBuilderDependencies, RelationalConventionSetBuilderDependencies, Version)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention__ctor_ProviderConventionSetBuilderDependencies_RelationalConventionSetBuilderDependencies_System_Version_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.#ctor(ProviderConventionSetBuilderDependencies,RelationalConventionSetBuilderDependencies,System.Version)">NpgsqlValueGenerationStrategyConvention(ProviderConventionSetBuilderDependencies, RelationalConventionSetBuilderDependencies, Version?)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.html">NpgsqlValueGenerationStrategyConvention</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NpgsqlValueGenerationStrategyConvention(ProviderConventionSetBuilderDependencies dependencies, RelationalConventionSetBuilderDependencies relationalDependencies, Version postgresVersion)</code></pre>
+    <pre><code class="lang-csharp hljs">public NpgsqlValueGenerationStrategyConvention(ProviderConventionSetBuilderDependencies dependencies, RelationalConventionSetBuilderDependencies relationalDependencies, Version? postgresVersion)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -232,10 +232,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention_ProcessModelFinalizing_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.ProcessModelFinalizing*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention_ProcessModelFinalizing_IConventionModelBuilder_IConventionContext_IConventionModelBuilder__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.ProcessModelFinalizing(IConventionModelBuilder,IConventionContext{IConventionModelBuilder})">ProcessModelFinalizing(IConventionModelBuilder, IConventionContext&lt;IConventionModelBuilder&gt;)</h4>
-  <div class="markdown level1 summary"><p>A convention that configures the default model <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html">NpgsqlValueGenerationStrategy</a> as
-<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_IdentityByDefaultColumn">IdentityByDefaultColumn</a> for newer PostgreSQL versions,
-and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_SerialColumn">SerialColumn</a> for pre-10.0 versions.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -257,7 +254,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IConventionContext</span>&lt;<span class="xref">IConventionModelBuilder</span>&gt;</td>
+        <td><span class="xref">IConventionContext&lt;&gt;</span>&lt;<span class="xref">IConventionModelBuilder</span>&gt;</td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -272,10 +269,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention_ProcessModelInitialized_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.ProcessModelInitialized*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlValueGenerationStrategyConvention_ProcessModelInitialized_IConventionModelBuilder_IConventionContext_IConventionModelBuilder__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.ProcessModelInitialized(IConventionModelBuilder,IConventionContext{IConventionModelBuilder})">ProcessModelInitialized(IConventionModelBuilder, IConventionContext&lt;IConventionModelBuilder&gt;)</h4>
-  <div class="markdown level1 summary"><p>A convention that configures the default model <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html">NpgsqlValueGenerationStrategy</a> as
-<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_IdentityByDefaultColumn">IdentityByDefaultColumn</a> for newer PostgreSQL versions,
-and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_SerialColumn">SerialColumn</a> for pre-10.0 versions.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -297,7 +291,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IConventionContext</span>&lt;<span class="xref">IConventionModelBuilder</span>&gt;</td>
+        <td><span class="xref">IConventionContext&lt;&gt;</span>&lt;<span class="xref">IConventionModelBuilder</span>&gt;</td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>

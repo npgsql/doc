@@ -87,7 +87,7 @@
 
 <h2 id="password-management">Password management</h2>
 <p>The simplest way to log into PostgreSQL is by specifying a <code>Username</code> and a <code>Password</code> in your connection string. Depending on how your PostgreSQL is configured (in the <code>pg_hba.conf</code> file), Npgsql will send the password in MD5 or in cleartext (not recommended).</p>
-<p>If a <code>Password</code> is not specified and your PostgreSQL is configured to request a password, Npgsql will look for a <a href="https://www.postgresql.org/docs/current/static/libpq-pgpass.html">standard PostgreSQL password file</a>. If you specify the <code>Passfile</code> connection string parameter, the file it specifies will be used. If that parameter isn&#39;t defined, Npgsql will look under the path taken from <code>PGPASSFILE</code> environment variable. If the environment variable isn&#39;t defined, Npgsql will fall back to the system-dependent default directory which is <code>$HOME/.pgpass</code> for Unix and <code>%APPDATA%\postgresql\pgpass.conf</code> for Windows.</p>
+<p>If a <code>Password</code> is not specified and your PostgreSQL is configured to request a password, Npgsql will look for a <a href="https://www.postgresql.org/docs/current/static/libpq-pgpass.html">standard PostgreSQL password file</a>. If you specify the <code>Passfile</code> connection string parameter, the file it specifies will be used. If that parameter isn't defined, Npgsql will look under the path taken from <code>PGPASSFILE</code> environment variable. If the environment variable isn't defined, Npgsql will fall back to the system-dependent default directory which is <code>$HOME/.pgpass</code> for Unix and <code>%APPDATA%\postgresql\pgpass.conf</code> for Windows.</p>
 <h3 id="auth-token-rotation-and-dynamic-password">Auth token rotation and dynamic password</h3>
 <p>In some cloud scenarios, logging into PostgreSQL is done with an auth token that is rotated every time interval (e.g. one hour). Starting with version 7.0, Npgsql has a built-in periodic password provider mechanism, which allows refreshing the password with zero effort:</p>
 <pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
@@ -96,22 +96,25 @@ dataSourceBuilder.UsePeriodicPasswordProvider(
     TimeSpan.FromMinutes(55), // Interval for refreshing the token
     TimeSpan.FromSeconds(5)); // Interval for retrying after a refresh failure
 await using var dataSource = NpgsqlDataSource.Create(connectionString);
-</code></pre><p>This API allows you to provide a minimal async code fragment for fetching the latest auth token, and have Npgsql take care of running it for you as needed.</p>
+</code></pre>
+<p>This API allows you to provide a minimal async code fragment for fetching the latest auth token, and have Npgsql take care of running it for you as needed.</p>
 <p>If, instead, you prefer to manage this yourself, you can simply inject a new password at any time into a working data source:</p>
 <pre><code class="lang-csharp">dataSource.Password = &lt;new password&gt;;
-</code></pre><p>Any physical connection that&#39;s opened after this point will use the newly-injected password.</p>
+</code></pre>
+<p>Any physical connection that's opened after this point will use the newly-injected password.</p>
 <h2 id="encryption-ssltls">Encryption (SSL/TLS)</h2>
-<p>By default PostgreSQL connections are unencrypted, but you can turn on SSL/TLS encryption if you wish. First, you have to set up your PostgreSQL to receive SSL/TLS connections <a href="http://www.postgresql.org/docs/current/static/ssl-tcp.html">as described here</a>. Once that&#39;s done, specify <code>SSL Mode</code> in your connection string as detailed below.</p>
-<div class="tabGroup" id="tabgroup_jM09Sxd088">
+<p>By default PostgreSQL connections are unencrypted, but you can turn on SSL/TLS encryption if you wish. First, you have to set up your PostgreSQL to receive SSL/TLS connections <a href="http://www.postgresql.org/docs/current/static/ssl-tcp.html">as described here</a>. Once that's done, specify <code>SSL Mode</code> in your connection string as detailed below.</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_jM09Sxd088_tabid-1" role="tab" aria-controls="tabpanel_jM09Sxd088_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 6.0+</a>
+<a href="#tabpanel_bHGHmlrG6S_tabid-1" role="tab" aria-controls="tabpanel_bHGHmlrG6S_tabid-1" data-tab="tabid-1" tabindex="0" aria-selected="true">Version 6.0+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_jM09Sxd088_tabid-2" role="tab" aria-controls="tabpanel_jM09Sxd088_tabid-2" data-tab="tabid-2" tabindex="-1">Older versions</a>
+<a href="#tabpanel_bHGHmlrG6S_tabid-2" role="tab" aria-controls="tabpanel_bHGHmlrG6S_tabid-2" data-tab="tabid-2" tabindex="-1">Older versions</a>
 </li>
 </ul>
-<section id="tabpanel_jM09Sxd088_tabid-1" role="tabpanel" data-tab="tabid-1">
+<section id="tabpanel_bHGHmlrG6S_tabid-1" role="tabpanel" data-tab="tabid-1">
+
 <p>Starting with 6.0, the following <code>SSL Mode</code> values are supported (see the <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS">PostgreSQL docs</a> for more details):</p>
 <table>
 <thead>
@@ -127,19 +130,19 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <td>Disable</td>
 <td>No</td>
 <td>No</td>
-<td>I don&#39;t care about security, and I don&#39;t want to pay the overhead of encryption.</td>
+<td>I don't care about security, and I don't want to pay the overhead of encryption.</td>
 </tr>
 <tr>
 <td>Allow</td>
 <td>Maybe</td>
 <td>No</td>
-<td>I don&#39;t care about security, but I will pay the overhead of encryption if the server insists on it.</td>
+<td>I don't care about security, but I will pay the overhead of encryption if the server insists on it.</td>
 </tr>
 <tr>
 <td>Prefer (default)</td>
 <td>Maybe</td>
 <td>No</td>
-<td>I don&#39;t care about encryption, but I wish to pay the overhead of encryption if the server supports it.</td>
+<td>I don't care about encryption, but I wish to pay the overhead of encryption if the server supports it.</td>
 </tr>
 <tr>
 <td>Require<sup>1</sup></td>
@@ -157,14 +160,15 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <td>VerifyFull</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it&#39;s the one I specify.</td>
+<td>I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it's the one I specify.</td>
 </tr>
 </tbody>
 </table>
-<p><sup>1</sup> <code>SSL Mode=Require</code> currently requires explicitly setting <code>Trust Server Certificate=true</code> as well (this requirement will be removed in a future version). This combination should be used with e.g. self-signed certificates, which don&#39;t need to be validated. As an alternative to <code>Trust Server Certificate=true</code>, provide your custom certificate validation via <a class="xref" href="api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_UserCertificateValidationCallback">NpgsqlConnection.UserCertificateValidationCallback</a>.</p>
+<p><sup>1</sup> <code>SSL Mode=Require</code> currently requires explicitly setting <code>Trust Server Certificate=true</code> as well (this requirement will be removed in a future version). This combination should be used with e.g. self-signed certificates, which don't need to be validated. As an alternative to <code>Trust Server Certificate=true</code>, provide your custom certificate validation via <a class="xref" href="api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_UserCertificateValidationCallback">NpgsqlConnection.UserCertificateValidationCallback</a>.</p>
 <p>The default mode in 6.0+ is <code>Prefer</code>, which allows SSL but does not require it, and does not validate certificates.</p>
 </section>
-<section id="tabpanel_jM09Sxd088_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bHGHmlrG6S_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">
+
 <p>Versions prior to 6.0 supported the following <code>SSL Mode</code> values:</p>
 <table>
 <thead>
@@ -180,19 +184,19 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <td>Disable</td>
 <td>No</td>
 <td>No</td>
-<td>I don&#39;t care about security, and I don&#39;t want to pay the overhead of encryption.</td>
+<td>I don't care about security, and I don't want to pay the overhead of encryption.</td>
 </tr>
 <tr>
 <td>Prefer</td>
 <td>Maybe</td>
 <td>Maybe</td>
-<td>I don&#39;t care about encryption, but I wish to pay the overhead of encryption if the server supports it.</td>
+<td>I don't care about encryption, but I wish to pay the overhead of encryption if the server supports it.</td>
 </tr>
 <tr>
 <td>Require</td>
 <td>Yes</td>
 <td>Yes</td>
-<td>I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it&#39;s the one I specify.</td>
+<td>I want my data encrypted, and I accept the overhead. I want to be sure that I connect to a server I trust, and that it's the one I specify.</td>
 </tr>
 </tbody>
 </table>
@@ -201,9 +205,9 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 </section>
 </div>
 <h3 id="advanced-server-certificate-validation">Advanced server certificate validation</h3>
-<p>If the root CA of the server certificate isn&#39;t installed in your machine&#39;s CA store, validation will fail. Either install the certificate in your machine&#39;s CA store, or point to it via the <code>Root Certificate</code> connection string parameter or via the <code>PGSSLROOTCERT</code> environment variable.</p>
+<p>If the root CA of the server certificate isn't installed in your machine's CA store, validation will fail. Either install the certificate in your machine's CA store, or point to it via the <code>Root Certificate</code> connection string parameter or via the <code>PGSSLROOTCERT</code> environment variable.</p>
 <p>Note that Npgsql does not perform certificate revocation validation by default, since this is an optional extension not implemented by all providers and CAs. To turn on certificate revocation validation, specify <code>Check Certificate Revocation=true</code> on the connection string.</p>
-<p>Finally, if the above options aren&#39;t sufficient for your scenario, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_">NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(RemoteCertificateValidationCallback)</a> to provide your custom server certificate validation logic (this gets set on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
+<p>Finally, if the above options aren't sufficient for your scenario, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_">NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(RemoteCertificateValidationCallback)</a> to provide your custom server certificate validation logic (this gets set on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
 <h3 id="client-certificates">Client certificates</h3>
 <p>PostgreSQL may be configured to require valid certificates from connecting clients for authentication. Npgsql automatically sends client certificates specified in the following places:</p>
 <ul>
@@ -212,13 +216,15 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 <li>The default locations of <code>~/.postgresql/postgresql.crt</code> (on Unix) or <code>%APPDATA%\postgresql\postgresql.crt</code> (on Windows)</li>
 </ul>
 <p>To provide a password for a client certificate, set either the <code>SSL Password</code> (6.0 and higher) or <code>Client Certificate Key</code> (5.0 and lower) connection string parameter.</p>
-<p>Finally, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_">NpgsqlDataSourceBuilder.UseClientCertificate(X509Certificate)</a>, <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_">NpgsqlDataSourceBuilder.UseClientCertificates(X509CertificateCollection)</a> or <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__">NpgsqlDataSourceBuilder.UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;)</a> to programmatically provide a certificate, multiple certificates or a callback which returns certificates (this works like on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
-<div class="NOTE"><h5>Note</h5><p>Npgsql supports .PFX and .PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.</p>
+<p>Finally, you can call <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_">NpgsqlDataSourceBuilder.UseClientCertificate(X509Certificate?)</a>, <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_">NpgsqlDataSourceBuilder.UseClientCertificates(X509CertificateCollection?)</a> or <a class="xref" href="api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__">NpgsqlDataSourceBuilder.UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;?)</a> to programmatically provide a certificate, multiple certificates or a callback which returns certificates (this works like on the underlying .NET <a href="https://docs.microsoft.com/dotnet/api/system.net.security.sslstream.-ctor#System_Net_Security_SslStream__ctor_System_IO_Stream_System_Boolean_System_Net_Security_RemoteCertificateValidationCallback_System_Net_Security_LocalCertificateSelectionCallback_"><code>SslStream</code></a>).</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Npgsql supports .PFX and .PEM certificates starting with 6.0. Previously, only .PFX certificates were supported.</p>
 </div>
 <h2 id="integrated-security-gsssspikerberos">Integrated Security (GSS/SSPI/Kerberos)</h2>
 <p>Logging in with a username and password may not be ideal, since your application must have access to your password, and raise questions around secret management. An alternate way of authenticating is &quot;Integrated Security&quot;, which uses GSS or SSPI to negotiate Kerberos. The advantage of this method is that authentication is handed off to your operating system, using your already-open login session. Your application never needs to handle a password. You can use this method for a Kerberos login, Windows Active Directory or a local Windows session. Note that since 3.2, this method of authentication also works on non-Windows platforms.</p>
 <p>Instructions on setting up Kerberos and SSPI are available in the <a href="http://www.postgresql.org/docs/current/static/auth-methods.html">PostgreSQL auth methods docs</a>. Some more instructions for SSPI are <a href="https://wiki.postgresql.org/wiki/Configuring_for_single_sign-on_using_SSPI_on_Windows">available here</a>.</p>
-<p>Once your PostgreSQL is configured correctly, simply include <code>Integrated Security=true</code> in your connection string and drop the <code>Password</code> parameter. However, Npgsql must still send a username to PostgreSQL. If you specify a <code>Username</code> connection string parameter, Npgsql will send that as usual. If you omit it, Npgsql will attempt to detect your system username, including the Kerberos realm. Note that by default, PostgreSQL expects your Kerberos realm to be sent in your username (e.g. <code>username@REALM</code>); you can have Npgsql detect the realm by setting <code>Include Realm</code> to true in your connection string. Alternatively, you can disable add <code>include_realm=0</code> in your PostgreSQL&#39;s pg_hba.conf entry, which will make it strip the realm. You always have the possibility of explicitly specifying the username sent to PostgreSQL yourself.</p>
+<p>Once your PostgreSQL is configured correctly, simply include <code>Integrated Security=true</code> in your connection string and drop the <code>Password</code> parameter. However, Npgsql must still send a username to PostgreSQL. If you specify a <code>Username</code> connection string parameter, Npgsql will send that as usual. If you omit it, Npgsql will attempt to detect your system username, including the Kerberos realm. Note that by default, PostgreSQL expects your Kerberos realm to be sent in your username (e.g. <code>username@REALM</code>); you can have Npgsql detect the realm by setting <code>Include Realm</code> to true in your connection string. Alternatively, you can disable add <code>include_realm=0</code> in your PostgreSQL's pg_hba.conf entry, which will make it strip the realm. You always have the possibility of explicitly specifying the username sent to PostgreSQL yourself.</p>
 </article>
           </div>
 

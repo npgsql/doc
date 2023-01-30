@@ -85,9 +85,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="spatial-mapping-with-nettopologysuite">Spatial Mapping with NetTopologySuite</h1>
 
-<div class="NOTE"><h5>Note</h5><p>It&#39;s recommended that you start by reading the general <a href="https://docs.microsoft.com/ef/core/modeling/spatial">Entity Framework Core docs on spatial support</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It's recommended that you start by reading the general <a href="https://docs.microsoft.com/ef/core/modeling/spatial">Entity Framework Core docs on spatial support</a>.</p>
 </div>
-<p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn&#39;t provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is a leading spatial library. The Npgsql EF Core provider has a plugin which allows you to map the NTS types to PostGIS columns, allowing seamless reading and writing. This is the recommended way to interact with spatial types in Npgsql.</p>
+<p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn't provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is a leading spatial library. The Npgsql EF Core provider has a plugin which allows you to map the NTS types to PostGIS columns, allowing seamless reading and writing. This is the recommended way to interact with spatial types in Npgsql.</p>
 <p>Note that the EF Core NetTopologySuite plugin depends on <a href="http://www.npgsql.org/doc/types/nts.html">the Npgsql ADO.NET NetTopology plugin</a>, which provides NetTopologySuite support at the lower level. The EF Core plugin automatically sets up the ADO.NET plugin.</p>
 <h2 id="setup">Setup</h2>
 <p>To use the NetTopologySuite plugin, add the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite">Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite nuget</a> to your project. Then, make the following modification to your <code>UseNpgsql()</code> line:</p>
@@ -96,12 +98,14 @@
     builder.UseNpgsql(&quot;Host=localhost;Database=test;Username=npgsql_tests;Password=npgsql_tests&quot;,
         o =&gt; o.UseNetTopologySuite());
 }
-</code></pre><p>This sets up all the necessary mappings and operation translators. In addition, to make sure that the PostGIS extension is installed in your database, add the following to your DbContext:</p>
+</code></pre>
+<p>This sets up all the necessary mappings and operation translators. In addition, to make sure that the PostGIS extension is installed in your database, add the following to your DbContext:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
 {
     builder.HasPostgresExtension(&quot;postgis&quot;);
 }
-</code></pre><p>At this point spatial support is set up. You can now use NetTopologySuite types as regular properties in your entities, and even perform some operations:</p>
+</code></pre>
+<p>At this point spatial support is set up. You can now use NetTopologySuite types as regular properties in your entities, and even perform some operations:</p>
 <pre><code class="lang-c#">public class City
 {
     public int Id { get; set; }
@@ -110,11 +114,13 @@
 }
 
 var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
-</code></pre><h2 id="constraining-your-type-names">Constraining your type names</h2>
-<p>With the code above, the provider will create a database column of type <code>geometry</code>. This is perfectly fine, but be aware that this type accepts any geometry type (point, polygon...), with any coordinate system (XY, XYZ...). It&#39;s good practice to constrain the column to the exact type of data you will be storing, but unfortunately the provider isn&#39;t aware of your required coordinate system and therefore can&#39;t do that for you. Consider explicitly specifying your column types on your properties as follows:</p>
+</code></pre>
+<h2 id="constraining-your-type-names">Constraining your type names</h2>
+<p>With the code above, the provider will create a database column of type <code>geometry</code>. This is perfectly fine, but be aware that this type accepts any geometry type (point, polygon...), with any coordinate system (XY, XYZ...). It's good practice to constrain the column to the exact type of data you will be storing, but unfortunately the provider isn't aware of your required coordinate system and therefore can't do that for you. Consider explicitly specifying your column types on your properties as follows:</p>
 <pre><code class="lang-c#">[Column(TypeName=&quot;geometry (point)&quot;)]
 public Point Location { get; set; }
-</code></pre><p>This will constrain your column to XY points only. The same can be done via the fluent API with <code>HasColumnType()</code>.</p>
+</code></pre>
+<p>This will constrain your column to XY points only. The same can be done via the fluent API with <code>HasColumnType()</code>.</p>
 <h2 id="geography-geodetic-support">Geography (geodetic) support</h2>
 <p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
 <p>The Npgsql provider will be default map all NetTopologySuite types to PostGIS <code>geometry</code>. However, you can instruct it to map certain properties to <code>geography</code> instead:</p>
@@ -122,7 +128,8 @@ public Point Location { get; set; }
 {
     builder.Entity&lt;City&gt;().Property(b =&gt; b.Location).HasColumnType(&quot;geography (point)&quot;);
 }
-</code></pre><p>or via an attribute:</p>
+</code></pre>
+<p>or via an attribute:</p>
 <pre><code class="lang-c#">public class City
 {
     public int Id { get; set; }
@@ -130,9 +137,10 @@ public Point Location { get; set; }
     [Column(TypeName=&quot;geography&quot;)]
     public Point Location { get; set; }
 }
-</code></pre><p>Once you do this, your column will be created as <code>geography</code>, and spatial operations will behave as expected.</p>
+</code></pre>
+<p>Once you do this, your column will be created as <code>geography</code>, and spatial operations will behave as expected.</p>
 <h2 id="operation-translation">Operation translation</h2>
-<p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up.</p>
+<p>The following table lists NetTopologySuite operations which are translated to PostGIS SQL operations. This allows you to use these NetTopologySuite methods and members efficiently - evaluation will happen on the server side. Since evaluation happens at the server, table data doesn't need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up.</p>
 <p>Note that the plugin is far from covering all spatial operations. If an operation you need is missing, please open an issue to request for it.</p>
 <table>
 <thead>

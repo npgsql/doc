@@ -95,21 +95,26 @@
     public string Name { get; set; }
     public NpgsqlRange&lt;DateTime&gt; Duration { get; set; }
 }
-</code></pre><p>This will create a column of type <code>daterange</code> in your database. You can similarly have properties of type <code>NpgsqlRange&lt;int&gt;</code>, <code>NpgsqlRange&lt;long&gt;</code>, etc.</p>
+</code></pre>
+<p>This will create a column of type <code>daterange</code> in your database. You can similarly have properties of type <code>NpgsqlRange&lt;int&gt;</code>, <code>NpgsqlRange&lt;long&gt;</code>, etc.</p>
 <h2 id="user-defined-ranges">User-defined ranges</h2>
 <p>PostgreSQL comes with 6 built-in ranges: <code>int4range</code>, <code>int8range</code>, <code>numrange</code>, <code>tsrange</code>, <code>tstzrange</code>, <code>daterange</code>; these can be used simply by adding the appropriate <code>NpgsqlRange&lt;T&gt;</code> property in your entities as shown above. You can also define your own range types over arbitrary types, and use those in EF Core as well.</p>
-<p>To make the EF Core type mapper aware of your user-defined range, call the <code>MapRange()</code> method in your context&#39;s <code>OnConfiguring()</code> method as follows:</p>
+<p>To make the EF Core type mapper aware of your user-defined range, call the <code>MapRange()</code> method in your context's <code>OnConfiguring()</code> method as follows:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(
         &quot;&lt;connection_string&gt;&quot;,
         options =&gt; options.MapRange&lt;float&gt;(&quot;floatrange&quot;));
-</code></pre><p>This allows you to have properties of type <code>NpgsqlRange&lt;float&gt;</code>, which will be mapped to PostgreSQL <code>floatrange</code>.</p>
-<p>The above does <em>not</em> create the <code>floatrange</code> type for you. In order to do that, include the following in your context&#39;s <code>OnModelCreating()</code>:</p>
+</code></pre>
+<p>This allows you to have properties of type <code>NpgsqlRange&lt;float&gt;</code>, which will be mapped to PostgreSQL <code>floatrange</code>.</p>
+<p>The above does <em>not</em> create the <code>floatrange</code> type for you. In order to do that, include the following in your context's <code>OnModelCreating()</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.HasPostgresRange(&quot;floatrange&quot;, &quot;real&quot;);
-</code></pre><p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
+</code></pre>
+<p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
 <h2 id="multiranges">Multiranges</h2>
-<div class="NOTE"><h5>Note</h5><p>This feature was introduced in version 6.0</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This feature was introduced in version 6.0</p>
 </div>
 <p>Npgsql maps arrays or lists of <code>NpgsqlRange&lt;T&gt;</code> to PostgreSQL multiranges:</p>
 <pre><code class="lang-c#">public class Store
@@ -118,10 +123,12 @@
     public string Name { get; set; }
     public NpgsqlRange&lt;DateTime&gt;[] OpeningTimes { get; set; }
 }
-</code></pre><h2 id="operation-translation">Operation translation</h2>
+</code></pre>
+<h2 id="operation-translation">Operation translation</h2>
 <p>Ranges can be queried via extensions methods on <code>NpgsqlRange</code>:</p>
 <pre><code class="lang-c#">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));
-</code></pre><p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transferring the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
+</code></pre>
+<p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transferring the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
 <p>The following table lists the range operations that currently get translated. Most operations work on both ranges and multiranges (starting with version 6.0.0); the multirange version is omitted for brevity.</p>
 <p>If you run into a missing operation, please open an issue.</p>
 <table>
@@ -129,108 +136,134 @@
 <tr>
 <th>.NET</th>
 <th>SQL</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>range.LowerBound</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.UpperBound</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.LowerBoundIsInclusive</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower_inc(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.UpperBoundIsInclusive</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper_inc(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.LowerBoundIsInfinite</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower_inf(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.UpperBoundIsInfinite</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper_inf(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.IsEmpty</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">isempty(range)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>multirange.Any()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#MULTIRANGE-FUNCTIONS-TABLE">NOT is_empty(multirange)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range.Contains(i)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range @&gt; i</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Contains(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range @&gt; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.ContainedBy(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;@ range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Overlaps(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &amp;&amp; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.IsStrictlyLeftOf(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;&lt; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.IsStrictlyRightOf(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &gt;&gt; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.DoesNotExtendLeftOf(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &amp;&gt; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.DoesNotExtendRightOf(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;&amp; range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.IsAdjacentTo(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 -|- range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Union(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 + range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Intersect(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 * range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Except(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 - range2</a></td>
+<td></td>
 </tr>
 <tr>
 <td>range1.Merge(range2)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">range_merge(range1, range2)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>multirange.Merge()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-range.html#MULTIRANGE-FUNCTIONS-TABLE">range_merge(multirange)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>ranges.RangeAgg()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_agg(ranges)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>ranges.RangeIntersectAgg()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_intersect_agg(ranges)</a></td>
+<td></td>
 </tr>
 <tr>
 <td>multiranges.RangeIntersectAgg()</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_intersect_agg(multiranges)</a></td>
+<td>Added in 7.0, See <a href="#aggregate-functions">Aggregate functions</a>.</td>
 </tr>
 </tbody>
 </table>

@@ -94,18 +94,18 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlArrayTranslator</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
     <div><span class="xref">IMemberTranslator</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.html">Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<span class="xref">ExpressionTranslators</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.html">Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlArrayTranslator : IMethodCallTranslator</code></pre>
+    <pre><code class="lang-csharp hljs">public class NpgsqlArrayTranslator : IMethodCallTranslator, IMemberTranslator</code></pre>
   </div>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p><a href="https://www.postgresql.org/docs/current/static/functions-array.html">https://www.postgresql.org/docs/current/static/functions-array.html</a></p>
@@ -120,7 +120,7 @@
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/ExpressionTranslators/Internal/NpgsqlArrayTranslator.cs/#L59">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator__ctor_Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlJsonPocoTranslator_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.#ctor(Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory,Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlJsonPocoTranslator,System.Boolean)">NpgsqlArrayTranslator(NpgsqlSqlExpressionFactory, NpgsqlJsonPocoTranslator, Boolean)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator__ctor_Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlJsonPocoTranslator_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.#ctor(Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory,Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlJsonPocoTranslator,System.Boolean)">NpgsqlArrayTranslator(NpgsqlSqlExpressionFactory, NpgsqlJsonPocoTranslator, bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -152,7 +152,7 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">useRedshift</span></td>
         <td></td>
       </tr>
@@ -171,7 +171,7 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/ExpressionTranslators/Internal/NpgsqlArrayTranslator.cs/#L283">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_System_Nullable_SqlExpression__System_Reflection_MemberInfo_System_Type_IDiagnosticsLogger_DbLoggerCategory_Query__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate(System.Nullable{SqlExpression},System.Reflection.MemberInfo,System.Type,IDiagnosticsLogger{DbLoggerCategory.Query})">Translate(Nullable&lt;SqlExpression&gt;, MemberInfo, Type, IDiagnosticsLogger&lt;DbLoggerCategory.Query&gt;)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_System_Nullable_SqlExpression__System_Reflection_MemberInfo_System_Type_IDiagnosticsLogger_DbLoggerCategory_Query__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate(System.Nullable{SqlExpression},System.Reflection.MemberInfo,System.Type,IDiagnosticsLogger{DbLoggerCategory.Query})">Translate(SqlExpression?, MemberInfo, Type, IDiagnosticsLogger&lt;Query&gt;)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -193,7 +193,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="xref">SqlExpression</span>?</td>
         <td><span class="parametername">instance</span></td>
         <td></td>
       </tr>
@@ -208,7 +208,7 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IDiagnosticsLogger</span>&lt;<span class="xref">DbLoggerCategory.Query</span>&gt;</td>
+        <td><span class="xref">IDiagnosticsLogger&lt;&gt;</span>&lt;<span class="xref">Query</span>&gt;</td>
         <td><span class="parametername">logger</span></td>
         <td></td>
       </tr>
@@ -224,7 +224,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="xref">SqlExpression</span>?</td>
         <td></td>
       </tr>
     </tbody>
@@ -240,7 +240,7 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/ExpressionTranslators/Internal/NpgsqlArrayTranslator.cs/#L75">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_System_Nullable_SqlExpression__System_Reflection_MethodInfo_System_Collections_Generic_IReadOnlyList_SqlExpression__IDiagnosticsLogger_DbLoggerCategory_Query__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate(System.Nullable{SqlExpression},System.Reflection.MethodInfo,System.Collections.Generic.IReadOnlyList{SqlExpression},IDiagnosticsLogger{DbLoggerCategory.Query})">Translate(Nullable&lt;SqlExpression&gt;, MethodInfo, IReadOnlyList&lt;SqlExpression&gt;, IDiagnosticsLogger&lt;DbLoggerCategory.Query&gt;)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_ExpressionTranslators_Internal_NpgsqlArrayTranslator_Translate_System_Nullable_SqlExpression__System_Reflection_MethodInfo_System_Collections_Generic_IReadOnlyList_SqlExpression__IDiagnosticsLogger_DbLoggerCategory_Query__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlArrayTranslator.Translate(System.Nullable{SqlExpression},System.Reflection.MethodInfo,System.Collections.Generic.IReadOnlyList{SqlExpression},IDiagnosticsLogger{DbLoggerCategory.Query})">Translate(SqlExpression?, MethodInfo, IReadOnlyList&lt;SqlExpression&gt;, IDiagnosticsLogger&lt;Query&gt;)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -262,7 +262,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="xref">SqlExpression</span>?</td>
         <td><span class="parametername">instance</span></td>
         <td></td>
       </tr>
@@ -277,7 +277,7 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">IDiagnosticsLogger</span>&lt;<span class="xref">DbLoggerCategory.Query</span>&gt;</td>
+        <td><span class="xref">IDiagnosticsLogger&lt;&gt;</span>&lt;<span class="xref">Query</span>&gt;</td>
         <td><span class="parametername">logger</span></td>
         <td></td>
       </tr>
@@ -293,7 +293,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="xref">SqlExpression</span>?</td>
         <td></td>
       </tr>
     </tbody>

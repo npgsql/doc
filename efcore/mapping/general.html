@@ -95,28 +95,33 @@
     public NpgsqlCircle Circle { get; set; }
     public int[] SomeInts { get; set; }
 }
-</code></pre><p>Special types such as <a href="array.html">arrays</a> and <a href="enum.html">enums</a> have their own documentation pages with more details.</p>
-<p><a href="https://www.postgresql.org/docs/current/static/rowtypes.html">PostgreSQL composite types</a>, while supported at the ADO.NET level, aren&#39;t yet supported in the EF Core provider. This is tracked by <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/22">#22</a>.</p>
+</code></pre>
+<p>Special types such as <a href="array.html">arrays</a> and <a href="enum.html">enums</a> have their own documentation pages with more details.</p>
+<p><a href="https://www.postgresql.org/docs/current/static/rowtypes.html">PostgreSQL composite types</a>, while supported at the ADO.NET level, aren't yet supported in the EF Core provider. This is tracked by <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/22">#22</a>.</p>
 <h2 id="explicitly-specifying-data-types">Explicitly specifying data types</h2>
 <p>In some cases, your .NET property type can be mapped to several PostgreSQL data types; a good example is a <code>string</code>, which will be mapped to <code>text</code> by default, but can also be mapped to <code>jsonb</code>. You can use either Data Annotation attributes or the Fluent API to configure the PostgreSQL data type:</p>
-<div class="tabGroup" id="tabgroup_NfNRJmp+7j">
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_NfNRJmp+7j_data-annotations" role="tab" aria-controls="tabpanel_NfNRJmp+7j_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+<a href="#tabpanel_bHGHmlrG6S_data-annotations" role="tab" aria-controls="tabpanel_bHGHmlrG6S_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_NfNRJmp+7j_fluent-api" role="tab" aria-controls="tabpanel_NfNRJmp+7j_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+<a href="#tabpanel_bHGHmlrG6S_fluent-api" role="tab" aria-controls="tabpanel_bHGHmlrG6S_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
 </li>
 </ul>
-<section id="tabpanel_NfNRJmp+7j_data-annotations" role="tabpanel" data-tab="data-annotations">
+<section id="tabpanel_bHGHmlrG6S_data-annotations" role="tabpanel" data-tab="data-annotations">
+
 <pre><code class="lang-c#">[Column(TypeName=&quot;jsonb&quot;)]
 public string SomeStringProperty { get; set; }
-</code></pre></section>
-<section id="tabpanel_NfNRJmp+7j_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-c#">builder.Entity&lt;Blog&gt;()
        .Property(b =&gt; b.SomeStringProperty)
        .HasColumnType(&quot;jsonb&quot;);
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 </article>
           </div>

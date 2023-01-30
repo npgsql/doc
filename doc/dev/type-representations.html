@@ -97,7 +97,7 @@ bytea:
     binary: the bytes as they are
 
 char:
-    This type holds a single char/byte. (Not to be confused with bpchar (blank-padded char) which is PostgreSQL&#39;s alias to the SQL standard&#39;s char).
+    This type holds a single char/byte. (Not to be confused with bpchar (blank-padded char) which is PostgreSQL's alias to the SQL standard's char).
     The char may be the null-character
     text: the char as a byte, encoding seems to be ignored
     binary: the char as a byte
@@ -169,7 +169,7 @@ jsonb:
 xml:
     Xml. It is probably most efficient to use the text format, especially when receiving from client.
     text: the xml as text (when sent from the server: encoding removed, when receiving: assuming database encoding)
-    binary: the xml as text (when sent from the server: in the client&#39;s specified encoding, when receiving: figures out itself)
+    binary: the xml as text (when sent from the server: in the client's specified encoding, when receiving: figures out itself)
 
 pg_node_tree:
     used as type for the column typdefaultbin in pg_type
@@ -205,7 +205,7 @@ path:
 box:
     A tuple of two points. The coordinates will be reordered so that the first is the upper right and the second is the lower left.
     text: (x1,y1),(x2,y2) see point for details
-    binary: the four floats in the order x1, y1, x2, y2 (doesn&#39;t really matter since they will be reordered)
+    binary: the four floats in the order x1, y1, x2, y2 (doesn't really matter since they will be reordered)
 
 polygon:
     Same as path but with two differences: is always closed and internally stores the bounding box.
@@ -242,7 +242,7 @@ reltime:
 
 tinterval:
     Consists of a status (Int32) and two abstimes. Status is valid (1) iff both abstimes are valid, else 0.
-    Note that the docs incorrectly states that &#39; is used as quote instead of &quot;
+    Note that the docs incorrectly states that ' is used as quote instead of &quot;
     text: [&quot;&lt;abstime&gt;&quot; &quot;&lt;abstime&gt;&quot;]
     binary: Int32 (status), Int32 (abstime 1), Int32 (abstime 2)
 
@@ -276,7 +276,7 @@ bpchar:
     binary: text
 
 varchar:
-    Variable-length char. The type modifier is used to check the input&#39;s length.
+    Variable-length char. The type modifier is used to check the input's length.
     text: text
     binary: text
 
@@ -387,29 +387,29 @@ txid_snapshot:
     binary: all fields in the structure
 
 tsvector:
-    Used for text searching. Example of tsvector: &#39;a&#39;:1,6,10 &#39;on&#39;:5 &#39;and&#39;:8 &#39;ate&#39;:9A &#39;cat&#39;:3 &#39;fat&#39;:2,11 &#39;mat&#39;:7 &#39;rat&#39;:12 &#39;sat&#39;:4
+    Used for text searching. Example of tsvector: 'a':1,6,10 'on':5 'and':8 'ate':9A 'cat':3 'fat':2,11 'mat':7 'rat':12 'sat':4
     Max length for each lexeme string is 2046 bytes (excluding the trailing null-char)
     The words are sorted when parsed, and only written once. Positions are also sorted and only written once.
     For some reason, the unique check does not seem to be made for binary input, only text input...
-    text: As seen above. &#39; is escaped with &#39;&#39; and \ is escaped with \\.
+    text: As seen above. ' is escaped with '' and \ is escaped with \\.
     binary:
         UInt32 number of lexemes
         for each lexeme:
             lexeme text in client encoding, null-terminated
             UInt16 number of positions
             for each position:
-                UInt16 WordEntryPos, where the most significant 2 bits is weight, and the 14 least significant bits is pos (can&#39;t be 0). Weights 3,2,1,0 represent A,B,C,D
+                UInt16 WordEntryPos, where the most significant 2 bits is weight, and the 14 least significant bits is pos (can't be 0). Weights 3,2,1,0 represent A,B,C,D
 
 tsquery:
     A tree with operands and operators (&amp;, |, !). Operands are strings, with optional weight (bitmask of ABCD) and prefix search (yes/no, written with *).
-    text: the tree written in infix notation. Example: ( &#39;abc&#39;:*B | &#39;def&#39; ) &amp; !&#39;ghi&#39;
+    text: the tree written in infix notation. Example: ( 'abc':*B | 'def' ) &amp; !'ghi'
     binary: the tree written in prefix notation:
         First the number of tokens (a token is an operand or an operator).
         For each token:
             UInt8 type (1 = val, 2 = oper) followed by
             For val: UInt8 weight + UInt8 prefix (1 = yes / 0 = no) + null-terminated string,
             For oper: UInt8 oper (1 = not, 2 = and, 3 = or, 4 = phrase).
-            In case of phrase oper code, an additional UInt16 field is sent (distance value of operator). Default is 1 for &lt;-&gt;, otherwise the n value in &#39;&lt;n&gt;&#39;.
+            In case of phrase oper code, an additional UInt16 field is sent (distance value of operator). Default is 1 for &lt;-&gt;, otherwise the n value in '&lt;n&gt;'.
 
 enum:
     Simple text
@@ -418,7 +418,7 @@ gtsvector:
     GiST for tsvector. Probably internal type.
 
 int4range/numrange/tsrange/tstzrange/daterange/int8range and user-defined range types:
-    /* A range&#39;s flags byte contains these bits: */
+    /* A range's flags byte contains these bits: */
     #define RANGE_EMPTY         0x01    /* range is empty */
     #define RANGE_LB_INC        0x02    /* lower bound is inclusive */
     #define RANGE_UB_INC        0x04    /* upper bound is inclusive */
@@ -462,7 +462,8 @@ domain types:
         time_stamp: timestamptz
         yes_or_no: varchar(3) (must be &quot;YES&quot; or &quot;NO&quot; or null)
     intnotnull: when an int4 is cast to this type, it is checked that the int4 is not null, but it still returns an int4 and not intnotnull...
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

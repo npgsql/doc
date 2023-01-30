@@ -94,7 +94,8 @@
 <p>Finally, PostgreSQL also raises &quot;notices&quot;, which contain non-critical information on command execution. Notices are not errors: they do not indicate failure and can be safely ignored, although they may contain valuable information on the execution of your commands.</p>
 <p>Npgsql logs notices in the <em>debug</em> logging level. To deal with notices programmatically, Npgsql also exposes the <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Notice">Notice</a> event, which you can hook into for any further processing:</p>
 <pre><code class="lang-c#">conn.Notice += (_, args) =&gt; Console.WriteLine(args.Notice.MessageText);
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

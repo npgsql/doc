@@ -85,18 +85,23 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="collations-and-case-sensitivity">Collations and Case Sensitivity</h1>
 
-<div class="NOTE"><h5>Note</h5><p>This feature is introduced in EF Core 5.0.</p>
-<p>It&#39;s recommended that you start by reading <a href="https://docs.microsoft.com/ef/core/miscellaneous/collations-and-case-sensitivity">the general Entity Framework Core docs on collations and case sensitivity</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This feature is introduced in EF Core 5.0.</p>
+<p>It's recommended that you start by reading <a href="https://docs.microsoft.com/ef/core/miscellaneous/collations-and-case-sensitivity">the general Entity Framework Core docs on collations and case sensitivity</a>.</p>
 </div>
 <p>PostgreSQL is a case-sensitive database by default, but provides various possibilities for performing case-insensitive operations and working with collations. Unfortunately, full collation support is recent and somewhat incomplete, so you may need to carefully review your options below and pick the one which suits you.</p>
 <h2 id="postgresql-collations">PostgreSQL collations</h2>
 <p>While PostgreSQL has supported collations for a long time, supported was limited to &quot;deterministic&quot; collations, which did not allow for case-insensitive or accent-insensitive operations. PostgreSQL 12 introduced non-deterministic ICU collations, so it is now possible to use collations in a more flexible way. Read more about PostgreSQL collation support <a href="https://www.postgresql.org/docs/current/collation.html">in the documentation</a>.</p>
-<div class="NOTE"><h5>Note</h5><p>It is not yet possible to use pattern matching operators such as LIKE on columns with a non-deterministic collation.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It is not yet possible to use pattern matching operators such as LIKE on columns with a non-deterministic collation.</p>
 </div>
 <h3 id="creating-a-collation">Creating a collation</h3>
-<p>In PostgreSQL, collations are first-class, named database objects which can be created and dropped, just like tables. To create a collation, place the following in your context&#39;s <code>OnModelCreating</code>:</p>
+<p>In PostgreSQL, collations are first-class, named database objects which can be created and dropped, just like tables. To create a collation, place the following in your context's <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">modelBuilder.HasCollation(&quot;my_collation&quot;, locale: &quot;en-u-ks-primary&quot;, provider: &quot;icu&quot;, deterministic: false);
-</code></pre><p>This creates a collation with the name <code>my_collation</code>: this is an arbitrary name you can choose, which you will be specifying later when assigning the collation to columns. The rest of the parameters instruct PostgreSQL to create a non-deterministic, case-insensitive ICU collation. ICU collations are very powerful, and allow you to specify precise rules with regards to case, accents and other textual aspects. Consult <a href="https://unicode-org.github.io/icu/userguide/collation/">the ICU docs</a> for more information on supported features and keywords.</p>
+</code></pre>
+<p>This creates a collation with the name <code>my_collation</code>: this is an arbitrary name you can choose, which you will be specifying later when assigning the collation to columns. The rest of the parameters instruct PostgreSQL to create a non-deterministic, case-insensitive ICU collation. ICU collations are very powerful, and allow you to specify precise rules with regards to case, accents and other textual aspects. Consult <a href="https://unicode-org.github.io/icu/userguide/collation/">the ICU docs</a> for more information on supported features and keywords.</p>
 <h3 id="column-collation">Column collation</h3>
 <p>Once a collation has been created in your database, you can specify it on columns:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -106,53 +111,62 @@
     modelBuilder.Entity&lt;Customer&gt;().Property(c =&gt; c.Name)
         .UseCollation(&quot;my_collation&quot;);
 }
-</code></pre><p>This will cause all textual operators on this column to be case-insensitive.</p>
+</code></pre>
+<p>This will cause all textual operators on this column to be case-insensitive.</p>
 <h3 id="database-collation">Database collation</h3>
 <p>PostgreSQL also allows you to specify collations at the database level, when it is created:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.HasCollation(&quot;&lt;collation_name&gt;&quot;);
 }
-</code></pre><p>Unfortunately, the database collation is quote limited in PostgreSQL; it notably does not support non-deterministic collations (e.g. case-insensitive ones). To work around this limitation, you can use EF Core&#39;s <a href="https://docs.microsoft.com/ef/core/modeling/bulk-configuration#pre-convention-configuration">pre-convention model configuration</a> feature:</p>
+</code></pre>
+<p>Unfortunately, the database collation is quote limited in PostgreSQL; it notably does not support non-deterministic collations (e.g. case-insensitive ones). To work around this limitation, you can use EF Core's <a href="https://docs.microsoft.com/ef/core/modeling/bulk-configuration#pre-convention-configuration">pre-convention model configuration</a> feature:</p>
 <pre><code class="lang-c#">protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
 {
     configurationBuilder.Properties&lt;string&gt;().UseCollation(&quot;my_collation&quot;);
 }
-</code></pre><p>All columns created with this configuration will automatically have their collation specified accordingly, and all existing columns will be altered. The end result of the above is very similar to specifying a database collation: instead of telling PostgreSQL to implicit apply a collation to all columns, EF Core will do the same for you in its migrations.</p>
+</code></pre>
+<p>All columns created with this configuration will automatically have their collation specified accordingly, and all existing columns will be altered. The end result of the above is very similar to specifying a database collation: instead of telling PostgreSQL to implicit apply a collation to all columns, EF Core will do the same for you in its migrations.</p>
 <h2 id="the-citext-type">The citext type</h2>
 <p>The older PostgreSQL method for performing case-insensitive text operations is the <code>citext</code> type; it is similar to the <code>text</code> type, but operators are functions between <code>citext</code> values are implicitly case-insensitive. <a href="https://www.postgresql.org/docs/current/citext.html">The PostgreSQL docs</a> provide more information on this type.</p>
-<p><code>citext</code> is available in a PostgreSQL-bundled extension, so you&#39;ll first have to install it:</p>
+<p><code>citext</code> is available in a PostgreSQL-bundled extension, so you'll first have to install it:</p>
 <pre><code class="lang-c#">modelBuilder.HasPostgresExtension(&quot;citext&quot;);
-</code></pre><p>Specifying that a column should use <code>citext</code> is simply a matter of setting the column&#39;s type:</p>
-<div class="tabGroup" id="tabgroup_SXvXDr83Ka">
+</code></pre>
+<p>Specifying that a column should use <code>citext</code> is simply a matter of setting the column's type:</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_SXvXDr83Ka_data-annotations" role="tab" aria-controls="tabpanel_SXvXDr83Ka_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+<a href="#tabpanel_bHGHmlrG6S_data-annotations" role="tab" aria-controls="tabpanel_bHGHmlrG6S_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_SXvXDr83Ka_fluent-api" role="tab" aria-controls="tabpanel_SXvXDr83Ka_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+<a href="#tabpanel_bHGHmlrG6S_fluent-api" role="tab" aria-controls="tabpanel_bHGHmlrG6S_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
 </li>
 </ul>
-<section id="tabpanel_SXvXDr83Ka_data-annotations" role="tabpanel" data-tab="data-annotations">
+<section id="tabpanel_bHGHmlrG6S_data-annotations" role="tabpanel" data-tab="data-annotations">
+
 <pre><code class="lang-c#">public class Blog
 {
     public int Id { get; set; }
     [Column(TypeName = &quot;citext&quot;)]
     public string Name { get; set; }
 }
-</code></pre></section>
-<section id="tabpanel_SXvXDr83Ka_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.Name)
         .HasColumnType(&quot;citext&quot;);
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
+
 <p>Some limitations (others are listed in <a href="https://www.postgresql.org/docs/current/citext.html">the PostgreSQL docs</a>):</p>
 <ul>
-<li>While <code>citext</code> allows case-insensitive comparisons, it doesn&#39;t handle other aspects of collations, such as accents.</li>
-<li>Several PostgreSQL text functions are overloaded to work with <code>citext</code> as expected, but others aren&#39;t. Using a function that isn&#39;t overloaded will result in a regular, case-sensitive match.</li>
+<li>While <code>citext</code> allows case-insensitive comparisons, it doesn't handle other aspects of collations, such as accents.</li>
+<li>Several PostgreSQL text functions are overloaded to work with <code>citext</code> as expected, but others aren't. Using a function that isn't overloaded will result in a regular, case-sensitive match.</li>
 <li>Unlike collations, <code>citext</code> does not allow the same column to be compared case-sensitively in some queries, and and insensitively in others.</li>
 </ul>
 <h2 id="ilike">ILIKE</h2>
@@ -160,7 +174,8 @@
 <pre><code class="lang-c#">var results = ctx.Blogs
     .Where(b =&gt; EF.Functions.ILike(b.Name, &quot;a%b&quot;))
     .ToList();
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

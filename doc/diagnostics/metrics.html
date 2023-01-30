@@ -85,10 +85,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="metrics-with-event-counters">Metrics with event counters</h1>
 
-<p>Npgsql supports reporting aggregated metrics which provide snapshots on its state and activities at a given point. These can be especially useful for diagnostics issues such as connection leaks, or doing general performance analysis Metrics are reported via the standard .NET event counters feature; it&#39;s recommended to read <a href="https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/">this blog post</a> for a quick overview of how counters work.</p>
+<p>Npgsql supports reporting aggregated metrics which provide snapshots on its state and activities at a given point. These can be especially useful for diagnostics issues such as connection leaks, or doing general performance analysis Metrics are reported via the standard .NET event counters feature; it's recommended to read <a href="https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/">this blog post</a> for a quick overview of how counters work.</p>
 <p>To collect event counters, <a href="https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-counters">install the <code>dotnet-counters</code> tool</a>. Then, find out your process PID, and run it as follows:</p>
 <pre><code class="lang-output">dotnet counters monitor Npgsql -p &lt;PID&gt;
-</code></pre><p><code>dotnet-counters</code> will now attach to your running process and start reporting continuous counter data:</p>
+</code></pre>
+<p><code>dotnet-counters</code> will now attach to your running process and start reporting continuous counter data:</p>
 <pre><code class="lang-output">[Npgsql]
 Average commands per multiplexing batch                      NaN
 Average write time per multiplexing batch (us) (us)          NaN
@@ -102,7 +103,8 @@ Failed Commands                                                0
 Idle Connections                                               5
 Prepared Commands Ratio (%)                                    0
 Total Commands                                           372,918
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

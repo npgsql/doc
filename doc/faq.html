@@ -85,41 +85,44 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="faq">FAQ</h1>
 
-<h2 id="a-namestoredprocedureshow-can-i-call-a-postgresql-11-stored-procedure-i-tried-doing-so-with-commandtypestoredprocedure-and-got-an-errora"><a name="stored_procedures">How can I call a PostgreSQL 11 stored procedure? I tried doing so with CommandType.StoredProcedure and got an error...</a></h2>
-<p>PostgreSQL 11 stored procedures can be called, but unfortunately not with <code>CommandType.StoredProcedure</code>. PostgreSQL has supported stored <em>functions</em> for a long while, and since these have acted as replacements for non-existing procedures, Npgsql&#39;s <code>CommandType.StoredProcedure</code> has been implemented to invoke them; this means that <code>CommandType.StoredProcedure</code> translates into <code>SELECT * FROM my_stored_function()</code>. The new stored procedures introduce a special invocation syntax - <code>CALL my_stored_procedure()</code> - which is incompatible with the existing stored function syntax.</p>
-<p>On the brighter side, it&#39;s very easy to invoke stored procedures (or functions) yourself - you don&#39;t really need <code>CommandType.StoredProcedure</code>. Simply create a regular command and set <code>CommandText</code> to <code>CALL my_stored_procedure(@p1, @p2)</code>, handling parameters like you would any other statement. In fact, with Npgsql and PostgreSQL, <code>CommandType.StoredProcedure</code> doesn&#39;t really have any added value over constructing the command yourself.</p>
-<h2 id="a-namebrokenconnectionfrompooli-opened-a-pooled-connection-and-it-throws-right-away-when-i-use-it-what-givesa"><a name="broken_connection_from_pool">I opened a pooled connection, and it throws right away when I use it! What gives?</a></h2>
-<p>We know it&#39;s frustrating and seems weird, but this behavior is by-design.</p>
+<h2 id="how-can-i-call-a-postgresql-11-stored-procedure-i-tried-doing-so-with-commandtypestoredprocedure-and-got-an-error"><a name="stored_procedures">How can I call a PostgreSQL 11 stored procedure? I tried doing so with CommandType.StoredProcedure and got an error...</a></h2>
+<p>PostgreSQL 11 stored procedures can be called, but unfortunately not with <code>CommandType.StoredProcedure</code>. PostgreSQL has supported stored <em>functions</em> for a long while, and since these have acted as replacements for non-existing procedures, Npgsql's <code>CommandType.StoredProcedure</code> has been implemented to invoke them; this means that <code>CommandType.StoredProcedure</code> translates into <code>SELECT * FROM my_stored_function()</code>. The new stored procedures introduce a special invocation syntax - <code>CALL my_stored_procedure()</code> - which is incompatible with the existing stored function syntax.</p>
+<p>On the brighter side, it's very easy to invoke stored procedures (or functions) yourself - you don't really need <code>CommandType.StoredProcedure</code>. Simply create a regular command and set <code>CommandText</code> to <code>CALL my_stored_procedure(@p1, @p2)</code>, handling parameters like you would any other statement. In fact, with Npgsql and PostgreSQL, <code>CommandType.StoredProcedure</code> doesn't really have any added value over constructing the command yourself.</p>
+<h2 id="i-opened-a-pooled-connection-and-it-throws-right-away-when-i-use-it-what-gives"><a name="broken_connection_from_pool">I opened a pooled connection, and it throws right away when I use it! What gives?</a></h2>
+<p>We know it's frustrating and seems weird, but this behavior is by-design.</p>
 <p>While your connection is idle in the pool, any number of things could happen to it - a timeout could cause it to break, or some other similar network problem. Unfortunately, with the way networking works, there is no reliable way for us to know on the client if a connection is still alive; the only thing we can do is send something to PostgreSQL, and wait for the response to arrive. Doing this whenever a connection is handed out from the pool would kill the very reason pooling exists - it would dramatically slow down pooling, which is there precisely to avoid unneeded network roundtrips.</p>
-<p>But the reality is even more grim than that. Even if Npgsql checked whether a connection is live before handing it out of the pool, there&#39;s nothing guaranteeing that the connection won&#39;t break 1 millisecond after that check - it&#39;s a total race condition. So the check wouldn&#39;t just degrade performance, it would also be largely useless. The reality of network programming is that I/O errors can occur at any point, and your code must take that into account if it has high reliability requirements. Resilience/retrying systems can help you with this; take a look at <a href="https://github.com/App-vNext/Polly">Polly</a> as an example.</p>
-<p>One thing which Npgsql can do to help a bit, is the <a href="https://www.npgsql.org/doc/keepalive.html">keepalive feature</a>; this does a roundtrip with PostgreSQL every e.g. 1 second - including when the connection is idle in the pool - and destroys it if an I/O error occurs. However, depending on timing, you may still get a broken connection out of the pool - unfortunately there&#39;s simply no way around that.</p>
-<h2 id="a-nameunknowntypei-get-an-exception-the-field-field1-has-a-type-currently-unknown-to-npgsql-oid-xxxxx-you-can-retrieve-it-as-a-string-by-marking-it-as-unknowna"><a name="unknown_type">I get an exception &quot;The field field1 has a type currently unknown to Npgsql (OID XXXXX). You can retrieve it as a string by marking it as unknown&quot;.</a></h2>
-<p>Npgsql has to implement support for each PostgreSQL type, and it seems you&#39;ve stumbled upon an unsupported type.</p>
+<p>But the reality is even more grim than that. Even if Npgsql checked whether a connection is live before handing it out of the pool, there's nothing guaranteeing that the connection won't break 1 millisecond after that check - it's a total race condition. So the check wouldn't just degrade performance, it would also be largely useless. The reality of network programming is that I/O errors can occur at any point, and your code must take that into account if it has high reliability requirements. Resilience/retrying systems can help you with this; take a look at <a href="https://github.com/App-vNext/Polly">Polly</a> as an example.</p>
+<p>One thing which Npgsql can do to help a bit, is the <a href="https://www.npgsql.org/doc/keepalive.html">keepalive feature</a>; this does a roundtrip with PostgreSQL every e.g. 1 second - including when the connection is idle in the pool - and destroys it if an I/O error occurs. However, depending on timing, you may still get a broken connection out of the pool - unfortunately there's simply no way around that.</p>
+<h2 id="i-get-an-exception-the-field-field1-has-a-type-currently-unknown-to-npgsql-oid-xxxxx-you-can-retrieve-it-as-a-string-by-marking-it-as-unknown"><a name="unknown_type">I get an exception &quot;The field field1 has a type currently unknown to Npgsql (OID XXXXX). You can retrieve it as a string by marking it as unknown&quot;.</a></h2>
+<p>Npgsql has to implement support for each PostgreSQL type, and it seems you've stumbled upon an unsupported type.</p>
 <p>First, head over to our <a href="https://github.com/npgsql/npgsql/issues">issues page</a> and check if an issue already exists on your type,
 otherwise please open one to let us know.</p>
 <p>Then, as a workaround, you can have your type treated as text - it will be up to you to parse it in your program.
 One simple way to do this is to append ::TEXT in your query (e.g. <code>SELECT 3::TEXT</code>).</p>
-<p>If you don&#39;t want to modify your query, Npgsql also includes an API for requesting types as text.
+<p>If you don't want to modify your query, Npgsql also includes an API for requesting types as text.
 The following code returns all the columns in the resultset as text:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(...)) {
   cmd.AllResultTypesAreUnknown = true;
   var reader = cmd.ExecuteReader();
   // Read everything as strings
 }
-</code></pre><p>You can also specify text only for some columns in your resultset:</p>
+</code></pre>
+<p>You can also specify text only for some columns in your resultset:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(...)) {
   // Only the second field will be fetched as text
   cmd.UnknownResultTypeList = new[] { false, true };
   var reader = cmd.ExecuteReader();
   // Read everything as strings
 }
-</code></pre><h2 id="a-namejsonbim-trying-to-write-a-jsonb-type-and-am-getting-column-xxx-is-of-type-jsonb-but-expression-is-of-type-texta"><a name="jsonb">I&#39;m trying to write a JSONB type and am getting &#39;column &quot;XXX&quot; is of type jsonb but expression is of type text&#39;</a></h2>
+</code></pre>
+<h2 id="im-trying-to-write-a-jsonb-type-and-am-getting-column-xxx-is-of-type-jsonb-but-expression-is-of-type-text"><a name="jsonb">I'm trying to write a JSONB type and am getting 'column &quot;XXX&quot; is of type jsonb but expression is of type text'</a></h2>
 <p>When sending a JSONB parameter, you must explicitly specify its type to be JSONB with NpgsqlDbType:</p>
 <pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO foo (col) VALUES (@p)&quot;, conn)) {
   cmd.Parameters.AddWithValue(&quot;p&quot;, NpgsqlDbType.Jsonb, jsonText);
 }
-</code></pre><h2 id="im-trying-to-apply-an-entity-framework-6-migration-and-i-get-type-is-not-resolved-for-member-npgsqlnpgsqlexceptionnpgsql">I&#39;m trying to apply an Entity Framework 6 migration and I get <code>Type is not resolved for member &#39;Npgsql.NpgsqlException,Npgsql&#39;</code></h2>
-<p>Unfortunately, a shortcoming of EF6 requires you to have Npgsql.dll in the Global Assembly Cache (GAC), otherwise you can&#39;t see
+</code></pre>
+<h2 id="im-trying-to-apply-an-entity-framework-6-migration-and-i-get-type-is-not-resolved-for-member-npgsqlnpgsqlexceptionnpgsql">I'm trying to apply an Entity Framework 6 migration and I get <code>Type is not resolved for member 'Npgsql.NpgsqlException,Npgsql'</code></h2>
+<p>Unfortunately, a shortcoming of EF6 requires you to have Npgsql.dll in the Global Assembly Cache (GAC), otherwise you can't see
 migration-triggered exceptions. You can add Npgsql.dll to the GAC by opening a VS Developer Command Prompt as administator and
 running the command <code>gacutil /i Npgsql.dll</code>. You can remove it from the GAC with <code>gacutil /u Npgsql</code>.</p>
 </article>

@@ -93,7 +93,7 @@
 implement this interface for all those types.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Internal.TypeHandling.html">Npgsql.Internal.TypeHandling</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.Internal.html">Internal</a>.<a class="xref" href="Npgsql.Internal.TypeHandling.html">TypeHandling</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -124,7 +124,7 @@ implement this interface for all those types.</p>
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandling/INpgsqlSimpleTypeHandler.cs/#L21">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Read_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Read*"></a>
-  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, Int32, FieldDescription)</h4>
+  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Read_Npgsql_Internal_NpgsqlReadBuffer_System_Int32_Npgsql_BackendMessages_FieldDescription_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Read(Npgsql.Internal.NpgsqlReadBuffer,System.Int32,Npgsql.BackendMessages.FieldDescription)">Read(NpgsqlReadBuffer, int, FieldDescription?)</h4>
   <div class="markdown level1 summary"><p>Reads a value of type <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> with the given length from the provided buffer,
 with the assumption that it is entirely present in the provided memory buffer and no I/O will be
 required.</p>
@@ -132,7 +132,7 @@ required.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">T Read(NpgsqlReadBuffer buf, int len, FieldDescription fieldDescription = null)</code></pre>
+    <pre><code class="lang-csharp hljs">T Read(NpgsqlReadBuffer buf, int len, FieldDescription? fieldDescription = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -151,7 +151,7 @@ required.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">len</span></td>
         <td><p>The byte length of the value. The buffer might not contain the full length, requiring I/O to be performed.</p>
 </td>
@@ -188,7 +188,7 @@ required.</p>
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandling/INpgsqlSimpleTypeHandler.cs/#L34">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_ValidateAndGetLength_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.ValidateAndGetLength*"></a>
-  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.ValidateAndGetLength(`0,Npgsql.NpgsqlParameter)">ValidateAndGetLength(T, NpgsqlParameter)</h4>
+  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_ValidateAndGetLength__0_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.ValidateAndGetLength(`0,Npgsql.NpgsqlParameter)">ValidateAndGetLength(T, NpgsqlParameter?)</h4>
   <div class="markdown level1 summary"><p>Responsible for validating that a value represents a value of the correct and which can be
 written for PostgreSQL - if the value cannot be written for any reason, an exception should be thrown.
 Also returns the byte length needed to write the value.</p>
@@ -196,7 +196,7 @@ Also returns the byte length needed to write the value.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int ValidateAndGetLength(T value, NpgsqlParameter parameter)</code></pre>
+    <pre><code class="lang-csharp hljs">int ValidateAndGetLength(T value, NpgsqlParameter? parameter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -233,7 +233,7 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><p>The number of bytes required to write the value.</p>
 </td>
       </tr>
@@ -247,14 +247,14 @@ information relevant to the write process (e.g. <a class="xref" href="Npgsql.Npg
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/TypeHandling/INpgsqlSimpleTypeHandler.cs/#L46">View Source</a>
   </span>
   <a id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Write_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Write*"></a>
-  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Write__0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Write(`0,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(T, NpgsqlWriteBuffer, NpgsqlParameter)</h4>
+  <h4 id="Npgsql_Internal_TypeHandling_INpgsqlSimpleTypeHandler_1_Write__0_Npgsql_Internal_NpgsqlWriteBuffer_Npgsql_NpgsqlParameter_" data-uid="Npgsql.Internal.TypeHandling.INpgsqlSimpleTypeHandler`1.Write(`0,Npgsql.Internal.NpgsqlWriteBuffer,Npgsql.NpgsqlParameter)">Write(T, NpgsqlWriteBuffer, NpgsqlParameter?)</h4>
   <div class="markdown level1 summary"><p>Writes a value to the provided buffer, with the assumption that there is enough space in the buffer
 (no I/O will occur). The Npgsql core will have taken care of that.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Write(T value, NpgsqlWriteBuffer buf, NpgsqlParameter parameter)</code></pre>
+    <pre><code class="lang-csharp hljs">void Write(T value, NpgsqlWriteBuffer buf, NpgsqlParameter? parameter)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

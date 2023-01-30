@@ -84,6 +84,7 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
+
 <p>Npgsql has an Entity Framework 6 provider. You can use it by installing the
 <a href="https://www.nuget.org/packages/EntityFramework6.Npgsql/">EntityFramework6.Npgsql</a> nuget.</p>
 <h2 id="basic-configuration">Basic Configuration</h2>
@@ -108,7 +109,8 @@ class NpgSqlConfiguration : DbConfiguration
         SetDefaultConnectionFactory(connectionFactory: new NpgsqlConnectionFactory());
     }
 }
-</code></pre><h3 id="config-file">Config file</h3>
+</code></pre>
+<h3 id="config-file">Config file</h3>
 <p>When installing <code>EntityFramework6.Npgsql</code> nuget package, the relevant sections in <code>App.config</code> / <code>Web.config</code> are usually automatically updated. You typically only have to add your <code>connectionString</code> with the correct <code>providerName</code>.</p>
 <pre><code class="lang-xml">&lt;configuration&gt;
     &lt;connectionStrings&gt;
@@ -127,13 +129,16 @@ class NpgSqlConfiguration : DbConfiguration
         &lt;/DbProviderFactories&gt;
     &lt;/system.data&gt;
 &lt;/configuration&gt;
-</code></pre><h2 id="guid-support">Guid Support</h2>
+</code></pre>
+<h2 id="guid-support">Guid Support</h2>
 <p>Npgsql EF migrations support uses <code>uuid_generate_v4()</code> function to generate guids.
 In order to have access to this function, you have to install the extension uuid-ossp through the following command:</p>
 <pre><code class="lang-sql">create extension &quot;uuid-ossp&quot;;
-</code></pre><p>If you don&#39;t have this extension installed, when you run Npgsql migrations you will get the following error message:</p>
+</code></pre>
+<p>If you don't have this extension installed, when you run Npgsql migrations you will get the following error message:</p>
 <pre><code class="lang-text">ERROR:  function uuid_generate_v4() does not exist
-</code></pre><p>If the database is being created by Npgsql Migrations, you will need to
+</code></pre>
+<p>If the database is being created by Npgsql Migrations, you will need to
 <a href="http://stackoverflow.com/a/11584751">run the <code>create extension</code> command in the <code>template1</code> database</a>.
 This way, when the new database is created, the extension will be installed already.</p>
 <h2 id="optimistic-concurrency">Optimistic Concurrency</h2>
@@ -179,7 +184,8 @@ public class SqlGenerator : NpgsqlMigrationSqlGenerator
         base.Convert(createTableOperation);
     }
 }
-</code></pre><h2 id="template-database">Template Database</h2>
+</code></pre>
+<h2 id="template-database">Template Database</h2>
 <p>When the Entity Framework 6 provider creates a database, it issues a simple <code>CREATE DATABASE</code> command.
 In PostgreSQL, this implicitly uses <code>template1</code> as the template - anything existing in <code>template1</code> will
 be copied to your new database. If you wish to change the database used as a template, you can specify
@@ -239,7 +245,8 @@ class WrappingDbDataReader : DbDataReader, IDataReader
     {
     }
 }
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

@@ -86,7 +86,7 @@
 <h1 id="large-objects">Large Objects</h1>
 
 <p>The Large Objects feature is a way of storing large files in a PostgreSQL database. Files can normally be stored in bytea columns but there are two downsides; a file can only be 1 GB and the backend buffers the whole file when reading or writing a column, which may use significant amounts of RAM on the backend.</p>
-<p>With the Large Objects feature, objects are instead stored in a separate system table in smaller chunks and provides a streaming API for the user. Each object is given an integral identifier that is used for accessing the object, that can, for example, be stored in a user&#39;s table containing information about this object.</p>
+<p>With the Large Objects feature, objects are instead stored in a separate system table in smaller chunks and provides a streaming API for the user. Each object is given an integral identifier that is used for accessing the object, that can, for example, be stored in a user's table containing information about this object.</p>
 <h2 id="example">Example</h2>
 <pre><code class="lang-c#">// Retrieve a Large Object Manager for this connection
 var manager = new NpgsqlLargeObjectManager(Conn);
@@ -112,7 +112,8 @@ using (var transaction = Conn.BeginTransaction())
     // Save the changes to the object
     transaction.Commit();
 }
-</code></pre><h2 id="see-also">See also</h2>
+</code></pre>
+<h2 id="see-also">See also</h2>
 <p>See the <a href="http://www.postgresql.org/docs/current/static/largeobjects.html">PostgreSQL documentation</a> for more information. All functionality are implemented and wrapped in the classes <code>NpgsqlLargeObjectManager</code> and <code>NpgsqlLargeObjectStream</code> using standard .NET Stream as base class.</p>
 </article>
           </div>

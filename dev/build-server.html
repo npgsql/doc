@@ -84,17 +84,19 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
+
 <p>This page describes the steps used to set up the Npgsql build server.</p>
-<p>If you&#39;re upgrading the TeamCity version, see &quot;Give agent service start/stop permissions&quot; below.</p>
+<p>If you're upgrading the TeamCity version, see &quot;Give agent service start/stop permissions&quot; below.</p>
 <h2 id="install-all-supported-versions-of-the-postgresql-backend">Install all supported versions of the Postgresql backend</h2>
 <p>At the time of writing, this means 9.1, 9.2, 9.3, 9.4, 9.5. They are configured on ports 5491, 5492, 5493, 5494, 5495.</p>
 <p>For SSPI/GSS tests, you need to set up a user with the same name as the user that will be running the tests (i.e. teamcity_agent).
-You must also add the following lines at the top of each PG&#39;s pg_hba.conf to set up SSPI/GSS for that user:</p>
+You must also add the following lines at the top of each PG's pg_hba.conf to set up SSPI/GSS for that user:</p>
 <pre><code>host    all             teamcity_agent  127.0.0.1/32            sspi  include_realm=0
 host    all             teamcity_agent  ::1/128                 sspi  include_realm=0
-</code></pre><p>See <a href="https://wiki.postgresql.org/wiki/Configuring_for_single_sign-on_using_SSPI_on_Windows">this page on SSPI</a>.</p>
+</code></pre>
+<p>See <a href="https://wiki.postgresql.org/wiki/Configuring_for_single_sign-on_using_SSPI_on_Windows">this page on SSPI</a>.</p>
 <h2 id="install-a-teamcity-dedicated-postgresql-cluster">Install a TeamCity-dedicated Postgresql cluster</h2>
-<p>TeamCity itself requires an SQL database, but we don&#39;t want it to run in the same environment as that used for the unit tests. So choosing the latest stable Postgresql version (9.6 at time of writing), we create a new Postgresql cluster: <code>initdb -U postgres -W c:\dev\TeamcityPostgresData</code></p>
+<p>TeamCity itself requires an SQL database, but we don't want it to run in the same environment as that used for the unit tests. So choosing the latest stable Postgresql version (9.6 at time of writing), we create a new Postgresql cluster: <code>initdb -U postgres -W c:\dev\TeamcityPostgresData</code></p>
 <p>Next we set up a Windows service that starts up the new cluster: <code>pg_ctl register -N postgresql-9.6-teamcity -U teamcity -P &lt;password&gt; -D c:\dev\TeamcityPostgresData</code></p>
 <p>Finally, create a a user and database and point TeamCity to it.</p>
 <h2 id="install-net-sdks-for-all-supported-net-versions">Install .NET SDKs for all supported .NET versions</h2>
@@ -114,7 +116,7 @@ host    all             teamcity_agent  ::1/128                 sspi  include_re
 <h2 id="update-build-status-back-in-github">Update build status back in github</h2>
 <ul>
 <li>Download the plugin from <a href="https://github.com/jonnyzzz/TeamCity.GitHub">https://github.com/jonnyzzz/TeamCity.GitHub</a>, get the ZIP</li>
-<li>Drop the ZIP in the TeamCity content dir&#39;s plugins subdir</li>
+<li>Drop the ZIP in the TeamCity content dir's plugins subdir</li>
 <li>Add the Build Feature &quot;Report change status to GitHub&quot;. Configure everything appropriately, and be sure the user you set up has push access to the repository!</li>
 </ul>
 <h2 id="install-assorted-dev-utilities">Install assorted dev utilities</h2>
@@ -123,10 +125,10 @@ host    all             teamcity_agent  ::1/128                 sspi  include_re
 <li>WiX toolset (v3.10.1 at time of writing)</li>
 </ul>
 <h2 id="install-wix">Install WiX</h2>
-<p>WiX 3.10 has a dependency on .NET Framework 3.5, but there&#39;s some issue blocking its installation on Windows Server 2012 R2 (at least on Azure).
+<p>WiX 3.10 has a dependency on .NET Framework 3.5, but there's some issue blocking its installation on Windows Server 2012 R2 (at least on Azure).
 A good workaround is to simply install via Powershell (<code>Add-WindowsFeature NET-Framework-Core</code>), see
 <a href="https://msdn.microsoft.com/en-us/library/dn169001(v=nav.70).aspx#InstallNET35">https://msdn.microsoft.com/en-us/library/dn169001(v=nav.70).aspx#InstallNET35</a>.</p>
-<p>Note that ICE validation is disabled because apparently it requires an interactive account or admin privileges, which doesn&#39;t work in continuous integration.</p>
+<p>Note that ICE validation is disabled because apparently it requires an interactive account or admin privileges, which doesn't work in continuous integration.</p>
 </article>
           </div>
 

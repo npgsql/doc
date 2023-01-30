@@ -90,7 +90,7 @@
 <a href="https://www.myget.org/feed/npgsql-vnext/package/nuget/Npgsql.EntityFrameworkCore.PostgreSQL"><img src="https://img.shields.io/myget/npgsql-vnext/vpre/Npgsql.EntityFrameworkCore.PostgreSQL.svg?label=vnext" alt="vnext"></a>
 <a href="https://github.com/npgsql/efcore.pg/actions"><img src="https://img.shields.io/github/actions/workflow/status/npgsql/efcore.pg/build.yml?branch=main" alt="build"></a>
 <a href="https://gitter.im/npgsql/npgsql"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg" alt="gitter"></a></p>
-<p>Npgsql has an Entity Framework (EF) Core provider. It behaves like other EF Core providers (e.g. SQL Server), so the <a href="https://docs.microsoft.com/ef/core/index">general EF Core docs</a> apply here as well. If you&#39;re just getting started with EF Core, those docs are the best place to start.</p>
+<p>Npgsql has an Entity Framework (EF) Core provider. It behaves like other EF Core providers (e.g. SQL Server), so the <a href="https://docs.microsoft.com/ef/core/index">general EF Core docs</a> apply here as well. If you're just getting started with EF Core, those docs are the best place to start.</p>
 <p>Development happens in the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">Npgsql.EntityFrameworkCore.PostgreSQL</a> repository, all issues should be reported there.</p>
 <h2 id="configuring-the-project-file">Configuring the project file</h2>
 <p>To use the Npgsql EF Core provider, add a dependency on <code>Npgsql.EntityFrameworkCore.PostgreSQL</code>. You can follow the instructions in the general <a href="https://docs.microsoft.com/ef/core/get-started/">EF Core Getting Started docs</a>.</p>
@@ -103,7 +103,8 @@
     &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;3.1.3&quot; /&gt;
   &lt;/ItemGroup&gt;
 &lt;/Project&gt;
-</code></pre><h2 id="defining-a-dbcontext">Defining a <code>DbContext</code></h2>
+</code></pre>
+<h2 id="defining-a-dbcontext">Defining a <code>DbContext</code></h2>
 <pre><code class="lang-c#">using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
@@ -136,7 +137,8 @@ namespace ConsoleApp.PostgreSQL
         public Blog Blog { get; set; }
     }
 }
-</code></pre><h2 id="additional-configuration-for-aspnet-core-applications">Additional configuration for ASP.NET Core applications</h2>
+</code></pre>
+<h2 id="additional-configuration-for-aspnet-core-applications">Additional configuration for ASP.NET Core applications</h2>
 <p>Consult <a href="https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro">this tutorial</a> for general information on how to make ASP.NET work with EF Core. For Npgsql specifically, simply place the following in your <code>ConfigureServices</code> method in <code>Startup.cs</code>:</p>
 <pre><code class="lang-c#">public void ConfigureServices(IServiceCollection services)
 {
@@ -145,10 +147,12 @@ namespace ConsoleApp.PostgreSQL
     services.AddDbContext&lt;BloggingContext&gt;(options =&gt;
             options.UseNpgsql(Configuration.GetConnectionString(&quot;BloggingContext&quot;)));
 }
-</code></pre><h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
+</code></pre>
+<h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, use dotnet CLI to execute the following:</p>
 <pre><code class="lang-bash">dotnet ef dbcontext scaffold &quot;Host=my_host;Database=my_db;Username=my_user;Password=my_pw&quot; Npgsql.EntityFrameworkCore.PostgreSQL
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

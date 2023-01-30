@@ -94,7 +94,7 @@ and the types it contains. When first connecting to a database, Npgsql will atte
 about it via this factory.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.Internal.html">Npgsql.Internal</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.Internal.html">Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.dll</h6>
   <h5 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -110,14 +110,14 @@ about it via this factory.</p>
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L21">View Source</a>
   </span>
   <a id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load*"></a>
-  <h4 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector,Npgsql.Util.NpgsqlTimeout,System.Boolean)">Load(NpgsqlConnector, NpgsqlTimeout, Boolean)</h4>
+  <h4 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector,Npgsql.Util.NpgsqlTimeout,System.Boolean)">Load(NpgsqlConnector, NpgsqlTimeout, bool)</h4>
   <div class="markdown level1 summary"><p>Given a connection, loads all necessary information about the connected database, e.g. its types.
 A factory should only handle the exact database type it was meant for, and return null otherwise.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;NpgsqlDatabaseInfo&gt; Load(NpgsqlConnector conn, NpgsqlTimeout timeout, bool async)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;NpgsqlDatabaseInfo?&gt; Load(NpgsqlConnector conn, NpgsqlTimeout timeout, bool async)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,7 +140,7 @@ A factory should only handle the exact database type it was meant for, and retur
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">async</span></td>
         <td></td>
       </tr>
@@ -158,7 +158,7 @@ A factory should only handle the exact database type it was meant for, and retur
       <tr>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>&gt;</td>
         <td><p>An object describing the database to which <code data-dev-comment-type="paramref" class="paramref">conn</code> is connected, or null if the
-database isn&apos;t of the correct type and isn&apos;t handled by this factory.</p>
+database isn't of the correct type and isn't handled by this factory.</p>
 </td>
       </tr>
     </tbody>

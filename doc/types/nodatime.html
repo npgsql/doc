@@ -88,45 +88,55 @@
 <p>Npgsql provides a plugin that allows mapping the <a href="http://nodatime.org">NodaTime</a> date/time library; this is the recommended way to interact with PostgreSQL date/time types, rather than the built-in .NET types.</p>
 <h2 id="what-is-nodatime">What is NodaTime</h2>
 <p>By default, <a href="https://www.postgresql.org/docs/current/static/datatype-datetime.html">the PostgreSQL date/time types</a> are mapped to the built-in .NET types (<code>DateTime</code>, <code>TimeSpan</code>). Unfortunately, these built-in types are flawed in many ways. The <a href="http://nodatime.org/">NodaTime library</a> was created to solve many of these problems, and if your application handles dates and times in anything but the most basic way, you should consider using it. To learn more <a href="http://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">read this blog post by Jon Skeet</a>.</p>
-<p>Beyond NodaTime&#39;s general advantages, some specific advantages NodaTime for PostgreSQL date/time mapping include:</p>
+<p>Beyond NodaTime's general advantages, some specific advantages NodaTime for PostgreSQL date/time mapping include:</p>
 <ul>
-<li>NodaTime&#39;s types map very cleanly to the PostgreSQL types. For example <code>Instant</code> corresponds to <code>timestamptz</code>, and <code>LocalDateTime</code> corresponds to <code>timestamp without time zone</code>. The BCL&#39;s DateTime can correspond to both, depending on its type; this can create confusion and errors.</li>
+<li>NodaTime's types map very cleanly to the PostgreSQL types. For example <code>Instant</code> corresponds to <code>timestamptz</code>, and <code>LocalDateTime</code> corresponds to <code>timestamp without time zone</code>. The BCL's DateTime can correspond to both, depending on its type; this can create confusion and errors.</li>
 <li><code>Period</code> is much more suitable for mapping PostgreSQL <code>interval</code> than <code>TimeSpan</code>.</li>
-<li>NodaTime types can fully represent PostgreSQL&#39;s microsecond precision, and can represent dates outside the BCL&#39;s date limit (1AD-9999AD).</li>
+<li>NodaTime types can fully represent PostgreSQL's microsecond precision, and can represent dates outside the BCL's date limit (1AD-9999AD).</li>
 </ul>
 <h2 id="setup">Setup</h2>
 <p>To avoid forcing a dependency on the NetTopologySuite library for users not using spatial, NodaTime support is delivered as a separate plugin. To use the plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up in one of the following ways:</p>
-<div class="tabGroup" id="tabgroup_nw+tzBUtis">
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_nw+tzBUtis_datasource" role="tab" aria-controls="tabpanel_nw+tzBUtis_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_bHGHmlrG6S_datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_nw+tzBUtis_global" role="tab" aria-controls="tabpanel_nw+tzBUtis_global" data-tab="global" tabindex="-1">Global mapping</a>
+<a href="#tabpanel_bHGHmlrG6S_global" role="tab" aria-controls="tabpanel_bHGHmlrG6S_global" data-tab="global" tabindex="-1">Global mapping</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_nw+tzBUtis_connection" role="tab" aria-controls="tabpanel_nw+tzBUtis_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+<a href="#tabpanel_bHGHmlrG6S_connection" role="tab" aria-controls="tabpanel_bHGHmlrG6S_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
 </li>
 </ul>
-<section id="tabpanel_nw+tzBUtis_datasource" role="tabpanel" data-tab="datasource">
-<div class="NOTE"><h5>Note</h5><p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you&#39;re using an older version, see the other methods.</p>
+<section id="tabpanel_bHGHmlrG6S_datasource" role="tabpanel" data-tab="datasource">
+
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you're using an older version, see the other methods.</p>
 </div>
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
 dataSourceBuilder.UseNodaTime();
 await using var dataSource = dataSourceBuilder.Build();
-</code></pre></section>
-<section id="tabpanel_nw+tzBUtis_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
-<p>If you&#39;re using an older version of Npgsql which doesn&#39;t yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
-</code></pre><p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</code></pre>
 </section>
-<section id="tabpanel_nw+tzBUtis_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
-<div class="NOTE"><h5>Note</h5><p>This mapping method has been removed in Npgsql 7.0.</p>
+<section id="tabpanel_bHGHmlrG6S_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+
+<p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+</code></pre>
+<p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</section>
+<section id="tabpanel_bHGHmlrG6S_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>This mapping method has been removed in Npgsql 7.0.</p>
 </div>
 <p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
 <pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseNodaTime();
-</code></pre></section>
+</code></pre>
+</section>
 </div>
 <h2 id="reading-and-writing-values">Reading and Writing Values</h2>
 <p>Once the plugin is set up, you can transparently read and write NodaTime objects:</p>
@@ -144,8 +154,11 @@ await using (var reader = await cmd.ExecuteReaderAsync())
     await reader.ReadAsync();
     var instant = reader.GetFieldValue&lt;Instant&gt;(0);
 }
-</code></pre><h2 id="mapping-table">Mapping Table</h2>
-<div class="WARNING"><h5>Warning</h5><p>A common mistake is for users to think that the PostgreSQL <code>timestamp with time zone</code> type stores the timezone in the database. This is not the case: only a UTC timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>. To store a timezone in the database, add a separate text column containing the timezone ID.</p>
+</code></pre>
+<h2 id="mapping-table">Mapping Table</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>A common mistake is for users to think that the PostgreSQL <code>timestamp with time zone</code> type stores the timezone in the database. This is not the case: only a UTC timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>. To store a timezone in the database, add a separate text column containing the timezone ID.</p>
 </div>
 <table>
 <thead>
@@ -185,7 +198,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 <td>time with time zone</td>
 <td><a href="https://nodatime.org/3.0.x/api/NodaTime.OffsetTime.html">OffsetTime</a></td>
 <td></td>
-<td>A type that stores a time and an offset. It&#39;s use is generally discouraged.</td>
+<td>A type that stores a time and an offset. It's use is generally discouraged.</td>
 </tr>
 <tr>
 <td>interval</td>
@@ -218,7 +231,8 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 <h2 id="infinity-values">Infinity values</h2>
 <p>PostgreSQL supports the special values <code>-infinity</code> and <code>infinity</code> for the timestamp and date types (<a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES">see docs</a>); these can be useful to represent a value which is earlier or later than any other value. Starting with Npgsql 6.0, these special values are mapped to the <code>MinValue</code> and <code>MaxValue</code> value on the corresponding .NET types (<code>Instant</code> and <code>LocalDate</code>). To opt out of this behavior, set the following AppContext switch at the start of your application:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
-</code></pre><p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
+</code></pre>
+<p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
 </article>
           </div>
 

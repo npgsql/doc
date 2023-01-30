@@ -96,13 +96,13 @@
 <p>When the user requests cancellation (via a cancellation token or <a class="xref" href="../api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Cancel">NpgsqlCommand.Cancel()</a>), or when the <a href="http://www.npgsql.org/doc/connection-string-parameters.html#timeouts-and-keepalive">Command Timeout</a> expires, Npgsql now takes the following steps:</p>
 <ol>
 <li>Contact PostgreSQL and attempt to cancel the running command. If successful, PostgreSQL immediately stops processing the command and is free to do other work. In previous versions, queries were sometimes left running on the server.</li>
-<li>If PostgreSQL cancellation isn&#39;t successful within a short time window, the network is likely down. Npgsql forcibly closes the physical connection and raises an exception, making sure the application isn&#39;t blocked.</li>
+<li>If PostgreSQL cancellation isn't successful within a short time window, the network is likely down. Npgsql forcibly closes the physical connection and raises an exception, making sure the application isn't blocked.</li>
 </ol>
 <p>Previous support was inconsistent across cancellation and timeout, and async I/O was only partially supported.</p>
 <p>Thanks to <a href="https://github.com/vonzshik">@vonzshik</a> for all their valuable work on this!</p>
 <p>Issue: <a href="https://github.com/npgsql/npgsql/issues/3166">#3166</a></p>
 <h3 id="connection-multiplexing">Connection multiplexing</h3>
-<p>Multiplexing is an experimental new way for the driver to handle commands and connections: user code no longer receives an exclusive physical connection from Npgsql&#39;s internal pool, but rather submits commands to be executed on any available connection. This is a much more efficient use of connections, which can lead to:</p>
+<p>Multiplexing is an experimental new way for the driver to handle commands and connections: user code no longer receives an exclusive physical connection from Npgsql's internal pool, but rather submits commands to be executed on any available connection. This is a much more efficient use of connections, which can lead to:</p>
 <ol>
 <li>Significant reduction to the number of required PostgreSQL physical connection requirements, and removing load from the server.</li>
 <li>Continued uptime even when the maximum allowed connection count has been reached.</li>
@@ -115,7 +115,8 @@
 <h3 id="support-for-arrays-of-nullable-value-types">Support for arrays of nullable value types</h3>
 <p>It is now possible to read PostgreSQL arrays as CLR <em>arrays of nullable value types</em>. For example, a PostgreSQL <code>integer[]</code> column can now be read as follows:</p>
 <pre><code class="lang-c#">var array = reader.GetFieldValue&lt;int?&gt;(0);
-</code></pre><p>Previously, only non-nullable value arrays were supported, and nulls were translated to the default value (e.g. 0).</p>
+</code></pre>
+<p>Previously, only non-nullable value arrays were supported, and nulls were translated to the default value (e.g. 0).</p>
 <p>Thanks to <a href="https://github.com/Brar">@Brar</a> for developing this feature.</p>
 <p>Issue: <a href="https://github.com/npgsql/npgsql/issues/443">#443</a></p>
 <h3 id="close-connections-past-a-certain-age">Close connections past a certain age</h3>
@@ -132,7 +133,7 @@
 <li>The <code>NpgsqlTransaction.IsCompleted</code> property has been removed. The application must itself track when a transaction is committed or rolled back.</li>
 <li>Support for unmapped PostgreSQL composite types has been removed (<a href="https://github.com/npgsql/npgsql/issues/2403">#2403</a>).</li>
 <li>The ordering in which Npgsql checks alternative password sources has changed (<a href="https://github.com/npgsql/npgsql/issues/2695">#2695</a>, <a href="https://github.com/npgsql/npgsql/pull/2657">#2657</a>). This only affects applications which omit the password from the connection string.</li>
-<li>If the connection string specifies a PGPASS file, Npgsql now throws if that file doesn&#39;t exist (<a href="https://github.com/npgsql/npgsql/issues/2694">#2694</a>).</li>
+<li>If the connection string specifies a PGPASS file, Npgsql now throws if that file doesn't exist (<a href="https://github.com/npgsql/npgsql/issues/2694">#2694</a>).</li>
 <li>The <em>TcpKeepAliveTime</em> and <em>TcpKeepAliveInterval</em> connection string parameters are now expressed in seconds instead of milliseconds (<a href="https://github.com/npgsql/npgsql/issues/1936">#1936</a>).</li>
 <li>The <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GetSchema">NpgsqlConnection.GetSchema()</a> API now returns all indexes in the database (<a href="https://github.com/npgsql/npgsql/issues/2958">2958</a>). Previously, only indexes in the <code>search_path</code> were returned.</li>
 <li><a class="xref" href="../api/Npgsql.NpgsqlOperationInProgressException.html">NpgsqlOperationInProgressException</a> now inherits from <a class="xref" href="../api/Npgsql.NpgsqlException.html">NpgsqlException</a>.</li>
@@ -143,281 +144,281 @@
 </ul>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 5.0.x. releases.</p>
-<h3 id="milestone-5014httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a5014"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14">Milestone 5.0.14</a></h3>
+<h3 id="milestone-5014"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14">Milestone 5.0.14</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14+is%3Aclosed+assignee%3Avonzshik">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-5011httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a5011"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11">Milestone 5.0.11</a></h3>
+<h3 id="milestone-5011"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11">Milestone 5.0.11</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Avonzshik">4</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/aromaa">@aromaa</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aaromaa">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aaromaa">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/kislovs">@kislovs</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Akislovs">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Akislovs">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aroji">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aroji">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-5010httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a5010"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10">Milestone 5.0.10</a></h3>
+<h3 id="milestone-5010"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10">Milestone 5.0.10</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Avonzshik">11</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Avonzshik">11</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Aroji">5</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Aroji">5</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Brar">@Brar</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3ABrar">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3ABrar">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-507httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a507"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7">Milestone 5.0.7</a></h3>
+<h3 id="milestone-507"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7">Milestone 5.0.7</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Avonzshik">8</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Avonzshik">8</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Aroji">4</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Aroji">4</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Brar">@Brar</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3ABrar">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3ABrar">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/chrisdcmoore">@chrisdcmoore</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-505httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a505"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5">Milestone 5.0.5</a></h3>
+<h3 id="milestone-505"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5">Milestone 5.0.5</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Avonzshik">6</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Avonzshik">6</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Aroji">3</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Aroji">3</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-504httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a504"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4">Milestone 5.0.4</a></h3>
+<h3 id="milestone-504"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4">Milestone 5.0.4</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Avonzshik">5</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Avonzshik">5</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aroji">2</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aroji">2</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Brar">@Brar</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3ABrar">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3ABrar">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/neyromant">@neyromant</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aneyromant">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aneyromant">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-503httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a503"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3">Milestone 5.0.3</a></h3>
+<h3 id="milestone-503"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3">Milestone 5.0.3</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/baal2000">@baal2000</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Abaal2000">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Abaal2000">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Aroji">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Aroji">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Avonzshik">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-502httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a502"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2">Milestone 5.0.2</a></h3>
+<h3 id="milestone-502"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2">Milestone 5.0.2</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Avonzshik">4</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Aroji">2</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Aroji">2</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Brar">@Brar</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3ABrar">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3ABrar">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/cime">@cime</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Acime">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Acime">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-5011httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a5011-1"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1">Milestone 5.0.1.1</a></h3>
+<h3 id="milestone-5011-1"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1">Milestone 5.0.1.1</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Avonzshik">3</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Avonzshik">3</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Aroji">2</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Aroji">2</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
-<td style="text-align:right"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-500httpsgithubcomnpgsqlnpgsqlissuesqis3aissuemilestone3a500"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.0">Milestone 5.0.0</a></h3>
+<h3 id="milestone-500"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.0">Milestone 5.0.0</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Aroji">34</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Aroji">34</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/vonzshik">@vonzshik</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Avonzshik">19</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Avonzshik">19</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AYohDeadfall">16</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AYohDeadfall">16</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Brar">@Brar</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ABrar">7</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ABrar">7</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/warcha">@warcha</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Awarcha">5</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Awarcha">5</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/manandre">@manandre</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Amanandre">2</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Amanandre">2</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/ch-asimakopoulos">@ch-asimakopoulos</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Ach-asimakopoulos">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Ach-asimakopoulos">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/chrisdcmoore">@chrisdcmoore</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/FlorianRainer">@FlorianRainer</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AFlorianRainer">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AFlorianRainer">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/russellfoster">@russellfoster</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Arussellfoster">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Arussellfoster">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/TwentyFourMinutes">@TwentyFourMinutes</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ATwentyFourMinutes">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ATwentyFourMinutes">1</a></td>
 </tr>
 </tbody>
 </table>

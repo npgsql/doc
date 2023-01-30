@@ -94,10 +94,10 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlMigrationsSqlGenerator</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.html">Npgsql.EntityFrameworkCore.PostgreSQL.Migrations</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.html">Migrations</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -175,14 +175,14 @@
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1615">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_ColumnOperation_System_Nullable_IModel__System_String_System_String_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql(ColumnOperation,System.Nullable{IModel},System.String,System.String,System.String)">ApplyTsVectorColumnSql(ColumnOperation, Nullable&lt;IModel&gt;, String, String, String)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_ColumnOperation_System_Nullable_IModel__System_String_System_String_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql(ColumnOperation,System.Nullable{IModel},System.String,System.String,System.String)">ApplyTsVectorColumnSql(ColumnOperation, IModel?, string, string?, string)</h4>
   <div class="markdown level1 summary"><p>Checks for a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Internal.NpgsqlAnnotationNames.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Internal_NpgsqlAnnotationNames_TsVectorConfig">TsVectorConfig</a> annotation on the given column, and if found, assigns
 the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void ApplyTsVectorColumnSql(ColumnOperation column, IModel? model, string name, string schema, string table)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void ApplyTsVectorColumnSql(ColumnOperation column, IModel? model, string name, string? schema, string table)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -200,22 +200,22 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schema</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">table</span></td>
         <td></td>
       </tr>
@@ -239,13 +239,12 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1518">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_System_String_System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition(System.String,System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ColumnDefinition(String, String, String, ColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_System_String_System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition(System.String,System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ColumnDefinition(string?, string, string, ColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void ColumnDefinition(string schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void ColumnDefinition(string? schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -258,17 +257,17 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schema</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">table</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td></td>
       </tr>
@@ -278,7 +277,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -307,13 +306,13 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1765">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_System_String_System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition(System.String,System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ComputedColumnDefinition(String, String, String, ColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_System_String_System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition(System.String,System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ComputedColumnDefinition(string?, string, string, ColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
   <div class="markdown level1 summary"><p>Generates a SQL fragment for a computed column definition for the given column metadata.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void ComputedColumnDefinition(string schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override void ComputedColumnDefinition(string? schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -326,39 +325,39 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schema</span></td>
-        <td><p>The schema that contains the table, or <code>null</code> to use the default schema. </p>
+        <td><p>The schema that contains the table, or <code>null</code> to use the default schema.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">table</span></td>
-        <td><p>The table that contains the column. </p>
+        <td><p>The table that contains the column.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
-        <td><p>The column name. </p>
+        <td><p>The column name.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">ColumnOperation</span></td>
         <td><span class="parametername">operation</span></td>
-        <td><p>The column metadata. </p>
+        <td><p>The column metadata.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
-        <td><p>The target model which may be <code>null</code> if the operations exist without a model. </p>
+        <td><p>The target model which may be <code>null</code> if the operations exist without a model.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">MigrationCommandListBuilder</span></td>
         <td><span class="parametername">builder</span></td>
-        <td><p>The command builder to use to add the SQL fragment. </p>
+        <td><p>The command builder to use to add the SQL fragment.</p>
 </td>
       </tr>
     </tbody>
@@ -381,9 +380,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L353">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AddColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AddColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(AddColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AddColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AddColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(AddColumnOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -405,7 +403,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -415,7 +413,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
         <td></td>
       </tr>
@@ -439,9 +437,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L407">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -463,7 +460,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -492,9 +489,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1039">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -516,7 +512,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -545,9 +541,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L253">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterTableOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterTableOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -569,7 +564,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -598,9 +593,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L861">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateIndexOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateIndexOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -622,7 +616,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -632,7 +626,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
         <td></td>
       </tr>
@@ -656,9 +650,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1493">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(CreateSequenceOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(CreateSequenceOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -680,7 +673,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -709,9 +702,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L157">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateTableOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateTableOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateTableOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateTableOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -733,7 +725,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -743,7 +735,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
         <td></td>
       </tr>
@@ -767,9 +759,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L337">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropColumnOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -791,7 +782,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -801,7 +792,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
         <td></td>
       </tr>
@@ -825,9 +816,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1417">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropIndexOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropIndexOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -849,7 +839,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -859,7 +849,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
         <td></td>
       </tr>
@@ -883,9 +873,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L938">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_EnsureSchemaOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(EnsureSchemaOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(EnsureSchemaOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_EnsureSchemaOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(EnsureSchemaOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(EnsureSchemaOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -907,7 +896,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -936,7 +925,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1462">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_InsertDataOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(InsertDataOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(InsertDataOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder, Boolean)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_InsertDataOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(InsertDataOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(InsertDataOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
   <div class="markdown level1 summary"><p>Builds commands for the given <see cref="!:InsertDataOperation"></see> by making calls on the given
 <see cref="!:MigrationCommandListBuilder"></see>, and then terminates the final command.</p>
 </div>
@@ -958,25 +947,25 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
       <tr>
         <td><span class="xref">InsertDataOperation</span></td>
         <td><span class="parametername">operation</span></td>
-        <td><p>The operation. </p>
+        <td><p>The operation.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
-        <td><p>The target model which may be <code>null</code> if the operations exist without a model. </p>
+        <td><p>The target model which may be <code>null</code> if the operations exist without a model.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">MigrationCommandListBuilder</span></td>
         <td><span class="parametername">builder</span></td>
-        <td><p>The command builder to use to build the commands. </p>
+        <td><p>The command builder to use to build the commands.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">terminate</span></td>
-        <td><p>Indicates whether or not to terminate the command after generating SQL for the operation. </p>
+        <td><p>Indicates whether or not to terminate the command after generating SQL for the operation.</p>
 </td>
       </tr>
     </tbody>
@@ -999,9 +988,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L134">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_MigrationOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(MigrationOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(MigrationOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_MigrationOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(MigrationOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(MigrationOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1023,7 +1011,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1052,9 +1040,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L975">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlCreateDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlCreateDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlCreateDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlCreateDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlCreateDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlCreateDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1076,7 +1063,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1105,9 +1092,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1014">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlDropDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlDropDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlDropDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlDropDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlDropDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlDropDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1129,7 +1115,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1158,9 +1144,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1438">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameColumnOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1182,7 +1167,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1211,9 +1196,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L797">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameIndexOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameIndexOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1235,7 +1219,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1264,9 +1248,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L813">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameSequenceOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameSequenceOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1288,7 +1271,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1317,9 +1300,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L837">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameTableOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameTableOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1341,7 +1323,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1370,9 +1352,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L50">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_System_Collections_Generic_IReadOnlyList_MigrationOperation__System_Nullable_IModel__MigrationsSqlGenerationOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(System.Collections.Generic.IReadOnlyList{MigrationOperation},System.Nullable{IModel},MigrationsSqlGenerationOptions)">Generate(IReadOnlyList&lt;MigrationOperation&gt;, Nullable&lt;IModel&gt;, MigrationsSqlGenerationOptions)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_System_Collections_Generic_IReadOnlyList_MigrationOperation__System_Nullable_IModel__MigrationsSqlGenerationOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(System.Collections.Generic.IReadOnlyList{MigrationOperation},System.Nullable{IModel},MigrationsSqlGenerationOptions)">Generate(IReadOnlyList&lt;MigrationOperation&gt;, IModel?, MigrationsSqlGenerationOptions)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1394,7 +1375,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1438,13 +1419,12 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1294">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_String_System_String_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.String,System.String,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateAddEnumLabel(PostgresEnum, String, String, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_String_System_String_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.String,System.String,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateAddEnumLabel(PostgresEnum, string, string?, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void GenerateAddEnumLabel(PostgresEnum enumType, string addedLabel, string beforeLabel, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateAddEnumLabel(PostgresEnum enumType, string addedLabel, string? beforeLabel, IModel? model, MigrationCommandListBuilder builder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1462,17 +1442,17 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">addedLabel</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">beforeLabel</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1501,9 +1481,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1104">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCollationStatements(AlterDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCollationStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1525,7 +1504,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1554,9 +1533,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1135">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateCollation(PostgresCollation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateCollation(PostgresCollation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1578,7 +1556,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1607,9 +1585,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1253">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateEnum(PostgresEnum, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateEnum(PostgresEnum, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1631,7 +1608,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1660,9 +1637,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1065">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresExtension_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresExtension,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateExtension(PostgresExtension, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresExtension_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresExtension,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateExtension(PostgresExtension, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1684,7 +1660,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1713,9 +1689,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1353">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateRange(PostgresRange, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateRange(PostgresRange, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1737,7 +1712,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1766,9 +1741,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1187">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropCollation(PostgresCollation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropCollation(PostgresCollation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1790,7 +1764,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1819,9 +1793,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1283">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropEnum(PostgresEnum, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropEnum(PostgresEnum, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1843,7 +1816,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1872,9 +1845,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1404">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropRange(PostgresRange, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropRange(PostgresRange, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1896,7 +1868,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1925,9 +1897,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1202">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateEnumStatements(AlterDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateEnumStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1949,7 +1920,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -1978,9 +1949,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1330">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateRangeStatements(AlterDatabaseOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateRangeStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -2002,7 +1972,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -2032,8 +2002,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IdentityDefinition*"></a>
   <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_ColumnOperation_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IdentityDefinition(ColumnOperation,MigrationCommandListBuilder)">IdentityDefinition(ColumnOperation, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -2079,9 +2048,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L918">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">IndexOptions(CreateIndexOperation, Nullable&lt;IModel&gt;, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">IndexOptions(CreateIndexOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -2103,7 +2071,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IModel</span>&gt;</td>
+        <td><span class="xref">IModel</span>?</td>
         <td><span class="parametername">model</span></td>
         <td></td>
       </tr>
@@ -2132,9 +2100,8 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1880">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_System_Nullable_IColumn__MigrationOperation_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes(System.Nullable{IColumn},MigrationOperation,MigrationCommandListBuilder)">RecreateIndexes(Nullable&lt;IColumn&gt;, MigrationOperation, MigrationCommandListBuilder)</h4>
-  <div class="markdown level1 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_System_Nullable_IColumn__MigrationOperation_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes(System.Nullable{IColumn},MigrationOperation,MigrationCommandListBuilder)">RecreateIndexes(IColumn?, MigrationOperation, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -2151,7 +2118,7 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">IColumn</span>&gt;</td>
+        <td><span class="xref">IColumn</span>?</td>
         <td><span class="parametername">column</span></td>
         <td></td>
       </tr>
@@ -2185,13 +2152,13 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1827">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_System_String_System_String_System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename(System.String,System.String,System.String,System.String,MigrationCommandListBuilder)">Rename(String, String, String, String, MigrationCommandListBuilder)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_System_String_System_String_System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename(System.String,System.String,System.String,System.String,MigrationCommandListBuilder)">Rename(string?, string, string, string, MigrationCommandListBuilder)</h4>
   <div class="markdown level1 summary"><p>Renames a database object such as a table, index, or sequence.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Rename(string schema, string name, string newName, string type, MigrationCommandListBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void Rename(string? schema, string name, string newName, string type, MigrationCommandListBuilder builder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2204,25 +2171,25 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schema</span></td>
         <td><p>The current schema of the object to rename.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td><p>The current name of the object to rename.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">newName</span></td>
         <td><p>The new name.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type of the object (e.g. TABLE, INDEX, SEQUENCE).</p>
 </td>
@@ -2253,13 +2220,13 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1857">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_System_String_System_String_System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer(System.String,System.String,System.String,System.String,MigrationCommandListBuilder)">Transfer(String, String, String, String, MigrationCommandListBuilder)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_System_String_System_String_System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer(System.String,System.String,System.String,System.String,MigrationCommandListBuilder)">Transfer(string, string?, string, string, MigrationCommandListBuilder)</h4>
   <div class="markdown level1 summary"><p>Transfers a database object such as a table, index, or sequence between schemas.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Transfer(string newSchema, string schema, string name, string type, MigrationCommandListBuilder builder)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void Transfer(string newSchema, string? schema, string name, string type, MigrationCommandListBuilder builder)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2272,25 +2239,25 @@ the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">newSchema</span></td>
         <td><p>The new schema.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schema</span></td>
         <td><p>The current schema.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">name</span></td>
         <td><p>The name of the object to transfer.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">type</span></td>
         <td><p>The type of the object (e.g. TABLE, INDEX, SEQUENCE).</p>
 </td>

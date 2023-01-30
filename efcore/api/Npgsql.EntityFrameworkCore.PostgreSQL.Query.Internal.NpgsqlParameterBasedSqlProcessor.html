@@ -97,10 +97,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlParameterBasedSqlProcessor</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -116,7 +116,7 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlParameterBasedSqlProcessor.cs/#L17">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor__ctor_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.#ctor(RelationalParameterBasedSqlProcessorDependencies,System.Boolean)">NpgsqlParameterBasedSqlProcessor(RelationalParameterBasedSqlProcessorDependencies, Boolean)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor__ctor_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.#ctor(RelationalParameterBasedSqlProcessorDependencies,System.Boolean)">NpgsqlParameterBasedSqlProcessor(RelationalParameterBasedSqlProcessorDependencies, bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -143,7 +143,7 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">useRelationalNulls</span></td>
         <td></td>
       </tr>
@@ -159,7 +159,7 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlParameterBasedSqlProcessor.cs/#L30">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_Optimize_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.Optimize*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_Optimize_System_Linq_Expressions_Expression_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.Optimize(System.Linq.Expressions.Expression,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Boolean@)">Optimize(Expression, IReadOnlyDictionary&lt;String, Object&gt;, out Boolean)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_Optimize_System_Linq_Expressions_Expression_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.Optimize(System.Linq.Expressions.Expression,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Boolean@)">Optimize(Expression, IReadOnlyDictionary&lt;string, object?&gt;, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -168,7 +168,7 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override Expression Optimize(Expression queryExpression, IReadOnlyDictionary&lt;string, object&gt; parametersValues, out bool canCache)</code></pre>
+    <pre><code class="lang-csharp hljs">public override Expression Optimize(Expression queryExpression, IReadOnlyDictionary&lt;string, object?&gt; parametersValues, out bool canCache)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -186,12 +186,12 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
         <td><span class="parametername">parametersValues</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">canCache</span></td>
         <td></td>
       </tr>
@@ -220,16 +220,12 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlParameterBasedSqlProcessor.cs/#L43">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_ProcessSqlNullability_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.ProcessSqlNullability*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_ProcessSqlNullability_System_Linq_Expressions_Expression_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.ProcessSqlNullability(System.Linq.Expressions.Expression,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Boolean@)">ProcessSqlNullability(Expression, IReadOnlyDictionary&lt;String, Object&gt;, out Boolean)</h4>
-  <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
-the same compatibility standards as public APIs. It may be changed or removed without notice in
-any release. You should only use it directly in your code with extreme caution and knowing that
-doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlParameterBasedSqlProcessor_ProcessSqlNullability_System_Linq_Expressions_Expression_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlParameterBasedSqlProcessor.ProcessSqlNullability(System.Linq.Expressions.Expression,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Boolean@)">ProcessSqlNullability(Expression, IReadOnlyDictionary&lt;string, object?&gt;, out bool)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override Expression ProcessSqlNullability(Expression selectExpression, IReadOnlyDictionary&lt;string, object&gt; parametersValues, out bool canCache)</code></pre>
+    <pre><code class="lang-csharp hljs">protected override Expression ProcessSqlNullability(Expression selectExpression, IReadOnlyDictionary&lt;string, object?&gt; parametersValues, out bool canCache)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -247,12 +243,12 @@ doing so can result in application failures when updating to a new Entity Framew
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2">IReadOnlyDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
         <td><span class="parametername">parametersValues</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">canCache</span></td>
         <td></td>
       </tr>

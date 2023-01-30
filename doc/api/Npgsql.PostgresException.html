@@ -95,7 +95,7 @@ SQL issues, constraint violations).</p>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></div>
     <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.systemexception">SystemException</a></div>
     <div class="level3"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.runtime.interopservices.externalexception">ExternalException</a></div>
@@ -149,19 +149,19 @@ SQL issues, constraint violations).</p>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception.serializeobjectstate">Exception.SerializeObjectState</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">object.GetHashCode()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">object.ReferenceEquals(object, object)</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
@@ -174,7 +174,7 @@ public sealed class PostgresException : NpgsqlException, ISerializable</code></p
   <h5 id="Npgsql_PostgresException_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -189,13 +189,13 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/PostgresException.cs/#L36">View Source</a>
   </span>
   <a id="Npgsql_PostgresException__ctor_" data-uid="Npgsql.PostgresException.#ctor*"></a>
-  <h4 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Npgsql.PostgresException.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">PostgresException(String, String, String, String, String, String, Int32, Int32, String, String, String, String, String, String, String, String, String, String)</h4>
+  <h4 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_" data-uid="Npgsql.PostgresException.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">PostgresException(string, string, string, string, string?, string?, int, int, string?, string?, string?, string?, string?, string?, string?, string?, string?, string?)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PostgresException(string messageText, string severity, string invariantSeverity, string sqlState, string detail = null, string hint = null, int position = 0, int internalPosition = 0, string internalQuery = null, string where = null, string schemaName = null, string tableName = null, string columnName = null, string dataTypeName = null, string constraintName = null, string file = null, string line = null, string routine = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public PostgresException(string messageText, string severity, string invariantSeverity, string sqlState, string? detail = null, string? hint = null, int position = 0, int internalPosition = 0, string? internalQuery = null, string? where = null, string? schemaName = null, string? tableName = null, string? columnName = null, string? dataTypeName = null, string? constraintName = null, string? file = null, string? line = null, string? routine = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -208,92 +208,92 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">messageText</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">severity</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">invariantSeverity</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">sqlState</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">detail</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">hint</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">position</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">internalPosition</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">internalQuery</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">where</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">schemaName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">tableName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">columnName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">dataTypeName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">constraintName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">file</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">line</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">routine</span></td>
         <td></td>
       </tr>
@@ -302,7 +302,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <h5 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String_System_String_System_String_System_Int32_System_Int32_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -315,7 +315,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/PostgresException.cs/#L30">View Source</a>
   </span>
   <a id="Npgsql_PostgresException__ctor_" data-uid="Npgsql.PostgresException.#ctor*"></a>
-  <h4 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String_" data-uid="Npgsql.PostgresException.#ctor(System.String,System.String,System.String,System.String)">PostgresException(String, String, String, String)</h4>
+  <h4 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String_" data-uid="Npgsql.PostgresException.#ctor(System.String,System.String,System.String,System.String)">PostgresException(string, string, string, string)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -334,22 +334,22 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">messageText</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">severity</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">invariantSeverity</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">sqlState</span></td>
         <td></td>
       </tr>
@@ -358,7 +358,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <h5 id="Npgsql_PostgresException__ctor_System_String_System_String_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -392,7 +392,7 @@ public string Code { get; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -417,7 +417,7 @@ See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.ht
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ColumnName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? ColumnName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -429,7 +429,7 @@ See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.ht
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -448,12 +448,12 @@ See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.ht
   <h4 id="Npgsql_PostgresException_ConstraintName" data-uid="Npgsql.PostgresException.ConstraintName">ConstraintName</h4>
   <div class="markdown level1 summary"><p>If the error was associated with a specific constraint, the name of the constraint.
 Refer to fields listed above for the associated table or domain.
-(For this purpose, indexes are treated as constraints, even if they weren&apos;t created with constraint syntax.)</p>
+(For this purpose, indexes are treated as constraints, even if they weren't created with constraint syntax.)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ConstraintName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? ConstraintName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -465,7 +465,7 @@ Refer to fields listed above for the associated table or domain.
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -483,12 +483,12 @@ Refer to fields listed above for the associated table or domain.
   <a id="Npgsql_PostgresException_DataTypeName_" data-uid="Npgsql.PostgresException.DataTypeName*"></a>
   <h4 id="Npgsql_PostgresException_DataTypeName" data-uid="Npgsql.PostgresException.DataTypeName">DataTypeName</h4>
   <div class="markdown level1 summary"><p>If the error was associated with a specific data type, the name of the data type.
-(Refer to the schema name field for the name of the data type&apos;s schema.)</p>
+(Refer to the schema name field for the name of the data type's schema.)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DataTypeName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? DataTypeName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -500,7 +500,7 @@ Refer to fields listed above for the associated table or domain.
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -523,7 +523,7 @@ May run to multiple lines.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Detail { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Detail { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -535,7 +535,7 @@ May run to multiple lines.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -543,7 +543,7 @@ May run to multiple lines.</p>
   <h5 id="Npgsql_PostgresException_Detail_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -562,7 +562,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string File { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? File { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -574,7 +574,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -598,7 +598,7 @@ May run to multiple lines.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Hint { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Hint { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -610,7 +610,7 @@ May run to multiple lines.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -618,7 +618,7 @@ May run to multiple lines.</p>
   <h5 id="Npgsql_PostgresException_Hint_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -651,7 +651,7 @@ The <a class="xref" href="Npgsql.PostgresException.html#Npgsql_PostgresException
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -659,7 +659,7 @@ The <a class="xref" href="Npgsql.PostgresException.html#Npgsql_PostgresException
   <h5 id="Npgsql_PostgresException_InternalPosition_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -679,7 +679,7 @@ This could be, for example, a SQL query issued by a PL/pgSQL function.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string InternalQuery { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? InternalQuery { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -691,7 +691,7 @@ This could be, for example, a SQL query issued by a PL/pgSQL function.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -699,7 +699,7 @@ This could be, for example, a SQL query issued by a PL/pgSQL function.</p>
   <h5 id="Npgsql_PostgresException_InternalQuery_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -731,7 +731,7 @@ Always present since PostgreSQL 9.6.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -739,7 +739,7 @@ Always present since PostgreSQL 9.6.</p>
   <h5 id="Npgsql_PostgresException_InvariantSeverity_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -771,7 +771,7 @@ succeed (e.g. a network error). Check <a class="xref" href="Npgsql.PostgresExcep
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -781,7 +781,7 @@ succeed (e.g. a network error). Check <a class="xref" href="Npgsql.PostgresExcep
   <h5 id="Npgsql_PostgresException_IsTransient_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -800,7 +800,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Line { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Line { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -812,7 +812,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -820,7 +820,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <h5 id="Npgsql_PostgresException_Line_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -851,7 +851,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -887,7 +887,7 @@ The first character has index 1, and positions are measured in characters not by
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -895,7 +895,7 @@ The first character has index 1, and positions are measured in characters not by
   <h5 id="Npgsql_PostgresException_Position_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -914,7 +914,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Routine { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Routine { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -926,7 +926,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -934,7 +934,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <h5 id="Npgsql_PostgresException_Routine_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -953,7 +953,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SchemaName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? SchemaName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -965,7 +965,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1000,7 +1000,7 @@ Always present.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1008,7 +1008,7 @@ Always present.</p>
   <h5 id="Npgsql_PostgresException_Severity_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -1039,7 +1039,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1059,12 +1059,12 @@ See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.ht
   <a id="Npgsql_PostgresException_TableName_" data-uid="Npgsql.PostgresException.TableName*"></a>
   <h4 id="Npgsql_PostgresException_TableName" data-uid="Npgsql.PostgresException.TableName">TableName</h4>
   <div class="markdown level1 summary"><p>Table name: if the error was associated with a specific table, the name of the table.
-(Refer to the schema name field for the name of the table&apos;s schema.)</p>
+(Refer to the schema name field for the name of the table's schema.)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string TableName { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? TableName { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1076,7 +1076,7 @@ See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.ht
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1100,7 +1100,7 @@ The trace is one entry per line, most recent first.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Where { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string? Where { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1112,7 +1112,7 @@ The trace is one entry per line, most recent first.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1120,7 +1120,7 @@ The trace is one entry per line, most recent first.</p>
   <h5 id="Npgsql_PostgresException_Where_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -1172,7 +1172,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   <h5 id="Npgsql_PostgresException_GetObjectData_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>
@@ -1186,9 +1186,7 @@ via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.micros
   </span>
   <a id="Npgsql_PostgresException_ToString_" data-uid="Npgsql.PostgresException.ToString*"></a>
   <h4 id="Npgsql_PostgresException_ToString" data-uid="Npgsql.PostgresException.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>The exception that is thrown when the PostgreSQL backend reports errors (e.g. query
-SQL issues, constraint violations).</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
@@ -1204,7 +1202,7 @@ SQL issues, constraint violations).</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -1214,7 +1212,7 @@ SQL issues, constraint violations).</p>
   <h5 id="Npgsql_PostgresException_ToString_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This exception only corresponds to a PostgreSQL-delivered error.
 Other errors (e.g. network issues) will be raised via <a class="xref" href="Npgsql.NpgsqlException.html">NpgsqlException</a>,
-and purely Npgsql-related issues which aren&apos;t related to the server will be raised
+and purely Npgsql-related issues which aren't related to the server will be raised
 via the standard CLR exceptions (e.g. <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a>).</p>
 <p>See <a href="https://www.postgresql.org/docs/current/static/errcodes-appendix.html">https://www.postgresql.org/docs/current/static/errcodes-appendix.html</a>,
 <a href="https://www.postgresql.org/docs/current/static/protocol-error-fields.html">https://www.postgresql.org/docs/current/static/protocol-error-fields.html</a></p>

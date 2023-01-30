@@ -97,10 +97,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlNetTopologySuiteTypeMappingSourcePlugin</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<span class="xref">Storage</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlNetTopologySuiteTypeMappingSourcePlugin_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -192,7 +192,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.nullable-1">Nullable</a>&lt;<span class="xref">RelationalTypeMapping</span>&gt;</td>
+        <td><span class="xref">RelationalTypeMapping</span>?</td>
         <td></td>
       </tr>
     </tbody>
@@ -205,14 +205,14 @@ doing so can result in application failures when updating to a new Entity Framew
     <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG.NTS/Storage/Internal/NpgsqlNetTopologySuiteTypeMappingSourcePlugin.cs/#L90">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlNetTopologySuiteTypeMappingSourcePlugin_TryParseStoreTypeName_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlNetTopologySuiteTypeMappingSourcePlugin.TryParseStoreTypeName*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlNetTopologySuiteTypeMappingSourcePlugin_TryParseStoreTypeName_System_String_System_String__System_Boolean__System_Type__System_Int32__Ordinates__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlNetTopologySuiteTypeMappingSourcePlugin.TryParseStoreTypeName(System.String,System.String@,System.Boolean@,System.Type@,System.Int32@,Ordinates@)">TryParseStoreTypeName(String, out String, out Boolean, out Type, out Int32, out Ordinates)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlNetTopologySuiteTypeMappingSourcePlugin_TryParseStoreTypeName_System_String_System_String__System_Boolean__System_Type__System_Int32__Ordinates__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlNetTopologySuiteTypeMappingSourcePlugin.TryParseStoreTypeName(System.String,System.String@,System.Boolean@,System.Type@,System.Int32@,Ordinates@)">TryParseStoreTypeName(string, out string, out bool, out Type?, out int, out Ordinates)</h4>
   <div class="markdown level1 summary"><p>Given a PostGIS store type name (e.g. GEOMETRY, GEOGRAPHY(Point, 4326), GEOMETRY(LineStringM, 4326)),
 attempts to parse it and return its components.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool TryParseStoreTypeName(string storeTypeName, out string subtypeName, out bool isGeography, out Type clrType, out int srid, out Ordinates ordinates)</code></pre>
+    <pre><code class="lang-csharp hljs">public static bool TryParseStoreTypeName(string storeTypeName, out string subtypeName, out bool isGeography, out Type? clrType, out int srid, out Ordinates ordinates)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,17 +225,17 @@ attempts to parse it and return its components.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">storeTypeName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">subtypeName</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">isGeography</span></td>
         <td></td>
       </tr>
@@ -245,7 +245,7 @@ attempts to parse it and return its components.</p>
         <td></td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
         <td><span class="parametername">srid</span></td>
         <td></td>
       </tr>
@@ -266,7 +266,7 @@ attempts to parse it and return its components.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td></td>
       </tr>
     </tbody>

@@ -95,7 +95,8 @@
     public string Description { get; set; }
     public NpgsqlTsVector SearchVector { get; set; }
 }
-</code></pre><h2 id="setting-up-and-querying-a-full-text-search-index-on-an-entity">Setting up and querying a full text search index on an entity</h2>
+</code></pre>
+<h2 id="setting-up-and-querying-a-full-text-search-index-on-an-entity">Setting up and querying a full text search index on an entity</h2>
 <p><a href="https://www.postgresql.org/docs/current/static/textsearch-tables.html">As the PostgreSQL documentation explains</a>, full-text search requires an index to run efficiently. This section will show two ways to do this, each having its benefits and drawbacks. Please read the PostgreSQL docs for more information on the two different approaches.</p>
 <h3 id="method-1-tsvector-column">Method 1: tsvector column</h3>
 <p>This method adds a <code>tsvector</code> column to your table, that is automatically updated when the row is modified. First, add an <code>NpgsqlTsVector</code> property to your entity:</p>
@@ -106,18 +107,22 @@
     public string Description { get; set; }
     public NpgsqlTsVector SearchVector { get; set; }
 }
-</code></pre><p>Setting up the column to be auto-updated depends on your PostgreSQL version. On PostgreSQL 12 and above, the column can be a simple <a href="../modeling/generated-properties.html#computed-columns">generated column</a>, and version 5.0.0 contains sugar for setting that up. In previous versions, you must manually set up database triggers that update the column instead.</p>
-<div class="tabGroup" id="tabgroup_bKs3zHtvcW">
+</code></pre>
+<p>Setting up the column to be auto-updated depends on your PostgreSQL version. On PostgreSQL 12 and above, the column can be a simple <a href="../modeling/generated-properties.html#computed-columns">generated column</a>, and version 5.0.0 contains sugar for setting that up. In previous versions, you must manually set up database triggers that update the column instead.</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW_pg12" role="tab" aria-controls="tabpanel_bKs3zHtvcW_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
+<a href="#tabpanel_bHGHmlrG6S_pg12" role="tab" aria-controls="tabpanel_bHGHmlrG6S_pg12" data-tab="pg12" tabindex="0" aria-selected="true">PostgreSQL 12+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW_pg-lt-12" role="tab" aria-controls="tabpanel_bKs3zHtvcW_pg-lt-12" data-tab="pg-lt-12" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bHGHmlrG6S_pg-lt-12" role="tab" aria-controls="tabpanel_bHGHmlrG6S_pg-lt-12" data-tab="pg-lt-12" tabindex="-1">Older Versions</a>
 </li>
 </ul>
-<section id="tabpanel_bKs3zHtvcW_pg12" role="tabpanel" data-tab="pg12">
-<div class="NOTE"><h5>Note</h5><p>The below only works on PostgreSQL 12 and version 5.0.0 of the EF Core provider.</p>
+<section id="tabpanel_bHGHmlrG6S_pg12" role="tabpanel" data-tab="pg12">
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>The below only works on PostgreSQL 12 and version 5.0.0 of the EF Core provider.</p>
 </div>
 <p>The following will set up a generated <code>tsvector</code> column, over which you can easily create an index:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -130,8 +135,10 @@
         .HasIndex(p =&gt; p.SearchVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
-</code></pre></section>
-<section id="tabpanel_bKs3zHtvcW_pg-lt-12" role="tabpanel" data-tab="pg-lt-12" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S_pg-lt-12" role="tabpanel" data-tab="pg-lt-12" aria-hidden="true" hidden="hidden">
+
 <p>First, modify the <code>OnModelCreating()</code> of your context class to add an index as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -139,7 +146,8 @@
         .HasIndex(p =&gt; p.SearchVector)
         .HasMethod(&quot;GIN&quot;); // Index method on the search vector (GIN or GIST)
 }
-</code></pre><p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
+</code></pre>
+<p>Now generate a migration (<code>dotnet ef migrations add ....</code>), and open it with your favorite editor, adding the following:</p>
 <pre><code class="lang-c#">public partial class CreateProductTable : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
@@ -149,7 +157,7 @@
         migrationBuilder.Sql(
             @&quot;CREATE TRIGGER product_search_vector_update BEFORE INSERT OR UPDATE
               ON &quot;&quot;Products&quot;&quot; FOR EACH ROW EXECUTE PROCEDURE
-              tsvector_update_trigger(&quot;&quot;SearchVector&quot;&quot;, &#39;pg_catalog.english&#39;, &quot;&quot;Name&quot;&quot;, &quot;&quot;Description&quot;&quot;);&quot;);
+              tsvector_update_trigger(&quot;&quot;SearchVector&quot;&quot;, 'pg_catalog.english', &quot;&quot;Name&quot;&quot;, &quot;&quot;Description&quot;&quot;);&quot;);
 
         // If you were adding a tsvector to an existing table, you should populate the column using an UPDATE
         // migrationBuilder.Sql(&quot;UPDATE \&quot;Products\&quot; SET \&quot;Name\&quot; = \&quot;Name\&quot;;&quot;);
@@ -161,49 +169,58 @@
         migrationBuilder.Sql(&quot;DROP TRIGGER product_search_vector_update&quot;);
     }
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
+
 <p>Once your auto-updated <code>tsvector</code> column is set up, any inserts or updates on the <code>Products</code> table will now update the <code>SearchVector</code> column and maintain it automatically. You can query it as follows:</p>
 <pre><code class="lang-c#">var context = new ProductDbContext();
 var npgsql = context.Products
     .Where(p =&gt; p.SearchVector.Matches(&quot;Npgsql&quot;))
     .ToList();
-</code></pre><h3 id="method-2-expression-index">Method 2: Expression index</h3>
-<p>Version 5.0.0 of the provider includes sugar for defining the appropriate expression index; if you&#39;re using an older version, you&#39;ll have to define a raw SQL migration yourself.</p>
-<div class="tabGroup" id="tabgroup_bKs3zHtvcW-1">
+</code></pre>
+<h3 id="method-2-expression-index">Method 2: Expression index</h3>
+<p>Version 5.0.0 of the provider includes sugar for defining the appropriate expression index; if you're using an older version, you'll have to define a raw SQL migration yourself.</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW-1_v5" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_v5" data-tab="v5" tabindex="0" aria-selected="true">Version 5.0.0</a>
+<a href="#tabpanel_bHGHmlrG6S-1_v5" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_v5" data-tab="v5" tabindex="0" aria-selected="true">Version 5.0.0</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bKs3zHtvcW-1_lt-v5" role="tab" aria-controls="tabpanel_bKs3zHtvcW-1_lt-v5" data-tab="lt-v5" tabindex="-1">Older Versions</a>
+<a href="#tabpanel_bHGHmlrG6S-1_lt-v5" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_lt-v5" data-tab="lt-v5" tabindex="-1">Older Versions</a>
 </li>
 </ul>
-<section id="tabpanel_bKs3zHtvcW-1_v5" role="tabpanel" data-tab="v5">
+<section id="tabpanel_bHGHmlrG6S-1_v5" role="tabpanel" data-tab="v5">
+
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;()
     .HasIndex(b =&gt; new { b.Title, b.Description })
     .HasMethod(&quot;GIN&quot;)
     .IsTsVectorExpressionIndex(&quot;english&quot;);
-</code></pre></section>
-<section id="tabpanel_bKs3zHtvcW-1_lt-v5" role="tabpanel" data-tab="lt-v5" aria-hidden="true" hidden="hidden">
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S-1_lt-v5" role="tabpanel" data-tab="lt-v5" aria-hidden="true" hidden="hidden">
+
 <p>Create a migration which will contain the index creation SQL (<code>dotnet ef migrations add ...</code>). At this point, open the generated migration with your editor and add the following:</p>
 <pre><code class="lang-c#">protected override void Up(MigrationBuilder migrationBuilder)
 {
-    migrationBuilder.Sql(@&quot;CREATE INDEX fts_idx ON &quot;&quot;Product&quot;&quot; USING GIN (to_tsvector(&#39;english&#39;, &quot;&quot;Name&quot;&quot; || &#39; &#39; || &quot;&quot;Description&quot;&quot;));&quot;);
+    migrationBuilder.Sql(@&quot;CREATE INDEX fts_idx ON &quot;&quot;Product&quot;&quot; USING GIN (to_tsvector('english', &quot;&quot;Name&quot;&quot; || ' ' || &quot;&quot;Description&quot;&quot;));&quot;);
 }
 
 protected override void Down(MigrationBuilder migrationBuilder)
     migrationBuilder.Sql(@&quot;DROP INDEX fts_idx;&quot;);
 }
-</code></pre></section>
+</code></pre>
+</section>
 </div>
+
 <p>Once the index is created on the <code>Title</code> and <code>Description</code> columns, you can query as follows:</p>
 <pre><code class="lang-c#">var context = new ProductDbContext();
 var npgsql = context.Products
     .Where(p =&gt; EF.Functions.ToTsVector(&quot;english&quot;, p.Title + &quot; &quot; + p.Description)
         .Matches(&quot;Npgsql&quot;))
     .ToList();
-</code></pre><h2 id="computed-column-over-json-columns">Computed column over JSON columns</h2>
+</code></pre>
+<h2 id="computed-column-over-json-columns">Computed column over JSON columns</h2>
 <p>Starting with 7.0, the provider can also create computed <code>tsvector</code> columns over JSON columns. Simply use <code>HasGeneratedTsVectorColumn()</code> as shown above, and when applied to JSON columns, the provider will automatically generate <a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE"><code>json_to_tsvector/jsonb_to_tsvector</code></a> as appropriate.</p>
 <p>Note that this will pass the filter <code>all</code> to these functions, meaning that all values in the JSON document will be included. To customize the filter - or to create the computed column on older versions of the provider - simply specify the function yourself via <a href="https://docs.microsoft.com/ef/core/modeling/generated-properties?tabs=data-annotations#computed-columns"><code>HasComputedColumnSql</code></a>.</p>
 <h2 id="operation-translation">Operation translation</h2>
@@ -222,7 +239,7 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>EF.Functions.ToTsVector(&quot;english&quot;, string)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">to_tsvector(&#39;english&#39;::regconfig, string)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-DOCUMENTS">to_tsvector('english'::regconfig, string)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.ToTsQuery(string))</td>
@@ -230,7 +247,7 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>EF.Functions.ToTsQuery(&quot;english&quot;, string )</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">to_tsquery('english'::regconfig, string)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.PlainToTsQuery(string)</td>
@@ -238,7 +255,7 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>EF.Functions.PlainToTsQuery(&quot;english&quot;, string)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">plainto_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">plainto_tsquery('english'::regconfig, string)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.PhraseToTsQuery(string)</td>
@@ -246,7 +263,7 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>EF.Functions.PhraseToTsQuery(&quot;english&quot;, string)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">phraseto_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">phraseto_tsquery('english'::regconfig, string)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.WebSearchToTsQuery(string)</td>
@@ -254,11 +271,11 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>EF.Functions.WebSearchToTsQuery(&quot;english&quot;, string)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">websearch_to_tsquery(&#39;english&#39;::regconfig, string)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-PARSING-QUERIES">websearch_to_tsquery('english'::regconfig, string)</a></td>
 </tr>
 <tr>
 <td>EF.functions.ArrayToTsVector(new[] { &quot;a&quot;, &quot;b&quot; })</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">array_to_tsvector(ARRAY[&#39;a&#39;, &#39;b&#39;])</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">array_to_tsvector(ARRAY['a', 'b'])</a></td>
 </tr>
 <tr>
 <td>NpgsqlTsVector.Parse(string)</td>
@@ -306,11 +323,11 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>tsquery.GetResultHeadline(&quot;a b c&quot;)</td>
-<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline(&#39;a b c&#39;, query)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline('a b c', query)</a></td>
 </tr>
 <tr>
 <td>tsquery.GetResultHeadline(&quot;a b c&quot;, &quot;MinWords=1, MaxWords=2&quot;)</td>
-<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline(&#39;a b c&#39;, query, &#39;MinWords=1, MaxWords=2&#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-HEADLINE">ts_headline('a b c', query, 'MinWords=1, MaxWords=2')</a></td>
 </tr>
 <tr>
 <td>tsquery.Rewrite(targetQuery, substituteQuery)</td>
@@ -330,15 +347,15 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>tsvector.Delete(&quot;x&quot;)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, &#39;x&#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, 'x')</a></td>
 </tr>
 <tr>
 <td>tsvector.Delete(new[] { &quot;x&quot;, &quot;y&quot; })</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, ARRAY[&#39;x&#39;, &#39;y&#39;])</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_delete(tsvector, ARRAY['x', 'y'])</a></td>
 </tr>
 <tr>
 <td>tsvector.Filter(new[] { &quot;x&quot;, &quot;y&quot; })</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_filter(tsvector, ARRAY[&#39;x&#39;, &#39;y&#39;])</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-textsearch.html#TEXTSEARCH-FUNCTIONS-TABLE">ts_filter(tsvector, ARRAY['x', 'y'])</a></td>
 </tr>
 <tr>
 <td>tsvector.GetLength()</td>
@@ -354,7 +371,7 @@ var npgsql = context.Products
 </tr>
 <tr>
 <td>tsvector.SetWeight(NpgsqlTsVector.Lexeme.Weight.A)</td>
-<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">setweight(tsvector, &#39;A&#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">setweight(tsvector, 'A')</a></td>
 </tr>
 <tr>
 <td>tsvector.ToStripped()</td>

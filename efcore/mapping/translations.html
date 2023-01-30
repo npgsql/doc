@@ -85,7 +85,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="translations">Translations</h1>
 
-<p>Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations</a>, and the Npgsql EF Core provider automatically translates .NET&#39;s <a href="https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regex.ismatch"><code>Regex.IsMatch</code></a> to use this feature. Since evaluation happens at the server, table data doesn&#39;t need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up. The same C# code on other providers will trigger client evaluation.</p>
+<p>Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations</a>, and the Npgsql EF Core provider automatically translates .NET's <a href="https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regex.ismatch"><code>Regex.IsMatch</code></a> to use this feature. Since evaluation happens at the server, table data doesn't need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up. The same C# code on other providers will trigger client evaluation.</p>
 <p>The Npgsql-specific translations are listed below. Some areas, such as <a href="full-text-search.html">full-text search</a>, have their own pages in this section which list additional translations.</p>
 <h2 id="string-functions">String functions</h2>
 <table>
@@ -134,12 +134,12 @@
 </tr>
 <tr>
 <td>string.IsNullOrEmpty(value)</td>
-<td>value IS NULL OR value = &#39;&#39;</td>
+<td>value IS NULL OR value = ''</td>
 <td></td>
 </tr>
 <tr>
 <td>string.IsNullOrWhiteSpace(value)</td>
-<td>value IS NULL OR btrim(value, E&#39; \t\n\r&#39;) = &#39;&#39;</td>
+<td>value IS NULL OR btrim(value, E' \t\n\r') = ''</td>
 <td></td>
 </tr>
 <tr>
@@ -154,7 +154,7 @@
 </tr>
 <tr>
 <td>stringValue.EndsWith(value)</td>
-<td>stringValue LIKE &#39;%&#39; || value</td>
+<td>stringValue LIKE '%' || value</td>
 <td></td>
 </tr>
 <tr>
@@ -204,7 +204,7 @@
 </tr>
 <tr>
 <td>stringValue.StartsWith(value)</td>
-<td>stringValue LIKE value || &#39;%&#39;</td>
+<td>stringValue LIKE value || '%'</td>
 <td></td>
 </tr>
 <tr>
@@ -259,35 +259,37 @@
 </tr>
 <tr>
 <td>Regex.IsMatch(stringValue, &quot;^A+&quot;)</td>
-<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ &#39;^A+&#39;</a> (with options)</td>
+<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ '^A+'</a> (with options)</td>
 <td></td>
 </tr>
 <tr>
 <td>Regex.IsMatch(stringValue, &quot;^A+&quot;, regexOptions)</td>
-<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ &#39;^A+&#39;</a> (with options)</td>
+<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ '^A+'</a> (with options)</td>
 <td></td>
 </tr>
 <tr>
 <td>string.Join(&quot;, &quot;, a, b)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER">concat_ws(&#39;, &#39;, a, b)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER">concat_ws(', ', a, b)</a></td>
 <td>Added in 7.0 (previously array_to_string)</td>
 </tr>
 <tr>
 <td>string.Join(&quot;, &quot;, array)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, &#39;, &#39;, &#39;&#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, ', ', '')</a></td>
 <td></td>
 </tr>
 <tr>
 <td>string.Join(&quot;, &quot;, agg_strings)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(agg_strings, &#39;, &#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(agg_strings, ', ')</a></td>
 <td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="date-and-time-functions">Date and time functions</h2>
-<div class="NOTE"><h5>Note</h5><p>Some of the operations below depend on the concept of a &quot;local time zone&quot; (e.g. <code>DateTime.Today</code>). While in .NET this is the machine time zone where .NET is running, the corresponding PostgreSQL translations use the <a href="https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-TIMEZONE"><code>TimeZone</code></a> connection parameter as the local time zone.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Some of the operations below depend on the concept of a &quot;local time zone&quot; (e.g. <code>DateTime.Today</code>). While in .NET this is the machine time zone where .NET is running, the corresponding PostgreSQL translations use the <a href="https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-TIMEZONE"><code>TimeZone</code></a> connection parameter as the local time zone.</p>
 <p>Since version 6.0, many of the below DateTime translations are also supported on DateTimeOffset.</p>
-<p>See also Npgsql&#39;s <a href="/efcore/mapping/nodatime.html">NodaTime support</a>, which is a better and safer way of interacting with date/time data.</p>
+<p>See also Npgsql's <a href="/efcore/mapping/nodatime.html">NodaTime support</a>, which is a better and safer way of interacting with date/time data.</p>
 </div>
 <table>
 <thead>
@@ -310,12 +312,12 @@
 </tr>
 <tr>
 <td>DateTime.Today (6.0+)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, now()::timestamp)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', now()::timestamp)</a></td>
 <td>See 6.0 release notes</td>
 </tr>
 <tr>
 <td>DateTime.UtcNow (legacy)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now() AT TIME ZONE &#39;UTC&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now() AT TIME ZONE 'UTC'</a></td>
 <td>See 6.0 release notes</td>
 </tr>
 <tr>
@@ -325,82 +327,82 @@
 </tr>
 <tr>
 <td>DateTime.Today (legacy)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, now())</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', now())</a></td>
 <td>See 6.0 release notes</td>
 </tr>
 <tr>
 <td>dateTime.AddDays(1)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 days&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 days'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.AddHours(value)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 hours&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 hours'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.AddMinutes(1)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 minutes&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 minutes'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.AddMonths(1)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 months&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 months'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.AddSeconds(1)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 seconds&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 seconds'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.AddYears(1)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL &#39;1 years&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 years'</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Date</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc(&#39;day&#39;, dateTime)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', dateTime)</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Day</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;day&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('day', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.DayOfWeek</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;dow&#39;, dateTime))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('dow', dateTime))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.DayOfYear</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;doy&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('doy', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Hour</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;hour&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('hour', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Minute</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;minute&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('minute', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Month</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;month&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('month', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Second</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;second&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('second', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>dateTime.Year</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;year&#39;, dateTime)::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('year', dateTime)::INT</a></td>
 <td></td>
 </tr>
 <tr>
@@ -415,7 +417,7 @@
 </tr>
 <tr>
 <td>dateTimeOffset.DateTime</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">dateTimeOffset AT TIME ZONE &#39;UTC&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">dateTimeOffset AT TIME ZONE 'UTC'</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
@@ -430,57 +432,57 @@
 </tr>
 <tr>
 <td>timeSpan.Days</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;day&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('day', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.Hours</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;hour&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('hour', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.Minutes</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;minute&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('minute', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.Seconds</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;second&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('second', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.Milliseconds</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;millisecond&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('millisecond', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.Milliseconds</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part(&#39;millisecond&#39;, timeSpan))::INT</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('millisecond', timeSpan))::INT</a></td>
 <td></td>
 </tr>
 <tr>
 <td>timeSpan.TotalMilliseconds</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 0.001</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 0.001</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
 <td>timeSpan.TotalSeconds</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval)</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
 <td>timeSpan.TotalMinutes</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 60.0</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 60.0</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
 <td>timeSpan.TotalDays</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 86400.0</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 86400.0</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
 <td>timeSpan.TotalHours</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part(&#39;epoch&#39;, interval) / 3600.0</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 3600.0</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
@@ -500,12 +502,12 @@
 </tr>
 <tr>
 <td>DateTime.SpecifyKind(utcDateTime, DateTimeKind.Unspecified)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">utcDateTime AT TIME ZONE &#39;UTC&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">utcDateTime AT TIME ZONE 'UTC'</a></td>
 <td>Added in 6.0, only for timestamptz columns</td>
 </tr>
 <tr>
 <td>DateTime.SpecifyKind(nonUtcDateTime, DateTimeKind.Utc)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">nonUtcDateTime AT TIME ZONE &#39;UTC&#39;</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">nonUtcDateTime AT TIME ZONE 'UTC'</a></td>
 <td>Added in 6.0, only for timestamp columns</td>
 </tr>
 <tr>
@@ -723,7 +725,9 @@
 <p>See also <a href="#aggregate-functions">Aggregate statistics functions</a>.</p>
 <h2 id="row-value-comparisons">Row value comparisons</h2>
 <p>The following allow expressing <a href="https://www.postgresql.org/docs/current/functions-comparisons.html#ROW-WISE-COMPARISON">comparisons over SQL row values</a>. This are particularly useful for implementing efficient pagination, see <a href="https://docs.microsoft.com/ef/core/querying/pagination">the EF Core docs</a> for more information.</p>
-<div class="NOTE"><h5>Note</h5><p>All of the below were introduced in version 7.0 of the provider.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All of the below were introduced in version 7.0 of the provider.</p>
 </div>
 <table>
 <thead>
@@ -896,7 +900,9 @@
 </table>
 <h2 id="trigram-functions">Trigram functions</h2>
 <p>The below translations provide functionality for determining the similarity of alphanumeric text based on trigram matching, using the <a href="https://www.postgresql.org/docs/current/pgtrgm.html"><code>pg_trgm</code></a> extension which is bundled with standard PostgreSQL distributions. All the below parameters are strings.</p>
-<div class="NOTE"><h5>Note</h5><p>Prior to version 6.0, to use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call <code>UseTrigrams()</code> in your <code>OnModelConfiguring</code>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Prior to version 6.0, to use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call <code>UseTrigrams()</code> in your <code>OnModelConfiguring</code>.</p>
 </div>
 <table>
 <thead>
@@ -966,7 +972,9 @@
 </table>
 <h2 id="ltree-functions">LTree functions</h2>
 <p>The below translations are for working with label trees from the PostgreSQL <a href="https://www.postgresql.org/docs/current/ltree.html"><code>ltree</code></a> extension. Use the <a class="xref" href="../api/Microsoft.EntityFrameworkCore.LTree.html">LTree</a> type to represent ltree and invoke methods on it in EF Core LINQ queries.</p>
-<div class="NOTE"><h5>Note</h5><p>LTree support was introduced in version 6.0 of the provider, and requires PostgreSQL 13 or later.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>LTree support was introduced in version 6.0 of the provider, and requires PostgreSQL 13 or later.</p>
 </div>
 <table>
 <thead>
@@ -982,7 +990,7 @@
 </tr>
 <tr>
 <td>ltree1.IsDescendantOf(ltree2)</td>
-<td>ltree1 &amp;lt;@ ltree2</td>
+<td>ltree1 &lt;@ ltree2</td>
 </tr>
 <tr>
 <td>ltree.MatchesLQuery(lquery)</td>
@@ -1002,7 +1010,7 @@
 </tr>
 <tr>
 <td>ltrees.Any(t =&gt; t.IsDescendantOf(ltree))</td>
-<td>ltrees &amp;lt;@ ltree</td>
+<td>ltrees &lt;@ ltree</td>
 </tr>
 <tr>
 <td>ltrees.Any(t =&gt; t.MatchesLQuery(lquery))</td>
@@ -1022,7 +1030,7 @@
 </tr>
 <tr>
 <td>ltrees.FirstOrDefault(l =&gt; l.IsDescendantOf(ltree))</td>
-<td>ltrees ?&amp;lt;@ ltree</td>
+<td>ltrees ?&lt;@ ltree</td>
 </tr>
 <tr>
 <td>ltrees.FirstOrDefault(l =&gt; l.MatchesLQuery(lquery))</td>
@@ -1064,7 +1072,9 @@
 </table>
 <h2 id="aggregate-functions">Aggregate functions</h2>
 <p>The PostgreSQL aggregate functions are documented <a href="https://www.postgresql.org/docs/current/functions-aggregate.html">here</a>.</p>
-<div class="NOTE"><h5>Note</h5><p>All the below aggregate functions were added in version 7.0.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All the below aggregate functions were added in version 7.0.</p>
 </div>
 <table>
 <thead>
@@ -1076,7 +1086,7 @@
 <tbody>
 <tr>
 <td>string.Join(&quot;, &quot;, agg_strings)</td>
-<td>string_agg(agg_strings, &#39;, &#39;)</td>
+<td>string_agg(agg_strings, ', ')</td>
 </tr>
 <tr>
 <td>EF.Functions.ArrayAgg(values)</td>
@@ -1193,7 +1203,8 @@
             City = g.Key,
             Companies = EF.Functions.ArrayAgg(g.Select(c =&gt; c.ContactName))
         });
-</code></pre><p>To use functions accepting a tuple_of_2, project out from the group as follows:</p>
+</code></pre>
+<p>To use functions accepting a tuple_of_2, project out from the group as follows:</p>
 <pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
     .GroupBy(c =&gt; c.City)
     .Select(
@@ -1202,7 +1213,8 @@
             City = g.Key,
             Companies = EF.Functions.JsonObjectAgg(g.Select(c =&gt; ValueTuple.Create(c.CompanyName, c.ContactName)))
         });
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

@@ -85,8 +85,10 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="array-type-mapping">Array Type Mapping</h1>
 
-<p>PostgreSQL has the unique feature of supporting <a href="https://www.postgresql.org/docs/current/static/arrays.html"><em>array data types</em></a>. This allow you to conveniently and efficiently store several values in a single column, where in other database you&#39;d typically resort to concatenating the values in a string or defining another table with a one-to-many relationship.</p>
-<div class="NOTE"><h5>Note</h5><p>Although PostgreSQL supports multidimensional arrays, these aren&#39;t yet supported by the EF Core provider.</p>
+<p>PostgreSQL has the unique feature of supporting <a href="https://www.postgresql.org/docs/current/static/arrays.html"><em>array data types</em></a>. This allow you to conveniently and efficiently store several values in a single column, where in other database you'd typically resort to concatenating the values in a string or defining another table with a one-to-many relationship.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Although PostgreSQL supports multidimensional arrays, these aren't yet supported by the EF Core provider.</p>
 </div>
 <h2 id="mapping-arrays">Mapping arrays</h2>
 <p>Simply define a regular .NET array or <code>List&lt;&gt;</code> property:</p>
@@ -97,7 +99,8 @@
     public string[] Tags { get; set; }
     public List&lt;string&gt; AlternativeTags { get; set; }
 }
-</code></pre><p>The provider will create <code>text[]</code> columns for the above two properties, and will properly detect changes in them - if you load an array and change one of its elements, calling <code>SaveChanges</code> will automatically update the row in the database accordingly.</p>
+</code></pre>
+<p>The provider will create <code>text[]</code> columns for the above two properties, and will properly detect changes in them - if you load an array and change one of its elements, calling <code>SaveChanges</code> will automatically update the row in the database accordingly.</p>
 <h2 id="operation-translation">Operation translation</h2>
 <p>The provider can also translate CLR array operations to the corresponding SQL operation; this allows you to efficiently work with arrays by evaluating operations in the database and avoids pulling all the data. The following table lists the range operations that currently get translated; all these translations work both for .NET arrays (<code>int[]</code>) and for generic Lists (<code>List&lt;int&gt;</code>). If you run into a missing operation, please open an issue.</p>
 <table>
@@ -161,7 +164,7 @@
 </tr>
 <tr>
 <td>String.Join(separator, array)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, separator, &#39;&#39;)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, separator, '')</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>

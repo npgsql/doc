@@ -85,11 +85,15 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="date-and-time-handling">Date and Time Handling</h1>
 
-<div class="WARNING"><h5>Warning</h5><p>Npgsql 6.0 introduced some important changes to how timestamps are mapped, <a href="../release-notes/6.0.html">see the release notes for more information</a>.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Npgsql 6.0 introduced some important changes to how timestamps are mapped, <a href="../release-notes/6.0.html">see the release notes for more information</a>.</p>
 </div>
-<div class="NOTE"><h5>Note</h5><p>The recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>: the NodaTime types are much better-designed, avoid the flaws in the built-in BCL types, and are fully supported by Npgsql.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>: the NodaTime types are much better-designed, avoid the flaws in the built-in BCL types, and are fully supported by Npgsql.</p>
 </div>
-<p>Handling date and time values usually isn&#39;t hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates. It&#39;s worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize yourself with PostgreSQL&#39;s types.</p>
+<p>Handling date and time values usually isn't hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates. It's worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize yourself with PostgreSQL's types.</p>
 <h2 id="net-types-and-postgresql-types">.NET types and PostgreSQL types</h2>
 <p>The .NET and PostgreSQL types differ in the resolution and range they provide; the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:</p>
 <table>
@@ -140,17 +144,21 @@
 </tr>
 </tbody>
 </table>
-<p>For almost all applications, the range of the .NET native types (or the NodaTime types) are more than sufficient. In the rare cases where you need to access values outside these ranges, timestamps can be accessed as <code>long</code>, dates as <code>int</code>, and intervals as <code>NpgsqlInterval</code>. These are the raw PostgreSQL binary representations of these type, so you&#39;ll have to deal with encoding/decoding yourself.</p>
+<p>For almost all applications, the range of the .NET native types (or the NodaTime types) are more than sufficient. In the rare cases where you need to access values outside these ranges, timestamps can be accessed as <code>long</code>, dates as <code>int</code>, and intervals as <code>NpgsqlInterval</code>. These are the raw PostgreSQL binary representations of these type, so you'll have to deal with encoding/decoding yourself.</p>
 <h2 id="timestamps-and-timezones">Timestamps and timezones</h2>
-<div class="WARNING"><h5>Warning</h5><p>A common mistake is for users to think that the PostgreSQL <code>timestamp with time zone</code> type stores the timezone in the database. This is not the case: only a UTC timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>. To store a timezone in the database, add a separate text column containing the timezone ID.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>A common mistake is for users to think that the PostgreSQL <code>timestamp with time zone</code> type stores the timezone in the database. This is not the case: only a UTC timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>. To store a timezone in the database, add a separate text column containing the timezone ID.</p>
 </div>
 <p>In PostgreSQL, <code>timestamp with time zone</code> represents a UTC timestamp, while <code>timestamp without time zone</code> represents a local or unspecified time zone. Starting with 6.0, Npgsql maps UTC DateTime to <code>timestamp with time zone</code>, and Local/Unspecified DateTime to <code>timestamp without time zone</code>; trying to send a non-UTC DateTime as <code>timestamptz</code> will throw an exception, etc. Npgsql also supports reading and writing DateTimeOffset to <code>timestamp with time zone</code>, but only with Offset=0. Prior to 6.0, <code>timestamp with time zone</code> would be converted to a local timestamp when read - see below for more details. The precise improvements and breaking changes are detailed in the <a href="../release-notes/6.0.html#timestamp-rationalization-and-improvements">6.0 breaking changes</a>; to revert to the pre-6.0 behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
-</code></pre><p>Use of the <code>time with time zone</code> type is discouraged, <a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-TIMEZONES">see the PostgreSQL documentation</a>. You can use a <code>DateTimeOffset</code> to read and write values - the date component will be ignored.</p>
+</code></pre>
+<p>Use of the <code>time with time zone</code> type is discouraged, <a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-TIMEZONES">see the PostgreSQL documentation</a>. You can use a <code>DateTimeOffset</code> to read and write values - the date component will be ignored.</p>
 <h2 id="infinity-values">Infinity values</h2>
 <p>PostgreSQL supports the special values <code>-infinity</code> and <code>infinity</code> for the timestamp and date types (<a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES">see docs</a>); these can be useful to represent a value which is earlier or later than any other value. Starting with Npgsql 6.0, these special values are mapped to the <code>MinValue</code> and <code>MaxValue</code> value on the corresponding .NET types (<code>DateTime</code> and <code>DateOnly</code>, NodaTime <code>Instant</code> and <code>LocalDate</code>). To opt out of this behavior, set the following AppContext switch at the start of your application:</p>
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
-</code></pre><p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
+</code></pre>
+<p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
 <h2 id="detailed-behavior-reading-values-from-the-database">Detailed Behavior: Reading values from the database</h2>
 <table>
 <thead>
@@ -195,7 +203,7 @@
 </table>
 <p><sup>1</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> returns a Local DateTime instead of Utc. <a href="../release-notes/6.0.html#major-changes-to-timestamp-mapping">See the breaking change note for more info</a>.</p>
 <p><sup>2</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> as a DateTimeOffset returns a local offset based on the timezone of the server where Npgsql is running.</p>
-<p><sup>3</sup> PostgreSQL intervals with month or year components cannot be read as TimeSpan. Consider using NodaTime&#39;s <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, or <a class="xref" href="../api/NpgsqlTypes.NpgsqlInterval.html">NpgsqlInterval</a>.</p>
+<p><sup>3</sup> PostgreSQL intervals with month or year components cannot be read as TimeSpan. Consider using NodaTime's <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, or <a class="xref" href="../api/NpgsqlTypes.NpgsqlInterval.html">NpgsqlInterval</a>.</p>
 <h2 id="detailed-behavior-sending-values-to-the-database">Detailed Behavior: Sending values to the database</h2>
 <table>
 <thead>

@@ -85,45 +85,57 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="postgisnettopologysuite-type-plugin">PostGIS/NetTopologySuite Type Plugin</h1>
 
-<p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn&#39;t provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is a leading spatial library. Npgsql has a plugin which allows which allows you to map the NTS types PostGIS columns, and even translate many useful spatial operations to SQL. This is the recommended way to interact with spatial types in Npgsql.</p>
+<p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn't provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is a leading spatial library. Npgsql has a plugin which allows which allows you to map the NTS types PostGIS columns, and even translate many useful spatial operations to SQL. This is the recommended way to interact with spatial types in Npgsql.</p>
 <p>PostgreSQL provides support for spatial types (geometry/geography) via the powerful <a href="https://postgis.net/">PostGIS</a> extension; this allows you to store points and other spatial constructs in the database, and efficiently perform operations and searches on them. Npgsql supports the PostGIS types via <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a>, which is the leading spatial library in the .NET world: the NTS types can be read and written directly to their corresponding PostGIS types. This is the recommended way to work with spatial types in Npgsql.</p>
 <h2 id="setup">Setup</h2>
 <p>To avoid forcing a dependency on the NetTopologySuite library for users not using spatial, NTS support is delivered as a separate plugin. To use the plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NetTopologySuite">Npgsql.NetTopologySuite</a> and set it up in one of the following ways:</p>
-<div class="tabGroup" id="tabgroup_Hz4zzHdoOy">
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_Hz4zzHdoOy_datasource" role="tab" aria-controls="tabpanel_Hz4zzHdoOy_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_bHGHmlrG6S_datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_Hz4zzHdoOy_global" role="tab" aria-controls="tabpanel_Hz4zzHdoOy_global" data-tab="global" tabindex="-1">Global mapping</a>
+<a href="#tabpanel_bHGHmlrG6S_global" role="tab" aria-controls="tabpanel_bHGHmlrG6S_global" data-tab="global" tabindex="-1">Global mapping</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_Hz4zzHdoOy_connection" role="tab" aria-controls="tabpanel_Hz4zzHdoOy_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+<a href="#tabpanel_bHGHmlrG6S_connection" role="tab" aria-controls="tabpanel_bHGHmlrG6S_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
 </li>
 </ul>
-<section id="tabpanel_Hz4zzHdoOy_datasource" role="tabpanel" data-tab="datasource">
-<div class="NOTE"><h5>Note</h5><p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you&#39;re using an older version, see the other methods.</p>
+<section id="tabpanel_bHGHmlrG6S_datasource" role="tabpanel" data-tab="datasource">
+
+<div class="NOTE">
+<h5>Note</h5>
+<p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you're using an older version, see the other methods.</p>
 </div>
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
 dataSourceBuilder.UseNetTopologySuite();
 await using var dataSource = dataSourceBuilder.Build();
-</code></pre></section>
-<section id="tabpanel_Hz4zzHdoOy_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
-<p>If you&#39;re using an older version of Npgsql which doesn&#39;t yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
-</code></pre><p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</code></pre>
 </section>
-<section id="tabpanel_Hz4zzHdoOy_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
-<div class="NOTE"><h5>Note</h5><p>This mapping method has been removed in Npgsql 7.0.</p>
+<section id="tabpanel_bHGHmlrG6S_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+
+<p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
+</code></pre>
+<p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
+</section>
+<section id="tabpanel_bHGHmlrG6S_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>This mapping method has been removed in Npgsql 7.0.</p>
 </div>
 <p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
 <pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseNetTopologySuite();
-</code></pre></section>
+</code></pre>
+</section>
 </div>
+
 <p>By default the plugin handles only ordinates provided by the <code>DefaultCoordinateSequenceFactory</code> of <code>GeometryServiceProvider.Instance</code>. If <code>GeometryServiceProvider</code> is initialized automatically the X and Y ordinates are handled. To change the behavior specify the <code>handleOrdinates</code> parameter like in the following example:</p>
 <pre><code class="lang-c#">dataSourceBuilder.UseNetTopologySuite(handleOrdinates: Ordinates.XYZ);
-</code></pre><p>To process the M ordinate, you must initialize <code>GeometryServiceProvider.Instance</code> to a new <code>NtsGeometryServices</code> instance with <code>coordinateSequenceFactory</code> set to a <code>DotSpatialAffineCoordinateSequenceFactory</code>. Or you can specify the factory when calling <code>UseNetTopologySuite</code>.</p>
+</code></pre>
+<p>To process the M ordinate, you must initialize <code>GeometryServiceProvider.Instance</code> to a new <code>NtsGeometryServices</code> instance with <code>coordinateSequenceFactory</code> set to a <code>DotSpatialAffineCoordinateSequenceFactory</code>. Or you can specify the factory when calling <code>UseNetTopologySuite</code>.</p>
 <pre><code class="lang-c#">// Place this at the beginning of your program to use the specified settings everywhere (recommended)
 GeometryServiceProvider.Instance = new NtsGeometryServices(
     new DotSpatialAffineCoordinateSequenceFactory(Ordinates.XYM),
@@ -133,8 +145,9 @@ GeometryServiceProvider.Instance = new NtsGeometryServices(
 // Or specify settings for Npgsql only
 dataSourceBuilder.UseNetTopologySuite.UseNetTopologySuite(
     new DotSpatialAffineCoordinateSequenceFactory(Ordinates.XYM));
-</code></pre><h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
-<p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate NetTopologySuite types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize NetTopologySuite&#39;s types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a NetTopologySuite <code>Point</code> to the database:</p>
+</code></pre>
+<h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
+<p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate NetTopologySuite types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize NetTopologySuite's types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a NetTopologySuite <code>Point</code> to the database:</p>
 <pre><code class="lang-c#">await conn.ExecuteNonQueryAsync(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
 
 await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geom) VALUES ($1)&quot;, conn))
@@ -149,18 +162,21 @@ await using (var reader = await cmd.ExecuteReaderAsync())
     await reader.ReadAsync();
     var point = reader.GetFieldValue&lt;Point&gt;(0);
 }
-</code></pre><p>You may also explicitly specify a parameter&#39;s type by setting <code>NpgsqlDbType.Geometry</code>.</p>
+</code></pre>
+<p>You may also explicitly specify a parameter's type by setting <code>NpgsqlDbType.Geometry</code>.</p>
 <h2 id="geography-geodetic-support">Geography (geodetic) Support</h2>
 <p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
-<p>Npgsql uses the same NetTopologySuite types to represent both <code>geometry</code> and <code>geography</code> - the <code>Point</code> type represents a point in either Cartesian or geodetic space. You usually don&#39;t need to worry about this distinction because PostgreSQL will usually cast types back and forth as needed. However, it&#39;s worth noting that Npgsql sends Cartesian <code>geometry</code> by default, because that&#39;s the usual requirement. You have the option of telling Npgsql to send <code>geography</code> instead by specifying <code>NpgsqlDbType.Geography</code>:</p>
+<p>Npgsql uses the same NetTopologySuite types to represent both <code>geometry</code> and <code>geography</code> - the <code>Point</code> type represents a point in either Cartesian or geodetic space. You usually don't need to worry about this distinction because PostgreSQL will usually cast types back and forth as needed. However, it's worth noting that Npgsql sends Cartesian <code>geometry</code> by default, because that's the usual requirement. You have the option of telling Npgsql to send <code>geography</code> instead by specifying <code>NpgsqlDbType.Geography</code>:</p>
 <pre><code class="lang-c#">await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES ($1)&quot;, conn))
 {
     cmd.Parameters.Add(new() { Value = point, NpgsqlDbType = NpgsqlDbType.Geography });
     await cmd.ExecuteNonQueryAsync();
 }
-</code></pre><p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
+</code></pre>
+<p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
 <pre><code class="lang-c#">dataSourceBuilder.UseNetTopologySuite(geographyAsDefault: true);
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

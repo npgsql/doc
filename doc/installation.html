@@ -88,7 +88,7 @@
 <p>Official releases of Npgsql are always available on <a href="https://www.nuget.org/packages/Npgsql/">nuget.org</a>. This is the recommended way to use Npgsql.</p>
 <p>We occasionally publish previews to nuget.org as well - these are generally quite safe for use, and can help us find issues before official packages are released.</p>
 <h2 id="daily-builds">Daily Builds</h2>
-<p>In addition to the official releases, we automatically publish CI packages for every build. You can use these to test new features or bug fixes that haven&#39;t been released yet. Two CI nuget feeds are available:</p>
+<p>In addition to the official releases, we automatically publish CI packages for every build. You can use these to test new features or bug fixes that haven't been released yet. Two CI nuget feeds are available:</p>
 <ul>
 <li><a href="https://www.myget.org/feed/Packages/npgsql">The patch feed</a> contains CI packages for the next hotfix/patch version. These packages are generally very stable and safe.
 To use it, add <a href="https://www.myget.org/F/npgsql/api/v3/index.json">https://www.myget.org/F/npgsql/api/v3/index.json</a> to your NuGet.Config.</li>
@@ -97,19 +97,20 @@ To use it, add <a href="https://www.myget.org/F/npgsql-vnext/api/v3/index.json">
 </ul>
 <h2 id="older-unsupported-installation-methods">Older, unsupported installation methods</h2>
 <h3 id="windows-msi-installer">Windows MSI Installer</h3>
-<p>If you need to use Npgsql as a database provider for PowerBI, Excel or other similar systems, you need to install it into the Windows <a href="https://msdn.microsoft.com/en-us/library/yf1d93sz%28v=vs.110%29.aspx?f=255&amp;MSPPError=-2147217396">Global Assembly Cache (GAC)</a>, and do some special configuration. Npgsql versions prior to 5.0.0 provided a Windows installer (MSI) which does the installation for you, and which are still usable and maintained with critical bug fixes. Do not use the Windows MSI installer unless you&#39;re sure that your program requires GAC installation - this method is otherwise highly discouraged.</p>
-<p>The Npgsql Windows MSI installer for Npgsql 4.1.x can be found on <a href="https://github.com/npgsql/npgsql/releases">our Github releases page</a>: it will install Npgsql (and optionally the Entity Framework providers) into your GAC and add Npgsql&#39;s DbProviderFactory into your <code>machine.config</code> file. Some additional assemblies which are Npgsql dependencies will be installed into the GAC as well (e.g. <code>System.Threading.Tasks.Extensions.dll</code>).</p>
+<p>If you need to use Npgsql as a database provider for PowerBI, Excel or other similar systems, you need to install it into the Windows <a href="https://msdn.microsoft.com/en-us/library/yf1d93sz%28v=vs.110%29.aspx?f=255&amp;MSPPError=-2147217396">Global Assembly Cache (GAC)</a>, and do some special configuration. Npgsql versions prior to 5.0.0 provided a Windows installer (MSI) which does the installation for you, and which are still usable and maintained with critical bug fixes. Do not use the Windows MSI installer unless you're sure that your program requires GAC installation - this method is otherwise highly discouraged.</p>
+<p>The Npgsql Windows MSI installer for Npgsql 4.1.x can be found on <a href="https://github.com/npgsql/npgsql/releases">our Github releases page</a>: it will install Npgsql (and optionally the Entity Framework providers) into your GAC and add Npgsql's DbProviderFactory into your <code>machine.config</code> file. Some additional assemblies which are Npgsql dependencies will be installed into the GAC as well (e.g. <code>System.Threading.Tasks.Extensions.dll</code>).</p>
 <h3 id="visual-studio-integration">Visual Studio Integration</h3>
-<p>Older versions of Npgsql came with a Visual Studio extension (VSIX) which integrated PostgreSQL access into Visual Studio. The extension allowed connecting to PostgreSQL from within Visual Studio&#39;s Server Explorer, creating an Entity Framework 6 model from an existing database, etc. The extension had various limitations and known issues, mainly because of problems with Visual Studio&#39;s extensibility around database.</p>
-<p>Use of the extension is no longer recommended. However, if you&#39;d like to give it a try, it can be installed directly from <a href="https://marketplace.visualstudio.com/vsgallery/258be600-452d-4387-9a2f-89ae10e84ae0">the Visual Studio Marketplace page</a>.</p>
+<p>Older versions of Npgsql came with a Visual Studio extension (VSIX) which integrated PostgreSQL access into Visual Studio. The extension allowed connecting to PostgreSQL from within Visual Studio's Server Explorer, creating an Entity Framework 6 model from an existing database, etc. The extension had various limitations and known issues, mainly because of problems with Visual Studio's extensibility around database.</p>
+<p>Use of the extension is no longer recommended. However, if you'd like to give it a try, it can be installed directly from <a href="https://marketplace.visualstudio.com/vsgallery/258be600-452d-4387-9a2f-89ae10e84ae0">the Visual Studio Marketplace page</a>.</p>
 <h3 id="dbproviderfactory-in-net-framework">DbProviderFactory in .NET Framework</h3>
-<p>On .NET Framework, you can register Npgsql&#39;s <code>DbProviderFactory</code> in your applications <code>App.Config</code> (or <code>Web.Config</code>), allowing you to use general, provider-independent ADO.NET types in your application (e.g. <code>DbConnection</code> instead of <code>NpgsqlConnection</code>) - <a href="https://msdn.microsoft.com/en-us/library/dd0w4a2z%28v=vs.110%29.aspx?f=255&amp;MSPPError=-21472173960">see this tutorial</a>. To do this, add the following to your <code>App.config</code>:</p>
+<p>On .NET Framework, you can register Npgsql's <code>DbProviderFactory</code> in your applications <code>App.Config</code> (or <code>Web.Config</code>), allowing you to use general, provider-independent ADO.NET types in your application (e.g. <code>DbConnection</code> instead of <code>NpgsqlConnection</code>) - <a href="https://msdn.microsoft.com/en-us/library/dd0w4a2z%28v=vs.110%29.aspx?f=255&amp;MSPPError=-21472173960">see this tutorial</a>. To do this, add the following to your <code>App.config</code>:</p>
 <pre><code class="lang-xml">&lt;system.data&gt;
   &lt;DbProviderFactories&gt;
     &lt;add name=&quot;Npgsql Data Provider&quot; invariant=&quot;Npgsql&quot; description=&quot;.Net Data Provider for PostgreSQL&quot; type=&quot;Npgsql.NpgsqlFactory, Npgsql, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7&quot;/&gt;
   &lt;/DbProviderFactories&gt;
 &lt;/system.data&gt;
-</code></pre></article>
+</code></pre>
+</article>
           </div>
 
           <div class="hidden-sm col-md-2" role="complementary">

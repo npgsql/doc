@@ -93,12 +93,14 @@
 <li>It is now much easier to create indexes for full-text search (<a href="https://github.com/npgsql/efcore.pg/issues/1097">#1097</a>, <a href="https://github.com/npgsql/efcore.pg/issues/1253">#1253</a>). <a href="../mapping/full-text-search.html">See the docs</a> for more info.</li>
 <li>Sequences are now automatically updated after seeding data to avoid duplicate values (<a href="https://github.com/npgsql/efcore.pg/issues/367">#367</a>).</li>
 <li><a href="https://docs.microsoft.com/dotnet/api/system.text.json.serialization.jsonpropertynameattribute">The <code>[JsonPropertyName]</code> attribute</a> is now respected when mapping to JSON (<a href="https://github.com/npgsql/efcore.pg/issues/1419">#1419</a>).</li>
-<li>Improved support for PostgreSQL arrays:<ul>
+<li>Improved support for PostgreSQL arrays:
+<ul>
 <li>Mapping <code>List&lt;T&gt;</code> is now fully supported (<a href="https://github.com/npgsql/efcore.pg/issues/395">#395</a>).</li>
 <li>Mapping arrays of nullable value types (e.g. <code>int?[]</code>) is now supported (<a href="https://github.com/npgsql/efcore.pg/issues/1025">#1025</a>).</li>
 </ul>
 </li>
-<li>Query translations:<ul>
+<li>Query translations:
+<ul>
 <li><a href="http://www.npgsql.org/efcore/mapping/translations.html">Precise, exhaustive documentation</a> has been added on which functions can be used in LINQ queries.</li>
 <li><code>Contains</code> over arrays now uses indexes in various scenarios, improving performance (<a href="https://github.com/npgsql/efcore.pg/issues/1372">#1372</a>).</li>
 <li>Various members of <a href="https://docs.microsoft.com/dotnet/api/system.timespan?view=netcore-3.1">TimeSpan</a> are now translated and can be used in queries (<a href="https://github.com/npgsql/efcore.pg/issues/328">#328</a>).</li>
@@ -107,7 +109,8 @@
 </ul>
 </li>
 <li>Improved null semantics for PostgreSQL-specific operations results in tighter and more efficient SQL (<a href="https://github.com/npgsql/efcore.pg/issues/1142">#1142</a>).</li>
-<li>Better support for NodaTime:<ul>
+<li>Better support for NodaTime:
+<ul>
 <li>It is now possible to map NodaTime <code>Duration</code> to PostgreSQL <code>interval</code>, previously only <code>Period</code> could be mapped (<a href="https://github.com/npgsql/efcore.pg/issues/1567">#1567</a>.</li>
 <li>Some additional arithmetic operation are now translated (<a href="https://github.com/npgsql/efcore.pg/issues/1565">#1565</a>).</li>
 </ul>
@@ -117,49 +120,50 @@
 <p>The full list of issues for this release is <a href="https://github.com/npgsql/efcore.pg/milestone/24?closed=1">available here</a>.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
 <p>Please consult the EF Core 5.0 <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-5.0/breaking-changes">breaking changes page</a> as well - the below lists only changes specific to the Npgsql provider.</p>
-<h3 id="computed-columns-must-now-explicitly-be-configured-as-stored-1336httpsgithubcomnpgsqlefcorepgissues1336">Computed columns must now explicitly be configured as stored (<a href="https://github.com/npgsql/efcore.pg/issues/1336">#1336</a>)</h3>
+<h3 id="computed-columns-must-now-explicitly-be-configured-as-stored-1336">Computed columns must now explicitly be configured as stored (<a href="https://github.com/npgsql/efcore.pg/issues/1336">#1336</a>)</h3>
 <p>Version 3.1 of the provider added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">PostgreSQL generated columns</a> (<a href="https://github.com/npgsql/efcore.pg/issues/939">#939</a>), referred to as <a href="https://docs.microsoft.com/ef/core/modeling/generated-properties?tabs=data-annotations#computed-columns">computed columns in EF Core</a>. EF Core 5.0 adds support for specifying whether a computed column is <em>virtual</em> (computed when fetched), or <em>stored</em> (persisted on disk and computed when modified). Aligning with most databases, EF Core by default creates virtual computed columns, but these are currently unsupported by PostgreSQL.</p>
 <p>As a result, you must explicitly specify on all computed columns that they are stored:</p>
 <pre><code class="lang-c#">modelBuilder.Entity&lt;Customer&gt;()
     .Property(p =&gt; p.FullName)
     .HasComputedColumnSql(&quot;...&quot;, stored: true);
-</code></pre><p>If you have existing migrations which were created with previous versions of EF Core, the column definitions in those also need to be fixed up with <code>stored: true</code>.</p>
-<h3 id="iscreatedconcurrently-defaults-to-true-1212httpsgithubcomnpgsqlefcorepgissues1212">IsCreatedConcurrently defaults to true (<a href="https://github.com/npgsql/efcore.pg/issues/1212">#1212</a>)</h3>
+</code></pre>
+<p>If you have existing migrations which were created with previous versions of EF Core, the column definitions in those also need to be fixed up with <code>stored: true</code>.</p>
+<h3 id="iscreatedconcurrently-defaults-to-true-1212">IsCreatedConcurrently defaults to true (<a href="https://github.com/npgsql/efcore.pg/issues/1212">#1212</a>)</h3>
 <p>Previously, when <code>IsCreatedConcurrently</code> was used to configure an index without parameters, the default was <code>false</code> - this has changed to <code>true</code>. Note that indexes are never configured for for concurrent creation unless <code>IsCreatedConcurrently</code> is specified.</p>
 <h2 id="contributors">Contributors</h2>
 <p>A big thank you to all the following people who contributed to the 5.0 release!</p>
-<h3 id="milestone-500httpsgithubcomnpgsqlefcorepgissuesqmilestone3a500"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+">Milestone 5.0.0</a></h3>
+<h3 id="milestone-500"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+">Milestone 5.0.0</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/artfulsage">@artfulsage</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aartfulsage+">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aartfulsage+">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/cloudlucky">@cloudlucky</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Acloudlucky+">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Acloudlucky+">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/plamen-i">@plamen-i</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aplamen-i">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aplamen-i">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Quogu">@Quogu</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3AQuogu+">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3AQuogu+">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/yohdeadfall">@YohDeadfall</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Ayohdeadfall+">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Ayohdeadfall+">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aroji">45</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=milestone%3A5.0.0+assignee%3Aroji">45</a></td>
 </tr>
 </tbody>
 </table>

@@ -90,139 +90,142 @@
 <h2 id="new-features">New Features</h2>
 <p>Aside from general EF Core features new in 2.1.0, the Npgsql provider contains the following major new features:</p>
 <h3 id="improved-spatial-support-postgis">Improved Spatial Support (PostGIS)</h3>
-<p>Previous versions have allowed basic usage of PostGIS&#39;s spatial types via built-in Npgsql types such as <code>NpgsqlPoint</code>, <code>NpgsqlLineString</code>, etc. These types were limited in many ways, and no operation translation was supported. If you want to calculate, say, the distance between two points, you had to drop down to raw SQL.</p>
-<p>No more! Thanks to a new plugin infrastructure, the EF Core provider now has full-class support for PostGIS. You can now use the <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> spatial library to map PostGIS types - NetTopologySuite&#39;s types are more complete, and best of all, the provider knows how to translate its operations to SQL. This allows you to write the following code:</p>
+<p>Previous versions have allowed basic usage of PostGIS's spatial types via built-in Npgsql types such as <code>NpgsqlPoint</code>, <code>NpgsqlLineString</code>, etc. These types were limited in many ways, and no operation translation was supported. If you want to calculate, say, the distance between two points, you had to drop down to raw SQL.</p>
+<p>No more! Thanks to a new plugin infrastructure, the EF Core provider now has full-class support for PostGIS. You can now use the <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> spatial library to map PostGIS types - NetTopologySuite's types are more complete, and best of all, the provider knows how to translate its operations to SQL. This allows you to write the following code:</p>
 <pre><code class="lang-c#">var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
-</code></pre><p>See <a href="../mapping/nts.html">the full documentation for more information</a>.</p>
+</code></pre>
+<p>See <a href="../mapping/nts.html">the full documentation for more information</a>.</p>
 <p>Thanks to <a href="https://github.com/YohDeadfall">@YohDeadfall</a> for implementing support for this at the ADO level.</p>
 <h3 id="full-text-search">Full text search</h3>
 <p>PostgreSQL has a powerful feature for efficient natural-language search across multiple columns and tables, <a href="https://www.postgresql.org/docs/current/static/textsearch.html">see the PostgreSQL docs for more info</a>. The EF Core provider now supports full-text search, allowing you to use .NET functions in your LINQ queries which will get translated to efficient PostgreSQL natural-language search queries.</p>
 <p>Read <a href="../mapping/full-text-search.html">the full documentation for more information</a>.</p>
 <p>Many thanks to <a href="https://github.com/rwasef1830">@rwasef1830</a> for contributing this feature.</p>
 <h3 id="nodatime-datetime-support">NodaTime date/time support</h3>
-<p><a href="https://nodatime.org">NodaTime</a> is a powerful alternative to .NET&#39;s built-in date/time types, such as <code>DateTime</code>. The built-in types are flawed in many ways: they have problematic support for timezones, don&#39;t have a date-only or time-only types, and promote problematic programming but not making the right distinctions. If your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="https://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post by Jon Skeet</a>.</p>
-<p>Thanks to a new plugin infrastructure, it is now possible to set up the EF Core provider to use NodaTime&#39;s types instead of the built-in .NET ones; instead of having <code>DateTime</code> properties on your entities, you can now have <a href="https://nodatime.org/2.2.x/userguide/core-types">Instant</a> properties instead.</p>
+<p><a href="https://nodatime.org">NodaTime</a> is a powerful alternative to .NET's built-in date/time types, such as <code>DateTime</code>. The built-in types are flawed in many ways: they have problematic support for timezones, don't have a date-only or time-only types, and promote problematic programming but not making the right distinctions. If your application handles dates and times in anything but the most basic way, you should seriously consider using NodaTime. To learn more read <a href="https://blog.nodatime.org/2011/08/what-wrong-with-datetime-anyway.html">this blog post by Jon Skeet</a>.</p>
+<p>Thanks to a new plugin infrastructure, it is now possible to set up the EF Core provider to use NodaTime's types instead of the built-in .NET ones; instead of having <code>DateTime</code> properties on your entities, you can now have <a href="https://nodatime.org/2.2.x/userguide/core-types">Instant</a> properties instead.</p>
 <p>See <a href="../mapping/nodatime.html">the full documentation for more information</a>.</p>
 <h3 id="postgresql-10-identity-columns">PostgreSQL 10 IDENTITY columns</h3>
-<p>PostgreSQL 10 introduced a new IDENTITY column as an alternative to traditional SERIAL columns, and these are now supported by the EF Core provider. IDENTITY columns conform to the SQL standard and are in general safer than SERIAL columns, <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.1">read this blog post for more info</a>. It&#39;s recommended that all new projects use IDENTITY, but Npgsql even provides seamless migration of your existing SERIAL-based model!.</p>
+<p>PostgreSQL 10 introduced a new IDENTITY column as an alternative to traditional SERIAL columns, and these are now supported by the EF Core provider. IDENTITY columns conform to the SQL standard and are in general safer than SERIAL columns, <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.1">read this blog post for more info</a>. It's recommended that all new projects use IDENTITY, but Npgsql even provides seamless migration of your existing SERIAL-based model!.</p>
 <p>Read <a href="../modeling/generated-properties.html">the full documentation for more information</a>.</p>
 <h3 id="enum-support">Enum support</h3>
 <p>It is now possible to map your CLR enums to <a href="https://www.postgresql.org/docs/current/static/datatype-enum.html">native PostgreSQL enums</a>. This is a unique PostgreSQL feature that provides the best of both worlds: the enum is internally stored in the database as a number (minimal storage), but is handled like a string (more usable, no need to remember numeric values) and has type safety.</p>
 <p>See <a href="../mapping/enum.html">the full documentation for more information</a>.</p>
 <h3 id="range-support">Range support</h3>
-<p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">native range types</a>, which allow you to represent ranges of dates, ints and other data types in a single column. You can then efficiently perform queries on these types from LINQ, e.g. select all rows where a given date falls in the row&#39;s date range.</p>
+<p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">native range types</a>, which allow you to represent ranges of dates, ints and other data types in a single column. You can then efficiently perform queries on these types from LINQ, e.g. select all rows where a given date falls in the row's date range.</p>
 <p>See <a href="../mapping/range.html">the full documentation for more information</a>.</p>
 <p>Many thanks to <a href="https://github.com/austindrenski">@austindrenski</a> for contributing the operation translations.</p>
 <h3 id="other-notable-features">Other notable features</h3>
 <ul>
-<li>Several improvements have been made to the way arrays are mapped. For example, you can now map <code>List&lt;T&gt;</code> to PostgreSQL array (previously only <code>T[]</code> was supported) (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/392">#392</a>). In addition, change tracking now works for arrays, so EF Core will automatically detect when you change an element&#39;s array and will update the corresponding database column when saving.</li>
-<li>PostgreSQL&#39;s built-in range types can now be mapped (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/63">#63</a>), head over to the <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">PostgreSQL docs</a> to find out more about range types. Note that user-defined range types are <em>not</em> supported, if you&#39;re interested let us know at <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/329">#329</a>.</li>
+<li>Several improvements have been made to the way arrays are mapped. For example, you can now map <code>List&lt;T&gt;</code> to PostgreSQL array (previously only <code>T[]</code> was supported) (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/392">#392</a>). In addition, change tracking now works for arrays, so EF Core will automatically detect when you change an element's array and will update the corresponding database column when saving.</li>
+<li>PostgreSQL's built-in range types can now be mapped (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/63">#63</a>), head over to the <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">PostgreSQL docs</a> to find out more about range types. Note that user-defined range types are <em>not</em> supported, if you're interested let us know at <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/329">#329</a>.</li>
 <li>Properties of type <code>char</code> are now supported and will be mapped to <code>character(1)</code> in PostgreSQL (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/374">#374</a>).</li>
 <li>Identifiers in generated SQL will only be quoted if needed (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/327">#327</a>). This should make it much easier to read.</li>
 <li>You can now use client certificate authentication and provide a server certificate validation callback (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/270">#270</a>). See <a href="http://www.npgsql.org/efcore/misc.html#certificate-authentication">the doc for usage instructions</a>.</li>
 <li>Added support for PostgreSQL 10 sequences with type <code>int</code> and <code>smallint</code> (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/301">#301</a>).</li>
 <li>You can now specify the <a href="https://www.postgresql.org/docs/current/static/manage-ag-tablespaces.html">tablespace</a> when creating your databases (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/332">#332</a>).</li>
 </ul>
-<p>Here&#39;s the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/8?closed=1">full list of issues</a>. Please report any problems on <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL</a>.</p>
+<p>Here's the <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/8?closed=1">full list of issues</a>. Please report any problems on <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL">https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL</a>.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
-<div class="CAUTION"><h5>Caution</h5><p>The provider&#39;s classes have been moved from the namespace <code>Microsoft.EntityFrameworkCore</code> to <code>Npgsql.EntityFrameworkCore.PostgreSQL</code>. As a result, any migrations already generated in your project (as well as the mode snapshot) will have to be manually updated to use the new namespace. You will need to add <code>using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata</code> to all the relevant files.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>The provider's classes have been moved from the namespace <code>Microsoft.EntityFrameworkCore</code> to <code>Npgsql.EntityFrameworkCore.PostgreSQL</code>. As a result, any migrations already generated in your project (as well as the mode snapshot) will have to be manually updated to use the new namespace. You will need to add <code>using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata</code> to all the relevant files.</p>
 </div>
 <ul>
 <li>Columns of type <code>timestamp with time zone</code>/<code>timestamptz</code> will now be scaffolded as <code>DateTime</code> properties, and not <code>DateTimeOffset</code> properties. The general use of <code>timestamp with time zone</code>/<code>timestamptz</code> is discouraged (this type does <em>not</em> store the timezone in the database), consider using <code>timestamp without time zone</code>/<code>timestamp</code> instead.</li>
-<li>If you&#39;re specifying index methods with <code>ForNpgsqlHasMethod()</code>, then you will have to fix migrations which generate those indexes. In these migrations, you will find code such as <code>.Annotation(&quot;Npgsql:Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>. You must remove the extra <code>Npgsql:</code>, leaving <code>.Annotation(&quot;Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>.</li>
+<li>If you're specifying index methods with <code>ForNpgsqlHasMethod()</code>, then you will have to fix migrations which generate those indexes. In these migrations, you will find code such as <code>.Annotation(&quot;Npgsql:Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>. You must remove the extra <code>Npgsql:</code>, leaving <code>.Annotation(&quot;Npgsql:IndexMethod&quot;, &quot;gin&quot;)</code>.</li>
 <li>Specifying versions when specifying PostgreSQL extensions on your model is no longer supported - this was a very rarely-used feature which interfered with extension scaffolding.</li>
-<li>If you&#39;re still referencing the nuget package Npgsql.EntityFrameworkCore.PostgreSQL.Design, please remove it - it&#39;s no longer needed or up to date.</li>
+<li>If you're still referencing the nuget package Npgsql.EntityFrameworkCore.PostgreSQL.Design, please remove it - it's no longer needed or up to date.</li>
 </ul>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 2.1.x. releases.</p>
-<h3 id="milestone-212httpsgithubcomnpgsqlefcorepgissuesqis3aissuemilestone3a212"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2">Milestone 2.1.2</a></h3>
+<h3 id="milestone-212"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2">Milestone 2.1.2</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Aroji">6</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Aroji">6</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/austindrenski">@austindrenski</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Aaustindrenski">3</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Aaustindrenski">3</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/rwasef1830">@rwasef1830</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Arwasef1830">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.2+is%3Aclosed+assignee%3Arwasef1830">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-2111httpsgithubcomnpgsqlefcorepgissuesqis3aissuemilestone3a2111"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.11">Milestone 2.1.11</a></h3>
+<h3 id="milestone-2111"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.11">Milestone 2.1.11</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.11+is%3Aclosed+assignee%3Aroji">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.11+is%3Aclosed+assignee%3Aroji">1</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-2111httpsgithubcomnpgsqlefcorepgissuesqis3aissuemilestone3a2111-1"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1.1">Milestone 2.1.1.1</a></h3>
+<h3 id="milestone-2111-1"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1.1">Milestone 2.1.1.1</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1.1+is%3Aclosed+assignee%3Aroji">4</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1.1+is%3Aclosed+assignee%3Aroji">4</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-211httpsgithubcomnpgsqlefcorepgissuesqis3aissuemilestone3a211"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1">Milestone 2.1.1</a></h3>
+<h3 id="milestone-211"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1">Milestone 2.1.1</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1+is%3Aclosed+assignee%3Aroji">9</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.1+is%3Aclosed+assignee%3Aroji">9</a></td>
 </tr>
 </tbody>
 </table>
-<h3 id="milestone-210httpsgithubcomnpgsqlefcorepgissuesqis3aissuemilestone3a210"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0">Milestone 2.1.0</a></h3>
+<h3 id="milestone-210"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0">Milestone 2.1.0</a></h3>
 <table>
 <thead>
 <tr>
 <th>Contributor</th>
-<th style="text-align:right">Assigned issues</th>
+<th style="text-align: right;">Assigned issues</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://github.com/roji">@roji</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Aroji">24</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Aroji">24</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/austindrenski">@austindrenski</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Aaustindrenski">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Aaustindrenski">1</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/rwasef1830">@rwasef1830</a></td>
-<td style="text-align:right"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Arwasef1830">1</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.1.0+is%3Aclosed+assignee%3Arwasef1830">1</a></td>
 </tr>
 </tbody>
 </table>

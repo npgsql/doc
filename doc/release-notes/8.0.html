@@ -89,13 +89,15 @@
 <h2 id="new-features">New features</h2>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="systemtextjson-mapping-support-must-now-be-opted-into">System.Text.Json mapping support must now be opted into</h3>
-<p>In previous versions, transparent JSON serialization and deserialization was supported via System.Text.Json. That support hasn&#39;t changed, but you must now explicitly opt into it. If you&#39;re using <code>NpgsqlDataSource</code>, simply add the following when building your data source:</p>
+<p>In previous versions, transparent JSON serialization and deserialization was supported via System.Text.Json. That support hasn't changed, but you must now explicitly opt into it. If you're using <code>NpgsqlDataSource</code>, simply add the following when building your data source:</p>
 <pre><code class="lang-c#">var builder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
 builder.UseSystemTextJson();
 await using var dataSource = builder.Build();
-</code></pre><p>Or, if you&#39;re using the legacy global type mapper, add the following at the start of your application, before any Npgsql operations are performed:</p>
+</code></pre>
+<p>Or, if you're using the legacy global type mapper, add the following at the start of your application, before any Npgsql operations are performed:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseSystemTextJson();
-</code></pre><p>This change was done for several reasons. For one, as part of a push to improve the trimmability of Npgsql (for smaller sizes), the opt in ensures that System.Text.Json is only brought in for applications which use it, and gets trimmed out otherwise. In addition, the new opt-in API allows specifying configuration options, such as <a href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a>; this wasn&#39;t previously possible.</p>
+</code></pre>
+<p>This change was done for several reasons. For one, as part of a push to improve the trimmability of Npgsql (for smaller sizes), the opt in ensures that System.Text.Json is only brought in for applications which use it, and gets trimmed out otherwise. In addition, the new opt-in API allows specifying configuration options, such as <a href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a>; this wasn't previously possible.</p>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 8.0.x. releases.</p>
 </article>

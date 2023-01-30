@@ -88,8 +88,10 @@
 <p>PostgreSQL has a feature allowing efficient bulk import or export of data to and from a table. This is usually a much faster way of getting data in and out of a table than using INSERT and SELECT. See documentation for the <a href="http://www.postgresql.org/docs/current/static/sql-copy.html">COPY command</a> for more details.</p>
 <p>Npgsql supports three COPY operation modes: binary, text and raw binary.</p>
 <h2 id="binary-copy">Binary COPY</h2>
-<p>This mode uses the efficient PostgreSQL binary format to transfer data in and out of the database. The user uses an API to read and write rows and fields, which Npgsql decodes and encodes. When you&#39;ve finished, you must call <code>Complete()</code> to save the data; not doing so will cause the COPY operation to be rolled back when the writer is disposed (this behavior is important in case an exception is thrown).</p>
-<div class="WARNING"><h5>Warning</h5><p>It is the your responsibility to read and write the correct type! If you use COPY to write an int32 into a string field you may get an exception, or worse, silent data corruption. It is also highly recommended to use the overload of <code>Write()</code> which accepts an <code>NpgsqlDbType</code>, allowing you to unambiguously specify exactly what type you want to write. Test your code thoroughly.</p>
+<p>This mode uses the efficient PostgreSQL binary format to transfer data in and out of the database. The user uses an API to read and write rows and fields, which Npgsql decodes and encodes. When you've finished, you must call <code>Complete()</code> to save the data; not doing so will cause the COPY operation to be rolled back when the writer is disposed (this behavior is important in case an exception is thrown).</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It is the your responsibility to read and write the correct type! If you use COPY to write an int32 into a string field you may get an exception, or worse, silent data corruption. It is also highly recommended to use the overload of <code>Write()</code> which accepts an <code>NpgsqlDbType</code>, allowing you to unambiguously specify exactly what type you want to write. Test your code thoroughly.</p>
 </div>
 <pre><code class="lang-c#">// Import two columns to table data
 using (var writer = conn.BeginBinaryImport(&quot;COPY data (field_text, field_int2) FROM STDIN (FORMAT BINARY)&quot;))
@@ -114,13 +116,14 @@ using (var reader = Conn.BeginBinaryExport(&quot;COPY data (field_text, field_in
 
     reader.StartRow();
     reader.Skip();
-    Console.WriteLine(reader.IsNull);   // Null check doesn&#39;t consume the column
+    Console.WriteLine(reader.IsNull);   // Null check doesn't consume the column
     Console.WriteLine(reader.Read&lt;int&gt;());
 
     reader.StartRow();    // Last StartRow() returns -1 to indicate end of data
 }
-</code></pre><h2 id="text-copy">Text COPY</h2>
-<p>This mode uses the PostgreSQL text or csv format to transfer data in and out of the database. It is the user&#39;s responsibility to format the text or CSV appropriately, Npgsql simply provides a TextReader or Writer. This mode is less efficient than binary copy, and is suitable mainly if you already have the data in a CSV or compatible text format and don&#39;t care about performance.</p>
+</code></pre>
+<h2 id="text-copy">Text COPY</h2>
+<p>This mode uses the PostgreSQL text or csv format to transfer data in and out of the database. It is the user's responsibility to format the text or CSV appropriately, Npgsql simply provides a TextReader or Writer. This mode is less efficient than binary copy, and is suitable mainly if you already have the data in a CSV or compatible text format and don't care about performance.</p>
 <pre><code class="lang-c#">using (var writer = conn.BeginTextImport(&quot;COPY data (field_text, field_int4) FROM STDIN&quot;)) {
     writer.Write(&quot;HELLO\t1\n&quot;);
     writer.Write(&quot;GOODBYE\t2\n&quot;);
@@ -130,7 +133,8 @@ using (var reader = conn.BeginTextExport(&quot;COPY data (field_text, field_int4
     Console.WriteLine(reader.ReadLine());
     Console.WriteLine(reader.ReadLine());
 }
-</code></pre><h2 id="raw-binary-copy">Raw Binary COPY</h2>
+</code></pre>
+<h2 id="raw-binary-copy">Raw Binary COPY</h2>
 <p>In this mode, data transfer is binary, but Npgsql does no encoding or decoding whatsoever - data is exposed as a raw .NET Stream. This mode makes sense only for bulk data and restore a table: the table is saved as a blob, which can later be restored. If you need to actually make sense of the data, you should be using regular binary mode instead (not raw).</p>
 <p>Example:</p>
 <pre><code class="lang-c#">int len;
@@ -145,7 +149,8 @@ using (var inStream = conn.BeginRawBinaryCopy(&quot;COPY table1 TO STDOUT (FORMA
 using (var outStream = conn.BeginRawBinaryCopy(&quot;COPY table2 FROM STDIN (FORMAT BINARY)&quot;)) {
     outStream.Write(data, 0, len);
 }
-</code></pre><h2 id="cancel">Cancel</h2>
+</code></pre>
+<h2 id="cancel">Cancel</h2>
 <p>Import operations can be cancelled at any time by disposing <code>NpgsqlBinaryImporter</code> without calling <code>Complete()</code> on it. Export operations can be cancelled as well, by calling <code>Cancel()</code>.</p>
 <h2 id="other">Other</h2>
 <p>See the CopyTests.cs test fixture for more usage samples.</p>
