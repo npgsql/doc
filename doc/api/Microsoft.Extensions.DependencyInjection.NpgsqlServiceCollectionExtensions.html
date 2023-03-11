@@ -97,30 +97,6 @@
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
     <div class="level1"><span class="xref">NpgsqlServiceCollectionExtensions</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">object.MemberwiseClone()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">object.ReferenceEquals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">object.ToString()</a>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft">Microsoft</a>.<span class="xref">Extensions</span>.<a class="xref" href="../../efcore/api/Microsoft.Extensions.DependencyInjection.html">DependencyInjection</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.DependencyInjection.dll</h6>
   <h5 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_syntax">Syntax</h5>
@@ -129,6 +105,82 @@
   </div>
   <h3 id="methods">Methods
 </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_IServiceCollection_System_String_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource(IServiceCollection%2CSystem.String%2CAction%7BNpgsql.NpgsqlDataSourceBuilder%7D%2CServiceLifetime%2CServiceLifetime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql.DependencyInjection/NpgsqlServiceCollectionExtensions.cs/#L79">View Source</a>
+  </span>
+  <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_IServiceCollection_System_String_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource(IServiceCollection,System.String,Action{Npgsql.NpgsqlDataSourceBuilder},ServiceLifetime,ServiceLifetime)">AddMultiHostNpgsqlDataSource(IServiceCollection, string, Action&lt;NpgsqlDataSourceBuilder&gt;, ServiceLifetime, ServiceLifetime)</h4>
+  <div class="markdown level1 summary"><p>Registers an <a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a> and an <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddMultiHostNpgsqlDataSource(this IServiceCollection serviceCollection, string connectionString, Action&lt;NpgsqlDataSourceBuilder&gt; dataSourceBuilderAction, ServiceLifetime connectionLifetime = null, ServiceLifetime dataSourceLifetime = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><span class="parametername">serviceCollection</span></td>
+        <td><p>The <see cref="!:IServiceCollection"></see> to add services to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">connectionString</span></td>
+        <td><p>An Npgsql connection string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Action&lt;&gt;</span>&lt;<a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>&gt;</td>
+        <td><span class="parametername">dataSourceBuilderAction</span></td>
+        <td><p>An action to configure the <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> for further customizations of the <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ServiceLifetime</span></td>
+        <td><span class="parametername">connectionLifetime</span></td>
+        <td><p>The lifetime with which to register the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the container.
+Defaults to <see cref="!:ServiceLifetime.Scoped"></see>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ServiceLifetime</span></td>
+        <td><span class="parametername">dataSourceLifetime</span></td>
+        <td><p>The lifetime with which to register the <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> service in the container.
+Defaults to <see cref="!:ServiceLifetime.Singleton"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IServiceCollection</span></td>
+        <td><p>The same service collection so that multiple calls can be chained.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_IServiceCollection_System_String_ServiceLifetime_ServiceLifetime_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource(IServiceCollection%2CSystem.String%2CServiceLifetime%2CServiceLifetime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
@@ -202,19 +254,19 @@ Defaults to <see cref="!:ServiceLifetime.Singleton"></see>.</p>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_IServiceCollection_System_String_System_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource(IServiceCollection%2CSystem.String%2CSystem.Action%7BNpgsql.NpgsqlDataSourceBuilder%7D%2CServiceLifetime%2CServiceLifetime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_IServiceCollection_System_String_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource(IServiceCollection%2CSystem.String%2CAction%7BNpgsql.NpgsqlDataSourceBuilder%7D%2CServiceLifetime%2CServiceLifetime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql.DependencyInjection/NpgsqlServiceCollectionExtensions.cs/#L79">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql.DependencyInjection/NpgsqlServiceCollectionExtensions.cs/#L32">View Source</a>
   </span>
-  <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddMultiHostNpgsqlDataSource_IServiceCollection_System_String_System_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddMultiHostNpgsqlDataSource(IServiceCollection,System.String,System.Action{Npgsql.NpgsqlDataSourceBuilder},ServiceLifetime,ServiceLifetime)">AddMultiHostNpgsqlDataSource(IServiceCollection, string, Action&lt;NpgsqlDataSourceBuilder&gt;, ServiceLifetime, ServiceLifetime)</h4>
-  <div class="markdown level1 summary"><p>Registers an <a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a> and an <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the</p>
+  <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource*"></a>
+  <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_IServiceCollection_System_String_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource(IServiceCollection,System.String,Action{Npgsql.NpgsqlDataSourceBuilder},ServiceLifetime,ServiceLifetime)">AddNpgsqlDataSource(IServiceCollection, string, Action&lt;NpgsqlDataSourceBuilder&gt;, ServiceLifetime, ServiceLifetime)</h4>
+  <div class="markdown level1 summary"><p>Registers an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> and an <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the <see cref="!:IServiceCollection"></see>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddMultiHostNpgsqlDataSource(this IServiceCollection serviceCollection, string connectionString, Action&lt;NpgsqlDataSourceBuilder&gt; dataSourceBuilderAction, ServiceLifetime connectionLifetime = null, ServiceLifetime dataSourceLifetime = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IServiceCollection AddNpgsqlDataSource(this IServiceCollection serviceCollection, string connectionString, Action&lt;NpgsqlDataSourceBuilder&gt; dataSourceBuilderAction, ServiceLifetime connectionLifetime = null, ServiceLifetime dataSourceLifetime = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,7 +291,7 @@ Defaults to <see cref="!:ServiceLifetime.Singleton"></see>.</p>
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>&gt;</td>
+        <td><span class="xref">Action&lt;&gt;</span>&lt;<a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>&gt;</td>
         <td><span class="parametername">dataSourceBuilderAction</span></td>
         <td><p>An action to configure the <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> for further customizations of the <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>.</p>
 </td>
@@ -312,82 +364,6 @@ Defaults to <see cref="!:ServiceLifetime.Singleton"></see>.</p>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">connectionString</span></td>
         <td><p>An Npgsql connection string.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ServiceLifetime</span></td>
-        <td><span class="parametername">connectionLifetime</span></td>
-        <td><p>The lifetime with which to register the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the container.
-Defaults to <see cref="!:ServiceLifetime.Scoped"></see>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ServiceLifetime</span></td>
-        <td><span class="parametername">dataSourceLifetime</span></td>
-        <td><p>The lifetime with which to register the <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> service in the container.
-Defaults to <see cref="!:ServiceLifetime.Singleton"></see>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IServiceCollection</span></td>
-        <td><p>The same service collection so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_IServiceCollection_System_String_System_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_.md&amp;value=---%0Auid%3A%20Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource(IServiceCollection%2CSystem.String%2CSystem.Action%7BNpgsql.NpgsqlDataSourceBuilder%7D%2CServiceLifetime%2CServiceLifetime)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql.DependencyInjection/NpgsqlServiceCollectionExtensions.cs/#L32">View Source</a>
-  </span>
-  <a id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource*"></a>
-  <h4 id="Microsoft_Extensions_DependencyInjection_NpgsqlServiceCollectionExtensions_AddNpgsqlDataSource_IServiceCollection_System_String_System_Action_Npgsql_NpgsqlDataSourceBuilder__ServiceLifetime_ServiceLifetime_" data-uid="Microsoft.Extensions.DependencyInjection.NpgsqlServiceCollectionExtensions.AddNpgsqlDataSource(IServiceCollection,System.String,System.Action{Npgsql.NpgsqlDataSourceBuilder},ServiceLifetime,ServiceLifetime)">AddNpgsqlDataSource(IServiceCollection, string, Action&lt;NpgsqlDataSourceBuilder&gt;, ServiceLifetime, ServiceLifetime)</h4>
-  <div class="markdown level1 summary"><p>Registers an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> and an <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> in the <see cref="!:IServiceCollection"></see>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IServiceCollection AddNpgsqlDataSource(this IServiceCollection serviceCollection, string connectionString, Action&lt;NpgsqlDataSourceBuilder&gt; dataSourceBuilderAction, ServiceLifetime connectionLifetime = null, ServiceLifetime dataSourceLifetime = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IServiceCollection</span></td>
-        <td><span class="parametername">serviceCollection</span></td>
-        <td><p>The <see cref="!:IServiceCollection"></see> to add services to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">connectionString</span></td>
-        <td><p>An Npgsql connection string.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>&gt;</td>
-        <td><span class="parametername">dataSourceBuilderAction</span></td>
-        <td><p>An action to configure the <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> for further customizations of the <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>.</p>
 </td>
       </tr>
       <tr>
