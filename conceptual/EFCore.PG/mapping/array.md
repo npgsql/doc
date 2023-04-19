@@ -39,6 +39,10 @@ array.IndexOf(element)                        | [array_position(array, element) 
 array.IndexOf(element, startIndex)            | [array_position(array, element, startIndex + 1) - 1](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE) | Added in 6.0
 String.Join(separator, array)                 | [array_to_string(array, separator, '')](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE)              | Added in 6.0
 array.Any()                                   | [cardinality(array) > 0](https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE)                      |
+array.Skip(1)                                 | [array[2:]](https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING)                                                        | Added in 8.0
+array.Take(1)                                 | [array[:1]](https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING)                                                        | Added in 8.0
+array.Skip(1).Take(2)                         | [array[2:3]](https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING)                                                       | Added in 8.0
+array1.Concat(array2)                         | [array1 || array2](https://www.postgresql.org/docs/current/functions-array.html)                                                         | Added in 8.0
 array1.Any(i => array2.Contains(i))           | [array1 && array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   |
 array1.All(i => array2.Contains(i))           | [array1 <@ array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   |
 array.Any(s => EF.Functions.Like(string, s))  | [string LIKE ANY (array)](https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16)                             |
