@@ -114,13 +114,28 @@
 <tbody>
 <tr>
 <td>array[0]</td>
-<td><a href="https://www.postgresql.org/docs/current/static/arrays.html#ARRAYS-ACCESSING">array[1]</a></td>
+<td><a href="https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING">array[1]</a></td>
 <td></td>
 </tr>
 <tr>
 <td>array.Length / list.Count</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE">cardinality(array)</a></td>
 <td></td>
+</tr>
+<tr>
+<td>array.Skip(2)</td>
+<td><a href="https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING">array[3,]</a></td>
+<td>Added in 8.0</td>
+</tr>
+<tr>
+<td>array.Take(2)</td>
+<td><a href="https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING">array[,2]</a></td>
+<td>Added in 8.0</td>
+</tr>
+<tr>
+<td>array.Skip(1).Take(2)</td>
+<td><a href="https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING">array[2,3]</a></td>
+<td>Added in 8.0</td>
 </tr>
 <tr>
 <td>array1 == array2</td>
@@ -133,7 +148,7 @@
 <td></td>
 </tr>
 <tr>
-<td>arrayNonColumn.Contains(element))</td>
+<td>arrayNonColumn.Contains(element)</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104">element = ANY(arrayNonColumn)</a></td>
 <td>Can use regular index</td>
 </tr>
@@ -149,7 +164,7 @@
 </tr>
 <tr>
 <td>array1.Concat(array2)</td>
-<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_cat(array1, array2)</a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array1 || array2</a></td>
 <td>Added in 6.0</td>
 </tr>
 <tr>
@@ -171,6 +186,11 @@
 <td>array.Any()</td>
 <td><a href="https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE">cardinality(array) &gt; 0</a></td>
 <td></td>
+</tr>
+<tr>
+<td>array1.Intersect(array2).Any()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE">array1 &amp;&amp; array2</a></td>
+<td>Added in 8.0</td>
 </tr>
 <tr>
 <td>array1.Any(i =&gt; array2.Contains(i))</td>
