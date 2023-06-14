@@ -90,16 +90,47 @@
 <p>It's recommended that you start by reading the general <a href="https://docs.microsoft.com/ef/core/modeling/spatial">Entity Framework Core docs on spatial support</a>.</p>
 </div>
 <p>PostgreSQL supports spatial data and operations via <a href="https://postgis.net/">the PostGIS extension</a>, which is a mature and feature-rich database spatial implementation. .NET doesn't provide a standard spatial library, but <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> is a leading spatial library. The Npgsql EF Core provider has a plugin which allows you to map the NTS types to PostGIS columns, allowing seamless reading and writing. This is the recommended way to interact with spatial types in Npgsql.</p>
-<p>Note that the EF Core NetTopologySuite plugin depends on <a href="http://www.npgsql.org/doc/types/nts.html">the Npgsql ADO.NET NetTopology plugin</a>, which provides NetTopologySuite support at the lower level. The EF Core plugin automatically sets up the ADO.NET plugin.</p>
+<p>Note that the EF Core NetTopologySuite plugin depends on <a href="http://www.npgsql.org/doc/types/nts.html">the Npgsql ADO.NET NetTopology plugin</a>, which provides NetTopologySuite support at the lower level.</p>
 <h2 id="setup">Setup</h2>
-<p>To use the NetTopologySuite plugin, add the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite">Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite nuget</a> to your project. Then, make the following modification to your <code>UseNpgsql()</code> line:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
-{
-    builder.UseNpgsql(&quot;Host=localhost;Database=test;Username=npgsql_tests;Password=npgsql_tests&quot;,
-        o =&gt; o.UseNetTopologySuite());
-}
+<p>To use the NetTopologySuite plugin, add the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite">Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite nuget</a> to your project. Then, configure NetTopologySuite as followed:</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_with-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-datasource" data-tab="with-datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_without-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_without-datasource" data-tab="without-datasource" tabindex="-1">Without NpgsqlDatasource</a>
+</li>
+</ul>
+<section id="tabpanel_bHGHmlrG6S_with-datasource" role="tabpanel" data-tab="with-datasource">
+
+<p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. When using NpsgqlDataSource, NetTopologySuite currently has to be configured twice - once at the EF level, and once at the underlying ADO.NET level (there are plans to improve this):</p>
+<pre><code class="lang-c#">// Call UseNetTopologySuite() when building your data source:
+var dataSourceBuilder = new NpgsqlDataSourceBuilder(/* connection string */);
+dataSourceBuilder.UseNetTopologySuite();
+var dataSource = dataSourceBuilder.Build();
+
+// Then, when configuring EF Core with UseNpgsql(), call UseNetTopologySuite() there as well:
+builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt;
+    options.UseNpgsql(dataSource, o =&gt; o.UseNetTopologySuite()));
 </code></pre>
-<p>This sets up all the necessary mappings and operation translators. In addition, to make sure that the PostGIS extension is installed in your database, add the following to your DbContext:</p>
+</section>
+<section id="tabpanel_bHGHmlrG6S_without-datasource" role="tabpanel" data-tab="without-datasource" aria-hidden="true" hidden="hidden">
+
+<p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. However, if you're not yet using NpgsqlDataSource, configure NetTopologySuite as follows:</p>
+<pre><code class="lang-c#">// Configure NetTopologySuite at the ADO.NET level.
+// This code must be placed at the beginning of your application, before any other Npgsql API is called; an appropriate place for this is in the static constructor on your DbContext class:
+static MyDbContext()
+    =&gt; NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
+
+// Then, when configuring EF Core with UseNpgsql(), call UseNetTopologySuite():
+builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt;
+    options.UseNpgsql(/* connection string */, o =&gt; o.UseNetTopologySuite()));
+</code></pre>
+</section>
+</div>
+
+<p>The above sets up all the necessary EF mappings and operation translators. In addition, to make sure that the PostGIS extension is installed in your database, add the following to your DbContext:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
 {
     builder.HasPostgresExtension(&quot;postgis&quot;);
