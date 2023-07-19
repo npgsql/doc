@@ -22,11 +22,7 @@ await context.Database.MigrateAsync(token);
 
 if (context.Database.GetDbConnection() is NpgsqlConnection npgsqlConnection)
 {
-    if (npgsqlConnection.State is ConnectionState.Closed or ConnectionState.Broken)
-    {
-        await npgsqlConnection.OpenAsync(token);
-    }
-
+    await npgsqlConnection.OpenAsync(token);
     try
     {
         await npgsqlConnection.ReloadTypesAsync();
