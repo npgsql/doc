@@ -117,7 +117,7 @@
 <p>PostgreSQL also allows you to specify collations at the database level, when it is created:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
-    modelBuilder.HasCollation(&quot;&lt;collation_name&gt;&quot;);
+    modelBuilder.UseCollation(&quot;&lt;collation_name&gt;&quot;);
 }
 </code></pre>
 <p>Unfortunately, the database collation is quite limited in PostgreSQL; it notably does not support non-deterministic collations (e.g. case-insensitive ones). To work around this limitation, you can use EF Core's <a href="https://docs.microsoft.com/ef/core/modeling/bulk-configuration#pre-convention-configuration">pre-convention model configuration</a> feature:</p>
