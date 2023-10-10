@@ -93,6 +93,13 @@
   <div class="markdown level0 remarks"></div>
     <h3 id="classes">Classes
 </h3>
+      <h4><a class="xref" href="Npgsql.Internal.DynamicTypeInfoResolver.html">DynamicTypeInfoResolver</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.DynamicTypeInfoResolver.DynamicMappingCollection.html">DynamicTypeInfoResolver.DynamicMappingCollection</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.HackyEnumTypeMapping.html">HackyEnumTypeMapping</a></h4>
+      <section><p>Hacky temporary measure used by EFCore.PG to extract user-configured enum mappings. Accessed via reflection only.</p>
+</section>
       <h4><a class="xref" href="Npgsql.Internal.NpgsqlConnector.html">NpgsqlConnector</a></h4>
       <section><p>Represents a connection to a PostgreSQL backend. Unlike NpgsqlConnection objects, which are
 exposed to users, connectors are internal to Npgsql and are recycled by the connection pool.</p>
@@ -101,14 +108,52 @@ exposed to users, connectors are internal to Npgsql and are recycled by the conn
       <section><p>Base class for implementations which provide information about PostgreSQL and PostgreSQL-like databases
 (e.g. type definitions, capabilities...).</p>
 </section>
-      <h4><a class="xref" href="Npgsql.Internal.NpgsqlReadBuffer.html">NpgsqlReadBuffer</a></h4>
-      <section><p>A buffer used by Npgsql to read data from the socket efficiently.
-Provides methods which decode different values types and tracks the current position.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.Internal.NpgsqlWriteBuffer.html">NpgsqlWriteBuffer</a></h4>
-      <section><p>A buffer used by Npgsql to write data to the socket efficiently.
-Provides methods which encode different values types and tracks the current position.</p>
-</section>
+      <h4><a class="xref" href="Npgsql.Internal.PgBufferedConverter-1.html">PgBufferedConverter&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverter.html">PgConverter</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverter-1.html">PgConverter&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverterFactory.html">PgConverterFactory</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverterResolver.html">PgConverterResolver</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverterResolver-1.html">PgConverterResolver&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgReader.html">PgReader</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgResolverTypeInfo.html">PgResolverTypeInfo</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgSerializerOptions.html">PgSerializerOptions</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgStreamingConverter-1.html">PgStreamingConverter&lt;T&gt;</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgTypeInfo.html">PgTypeInfo</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgWriter.html">PgWriter</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.TypeInfoMappingCollection.html">TypeInfoMappingCollection</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.TypeInfoMappingHelpers.html">TypeInfoMappingHelpers</a></h4>
+      <section></section>
+    <h3 id="structs">Structs
+</h3>
+      <h4><a class="xref" href="Npgsql.Internal.BufferRequirements.html">BufferRequirements</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.NestedReadScope.html">NestedReadScope</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.NestedWriteScope.html">NestedWriteScope</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.PgConverterResolution.html">PgConverterResolution</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.Size.html">Size</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.SizeContext.html">SizeContext</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.TypeInfoMapping.html">TypeInfoMapping</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.ValueMetadata.html">ValueMetadata</a></h4>
+      <section></section>
     <h3 id="interfaces">Interfaces
 </h3>
       <h4><a class="xref" href="Npgsql.Internal.INpgsqlDatabaseInfoFactory.html">INpgsqlDatabaseInfoFactory</a></h4>
@@ -116,6 +161,21 @@ Provides methods which encode different values types and tracks the current posi
 and the types it contains. When first connecting to a database, Npgsql will attempt to load information
 about it via this factory.</p>
 </section>
+      <h4><a class="xref" href="Npgsql.Internal.IPgTypeInfoResolver.html">IPgTypeInfoResolver</a></h4>
+      <section><p>An Npgsql resolver for type info. Used by Npgsql to read and write values to PostgreSQL.</p>
+</section>
+    <h3 id="enums">Enums
+</h3>
+      <h4><a class="xref" href="Npgsql.Internal.DataFormat.html">DataFormat</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.MatchRequirement.html">MatchRequirement</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Npgsql.Internal.SizeKind.html">SizeKind</a></h4>
+      <section></section>
+    <h3 id="delegates">Delegates
+</h3>
+      <h4><a class="xref" href="Npgsql.Internal.TypeInfoFactory.html">TypeInfoFactory</a></h4>
+      <section></section>
 </article>
           </div>
 
