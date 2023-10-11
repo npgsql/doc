@@ -814,6 +814,10 @@
 </tbody>
 </table>
 <h2 id="network-functions">Network functions</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>As of Npgsql 8.0, <code>IPAddress</code> and <code>NpgsqlCidr</code> are implicitly convertible to <code>NpgsqlInet</code>, and so can be used with the functions below which accept <code>inet</code>.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -895,6 +899,10 @@
 <td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">abbrev(inet)</a></td>
 </tr>
 <tr>
+<td>EF.Functions.Abbreviate(cidr)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">abbrev(cidr)</a></td>
+</tr>
+<tr>
 <td>EF.Functions.Broadcast(inet)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">broadcast(inet)</a></td>
 </tr>
@@ -925,6 +933,10 @@
 <tr>
 <td>EF.Functions.SetMaskLength(inet)</td>
 <td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">set_masklen(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.SetMaskLength(cidr)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">set_masklen(cidr)</a></td>
 </tr>
 <tr>
 <td>EF.Functions.Text(inet)</td>

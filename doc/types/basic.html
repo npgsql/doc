@@ -220,13 +220,13 @@
 </tr>
 <tr>
 <td>cidr</td>
-<td>(IPAddress, int)</td>
-<td>NpgsqlInet</td>
+<td><a class="xref" href="../api/NpgsqlTypes.NpgsqlCidr.html">NpgsqlCidr</a><sup>4</sup></td>
+<td></td>
 </tr>
 <tr>
 <td>inet</td>
 <td>IPAddress</td>
-<td>NpgsqlInet, (IPAddress, int)</td>
+<td><a class="xref" href="../api/NpgsqlTypes.NpgsqlInet.html">NpgsqlInet</a></td>
 </tr>
 <tr>
 <td>macaddr</td>
@@ -368,6 +368,7 @@
 <p><sup>1</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> returns a Local DateTime instead of Utc. <a href="../release-notes/6.0.html#major-changes-to-timestamp-mapping">See the breaking change note for more info</a>.</p>
 <p><sup>2</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> as a DateTimeOffset returns a local offset based on the timezone of the server where Npgsql is running.</p>
 <p><sup>3</sup> PostgreSQL intervals with month or year components cannot be read as TimeSpan. Consider using NodaTime's <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, or <a class="xref" href="../api/NpgsqlTypes.NpgsqlInterval.html">NpgsqlInterval</a>.</p>
+<p><sup>4</sup> Prior to version 8.0, the default mapping for <code>cidr</code> was <code>ValueTuple&lt;IPAddress, int&gt;</code>.</p>
 <p>The Default .NET type column specifies the data type <code>NpgsqlDataReader.GetValue()</code> will return.</p>
 <p><code>NpgsqlDataReader.GetProviderSpecificValue</code> will return a value of a data type specified in the Provider-specific type column, or the Default .NET type if there is no specialization.</p>
 <p>Finally, the third column specifies other CLR types which Npgsql supports for the PostgreSQL data type. These can be retrieved by calling <code>NpgsqlDataReader.GetBoolean()</code>, <code>GetByte()</code>, <code>GetDouble()</code> etc. or via <code>GetFieldValue&lt;T&gt;()</code>.</p>
