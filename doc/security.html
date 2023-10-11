@@ -164,7 +164,7 @@ await using var dataSource = NpgsqlDataSource.Create(connectionString);
 </tr>
 </tbody>
 </table>
-<p><sup>1</sup> <code>SSL Mode=Require</code> currently requires explicitly setting <code>Trust Server Certificate=true</code> as well (this requirement will be removed in a future version). This combination should be used with e.g. self-signed certificates, which don't need to be validated. As an alternative to <code>Trust Server Certificate=true</code>, provide your custom certificate validation via <a class="xref" href="api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_UserCertificateValidationCallback">NpgsqlConnection.UserCertificateValidationCallback</a>.</p>
+<p><sup>1</sup> Prior to Npgsql 8.0, <code>SSL Mode=Require</code> required explicitly setting <code>Trust Server Certificate=true</code> as well, to make it explicit that the server certificate isn't validated. Starting with 8.0, <code>Trust Server Certificate=true</code> is no longer required and does nothing.</p>
 <p>The default mode in 6.0+ is <code>Prefer</code>, which allows SSL but does not require it, and does not validate certificates.</p>
 </section>
 <section id="tabpanel_bHGHmlrG6S_tabid-2" role="tabpanel" data-tab="tabid-2" aria-hidden="true" hidden="hidden">

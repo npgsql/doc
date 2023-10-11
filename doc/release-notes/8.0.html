@@ -118,6 +118,11 @@
 </tbody>
 </table>
 <p>Existing code using the above features will start throwing exceptions after upgrading to Npgsql 8.0; the exceptions provide explicit guidance on how to add the opt-ins.</p>
+<h3 id="ssl-moderequire-no-longer-validates-certificates"><code>SSL Mode=Require</code> no longer validates certificates</h3>
+<p>tl;dr use <code>SSL Mode=VerifyCA</code> or <code>VerifyFull</code> in order to validate certificates provided by PostgreSQL.</p>
+<p>In versions of Npgsql older than 6.0, specifying <code>SSL Mode=Require</code> made Npgsql validate the SSL/TLS certificate provided by PostgreSQL. This did not align with the meaning of &quot;require&quot; in PostgreSQL and other clients, where it simply means that SSL/TLS is required, but without certificate validation. To align with the standard PostgreSQL meaning, starting with Npgsql 6.0 <code>VerifyCA</code> or <code>VerifyFull</code> must be specified to validate the certificate.</p>
+<p>To prevent existing usage of <code>Require</code> to silently stop validating, Npgsql 6.0 and 7.0 forced <code>Trust Server Certificate=true</code> to be specified; this made users aware of the change, guiding them to either switch to <code>VerifyCA</code>/<code>VerifyFull</code> (if they want validation) or to add <code>Trust Server Certificate=true</code> (if they don't). After two major versions, we are now removing the requirement to specify <code>Trust Server Certificate=true</code> with <code>SSL Mode=Require</code>; the latter will behave in the standard PostgreSQL way and will not verify certificates.</p>
+<p>For more context, see <a href="https://github.com/npgsql/npgsql/issues/3988#issuecomment-933011009">#3988</a>.</p>
 <h3 id="plugin-apis-have-been-changed-for-nativeaottrimming-support">Plugin APIs have been changed for NativeAOT/trimming support</h3>
 <p>As part of the effort to make Npgsql compatible with NativeAOT and trimming, the plugin API was changed in fundamental, breaking ways. Although this API never had the stability guarantees of a true public API (it was and still is in an Internal namespace), external plugins which were developed with it will require adjustments.</p>
 <div class="WARNING">
