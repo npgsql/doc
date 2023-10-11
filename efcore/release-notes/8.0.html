@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Npgsql 8.0 Release Notes | Npgsql Documentation </title>
+    <title>8.0 Release Notes | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Npgsql 8.0 Release Notes | Npgsql Documentation ">
+    <meta name="title" content="8.0 Release Notes | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -83,18 +83,15 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="npgsql-80-release-notes">Npgsql 8.0 Release Notes</h1>
+<h1 id="80-release-notes">8.0 Release Notes</h1>
 
 <p><strong>The below release notes and breaking changes list aren't yet complete. Check back soon for more notes.</strong></p>
-<p>Npgsql version 8.0 is under development, and is available as release candidate versions.</p>
 <h2 id="new-features">New features</h2>
-<h3 id="nativeaot-and-trimming-support">NativeAOT and trimming support</h3>
-<p>Npgsql 8.0 now has 1st-class support for NativeAOT and trimming; the entire library has been properly annotated and is safe for use in applications. The majority of features have been made compatible with NativeAOT/trimming and can be used without issues, and most applications using Npgsql can be used as-is with NativeAOT/trimming without any changes. A few features which are incompatible require an explicit code opt-in, which generates a warning if used with NativeAOT/trimming enabled (<a href="#dynamic-optin">see breaking change note</a>).</p>
-<p>Considerable effort has gone into reducing Npgsql's size footprint; a minimal Npgsql application using NativeAOT and trimming now takes only around 5MB of disk space. To allow users to achieve a minimal size footprint, <a class="xref" href="../api/Npgsql.NpgsqlSlimDataSourceBuilder.html">NpgsqlSlimDataSourceBuilder</a> has been introduced; unlike the standard <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, this builder includes only the very minimum of functionality by default, and allows adding additional features via opt-ins. This allows a pay-per-play approach to application size, where developers can choose only the features they actually need for optimal size. For more information on <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></p>
-<p>Making Npgsql NativeAOT/trimming-compatible was a far-reaching effort, affecting many parts of the driver and involving a rewrite of large parts of Npgsql's internals (leading to many other internal improvements). This huge task was done mainly by <a href="http://github.com/ninofloris">Nino Floris</a>, with considerable contributions by <a href="https://github.com/vonzshik">Nikita Kazmin</a>.</p>
+<p>New features will be documented later.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
+<p>Note: version 8.0 of the lower-level Npgsql ADO.NET driver, which is used by the EF provider, also has some breaking changes. It's recommended to read the <a href="../../doc/release-notes/8.0.html">release notes</a> for that as well.</p>
 <h3 id="json-poco-and-other-dynamic-features-now-require-an-explicit-opt-in"><a name="dynamic-optin">JSON POCO and other dynamic features now require an explicit opt-in</a></h3>
-<p>Npgsql 8.0 is fully compatible with NativeAOT and trimming (see above). While most driver capabilities have been made to work in those profiles, certain features involve dynamic coding practices and are incompatible with NativeAOT and/or trimming - at least for now. As a result, these features now require explicit opt-ins (annotated to be incompatible with NativeAOT/trimming), which you must add either on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> or on <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GlobalTypeMapper">NpgsqlConnection.GlobalTypeMapper</a>:</p>
+<p>Because of the NativeAOT and trimming work done for Npgsql 8.0 (<a href="../../doc/release-notes/8.0.html">release notes</a>), certain features now require an explicit opt-in, which you must add either on your <a class="xref" href="../../doc/api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> or on <a class="xref" href="../../doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GlobalTypeMapper">NpgsqlConnection.GlobalTypeMapper</a>:</p>
 <table>
 <thead>
 <tr>
@@ -117,13 +114,27 @@
 </tr>
 </tbody>
 </table>
-<p>Existing code using the above features will start throwing exceptions after upgrading to Npgsql 8.0; the exceptions provide explicit guidance on how to add the opt-ins.</p>
-<h3 id="plugin-apis-have-been-changed-for-nativeaottrimming-support">Plugin APIs have been changed for NativeAOT/trimming support</h3>
-<p>As part of the effort to make Npgsql compatible with NativeAOT and trimming, the plugin API was changed in fundamental, breaking ways. Although this API never had the stability guarantees of a true public API (it was and still is in an Internal namespace), external plugins which were developed with it will require adjustments.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>If you're a plugin developer, be aware that some last API changes may still be done; it's advisable to wait until 8.0 is released before adapting your plugin. In any case, please reach out to us via Github issues if you encounter any issues or require guidance!</p>
-</div>
+<p>Existing code using the above features will start throwing exceptions after upgrading to version 8.0 of the EF Core provider; the exceptions provide explicit guidance on how to add the opt-ins.</p>
+<p>Note that EF Core itself is not yet compatible with NativeAOT, and Npgsql can only be used in NativeAOT applications without EF Core.</p>
+<h3 id="obsoleted-haspostgresarrayconversion">Obsoleted HasPostgresArrayConversion</h3>
+<p>With EF 8.0 introducing first-class support for <a href="https://devblogs.microsoft.com/dotnet/announcing-ef8-preview-4">primitive collections</a>, the PostgreSQL driver aligned its PostgreSQL array support to use that. As a result, <code>HasPostgresArrayConversion</code> can no longer be used to configure value-converted arrays; instead, the new standard EF mechanism can be used.</p>
+<p>For example, the following Npgsql-specific code would configure value conversion for a property of type <code>MyType[]</code> to a PostgreSQL array of strings in EF Core 6 or 7:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.ValueConvertedArray)
+    .HasPostgresArrayConversion(x =&gt; x.ToString(), s =&gt; MyType.Parse(s));
+</code></pre>
+<p>The same can now achieved with the following standard EF 8 code:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().PrimitiveCollection(b =&gt; b.ValueConvertedArray)
+    .ElementType()
+    .HasConversion(typeof(MyConverter));
+
+class MyConverter : ValueConverter&lt;MyType, string&gt;
+{
+    public MyConverter()
+        : base(x =&gt; x.ToString(), s =&gt; MyType.Parse(s))
+    {
+    }
+}
+</code></pre>
 </article>
           </div>
 
@@ -132,7 +143,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/8.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/8.0.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
