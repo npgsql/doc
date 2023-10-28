@@ -222,33 +222,34 @@
 <p>To prepare your commands, simply use the following standard ADO.NET code:</p>
 <pre><code class="lang-c#">var cmd = new NpgsqlCommand(...);
 cmd.Parameters.Add(&quot;param&quot;, NpgsqlDbType.Integer);
-cmd.Prepare();
+await cmd.PrepareAsync();
 // Set parameters
-cmd.ExecuteNonQuery();
+await cmd.ExecuteNonQueryAsync();
 // And so on
 </code></pre>
 <p>Note that all parameters must be set before calling <code>Prepare()</code> - they are part of the information transmitted to PostgreSQL and used to effectively plan the statement. You must also set the <code>DbType</code> or <code>NpgsqlDbType</code> on your parameters to unambiguously specify the data type (setting the value isn't support).</p>
 <p>Note that preparation happens on individual statements, and not on commands, which can contain multiple statements, batching them together. This can be important in cases such as the following:</p>
 <pre><code class="lang-c#">var cmd = new NpgsqlCommand(&quot;UPDATE foo SET bar=@bar WHERE baz=@baz; UPDATE foo SET bar=@bar WHERE baz=@baz&quot;);
 // set parameters.
-cmd.Prepare();
+await cmd.PrepareAsync();
 </code></pre>
 <p>Although there are two statements in this command, the same prepared statement is used to execute since the SQL is identical.</p>
 <h2 id="persistency">Persistency</h2>
 <p>With many database drivers, prepared statements are closed when their owning command was disposed. This significantly reduces their usefulness, especially since closing a pooled connection automatically closes all prepared statements. For applications where connections are short-lived - most web applications - this effectively makes prepared statements useless.</p>
 <p>In Npgsql, all prepared statements are persistent - they don't get closed when a command or connection is closed. Npgsql keeps track of statements prepared on each physical connection; if you prepare the same SQL a second time on the same physical connection, Npgsql will simply reuse the prepared statement from the first preparation. This means that in an application with short-lived, pooled connections, prepared statements will gradually be created as the application warms up and the connections are first used. Then, opening a new pooled connection will return a physical connection that already has a prepared statement for your SQL, providing a very substantial performance boost. For example:</p>
-<pre><code class="lang-c#">using (var conn = new NpgsqlConnection(...)
-using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
-    conn.Open();
-    cmd.Prepare();    // First time on this physical connection, Npgsql prepares with PostgreSQL
-    cmd.ExecuteNonQuery();
+<pre><code class="lang-c#">await using (var conn = await dataSource.OpenConnectionAsync())
+await using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn))
+{
+    await cmd.PrepareAsync();    // First time on this physical connection, Npgsql prepares with PostgreSQL
+    await cmd.ExecuteNonQueryAsync();
 }
 
-using (var conn = new NpgsqlConnection(...)
-using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn) {
-    conn.Open();      // We assume the pool returned the same physical connection used above
-    cmd.Prepare();    // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn't need to do anything
-    cmd.ExecuteNonQuery();
+await using (var conn = await dataSource.OpenConnectionAsync())
+await using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn))
+{
+    // We assume the internal connection pool returned the same physical connection used above
+    await cmd.PrepareAsync();    // The connection already has a prepared statement for &lt;some_sql&gt;, this doesn't need to do anything
+    await cmd.ExecuteNonQueryAsync();
 }
 </code></pre>
 <p>You can still choose to close a prepared statement by calling <code>NpgsqlCommand.Unprepare()</code>. You can also unprepare all statements on a given connection by calling <code>NpgsqlConnection.UnprepareAll()</code>.</p>
