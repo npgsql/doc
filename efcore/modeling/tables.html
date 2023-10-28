@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Table and Column Naming | Npgsql Documentation </title>
+    <title>Tables | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Table and Column Naming | Npgsql Documentation ">
+    <meta name="title" content="Tables | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -83,8 +83,9 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="table-and-column-naming">Table and Column Naming</h1>
+<h1 id="tables">Tables</h1>
 
+<h2 id="naming">Naming</h2>
 <p>By default, EF Core will map to tables and columns named exactly after your .NET classes and properties, so an entity type named <code>BlogPost</code> will be mapped to a PostgreSQL table called <code>BlogPost</code>. While there's nothing wrong with that, the PostgreSQL world tends towards snake_case naming instead. In addition, any upper-case letters in unquoted identifiers are automatically converted to lower-case identifiers, so the Npgsql provider generates quotes around all such identifiers.</p>
 <p>Starting with 3.0.0, you can use the <a href="https://github.com/efcore/EFCore.NamingConventions">EFCore.NamingConventions</a> plugin to automatically set all your table and column names to snake_case instead:</p>
 <pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -108,6 +109,12 @@ SELECT c.id, c.full_name
         WHERE c.full_name = 'John Doe';
 </code></pre>
 <p>See the <a href="https://github.com/efcore/EFCore.NamingConventions">plugin documentation</a> for more details,</p>
+<h2 id="storage-parameters">Storage parameters</h2>
+<p>PostgreSQL allows configuring tables with <em>storage parameters</em>, which can tweak storage behavior in various ways; <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">see the PostgreSQL documentation</a> for more information.</p>
+<p>To configure a storage parameter on a table, use the following code:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Blog&gt;().HasStorageParameter(&quot;fillfactor&quot;, 70);
+</code></pre>
 </article>
           </div>
 
@@ -116,7 +123,7 @@ SELECT c.id, c.full_name
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/modeling/table-column-naming.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/modeling/tables.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
