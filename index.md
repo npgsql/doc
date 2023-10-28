@@ -30,8 +30,8 @@ Current active contributors to Npgsql are:
 
 * Shay Rojansky ([@roji](https://github.com/roji))
 * Nikita Kazmin ([@vonzshik](https://github.com/vonzshik))
-* Brar Piening ([@Brar](https://github.com/Brar))
 * Nino Floris ([@NinoFloris](https://github.com/NinoFloris/))
+* Brar Piening ([@Brar](https://github.com/Brar))
 
 Past contributors to Npgsql:
 
