@@ -122,6 +122,10 @@
 </table>
 <p>Existing code using the above features will start throwing exceptions after upgrading to version 8.0 of the EF Core provider; the exceptions provide explicit guidance on how to add the opt-ins.</p>
 <p>Note that EF Core itself is not yet compatible with NativeAOT, and Npgsql can only be used in NativeAOT applications without EF Core.</p>
+<h3 id="default-postgresql-compatibility-mode-has-been-bumped-from-12-to-14">Default PostgreSQL compatibility mode has been bumped from 12 to 14</h3>
+<p>This means that the provider assumes at least PostgreSQL 14; if you're running against an older version, explicitly specify the PostgreSQL version when configuring your context:</p>
+<pre><code class="lang-csharp">optionsBuilder.UseNpgsql(&quot;&lt;connection string&gt;&quot;, o =&gt; o.SetPostgresVersion(12, 0))
+</code></pre>
 <h3 id="obsoleted-haspostgresarrayconversion">Obsoleted HasPostgresArrayConversion</h3>
 <p>With EF 8.0 introducing first-class support for <a href="https://devblogs.microsoft.com/dotnet/announcing-ef8-preview-4">primitive collections</a>, the PostgreSQL driver aligned its PostgreSQL array support to use that. As a result, <code>HasPostgresArrayConversion</code> can no longer be used to configure value-converted arrays; instead, the new standard EF mechanism can be used.</p>
 <p>For example, the following Npgsql-specific code would configure value conversion for a property of type <code>MyType[]</code> to a PostgreSQL array of strings in EF Core 6 or 7:</p>

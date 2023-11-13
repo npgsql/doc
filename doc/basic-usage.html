@@ -135,13 +135,13 @@ await using var reader = await command.ExecuteReaderAsync();
 <p>Opening and closing physical connections to PostgreSQL is an expensive and long process. Therefore, Npgsql connections are <em>pooled</em> by default: closing or disposing a connection doesn't close the underlying physical connection, but rather returns it to an internal pool managed by Npgsql. The next time a connection is needed, that pooled connection is returned again. This makes open and close extremely fast operations; do not hesitate to perform them a lot if needed, rather than holding a connection needlessly open for a long time.</p>
 <p>For information on tweaking the pooling behavior (or turning it off), see the <a href="connection-string-parameters.html#pooling">pooling section</a> in the connection string page.</p>
 <h3 id="connections-without-a-data-source">Connections without a data source</h3>
-<p>The data source concept is new in Npgsql 7.0, and is the recommended way to use Npgsql. When using older versions, connections where instantiated directly, rather than obtaining them from a data source:</p>
+<p>The data source concept is new in Npgsql 7.0, and is the recommended way to use Npgsql. When using older versions, connections are instantiated directly, rather than obtaining them from a data source:</p>
 <pre><code class="lang-csharp">await using var conn = new NpgsqlConnection(connectionString);
 await conn.OpenAsync();
 </code></pre>
-<p>Direct instantiation of connection is still supported, but is discouraged for various reasons when using Npgsql 7.0.</p>
+<p>Direct instantiation of connection is still supported, but is discouraged for various reasons when using Npgsql 7.0 or above.</p>
 <h2 id="other-execution-methods">Other execution methods</h2>
-<p>Above, we executed SQL via <a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync">ExecuteReaderAsync</a>. There are other ways to execute a command, based on what results you expect from it:</p>
+<p>Above, we executed SQL via <a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executereaderasync">ExecuteReaderAsync</a>. There are various ways to execute a command, based on what results you expect from it:</p>
 <ol>
 <li><a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync">ExecuteNonQueryAsync</a>: executes SQL which doesn't return any results, typically <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> statements. Returns the number of rows affected.</li>
 <li><a href="https://docs.microsoft.com/dotnet/api/system.data.common.dbcommand.executescalarasync">ExecuteScalarAsync</a>: executes SQL which returns a single, scalar value.</li>

@@ -103,19 +103,11 @@
 <li><em>Serial</em>: the traditional PostgreSQL serial column. This will create the column with the <code>serial</code> datatype. Recommended only if you are using an older PostgreSQL version.</li>
 <li><em>Sequence HiLo</em>: See below</li>
 </ul>
-<p>Prior to version 3.0, the Npgsql provider generates &quot;serial&quot; columns for ID columns; starting with version 3.0, it generates &quot;identity by default&quot; instead. In other words, when <code>ValueGeneratedOnAdd</code> is specified on a <code>short</code>, <code>int</code> or <code>long</code> property, the Npgsql provider will automatically map it to a serial or identity column. Note that EF Core will automatically recognize key properties by convention (e.g. a property called <code>Id</code> in your entity) and will implicitly set them to <code>ValueGeneratedOnAdd</code>; a standard model with ID columns should automatically get created with the appropriate column type.</p>
-<div class="CAUTION">
-<h5>Caution</h5>
-<p>Since the default strategy has changed, if you have an existing database with migrations, the the first migration created after upgrading to version 3.0 will alter your tables and convert serial columns to identity ones. This is a sensitive, one-time migration operation that should be done with care, and carefully tested before deployment to production. Changing a value generation strategy is a significant change to an existing database.</p>
-</div>
+<p>The default value generation strategy is &quot;identity by default&quot;. In other words, when EF decides that an int property should be value generated (e.g. because it's named <code>Id</code>, or because you explicitly specified <code>ValueGeneratedOnAdd</code> on it), the Npgsql provider will automatically map it to an identity column.</p>
 <h3 id="defining-the-default-strategy-for-the-entire-model">Defining the default strategy for the entire model</h3>
 <p>You can easily control the value generation strategy for the entire model. For example, to opt out of the change to identity columns, simply place the following in your context's <code>OnModelCreating()</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
-    =&gt; modelBuilder.UseSerialColumns();
-</code></pre>
-<p>Note that if you are using PostgreSQL 9.6 or older, identity columns will not work. It is recommended to place the provider in compatibility mode with your specific version - this will also affect the default value generation strategy:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    =&gt; optionsBuilder.UseNpgsql(&quot;...&quot;, o =&gt; o.SetPostgresVersion(9, 6));
+    =&gt; modelBuilder.UseIdentityByDefaultColumns();
 </code></pre>
 <h3 id="defining-the-strategy-for-a-single-property">Defining the strategy for a single property</h3>
 <p>Regardless of the model default, you can define a value-generation strategy on a property-by-property basis:</p>
@@ -235,7 +227,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 <h2 id="computed-columns">Computed Columns</h2>
 <div class="NOTE">
 <h5>Note</h5>
-<p>This feature works only on PostgreSQL 12 or above, and was introduced in version 3.0.0 of the provider.</p>
+<p>This feature works only on PostgreSQL 12 or above.</p>
 </div>
 <p>PostgreSQL 12 added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well:</p>
 <div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
