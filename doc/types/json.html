@@ -126,7 +126,7 @@ while (await reader.ReadAsync())
 <p>As of Npgsql 8.0, POCO mapping is incompatible with NativeAOT. We plan to improve this, <a href="https://github.com/npgsql/npgsql/issues/5355">please upvote this issue if you're interested</a>.</p>
 </div>
 <p>If your column JSON contains documents with a stable schema, you can map them to your own .NET types (or POCOs). The provider will use System.Text.Json APIs under the hood to serialize instances of your types to JSON documents before sending them to the database, and to deserialize documents coming back from the database. This effectively allows mapping an arbitrary .NET type - or object graph - to a single column in the database.</p>
-<p>Startin with Npgsql 8.0, to use this feature, you must first enable it by calling &lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableDynamicJson&gt; on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, or, if you're not yet using data sources, on <code>NpgsqlConnection.GlobalTypeMapper</code>:</p>
+<p>Starting with Npgsql 8.0, to use this feature, you must first enable it by calling &lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableDynamicJson&gt; on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, or, if you're not yet using data sources, on <code>NpgsqlConnection.GlobalTypeMapper</code>:</p>
 <div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
@@ -149,7 +149,7 @@ await using var dataSource = dataSourceBuilder.Build();
 </section>
 <section id="tabpanel_bHGHmlrG6S_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
-<p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
+<p>If you're not yet using <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.EnableDynamicJson();
 </code></pre>
 <p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
