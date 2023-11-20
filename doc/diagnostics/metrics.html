@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Metrics with event counters | Npgsql Documentation </title>
+    <title>OpenTelemetry Metrics | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Metrics with event counters | Npgsql Documentation ">
+    <meta name="title" content="OpenTelemetry Metrics | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -83,26 +83,42 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="metrics-with-event-counters">Metrics with event counters</h1>
+<h1 id="opentelemetry-metrics">OpenTelemetry Metrics</h1>
 
-<p>Npgsql supports reporting aggregated metrics which provide snapshots on its state and activities at a given point. These can be especially useful for diagnostics issues such as connection leaks, or doing general performance analysis Metrics are reported via the standard .NET event counters feature; it's recommended to read <a href="https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/">this blog post</a> for a quick overview of how counters work.</p>
-<p>To collect event counters, <a href="https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-counters">install the <code>dotnet-counters</code> tool</a>. Then, find out your process PID, and run it as follows:</p>
+<p>Npgsql supports reporting aggregated metrics which provide snapshots on its state and activities at a given point. These can be especially useful for diagnostics issues such as connection leaks, or doing general performance analysis Metrics are reported via the standard .NET System.Diagnostics.Metrics API; <a href="https://learn.microsoft.com/dotnet/core/diagnostics/metrics">see these docs</a> for more details. The Npgsql metrics implement the experimental <a href="https://opentelemetry.io/docs/specs/semconv/database/database-metrics/">OpenTelemetry semantic conventions for database metrics</a> - adding some additional useful ones - and will evolve as that specification stabilizes.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Npgsql versions before 8.0, as well as TFMs under net6.0, emit metrics via the older Event Counters API instead of the new OpenTelemetry ones.</p>
+</div>
+<p>Metrics are usually collected and processed via tools such as <a href="https://prometheus.io">Prometheus</a>, and plotted on dashboards via tools such as <a href="https://grafana.com">Grafana</a>. Configuring .NET to emit metrics to these tools is beyond the scope of this documentation, but you can use the command-line tool <code>dotnet-counters</code> to quickly test Npgsql's support. To collect metrics via <code>dotnet-counters</code>, <a href="https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-counters">install the <code>dotnet-counters</code> tool</a>. Then, find out your process PID, and run it as follows:</p>
 <pre><code class="lang-output">dotnet counters monitor Npgsql -p &lt;PID&gt;
 </code></pre>
 <p><code>dotnet-counters</code> will now attach to your running process and start reporting continuous counter data:</p>
 <pre><code class="lang-output">[Npgsql]
-Average commands per multiplexing batch                      NaN
-Average write time per multiplexing batch (us) (us)          NaN
-Busy Connections                                               4
-Bytes Read (Count / 1 sec)                             1,874,863
-Bytes Written (Count / 1 sec)                          1,546,830
-Command Rate (Count / 1 sec)                              18,199
-Connection Pools                                               1
-Current Commands                                               5
-Failed Commands                                                0
-Idle Connections                                               5
-Prepared Commands Ratio (%)                                    0
-Total Commands                                           372,918
+    db.client.commands.bytes_read (By / 1 sec)
+        pool.name=CustomersDB                                          1,020
+    db.client.commands.bytes_written (By / 1 sec)
+        pool.name=CustomersDB                                            710
+    db.client.commands.duration (s)
+        pool.name=CustomersDB,Percentile=50                                0.001
+        pool.name=CustomersDB,Percentile=95                                0.001
+        pool.name=CustomersDB,Percentile=99                                0.001
+    db.client.commands.executing ({command})
+        pool.name=CustomersDB                                              2
+    db.client.commands.prepared_ratio
+        pool.name=CustomersDB                                              0
+    db.client.connections.max ({connection})
+        pool.name=CustomersDB                                            100
+    db.client.connections.usage ({connection})
+        pool.name=CustomersDB,state=idle                                   3
+        pool.name=CustomersDB,state=used                                   2
+</code></pre>
+<p>Note that Npgsql emits multiple <em>dimensions</em> with the metrics, e.g. the connection states (idle or used). In addition, an identifier for the connection pool - or data source - is emitted with every metric, allowing you to separately track e.g. multiple databases accessed in the same applications. By default, the <code>pool.name</code> will be the connection string, but it can be useful to give your data sources a name for easier and more consistent tracking:</p>
+<pre><code class="lang-c#">var builder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;)
+{
+    Name = &quot;CustomersDB&quot;
+};
+await using var dataSource = builder.Build();
 </code></pre>
 </article>
           </div>
