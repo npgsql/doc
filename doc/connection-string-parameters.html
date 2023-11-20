@@ -142,7 +142,7 @@
 <tr>
 <td>SSL Mode</td>
 <td>Controls whether SSL is used, depending on server support. <a href="security.html">See docs for possible values and more info</a>.</td>
-<td>Prefer in 6.0, Disable previously</td>
+<td>Prefer</td>
 </tr>
 <tr>
 <td>Trust Server Certificate</td>
@@ -151,17 +151,17 @@
 </tr>
 <tr>
 <td>SSL Certificate</td>
-<td>Location of a client certificate to be sent to the server. Introduced in 6.0. <a href="security.html">See docs</a></td>
+<td>Location of a client certificate to be sent to the server. <a href="security.html">See docs</a>.</td>
 <td>PGSSLCERT</td>
 </tr>
 <tr>
 <td>SSL Key</td>
-<td>Location of a client key for a client certificate to be sent to the server. Introduced in 6.0.</td>
+<td>Location of a client key for a client certificate to be sent to the server.</td>
 <td>PGSSLKEY</td>
 </tr>
 <tr>
 <td>SSL Password</td>
-<td>Password for a key for a client certificate. Introduced in 6.0.</td>
+<td>Password for a key for a client certificate.</td>
 <td></td>
 </tr>
 <tr>
@@ -175,8 +175,13 @@
 <td>false</td>
 </tr>
 <tr>
+<td>Channel Binding</td>
+<td>Control whether channel binding is used when authenticating with SASL. Introduced in 8.0.</td>
+<td>Prefer</td>
+</tr>
+<tr>
 <td>Persist Security Info</td>
-<td>Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state. Introduced in 3.1.</td>
+<td>Gets or sets a Boolean value that indicates if security-sensitive information, such as the password, is not returned as part of the connection if the connection is open or has ever been in an open state.</td>
 <td>false</td>
 </tr>
 <tr>
@@ -262,11 +267,6 @@
 <td>Command Timeout</td>
 <td>The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity.</td>
 <td>30</td>
-</tr>
-<tr>
-<td>Internal Command Timeout</td>
-<td>The time to wait (in seconds) while trying to execute an internal command before terminating the attempt and generating an error. -1 uses CommandTimeout, 0 means no timeout.</td>
-<td>-1</td>
 </tr>
 <tr>
 <td>Cancellation Timeout</td>
@@ -469,24 +469,9 @@ Example: <code>Options=-c default_transaction_isolation=serializable -c default_
 </thead>
 <tbody>
 <tr>
-<td>Integrated Security</td>
-<td>Whether to use integrated security to log in (GSS/SSPI). Deprecated in 8.0, doesn't do anything and can be removed.</td>
-<td>false</td>
-</tr>
-<tr>
-<td>Client Certificate</td>
-<td>Location of a client certificate to be sent to the server. Deprecated in 6.0.</td>
-<td>PGSSLCERT</td>
-</tr>
-<tr>
-<td>Client Certificate Key</td>
-<td>Location of a client key for a client certificate to be sent to the server. Deprecated in 6.0.</td>
-<td>PGSSLKEY</td>
-</tr>
-<tr>
-<td>Use Perf Counters</td>
-<td>Makes Npgsql write performance information about connection use to Windows Performance Counters. Removed in 5.0.</td>
-<td>false</td>
+<td>Internal Command Timeout</td>
+<td>The time to wait (in seconds) while trying to execute an internal command before terminating the attempt and generating an error. -1 uses CommandTimeout, 0 means no timeout.</td>
+<td>-1</td>
 </tr>
 </tbody>
 </table>
