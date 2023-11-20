@@ -90,21 +90,47 @@
 <h5>Note</h5>
 <p>Npgsql 8.0 will be the last version to support .NET Framework (via .NET Standard 2.0). Starting with 9.0, Npgsql will only target .NET TFMs supported at release time (i.e. <code>net6.0</code>).</p>
 </div>
-<h2 id="new-features">New features</h2>
-<h3 id="nativeaot-and-trimming-support">NativeAOT and trimming support</h3>
+<h2 id="nativeaot-and-trimming-support">NativeAOT and trimming support</h2>
 <p>Npgsql 8.0 now has 1st-class support for NativeAOT and trimming; the entire library has been properly annotated and is safe for use in applications. The majority of features have been made compatible with NativeAOT/trimming and can be used without issues, and most applications using Npgsql can be used as-is with NativeAOT/trimming without any changes. A few features which are incompatible require an explicit code opt-in, which generates a warning if used with NativeAOT/trimming enabled (<a href="#dynamic-optin">see breaking change note</a>).</p>
 <p>Considerable effort has gone into reducing Npgsql's size footprint; a minimal Npgsql application using NativeAOT and trimming now takes only around 5MB of disk space. To allow users to achieve a minimal size footprint, <a class="xref" href="../api/Npgsql.NpgsqlSlimDataSourceBuilder.html">NpgsqlSlimDataSourceBuilder</a> has been introduced; unlike the standard <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, this builder includes only the very minimum of functionality by default, and allows adding additional features via opt-ins. This allows a pay-per-play approach to application size, where developers can choose only the features they actually need for optimal size. For more information on <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></p>
 <p>Making Npgsql NativeAOT/trimming-compatible was a far-reaching effort, affecting many parts of the driver and involving a rewrite of large parts of Npgsql's internals (leading to many other internal improvements). This huge task was done mainly by <a href="http://github.com/ninofloris">Nino Floris</a>, with considerable contributions by <a href="https://github.com/vonzshik">Nikita Kazmin</a>.</p>
-<h3 id="opentelemetry-metrics">OpenTelemetry metrics</h3>
+<h2 id="opentelemetry-metrics">OpenTelemetry metrics</h2>
 <p>Npgsql has emitted metrics for several versions, which provided aggregated metrics on various Npgsql interals; for example, it was possible to follow the state of the connection pool, or to track how many commands are being executed per second. Npgsql 8.0 improves on that by switching from the older EventCounter API to the newer System.Diagnostics.Metrics API, implementing OpenTelemetry metrics. To understand more about the different kinds of metrics APIs in .NET, <a href="https://learn.microsoft.com/en-us/dotnet/core/diagnostics/compare-metric-apis">see these docs</a>.</p>
 <p>The new metrics have several advantages over the old one; for one thing, they allow associating multiple <em>dimensions</em> to metrics, e.g. allowing Npgsql to cleanly emit pool-related metrics separately for each data source (or connection string) used in the application. The Npgsql metrics implement the experimental <a href="https://opentelemetry.io/docs/specs/semconv/database/database-metrics/">OpenTelemetry semantic conventions for database metrics</a> - adding some additional useful ones - and will evolve as that specification stabilizes.</p>
 <p>For more information, see the <a href="../diagnostics/metrics.html">doc page on metrics</a>.</p>
-<h3 id="improvements-to-networking-type-mapping">Improvements to networking type mapping</h3>
-<p>The mappings for the PostgreSQL networking types <code>inet</code> and <code>cidr</code> have been cleaned up and rationalized:</p>
+<h2 id="register-npgsqldatasource-as-a-keyed-di-service">Register NpgsqlDataSource as a keyed DI service</h2>
+<p>.NET 8.0 introduced <a href="https://learn.microsoft.com/dotnet/core/extensions/dependency-injection#keyed-services">keyed services for dependency injection</a>, allowing multiple services with the same CLR type to be registered in a single DI service provider. This is particularly useful when needing to contact multiple databases from your DI-enabled application:</p>
+<pre><code class="lang-c#">var builder = WebApplication.CreateBuilder(args);
+
+builder.Services
+    .AddNpgsqlDataSource(&quot;Host=localhost;Database=CustomersDB;Username=test;Password=test&quot;, serviceKey: DatabaseType.CustomerDb)
+    .AddNpgsqlDataSource(&quot;Host=localhost;Database=OrdersDB;Username=test;Password=test&quot;, serviceKey: DatabaseType.OrdersDb);
+
+var app = builder.Build();
+
+app.MapGet(&quot;/&quot;, async ([FromKeyedServices(DatabaseType.OrdersDb)] NpgsqlConnection connection)
+    =&gt; connection.ConnectionString);
+
+app.Run();
+
+enum DatabaseType
+{
+    CustomerDb,
+    OrdersDb
+}
+</code></pre>
+<p>In this ASP.NET Minimal API application, two Npgsql data sources are registered in DI - one for a customers database, and another for an orders database. When a data source - or connections - needs to be injected somewhere, an enum is used as the service key, to distinguish which database is being requested (note that connections to both databases can be requested by the same function!).</p>
+<p>For more information on registering Npgsql services in DI, see the documentation for <a href="https://www.nuget.org/packages/Npgsql.DependencyInjection#readme-body-tab">Npgsql.DependencyInjection</a>.</p>
+<h2 id="other-features">Other features</h2>
+<ul>
+<li>Improvements and cleanup for networking type mappings:
 <ul>
 <li>In addition to .NET <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>, PostgreSQL <code>inet</code> can also mapped to be mapped to <a class="xref" href="../api/NpgsqlTypes.NpgsqlInet.html">NpgsqlInet</a>, which is an immutable struct containing both IP and netmask components.</li>
 <li>PostgreSQL <code>cidr</code> is now mapped to the newly-introduced <a class="xref" href="../api/NpgsqlTypes.NpgsqlCidr.html">NpgsqlCidr</a>. The mapping to <code>ValueTuple&lt;IPAddress, int&gt;</code> has been removed.</li>
 </ul>
+</li>
+</ul>
+<p>Version 8.0 contains many other smaller features and bug fixes, <a href="https://github.com/npgsql/npgsql/milestone/97?closed=1">see the 8.0.0 milestone</a> for the full list of Npgsql 8.0 issues.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
 <h3 id="json-poco-and-other-dynamic-features-now-require-an-explicit-opt-in"><a name="dynamic-optin">JSON POCO and other dynamic features now require an explicit opt-in</a></h3>
 <p>Npgsql 8.0 is fully compatible with NativeAOT and trimming (see above). While most driver capabilities have been made to work in those profiles, certain features involve dynamic coding practices and are incompatible with NativeAOT and/or trimming - at least for now. As a result, these features now require explicit opt-ins (annotated to be incompatible with NativeAOT/trimming), which you must add either on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> or on <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GlobalTypeMapper">NpgsqlConnection.GlobalTypeMapper</a>:</p>
