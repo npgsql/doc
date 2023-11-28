@@ -191,6 +191,12 @@ await using var reader = await command.ExecuteReaderAsync();
 <li>The <code>Internal Command Timeout</code> connection string parameter has been obsoleted.</li>
 <li><code>NpgsqlDbType.TimestampTZ</code> and <code>NpgsqlDbType.TimeTZ</code> were obsoleted many releases ago, and were finally removed. Use <code>NpgsqlDbType.TimestampTz</code> and <code>NpgsqlDbType.TimeTz</code> instead.</li>
 </ul>
+<h3 id="executing-a-void-returning-function-returns-net-null-instead-of-dbnull">Executing a void-returning function returns .NET null instead of DBNull</h3>
+<p>Previously, executing a void-returning returned <code>DBNull.Value</code>:</p>
+<pre><code class="lang-c#">var command = new NpgsqlCommand(&quot;SELECT pg_sleep(10)&quot;, connection);
+var result = await command.ExecuteScalarAsync();
+</code></pre>
+<p>Before 8.0, <code>result</code> had the value <code>DBNull.Value</code>; this has been changed in 8.0 to be .NET <code>null</code>. This is more correct (as there are no results, rather than a result containing NULL), aligns with ADO.NET standard practices and with other drivers.</p>
 <h3 id="plugin-apis-have-been-changed-for-nativeaottrimming-support">Plugin APIs have been changed for NativeAOT/trimming support</h3>
 <p>As part of the effort to make Npgsql compatible with NativeAOT and trimming, the plugin API was changed in fundamental, breaking ways. Although this API never had the stability guarantees of a true public API (it was and still is in an Internal namespace), external plugins which were developed with it will require adjustments.</p>
 <div class="WARNING">
