@@ -148,7 +148,7 @@ public class SomeEntity
 <p>As an alternative, prior to version 8.0, the Npgsql EF provider has supported JSON POCO mapping by simply delegating serialization/deserialization to System.Text.Json; in this model, EF itself model the contents of the JSON document, and cannot take that structure into account for queries and updates. This approach can now be considered deprecated as it allows for less powerful mapping and supports less query types; using ToJson() is now the recommended way to map POCOs to JSON.</p>
 <h3 id="tojson-owned-entity-mapping">ToJson (owned entity mapping)</h3>
 <p>Npgsql's support for <code>ToJson()</code> is fully aligned with the general EF support; see the <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">EF documentation for more information</a>.</p>
-<p>To get you started quickly, assume that we have the following Custmoer type, with a Details property that we want to map to a single JSON column in the database:</p>
+<p>To get you started quickly, assume that we have the following Customer type, with a Details property that we want to map to a single JSON column in the database:</p>
 <pre><code class="lang-c#">public class Customer
 {
     public int Id { get; set; }
