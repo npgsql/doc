@@ -92,7 +92,7 @@
 </div>
 <h2 id="nativeaot-and-trimming-support">NativeAOT and trimming support</h2>
 <p>Npgsql 8.0 now has 1st-class support for NativeAOT and trimming; the entire library has been properly annotated and is safe for use in applications. The majority of features have been made compatible with NativeAOT/trimming and can be used without issues, and most applications using Npgsql can be used as-is with NativeAOT/trimming without any changes. A few features which are incompatible require an explicit code opt-in, which generates a warning if used with NativeAOT/trimming enabled (<a href="#dynamic-optin">see breaking change note</a>).</p>
-<p>Considerable effort has gone into reducing Npgsql's size footprint; a minimal Npgsql application using NativeAOT and trimming now takes only around 5MB of disk space. To allow users to achieve a minimal size footprint, <a class="xref" href="../api/Npgsql.NpgsqlSlimDataSourceBuilder.html">NpgsqlSlimDataSourceBuilder</a> has been introduced; unlike the standard <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, this builder includes only the very minimum of functionality by default, and allows adding additional features via opt-ins. This allows a pay-per-play approach to application size, where developers can choose only the features they actually need for optimal size. For more information on <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></p>
+<p>Considerable effort has gone into reducing Npgsql's size footprint; a minimal Npgsql application using NativeAOT and trimming now takes only around 5MB of disk space. To allow users to achieve a minimal size footprint, <a class="xref" href="../api/Npgsql.NpgsqlSlimDataSourceBuilder.html">NpgsqlSlimDataSourceBuilder</a> has been introduced; unlike the standard <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, this builder includes only the very minimum of functionality by default, and allows adding additional features via opt-ins. This allows a pay-per-play approach to application size, where developers can choose only the features they actually need for optimal size. For more information, see <a class="xref" href="../api/Npgsql.NpgsqlSlimDataSourceBuilder.html">NpgsqlSlimDataSourceBuilder</a>.</p>
 <p>Making Npgsql NativeAOT/trimming-compatible was a far-reaching effort, affecting many parts of the driver and involving a rewrite of large parts of Npgsql's internals (leading to many other internal improvements). This huge task was done mainly by <a href="http://github.com/ninofloris">Nino Floris</a>, with considerable contributions by <a href="https://github.com/vonzshik">Nikita Kazmin</a>.</p>
 <h2 id="opentelemetry-metrics">OpenTelemetry metrics</h2>
 <p>Npgsql has emitted metrics for several versions, which provided aggregated metrics on various Npgsql interals; for example, it was possible to follow the state of the connection pool, or to track how many commands are being executed per second. Npgsql 8.0 improves on that by switching from the older EventCounter API to the newer System.Diagnostics.Metrics API, implementing OpenTelemetry metrics. To understand more about the different kinds of metrics APIs in .NET, <a href="https://learn.microsoft.com/en-us/dotnet/core/diagnostics/compare-metric-apis">see these docs</a>.</p>
@@ -124,15 +124,15 @@ enum DatabaseType
 <h2 id="other-features">Other features</h2>
 <ul>
 <li>Allow using nullable value types with the generic <code>NpgsqlParameter&lt;T&gt;</code>, e.g. <code>NpgsqlParameter&lt;int?&gt;</code>.</li>
-<li>Introduce a non-caching password provider callback via &lt;xref:NpgsqlDataSourceBuilder.UsePasswordProvider?displayProperty=nameWithType&gt;.</li>
-<li>Allow customizing System.Text.Json JsonSerializationOptions via &lt;xref:NpgsqlDataSourceBuilder.ConfigureJsonOptions?displayProperty=nameWithType&gt;.</li>
+<li>Introduce a non-caching password provider callback via &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider?displayProperty=nameWithType&gt;.</li>
+<li>Allow customizing System.Text.Json JsonSerializationOptions via &lt;xref:Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions?displayProperty=nameWithType&gt;.</li>
 <li>Improvements and cleanup for networking type mappings:
 <ul>
 <li>In addition to .NET <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>, PostgreSQL <code>inet</code> can also mapped to be mapped to <a class="xref" href="../api/NpgsqlTypes.NpgsqlInet.html">NpgsqlInet</a>, which is an immutable struct containing both IP and netmask components.</li>
 <li>PostgreSQL <code>cidr</code> is now mapped to the newly-introduced <a class="xref" href="../api/NpgsqlTypes.NpgsqlCidr.html">NpgsqlCidr</a>. The mapping to <code>ValueTuple&lt;IPAddress, int&gt;</code> has been removed.</li>
 </ul>
 </li>
-<li>Allow providing the root certificate programmatically via the new &lt;xref:NpgsqlDataSourceBuilder.UseRootCertificate?displayProperty=nameWithType&gt;</li>
+<li>Allow providing the root certificate programmatically via the new &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate?displayProperty=nameWithType&gt;</li>
 </ul>
 <p>Version 8.0 contains many other smaller features and bug fixes, <a href="https://github.com/npgsql/npgsql/milestone/97?closed=1">see the 8.0.0 milestone</a> for the full list of issues.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
@@ -199,10 +199,6 @@ var result = await command.ExecuteScalarAsync();
 <p>Before 8.0, <code>result</code> had the value <code>DBNull.Value</code>; this has been changed in 8.0 to be .NET <code>null</code>. This is more correct (as there are no results, rather than a result containing NULL), aligns with ADO.NET standard practices and with other drivers.</p>
 <h3 id="plugin-apis-have-been-changed-for-nativeaottrimming-support">Plugin APIs have been changed for NativeAOT/trimming support</h3>
 <p>As part of the effort to make Npgsql compatible with NativeAOT and trimming, the plugin API was changed in fundamental, breaking ways. Although this API never had the stability guarantees of a true public API (it was and still is in an Internal namespace), external plugins which were developed with it will require adjustments.</p>
-<div class="WARNING">
-<h5>Warning</h5>
-<p>If you're a plugin developer, be aware that some last API changes may still be done; it's advisable to wait until 8.0 is released before adapting your plugin. In any case, please reach out to us via Github issues if you encounter any issues or require guidance!</p>
-</div>
 <h2 id="contributors">Contributors</h2>
 <p>Thank you very much to the following people who have contributed to the individual 8.0.x. releases.</p>
 <h3 id="milestone-800"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A8.0.0">Milestone 8.0.0</a></h3>
