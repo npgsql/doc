@@ -41,7 +41,7 @@ Past contributors to Npgsql:
 * Josh Cooley
 * Yoh Deadfall
 * Austin Drenski
-* Francisco Figueiredo Jr.
+* Francisco Figueiredo Jr. ([@franciscojunior](https://github.com/franciscojunior)) Npgsql creator and former lead developer for versions 0.xx, 1.xx and 2.xx
 * Federico Di Gregorio
 * Jon Hanna
 * Emil Lenngren
