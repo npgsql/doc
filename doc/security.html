@@ -89,16 +89,21 @@
 <p>The simplest way to log into PostgreSQL is by specifying a <code>Username</code> and a <code>Password</code> in your connection string. Depending on how your PostgreSQL is configured (in the <code>pg_hba.conf</code> file), Npgsql will send the password in MD5 or in cleartext (not recommended).</p>
 <p>If a <code>Password</code> is not specified and your PostgreSQL is configured to request a password, Npgsql will look for a <a href="https://www.postgresql.org/docs/current/static/libpq-pgpass.html">standard PostgreSQL password file</a>. If you specify the <code>Passfile</code> connection string parameter, the file it specifies will be used. If that parameter isn't defined, Npgsql will look under the path taken from <code>PGPASSFILE</code> environment variable. If the environment variable isn't defined, Npgsql will fall back to the system-dependent default directory which is <code>$HOME/.pgpass</code> for Unix and <code>%APPDATA%\postgresql\pgpass.conf</code> for Windows.</p>
 <h3 id="auth-token-rotation-and-dynamic-password">Auth token rotation and dynamic password</h3>
-<p>In some cloud scenarios, logging into PostgreSQL is done with an auth token that is rotated every time interval (e.g. one hour). Starting with version 7.0, Npgsql has a built-in periodic password provider mechanism, which allows refreshing the password with zero effort:</p>
+<p>In some cloud scenarios, logging into PostgreSQL is done with an auth token that is rotated every time interval (e.g. one hour). Npgsql has a built-in periodic password provider mechanism, which allows using an up-to-date access token with zero effort:</p>
 <pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
-dataSourceBuilder.UsePeriodicPasswordProvider(
+dataSourceBuilder.UsePasswordProvider(
+    passwordProvider: _ =&gt; throw new NotSupportedException(),
+    passwordProviderAsync: (builder, token) =&gt; /* code to fetch the new access token */);
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre>
+<p>Every time a new physical connection needs to be opened to PostgreSQL, either the synchronous <code>passwordProvider</code> or the asynchronous <code>passwordProviderAsync</code> will be called (depending whether you used <code>Open()</code> or <code>OpenAsync()</code>). Since modern .NET applications are encouraged to always use synchronous I/O, it's good practice to simply throw in the synchronous password provider, as above.</p>
+<p>Note that since the password provider is invoked <em>every</em> time a physical connection is opened, it shouldn't take too long; typically, this would call into a cloud provider API (e.g. Azure Managed Identity), which itself implements a caching mechanism. However, if no such caching is done and the code could take a while, you can instead instruct Npgsql to cache the auth token for a given amount of time:</p>
+<pre><code class="lang-csharp">dataSourceBuilder.UsePeriodicPasswordProvider(
     (settings, cancellationToken) =&gt;  /* async code to fetch the new access token */,
     TimeSpan.FromMinutes(55), // Interval for refreshing the token
     TimeSpan.FromSeconds(5)); // Interval for retrying after a refresh failure
-await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
-<p>This API allows you to provide a minimal async code fragment for fetching the latest auth token, and have Npgsql take care of running it for you as needed.</p>
-<p>If, instead, you prefer to manage this yourself, you can simply inject a new password at any time into a working data source:</p>
+<p>Finally, if you already have code running when the auth token changes, you can simply inject it manually at any time into a working data source:</p>
 <pre><code class="lang-csharp">dataSource.Password = &lt;new password&gt;;
 </code></pre>
 <p>Any physical connection that's opened after this point will use the newly-injected password.</p>
