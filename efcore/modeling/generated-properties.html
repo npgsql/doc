@@ -148,14 +148,14 @@
     =&gt; modelBuilder.UseHiLo();
 </code></pre>
 <h2 id="guiduuid-generation">GUID/UUID Generation</h2>
-<p>By default, for GUID key properties, a random GUID is generated client-side by the EF provider and sent to the database.</p>
-<p>To generate GUID's client-side for non-key properties, configure them as follows:</p>
+<p>By default, for GUID key properties, a GUID is generated client-side by the EF provider and sent to the database. From version 9.0 and onwards, these GUIDs are sequential (version 7), which are more optimized for database indexes (before version 9.0, these GUIDs were random).</p>
+<p>To have the provider generate GUIDs client-side for <strong>non-key</strong> properties, configure them as follows:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
         .Entity&lt;Blog&gt;()
         .Property(b =&gt; b.SomeGuidProperty)
-        .HasValueGenerator&lt;GuidValueGenerator&gt;();
+        .HasValueGenerator&lt;NpgsqlSequentialGuidValueGenerator&gt;();
 }
 </code></pre>
 <p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the value in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
