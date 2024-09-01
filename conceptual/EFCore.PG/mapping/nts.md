@@ -13,6 +13,9 @@ To use the NetTopologySuite plugin, add the [Npgsql.EntityFrameworkCore.PostgreS
 
 ### [NpgsqlDataSource](#tab/with-datasource)
 
+> [!WARNING]
+> Ensure you build your data source `dataSourceBuilder.Build();` _outside_ of the `AddDbContext()`` configure callback otherwise a new ServiceProvider will be created for each DbContext instance
+
 Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. When using NpsgqlDataSource, NetTopologySuite currently has to be configured twice - once at the EF level, and once at the underlying ADO.NET level (there are plans to improve this):
 
 ```c#
