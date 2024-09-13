@@ -86,6 +86,10 @@
 <h1 id="90-release-notes">9.0 Release Notes</h1>
 
 <p>Npgsql.EntityFrameworkCore.PostgreSQL version 9.0 is under development; previews are available on <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL">nuget.org</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The following release notes and breaking changes are partial. More will be added nearer to the 9.0 final release.</p>
+</div>
 <h2 id="improved-configuration-for-enums-and-plugins">Improved configuration for enums and plugins</h2>
 <p>Previously, configuration around enums and plugins (NodaTime, NetTopologySuite) was complicated, requiring multiple setup actions at both the EF and the lower-level Npgsql layers. EF 9.0 improves the configuration story, allowing you to configure enums and plugins via a single EF gesture:</p>
 <pre><code class="lang-c#">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(

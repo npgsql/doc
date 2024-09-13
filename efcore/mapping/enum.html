@@ -99,7 +99,7 @@
 <a href="#tabpanel_bHGHmlrG6S_with-connection-string" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-connection-string" data-tab="with-connection-string" tabindex="0" aria-selected="true">With a connection string</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_with-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-datasource" data-tab="with-datasource" tabindex="-1">With an external NpgsqlDataSource</a>
+<a href="#tabpanel_bHGHmlrG6S_with-external-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-external-datasource" data-tab="with-external-datasource" tabindex="-1">With an external NpgsqlDataSource</a>
 </li>
 </ul>
 <section id="tabpanel_bHGHmlrG6S_with-connection-string" role="tabpanel" data-tab="with-connection-string">
@@ -111,7 +111,7 @@
 </code></pre>
 <p>This configures all aspects of Npgsql to use your <code>Mood</code> enum - both at the EF and the lower-level Npgsql layer - and ensures that the enum is created in the database in EF migrations.</p>
 </section>
-<section id="tabpanel_bHGHmlrG6S_with-datasource" role="tabpanel" data-tab="with-datasource" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bHGHmlrG6S_with-external-datasource" role="tabpanel" data-tab="with-external-datasource" aria-hidden="true" hidden="hidden">
 
 <p>If you're creating an external NpgsqlDataSource and passing it to <code>UseNpgsql</code>, you must make sure to map your enum on that data independently of the EF-level setup:</p>
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
