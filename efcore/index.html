@@ -97,56 +97,127 @@
 <p>Below is a <code>.csproj</code> file for a console application that uses the Npgsql EF Core provider:</p>
 <pre><code class="lang-xml">&lt;Project Sdk=&quot;Microsoft.NET.Sdk&quot;&gt;
   &lt;PropertyGroup&gt;
-    &lt;TargetFramework&gt;netcoreapp3.0&lt;/TargetFramework&gt;
+    &lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
   &lt;/PropertyGroup&gt;
   &lt;ItemGroup&gt;
-    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;3.1.3&quot; /&gt;
+    &lt;PackageReference Include=&quot;Npgsql.EntityFrameworkCore.PostgreSQL&quot; Version=&quot;8.0.4&quot; /&gt;
   &lt;/ItemGroup&gt;
 &lt;/Project&gt;
 </code></pre>
-<h2 id="defining-a-dbcontext">Defining a <code>DbContext</code></h2>
-<pre><code class="lang-c#">using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-
-namespace ConsoleApp.PostgreSQL
+<h2 id="defining-a-model-and-a-dbcontext">Defining a model and a <code>DbContext</code></h2>
+<p>Let's say you want to store blogs and their posts in their database; you can model these as .NET types as follows:</p>
+<pre><code class="lang-c#">public class Blog
 {
-    public class BloggingContext : DbContext
-    {
-        public DbSet&lt;Blog&gt; Blogs { get; set; }
-        public DbSet&lt;Post&gt; Posts { get; set; }
+    public int BlogId { get; set; }
+    public string Url { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            =&gt; optionsBuilder.UseNpgsql(&quot;Host=my_host;Database=my_db;Username=my_user;Password=my_pw&quot;);
-    }
+    public List&lt;Post&gt; Posts { get; set; }
+}
 
-    public class Blog
-    {
-        public int BlogId { get; set; }
-        public string Url { get; set; }
+public class Post
+{
+    public int PostId { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
 
-        public List&lt;Post&gt; Posts { get; set; }
-    }
-
-    public class Post
-    {
-        public int PostId { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
-
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
-    }
+    public int BlogId { get; set; }
+    public Blog Blog { get; set; }
 }
 </code></pre>
-<h2 id="additional-configuration-for-aspnet-core-applications">Additional configuration for ASP.NET Core applications</h2>
-<p>Consult <a href="https://docs.microsoft.com/en-us/aspnet/core/data/ef-rp/intro">this tutorial</a> for general information on how to make ASP.NET work with EF Core. For Npgsql specifically, simply place the following in your <code>ConfigureServices</code> method in <code>Startup.cs</code>:</p>
-<pre><code class="lang-c#">public void ConfigureServices(IServiceCollection services)
-{
-    // Other DI initializations
+<p>You then define a <code>DbContext</code> type which you'll use to interact with the database:</p>
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_onconfiguring" role="tab" aria-controls="tabpanel_bHGHmlrG6S_onconfiguring" data-tab="onconfiguring" tabindex="0" aria-selected="true">OnConfiguring</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_context-pooling" role="tab" aria-controls="tabpanel_bHGHmlrG6S_context-pooling" data-tab="context-pooling" tabindex="-1">DbContext pooling</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_bHGHmlrG6S_aspnet" role="tab" aria-controls="tabpanel_bHGHmlrG6S_aspnet" data-tab="aspnet" tabindex="-1">ASP.NET / DI</a>
+</li>
+</ul>
+<section id="tabpanel_bHGHmlrG6S_onconfiguring" role="tabpanel" data-tab="onconfiguring">
 
-    services.AddDbContext&lt;BloggingContext&gt;(options =&gt;
-            options.UseNpgsql(Configuration.GetConnectionString(&quot;BloggingContext&quot;)));
+<p>Using <code>OnConfiguring()</code> to configure your context is the easiest way to get started, but is discouraged for most production applications:</p>
+<pre><code class="lang-c#">public class BloggingContext : DbContext
+{
+    public DbSet&lt;Blog&gt; Blogs { get; set; }
+    public DbSet&lt;Post&gt; Posts { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        =&gt; optionsBuilder.UseNpgsql(&quot;&lt;connection string&gt;&quot;);
 }
+
+// At the point where you need to perform a database operation:
+using var context = new BloggingContext();
+// Use the context...
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S_context-pooling" role="tabpanel" data-tab="context-pooling" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-c#">var dbContextFactory = new PooledDbContextFactory&lt;BloggingContext&gt;(
+    new DbContextOptionsBuilder&lt;BloggingContext&gt;()
+        .UseNpgsql(&quot;&lt;connection string&gt;&quot;)
+        .Options);
+
+// At the point where you need to perform a database operation:
+using var context = dbContextFactory.CreateDbContext();
+// Use the context...
+</code></pre>
+</section>
+<section id="tabpanel_bHGHmlrG6S_aspnet" role="tabpanel" data-tab="aspnet" aria-hidden="true" hidden="hidden">
+
+<p>When using ASP.NET - or any application with dependency injection - the context instance will be injected into your code. Use the following to configure EF with your DI container:</p>
+<pre><code class="lang-c#">var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt; 
+    opt.UseNpgsql(builder.Configuration.GetConnectionString(&quot;BloggingContext&quot;)));
+
+public class BloggingContext(DbContextOptions&lt;BloggingContext&gt; options) : DbContext(options)
+{
+    public DbSet&lt;Blog&gt; Blogs { get; set; }
+    public DbSet&lt;Post&gt; Posts { get; set; }
+}
+</code></pre>
+</section>
+</div>
+
+<p>For more information on getting started with EF, consult the <a href="https://learn.microsoft.com/en-us/ef/core/get-started/overview/first-app?tabs=netcore-cli">EF getting started documentation</a>.</p>
+<h2 id="additional-npgsql-configuration">Additional Npgsql configuration</h2>
+<p>The Npgsql EF provider is built on top of the lower-level Npgsql ADO.NET provider (<a href="https://www.npgsql.org/doc/index.html">docs</a>); these two separate components support various options you may want to configure.</p>
+<p>If you're using EF 9.0 or above, the <code>UseNpgsql()</code> is a single point where you can configure everything related to Npgsql. For example:</p>
+<pre><code class="lang-c#">builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt;
+    opt.UseNpgsql(
+        builder.Configuration.GetConnectionString(&quot;BloggingContext&quot;),
+        o =&gt; o
+            .SetPostgresVersion(13, 0)
+            .UseNodaTime()
+            .MapEnum&lt;Mood&gt;(&quot;mood&quot;)));
+</code></pre>
+<p>The above configures the EF provider to produce SQL for PostgreSQL version 13 (avoiding newer incompatible features), adds a plugin allowing use of NodaTime for date/time type mapping, and maps a .NET enum type. Note that the last two also require configuration at the lower-level ADO.NET layer, which the code above does for you automatically.</p>
+<p>If you need to configure something at the lower-level ADO.NET layer, use <code>ConfigureDataSource()</code> as follows:</p>
+<pre><code class="lang-c#">builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt;
+    opt.UseNpgsql(
+        builder.Configuration.GetConnectionString(&quot;BloggingContext&quot;),
+            o =&gt; o.ConfigureDataSource(dataSourceBuilder =&gt; dataSourceBuilder.UseClientCertificate(certificate))));
+</code></pre>
+<p><code>ConfigureDataSource()</code> provides access to a lower-level <a href="../doc/basic-usage.html#data-source"><code>NpgsqlDataSourceBuilder</code></a> which you can use to configure all aspects of the Npgsql ADO.NET provider.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The EF provider internally creates an NpgsqlDataSource and uses that; for most configuration (e.g. connection string), the provider knows to switch between NpgsqlDataSources automatically.
+However, it's not possible to detect configuration differences within the <code>ConfigureDataSource()</code>; as a result, avoid performing varying configuration inside <code>ConfigureDataSource()</code>, since you may
+get the wrong NpgsqlDataSource. If you find yourself needing to vary Npgsql ADO.NET configuration, create an external NpgsqlDataSource yourself with the desired configuration and pass that to
+<code>UseNpgsql()</code> as described below.</p>
+</div>
+<h3 id="using-an-external-npgsqldatasource">Using an external NpgsqlDataSource</h3>
+<p>If you're using a version of EF prior to 9.0, the above configuration methods aren't available. You can still create an <code>NpgsqlDataSource</code> yourself, and then pass it EF's <code>UseNpgsql()</code>:</p>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(builder.Configuration.GetConnectionString(&quot;BloggingContext&quot;));
+dataSourceBuilder.MapEnum&lt;Mood&gt;();
+dataSourceBuilder.UseNodaTime();
+var dataSource = dataSourceBuilder.Build();
+
+builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt; opt.UseNpgsql(dataSource));
 </code></pre>
 <h2 id="using-an-existing-database-database-first">Using an Existing Database (Database-First)</h2>
 <p>The Npgsql EF Core provider also supports reverse-engineering a code model from an existing PostgreSQL database (&quot;database-first&quot;). To do so, use dotnet CLI to execute the following:</p>
