@@ -1,16 +1,13 @@
----
-layout: doc
-title: Entity Framework 6
----
+# Entity Framework 6
 
 Npgsql has an Entity Framework 6 provider. You can use it by installing the
 [EntityFramework6.Npgsql](https://www.nuget.org/packages/EntityFramework6.Npgsql/) nuget.
 
-## Basic Configuration ##
+## Basic Configuration
 
 Configuration for an Entity Framework application can be specified in a config file (app.config/web.config) or through code. The latter is known as code-based configuration.
 
-### Code-based ###
+### Code-based
 
 To use Entity Framework with Npgsql, define a class that inherits from `DbConfiguration` in the same assembly as your class inheriting `DbContext`. Ensure that you configure provider services, a provider factory, a default connection factory as shown below:
 
@@ -35,7 +32,7 @@ class NpgSqlConfiguration : DbConfiguration
 }
 ```
 
-### Config file ###
+### Config file
 
 When installing `EntityFramework6.Npgsql` nuget package, the relevant sections in `App.config` / `Web.config` are usually automatically updated. You typically only have to add your `connectionString` with the correct `providerName`.
 
@@ -59,7 +56,7 @@ When installing `EntityFramework6.Npgsql` nuget package, the relevant sections i
 </configuration>
 ```
 
-## Guid Support ##
+## Guid Support
 
 Npgsql EF migrations support uses `uuid_generate_v4()` function to generate guids.
 In order to have access to this function, you have to install the extension uuid-ossp through the following command:
@@ -78,7 +75,7 @@ If the database is being created by Npgsql Migrations, you will need to
 [run the `create extension` command in the `template1` database](http://stackoverflow.com/a/11584751).
 This way, when the new database is created, the extension will be installed already.
 
-## Optimistic Concurrency ##
+## Optimistic Concurrency
 
 EntityFramework supports [optimistic concurrency](https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application), through the [system column `xmin`](https://www.postgresql.org/docs/current/ddl-system-columns.html). To use this column as the concurrency token, some [customization is needed](https://github.com/npgsql/EntityFramework6.Npgsql/issues/8). The following code will setup `Department.Version` to map to `xmin`, while the `SqlGenerator` will generate `CREATE/ALTER TABLE` statements omitting system columns.
 
@@ -126,7 +123,7 @@ public class SqlGenerator : NpgsqlMigrationSqlGenerator
 }
 ```
 
-## Template Database ##
+## Template Database
 
 When the Entity Framework 6 provider creates a database, it issues a simple `CREATE DATABASE` command.
 In PostgreSQL, this implicitly uses `template1` as the template - anything existing in `template1` will
@@ -134,7 +131,7 @@ be copied to your new database. If you wish to change the database used as a tem
 the `EF Template Database` connection string parameter. For more info see the
 [PostgreSQL docs](https://www.postgresql.org/docs/current/static/sql-createdatabase.html).
 
-## Customizing DataReader Behavior ##
+## Customizing DataReader Behavior
 
 You can use [an Entity Framework 6 IDbCommandInterceptor](https://msdn.microsoft.com/library/dn469464(v=vs.113).aspx) to wrap the `DataReader` instance returned by Npgsql when Entity Framework executes queries. This is possible using a ```DbConfiguration``` class.
 
