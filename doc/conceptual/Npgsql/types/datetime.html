@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Date and Time Handling | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Date and Time Handling | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/Npgsql/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="date-and-time-handling">Date and Time Handling</h1>
+
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Npgsql 6.0 introduced some important changes to how timestamps are mapped, <a href="../release-notes/6.0.html">see the release notes for more information</a>.</p>
+</div>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The recommended way of working with date/time types is <a href="nodatime.html">the NodaTime plugin</a>: the NodaTime types are much better-designed, avoid the flaws in the built-in BCL types, and are fully supported by Npgsql.</p>
+</div>
+<p>Handling date and time values usually isn't hard, but you must pay careful attention to differences in how the .NET types and PostgreSQL represent dates. It's worth reading the <a href="http://www.postgresql.org/docs/current/static/datatype-datetime.html">PostgreSQL date/time type documentation</a> to familiarize yourself with PostgreSQL's types.</p>
+<h2 id="net-types-and-postgresql-types">.NET types and PostgreSQL types</h2>
+<p>The .NET and PostgreSQL types differ in the resolution and range they provide; the .NET type usually have a higher resolution but a lower range than the PostgreSQL types:</p>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Precision/Range</th>
+<th>.NET Native Type</th>
+<th>Precision/Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp with time zone</td>
+<td>1 microsecond, 4713BC-294276AD</td>
+<td>DateTime (UTC)</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>1 microsecond, 4713BC-294276AD</td>
+<td>DateTime (Unspecified)</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+</tr>
+<tr>
+<td>date</td>
+<td>1 day, 4713BC-5874897AD</td>
+<td>DateOnly (6.0+), DateTime</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+</tr>
+<tr>
+<td>time without time zone</td>
+<td>1 microsecond, 0-24 hours</td>
+<td>TimeOnly (6.0+), TimeSpan</td>
+<td>100 nanoseconds, -10,675,199 - 10,675,199 days</td>
+</tr>
+<tr>
+<td>time with time zone</td>
+<td>1 microsecond, 0-24 hours</td>
+<td>DateTimeOffset (ignore date)</td>
+<td>100 nanoseconds, 1AD-9999AD</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>1 microsecond, -178000000-178000000 years</td>
+<td>TimeSpan</td>
+<td>100 nanoseconds, -10,675,199 - 10,675,199 days</td>
+</tr>
+</tbody>
+</table>
+<p>For almost all applications, the range of the .NET native types (or the NodaTime types) are more than sufficient. In the rare cases where you need to access values outside these ranges, timestamps can be accessed as <code>long</code>, dates as <code>int</code>, and intervals as <code>NpgsqlInterval</code>. These are the raw PostgreSQL binary representations of these type, so you'll have to deal with encoding/decoding yourself.</p>
+<h2 id="timestamps-and-timezones">Timestamps and timezones</h2>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>A common mistake is for users to think that the PostgreSQL <code>timestamp with time zone</code> type stores the timezone in the database. This is not the case: only a UTC timestamp is stored. There is no single PostgreSQL type that stores both a date/time and a timezone, similar to <a href="https://msdn.microsoft.com/en-us/library/system.datetimeoffset(v=vs.110).aspx">.NET DateTimeOffset</a>. To store a timezone in the database, add a separate text column containing the timezone ID.</p>
+</div>
+<p>In PostgreSQL, <code>timestamp with time zone</code> represents a UTC timestamp, while <code>timestamp without time zone</code> represents a local or unspecified time zone. Starting with 6.0, Npgsql maps UTC DateTime to <code>timestamp with time zone</code>, and Local/Unspecified DateTime to <code>timestamp without time zone</code>; trying to send a non-UTC DateTime as <code>timestamptz</code> will throw an exception, etc. Npgsql also supports reading and writing DateTimeOffset to <code>timestamp with time zone</code>, but only with Offset=0. Prior to 6.0, <code>timestamp with time zone</code> would be converted to a local timestamp when read - see below for more details. The precise improvements and breaking changes are detailed in the <a href="../release-notes/6.0.html#timestamp-rationalization-and-improvements">6.0 breaking changes</a>; to revert to the pre-6.0 behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
+</code></pre>
+<p>Use of the <code>time with time zone</code> type is discouraged, <a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-TIMEZONES">see the PostgreSQL documentation</a>. You can use a <code>DateTimeOffset</code> to read and write values - the date component will be ignored.</p>
+<h2 id="infinity-values">Infinity values</h2>
+<p>PostgreSQL supports the special values <code>-infinity</code> and <code>infinity</code> for the timestamp and date types (<a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES">see docs</a>); these can be useful to represent a value which is earlier or later than any other value. Starting with Npgsql 6.0, these special values are mapped to the <code>MinValue</code> and <code>MaxValue</code> value on the corresponding .NET types (<code>DateTime</code> and <code>DateOnly</code>, NodaTime <code>Instant</code> and <code>LocalDate</code>). To opt out of this behavior, set the following AppContext switch at the start of your application:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+</code></pre>
+<p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
+<h2 id="detailed-behavior-reading-values-from-the-database">Detailed Behavior: Reading values from the database</h2>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Default .NET type</th>
+<th>Non-default .NET types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp with time zone</td>
+<td>DateTime (Utc<sup>1</sup>)</td>
+<td>DateTimeOffset (Offset=0)<sup>2</sup></td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>DateTime (Unspecified)</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>DateTime</td>
+<td>DateOnly (6.0+)</td>
+</tr>
+<tr>
+<td>time without time zone</td>
+<td>TimeSpan</td>
+<td>TimeOnly (6.0+)</td>
+</tr>
+<tr>
+<td>time with time zone</td>
+<td>DateTimeOffset</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>TimeSpan (<sup>3</sup>)</td>
+<td>&lt;xref:NpgsqlTypes.NpgsqlInterval&gt;</td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> returns a Local DateTime instead of Utc. <a href="../release-notes/6.0.html#major-changes-to-timestamp-mapping">See the breaking change note for more info</a>.</p>
+<p><sup>2</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), reading a <code>timestamp with time zone</code> as a DateTimeOffset returns a local offset based on the timezone of the server where Npgsql is running.</p>
+<p><sup>3</sup> PostgreSQL intervals with month or year components cannot be read as TimeSpan. Consider using NodaTime's <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, or &lt;xref:NpgsqlTypes.NpgsqlInterval&gt;.</p>
+<h2 id="detailed-behavior-sending-values-to-the-database">Detailed Behavior: Sending values to the database</h2>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Default .NET types</th>
+<th>Non-default .NET types</th>
+<th>NpgsqlDbType</th>
+<th>DbType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp with time zone</td>
+<td>DateTime (Utc)<sup>1</sup>, DateTimeOffset</td>
+<td></td>
+<td>TimestampTz</td>
+<td>DateTime<sup>2</sup>, DateTimeOffset</td>
+</tr>
+<tr>
+<td>timestamp without time zone</td>
+<td>DateTime (Local/Unspecified)<sup>1</sup></td>
+<td></td>
+<td>Timestamp</td>
+<td>DateTime2</td>
+</tr>
+<tr>
+<td>date</td>
+<td>DateOnly (6.0+)</td>
+<td>DateTime</td>
+<td>Date</td>
+<td>Date</td>
+</tr>
+<tr>
+<td>time without time zone</td>
+<td>TimeOnly (6.0+)</td>
+<td>TimeSpan</td>
+<td>Time</td>
+<td>Time</td>
+</tr>
+<tr>
+<td>time with time zone</td>
+<td></td>
+<td>DateTimeOffset</td>
+<td>TimeTz</td>
+<td></td>
+</tr>
+<tr>
+<td>interval</td>
+<td>TimeSpan</td>
+<td></td>
+<td>Interval</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> UTC DateTime is written as <code>timestamp with time zone</code>, Local/Unspecified DateTimes are written as <code>timestamp without time zone</code>. In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), DateTime is always written as <code>timestamp without time zone</code>.</p>
+<p><sup>2</sup>In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), <code>DbType.DateTime</code> is mapped to <code>timestamp without time zone</code>.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/datetime.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

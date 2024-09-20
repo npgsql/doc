@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Performance | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Performance | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../styles/main.css">
+    <link rel="stylesheet" href="../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../api/conceptual/Npgsql/toc.html">
+  
+  <meta property="docfx:rel" content="../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../index.html">
+                <img id="logo" class="svg" src="../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="performance">Performance</h1>
+
+<h2 id="diagnostics">Diagnostics</h2>
+<p>To be able to improve performance, you first need to be able to see which queries are slow, and generally observe how your application is behaving. PostgreSQL provide some powerful features for knowing what's going on in the database; <a href="https://www.postgresql.org/docs/current/monitoring-stats.html">the statistics collector</a> is a good place to start, and in particular the <code>pg_stat_activity</code> table, which shows which queries are being executed at any given point.</p>
+<p>Beyond PostgreSQL, Npgsql provides its own set of diagnostics features for tracing, logging and producing metrics. Tracing and metrics are particularly useful for performance analysis - consider collecting this data continuously on your production platform. These features are documented in the dedicated <a href="diagnostics/overview.html">diagnostics page</a>.</p>
+<h2 id="prepared-statements">Prepared Statements</h2>
+<p>One of the most important (and easy) ways to improve your application's performance is to prepare your commands. Even if you're not coding against ADO.NET directly (e.g. using Dapper or an O/RM), Npgsql has an automatic preparation feature which allows you to benefit from the performance gains associated with prepared statements. <a href="http://www.roji.org/prepared-statements-in-npgsql-3-2">See this blog post</a> and/or <a href="prepare.html">the documentation</a> for more details.</p>
+<h2 id="batchingpipelining">Batching/Pipelining</h2>
+<p>When you execute a command, Npgsql executes a roundtrip to the database. If you execute multiple commands (say, inserting 3 rows or performing multiple selects), you're executing multiple roundtrips; each command has to complete before the next command can start execution. Depending on your network latency, this can considerably degrade your application's performance.</p>
+<p>You can batch multiple SQL statements in a single roundtrip:</p>
+<pre><code class="lang-c#">var batch = new NpgsqlBatch(connection)
+{
+    BatchCommands = { new(&quot;SELECT ...&quot;), new(&quot;SELECT ...&quot;) }
+};
+await using (var reader = await batch.ExecuteReaderAsync())
+{
+    while (await reader.ReadAsync()) {
+        // Read first resultset
+    }
+
+    await reader.NextResultAsync();
+
+    while (await reader.ReadAsync()) {
+        // Read second resultset
+    }
+}
+</code></pre>
+<h2 id="disable-enlisting-to-transactionscope">Disable enlisting to TransactionScope</h2>
+<p>By default, Npgsql will enlist to ambient transactions. This occurs when a connection is opened while inside a <code>TransactionScope</code>, and can provide a powerful programming model for working with transactions. However, this involves checking whether an ambient transaction is in progress each time a (pooled) connection is open, an operation that takes more time than you'd think. Scenarios where connections are very short-lived and open/close happens very frequently can benefit from removing this check - simply include <code>Enlist=false</code> in the connection string. Note that you can still enlist manually by calling <code>NpgsqlConnection.Enlist()</code>.</p>
+<h2 id="pooled-connection-reset">Pooled Connection Reset</h2>
+<p>When a pooled connection is closed, Npgsql will arrange for its state to be reset the next time it's used. This prevents leakage of state from one usage cycle of a physical connection to another one. For example, you may change certain PostgreSQL parameters (e.g. <code>statement_timeout</code>), and it's undesirable for this change to persist when the connection is closed.</p>
+<p>Connection reset happens via the PostgreSQL <a href="https://www.postgresql.org/docs/current/static/sql-discard.html"><code>DISCARD ALL</code> command</a>, or, if there are any prepared statements at the time of closing, by a combination of the equivalent statements described in the docs (to prevent closing those statements). Note that these statements aren't actually sent when closing the connection - they're written into Npgsql's internal write buffer, and will be sent with the first user statement after the connection is reopened. This prevents a costly database roundtrip.</p>
+<p>If you really want to squeeze every last bit of performance from PostgreSQL, you may disable connect reset by specifying <code>No Reset On Close</code> on your connection string - this will slightly improve performance in scenarios where connection are very short-lived, and especially if prepared statements are in use.</p>
+<h2 id="reading-large-values">Reading Large Values</h2>
+<p>When reading results from PostgreSQL, Npgsql first reads raw binary data from the network into an internal read buffer, and then parses that data as you call methods such as <code>NpgsqlDataReader.GetString()</code>. While this allows for efficient network reads, it's worth thinking about the size of this buffer, which is 8K by default. Under normal usage, Npgsql attempts to read each row into the buffer; if that entire row fits in 8K, you'll have optimal performance. However, if a row is bigger than 8K, Npgsql will allocate an &quot;oversize buffer&quot;, which will be used until the connection is closed or returned to the pool. If you're not careful, this can create significant memory churn that will slow down your application. To avoid this, if you know you're going to be reading 16k rows, you can specify <code>Read Buffer Size=18000</code> in your connection string (leaving some margin for protocol overhead), this will ensure that the read buffer is reused and no extra allocation occur.</p>
+<p>Another option is to pass <code>CommandBehavior.SequentialAccess</code> to <code>NpgsqlCommand.ExecuteReader()</code>. Sequential mode means that Npgsql will no longer read entire rows into its buffer, but will rather fill up the buffer as needed, reading more data only when it's empty. The same 8K read buffer will be used regardless of the row's total size, and Npgsql will take care of the details. In sequential mode, however, you must read the row's fields in the order in which you specified them; you cannot read the 2nd field and then go back to the 1st field, and trying to do so will generate an exception. Similarly, you cannot read the same field twice - once you've read a field, it has been consumed.</p>
+<p>For more information on <code>CommandBehavior.SequentialAccess</code>, see <a href="https://msdn.microsoft.com/en-us/library/87z0hy49(v=vs.110).aspx">this page</a>. If you decide to use this feature, be aware that it isn't used as often and may therefore contain bugs.</p>
+<p>You can also control the socket's receive buffer size (not to be confused with Npgsql's internal buffer) by setting the <code>Socket Receive Buffer Size</code> connection string parameter.</p>
+<h2 id="writing-large-values">Writing Large Values</h2>
+<p>Writing is somewhat similar - Npgsql has an internal write buffer (also 8K by default). When writing your query's SQL and parameters to PostgreSQL, Npgsql always writes &quot;sequentially&quot;, that is, filling up the 8K buffer and flushing it when full. You can use <code>Write Buffer Size</code> to control the buffer's size.</p>
+<p>You can also control the socket's send buffer size (not to be confused with Npgsql's internal buffer) by setting the <code>Socket Send Buffer Size</code> connection string parameter.</p>
+<h2 id="avoiding-boxing-when-writing-parameter-values">Avoiding boxing when writing parameter values</h2>
+<p>See <a href="basic-usage.html#strongly-typed-parameters">this section</a>.</p>
+<h2 id="unix-domain-socket">Unix Domain Socket</h2>
+<p>If you're on Linux or macOS and are connecting to a PostgreSQL server on the same machine, you can boost performance a little by connecting via Unix domain socket rather than via a regular TCP/IP socket. To do this, simply specify the directory of your PostgreSQL sockets in the <code>Host</code> connection string parameter - if this parameter starts with a slash, it will be taken to mean a filesystem path.</p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/performance.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../styles/main.js"></script>
+  </body>
+</html>

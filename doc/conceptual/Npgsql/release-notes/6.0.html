@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql 6.0 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql 6.0 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/Npgsql/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-60-release-notes">Npgsql 6.0 Release Notes</h1>
+
+<p>Npgsql version 6.0 has been released and is available on nuget.</p>
+<p>Npgsql 6.0 brings some major breaking changes and is not a simple in-place upgrade. Carefully read the breaking change notes below and upgrade with care.</p>
+<h2 id="new-features">New features</h2>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/npgsql/milestone/71?closed=1">available here</a>.</p>
+<h3 id="multiple-hosts-load-balancing-and-failover">Multiple hosts, load balancing and failover</h3>
+<p>Npgsql now includes first-class support for managing connections to multiple PostgreSQL servers, unlocking both load balancing for better performance and failover for better reliability (<a href="https://github.com/npgsql/npgsql/issues/732">#732</a>). This long-awaited feature is an important part of using PostgreSQL in scalable and mission-critical environments.</p>
+<p>For example, consider the following connection string:</p>
+<pre><code class="lang-connection_string">Host=server1,server2,server3,server4,server5;Username=test;Password=test;Load Balance Hosts=true;Target Session Attributes=prefer-standby
+</code></pre>
+<p>This will make Npgsql load balance connections across 5 different servers, in round-robbin fashion; connections to read-only standby servers is preferred in order to offload as much read-only load from the primary server, but if only the primary server is up it will still be used.</p>
+<p>The multiple hosts feature is highly configurable, <a href="../failover-and-load-balancing.html">see the full documentation for more details</a>.</p>
+<h3 id="tracing-with-opentelemetry">Tracing with OpenTelemetry</h3>
+<p>Npgsql can now report tracing data via OpenTelemetry; this can provide invaluable data on the queries your application is running, how long they're taking, and situate them in the larger context of your application. For example, you can visualize what percentage of your HTTP requests are spent waiting for your database query.</p>
+<p>The following is a sample timeline visualization of Npgsql-reported trace data, using <a href="https://zipkin.io/">Zipkin</a>:</p>
+<p><img src="/img/zipkin.png" alt="Zipkin UI Sample"></p>
+<p>See the full documentation in the <a href="/doc/diagnostics/tracing.html">diagnostics page</a>.</p>
+<h3 id="timestamp-rationalization-and-improvements">Timestamp rationalization and improvements</h3>
+<p>Support for <code>timestamp with time zone</code> and <code>timestamp without time zone</code> has been rationalized and simplified, and aligned with PostgreSQL best practices. In particular, the &quot;UTC everywhere&quot; pattern is much better supported via the PostgreSQL <code>timestamp with time zone</code> type, which is the recommended way to handle timestamps. A detailed explanation is available in <a href="https://www.roji.org/postgresql-dotnet-timestamp-mapping">this blog post</a>, below is a summary of the main improvements.</p>
+<ul>
+<li>UTC timestamps have been cleanly separated from non-UTC timestamps, aligning with the PostgreSQL types. The former are represented by <code>timestamp with time zone</code> and DateTime with Kind UTC, the latter by <code>timestamp without time zone</code> and DateTime with Kind Local or Unspecified. It is recommended to use UTC timestamps where possible.</li>
+<li>Npgsql no longer performs any implicit timezone conversions when reading or writing any timestamp value - the value in the database is what you get, and the machine timezone no longer plays any role when reading/writing values.</li>
+<li>Npgsql no longer supports date/time representations which cannot be fully round-tripped to the database. If it can't be fully stored as-is, you can't write it.</li>
+<li>A compatibility switch enables opting out of the new behavior, to maintain backwards compatibility.</li>
+</ul>
+<p>This change introduces significant breaking changes (see below), although a compatibility flag can be used to opt out and revert to the previous behavior.</p>
+<p>Other date/time improvements include:</p>
+<ul>
+<li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a> (<a href="https://github.com/npgsql/npgsql/issues/3616">#3616</a>).</li>
+<li>PostgreSQL <code>tstzrange</code> is now mapped to NodaTime <a href="https://nodatime.org/3.0.x/api/NodaTime.Interval.html">Interval</a>, and PostgreSQL <code>daterange</code> is now mapped to NodaTime <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a>. Most methods on these types are translated (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>, <a href="https://github.com/npgsql/npgsql/issues/4070">#4070</a>).</li>
+<li><code>DateTime.MinValue</code> and <code>MaxValue</code> are now mapped to PostgreSQL <code>-infinity</code> and <code>infinity</code> by default.</li>
+</ul>
+<h3 id="raw-sql-mode-and-new-batching-api">Raw SQL mode and new batching API</h3>
+<p>It is now possible to use PostgreSQL positional parameters, allowing Npgsql to skip rewriting your SQL and send it directly to PostgreSQL (<a href="https://github.com/npgsql/npgsql/issues/1042">#1042</a>):</p>
+<pre><code class="lang-sql">SELECT * FROM blogs WHERE b.name = @p; -- Before Npgsql 6.0
+SELECT * FROM blogs WHERE b.name = $1; -- Npgsql 6.0
+</code></pre>
+<p>This is more efficient, is safer (since Npgsql doesn't have to parse SQL), and aligns your SQL with the actual PostgreSQL SQL. Note that named parameters are still supported for backwards compatibility.</p>
+<p>In addition, Npgsql now supports <a href="https://github.com/dotnet/runtime/issues/28633">the new ADO.NET batching API</a> introduced in .NET 6.0 as an alternative to packing multiple statements into a single NpgsqlCommand, delimited by semicolons (<a href="https://github.com/npgsql/npgsql/pull/3860">#3860</a>):</p>
+<pre><code class="lang-c#">// Before Npgsql 6.0
+var command = new NpgsqlCommand(&quot;SELECT 1; SELECT 2&quot;, connection);
+var reader = await command.ExecuteReaderAsync();
+
+// Npgsql 6.0
+var batch = new NpgsqlBatch(connection)
+{
+    BatchCommands = { new(&quot;SELECT 1&quot;), new(&quot;SELECT 2&quot;) }
+};
+var reader = await batch.ExecuteReaderAsync();
+</code></pre>
+<p>As with positional parameters, this allow Npgsql to avoid parsing and splitting your SQL which is safer and more efficient.</p>
+<p>To learn more about positional parameters and batching, <a href="https://www.roji.org/parameters-batching-and-sql-rewriting">see this blog post</a>.</p>
+<h3 id="ssltls-improvements">SSL/TLS improvements</h3>
+<p>Npgsql 6.0 contains some considerable improvements to encryption support, here are some highlights (<a href="https://github.com/npgsql/npgsql/issues/4006">#4006</a>):</p>
+<ul>
+<li>The <a href="https://www.npgsql.org/doc/connection-string-parameters.html#security-and-encryption"><code>Ssl Mode</code></a> connection string parameter has been aligned with the standard PostgreSQL <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"><code>ssl_mode</code></a> setting, and allows for more fine-grained choice in what to validate (see breaking change note below for <code>SSL Mode=Require</code>).</li>
+<li>Support has been added for PEM client certificates when running on .NET 5.0 and above.</li>
+<li>Support for specifying a root CA certificate that isn't installed in the machine store.</li>
+</ul>
+<p>See the updated <a href="/doc/security.html">security and encryption docs</a> for more details.</p>
+<h3 id="improved-logical-replication-support">Improved logical replication support</h3>
+<p>The recently-released PostgreSQL 14 made significant improvements to logical replication, and Npgsql 6.0 already supports them! Here's a summary of the main changes (<a href="https://github.com/npgsql/npgsql/issues/4050">#4050</a>, thanks @Brar):</p>
+<ul>
+<li>PG14 binary logical replication - you can now read the standard .NET types from replication data; only text was possible previously (<a href="https://github.com/npgsql/npgsql/issues/4049">#4049</a>).</li>
+<li>PG14 streaming replication - incremental updates for large in-progress transactions (<a href="https://github.com/npgsql/npgsql/issues/4047">#4047</a>)</li>
+<li>The replication API now fully streams all data, including even columns; the previous API buffered rows, leading to lots of heap allocations for big rows (<a href="https://github.com/npgsql/npgsql/issues/4068">#4068</a>).</li>
+</ul>
+<p>Unfortunately, some of the above required an API redesign, leading to some breaking changes.</p>
+<h3 id="other-new-features">Other new features</h3>
+<ul>
+<li>Support for the new <a href="https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/">.NET DateOnly and TimeOnly types</a> (<a href="https://github.com/npgsql/npgsql/issues/3616">#3616</a>).</li>
+<li>Full support for the PostgreSQL 14 <a href="https://www.postgresql.org/docs/14/rangetypes.html">multirange type</a>, mapped to arrays or lists of <code>NpgsqlRange&lt;T&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3868">#3868</a>).</li>
+<li>PostgreSQL <code>decimal</code> can now be mapped to .NET <a href="https://docs.microsoft.com/dotnet/api/system.numerics.biginteger">BigInteger</a> (<a href="https://github.com/npgsql/npgsql/issues/3665">#3665</a>).</li>
+<li>Bulk import/export now includes a fully asynchronous API (<a href="https://github.com/npgsql/npgsql/issues/3309">#3309</a>).</li>
+<li>Improved array nullability via <a href="/doc/connection-string-parameters.html#misc">a new connection string parameter</a> (<a href="https://github.com/npgsql/npgsql/issues/3386">#3386</a>).</li>
+<li>Composite types and records can now be read by getting a nested DbDataReader through <code>NpgsqlDataReader.GetData()</code> (<a href="https://github.com/npgsql/npgsql/issues/3558">#3558</a>, thanks <a href="https://github.com/Emill">@Emill</a>). This allows for efficient access without having to map composite types to .NET POCOs.</li>
+<li>Considerable work has gone in to make Npgsql more friendly to trimming/AOT, removing reflection (<a href="https://github.com/npgsql/npgsql/issues/3300">#3300</a>). Npgsql still isn't fully trimming-friendly, but it's getting close.</li>
+</ul>
+<h2 id="breaking-changes">Breaking changes</h2>
+<h3 id="changes-to-ssl-configuration-ssl-moderequire">Changes to SSL configuration (SSL Mode=Require)</h3>
+<ul>
+<li>To validate server certificates, use <code>SSL Mode=VerifyFull</code> (or alternatively SSL <code>VerifyCA</code>) instead of <code>Require</code>.</li>
+<li>To not validate server certificates (e.g. self-signed certificates), use <code>SSL Mode=Require</code> and <code>Trust Server Certificate=true</code>.</li>
+</ul>
+<p>In previous versions, specifying <code>SSL Mode=Require</code> made Npgsql validate the server certificate, but the standard PostgreSQL <a href="https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS"><code>ssl_mode</code></a> setting does not. As part of aligning Npgsql with other PostgreSQL drivers and tools, 6.0 now has <code>SSL Mode=VerifyFull</code> which corresponds to the previous <code>Require</code> behavior. Stopping validation for <code>Require</code> would align Npgsql with the PostgreSQL behavior, but would silently turn off validation for current users and expose them to potential security issues. As a result, we now require <code>Trust Server Certificate=true</code> to be specified with <code>Require</code>: this forces users to explicitly opt out of validation. In a future version, we'll remove the requirement to specify <code>Trust Server Certificate</code> for <code>Require</code> (and possibly the parameter itself).</p>
+<h3 id="major-changes-to-timestamp-mapping">Major changes to timestamp mapping</h3>
+<div class="NOTE">
+<h5>Note</h5>
+<p>It is possible to opt out of these changes to maintain backwards compatibility, see below.</p>
+</div>
+<h4 id="quick-summary">Quick summary</h4>
+<ul>
+<li>In many cases, is makes sense to store UTC timestamps in the database. To do this, migrate your <code>timestamp without time zone</code> columns to <code>timestamp with time zone</code> (<a href="#migrating-columns-from-timestamp-to-timestamptz">see migration notes below</a>), and always use either DateTime with Kind=Utc or DateTimeOffset with offset 0.
+<ul>
+<li>If using NodaTime (recommended), use either <a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> or <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a> with time zone UTC.</li>
+</ul>
+</li>
+<li>To store non-UTC timestamps, use DateTime with Kind=Unspecified.
+<ul>
+<li>If using NodaTime (recommended), use <a href="https://nodatime.org/3.0.x/api/NodaTime.LocalDateTime.html">LocalDateTime</a> (no explicit column configuration is required).</li>
+</ul>
+</li>
+<li>If you're using Dapper, use version 2.0.123 or above. Earlier versions will fail when trying to send a UTC DateTime.</li>
+</ul>
+<h4 id="detailed-notes">Detailed notes</h4>
+<p>The below notes will use the PostgreSQL aliases <code>timestamptz</code> to refer to <code>timestamp with time zone</code>, and <code>timestamp</code> to refer to <code>timestamp without time zone</code>. Note that <code>timestamp with time zone</code> represents a UTC timestamp and does <strong>not</strong> store a timezone in the database.</p>
+<ul>
+<li>UTC DateTime is now strictly mapped to <code>timestamptz</code>, while Local/Unspecified DateTime is now strictly mapped to <code>timestamp</code>.
+<ul>
+<li>DateTime with Kind=UTC are now written as PostgreSQL <code>timestamptz</code>; previously, DateTime was always written as <code>timestamp</code>.</li>
+<li>It is no longer possible to write UTC DateTime as <code>timestamp</code>, or Local/Unspecified DateTime as <code>timestamptz</code>. This was previously allowed, with Npgsql performing implicit timezone conversions.</li>
+<li>Note that if you write a UTC DateTime to a PostgreSQL <code>timestamp</code> column, PostgreSQL will implicitly convert the <code>timestamptz</code> value sent by Npgsql, performing a timezone conversion based on the <code>TimeZone</code> parameter.</li>
+</ul>
+</li>
+<li><code>timestamptz</code> values are now read back as DateTime with Kind=UTC, without any conversions; these were previously returned as local DateTime, converted to the local machine's timezone. When reading <code>timestamptz</code> values as <a href="https://docs.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>, UTC values (offset 0) are always returned.</li>
+<li><a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTime">DbType.DateTime</a> now maps to <code>timestamptz</code>, not <code>timestamp</code>. <a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTime2">DbType.DateTime2</a> continues to map to <code>timestamp</code>, and <a href="https://docs.microsoft.com/dotnet/api/system.data.dbtype#System_Data_DbType_DateTimeOffset">DbType.DateTimeOffset</a> continues to map to <code>timestamptz</code>, as before. Unless you're writing cross-database applications, consider using <a href="https://www.npgsql.org/doc/basic-usage.html#parameter-types">NpgsqlDbType</a> instead of <code>DbType</code> to specify precise PostgreSQL types, or simply let Npgsql infer the types by not setting either.</li>
+<li>It is no longer possible to write <a href="https://docs.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a> with offsets other than 0 (UTC), since these cannot be represented in PostgreSQL. These were previously implicitly converted to UTC before sending.</li>
+<li>It is no longer possible to read or write <code>timetz</code> as DateTime or TimeSpan, as these don't have a timezone. This was previously allowed, with the offset being stripped.</li>
+</ul>
+<p>See the <a href="/efcore/release-notes/6.0.html">EF Core provider docs</a> for additional changes at the EF level.</p>
+<h4 id="nodatime-changes">NodaTime changes</h4>
+<ul>
+<li><a href="https://nodatime.org/3.0.x/api/NodaTime.Instant.html">Instant</a> is now sent as a <code>timestamptz</code> value, and not as a <code>timestamp</code>, since they represent a universally agreed-upon point in time. To send a <code>timestamp</code>, use <a href="https://nodatime.org/3.0.x/api/NodaTime.LocalDateTime.html">LocalDateTime</a>.</li>
+<li>When reading <code>timestamptz</code> as <a href="https://nodatime.org/3.0.x/api/NodaTime.ZonedDateTime.html">ZonedDateTime</a> or <a href="https://nodatime.org/3.0.x/api/NodaTime.OffsetDateTime.html">OffsetDateTime</a>, UTC values are always returned. Previously, local values based on the PostgreSQL <code>TimeZone</code> parameter were returned.</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>In most cases, storing UTC timestamps is the recommended practice. If this is what you're doing, it's strongly recommended to migrate all relevant columns from <code>timestamp</code> columns to <code>timestamptz</code>. See below for how to do this.</p>
+</div>
+<h4 id="migrating-columns-from-timestamp-to-timestamptz">Migrating columns from timestamp to timestamptz</h4>
+<p>Migrating <code>timestamp</code> columns to <code>timestamptz</code> is a simple procedure, but care must be taken, depending on the current contents of your column.</p>
+<p>As a starting point, let's assume your existing <code>timestamp</code> column has the timestamp <code>2020-01-01 12:00:00</code>:</p>
+<pre><code class="lang-sql">SELECT &quot;created_on&quot;, pg_typeof(&quot;created_on&quot;) AS type FROM &quot;Blogs&quot;;
+</code></pre>
+<p>Results in:</p>
+<pre><code class="lang-output">      created_on     |            type
+---------------------+-----------------------------
+ 2020-01-01 12:00:00 | timestamp without time zone
+</code></pre>
+<p>The following SQL will change the column's type to <code>timestamptz</code>:</p>
+<pre><code class="lang-sql">ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
+</code></pre>
+<p>When converting the <code>timestamp without time zone</code> column to <code>timestamp with time zone</code>, PostgreSQL will assume that existing values are local timestamps, and will convert them to UTC based on the <code>TimeZone</code> parameter. Performing the above query will result in something like:</p>
+<pre><code class="lang-output">        CreatedOn       |           type
+------------------------+--------------------------
+ 2020-01-01 12:00:00+02 | timestamp with time zone
+</code></pre>
+<p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, changing only the column type. To do this, set <code>TimeZone</code> to <code>UTC</code> before executing the <code>ALTER TABLE</code>:</p>
+<pre><code class="lang-sql">SET TimeZone='UTC';
+ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
+</code></pre>
+<p>This will ensure that no time zone conversions will be applied when converting the columns:</p>
+<pre><code class="lang-output">        CreatedOn       |           type
+------------------------+--------------------------
+ 2020-01-01 14:00:00+02 | timestamp with time zone
+</code></pre>
+<h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
+<p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
+</code></pre>
+<h3 id="nodatime-tstzrange-and-daterange-are-mapped-to-interval-and-dateinterval-by-default">NodaTime: tstzrange and daterange are mapped to Interval and DateInterval by default</h3>
+<p>When using NodaTime, reading a PostgreSQL <code>tstzrange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.Interval.html">Interval</a> instead of <code>NpgsqlRange&lt;Instant&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/4070">#4070</a>), and reading a PostgreSQL <code>daterange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> instead of <code>NpgsqlRange&lt;LocalDate&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>). It is still possible to read <code>NpgsqlRange</code> by via <code>reader.GetFieldValue&lt;NpgsqlRange&lt;Instant&gt;&gt;</code> and <code>reader.GetFieldValue&lt;NpgsqlRange&lt;LocalDate&gt;&gt;</code>.</p>
+<h3 id="datetime-minmax-values-are-now-converted-to-postgresql-infinity-values-by-default">Date/time min/max values are now converted to PostgreSQL infinity values by default</h3>
+<p>PostgreSQL has special <code>infinity</code> and <code>-infinity</code> values for timestamps and dates, which are later and earlier than other value. Npgsql has supported mapping <code>DateTime.MaxValue</code> and <code>MinValue</code> to these infinity values via an <code>Convert Infinity DateTime</code> connection string parameter, which was disabled by default. This behavior is now on by default, since <code>DateTime.MaxValue</code> and <code>MinValue</code> are very rarely used as actual timestamps/dates, and the <code>Convert Infinity DateTime</code> parameter has been removed. To disable infinity conversions, add the following at the start of your application:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+</code></pre>
+<p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
+<h3 id="pg-intervals-with-monthsyears-can-no-longer-be-read-as-timespan">PG intervals with months/years can no longer be read as TimeSpan</h3>
+<p>The PostgreSQL interval type can contain months and years, which are time units without a fixed, absolute duration (different months have different numbers of days). In contrast, .NET TimeSpan is always an absolute duration, and does not support months or years. Previously, when reading intervals as TimeSpan, Npgsql read months as 30-day units, which was incorrect and could yield wrong results.</p>
+<p>To read intervals with month/year components, consider using NodaTime's <a href="https://nodatime.org/3.0.x/api/NodaTime.Period.html">Period</a> type, which is perfectly suited for representing intervals and is supported by Npgsql. Otherwise, you can read intervals as &lt;xref:NpgsqlTypes.NpgsqlInterval&gt;, provides direct, raw access to the PostgreSQL data which Npgsql receives. Finally, if you want to continue treating months as 30-day units, consider changing your interval data in the database, so that e.g. '1 month 20 days' becomes '50 days'.</p>
+<h3 id="npgsqlstatement-and-postgresexceptionstatement-have-been-removed">NpgsqlStatement and PostgresException.Statement have been removed</h3>
+<p>Npgsql versions before 6.0 exposed an <code>NpgsqlStatement</code> type, which contained information on individual statements within an <code>NpgsqlCommand</code> batch. Npgsql introduces support for the new standardized ADO.NET <code>DbBatch</code> type, which has numerous advantages compared to the previous support. While executing multiple statements in a single <code>NpgsqlCommand</code> is still supported for backwards compatibility, <code>NpgsqlCommand</code> no longer exposes per-statement information via <code>NpgsqlStatement</code> as before. Consider using the new <code>NpgsqlBatch</code> for all batched executions instead: it exposes the <code>BatchCommands</code> property which is similar to the previous <code>Statements</code> property. Accordingly, <code>PostgresException.Statement</code> has been removed, and replaced by <code>BatchCommand</code> which is only populated when executing via <code>NpgsqlBatch</code>.</p>
+<h3 id="the-default-ssl-mode-is-now-prefer">The default SSL Mode is now Prefer</h3>
+<p>When <code>SSL Mode</code> isn't specified on the connection string, it used to default to <code>Disable</code>; it is now <code>Prefer</code>. This means that SSL will be used when the server supports it, and if a custom certificate validation callback is set, failure to validate would cause the connection to fail.</p>
+<p>See the <a href="/doc/security.html">Security and encryption page</a> for more details.</p>
+<h3 id="the-logical-replication-api-has-been-redone">The logical replication API has been redone</h3>
+<p>As part of the redesign around logical replication support, some major changes to the API had to be done. Applications will have to be changed to use the new API.</p>
+<h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
+<p>PostgreSQL 14 introduced <a href="https://www.postgresql.org/docs/14/rangetypes.html">a new multirange type</a>, which is very similar to an array of ranges but supports various range-related operations efficiently. The provider now maps arrays and lists of <code>NpgsqlRange</code> to these new types by default. You can still read old-style arrays over ranges by explicitly specifying the type:</p>
+<pre><code class="lang-c#">var arrayOverRange = reader.GetFieldValue&lt;NpgsqlRange&lt;int&gt;[]&gt;(0);
+</code></pre>
+<p>You can also write arrays over ranges by explicitly specifying the <code>NpgsqlDbType</code>:</p>
+<pre><code class="lang-c#">var parameter = new NpgsqlParameter
+{
+    Value = new NpgsqlRange&lt;int&gt;[] { ... },
+    NpgsqlDbType = NpgsqlDbType.IntegerRange | NpgsqlDbType.Array
+};
+</code></pre>
+<h3 id="dbnull-no-longer-permitted-in-arrays">DBNull no longer permitted in arrays</h3>
+<p>Previously, it was possible to write an <code>object[]</code> containing <code>DBNull</code> as a way of indicating null; this is no longer supported. Instead, use C# null.</p>
+<h3 id="parameter-name-matching-changed-around-case-sensitivity">Parameter name matching changed around case-sensitivity</h3>
+<p>When using named parameter placeholders, Npgsql now only does a single pass to match placeholders to parameters, taking the first parameter whose name passes a case-insensitive match. Npgsql previously did two passes - a case-insensitive pass, followed by a case-sensitive one if the first pass failed to match; this was detrimental to performance in some scenarios. This behavioral change is only visible when using two parameters with names that are identical except for case; this is generally discouraged.</p>
+<p>To revert to the legacy two-pass behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
+</code></pre>
+<p>Note: version 6.0.0 and 6.0.1 changed parameter matching to be case-sensitive. This change was rolled back in 6.0.2 since it could lead to data loss in some scenarios.</p>
+<h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>
+<p>Npgsql contains provider-specific <code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> types, which were designed to provide the same APIs as the corresponding built-in BCL types, but to support the full range of the PostgreSQL types. These types were buggy and inefficient in many ways, and have been obsoleted; they will be removed in Npgsql 7.0.</p>
+<p>Instead of the obsoleted types, use the following techniques:</p>
+<ul>
+<li>NodaTime can be used to interact with values which are out-of-range for the BCL types.</li>
+<li>To support values which are out-of-range for NodaTime, PostgreSQL timestamps can now be read/written as long, and dates can be read/written as int. These are the raw PostgreSQL representations, with no operations - they simply provide an &quot;escape hatch&quot; in case users need to interact with out-of-range values.</li>
+<li>For interval, a new <code>NpgsqlInterval</code> type has been introduced, which again contains the raw PostgreSQL data (months, days, time).</li>
+</ul>
+<h3 id="npgsqllegacypostgis-has-been-removed">Npgsql.LegacyPostgis has been removed</h3>
+<p>The Npgsql.LegacyPostgis plugin, which mapped legacy Npgsql types to PostGIS, has been removed and no longer ships (<a href="https://github.com/npgsql/npgsql/issues/3962">#3962</a>). Use <a href="/doc/types/nts.html">Npgsql.NetTopologySuite</a> to work with PostGIS.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 6.0.x. releases.</p>
+<h3 id="milestone-608"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.8">Milestone 6.0.8</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.8+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.8+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-607"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.7">Milestone 6.0.7</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.7+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.7+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.7+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-606"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.6">Milestone 6.0.6</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.6+is%3Aclosed+assignee%3Avonzshik">3</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-605"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.5">Milestone 6.0.5</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.5+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/alitas">@alitas</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.5+is%3Aclosed+assignee%3Aalitas">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/davidhunt135">@davidhunt135</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.5+is%3Aclosed+assignee%3Adavidhunt135">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.5+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-604"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.4">Milestone 6.0.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.4+is%3Aclosed+assignee%3Aroji">13</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.4+is%3Aclosed+assignee%3Avonzshik">10</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-603"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.3">Milestone 6.0.3</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.3+is%3Aclosed+assignee%3Aroji">8</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.3+is%3Aclosed+assignee%3Avonzshik">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.3+is%3Aclosed+assignee%3ABrar">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.3+is%3Aclosed+assignee%3ANinoFloris">2</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-602"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.2">Milestone 6.0.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.2+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.2+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-601"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.1">Milestone 6.0.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.1+is%3Aclosed+assignee%3Avonzshik">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.1+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.1+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/zitmen">@zitmen</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.1+is%3Aclosed+assignee%3Azitmen">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-600"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0">Milestone 6.0.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3Aroji">42</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3Avonzshik">34</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3ABrar">7</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3ANinoFloris">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Emill">@Emill</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3AEmill">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/manandre">@manandre</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3Amanandre">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mdalepiane">@mdalepiane</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3Amdalepiane">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mintsoft">@mintsoft</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3Amintsoft">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Seltzer">@Seltzer</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3ASeltzer">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/TwentyFourMinutes">@TwentyFourMinutes</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A6.0.0+is%3Aclosed+assignee%3ATwentyFourMinutes">1</a></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/6.0.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

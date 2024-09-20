@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>8.0 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="8.0 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="80-release-notes">8.0 Release Notes</h1>
+
+<p>Npgsql.EntityFrameworkCore.PostgreSQL version 8.0 is out and available on <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL">nuget.org</a>.</p>
+<h2 id="full-support-for-primitive-collection-querying">Full support for primitive collection querying</h2>
+<p>One of PostgreSQL unique features as a relational database is its rich support for <a href="https://www.postgresql.org/docs/current/arrays.html">array types</a>, which can be stored just like any other basic data type and queried. The Npgsql EF provider has supported mapping .NET arrays and Lists to PostgreSQL arrays for a very long time; however, with the introducion of <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-8.0/whatsnew#primitive-collections">rich primitive collection support in EF itself</a>, Npgsql's support for arrays was extended to include full querying capabilities.</p>
+<h3 id="column-collections">Column collections</h3>
+<p>On to the code! You can now use any LINQ operator - or chain of operators - on top of a primitive array or list property. For example, the following queries for all blogs who have at least 3 tags starting with &quot;x&quot;:</p>
+<pre><code class="lang-c#">class Blog
+{
+    ...
+    public List&lt;string&gt; Tags { get; set; }
+}
+
+var blogs = await ctx.Blogs
+    .Where(b =&gt; b.Tags.Count(t =&gt; t.StartsWith(&quot;x&quot;)) &gt; 3)
+    .ToListAsync();
+</code></pre>
+<p>This is now translated to the following SQL:</p>
+<pre><code class="lang-sql">SELECT b.&quot;Id&quot;, b.&quot;Tags&quot;
+FROM &quot;Blogs&quot; AS b
+WHERE (
+    SELECT count(*)::int
+    FROM unnest(b.&quot;Tags&quot;) AS t(value)
+    WHERE t.value LIKE 'x%') &gt; 3
+</code></pre>
+<p>Such complex translations rely on the PostgreSQL <a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE"><code>unnest</code></a> function, which allows expanding a PostgreSQL array to a set of rows; once that's done, the array values can be queried with regular SQL.</p>
+<p>We can go further, querying for all blogs whose tags - or any of their posts' tags - contains a certain value:</p>
+<pre><code class="lang-c#">var blogs = await ctx.Blogs
+    .Where(b =&gt; b.Tags.Union(b.Posts.SelectMany(p =&gt; p.Tags))
+        .Contains(&quot;foo&quot;))
+    .ToListAsync();
+</code></pre>
+<p>This uses <code>unnest</code> both on the blog's tags on and all its posts' tags (via a lateral join), to then do a UNION On results and check whether the value is contained.</p>
+<pre><code class="lang-sql">SELECT b.&quot;Id&quot;, b.&quot;Tags&quot;
+FROM &quot;Blogs&quot; AS b
+WHERE 'foo' IN (
+    SELECT t.value
+    FROM unnest(b.&quot;Tags&quot;) AS t(value)
+    UNION
+    SELECT t1.value
+    FROM &quot;Post&quot; AS p
+    JOIN LATERAL unnest(p.&quot;Tags&quot;) AS t1(value) ON TRUE
+    WHERE b.&quot;Id&quot; = p.&quot;BlogId&quot;
+)
+</code></pre>
+<h3 id="parameter-collections">Parameter collections</h3>
+<p>But that's not all... The new primitive collection support works not just on columns, but also on parameterized lists. Previously, special and limited support existed for translating Contains over a parameterized list, as follows:</p>
+<pre><code class="lang-c#">var ids = new[] { 1, 2, 3 };
+
+var blogs = await ctx.Blogs
+    .Where(b =&gt; ids.Contains(b.Id))
+    .ToListAsync();
+</code></pre>
+<p>This has now been extended to allow composing any LINQ operator. For example, the following query queries for any blogs which have at least one tag, where that tag starts with a list of possible prefixes:</p>
+<pre><code class="lang-c#">var prefixes = new[] { &quot;f&quot;, &quot;b&quot; };
+
+var blogs = await ctx.Blogs
+    .Where(b =&gt; prefixes.Any(p =&gt; b.Tags.Any(t =&gt; t.StartsWith(p))))
+    .ToListAsync();
+</code></pre>
+<p>Complex, I know! This translates to the following SQL:</p>
+<pre><code class="lang-sql">SELECT b.&quot;Id&quot;, b.&quot;Tags&quot;
+FROM &quot;Blogs&quot; AS b
+WHERE EXISTS (
+    SELECT 1
+    FROM unnest(@__prefixes_0) AS p(value)
+    WHERE EXISTS (
+        SELECT 1
+        FROM unnest(b.&quot;Tags&quot;) AS t(value)
+        WHERE p.value IS NOT NULL AND left(t.value, length(p.value)) = p.value))
+</code></pre>
+<p>Note the two usages of <code>unnest</code> here: one is used to expand the Tags column, whereas the other is used to expand the <code>@__prefixes_0</code> array parameter that EF sends. All this machinery works together to make your LINQ query execute correctly.</p>
+<h3 id="inline-collections">Inline collections</h3>
+<p>Finally, support was added to <em>inline collections</em>, which are collections specified <em>inside</em> the query. For example, let's say that the list of tag prefixes in the previous query were always the same; in that case, we'd inline the prefixes variable as follows:</p>
+<pre><code class="lang-c#">var blogs = await ctx.Blogs
+    .Where(b =&gt; new[] { &quot;f&quot;, &quot;b&quot; }.Any(p =&gt; b.Tags.Any(t =&gt; t.StartsWith(p))))
+    .ToListAsync();
+</code></pre>
+<p>This translates to the following:</p>
+<pre><code class="lang-sql">      SELECT b.&quot;Id&quot;, b.&quot;Tags&quot;
+      FROM &quot;Blogs&quot; AS b
+      WHERE EXISTS (
+          SELECT 1
+          FROM (VALUES ('f'::text), ('b')) AS v(&quot;Value&quot;)
+          WHERE EXISTS (
+              SELECT 1
+              FROM unnest(b.&quot;Tags&quot;) AS t(value)
+              WHERE left(t.value, length(v.&quot;Value&quot;)) = v.&quot;Value&quot;))
+</code></pre>
+<p>Note that the <code>unnest</code> over the parameter has been replaced with a standard SQL <code>VALUES</code> construct, which allows constructing a set of rows inline, inside the query.</p>
+<h3 id="more-information">More information</h3>
+<p>Exciting stuff! We hope this helps you use LINQ to model and better interact with your database.</p>
+<ul>
+<li><a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-8.0/whatsnew#primitive-collections">The primitive collection section</a> in the EF 8.0 What's New page.</li>
+<li><a href="https://devblogs.microsoft.com/dotnet/announcing-ef8-preview-4/">.NET Blog post on primitive collections</a></li>
+<li><a href="https://www.roji.org/queryable-pg-arrays-in-ef8">PostgreSQL-specific information on primitive collections</a>, including some specialized translations done for PostgreSQL.</li>
+</ul>
+<h2 id="ef-json-support-via-tojson">EF JSON support via ToJson()</h2>
+<p>Version 8.0 also brings support for EF7's <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">JSON columns</a> feature (ToJson), which allows mapping JSON columns via owned entity types. While the Npgsql EF provider has had POCO JSON mapping for a very long time, the full modeling of the new ToJson() allows for a more powerful mapping strategy, with more query and update features. ToJson is the recommended way to map JSON going forward.</p>
+<p>You can read more on ToJson in the <a href="../mapping/json.html">Npgsql JSON doc page</a>, and in the <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">EF7 what's new docs</a>. Compared to the traditional Npgsql-specific POCO approach, a much wider range of LINQ queries can now be translated. For example, you can now compose LINQ operators over collections within JSON documents:</p>
+<pre><code class="lang-c#">var blogs = await ctx.Customers
+    .Where(b =&gt; b.Details.Orders.Any(o =&gt; o.Price &gt; 8))
+    .ToListAsync();
+</code></pre>
+<p>Note that this composes a LINQ operator - Any - on top of Orders, which is a list nested inside a JSON document. This translates to the following SQL:</p>
+<pre><code class="lang-sql">SELECT c.&quot;Id&quot;, c.&quot;Details&quot;
+FROM &quot;Customers&quot; AS c
+WHERE EXISTS (
+    SELECT 1
+    FROM ROWS FROM (jsonb_to_recordset(c.&quot;Details&quot; -&gt; 'Orders') AS (
+        &quot;Price&quot; numeric,
+        &quot;ShippingAddress&quot; text
+    )) AS o
+    WHERE o.&quot;Price&quot; &gt; 8.0)
+</code></pre>
+<p>Note the <a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE"><code>jsonb_to_recordset</code></a> function, which drills into the JSON document, finds the Orders property, and then expands that out to a set of rows, which can then be queried via regular SQL.</p>
+<p>Similarly, updates via EF's SaveChanges() are better, and can leverage <em>partial updating</em> to only patch the part of the JSON document which has changed. For example, let's assume that we load some customer with a JSON column, and change a single property within that JSON data:</p>
+<pre><code class="lang-c#">var customer = await ctx.Customers.SingleAsync(c =&gt; c.Details.Name == &quot;Foo&quot;);
+customer.Details.Name = &quot;Bar&quot;;
+await ctx.SaveChangesAsync();
+</code></pre>
+<p>Rather than needlessly sending the entire JSON document back to PostgreSQL, the EF provider uses the <a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE"><code>jsonb_set</code></a> function to patch the specific property which changed, which is more efficient:</p>
+<pre><code class="lang-sql">UPDATE &quot;Customers&quot; SET &quot;Details&quot; = jsonb_set(&quot;Details&quot;, '{Name}', @p0)
+WHERE &quot;Id&quot; = @p1;
+</code></pre>
+<h2 id="other-new-features">Other new features</h2>
+<p>Version 8.0 contains many other smaller features and bug fixes, both on the EF side and on the Npgsql provider side. <a href="https://github.com/npgsql/efcore.pg/milestone/53?closed=1">See the 8.0.0 milestone</a> for the full list of Npgsql EF provider issues.</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<p>Note: version 8.0 of the lower-level Npgsql ADO.NET driver, which is used by the EF provider, also has some breaking changes. It's recommended to read the <a href="../../Npgsql/release-notes/8.0.html">release notes</a> for that as well.</p>
+<h3 id="json-poco-and-other-dynamic-features-now-require-an-explicit-opt-in"><a name="dynamic-optin">JSON POCO and other dynamic features now require an explicit opt-in</a></h3>
+<p>Because of the NativeAOT and trimming work done for Npgsql 8.0 (<a href="../../Npgsql/release-notes/8.0.html">release notes</a>), certain features now require an explicit opt-in, which you must add either on your &lt;xref:Npgsql.NpgsqlDataSourceBuilder&gt; or on &lt;xref:Npgsql.NpgsqlConnection.GlobalTypeMapper?displayProperty=nameWithType&gt;:</p>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL type</th>
+<th>Default .NET type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON POCO mapping, JsonNode and subtypes</td>
+<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableDynamicJson&gt;</td>
+</tr>
+<tr>
+<td>Unmapped enums, ranges, multiranges</td>
+<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableUnmappedTypes&gt;</td>
+</tr>
+<tr>
+<td>Read PostgreSQL records as .NET tuples</td>
+<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableRecordsAsTuples&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>Existing code using the above features will start throwing exceptions after upgrading to version 8.0 of the EF Core provider; the exceptions provide explicit guidance on how to add the opt-ins.</p>
+<p>Note that EF Core itself is not yet compatible with NativeAOT, and Npgsql can only be used in NativeAOT applications without EF Core.</p>
+<h3 id="default-postgresql-compatibility-mode-has-been-bumped-from-12-to-14">Default PostgreSQL compatibility mode has been bumped from 12 to 14</h3>
+<p>This means that the provider assumes at least PostgreSQL 14; if you're running against an older version, explicitly specify the PostgreSQL version when configuring your context:</p>
+<pre><code class="lang-csharp">optionsBuilder.UseNpgsql(&quot;&lt;connection string&gt;&quot;, o =&gt; o.SetPostgresVersion(12, 0))
+</code></pre>
+<h3 id="obsoleted-haspostgresarrayconversion">Obsoleted HasPostgresArrayConversion</h3>
+<p>With EF 8.0 introducing first-class support for <a href="https://devblogs.microsoft.com/dotnet/announcing-ef8-preview-4">primitive collections</a>, the PostgreSQL driver aligned its PostgreSQL array support to use that. As a result, <code>HasPostgresArrayConversion</code> can no longer be used to configure value-converted arrays; instead, the new standard EF mechanism can be used.</p>
+<p>For example, the following Npgsql-specific code would configure value conversion for a property of type <code>MyType[]</code> to a PostgreSQL array of strings in EF Core 6 or 7:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.ValueConvertedArray)
+    .HasPostgresArrayConversion(x =&gt; x.ToString(), s =&gt; MyType.Parse(s));
+</code></pre>
+<p>The same can now achieved with the following standard EF 8 code:</p>
+<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().PrimitiveCollection(b =&gt; b.ValueConvertedArray)
+    .ElementType()
+    .HasConversion(typeof(MyConverter));
+
+class MyConverter : ValueConverter&lt;MyType, string&gt;
+{
+    public MyConverter()
+        : base(x =&gt; x.ToString(), s =&gt; MyType.Parse(s))
+    {
+    }
+}
+</code></pre>
+<h3 id="cidr-now-maps-to-npgsqlcidr-instead-of-valuetupleipaddress-int"><code>cidr</code> now maps to <code>NpgsqlCidr</code> instead of <code>ValueTuple&lt;IPAddress, int&gt;</code></h3>
+<p>As part of improving Npgsql's support for the PostgreSQL network mappings, the PostgreSQL <code>cidr</code> type now maps to the newly-introduced &lt;xref:NpgsqlTypes.NpgsqlCidr&gt;, and can no longer be mapped to <code>ValueTuple&lt;IPAddress, int&gt;</code>.</p>
+<h2 id="contributors">Contributors</h2>
+<p>A big thank you to all the following people who contributed to the 8.0 release!</p>
+<h3 id="milestone-800"><a href="https://github.com/Npgsql/efcore.pg/issues?q=is%3Aissue+milestone%3A8.0.0">Milestone 8.0.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/efcore.pg/issues?q=is%3Aissue+milestone%3A8.0.0+is%3Aclosed+assignee%3Aroji">34</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/zpaks">@zpaks</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/efcore.pg/issues?q=is%3Aissue+milestone%3A8.0.0+is%3Aclosed+assignee%3Azpaks">1</a></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/8.0.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

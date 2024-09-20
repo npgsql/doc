@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Other | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Other | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="other">Other</h1>
+
+<h2 id="postgresql-extensions">PostgreSQL extensions</h2>
+<p>The Npgsql EF Core provider allows you to specify PostgreSQL extensions that should be set up in your database.
+Simply use <code>HasPostgresExtension</code> in your context's <code>OnModelCreating</code> method:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.HasPostgresExtension(&quot;hstore&quot;);
+</code></pre>
+<h2 id="execution-strategy">Execution Strategy</h2>
+<p>The Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context's <code>OnModelConfiguring</code>:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt; options.EnableRetryOnFailure());
+</code></pre>
+<p>This strategy relies on the <code>IsTransient</code> property of <code>NpgsqlException</code>.</p>
+<h2 id="certificate-authentication">Certificate authentication</h2>
+<p>The Npgsql allows you to provide a callback for verifying the server-provided certificates, and to provide a callback for providing certificates to the server. The latter, if properly set up on the PostgreSQL side, allows you to do client certificate authentication - see <a href="http://www.npgsql.org/doc/security.html#encryption-ssltls">the Npgsql docs</a> and also <a href="https://www.postgresql.org/docs/current/static/ssl-tcp.html#SSL-CLIENT-CERTIFICATES">the PostgreSQL docs</a> on setting this up.</p>
+<p>The Npgsql EF Core provider allows you to set these two callbacks on the <code>DbContextOptionsBuilder</code> as follows:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt;
+        {
+            options.RemoteCertificateValidationCallback(MyCallback1);
+            options.ProvideClientCertificatesCallback(MyCallback2);
+        });
+</code></pre>
+<p>You may also consider passing <code>Trust Server Certificate=true</code> in your connection string to make Npgsql accept whatever certificate your PostgreSQL provides (useful for self-signed certificates).</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>When specifying the options via <code>OnConfiguring</code>, make sure that the callbacks you pass in are static methods. Passing in instance methods causes EF Core to create a new service provider for each context instance, which can degrade performance in a significant way.</p>
+</div>
+<h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
+<p>If you're using CockroachDB, the Npgsql EF Core provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.Entity&lt;Customer&gt;()
+                   .UseCockroachDbInterleaveInParent(
+                        typeof(ParentEntityType),
+                        new List&lt;string&gt; { &quot;prefix_column_1&quot;, &quot;prefix_column_2&quot; });
+</code></pre>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/misc/other.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

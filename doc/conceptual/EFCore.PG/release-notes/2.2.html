@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>2.2 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="2.2 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="22-release-notes">2.2 Release Notes</h1>
+
+<p>Version 2.2.0 of the Npgsql Entity Framework Core provider has been released and is available on nuget. This version works with <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.2">version 2.2.0 of Entity Framework Core</a>, and contains some new Npgsql features as well.</p>
+<p>This release was result of hard work by <a href="https://github.com/roji/">@roji</a>, <a href="https://github.com/austindrenski">@austindrenski</a>, <a href="https://github.com/yohdeadfall">@yohdeadfall</a> and <a href="https://github.com/khellang">@khellang</a>.</p>
+<h2 id="new-features">New Features</h2>
+<p>Aside from general EF Core features new in 2.2.0, the Npgsql EF Core provider contains the following major new features:</p>
+<h3 id="postgresql-11-covering-indexes">PostgreSQL 11 covering indexes</h3>
+<p>PostgreSQL 11 introduced <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes feature</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost. Support has been added in (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/697">#697</a>):</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    =&gt; modelBuilder.Entity&lt;Blog&gt;()
+                   .ForNpgsqlHasIndex(b =&gt; b.Id)
+                   .ForNpgsqlInclude(b =&gt; b.Name);
+</code></pre>
+<p>This will create an index for searching on <code>Id</code>, but containing also the column <code>Name</code>, so that reading the latter will not involve accessing the table. <a href="../modeling/indexes.html">See the documentation for more details</a>.</p>
+<p>Thanks to <a href="https://github.com/khellang">@khellang</a> for contributing this!</p>
+<h3 id="postgresql-user-defined-ranges">PostgreSQL user-defined ranges</h3>
+<p>The provider already supported <a href="https://www.postgresql.org/docs/current/rangetypes.html">PostgreSQL range types</a>, but prior to 2.2 that support was limited to the built-in range types which come with PostgreSQL. <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/329">#329</a> extends that support to range types which you define:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    =&gt; builder.UseNpgsql(&quot;...&quot;, b =&gt; b.MapRange&lt;float&gt;(&quot;floatrange&quot;));
+
+protected override void OnModelCreating(ModelBuilder builder)
+    =&gt; builder.ForNpgsqlHasRange(&quot;floatrange&quot;, &quot;real&quot;);
+</code></pre>
+<p>This will make the provider create a PostgreSQL range called <code>floatrange</code>, over the PostgreSQL type <code>real</code>. Any property with type <code>NpgsqlRange&lt;float&gt;</code> will be seamlessly mapped to it.</p>
+<p><a href="../mapping/range.html">See the documentation for more details</a>.</p>
+<h3 id="seeding-for-npgsql-specific-types">Seeding for Npgsql-specific types</h3>
+<p>When using some Npgsql-specific types, it wasn't possible to seed values for those types. With EF Core support for seeding any type, <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/667">#667</a> allows seeding values for network, bit and range types (more are coming).</p>
+<h3 id="postgresql-index-operator-classes">PostgreSQL index operator classes</h3>
+<p>PostgreSQL allows you to specify <a href="https://www.postgresql.org/docs/current/indexes-opclass.html">operator classes on your indexes</a>, to allow tweaking how the index should work. <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/481">#481</a> adds support for managing these. <a href="../modeling/indexes.html">See the documentation for more details</a>.</p>
+<p>Thanks to <a href="https://github.com/khellang">@khellang</a> for contributing this!</p>
+<h3 id="other-features">Other features</h3>
+<ul>
+<li>Various issues with enum and range types were fixed, including upper/lower case, quoting and schema management.</li>
+<li>Many new SQL translations were added, so more of your LINQ expressions can run in the database. We'll be working on our documentation to make these more discoverable.</li>
+</ul>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues?q=milestone%3A2.2.0+is%3Aclosed&amp;utf8=%E2%9C%93">available here</a>.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 2.2.x. releases.</p>
+<h3 id="milestone-226"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.6">Milestone 2.2.6</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.6+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-224"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.4">Milestone 2.2.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.4+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.4+is%3Aclosed+assignee%3Aaustindrenski">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-220"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.0">Milestone 2.2.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.0+is%3Aclosed+assignee%3Aaustindrenski">15</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A2.2.0+is%3Aclosed+assignee%3Aroji">8</a></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/2.2.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

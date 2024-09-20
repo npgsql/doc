@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>3.1 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="3.1 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="31-release-notes">3.1 Release Notes</h1>
+
+<p>Version 3.1 of the Npgsql Entity Framework Core provider has been released and is available on nuget. This version works with <a href="https://docs.microsoft.com/ef/core/what-is-new/ef-core-3.x">version 3.1 of Entity Framework Core</a>, and brings new Npgsql features in addition to the general EF Core changes.</p>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>Use these versions with care and do not deploy to production without thorough testing. Read the breaking changes section below.</p>
+</div>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/milestone/20?closed=1">available here</a>.</p>
+<h2 id="new-features">New Features</h2>
+<p>Aside from general EF Core features new in 3.1, the Npgsql EF Core provider contains the following major new features:</p>
+<ul>
+<li>It is now possible to map POCOs to JSON columns and query them, <a href="../mapping/json.html">see the docs for more info</a> (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/981">#981</a>)</li>
+<li>PostgreSQL identity columns are now the default - see breaking changes below) (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/804">#804</a>)</li>
+<li>Sequence options can now be managed on identity columns (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/819">#819</a>)</li>
+<li>Support has been added for the upcoming <a href="https://www.postgresql.org/docs/12/ddl-generated-columns.html">PostgreSQL 12 generated columns feature</a> (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/939">#939</a>)</li>
+<li>A plugin is now available to automatically make all your tables and columns be snake_case! See <a href="https://github.com/efcore/EFCore.NamingConventions">EFCore.NamingConventions</a>.</li>
+<li>Index sort options (ascending/descending, null sort order...) can now be specified (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/326">#326</a>)</li>
+<li>Indexes can now be created concurrently (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/967">#967</a>)</li>
+<li>Views are now reverse-engineered (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/878">#878</a>)</li>
+<li>Array value converters help mapping with PostgreSQL arrays (e.g. map enum arrays to integer arrays) (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/1031">#1031</a>).</li>
+</ul>
+<h2 id="breaking-changes">Breaking changes</h2>
+<h3 id="default-value-generation-strategy-is-now-identity">Default value generation strategy is now IDENTITY</h3>
+<div class="CAUTION">
+<h5>Caution</h5>
+<p>This is a major change, and upgrading to 3.1 with an existing database will cause a non-trivial schema migration to be generated. Read the following carefully.</p>
+</div>
+<p>The default value generation strategy has changed from the older SERIAL columns to the newer IDENTITY columns, introduced in PostgreSQL 10.</p>
+<p>When producing a migration with 3.1, the Npgsql provider will attempt to automatically generate SQL to alter your tables and convert serial columns to identity ones. This is a sensitive, one-time migration operation that should be done with care, and carefully tested before deployment to production.</p>
+<p>If you wish to opt out of using IDENTITY columns and continue using SERIAL columns, set the following on your model:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.UseSerialColumns();
+</code></pre>
+<p>If you are using a PostgreSQL version older than 10, setting the compatibility mode is a better way to switch the default back to SERIAL columns:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(&quot;...&quot;, o =&gt; o.SetPostgresVersion(9, 6));
+</code></pre>
+<p>More information is available in <a href="../modeling/generated-properties.html">the page about generated properties</a>.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 3.x releases.</p>
+<h3 id="milestone-3111"><a href="https://github.com/Npgsql/efcore.pg/issues?q=is%3Aissue+milestone%3A3.1.11">Milestone 3.1.11</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/efcore.pg/issues?q=is%3Aissue+milestone%3A3.1.11+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-317"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.7">Milestone 3.1.7</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.7+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-314"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.4">Milestone 3.1.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.4+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-313"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.3">Milestone 3.1.3</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.3+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-312"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.2">Milestone 3.1.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.2+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/grzybsonssg">@grzybsonssg</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.2+is%3Aclosed+assignee%3Agrzybsonssg">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-3112"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1.2">Milestone 3.1.1.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1.2+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-3111-1"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1.1">Milestone 3.1.1.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1.1+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-311"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1">Milestone 3.1.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.1+is%3Aclosed+assignee%3Aroji">6</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-310"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.0">Milestone 3.1.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3Aroji">15</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3Aaustindrenski">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ins0mniaque">@ins0mniaque</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3Ains0mniaque">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/MarioPrabowo">@MarioPrabowo</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3AMarioPrabowo">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-301"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.1">Milestone 3.0.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.1+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-300"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.0">Milestone 3.0.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.0+is%3Aclosed+assignee%3Aroji">25</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.0+is%3Aclosed+assignee%3Aaustindrenski">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/EFCore.PG/issues?q=is%3Aissue+milestone%3A3.0.0+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/3.1.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

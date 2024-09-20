@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JSON Mapping | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="JSON Mapping | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="json-mapping">JSON Mapping</h1>
+
+<div class="NOTE">
+<h5>Note</h5>
+<p>Version 8.0 of the Npgsql provider introduced support for EF's <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">JSON columns</a>, using <code>ToJson()</code>. That is the recommended way to map POCOs going forward.</p>
+</div>
+<p>PostgreSQL has rich, built-in support for storing JSON columns and efficiently performing complex queries operations on them. Newcomers can read more about the PostgreSQL support on <a href="https://www.postgresql.org/docs/current/datatype-json.html">the JSON types page</a>, and on the <a href="https://www.postgresql.org/docs/current/functions-json.html">functions and operators page</a>. Note that the below mapping mechanisms support both the <code>jsonb</code> and <code>json</code> types, although the former is almost always preferred for efficiency reasons.</p>
+<p>The Npgsql EF Core provider allows you to map PostgreSQL JSON columns in three different ways:</p>
+<ol>
+<li>As simple strings</li>
+<li>As EF owned entities</li>
+<li>As System.Text.Json DOM types (JsonDocument or JsonElement, <a href="https://learn.microsoft.com/dotnet/standard/serialization/system-text-json/use-dom#use-jsondocument">see docs</a>)</li>
+<li>As strongly-typed user-defined types (POCOs) (deprecated)</li>
+</ol>
+<h2 id="string-mapping">String mapping</h2>
+<p>The simplest form of mapping to JSON is via a regular string property, just like an ordinary text column:</p>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_data-annotations" role="tab" aria-controls="tabpanel_1_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_1_fluent-api" role="tab" aria-controls="tabpanel_1_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+</li>
+</ul>
+<section id="tabpanel_1_data-annotations" role="tabpanel" data-tab="data-annotations">
+
+<pre><code class="lang-c#">public class SomeEntity
+{
+    public int Id { get; set; }
+    [Column(TypeName = &quot;jsonb&quot;)]
+    public string Customer { get; set; }
+}
+</code></pre>
+</section>
+<section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-c#">class MyContext : DbContext
+{
+    public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&lt;SomeEntity&gt;()
+            .Property(b =&gt; b.Customer)
+            .HasColumnType(&quot;jsonb&quot;);
+    }
+}
+
+public class SomeEntity
+{
+    public int Id { get; set; }
+    public string Customer { get; set; }
+}
+</code></pre>
+</section>
+</div>
+
+<p>With string mapping, the EF Core provider will save and load properties to database JSON columns, but will not do any further serialization or parsing - it's the developer's responsibility to handle the JSON contents, possibly using System.Text.Json to parse them. This mapping approach is more limited compared to the others.</p>
+<h2 id="poco-mapping">POCO mapping</h2>
+<p>If your column JSON contains documents with a stable schema, you can map them to your own .NET types (or POCOs); EF will use System.Text.Json APIs under the hood to serialize instances of your types to JSON documents before sending them to the database, and to deserialize documents coming back from the database. This effectively allows mapping an arbitrary .NET type - or object graph - to a single column in the database.</p>
+<p>EF 7.0 introduced the &quot;JSON Columns&quot; feature, which maps a database JSON column via EF's &quot;owned entity&quot; mapping concept, using <code>ToJson()</code>. In this approach, EF fully models the types within the JSON document - just like it models regular tables and columns - and uses that information to perform better queries and updates. Full support for ToJson has been added to version 8.0 of the Npgsql EF provider.</p>
+<p>As an alternative, prior to version 8.0, the Npgsql EF provider has supported JSON POCO mapping by simply delegating serialization/deserialization to System.Text.Json; in this model, EF itself model the contents of the JSON document, and cannot take that structure into account for queries and updates. This approach can now be considered deprecated as it allows for less powerful mapping and supports less query types; using ToJson() is now the recommended way to map POCOs to JSON.</p>
+<h3 id="tojson-owned-entity-mapping">ToJson (owned entity mapping)</h3>
+<p>Npgsql's support for <code>ToJson()</code> is fully aligned with the general EF support; see the <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">EF documentation for more information</a>.</p>
+<p>To get you started quickly, assume that we have the following Customer type, with a Details property that we want to map to a single JSON column in the database:</p>
+<pre><code class="lang-c#">public class Customer
+{
+    public int Id { get; set; }
+    public CustomerDetails Details { get; set; }
+}
+
+public class CustomerDetails    // Map to a JSON column in the table
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public List&lt;Order&gt; Orders { get; set; }
+}
+
+public class Order       // Part of the JSON column
+{
+    public decimal Price { get; set; }
+    public string ShippingAddress { get; set; }
+}
+</code></pre>
+<p>To instruct EF to map CustomerDetails - and within it, Order - to a JSON column, configure it as follows:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity&lt;Customer&gt;()
+        .OwnsOne(c =&gt; c.Details, d =&gt;
+        {
+            d.ToJson();
+            d.OwnsMany(d =&gt; d.Orders);
+        });
+}
+</code></pre>
+<p>At this point you can interact with the Customer just like you would normally, and EF will seamlessly serialize and deserialize it to a JSON column in the database. You can also perform LINQ queries which reference properties inside the JSON document, and these will get translated to SQL.</p>
+<h2 id="traditional-poco-mapping-deprecated">Traditional POCO mapping (deprecated)</h2>
+<p>Before version 8.0 introduced support for EF's ToJson (owned entity mapping), the provider had its own support for JSON POCO mapping, by simply delegating serialization/deserialization to System.Text.Json; in this model, EF itself model the contents of the JSON document, and cannot take that structure into account for queries and updates. This approach can now be considered deprecated as it allows for less powerful mapping and supports less query types; using ToJson() is now the recommended way to map POCOs to JSON.</p>
+<p>To use traditional POCO mapping, configure a property a mapping to map to a <code>jsonb</code> column as follows:</p>
+<div class="tabGroup" id="tabgroup_2">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_2_data-annotations" role="tab" aria-controls="tabpanel_2_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_2_fluent-api" role="tab" aria-controls="tabpanel_2_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+</li>
+</ul>
+<section id="tabpanel_2_data-annotations" role="tabpanel" data-tab="data-annotations">
+
+<pre><code class="lang-c#">public class Customer
+{
+    public int Id { get; set; }
+    [Column(TypeName = &quot;jsonb&quot;)]
+    public CustomerDetails Details { get; set; }
+}
+
+public class CustomerDetails    // Mapped to a JSON column in the table
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Order[] Orders { get; set; }
+}
+
+public class Order       // Part of the JSON column
+{
+    public decimal Price { get; set; }
+    public string ShippingAddress { get; set; }
+}
+</code></pre>
+</section>
+<section id="tabpanel_2_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-c#">class MyContext : DbContext
+{
+    public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity&lt;SomeEntity&gt;()
+            .Property(b =&gt; b.Customer)
+            .HasColumnType(&quot;jsonb&quot;);
+    }
+}
+
+public class SomeEntity  // Mapped to a database table
+{
+    public int Id { get; set; }
+    public Customer Customer { get; set; }
+}
+
+public class Customer    // Mapped to a JSON column in the table
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public Order[] Orders { get; set; }
+}
+
+public class Order       // Part of the JSON column
+{
+    [JsonPropertyName(&quot;OrderPrice&quot;)] // Controls the JSON property name
+    public decimal Price { get; set; }
+    public string ShippingAddress { get; set; }
+}
+</code></pre>
+<p>Note that when using this mapping, only limited forms of LINQ querying is supported; it's recommended to switch to ToJson() for full LINQ querying capabilities. The querying supported by traditional POCO mapping is documented <a href="#querying-traditional-and-dom">below</a>.</p>
+</section>
+</div>
+<h2 id="jsondocument-dom-mapping">JsonDocument DOM mapping</h2>
+<p>If your column JSON schema isn't stable, a strongly-typed POCO mapping may not be appropriate. The Npgsql provider also allows you to map the DOM document type provided by <a href="https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/">System.Text.Json APIs</a>.</p>
+<pre><code class="lang-c#">public class SomeEntity : IDisposable
+{
+    public int Id { get; set; }
+    public JsonDocument Customer { get; set; }
+
+    public void Dispose() =&gt; Customer?.Dispose();
+}
+</code></pre>
+<p>Note that neither a data annotation nor the fluent API are required, as <a href="https://docs.microsoft.com/dotnet/api/system.text.json.jsondocument">JsonDocument</a> is automatically recognized and mapped to <code>jsonb</code>. Note also that <code>JsonDocument</code> is disposable, so the entity type is made disposable as well; not dispose the <code>JsonDocument</code> will result in the memory not being returned to the pool, which will increase GC impact across various parts of the framework.</p>
+<p>Once a document is loaded from the database, you can traverse it:</p>
+<pre><code class="lang-c#">var someEntity = context.Entities.First();
+Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;)[0].GetProperty(&quot;Price&quot;).GetInt32());
+</code></pre>
+<p>Note that when using this mapping, only limited forms of LINQ querying is supported; <a href="#querying-traditional-and-dom">see below</a> for more details.</p>
+<h2 id="querying-json-columns-traditional-json-and-dom"><a name="querying-traditional-and-dom">Querying JSON columns (traditional JSON and DOM)</a></h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The below does not apply if you are using ToJson (owned entity mapping). ToJson supports</p>
+</div>
+<p>Saving and loading documents these documents wouldn't be much use without the ability to query them. You can express your queries via the same LINQ constructs you are already using in EF Core:</p>
+<div class="tabGroup" id="tabgroup_3">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_3_poco" role="tab" aria-controls="tabpanel_3_poco" data-tab="poco" tabindex="0" aria-selected="true">Classic POCO Mapping</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_3_jsondocument" role="tab" aria-controls="tabpanel_3_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
+</li>
+</ul>
+<section id="tabpanel_3_poco" role="tabpanel" data-tab="poco">
+
+<pre><code class="lang-c#">var joes = context.CustomerEntries
+    .Where(e =&gt; e.Customer.Name == &quot;Joe&quot;)
+    .ToList();
+</code></pre>
+</section>
+<section id="tabpanel_3_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
+
+<pre><code class="lang-c#">var joes = context.CustomerEntries
+    .Where(e =&gt; e.Customer.RootElement.GetProperty(&quot;Name&quot;).GetString() == &quot;Joe&quot;)
+    .ToList();
+</code></pre>
+</section>
+</div>
+
+<p>The provider will recognize the traversal of a JSON document, and translate it to the correspond PostgreSQL JSON traversal operator, producing the following PostgreSQL-specific SQL:</p>
+<pre><code class="lang-sql">SELECT c.&quot;&quot;Id&quot;&quot;, c.&quot;&quot;Customer&quot;&quot;
+FROM &quot;&quot;CustomerEntries&quot;&quot; AS c
+WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
+</code></pre>
+<p><a href="#indexing-json-columns">If indexes are set up properly</a>, this can result in very efficient, server evaluation of searches with database JSON documents.</p>
+<p>The following expression types and functions are translated:</p>
+<div class="tabGroup" id="tabgroup_4">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_4_poco" role="tab" aria-controls="tabpanel_4_poco" data-tab="poco" tabindex="0" aria-selected="true">POCO Mapping</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_4_jsondocument" role="tab" aria-controls="tabpanel_4_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
+</li>
+</ul>
+<section id="tabpanel_4_poco" role="tabpanel" data-tab="poco">
+
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customer.Name</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer-&gt;&gt;'Name'</a></td>
+</tr>
+<tr>
+<td>customer.Orders[1].Price</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer#&gt;&gt;'{Orders,0,Price}'[1]</a></td>
+</tr>
+<tr>
+<td>customer.Orders.Length (or Count)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_array_length(customer-&gt;'Orders')</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)<sup>1</sup></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer @&gt; '{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}'</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, e.Customer)<sup>1</sup></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">'{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}' &lt;@ customer</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExists(e.Customer, &quot;Age&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ? 'Age'</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExistsAny(e.Customer, &quot;Age&quot;, &quot;Address&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ?| ARRAY['Age','Address']</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExistsAll(e.Customer, &quot;Age&quot;, &quot;Address&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ?&amp; ARRAY['Age','Address']</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonTypeof(e.Customer.Age)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_typeof(customer-&gt;'Age')</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tabpanel_4_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
+
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customer.RootElement.GetProperty(&quot;Name&quot;).GetString()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer-&gt;&gt;'Name' = 'Joe'</a></td>
+</tr>
+<tr>
+<td>customer.RootElement.GetProperty(&quot;Orders&quot;)[1].GetProperty(&quot;Price&quot;).GetInt32()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-OP-TABLE">customer#&gt;&gt;'{Orders,0,Price}'[1] = 8</a></td>
+</tr>
+<tr>
+<td>customer.RootElement.GetProperty(&quot;Orders&quot;).GetArrayLength()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_array_length(customer-&gt;'Orders'</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonContains(customer, @&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;)<sup>1</sup></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer @&gt; '{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}'</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonContained(@&quot;{&quot;&quot;Name&quot;&quot;: &quot;&quot;Joe&quot;&quot;, &quot;&quot;Age&quot;&quot;: 25}&quot;, customer)<sup>1</sup></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">'{&quot;Name&quot;: &quot;Joe&quot;, &quot;Age&quot;: 25}' &lt;@ customer</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExists(customer, &quot;Age&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ? 'Age'</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExistsAny(customer, &quot;Age&quot;, &quot;Address&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ?| ARRAY['Age','Address']</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonExistsAll(customer, &quot;Age&quot;, &quot;Address&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSONB-OP-TABLE">customer ?&amp; ARRAY['Age','Address']</a></td>
+</tr>
+<tr>
+<td>EF.Functions.JsonTypeof(customer.GetProperty(&quot;Age&quot;)) == &quot;number&quot;</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-JSON-PROCESSING-TABLE">jsonb_typeof(customer-&gt;'Age') = 'number'</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+
+<p><sup>1</sup> JSON functions which accept a .NET object will not accept .NET scalar values. For example, to pass a scalar to <code>JsonContains</code> wrap it in a <code>JsonElement</code> or alternatively wrap it in a string. Note: a root level JSON string value requires quotes and escaping <code>@&quot;&quot;&quot;Joe&quot;&quot;&quot;</code>, just as any nested JSON string value would.</p>
+<h2 id="indexing-json-columns">Indexing JSON columns</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
+</div>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/json.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>

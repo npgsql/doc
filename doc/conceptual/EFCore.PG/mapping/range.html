@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ranges and Multiranges | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Ranges and Multiranges | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../../favicon-16x16.png">
+    <link rel="manifest" href="../../../../site.webmanifest">
+    <link rel="mask-icon" href="../../../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../../../styles/docfx.css">
+    <link rel="stylesheet" href="../../../../styles/main.css">
+    <link rel="stylesheet" href="../../../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="../../../api/conceptual/EFCore.PG/toc.html">
+  
+  <meta property="docfx:rel" content="../../../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../../../index.html">
+                <img id="logo" class="svg" src="../../../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="ranges-and-multiranges">Ranges and Multiranges</h1>
+
+<p>PostgreSQL has the unique feature of supporting <a href="https://www.postgresql.org/docs/current/static/rangetypes.html"><em>range data types</em></a>. Ranges represent a range of numbers, dates or other data types, and allow you to easily query ranges which contain a value, perform set operations (e.g. query ranges which contain other ranges), and other similar operations. The range operations supported by PostgreSQL are listed <a href="https://www.postgresql.org/docs/current/static/functions-range.html">in this page</a>. The Npgsql EF Core provider allows you to seamlessly map PostgreSQL ranges, and even perform operations on them that get translated to SQL for server evaluation.</p>
+<p>In addition, PostgreSQL 14 introduced <em>multiranges</em>, which are basically sorted arrays of non-overlapping ranges with set-theoretic operations defined over them. Most range operators also work on multiranges, and they have a few functions of their own. Multirange support in the EF Core provider was introduced in version 6.0.0.</p>
+<h2 id="ranges">Ranges</h2>
+<p>Npgsql maps PostgreSQL ranges to the generic CLR type <code>NpgsqlRange&lt;T&gt;</code>:</p>
+<pre><code class="lang-c#">public class Event
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public NpgsqlRange&lt;DateTime&gt; Duration { get; set; }
+}
+</code></pre>
+<p>This will create a column of type <code>daterange</code> in your database. You can similarly have properties of type <code>NpgsqlRange&lt;int&gt;</code>, <code>NpgsqlRange&lt;long&gt;</code>, etc.</p>
+<h2 id="user-defined-ranges">User-defined ranges</h2>
+<p>PostgreSQL comes with 6 built-in ranges: <code>int4range</code>, <code>int8range</code>, <code>numrange</code>, <code>tsrange</code>, <code>tstzrange</code>, <code>daterange</code>; these can be used simply by adding the appropriate <code>NpgsqlRange&lt;T&gt;</code> property in your entities as shown above. You can also define your own range types over arbitrary types, and use those in EF Core as well.</p>
+<p>To make the EF Core type mapper aware of your user-defined range, call the <code>MapRange()</code> method in your context's <code>OnConfiguring()</code> method as follows:</p>
+<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    =&gt; optionsBuilder.UseNpgsql(
+        &quot;&lt;connection_string&gt;&quot;,
+        options =&gt; options.MapRange&lt;float&gt;(&quot;floatrange&quot;));
+</code></pre>
+<p>This allows you to have properties of type <code>NpgsqlRange&lt;float&gt;</code>, which will be mapped to PostgreSQL <code>floatrange</code>.</p>
+<p>The above does <em>not</em> create the <code>floatrange</code> type for you. In order to do that, include the following in your context's <code>OnModelCreating()</code>:</p>
+<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+    =&gt; modelBuilder.HasPostgresRange(&quot;floatrange&quot;, &quot;real&quot;);
+</code></pre>
+<p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
+<h2 id="multiranges">Multiranges</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>This feature was introduced in version 6.0</p>
+</div>
+<p>Npgsql maps arrays or lists of <code>NpgsqlRange&lt;T&gt;</code> to PostgreSQL multiranges:</p>
+<pre><code class="lang-c#">public class Store
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public NpgsqlRange&lt;DateTime&gt;[] OpeningTimes { get; set; }
+}
+</code></pre>
+<h2 id="operation-translation">Operation translation</h2>
+<p>Ranges can be queried via extensions methods on <code>NpgsqlRange</code>:</p>
+<pre><code class="lang-c#">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));
+</code></pre>
+<p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transferring the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
+<p>The following table lists the range operations that currently get translated. Most operations work on both ranges and multiranges (starting with version 6.0.0); the multirange version is omitted for brevity.</p>
+<p>If you run into a missing operation, please open an issue.</p>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>range.LowerBound</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.UpperBound</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.LowerBoundIsInclusive</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower_inc(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.UpperBoundIsInclusive</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper_inc(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.LowerBoundIsInfinite</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">lower_inf(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.UpperBoundIsInfinite</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">upper_inf(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.IsEmpty</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">isempty(range)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>multirange.Any()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#MULTIRANGE-FUNCTIONS-TABLE">NOT is_empty(multirange)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range.Contains(i)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range @&gt; i</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Contains(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range @&gt; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.ContainedBy(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;@ range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Overlaps(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &amp;&amp; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.IsStrictlyLeftOf(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;&lt; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.IsStrictlyRightOf(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &gt;&gt; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.DoesNotExtendLeftOf(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &amp;&gt; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.DoesNotExtendRightOf(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 &lt;&amp; range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.IsAdjacentTo(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 -|- range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Union(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 + range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Intersect(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 * range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Except(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/static/functions-range.html#RANGE-OPERATORS-TABLE">range1 - range2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>range1.Merge(range2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#RANGE-FUNCTIONS-TABLE">range_merge(range1, range2)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>multirange.Merge()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-range.html#MULTIRANGE-FUNCTIONS-TABLE">range_merge(multirange)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ranges.RangeAgg()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_agg(ranges)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ranges.RangeIntersectAgg()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_intersect_agg(ranges)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>multiranges.RangeIntersectAgg()</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html">range_intersect_agg(multiranges)</a></td>
+<td>Added in 7.0, See <a href="translations.html#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
+</tbody>
+</table>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/range.md/#L1" class="contribution-link">Edit this page</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../../../styles/main.js"></script>
+  </body>
+</html>
