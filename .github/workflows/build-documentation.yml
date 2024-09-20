@@ -30,6 +30,7 @@ jobs:
       with:
         ref: live
         path: live
+
     - name: Clear live docs repo
       run: rm -rf live/*
 
@@ -40,6 +41,18 @@ jobs:
         ref: docs
         path: Npgsql
 
+    # Setup software
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4.0.1
+      with:
+        dotnet-version: 7.0.x
+
+    # docfx has issues specifically with analyzer/sourcegen projects; build manually before 
+    - name: Build Npgsql
+      run: dotnet build -c Release
+      shell: bash
+      working-directory: Npgsql
+
     - name: Checkout EFCore.PG
       uses: actions/checkout@v4
       with:
@@ -47,11 +60,10 @@ jobs:
         ref: docs
         path: EFCore.PG
 
-    # Setup software
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.0.1
-      with:
-        dotnet-version: 7.0.x
+    - name: Build EFCore.PG
+      run: dotnet build -c Release
+      shell: bash
+      working-directory: EFCore.PG
 
     # Note:
     # Since we use a custom template to override some properties of the docfx default template, when upgrading docfx we should check
@@ -59,10 +71,10 @@ jobs:
     # You can get the docfx default template via the following command: docfx template export default
     # This will put the default template folder into a directory called _exported_templates
     - name: Get docfx
-      run: dotnet tool install --version 2.61.0 -g docfx
+      run: dotnet tool install --version 2.77.0 -g docfx
 
     - name: Build docs
-      run: docfx
+      run: docfx --warningsAsErrors
 
     - name: Commit and push
       if: (github.event_name == 'push' || github.event_name == 'repository_dispatch') && github.repository == 'npgsql/doc' && github.ref == 'refs/heads/main'
