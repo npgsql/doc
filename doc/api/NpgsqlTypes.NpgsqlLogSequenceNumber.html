@@ -1,0 +1,1575 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Struct NpgsqlLogSequenceNumber
+ | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Struct NpgsqlLogSequenceNumber
+ | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber">
+
+
+  <h1 id="NpgsqlTypes_NpgsqlLogSequenceNumber" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber" class="text-break">Struct NpgsqlLogSequenceNumber
+</h1>
+  <div class="markdown level0 summary"><p>Wraps a PostgreSQL Write-Ahead Log Sequence Number (see: <a href="https://www.postgresql.org/docs/current/datatype-pg-lsn.html">https://www.postgresql.org/docs/current/datatype-pg-lsn.html</a>)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IEquatable&lt;&gt;</span>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>&gt;</div>
+    <div><span class="xref">IComparable&lt;&gt;</span>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly struct NpgsqlLogSequenceNumber : IEquatable&lt;NpgsqlLogSequenceNumber&gt;, IComparable&lt;NpgsqlLogSequenceNumber&gt;</code></pre>
+  </div>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber__ctor_System_UInt64_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.%23ctor(System.UInt64)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L31">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber__ctor_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.#ctor*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber__ctor_System_UInt64_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.#ctor(System.UInt64)">NpgsqlLogSequenceNumber(ulong)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlLogSequenceNumber(ulong value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value to wrap.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber__ctor_System_UInt64__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <h3 id="fields">Fields
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Invalid.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Invalid%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L23">View Source</a>
+  </span>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Invalid" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Invalid">Invalid</h4>
+  <div class="markdown level1 summary"><p>Zero is used indicate an invalid Log Sequence Number. No XLOG record can begin at zero.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static readonly NpgsqlLogSequenceNumber Invalid</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Invalid_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_CompareTo_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.CompareTo(NpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L50">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_CompareTo_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.CompareTo*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_CompareTo_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.CompareTo(NpgsqlTypes.NpgsqlLogSequenceNumber)">CompareTo(NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Compares this instance to a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> and returns an indication of their
+relative values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int CompareTo(NpgsqlLogSequenceNumber value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance to compare to this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>A signed number indicating the relative values of this instance and <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_CompareTo_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Equals(NpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L41">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Equals*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Equals(NpgsqlTypes.NpgsqlLogSequenceNumber)">Equals(NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether this instance is equal to a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>
+instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlLogSequenceNumber other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">other</span></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance to compare to this instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if the current instance is equal to the value parameter;
+otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_System_Nullable_System_Object__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Equals(System.Nullable%7BSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L59">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Equals*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_System_Nullable_System_Object__" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Equals(System.Nullable{System.Object})">Equals(object?)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether this instance is equal to a specified object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span>?</td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>An object to compare to this instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if the current instance is equal to the value parameter;
+otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Equals_System_Nullable_System_Object___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L66">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.GetHashCode*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_GetHashCode" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td><p>A 32-bit signed integer hash code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_GetHashCode_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Larger_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Larger(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L265">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Larger_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Larger*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Larger_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Larger(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">Larger(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns the larger of two <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber Larger(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>The larger of the two <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Larger_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_ReadOnlySpan_System_Char__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Parse(ReadOnlySpan%7BSystem.Char%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L108">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Parse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_ReadOnlySpan_System_Char__" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Parse(ReadOnlySpan{System.Char})">Parse(ReadOnlySpan&lt;char&gt;)</h4>
+  <div class="markdown level1 summary"><p>Converts the span representation of a Log Sequence Number to a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber Parse(ReadOnlySpan&lt;char&gt; s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadOnlySpan&lt;&gt;</span>&lt;<span class="xref">char</span>&gt;</td>
+        <td><span class="parametername">s</span></td>
+        <td><p>A span containing the characters that represent the Log Sequence Number to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> equivalent to the Log Sequence Number specified in <code data-dev-comment-type="paramref" class="paramref">s</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_ReadOnlySpan_System_Char___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_System_String_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Parse(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L90">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Parse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Parse(System.String)">Parse(string)</h4>
+  <div class="markdown level1 summary"><p>Converts the string representation of a Log Sequence Number to a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber Parse(string s)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">s</span></td>
+        <td><p>A string that represents the Log Sequence Number to convert.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> equivalent to the Log Sequence Number specified in <code data-dev-comment-type="paramref" class="paramref">s</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Parse_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_Smaller_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.Smaller(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L276">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_Smaller_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Smaller*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Smaller_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.Smaller(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">Smaller(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns the smaller of two <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber Smaller(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>The smaller of the two <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> values.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_Smaller_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L74">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_ToString_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.ToString*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_ToString" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.ToString">ToString()</h4>
+  <div class="markdown level1 summary"><p>Converts the numeric value of this instance to its equivalent string representation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><p>The string representation of the value of this instance, consisting of two hexadecimal numbers of
+up to 8 digits each, separated by a slash</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_ToString_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_ReadOnlySpan_System_Char__NpgsqlTypes_NpgsqlLogSequenceNumber__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse(ReadOnlySpan%7BSystem.Char%7D%2CNpgsqlTypes.NpgsqlLogSequenceNumber%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L147">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_ReadOnlySpan_System_Char__NpgsqlTypes_NpgsqlLogSequenceNumber__" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse(ReadOnlySpan{System.Char},NpgsqlTypes.NpgsqlLogSequenceNumber@)">TryParse(ReadOnlySpan&lt;char&gt;, out NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Tries to convert the span representation of a Log Sequence Number to an <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>
+instance. A return value indicates whether the conversion succeeded or failed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryParse(ReadOnlySpan&lt;char&gt; s, out NpgsqlLogSequenceNumber result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ReadOnlySpan&lt;&gt;</span>&lt;<span class="xref">char</span>&gt;</td>
+        <td><span class="parametername">s</span></td>
+        <td><p>A span containing the characters that represent the Log Sequence Number to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>When this method returns, contains a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance equivalent to the Log Sequence
+Number contained in <code data-dev-comment-type="paramref" class="paramref">s</code>, if the conversion succeeded, or the default value for
+<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> (<code>0</code>) if the conversion failed. The conversion fails if the <code data-dev-comment-type="paramref" class="paramref">s</code>
+parameter is empty, is not in the right format, or represents a number less than
+<see cref="!:ulong.MinValue"></see> or greater than <see cref="!:ulong.MaxValue"></see>. This parameter is passed
+uninitialized; any value originally supplied in result will be overwritten.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">s</code> was converted successfully; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_ReadOnlySpan_System_Char__NpgsqlTypes_NpgsqlLogSequenceNumber___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_System_String_NpgsqlTypes_NpgsqlLogSequenceNumber__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse(System.String%2CNpgsqlTypes.NpgsqlLogSequenceNumber%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L129">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_System_String_NpgsqlTypes_NpgsqlLogSequenceNumber__" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.TryParse(System.String,NpgsqlTypes.NpgsqlLogSequenceNumber@)">TryParse(string, out NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Tries to convert the string representation of a Log Sequence Number to an <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a>
+instance. A return value indicates whether the conversion succeeded or failed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryParse(string s, out NpgsqlLogSequenceNumber result)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">s</span></td>
+        <td><p>A string that represents the Log Sequence Number to convert.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>When this method returns, contains a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance equivalent to the Log Sequence
+Number contained in <code data-dev-comment-type="paramref" class="paramref">s</code>, if the conversion succeeded, or the default value for
+<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> (<code>0</code>) if the conversion failed. The conversion fails if the <code data-dev-comment-type="paramref" class="paramref">s</code>
+parameter is <span class="xref">null</span> or <see cref="!:string.Empty"></see>, is not in the right format, or represents a number
+less than <see cref="!:ulong.MinValue"></see> or greater than <see cref="!:ulong.MaxValue"></see>. This parameter is
+passed uninitialized; any value originally supplied in result will be overwritten.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">s</code>c&gt; was converted successfully; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_TryParse_System_String_NpgsqlTypes_NpgsqlLogSequenceNumber___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <h3 id="operators">Operators
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Addition_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Addition(NpgsqlTypes.NpgsqlLogSequenceNumber%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L336">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Addition_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Addition*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Addition_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Addition(NpgsqlTypes.NpgsqlLogSequenceNumber,System.Double)">operator +(NpgsqlLogSequenceNumber, double)</h4>
+  <div class="markdown level1 summary"><p>Add the number of bytes to a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance, giving a new
+<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.
+Handles both positive and negative numbers of bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber operator +(NpgsqlLogSequenceNumber lsn, double nbytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">lsn</span></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance representing a write-ahead log location.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">double</span></td>
+        <td><span class="parametername">nbytes</span></td>
+        <td><p>The number of bytes to add.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>A new <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Addition_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Equality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Equality(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L202">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Equality_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Equality*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Equality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Equality(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator ==(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether two specified instances of <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> are equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first Log Sequence Number to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second Log Sequence Number to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> equals <code data-dev-comment-type="paramref" class="paramref">value2</code>; otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Equality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_NpgsqlTypes_NpgsqlLogSequenceNumber__System_UInt64.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit(NpgsqlTypes.NpgsqlLogSequenceNumber)~System.UInt64%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L191">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_NpgsqlTypes_NpgsqlLogSequenceNumber__System_UInt64" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit(NpgsqlTypes.NpgsqlLogSequenceNumber)~System.UInt64">explicit operator ulong(NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Converts the value of a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance to a 64-bit unsigned integer value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator ulong(NpgsqlLogSequenceNumber value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>A <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><p>The contents of <code data-dev-comment-type="paramref" class="paramref">value</code> as 64-bit unsigned integer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_NpgsqlTypes_NpgsqlLogSequenceNumber__System_UInt64_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_System_UInt64__NpgsqlTypes_NpgsqlLogSequenceNumber.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit(System.UInt64)~NpgsqlTypes.NpgsqlLogSequenceNumber%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L183">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_System_UInt64__NpgsqlTypes_NpgsqlLogSequenceNumber" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Explicit(System.UInt64)~NpgsqlTypes.NpgsqlLogSequenceNumber">explicit operator NpgsqlLogSequenceNumber(ulong)</h4>
+  <div class="markdown level1 summary"><p>Converts the value of a 64-bit unsigned integer to a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static explicit operator NpgsqlLogSequenceNumber(ulong value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>A 64-bit unsigned integer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>A new instance of <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> initialized to <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Explicit_System_UInt64__NpgsqlTypes_NpgsqlLogSequenceNumber_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThan(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L228">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThan_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThan(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator &gt;(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance is greater than
+another specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> is greater than <code data-dev-comment-type="paramref" class="paramref">value2</code>; otherwise,
+<span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThanOrEqual(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L254">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThanOrEqual*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_GreaterThanOrEqual(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator &gt;=(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance is greater than or
+equal to another specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &gt;=(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> is greater than or equal to <code data-dev-comment-type="paramref" class="paramref">value2</code>;
+otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_GreaterThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Inequality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Inequality(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L215">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Inequality*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Inequality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Inequality(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator !=(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value that indicates whether two specified instances of <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> are not
+equal.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first Log Sequence Number to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second Log Sequence Number to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> does not equal <code data-dev-comment-type="paramref" class="paramref">value2</code>; otherwise,
+<span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Inequality_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThan(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L241">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThan_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThan*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThan(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator &lt;(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance is less than
+another specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> is less than <code data-dev-comment-type="paramref" class="paramref">value2</code>; otherwise,
+<span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThan_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThanOrEqual(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L289">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThanOrEqual_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThanOrEqual*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_LessThanOrEqual(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator &lt;=(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Returns a value indicating whether a specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance is less than or
+equal to another specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool operator &lt;=(NpgsqlLogSequenceNumber value1, NpgsqlLogSequenceNumber value2)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value1</span></td>
+        <td><p>The first value to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">value2</span></td>
+        <td><p>The second value to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><p><span class="xref">true</span> if <code data-dev-comment-type="paramref" class="paramref">value1</code> is less than or equal to <code data-dev-comment-type="paramref" class="paramref">value2</code>;
+otherwise, <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_LessThanOrEqual_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction(NpgsqlTypes.NpgsqlLogSequenceNumber%2CNpgsqlTypes.NpgsqlLogSequenceNumber)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L298">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction(NpgsqlTypes.NpgsqlLogSequenceNumber,NpgsqlTypes.NpgsqlLogSequenceNumber)">operator -(NpgsqlLogSequenceNumber, NpgsqlLogSequenceNumber)</h4>
+  <div class="markdown level1 summary"><p>Subtracts two specified <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ulong operator -(NpgsqlLogSequenceNumber first, NpgsqlLogSequenceNumber second)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">first</span></td>
+        <td><p>The first <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">second</span></td>
+        <td><p>The second <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ulong</span></td>
+        <td><p>The number of bytes separating those write-ahead log locations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_NpgsqlTypes_NpgsqlLogSequenceNumber__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction(NpgsqlTypes.NpgsqlLogSequenceNumber%2CSystem.Double)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L317">View Source</a>
+  </span>
+  <a id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction*"></a>
+  <h4 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double_" data-uid="NpgsqlTypes.NpgsqlLogSequenceNumber.op_Subtraction(NpgsqlTypes.NpgsqlLogSequenceNumber,System.Double)">operator -(NpgsqlLogSequenceNumber, double)</h4>
+  <div class="markdown level1 summary"><p>Subtract the number of bytes from a <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance, giving a new
+<a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.
+Handles both positive and negative numbers of bytes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static NpgsqlLogSequenceNumber operator -(NpgsqlLogSequenceNumber lsn, double nbytes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><span class="parametername">lsn</span></td>
+        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance representing a write-ahead log location.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">double</span></td>
+        <td><span class="parametername">nbytes</span></td>
+        <td><p>The number of bytes to subtract.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a></td>
+        <td><p>A new <a class="xref" href="NpgsqlTypes.NpgsqlLogSequenceNumber.html">NpgsqlLogSequenceNumber</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="NpgsqlTypes_NpgsqlLogSequenceNumber_op_Subtraction_NpgsqlTypes_NpgsqlLogSequenceNumber_System_Double__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Log Sequence Numbers are a fundamental concept of the PostgreSQL Write-Ahead Log and by that of
+PostgreSQL replication. See <a href="https://www.postgresql.org/docs/current/wal-internals.html">https://www.postgresql.org/docs/current/wal-internals.html</a> for what they represent.</p>
+<p>This struct provides conversions from/to <see cref="!:System.String"></see> and <see cref="!:System.UInt64"></see> and beyond that tries to port
+the methods and operators in <a href="https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c">https://git.postgresql.org/gitweb/?p=postgresql.git;a=blob;f=src/backend/utils/adt/pg_lsn.c</a>
+but nothing more.</p>
+</div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IEquatable&lt;&gt;</span>
+  </div>
+  <div>
+      <span class="xref">IComparable&lt;&gt;</span>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlLogSequenceNumber.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlLogSequenceNumber%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/NpgsqlTypes/NpgsqlLogSequenceNumber.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

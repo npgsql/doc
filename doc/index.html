@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Npgsql - .NET Access to PostgreSQL | Npgsql Documentation </title>
+    <title>Documentation | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Npgsql - .NET Access to PostgreSQL | Npgsql Documentation ">
+    <meta name="title" content="Documentation | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/npgsql.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="api/toc.html">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
   
   <meta property="docfx:rel" content="../">
   
@@ -84,52 +84,37 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p id="badges">
-  <a href="https://gitter.im/npgsql/npgsql">
-    <img src="https://img.shields.io/badge/GITTER-JOIN%20CHAT-brightgreen.svg?style=plastic;maxAge=600">
-  </a>
-</p>
-<h1 id="npgsql---net-access-to-postgresql">Npgsql - .NET Access to PostgreSQL</h1>
-<h2 id="about">About</h2>
-<p>Npgsql is an open source ADO.NET Data Provider for PostgreSQL, it allows programs written in C#, Visual Basic, F# to access the PostgreSQL database server.
-It is implemented in 100% C# code, is free and is open source.</p>
-<p>An Entity Framework Core provider is also available, and exposes some features unique to the PostgreSQL database to EF Core users.</p>
-<p>Finally, a legacy Entity Framework 6.x (non-Core) provider is also available, but is no longer being actively maintained.</p>
-<h2 id="getting-help">Getting Help</h2>
-<p>The best way to get help for Npgsql is to post a question to Stack Overflow and tag it with the <code>npgsql</code> tag.
-If you think you've encountered a bug or want to request a feature, open an issue in the <a href="https://github.com/npgsql">appropriate project's github repository</a>.</p>
-<h2 id="license">License</h2>
-<p>Npgsql is licensed under the <a href="https://github.com/npgsql/npgsql/blob/main/LICENSE">PostgreSQL License</a>, a liberal OSI-approved open source license.</p>
-<h2 id="contributors">Contributors</h2>
-<p>Current active contributors to Npgsql are:</p>
-<ul>
-<li>Shay Rojansky (<a href="https://github.com/roji">@roji</a>)</li>
-<li>Nikita Kazmin (<a href="https://github.com/vonzshik">@vonzshik</a>)</li>
-<li>Nino Floris (<a href="https://github.com/NinoFloris/">@NinoFloris</a>)</li>
-<li>Brar Piening (<a href="https://github.com/Brar">@Brar</a>)</li>
-</ul>
-<p>Past contributors to Npgsql:</p>
-<ul>
-<li>Emmanuel André</li>
-<li>Jon Asher</li>
-<li>Raif Atef</li>
-<li>Josh Cooley</li>
-<li>Yoh Deadfall</li>
-<li>Austin Drenski</li>
-<li>Francisco Figueiredo Jr. (<a href="https://github.com/franciscojunior">@franciscojunior</a>) Npgsql creator and former lead developer for versions 0.xx, 1.xx and 2.xx</li>
-<li>Federico Di Gregorio</li>
-<li>Jon Hanna</li>
-<li>Emil Lenngren</li>
-<li>Chris Morgan</li>
-<li>Dave Page</li>
-<li>Glen Parker</li>
-<li>Hiroshi Saito</li>
-<li>Kenji Uno</li>
-<li>Warcha</li>
-</ul>
-<h2 id="thanks">Thanks</h2>
-<p>A special thanks to <a href="http://jetbrains.com/">Jetbrains</a> for donating licenses to the project.</p>
 
+<p><a href="https://www.nuget.org/packages/Npgsql/"><img src="https://img.shields.io/nuget/v/Npgsql.svg?label=stable" alt="stable"></a>
+<a href="https://www.myget.org/feed/npgsql/package/nuget/Npgsql"><img src="https://img.shields.io/myget/npgsql/v/npgsql.svg?label=next%20patch" alt="next patch"></a>
+<a href="https://www.myget.org/feed/npgsql-vnext/package/nuget/Npgsql"><img src="https://img.shields.io/myget/npgsql-vnext/v/npgsql.svg?label=vnext" alt="vnext"></a>
+<a href="https://github.com/npgsql/npgsql/actions"><img src="https://img.shields.io/github/actions/workflow/status/npgsql/npgsql/build.yml?branch=main" alt="build"></a>
+<a href="https://gitter.im/npgsql/npgsql"><img src="https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg" alt="gitter"></a></p>
+<h2 id="getting-started">Getting Started</h2>
+<p>The best way to use Npgsql is to install its <a href="https://www.nuget.org/packages/Npgsql/">nuget package</a>.</p>
+<p>Npgsql aims to be fully ADO.NET-compatible, its API should feel almost identical to other .NET database drivers.</p>
+<p>Here's a basic code snippet to get you started:</p>
+<pre><code class="lang-csharp">var connectionString = &quot;Host=myserver;Username=mylogin;Password=mypass;Database=mydatabase&quot;;
+await using var dataSource = NpgsqlDataSource.Create(connectionString);
+
+// Insert some data
+await using (var cmd = dataSource.CreateCommand(&quot;INSERT INTO data (some_field) VALUES ($1)&quot;))
+{
+    cmd.Parameters.AddWithValue(&quot;Hello world&quot;);
+    await cmd.ExecuteNonQueryAsync();
+}
+
+// Retrieve all rows
+await using (var cmd = dataSource.CreateCommand(&quot;SELECT some_field FROM data&quot;))
+await using (var reader = await cmd.ExecuteReaderAsync())
+{
+    while (await reader.ReadAsync())
+    {
+        Console.WriteLine(reader.GetString(0));
+    }
+}
+</code></pre>
+<p>You can find more info about the ADO.NET API in the <a href="https://msdn.microsoft.com/en-us/library/h43ks021(v=vs.110).aspx">MSDN docs</a> or in many tutorials on the Internet.</p>
 </article>
           </div>
 
@@ -138,12 +123,12 @@ If you think you've encountered a bug or want to request a feature, open an issu
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/index.md/#L1" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
+                <h5>In This Article</h5>
                 <div></div>
               </nav>
             </div>
@@ -165,7 +150,7 @@ If you think you've encountered a bug or want to request a feature, open an issu
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

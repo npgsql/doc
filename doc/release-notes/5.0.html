@@ -1,0 +1,464 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql 5.0 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql 5.0 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-50-release-notes">Npgsql 5.0 Release Notes</h1>
+
+<p>Npgsql 5.0 is out and available at nuget.org.</p>
+<h2 id="new-features">New features</h2>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/efcore.pg/milestone/24?closed=1">available here</a>.</p>
+<h3 id="postgresql-logical-and-physical-replication">PostgreSQL logical and physical replication</h3>
+<p>PostgreSQL replication creating programs which receive a continuous, live stream of all updates happening in a PostgreSQL database or set of tables. It can be used for auditing purposes, continuously exporting certain (or all) changes to another database or format, or various other purposes. <a href="../replication.html">See the documentation for more details</a>.</p>
+<p>This major feature was developed by <a href="https://github.com/Brar">@Brar</a>, many thanks!</p>
+<p>Issue: <a href="https://github.com/npgsql/npgsql/issues/1520">#1520</a></p>
+<h3 id="improved-support-for-cancellation-and-timeout">Improved support for cancellation and timeout</h3>
+<p>When the user requests cancellation (via a cancellation token or <a class="xref" href="../api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Cancel">NpgsqlCommand.Cancel()</a>), or when the <a href="http://www.npgsql.org/doc/connection-string-parameters.html#timeouts-and-keepalive">Command Timeout</a> expires, Npgsql now takes the following steps:</p>
+<ol>
+<li>Contact PostgreSQL and attempt to cancel the running command. If successful, PostgreSQL immediately stops processing the command and is free to do other work. In previous versions, queries were sometimes left running on the server.</li>
+<li>If PostgreSQL cancellation isn't successful within a short time window, the network is likely down. Npgsql forcibly closes the physical connection and raises an exception, making sure the application isn't blocked.</li>
+</ol>
+<p>Previous support was inconsistent across cancellation and timeout, and async I/O was only partially supported.</p>
+<p>Thanks to <a href="https://github.com/vonzshik">@vonzshik</a> for all their valuable work on this!</p>
+<p>Issue: <a href="https://github.com/npgsql/npgsql/issues/3166">#3166</a></p>
+<h3 id="connection-multiplexing">Connection multiplexing</h3>
+<p>Multiplexing is an experimental new way for the driver to handle commands and connections: user code no longer receives an exclusive physical connection from Npgsql's internal pool, but rather submits commands to be executed on any available connection. This is a much more efficient use of connections, which can lead to:</p>
+<ol>
+<li>Significant reduction to the number of required PostgreSQL physical connection requirements, and removing load from the server.</li>
+<li>Continued uptime even when the maximum allowed connection count has been reached.</li>
+<li>A potentially substantial performance boost on the <a href="https://www.techempower.com/benchmarks/">TechEmpower benchmark</a> (next round to be published).</li>
+</ol>
+<p>Multiplexing is disabled by default, is considered experimental and must be explicitly opted into. Full documentation will be available soon.</p>
+<p>Issue: <a href="https://github.com/npgsql/npgsql/issues/1982">#1982</a></p>
+<h3 id="nullable-references">Nullable references</h3>
+<p>All Npgsql APIs are now fully annotated for <em>C# nullable references</em> (<a href="https://github.com/npgsql/npgsql/issues/3120">#3120</a>), in line with the new annotations in System.Data released in .NET 5.0.</p>
+<h3 id="support-for-arrays-of-nullable-value-types">Support for arrays of nullable value types</h3>
+<p>It is now possible to read PostgreSQL arrays as CLR <em>arrays of nullable value types</em>. For example, a PostgreSQL <code>integer[]</code> column can now be read as follows:</p>
+<pre><code class="lang-c#">var array = reader.GetFieldValue&lt;int?&gt;(0);
+</code></pre>
+<p>Previously, only non-nullable value arrays were supported, and nulls were translated to the default value (e.g. 0).</p>
+<p>Thanks to <a href="https://github.com/Brar">@Brar</a> for developing this feature.</p>
+<p>Issue: <a href="https://github.com/npgsql/npgsql/issues/443">#443</a></p>
+<h3 id="close-connections-past-a-certain-age">Close connections past a certain age</h3>
+<p>The <code>Connection Lifetime</code> connection string parameter can now be used to unconditionally close connections which have reached a certain age. Once such a connection is returned to the pool, it is destroyed and a new connection will be created if needed. This is useful in clustered configurations to force load balancing between a running server and a server just brought online, or to mitigate certain resource leaks.</p>
+<p>Thanks to <a href="https://github.com/FlorianRainer">@FlorianRainer</a> for collaborating on this feature.</p>
+<p>Issue: <a href="https://github.com/npgsql/npgsql/issues/1810">#1810</a></p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<ul>
+<li>Npgsql no longer targets .NET Framework 4.6.1. Since .NET Standard 2.0 is targeted, it is still possible to use Npgsql from .NET Framework applications; however, we no longer run regression tests on .NET Framework and will only fix bugs on a best-effort basis. In addition, the Visual Studio extension (VSIX) and the MSI GAC installer have been discontinued. <a href="https://github.com/npgsql/npgsql/issues/3269">#3269</a>.</li>
+<li>Npgsql targets the <code>netcoreapp3.1</code> TFM instead of <code>netcoreapp3.0</code>, which is out of support (<a href="https://github.com/npgsql/npgsql/issues/3160">#3160</a>).</li>
+<li>When command timeout occurs, Npgsql now raises an <a class="xref" href="../api/Npgsql.NpgsqlException.html">NpgsqlException</a> wrapping a <a href="https://docs.microsoft.com/dotnet/api/system.timeoutexception">TimeoutException</a> (<a href="https://github.com/npgsql/npgsql/issues/3132">#3132</a>). Previously, an NpgsqlException wrapping an IOException was raised.</li>
+<li>Similarly, when cancellation occurs, Npgsql now raises an <a href="https://docs.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a> when a command is cancelled (both via an async cancellation token, and via <a class="xref" href="../api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Cancel">NpgsqlCommand.Cancel()</a>). Previously, NpgsqlCommand.Cancel caused a <a class="xref" href="../api/Npgsql.PostgresException.html">PostgresException</a> to be raised instead.</li>
+<li>When reading PostgreSQL arrays, if a null value is being read into a CLR arrays of a non-nullable value type, an exception is now thrown (<a href="https://github.com/npgsql/npgsql/issues/443">#443</a>). Previously, the default value was populated instead. It is now possible to read arrays of nullable value types instead.</li>
+<li>The <code>NpgsqlTransaction.IsCompleted</code> property has been removed. The application must itself track when a transaction is committed or rolled back.</li>
+<li>Support for unmapped PostgreSQL composite types has been removed (<a href="https://github.com/npgsql/npgsql/issues/2403">#2403</a>).</li>
+<li>The ordering in which Npgsql checks alternative password sources has changed (<a href="https://github.com/npgsql/npgsql/issues/2695">#2695</a>, <a href="https://github.com/npgsql/npgsql/pull/2657">#2657</a>). This only affects applications which omit the password from the connection string.</li>
+<li>If the connection string specifies a PGPASS file, Npgsql now throws if that file doesn't exist (<a href="https://github.com/npgsql/npgsql/issues/2694">#2694</a>).</li>
+<li>The <em>TcpKeepAliveTime</em> and <em>TcpKeepAliveInterval</em> connection string parameters are now expressed in seconds instead of milliseconds (<a href="https://github.com/npgsql/npgsql/issues/1936">#1936</a>).</li>
+<li>The <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_GetSchema">NpgsqlConnection.GetSchema()</a> API now returns all indexes in the database (<a href="https://github.com/npgsql/npgsql/issues/2958">2958</a>). Previously, only indexes in the <code>search_path</code> were returned.</li>
+<li><a class="xref" href="../api/Npgsql.NpgsqlOperationInProgressException.html">NpgsqlOperationInProgressException</a> now inherits from <a class="xref" href="../api/Npgsql.NpgsqlException.html">NpgsqlException</a>.</li>
+<li><a class="xref" href="../api/Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_Complete">NpgsqlBinaryImporter.Complete()</a> has been changed to return a <code>ulong</code> reporting the number of imported rows (<a href="https://github.com/npgsql/npgsql/issues/2112">#2112</a>).</li>
+<li>The <a href="https://www.nuget.org/packages/Npgsql.RawPostgis/">Npgsql.RawPostgis</a> plugin has been discontinued (<a href="https://github.com/npgsql/npgsql/issues/3201">#3201</a>). Npgsql now allows any field to be read as raw binary data, so the plugin is no longer necessary.</li>
+<li>~Support for non-standard-conforming strings has been dropped (<a href="https://github.com/npgsql/npgsql/issues/2931">#2931</a>).~ Support for non-standard-confirming strings has been restored in 5.0.1 (except for multiplexing).</li>
+<li>Npgsql no longer supports SASL authentication with PgBouncer below 1.12.</li>
+</ul>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 5.0.x. releases.</p>
+<h3 id="milestone-5014"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14">Milestone 5.0.14</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.14+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-5011"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11">Milestone 5.0.11</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/aromaa">@aromaa</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aaromaa">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/kislovs">@kislovs</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Akislovs">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.11+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-5010"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10">Milestone 5.0.10</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Avonzshik">11</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.10+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-507"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7">Milestone 5.0.7</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Avonzshik">8</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/chrisdcmoore">@chrisdcmoore</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.7+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-505"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5">Milestone 5.0.5</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Avonzshik">6</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.5+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-504"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4">Milestone 5.0.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Avonzshik">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/neyromant">@neyromant</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3Aneyromant">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.4+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-503"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3">Milestone 5.0.3</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/baal2000">@baal2000</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Abaal2000">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.3+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-502"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2">Milestone 5.0.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/cime">@cime</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3Acime">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.2+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-5011-1"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1">Milestone 5.0.1.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Avonzshik">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.1.1+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-500"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A5.0.0">Milestone 5.0.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Aroji">34</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Avonzshik">19</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AYohDeadfall">16</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ABrar">7</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/warcha">@warcha</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Awarcha">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/manandre">@manandre</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Amanandre">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ch-asimakopoulos">@ch-asimakopoulos</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Ach-asimakopoulos">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/chrisdcmoore">@chrisdcmoore</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Achrisdcmoore">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/FlorianRainer">@FlorianRainer</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3AFlorianRainer">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/russellfoster">@russellfoster</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3Arussellfoster">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/TwentyFourMinutes">@TwentyFourMinutes</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A5.0.0+is%3Aclosed+assignee%3ATwentyFourMinutes">1</a></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/5.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

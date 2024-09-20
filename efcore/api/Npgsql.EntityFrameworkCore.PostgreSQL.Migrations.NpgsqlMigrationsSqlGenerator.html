@@ -1,0 +1,2325 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class NpgsqlMigrationsSqlGenerator
+ | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class NpgsqlMigrationsSqlGenerator
+ | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator">
+
+
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator" class="text-break">Class NpgsqlMigrationsSqlGenerator
+</h1>
+  <div class="markdown level0 summary"><p>PostgreSQL-specific implementation of <see cref="!:MigrationsSqlGenerator"></see>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">NpgsqlMigrationsSqlGenerator</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.html">Migrations</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlMigrationsSqlGenerator : MigrationsSqlGenerator</code></pre>
+  </div>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator__ctor_MigrationsSqlGeneratorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.%23ctor(MigrationsSqlGeneratorDependencies%2CNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L39">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.#ctor*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator__ctor_MigrationsSqlGeneratorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.#ctor(MigrationsSqlGeneratorDependencies,Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions)">NpgsqlMigrationsSqlGenerator(MigrationsSqlGeneratorDependencies, INpgsqlSingletonOptions)</h4>
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.html">NpgsqlMigrationsSqlGenerator</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NpgsqlMigrationsSqlGenerator(MigrationsSqlGeneratorDependencies dependencies, INpgsqlSingletonOptions npgsqlSingletonOptions)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MigrationsSqlGeneratorDependencies</span></td>
+        <td><span class="parametername">dependencies</span></td>
+        <td><p>Parameter object containing dependencies for this service.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions.html">INpgsqlSingletonOptions</a></td>
+        <td><span class="parametername">npgsqlSingletonOptions</span></td>
+        <td><p>The singleton options to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator__ctor_MigrationsSqlGeneratorDependencies_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_ColumnOperation_System_Nullable_IModel__System_String_System_Nullable_System_String__System_String_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql(ColumnOperation%2CSystem.Nullable%7BIModel%7D%2CSystem.String%2CSystem.Nullable%7BSystem.String%7D%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1615">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_ColumnOperation_System_Nullable_IModel__System_String_System_Nullable_System_String__System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ApplyTsVectorColumnSql(ColumnOperation,System.Nullable{IModel},System.String,System.Nullable{System.String},System.String)">ApplyTsVectorColumnSql(ColumnOperation, IModel?, string, string?, string)</h4>
+  <div class="markdown level1 summary"><p>Checks for a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Internal.NpgsqlAnnotationNames.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Internal_NpgsqlAnnotationNames_TsVectorConfig">TsVectorConfig</a> annotation on the given column, and if found, assigns
+the appropriate SQL to <see cref="!:ColumnOperation.ComputedColumnSql"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void ApplyTsVectorColumnSql(ColumnOperation column, IModel? model, string name, string? schema, string table)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ColumnOperation</span></td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">schema</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ApplyTsVectorColumnSql_ColumnOperation_System_Nullable_IModel__System_String_System_Nullable_System_String__System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition(System.Nullable%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1518">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ColumnDefinition(System.Nullable{System.String},System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ColumnDefinition(string?, string, string, ColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void ColumnDefinition(string? schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">schema</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">table</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">ColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition(System.Nullable%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1765">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.ComputedColumnDefinition(System.Nullable{System.String},System.String,System.String,ColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">ComputedColumnDefinition(string?, string, string, ColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"><p>Generates a SQL fragment for a computed column definition for the given column metadata.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void ComputedColumnDefinition(string? schema, string table, string name, ColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The schema that contains the table, or <code>null</code> to use the default schema.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">table</span></td>
+        <td><p>The table that contains the column.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The column name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td><p>The column metadata.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td><p>The target model which may be <code>null</code> if the operations exist without a model.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p>The command builder to use to add the SQL fragment.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_ComputedColumnDefinition_System_Nullable_System_String__System_String_System_String_ColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AddColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AddColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L353">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AddColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AddColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(AddColumnOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(AddColumnOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AddColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AddColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L407">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(AlterColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1039">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(AlterDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterDatabaseOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterTableOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L253">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(AlterTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(AlterTableOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(AlterTableOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterTableOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_AlterTableOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateIndexOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L861">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateIndexOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(CreateIndexOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CreateIndexOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateSequenceOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1493">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(CreateSequenceOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(CreateSequenceOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CreateSequenceOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateTableOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L157">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(CreateTableOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(CreateTableOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(CreateTableOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CreateTableOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_CreateTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L337">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropColumnOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(DropColumnOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DropColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropIndexOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1417">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(DropIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(DropIndexOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(DropIndexOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">DropIndexOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_DropIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_EnsureSchemaOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(EnsureSchemaOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L938">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_EnsureSchemaOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(EnsureSchemaOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(EnsureSchemaOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(EnsureSchemaOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EnsureSchemaOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_EnsureSchemaOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_InsertDataOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(InsertDataOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1462">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_InsertDataOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(InsertDataOperation,System.Nullable{IModel},MigrationCommandListBuilder,System.Boolean)">Generate(InsertDataOperation, IModel?, MigrationCommandListBuilder, bool)</h4>
+  <div class="markdown level1 summary"><p>Builds commands for the given <see cref="!:InsertDataOperation"></see> by making calls on the given
+<see cref="!:MigrationCommandListBuilder"></see>, and then terminates the final command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(InsertDataOperation operation, IModel? model, MigrationCommandListBuilder builder, bool terminate = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">InsertDataOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td><p>The operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td><p>The target model which may be <code>null</code> if the operations exist without a model.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p>The command builder to use to build the commands.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">terminate</span></td>
+        <td><p>Indicates whether or not to terminate the command after generating SQL for the operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_InsertDataOperation_System_Nullable_IModel__MigrationCommandListBuilder_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_IReadOnlyList_MigrationOperation__System_Nullable_IModel__MigrationsSqlGenerationOptions_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(IReadOnlyList%7BMigrationOperation%7D%2CSystem.Nullable%7BIModel%7D%2CMigrationsSqlGenerationOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L50">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_IReadOnlyList_MigrationOperation__System_Nullable_IModel__MigrationsSqlGenerationOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(IReadOnlyList{MigrationOperation},System.Nullable{IModel},MigrationsSqlGenerationOptions)">Generate(IReadOnlyList&lt;MigrationOperation&gt;, IModel?, MigrationsSqlGenerationOptions)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override IReadOnlyList&lt;MigrationCommand&gt; Generate(IReadOnlyList&lt;MigrationOperation&gt; operations, IModel? model = null, MigrationsSqlGenerationOptions options = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">MigrationOperation</span>&gt;</td>
+        <td><span class="parametername">operations</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationsSqlGenerationOptions</span></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">MigrationCommand</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_IReadOnlyList_MigrationOperation__System_Nullable_IModel__MigrationsSqlGenerationOptions__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_MigrationOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(MigrationOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L134">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_MigrationOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(MigrationOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(MigrationOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(MigrationOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MigrationOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_MigrationOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlCreateDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlCreateDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L975">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlCreateDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlCreateDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlCreateDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Generate(NpgsqlCreateDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlCreateDatabaseOperation.html">NpgsqlCreateDatabaseOperation</a></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlCreateDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlDropDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlDropDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1014">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlDropDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlDropDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(NpgsqlDropDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Generate(NpgsqlDropDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.Operations.NpgsqlDropDatabaseOperation.html">NpgsqlDropDatabaseOperation</a></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_Operations_NpgsqlDropDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameColumnOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1438">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameColumnOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameColumnOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(RenameColumnOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RenameColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameColumnOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameIndexOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L797">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameIndexOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(RenameIndexOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RenameIndexOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameSequenceOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L813">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameSequenceOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameSequenceOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(RenameSequenceOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RenameSequenceOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameSequenceOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameTableOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L837">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameTableOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Generate(RenameTableOperation,System.Nullable{IModel},MigrationCommandListBuilder)">Generate(RenameTableOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Generate(RenameTableOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RenameTableOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Generate_RenameTableOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_String_System_Nullable_System_String__System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum%2CSystem.String%2CSystem.Nullable%7BSystem.String%7D%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1294">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_String_System_Nullable_System_String__System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateAddEnumLabel(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.String,System.Nullable{System.String},System.Nullable{IModel},MigrationCommandListBuilder)">GenerateAddEnumLabel(PostgresEnum, string, string?, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateAddEnumLabel(PostgresEnum enumType, string addedLabel, string? beforeLabel, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum.html">PostgresEnum</a></td>
+        <td><span class="parametername">enumType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">addedLabel</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">beforeLabel</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateAddEnumLabel_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_String_System_Nullable_System_String__System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements(AlterDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1104">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCollationStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCollationStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateCollationStatements(AlterDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterDatabaseOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCollationStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1135">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateCollation(PostgresCollation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateCreateCollation(PostgresCollation collation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation.html">PostgresCollation</a></td>
+        <td><span class="parametername">collation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1253">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateEnum(PostgresEnum, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateCreateEnum(PostgresEnum enumType, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum.html">PostgresEnum</a></td>
+        <td><span class="parametername">enumType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresExtension_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresExtension%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1065">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresExtension_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateExtension(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresExtension,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateExtension(PostgresExtension, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateCreateExtension(PostgresExtension extension, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresExtension.html">PostgresExtension</a></td>
+        <td><span class="parametername">extension</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateExtension_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresExtension_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1353">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateCreateRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateCreateRange(PostgresRange, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateCreateRange(PostgresRange rangeType, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange.html">PostgresRange</a></td>
+        <td><span class="parametername">rangeType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateCreateRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1187">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropCollation(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropCollation(PostgresCollation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateDropCollation(PostgresCollation collation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresCollation.html">PostgresCollation</a></td>
+        <td><span class="parametername">collation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropCollation_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresCollation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1283">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropEnum(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropEnum(PostgresEnum, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateDropEnum(PostgresEnum enumType, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresEnum.html">PostgresEnum</a></td>
+        <td><span class="parametername">enumType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropEnum_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresEnum_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1404">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateDropRange(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateDropRange(PostgresRange, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateDropRange(PostgresRange rangeType, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.PostgresRange.html">PostgresRange</a></td>
+        <td><span class="parametername">rangeType</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateDropRange_Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_PostgresRange_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements(AlterDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1202">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateEnumStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateEnumStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateEnumStatements(AlterDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterDatabaseOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateEnumStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements(AlterDatabaseOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1330">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.GenerateRangeStatements(AlterDatabaseOperation,System.Nullable{IModel},MigrationCommandListBuilder)">GenerateRangeStatements(AlterDatabaseOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void GenerateRangeStatements(AlterDatabaseOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">AlterDatabaseOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_GenerateRangeStatements_AlterDatabaseOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_ColumnOperation_MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IdentityDefinition(ColumnOperation%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1636">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IdentityDefinition*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_ColumnOperation_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IdentityDefinition(ColumnOperation,MigrationCommandListBuilder)">IdentityDefinition(ColumnOperation, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void IdentityDefinition(ColumnOperation operation, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ColumnOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IdentityDefinition_ColumnOperation_MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions(CreateIndexOperation%2CSystem.Nullable%7BIModel%7D%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L918">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.IndexOptions(CreateIndexOperation,System.Nullable{IModel},MigrationCommandListBuilder)">IndexOptions(CreateIndexOperation, IModel?, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void IndexOptions(CreateIndexOperation operation, IModel? model, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CreateIndexOperation</span></td>
+        <td><span class="parametername">operation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IModel</span>?</td>
+        <td><span class="parametername">model</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_IndexOptions_CreateIndexOperation_System_Nullable_IModel__MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_System_Nullable_IColumn__MigrationOperation_MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes(System.Nullable%7BIColumn%7D%2CMigrationOperation%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1880">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_System_Nullable_IColumn__MigrationOperation_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.RecreateIndexes(System.Nullable{IColumn},MigrationOperation,MigrationCommandListBuilder)">RecreateIndexes(IColumn?, MigrationOperation, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void RecreateIndexes(IColumn? column, MigrationOperation currentOperation, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IColumn</span>?</td>
+        <td><span class="parametername">column</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationOperation</span></td>
+        <td><span class="parametername">currentOperation</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_RecreateIndexes_System_Nullable_IColumn__MigrationOperation_MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_System_Nullable_System_String__System_String_System_String_System_String_MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename(System.Nullable%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CSystem.String%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1827">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_System_Nullable_System_String__System_String_System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Rename(System.Nullable{System.String},System.String,System.String,System.String,MigrationCommandListBuilder)">Rename(string?, string, string, string, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"><p>Renames a database object such as a table, index, or sequence.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Rename(string? schema, string name, string newName, string type, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The current schema of the object to rename.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The current name of the object to rename.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newName</span></td>
+        <td><p>The new name.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of the object (e.g. TABLE, INDEX, SEQUENCE).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p>The builder to which operations are appended.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Rename_System_Nullable_System_String__System_String_System_String_System_String_MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_System_String_System_Nullable_System_String__System_String_System_String_MigrationCommandListBuilder_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer(System.String%2CSystem.Nullable%7BSystem.String%7D%2CSystem.String%2CSystem.String%2CMigrationCommandListBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L1857">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_System_String_System_Nullable_System_String__System_String_System_String_MigrationCommandListBuilder_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator.Transfer(System.String,System.Nullable{System.String},System.String,System.String,MigrationCommandListBuilder)">Transfer(string, string?, string, string, MigrationCommandListBuilder)</h4>
+  <div class="markdown level1 summary"><p>Transfers a database object such as a table, index, or sequence between schemas.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Transfer(string newSchema, string? schema, string name, string type, MigrationCommandListBuilder builder)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">newSchema</span></td>
+        <td><p>The new schema.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span>?</td>
+        <td><span class="parametername">schema</span></td>
+        <td><p>The current schema.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the object to transfer.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>The type of the object (e.g. TABLE, INDEX, SEQUENCE).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">MigrationCommandListBuilder</span></td>
+        <td><span class="parametername">builder</span></td>
+        <td><p>The builder to which operations are appended.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator_Transfer_System_String_System_Nullable_System_String__System_String_System_String_MigrationCommandListBuilder__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+    The service lifetime is <see cref="!:ServiceLifetime.Scoped"></see>. This means that each <see cref="!:DbContext"></see> instance will use
+    its own instance of this service. The implementation may depend on other services registered with any lifetime. The
+    implementation does not need to be thread-safe.
+</p>
+<p>
+    See <a href="https://aka.ms/efcore-docs-migrations">Database migrations</a>.
+</p>
+</div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Migrations_NpgsqlMigrationsSqlGenerator.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Migrations.NpgsqlMigrationsSqlGenerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Migrations/NpgsqlMigrationsSqlGenerator.cs/#L24" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql 4.1 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql 4.1 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-41-release-notes">Npgsql 4.1 Release Notes</h1>
+
+<p>Npgsql 4.1 is out and available at nuget.org.</p>
+<h2 id="new-features">New Features</h2>
+<p>The major new features of 4.1 are:</p>
+<ul>
+<li>Support for reading and writing your types as JSON via the new, high-perf System.Text.Json API (<a href="https://github.com/npgsql/npgsql/issues/2306">#2306</a>).</li>
+<li>Support for the new async methods introduced in .NET Standard 2.1 (<a href="https://github.com/npgsql/npgsql/issues/2481">#2481</a>).</li>
+<li>Expose performance statistics via <a href="https://devblogs.microsoft.com/dotnet/introducing-diagnostics-improvements-in-net-core-3-0/">the new .NET event counters</a> (<a href="https://github.com/npgsql/npgsql/issues/1725">#1725</a>).</li>
+<li>Async support for binary imports and exports (<a href="https://github.com/npgsql/npgsql/issues/1632">#1632</a>).</li>
+<li>Easier and PostgreSQL standard ways to provide client certificates for authentication (<a href="https://github.com/npgsql/npgsql/issues/2129">#2129</a>).</li>
+</ul>
+<p>Many other small improvements and performance optimizations have been introduced as well - you can track progress <a href="https://github.com/npgsql/npgsql/issues?utf8=%E2%9C%93&amp;q=milestone%3A4.1.0">here</a>.</p>
+<h2 id="breaking-changes-from-40">Breaking changes from 4.0</h2>
+<ul>
+<li>.NET Framework 4.5, 4.5.1 and 4.5.2 are no longer supported. .NET Framework 4.6.1 and .NET Standard 2.0 are the lowest supported versions.</li>
+<li>The spatial plugin, Npgsql.NetTopologySuite, has been updated to depend on NetTopologySuite 2.0.0, which is a major version introducing breaking changes. Specifically, EF Core 3.0 is the first version supporting NetTopologySuite 2.0.0; it is not possible to use EF Core 2.x with the new version of Npgsql.NetTopologySuite.</li>
+<li>The <code>UseSslStream</code> property of <code>NpgsqlConnectionStringBuilder</code> is now marked as <code>Obselete</code>. <code>SslStream</code> is always used.</li>
+<li>A fix was done to Npgsql's snake case naming converter (<a href="https://github.com/npgsql/npgsql/issues/2152">#2152</a>); this could break code that relies on the previous conversion logic.</li>
+</ul>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 4.1.x. releases.</p>
+<h3 id="milestone-4112"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.12">Milestone 4.1.12</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.12+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-419"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.9">Milestone 4.1.9</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.9+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-418"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.8">Milestone 4.1.8</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.8+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-417"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.7">Milestone 4.1.7</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.7+is%3Aclosed+assignee%3AYohDeadfall">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.7+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-416"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6">Milestone 4.1.6</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/loop-evgeny">@loop-evgeny</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6+is%3Aclosed+assignee%3Aloop-evgeny">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/mm3141">@mm3141</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6+is%3Aclosed+assignee%3Amm3141">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.6+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-415"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A4.1.5">Milestone 4.1.5</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/calexander3">@calexander3</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3Acalexander3">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/romanov-is-here">@romanov-is-here</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3Aromanov-is-here">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/warcha">@warcha</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3Awarcha">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.5+is%3Aclosed+assignee%3AYohDeadfall">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-414"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4">Milestone 4.1.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Aroji">6</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3AYohDeadfall">6</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/warcha">@warcha</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Awarcha">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dwat001">@dwat001</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Adwat001">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/elipatov">@elipatov</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Aelipatov">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/manandre">@manandre</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Amanandre">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/williamdenton">@williamdenton</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.4+is%3Aclosed+assignee%3Awilliamdenton">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-413"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.3">Milestone 4.1.3</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.3+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.3+is%3Aclosed+assignee%3AYohDeadfall">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.3+is%3Aclosed+assignee%3ANinoFloris">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/nycdotnet">@nycdotnet</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.3+is%3Aclosed+assignee%3Anycdotnet">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-412"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.2">Milestone 4.1.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.2+is%3Aclosed+assignee%3AYohDeadfall">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.2+is%3Aclosed+assignee%3ANinoFloris">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.2+is%3Aclosed+assignee%3Aaustindrenski">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-411"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.1">Milestone 4.1.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.1+is%3Aclosed+assignee%3Aroji">7</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-410"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0">Milestone 4.1.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Aroji">27</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/YohDeadfall">@YohDeadfall</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3AYohDeadfall">6</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/austindrenski">@austindrenski</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Aaustindrenski">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/NinoFloris">@NinoFloris</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3ANinoFloris">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/afkos">@afkos</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Aafkos">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/baronfel">@baronfel</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Abaronfel">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/shortspider">@shortspider</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Ashortspider">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/williamdenton">@williamdenton</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Awilliamdenton">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/zabulus">@zabulus</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A4.1.0+is%3Aclosed+assignee%3Azabulus">1</a></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/4.1.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,986 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PostgresFunctionExpression
+ | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PostgresFunctionExpression
+ | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression">
+
+
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression" class="text-break">Class PostgresFunctionExpression
+</h1>
+  <div class="markdown level0 summary"><p>Represents a SQL function call expression, supporting PostgreSQL's named parameter notation
+(e.g. make_interval(weeks =&gt; 2) and non-comma parameter separators (e.g. position(substring in string)).</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><span class="xref">PostgresFunctionExpression</span></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">IEquatable&lt;&gt;</span>&lt;<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a>&gt;</div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.html">Expressions</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.html">Internal</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
+  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PostgresFunctionExpression : SqlFunctionExpression, IEquatable&lt;PostgresFunctionExpression&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression__ctor_System_String_IEnumerable_SqlExpression__System_Nullable_IEnumerable_System_Nullable_System_String____System_Nullable_IEnumerable_System_Nullable_System_String____System_Boolean_System_Nullable_SqlExpression__IReadOnlyList_OrderingExpression__System_Boolean_IEnumerable_System_Boolean__Type_System_Nullable_RelationalTypeMapping__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.%23ctor(System.String%2CIEnumerable%7BSqlExpression%7D%2CSystem.Nullable%7BIEnumerable%7BSystem.Nullable%7BSystem.String%7D%7D%7D%2CSystem.Nullable%7BIEnumerable%7BSystem.Nullable%7BSystem.String%7D%7D%7D%2CSystem.Boolean%2CSystem.Nullable%7BSqlExpression%7D%2CIReadOnlyList%7BOrderingExpression%7D%2CSystem.Boolean%2CIEnumerable%7BSystem.Boolean%7D%2CType%2CSystem.Nullable%7BRelationalTypeMapping%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L95">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.#ctor*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression__ctor_System_String_IEnumerable_SqlExpression__System_Nullable_IEnumerable_System_Nullable_System_String____System_Nullable_IEnumerable_System_Nullable_System_String____System_Boolean_System_Nullable_SqlExpression__IReadOnlyList_OrderingExpression__System_Boolean_IEnumerable_System_Boolean__Type_System_Nullable_RelationalTypeMapping__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.#ctor(System.String,IEnumerable{SqlExpression},System.Nullable{IEnumerable{System.Nullable{System.String}}},System.Nullable{IEnumerable{System.Nullable{System.String}}},System.Boolean,System.Nullable{SqlExpression},IReadOnlyList{OrderingExpression},System.Boolean,IEnumerable{System.Boolean},Type,System.Nullable{RelationalTypeMapping})">PostgresFunctionExpression(string, IEnumerable&lt;SqlExpression&gt;, IEnumerable&lt;string?&gt;?, IEnumerable&lt;string?&gt;?, bool, SqlExpression?, IReadOnlyList&lt;OrderingExpression&gt;, bool, IEnumerable&lt;bool&gt;, Type, RelationalTypeMapping?)</h4>
+  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PostgresFunctionExpression(string name, IEnumerable&lt;SqlExpression&gt; arguments, IEnumerable&lt;string?&gt;? argumentNames, IEnumerable&lt;string?&gt;? argumentSeparators, bool aggregateDistinct, SqlExpression? aggregatePredicate, IReadOnlyList&lt;OrderingExpression&gt; aggregateOrderings, bool nullable, IEnumerable&lt;bool&gt; argumentsPropagateNullability, Type type, RelationalTypeMapping? typeMapping)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="parametername">arguments</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;?</td>
+        <td><span class="parametername">argumentNames</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;?</td>
+        <td><span class="parametername">argumentSeparators</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">aggregateDistinct</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">SqlExpression</span>?</td>
+        <td><span class="parametername">aggregatePredicate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">OrderingExpression</span>&gt;</td>
+        <td><span class="parametername">aggregateOrderings</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">nullable</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">bool</span>&gt;</td>
+        <td><span class="parametername">argumentsPropagateNullability</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">RelationalTypeMapping</span>?</td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregateOrderings.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregateOrderings%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L33">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregateOrderings_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregateOrderings*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregateOrderings" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregateOrderings">AggregateOrderings</h4>
+  <div class="markdown level1 summary"><p>For aggregate methods, contains the orderings to be applied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;OrderingExpression&gt; AggregateOrderings { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">OrderingExpression</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregatePredicate.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregatePredicate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L28">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregatePredicate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregatePredicate*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_AggregatePredicate" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.AggregatePredicate">AggregatePredicate</h4>
+  <div class="markdown level1 summary"><p>For aggregate methods, contains the predicate to be applied (generated as the SQL FILTER clause).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual SqlExpression? AggregatePredicate { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlExpression</span>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentNames.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentNames%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L40">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentNames_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentNames*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentNames" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentNames">ArgumentNames</h4>
+  <div class="markdown level1 summary"><p>List of argument names, corresponding position-wise to arguments in <see cref="!:SqlFunctionExpression.Arguments"></see>.
+Unnamed (positional) arguments must come first, so this list must contain possible nulls, followed by
+non-nulls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;string?&gt; ArgumentNames { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Arguments.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Arguments%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L13">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Arguments_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Arguments*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Arguments" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Arguments">Arguments</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;SqlExpression&gt; Arguments { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentSeparators.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentSeparators%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L46">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentSeparators_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentSeparators*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentSeparators" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentSeparators">ArgumentSeparators</h4>
+  <div class="markdown level1 summary"><p>List of non-comma separators between argument separators, in the order in which they appear between
+the arguments. <code>null</code> as well as positions beyond the end of the list mean regular commas.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;string?&gt; ArgumentSeparators { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentsPropagateNullability.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentsPropagateNullability%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L17">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentsPropagateNullability_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentsPropagateNullability*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ArgumentsPropagateNullability" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ArgumentsPropagateNullability">ArgumentsPropagateNullability</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual IReadOnlyList&lt;bool&gt; ArgumentsPropagateNullability { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">bool</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_IsAggregateDistinct.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.IsAggregateDistinct%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L23">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_IsAggregateDistinct_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.IsAggregateDistinct*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_IsAggregateDistinct" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.IsAggregateDistinct">IsAggregateDistinct</h4>
+  <div class="markdown level1 summary"><p>For aggregate methods, contains whether to apply distinct.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IsAggregateDistinct { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ApplyTypeMapping_System_Nullable_RelationalTypeMapping__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ApplyTypeMapping(System.Nullable%7BRelationalTypeMapping%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L196">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ApplyTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ApplyTypeMapping*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_ApplyTypeMapping_System_Nullable_RelationalTypeMapping__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.ApplyTypeMapping(System.Nullable{RelationalTypeMapping})">ApplyTypeMapping(RelationalTypeMapping?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SqlFunctionExpression ApplyTypeMapping(RelationalTypeMapping? typeMapping)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RelationalTypeMapping</span>?</td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlFunctionExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithArgumentSeparators_System_String_IEnumerable_SqlExpression__IEnumerable_System_Nullable_System_String___System_Boolean_IEnumerable_System_Boolean__System_Boolean_Type_System_Nullable_RelationalTypeMapping__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithArgumentSeparators(System.String%2CIEnumerable%7BSqlExpression%7D%2CIEnumerable%7BSystem.Nullable%7BSystem.String%7D%7D%2CSystem.Boolean%2CIEnumerable%7BSystem.Boolean%7D%2CSystem.Boolean%2CType%2CSystem.Nullable%7BRelationalTypeMapping%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L73">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithArgumentSeparators_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithArgumentSeparators*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithArgumentSeparators_System_String_IEnumerable_SqlExpression__IEnumerable_System_Nullable_System_String___System_Boolean_IEnumerable_System_Boolean__System_Boolean_Type_System_Nullable_RelationalTypeMapping__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithArgumentSeparators(System.String,IEnumerable{SqlExpression},IEnumerable{System.Nullable{System.String}},System.Boolean,IEnumerable{System.Boolean},System.Boolean,Type,System.Nullable{RelationalTypeMapping})">CreateWithArgumentSeparators(string, IEnumerable&lt;SqlExpression&gt;, IEnumerable&lt;string?&gt;, bool, IEnumerable&lt;bool&gt;, bool, Type, RelationalTypeMapping?)</h4>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a> with argument separators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PostgresFunctionExpression CreateWithArgumentSeparators(string name, IEnumerable&lt;SqlExpression&gt; arguments, IEnumerable&lt;string?&gt; argumentSeparators, bool nullable, IEnumerable&lt;bool&gt; argumentsPropagateNullability, bool builtIn, Type type, RelationalTypeMapping? typeMapping)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="parametername">arguments</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;</td>
+        <td><span class="parametername">argumentSeparators</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">nullable</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">bool</span>&gt;</td>
+        <td><span class="parametername">argumentsPropagateNullability</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">builtIn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">RelationalTypeMapping</span>?</td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithNamedArguments_System_String_IEnumerable_SqlExpression__IEnumerable_System_Nullable_System_String___System_Boolean_IEnumerable_System_Boolean__System_Boolean_Type_System_Nullable_RelationalTypeMapping__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithNamedArguments(System.String%2CIEnumerable%7BSqlExpression%7D%2CIEnumerable%7BSystem.Nullable%7BSystem.String%7D%7D%2CSystem.Boolean%2CIEnumerable%7BSystem.Boolean%7D%2CSystem.Boolean%2CType%2CSystem.Nullable%7BRelationalTypeMapping%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L51">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithNamedArguments_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithNamedArguments*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_CreateWithNamedArguments_System_String_IEnumerable_SqlExpression__IEnumerable_System_Nullable_System_String___System_Boolean_IEnumerable_System_Boolean__System_Boolean_Type_System_Nullable_RelationalTypeMapping__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.CreateWithNamedArguments(System.String,IEnumerable{SqlExpression},IEnumerable{System.Nullable{System.String}},System.Boolean,IEnumerable{System.Boolean},System.Boolean,Type,System.Nullable{RelationalTypeMapping})">CreateWithNamedArguments(string, IEnumerable&lt;SqlExpression&gt;, IEnumerable&lt;string?&gt;, bool, IEnumerable&lt;bool&gt;, bool, Type, RelationalTypeMapping?)</h4>
+  <div class="markdown level1 summary"><p>Creates an instance of <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a> with named arguments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PostgresFunctionExpression CreateWithNamedArguments(string name, IEnumerable&lt;SqlExpression&gt; arguments, IEnumerable&lt;string?&gt; argumentNames, bool nullable, IEnumerable&lt;bool&gt; argumentsPropagateNullability, bool builtIn, Type type, RelationalTypeMapping? typeMapping)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">string</span></td>
+        <td><span class="parametername">name</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">SqlExpression</span>&gt;</td>
+        <td><span class="parametername">arguments</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">string</span>?&gt;</td>
+        <td><span class="parametername">argumentNames</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">nullable</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IEnumerable&lt;&gt;</span>&lt;<span class="xref">bool</span>&gt;</td>
+        <td><span class="parametername">argumentsPropagateNullability</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td><span class="parametername">builtIn</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span></td>
+        <td><span class="parametername">type</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">RelationalTypeMapping</span>?</td>
+        <td><span class="parametername">typeMapping</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L293">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression)">Equals(PostgresFunctionExpression?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Equals(PostgresFunctionExpression? other)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a></td>
+        <td><span class="parametername">other</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_System_Nullable_System_Object__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals(System.Nullable%7BSystem.Object%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L289">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Equals_System_Nullable_System_Object__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Equals(System.Nullable{System.Object})">Equals(object?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span>?</td>
+        <td><span class="parametername">obj</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">bool</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_GetHashCode.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L304">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_GetHashCode_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.GetHashCode*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_GetHashCode" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.GetHashCode">GetHashCode()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">int</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Print_ExpressionPrinter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Print(ExpressionPrinter)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L247">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Print_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Print*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Print_ExpressionPrinter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Print(ExpressionPrinter)">Print(ExpressionPrinter)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Print(ExpressionPrinter expressionPrinter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ExpressionPrinter</span></td>
+        <td><span class="parametername">expressionPrinter</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Update_System_Nullable_SqlExpression__System_Nullable_IReadOnlyList_SqlExpression___.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Update(System.Nullable%7BSqlExpression%7D%2CSystem.Nullable%7BIReadOnlyList%7BSqlExpression%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L209">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Update_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Update*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_Update_System_Nullable_SqlExpression__System_Nullable_IReadOnlyList_SqlExpression___" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.Update(System.Nullable{SqlExpression},System.Nullable{IReadOnlyList{SqlExpression}})">Update(SqlExpression?, IReadOnlyList&lt;SqlExpression&gt;?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override SqlFunctionExpression Update(SqlExpression? instance, IReadOnlyList&lt;SqlExpression&gt;? arguments)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlExpression</span>?</td>
+        <td><span class="parametername">instance</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">SqlExpression</span>&gt;?</td>
+        <td><span class="parametername">arguments</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlFunctionExpression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_UpdateAggregateComponents_System_Nullable_SqlExpression__IReadOnlyList_OrderingExpression__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.UpdateAggregateComponents(System.Nullable%7BSqlExpression%7D%2CIReadOnlyList%7BOrderingExpression%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L232">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_UpdateAggregateComponents_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.UpdateAggregateComponents*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_UpdateAggregateComponents_System_Nullable_SqlExpression__IReadOnlyList_OrderingExpression__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.UpdateAggregateComponents(System.Nullable{SqlExpression},IReadOnlyList{OrderingExpression})">UpdateAggregateComponents(SqlExpression?, IReadOnlyList&lt;OrderingExpression&gt;)</h4>
+  <div class="markdown level1 summary"><p>Creates a new expression that is like this one, but using the supplied children. If all of the children are the same, it will
+return this expression.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual PostgresFunctionExpression UpdateAggregateComponents(SqlExpression? predicate, IReadOnlyList&lt;OrderingExpression&gt; orderings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SqlExpression</span>?</td>
+        <td><span class="parametername">predicate</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">IReadOnlyList&lt;&gt;</span>&lt;<span class="xref">OrderingExpression</span>&gt;</td>
+        <td><span class="parametername">orderings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.html">PostgresFunctionExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_VisitChildren_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.VisitChildren(ExpressionVisitor)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L126">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_VisitChildren_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.VisitChildren*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression_VisitChildren_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression.VisitChildren(ExpressionVisitor)">VisitChildren(ExpressionVisitor)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Expression VisitChildren(ExpressionVisitor visitor)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ExpressionVisitor</span></td>
+        <td><span class="parametername">visitor</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Expression</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">IEquatable&lt;&gt;</span>
+  </div>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresFunctionExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresFunctionExpression%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Expressions/Internal/PostgresFunctionExpression.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class PgResolverTypeInfo
+ | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class PgResolverTypeInfo
+ | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Npgsql.Internal.PgResolverTypeInfo">
+
+
+  <h1 id="Npgsql_Internal_PgResolverTypeInfo" data-uid="Npgsql.Internal.PgResolverTypeInfo" class="text-break">Class PgResolverTypeInfo
+</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">object</span></div>
+    <div class="level1"><a class="xref" href="Npgsql.Internal.PgTypeInfo.html">PgTypeInfo</a></div>
+    <div class="level2"><span class="xref">PgResolverTypeInfo</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_Type">PgTypeInfo.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_Options">PgTypeInfo.Options</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_SupportsWriting">PgTypeInfo.SupportsWriting</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_PreferredFormat">PgTypeInfo.PreferredFormat</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_PgTypeId">PgTypeInfo.PgTypeId</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_GetResolution__1___0_">PgTypeInfo.GetResolution&lt;T&gt;(T)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_GetObjectResolution_System_Nullable_System_Object__">PgTypeInfo.GetObjectResolution(object?)</a>
+    </div>
+    <div>
+      <a class="xref" href="Npgsql.Internal.PgTypeInfo.html#Npgsql_Internal_PgTypeInfo_GetBufferRequirements_Npgsql_Internal_PgConverter_Npgsql_Internal_DataFormat_">PgTypeInfo.GetBufferRequirements(PgConverter, DataFormat)</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.Internal.html">Internal</a></h6>
+  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
+  <h5 id="Npgsql_Internal_PgResolverTypeInfo_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PgResolverTypeInfo : PgTypeInfo</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo__ctor_Npgsql_Internal_PgSerializerOptions_Npgsql_Internal_PgConverterResolver_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__System_Nullable_Type__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo.%23ctor(Npgsql.Internal.PgSerializerOptions%2CNpgsql.Internal.PgConverterResolver%2CSystem.Nullable%7BNpgsql.Internal.Postgres.PgTypeId%7D%2CSystem.Nullable%7BType%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L249">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_PgResolverTypeInfo__ctor_" data-uid="Npgsql.Internal.PgResolverTypeInfo.#ctor*"></a>
+  <h4 id="Npgsql_Internal_PgResolverTypeInfo__ctor_Npgsql_Internal_PgSerializerOptions_Npgsql_Internal_PgConverterResolver_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__System_Nullable_Type__" data-uid="Npgsql.Internal.PgResolverTypeInfo.#ctor(Npgsql.Internal.PgSerializerOptions,Npgsql.Internal.PgConverterResolver,System.Nullable{Npgsql.Internal.Postgres.PgTypeId},System.Nullable{Type})">PgResolverTypeInfo(PgSerializerOptions, PgConverterResolver, PgTypeId?, Type?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PgResolverTypeInfo(PgSerializerOptions options, PgConverterResolver converterResolver, PgTypeId? pgTypeId, Type? unboxedType = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgSerializerOptions.html">PgSerializerOptions</a></td>
+        <td><span class="parametername">options</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgConverterResolver.html">PgConverterResolver</a></td>
+        <td><span class="parametername">converterResolver</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.Postgres.PgTypeId.html">PgTypeId</a>?</td>
+        <td><span class="parametername">pgTypeId</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">Type</span>?</td>
+        <td><span class="parametername">unboxedType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+</h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo_GetDefaultResolution_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo.GetDefaultResolution(System.Nullable%7BNpgsql.Internal.Postgres.PgTypeId%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L279">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_PgResolverTypeInfo_GetDefaultResolution_" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetDefaultResolution*"></a>
+  <h4 id="Npgsql_Internal_PgResolverTypeInfo_GetDefaultResolution_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetDefaultResolution(System.Nullable{Npgsql.Internal.Postgres.PgTypeId})">GetDefaultResolution(PgTypeId?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PgConverterResolution GetDefaultResolution(PgTypeId? pgTypeId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.Postgres.PgTypeId.html">PgTypeId</a>?</td>
+        <td><span class="parametername">pgTypeId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgConverterResolution.html">PgConverterResolution</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo_GetResolution_Npgsql_Internal_Postgres_Field_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo.GetResolution(Npgsql.Internal.Postgres.Field)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L276">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_PgResolverTypeInfo_GetResolution_" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolution*"></a>
+  <h4 id="Npgsql_Internal_PgResolverTypeInfo_GetResolution_Npgsql_Internal_Postgres_Field_" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolution(Npgsql.Internal.Postgres.Field)">GetResolution(Field)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PgConverterResolution GetResolution(Field field)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.Postgres.Field.html">Field</a></td>
+        <td><span class="parametername">field</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgConverterResolution.html">PgConverterResolution</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo_GetResolution__1___0_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo.GetResolution%60%601(%60%600%2CSystem.Nullable%7BNpgsql.Internal.Postgres.PgTypeId%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L261">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_PgResolverTypeInfo_GetResolution_" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolution*"></a>
+  <h4 id="Npgsql_Internal_PgResolverTypeInfo_GetResolution__1___0_System_Nullable_Npgsql_Internal_Postgres_PgTypeId__" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolution``1(``0,System.Nullable{Npgsql.Internal.Postgres.PgTypeId})">GetResolution&lt;T&gt;(T?, PgTypeId?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PgConverterResolution? GetResolution&lt;T&gt;(T? value, PgTypeId? expectedPgTypeId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.Postgres.PgTypeId.html">PgTypeId</a>?</td>
+        <td><span class="parametername">expectedPgTypeId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgConverterResolution.html">PgConverterResolution</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo_GetResolutionAsObject_System_Nullable_System_Object__System_Nullable_Npgsql_Internal_Postgres_PgTypeId__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(System.Nullable%7BSystem.Object%7D%2CSystem.Nullable%7BNpgsql.Internal.Postgres.PgTypeId%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L273">View Source</a>
+  </span>
+  <a id="Npgsql_Internal_PgResolverTypeInfo_GetResolutionAsObject_" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject*"></a>
+  <h4 id="Npgsql_Internal_PgResolverTypeInfo_GetResolutionAsObject_System_Nullable_System_Object__System_Nullable_Npgsql_Internal_Postgres_PgTypeId__" data-uid="Npgsql.Internal.PgResolverTypeInfo.GetResolutionAsObject(System.Nullable{System.Object},System.Nullable{Npgsql.Internal.Postgres.PgTypeId})">GetResolutionAsObject(object?, PgTypeId?)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PgConverterResolution? GetResolutionAsObject(object? value, PgTypeId? expectedPgTypeId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">object</span>?</td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.Postgres.PgTypeId.html">PgTypeId</a>?</td>
+        <td><span class="parametername">expectedPgTypeId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.Internal.PgConverterResolution.html">PgConverterResolution</a>?</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgResolverTypeInfo.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgResolverTypeInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/PgTypeInfo.cs/#L245" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

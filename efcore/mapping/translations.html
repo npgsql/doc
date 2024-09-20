@@ -1,0 +1,1278 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Translations | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Translations | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="translations">Translations</h1>
+
+<p>Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports <a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">regular expression operations</a>, and the Npgsql EF Core provider automatically translates .NET's <a href="https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regex.ismatch"><code>Regex.IsMatch</code></a> to use this feature. Since evaluation happens at the server, table data doesn't need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up. The same C# code on other providers will trigger client evaluation.</p>
+<p>The Npgsql-specific translations are listed below. Some areas, such as <a href="full-text-search.html">full-text search</a>, have their own pages in this section which list additional translations.</p>
+<h2 id="string-functions">String functions</h2>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.Collate(operand, collation)</td>
+<td>operand COLLATE collation</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>EF.Functions.Like(matchExpression, pattern)</td>
+<td>matchExpression LIKE pattern</td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.Like(matchExpression, pattern, escapeCharacter)</td>
+<td>matchExpression LIKE pattern ESCAPE escapeCharacter</td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.ILike(matchExpression, pattern)</td>
+<td><a href="../misc/collations-and-case-sensitivity.html">matchExpression ILIKE pattern</a></td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.ILike(matchExpression, pattern, escapeCharacter)</td>
+<td><a href="../misc/collations-and-case-sensitivity.html">matchExpression ILIKE pattern ESCAPE escapeCharacter</a></td>
+<td></td>
+</tr>
+<tr>
+<td>string.Compare(strA, strB)</td>
+<td>CASE WHEN strA = strB THEN 0 ... END</td>
+<td></td>
+</tr>
+<tr>
+<td>string.Concat(str0, str1)</td>
+<td>str0 || str1</td>
+<td></td>
+</tr>
+<tr>
+<td>string.IsNullOrEmpty(value)</td>
+<td>value IS NULL OR value = ''</td>
+<td></td>
+</tr>
+<tr>
+<td>string.IsNullOrWhiteSpace(value)</td>
+<td>value IS NULL OR btrim(value, E' \t\n\r') = ''</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.CompareTo(strB)</td>
+<td>CASE WHEN stringValue = strB THEN 0 ... END</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.Contains(value)</td>
+<td>stringValue LIKE %value%</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.EndsWith(value)</td>
+<td>stringValue LIKE '%' || value</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.FirstOrDefault()</td>
+<td>substr(stringValue, 1, 1)</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>stringValue.IndexOf(value)</td>
+<td>strpos(stringValue, value) - 1</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.LastOrDefault()</td>
+<td>substr(stringValue, length(stringValue), 1)</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>stringValue.Length</td>
+<td>length(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.PadLeft(length)</td>
+<td>lpad(stringValue, length)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.PadLeft(length, char)</td>
+<td>lpad(stringValue, length, char)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.PadRight(length)</td>
+<td>rpad(stringValue, length)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.PadRight(length, char)</td>
+<td>rpad(stringValue, length, char)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.Replace(oldValue, newValue)</td>
+<td>replace(stringValue, oldValue, newValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.StartsWith(value)</td>
+<td>stringValue LIKE value || '%'</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.Substring(startIndex, length)</td>
+<td>substr(stringValue, startIndex + 1, @length)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.ToLower()</td>
+<td>lower(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.ToUpper()</td>
+<td>upper(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.Trim()</td>
+<td>btrim(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.Trim(trimChar)</td>
+<td>btrim(stringValue, trimChar)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.TrimEnd()</td>
+<td>rtrim(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.TrimEnd(trimChar)</td>
+<td>rtrim(stringValue, trimChar)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.TrimStart()</td>
+<td>ltrim(stringValue)</td>
+<td></td>
+</tr>
+<tr>
+<td>stringValue.TrimStart(trimChar)</td>
+<td>ltrim(stringValue, trimChar)</td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.Reverse(value)</td>
+<td>reverse(value)</td>
+<td></td>
+</tr>
+<tr>
+<td>Regex.IsMatch(stringValue, &quot;^A+&quot;)</td>
+<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ '^A+'</a> (with options)</td>
+<td></td>
+</tr>
+<tr>
+<td>Regex.IsMatch(stringValue, &quot;^A+&quot;, regexOptions)</td>
+<td><a href="http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP">stringValue ~ '^A+'</a> (with options)</td>
+<td></td>
+</tr>
+<tr>
+<td>string.Join(&quot;, &quot;, a, b)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-OTHER">concat_ws(', ', a, b)</a></td>
+<td>Added in 7.0 (previously array_to_string)</td>
+</tr>
+<tr>
+<td>string.Join(&quot;, &quot;, array)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE">array_to_string(array, ', ', '')</a></td>
+<td></td>
+</tr>
+<tr>
+<td>string.Join(&quot;, &quot;, agg_strings)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">string_agg(agg_strings, ', ')</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
+<tr>
+<td>EF.Functions.StringToArray(s, &quot;|&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY">string_agg(s, '|')</a></td>
+<td>Added in 8.0</td>
+</tr>
+<tr>
+<td>EF.Functions.StringToArray(s, &quot;|&quot;, &quot;FOO&quot;)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY">string_agg(s, '|', 'FOO')</a></td>
+<td>Added in 8.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="date-and-time-functions">Date and time functions</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Some of the operations below depend on the concept of a &quot;local time zone&quot; (e.g. <code>DateTime.Today</code>). While in .NET this is the machine time zone where .NET is running, the corresponding PostgreSQL translations use the <a href="https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-TIMEZONE"><code>TimeZone</code></a> connection parameter as the local time zone.</p>
+<p>Since version 6.0, many of the below DateTime translations are also supported on DateTimeOffset.</p>
+<p>See also Npgsql's <a href="/efcore/mapping/nodatime.html">NodaTime support</a>, which is a better and safer way of interacting with date/time data.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DateTime.UtcNow (6.0+)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Now (6.0+)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()::timestamp</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Today (6.0+)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', now()::timestamp)</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.UtcNow (legacy)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now() AT TIME ZONE 'UTC'</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Now (legacy)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">now()</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>DateTime.Today (legacy)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', now())</a></td>
+<td>See 6.0 release notes</td>
+</tr>
+<tr>
+<td>dateTime.AddDays(1)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 days'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.AddHours(value)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 hours'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.AddMinutes(1)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 minutes'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.AddMonths(1)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 months'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.AddSeconds(1)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 seconds'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.AddYears(1)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime + INTERVAL '1 years'</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Date</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_trunc('day', dateTime)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Day</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('day', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.DayOfWeek</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('dow', dateTime))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.DayOfYear</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('doy', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Hour</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('hour', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Minute</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('minute', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Month</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('month', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Second</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('second', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.Year</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('year', dateTime)::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>dateTime.ToUniversalTime</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-datetime.html#id-1.5.7.13.18.7">dateTime::timestamptz</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTime.ToLocalTime</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-datetime.html#id-1.5.7.13.18.7">dateTime::timestamp</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTimeOffset.DateTime</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">dateTimeOffset AT TIME ZONE 'UTC'</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTimeOffset.UtcDateTime</td>
+<td>No PG operation (.NET-side conversion from DateTimeOffset to DateTime only)</td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTimeOffset.LocalDateTime</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-datetime.html#id-1.5.7.13.18.7">dateTimeOffset::timestamp</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>timeSpan.Days</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('day', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.Hours</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('hour', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.Minutes</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('minute', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.Seconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('second', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.Milliseconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('millisecond', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.Milliseconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">floor(date_part('millisecond', timeSpan))::INT</a></td>
+<td></td>
+</tr>
+<tr>
+<td>timeSpan.TotalMilliseconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 0.001</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>timeSpan.TotalSeconds</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval)</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>timeSpan.TotalMinutes</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 60.0</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>timeSpan.TotalDays</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 86400.0</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>timeSpan.TotalHours</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">date_part('epoch', interval) / 3600.0</a></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>dateTime1 - dateTime2</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE">dateTime1 - dateTime2</a></td>
+<td></td>
+</tr>
+<tr>
+<td>TimeZoneInfo.ConvertTimeBySystemTimeZoneId(utcDateTime, timezone)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">utcDateTime AT TIME ZONE timezone</a></td>
+<td>Added in 6.0, only for timestamptz columns</td>
+</tr>
+<tr>
+<td>TimeZoneInfo.ConvertTimeToUtc(nonUtcDateTime)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">nonUtcDateTime::timestamptz</a></td>
+<td>Added in 6.0, only for timestamp columns</td>
+</tr>
+<tr>
+<td>DateTime.SpecifyKind(utcDateTime, DateTimeKind.Unspecified)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">utcDateTime AT TIME ZONE 'UTC'</a></td>
+<td>Added in 6.0, only for timestamptz columns</td>
+</tr>
+<tr>
+<td>DateTime.SpecifyKind(nonUtcDateTime, DateTimeKind.Utc)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-ZONECONVERT">nonUtcDateTime AT TIME ZONE 'UTC'</a></td>
+<td>Added in 6.0, only for timestamp columns</td>
+</tr>
+<tr>
+<td>new DateTime(year, month, day)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_date(year, month, day)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>new DateTime(y, m, d, h, m, s)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_timestamp(y, m, d, h, m, s)</a></td>
+<td></td>
+</tr>
+<tr>
+<td>new DateTime(y, m, d, h, m, s, kind)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-datetime.html">make_timestamp or make_timestamptz</a>, based on <code>kind</code></td>
+<td>Added in 6.0</td>
+</tr>
+<tr>
+<td>EF.Functions.Sum(timespans)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">sum(timespans)</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
+<tr>
+<td>EF.Functions.Average(timespans)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE">avg(timespans)</a></td>
+<td>Added in 7.0, see <a href="#aggregate-functions">Aggregate functions</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="miscellaneous-functions">Miscellaneous functions</h2>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>collection.Contains(item)</td>
+<td>item IN collection</td>
+</tr>
+<tr>
+<td>enumValue.HasFlag(flag)</td>
+<td>enumValue &amp; flag = flag</td>
+</tr>
+<tr>
+<td>Guid.NewGuid()</td>
+<td><a href="https://www.postgresql.org/docs/current/uuid-ossp.html">uuid_generate_v4()</a>, or <a href="https://www.postgresql.org/docs/current/functions-uuid.html">gen_random_uuid()</a> on PostgreSQL 13 with EF Core 5 and above.</td>
+</tr>
+<tr>
+<td>nullable.GetValueOrDefault()</td>
+<td>coalesce(nullable, 0)</td>
+</tr>
+<tr>
+<td>nullable.GetValueOrDefault(defaultValue)</td>
+<td>coalesce(nullable, defaultValue)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="binary-functions">Binary functions</h2>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bytes[i]</td>
+<td>get_byte(bytes, i)</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>bytes.Contains(value)</td>
+<td>position(value IN bytes) &gt; 0</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>bytes.Length</td>
+<td>length(@bytes)</td>
+<td>Added in 5.0</td>
+</tr>
+<tr>
+<td>bytes1.SequenceEqual(bytes2)</td>
+<td>@bytes = @second</td>
+<td>Added in 5.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="math-functions">Math functions</h2>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Math.Abs(value)</td>
+<td>abs(value)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Acos(d)</td>
+<td>acos(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Asin(d)</td>
+<td>asin(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Atan(d)</td>
+<td>atan(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Atan2(y, x)</td>
+<td>atan2(y, x)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Ceiling(d)</td>
+<td>ceiling(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Cos(d)</td>
+<td>cos(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Exp(d)</td>
+<td>exp(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Floor(d)</td>
+<td>floor(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Log(d)</td>
+<td>ln(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Log10(d)</td>
+<td>log(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Max(x, y)</td>
+<td>greatest(x, y)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Min(x, y)</td>
+<td>least(x, y)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Pow(x, y)</td>
+<td>power(x, y)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Round(d)</td>
+<td>round(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Round(d, decimals)</td>
+<td>round(d, decimals)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Sin(a)</td>
+<td>sin(a)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Sign(value)</td>
+<td>sign(value)::int</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Sqrt(d)</td>
+<td>sqrt(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Tan(a)</td>
+<td>tan(a)</td>
+<td></td>
+</tr>
+<tr>
+<td>Math.Truncate(d)</td>
+<td>trunc(d)</td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.Random()</td>
+<td>random()</td>
+<td>Added in 6.0</td>
+</tr>
+</tbody>
+</table>
+<p>See also <a href="#aggregate-functions">Aggregate statistics functions</a>.</p>
+<h2 id="row-value-comparisons">Row value comparisons</h2>
+<p>The following allow expressing <a href="https://www.postgresql.org/docs/current/functions-comparisons.html#ROW-WISE-COMPARISON">comparisons over SQL row values</a>. This are particularly useful for implementing efficient pagination, see <a href="https://docs.microsoft.com/ef/core/querying/pagination">the EF Core docs</a> for more information.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All of the below were introduced in version 7.0 of the provider.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.GreaterThan(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &gt; (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.LessThan(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt; (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.GreaterThanOrEqual(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &gt;= (c, d)</td>
+</tr>
+<tr>
+<td>EF.Functions.LessThanOrEqual(ValueTuple.Create(a, b), ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt;= (c, d)</td>
+</tr>
+<tr>
+<td>ValueTuple.Create(a, b).Equals(ValueTuple.Create(c, d))</td>
+<td>(a, b) = (c, d)</td>
+</tr>
+<tr>
+<td>!ValueTuple.Create(a, b).Equals(ValueTuple.Create(c, d))</td>
+<td>(a, b) &lt;&gt; (c, d)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="network-functions">Network functions</h2>
+<div class="NOTE">
+<h5>Note</h5>
+<p>As of Npgsql 8.0, <code>IPAddress</code> and <code>NpgsqlCidr</code> are implicitly convertible to <code>NpgsqlInet</code>, and so can be used with the functions below which accept <code>inet</code>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPAddress.Parse(string)</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-net-types.html#DATATYPE-INET">CAST(string AS inet)</a></td>
+</tr>
+<tr>
+<td>PhysicalAddress.Parse(string)</td>
+<td><a href="https://www.postgresql.org/docs/current/datatype-net-types.html#DATATYPE-MACADDR">CAST(string AS macaddr)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.LessThan(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 &lt; net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.LessThanOrEqual(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 &lt;= net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.GreaterThan(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 &gt; net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.GreaterThanOrEqual(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 &gt;= net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ContainedBy(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 &lt;&lt; inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ContainedByOrEqual(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 &lt;&lt;= inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Contains(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 &gt;&gt; inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ContainsOrEqual(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 &gt;&gt;= inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.ContainsOrContainedBy(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 &amp;&amp; inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.BitwiseNot(net)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">~net1</a></td>
+</tr>
+<tr>
+<td>EF.Functions.BitwiseAnd(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 &amp; net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.BitwiseOr(net1, net2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">net1 | net2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Add(inet, int)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet + int</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Subtract(inet, int)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet - int</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Subtract(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-OPERATORS-TABLE">inet1 - inet2</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Abbreviate(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">abbrev(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Abbreviate(cidr)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">abbrev(cidr)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Broadcast(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">broadcast(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Family(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">family(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Host(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">host(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.HostMark(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">hostmask(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.MaskLength(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">masklen(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Netmask(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">netmask(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Network(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">network(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.SetMaskLength(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">set_masklen(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.SetMaskLength(cidr)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">set_masklen(cidr)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Text(inet)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">text(inet)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.SameFamily(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">inet_same_family(inet1, inet2)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Merge(inet1, inet2)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">inet_merge(inet1, inet2)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Truncate(macaddr)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">trunc(macaddr)</a></td>
+</tr>
+<tr>
+<td>EF.Functions.Set7BitMac8(macaddr8)</td>
+<td><a href="https://www.postgresql.org/docs/current/functions-net.html#CIDR-INET-FUNCTIONS-TABLE">macaddr8_set7bit(macaddr8)</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="trigram-functions">Trigram functions</h2>
+<p>The below translations provide functionality for determining the similarity of alphanumeric text based on trigram matching, using the <a href="https://www.postgresql.org/docs/current/pgtrgm.html"><code>pg_trgm</code></a> extension which is bundled with standard PostgreSQL distributions. All the below parameters are strings.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Prior to version 6.0, to use these translations, your project must depend on the <a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams/">Npgsql.EntityFrameworkCore.PostgreSQL.Trigrams</a> package, and call <code>UseTrigrams()</code> in your <code>OnModelConfiguring</code>.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EF.Functions.TrigramsShow(s)</td>
+<td>show_trgm(s)</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsSimilarity(s1, s2)</td>
+<td>similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsWordSimilarity(s1, s2)</td>
+<td>word_similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsStrictWordSimilarity(s1, s2)</td>
+<td>strict_word_similarity(s1, s2)</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsAreSimilar(s1, s2)</td>
+<td>s1 % s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsAreWordSimilar(s1, s2)</td>
+<td>s1 &lt;% s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsAreNotWordSimilar(s1, s2)</td>
+<td>s1 %&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsAreStrictWordSimilar(s1, s2)</td>
+<td>s1 &lt;&lt;% s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsAreNotStrictWordSimilar(s1, s2)</td>
+<td>s1 %&gt;&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsWordSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;&lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsWordSimilarityDistanceInverted(s1, s2)</td>
+<td>s1 &lt;-&gt;&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsStrictWordSimilarityDistance(s1, s2)</td>
+<td>s1 &lt;&lt;&lt;-&gt; s2</td>
+</tr>
+<tr>
+<td>EF.Functions.TrigramsStrictWordSimilarityDistanceInverted(s1, s2)</td>
+<td>s1 &lt;-&gt;&gt;&gt; s2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ltree-functions">LTree functions</h2>
+<p>The below translations are for working with label trees from the PostgreSQL <a href="https://www.postgresql.org/docs/current/ltree.html"><code>ltree</code></a> extension. Use the <a class="xref" href="../api/Microsoft.EntityFrameworkCore.LTree.html">LTree</a> type to represent ltree and invoke methods on it in EF Core LINQ queries.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>LTree support was introduced in version 6.0 of the provider, and requires PostgreSQL 13 or later.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ltree1.IsAncestorOf(ltree2)</td>
+<td>ltree1 @&gt; ltree2</td>
+</tr>
+<tr>
+<td>ltree1.IsDescendantOf(ltree2)</td>
+<td>ltree1 &lt;@ ltree2</td>
+</tr>
+<tr>
+<td>ltree.MatchesLQuery(lquery)</td>
+<td>ltree ~ lquery</td>
+</tr>
+<tr>
+<td>ltree.MatchesLTxtQuery(ltxtquery)</td>
+<td>ltree @ ltxtquery</td>
+</tr>
+<tr>
+<td>lqueries.Any(q =&gt; ltree.MatchesLQuery(q))</td>
+<td>ltree ? lqueries</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.IsAncestorOf(ltree))</td>
+<td>ltrees @&gt; ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.IsDescendantOf(ltree))</td>
+<td>ltrees &lt;@ ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.MatchesLQuery(lquery))</td>
+<td>ltrees ~ ltree</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; t.MatchesLTxtQuery(ltxtquery))</td>
+<td>ltrees @ ltxtquery</td>
+</tr>
+<tr>
+<td>ltrees.Any(t =&gt; lqueries.Any(q =&gt; t.MatchesLQuery(q)))</td>
+<td>ltrees ? lqueries</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.IsAncestorOf(ltree))</td>
+<td>ltrees ?@&gt; ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.IsDescendantOf(ltree))</td>
+<td>ltrees ?&lt;@ ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.MatchesLQuery(lquery))</td>
+<td>ltrees ?~ ltree</td>
+</tr>
+<tr>
+<td>ltrees.FirstOrDefault(l =&gt; l.MatchesLTxtQuery(ltxtquery))</td>
+<td>ltrees ?@ ltree</td>
+</tr>
+<tr>
+<td>ltree.Subtree(0, 1)</td>
+<td>subltree(ltree, 0, 1)</td>
+</tr>
+<tr>
+<td>ltree.Subpath(0, 1)</td>
+<td>sublpath(ltree, 0, 1)</td>
+</tr>
+<tr>
+<td>ltree.Subpath(2)</td>
+<td>sublpath(ltree, 2)</td>
+</tr>
+<tr>
+<td>ltree.NLevel</td>
+<td>nlevel(ltree)</td>
+</tr>
+<tr>
+<td>ltree.Index(subpath)</td>
+<td>index(ltree, subpath)</td>
+</tr>
+<tr>
+<td>ltree.Index(subpath, 2)</td>
+<td>index(ltree, subpath, 2)</td>
+</tr>
+<tr>
+<td>LTree.LongestCommonAncestor(ltree1, ltree2)</td>
+<td>lca(index(ltree1, ltree2)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aggregate-functions">Aggregate functions</h2>
+<p>The PostgreSQL aggregate functions are documented <a href="https://www.postgresql.org/docs/current/functions-aggregate.html">here</a>.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>All the below aggregate functions were added in version 7.0.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>.NET</th>
+<th>SQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>string.Join(&quot;, &quot;, agg_strings)</td>
+<td>string_agg(agg_strings, ', ')</td>
+</tr>
+<tr>
+<td>EF.Functions.ArrayAgg(values)</td>
+<td>array_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonbAgg(values)</td>
+<td>jsonb_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonAgg(values)</td>
+<td>json_agg(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.Sum(timespans)</td>
+<td>sum(timespans)</td>
+</tr>
+<tr>
+<td>EF.Functions.Average(timespans)</td>
+<td>avg(timespans)</td>
+</tr>
+<tr>
+<td>EF.Functions.JsonObjectAgg(tuple_of_2)</td>
+<td>json_object_agg(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>ranges.RangeAgg()</td>
+<td>range_agg(ranges)</td>
+</tr>
+<tr>
+<td>ranges.RangeIntersectAgg()</td>
+<td>range_intersect_agg(ranges)</td>
+</tr>
+<tr>
+<td>multiranges.RangeIntersectAgg()</td>
+<td>range_intersect_agg(multiranges)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.StandardDeviationSample(values)</td>
+<td>stddev_samp(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.StandardDeviationPopulation(values)</td>
+<td>stddev_pop(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.VarianceSample(values)</td>
+<td>var_samp(values)</td>
+</tr>
+<tr>
+<td>EF.Functions.VariancePopulation(values)</td>
+<td>var_pop(values)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>EF.Functions.Correlation(tuple)</td>
+<td>corr(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.CovariancePopulation(tuple)</td>
+<td>covar_pop(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.CovarianceSample(tuple)</td>
+<td>covar_samp(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrAverageX(tuple)</td>
+<td>regr_avgx(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrAverageY(tuple)</td>
+<td>regr_avgy(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrCount(tuple)</td>
+<td>regr_count(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrIntercept(tuple)</td>
+<td>regr_intercept(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrR2(tuple)</td>
+<td>regr_r2(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSlope(tuple)</td>
+<td>regr_slope(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSXX(tuple)</td>
+<td>regr_sxx(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+<tr>
+<td>EF.Functions.RegrSXY(tuple)</td>
+<td>regr_sxy(tuple_of_2.first, tuple_of_2.second)</td>
+</tr>
+</tbody>
+</table>
+<p>Aggregate functions can be used as follows:</p>
+<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+    .GroupBy(c =&gt; c.City)
+    .Select(
+        g =&gt; new
+        {
+            City = g.Key,
+            Companies = EF.Functions.ArrayAgg(g.Select(c =&gt; c.ContactName))
+        });
+</code></pre>
+<p>To use functions accepting a tuple_of_2, project out from the group as follows:</p>
+<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+    .GroupBy(c =&gt; c.City)
+    .Select(
+        g =&gt; new
+        {
+            City = g.Key,
+            Companies = EF.Functions.JsonObjectAgg(g.Select(c =&gt; ValueTuple.Create(c.CompanyName, c.ContactName)))
+        });
+</code></pre>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/translations.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

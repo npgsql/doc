@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="../../styles/docfx.css">
     <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="">
-    <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
   
   <meta property="docfx:rel" content="../../">
   
@@ -83,22 +83,35 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-
 <h2 id="overview">Overview</h2>
-<p>Npgsql comes with an extensive test suite to make sure no regressions occur. All tests are run on our build server on all supported .NET versions (including a recent version of mono) and all supported PostgreSQL backends.</p>
-<p>There is also a growing suite of speed tests to be able to measure performance. These tests are currently marked [Explicit] and aren't executed automatically.</p>
-<h2 id="simple-setup">Simple setup</h2>
-<p>The Npgsql test suite requires a PostgreSQL backend to test against. Simply use the latest version of PostgreSQL on your dev machine on the default port (5432).
-By default, all tests will be run using user <em>npgsql_tests</em>, and password <em>npgsql_tests</em>. Npgsql will automatically create a database called <em>npgsql_tests</em> and
-run its tests against this.</p>
-<p>To set this up, connect to PostgreSQL as the admin user as follows:</p>
-<pre><code>psql -h localhost -U postgres
-&lt;enter the admin password&gt;
-create user npgsql_tests password 'npgsql_tests' superuser;
-</code></pre>
-<p>And you're done.</p>
-<p>Superuser access is needed for some tests, e.g. loading the <code>hstore</code> extension, creating and dropping test databases in the Entity Framework tests...</p>
 
+<p>Npgsql has an extensive test suite to guard against regressions. The test suite is run on the official build server for the .NET Framework and .NET Core with all supported PostgreSQL backends.</p>
+<p>Continuous integration results are publicly available via <a href="https://github.com/npgsql/npgsql/actions">Github Actions</a>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="setup-postgresql">Setup PostgreSQL</h3>
+<p>The Npgsql test suite requires a PostgreSQL backend for tests to run. By default, the test suite expects PostgreSQL to be running on the local machine with the default port (5432).</p>
+<ol>
+<li>Install PostgreSQL: <a href="https://www.postgresql.org/download">https://www.postgresql.org/download</a></li>
+<li>Start the PostgreSQL backend.</li>
+</ol>
+<h3 id="create-the-npgsql_tests-account">Create the <code>npgsql_tests</code> account</h3>
+<p>By default, the test suite expects an account named <code>npgsql_tests</code> with a password of <code>npgsql_tests</code>. This account is used by the test suite to create a database named <code>npgsql_tests</code> and run the tests.</p>
+<pre><code class="lang-bash">$ psql -h localhost -U postgres
+postgres=# CREATE USER npgsql_tests PASSWORD 'npgsql_tests' SUPERUSER;
+postgres=# CREATE DATABASE npgsql_tests OWNER npgsql_tests;
+</code></pre>
+<p><em>Note: superuser access is required to create and drop test databases, load extensions (e.g. <code>hstore</code>, <code>postgis</code>), etc.</em></p>
+<h3 id="clone-the-repository">Clone the repository</h3>
+<pre><code class="lang-bash">cd ~
+git clone git@github.com:npgsql/npgsql.git (use ssh)
+git clone https://github.com/npgsql/npgsql.git (use https)
+</code></pre>
+<h3 id="run-the-test-suite">Run the test suite</h3>
+<pre><code class="lang-bash">cd ~/npgsql
+dotnet test ./test/Npgsql.Tests
+dotnet test ./test/Npgsql.PluginTests
+dotnet test ./test/Npgsql.Benchmarks
+</code></pre>
 </article>
           </div>
 
@@ -107,12 +120,12 @@ create user npgsql_tests password 'npgsql_tests' superuser;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/dev/tests.md/#L1" class="contribution-link">Edit this page</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/dev/tests.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
+                <h5>In This Article</h5>
                 <div></div>
               </nav>
             </div>
@@ -134,7 +147,7 @@ create user npgsql_tests password 'npgsql_tests' superuser;
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

@@ -1,0 +1,326 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql 7.0 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql 7.0 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-70-release-notes">Npgsql 7.0 Release Notes</h1>
+
+<p>Npgsql version 7.0 has been released and is available on nuget.</p>
+<h2 id="new-features">New features</h2>
+<p>The full list of issues for this release is <a href="https://github.com/npgsql/npgsql/milestone/85?closed=1">available here</a>.</p>
+<h3 id="dbdatasource">DbDataSource</h3>
+<p>A major improvement in Npgsql 7.0 is <a class="xref" href="../api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, which implements the new <a href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatasource">DbDataSource</a> abstraction in .NET System.Data. A data source represents your PostgreSQL database, and can hand out connections to it or support direct execution of SQL to it.</p>
+<p>Instead of directly instantiating an <code>NpgsqlConnection</code> and then executing commands against it, you now create a data source once, and then use that throughout your application:</p>
+<pre><code class="lang-csharp">await using var dataSource = NpgsqlDataSource.Create(connectionString);
+
+// Execute a command directly against the data source, no NpgsqlConnection needed:
+await using var command = dataSource.CreateCommand(&quot;INSERT INTO some_table (some_field) VALUES (8)&quot;);
+await command.ExecuteNonQueryAsync();
+
+// Open a connection in order to e.g. start a transaction on it:
+await using var connection = await dataSource.OpenConnectionAsync();
+</code></pre>
+<p>Since the data source encapsulates all the necessary configuration for connecting to a database (e.g. the connection string, authentication callbacks...), it can be registered in dependency injection or passed around as needed, without needing any additional information. The new <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> also  provides the ideal API point for various configuration when building a data source:</p>
+<pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
+dataSourceBuilder
+    .UseLoggerFactory(loggerFactory) // Configure logging
+    .UsePeriodicPasswordProvider() // Automatically rotate the password periodically
+    .UseNodaTime(); // Use NodaTime for date/time types
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre>
+<p>If you're using dependency injection (e.g. in an ASP.NET application), see the <a href="https://www.nuget.org/packages/Npgsql.DependencyInjection#readme-body-tab">Npgsql.DependencyInjection</a> package for an easy way to set up your data source.</p>
+<h3 id="improved-logging-with-microsoftextensionslogging">Improved logging with Microsoft.Extensions.Logging</h3>
+<p>Previous versions had a custom logging implementation which required special adapters and was hard to use. Npgsql 7.0 fully supports the standard .NET <a href="https://learn.microsoft.com/dotnet/core/extensions/logging">Microsoft.Extensions.Logging</a> - just provide Npgsql with your <code>ILoggerFactory</code> and you're ready to go.</p>
+<p>If you using ASP.NET, things are even easier with the new <a href="https://www.nuget.org/packages/Npgsql.DependencyInjection">Npgsql.DependencyInjection</a>, which takes care of seamlessly picking up the ASP.NET logging configuration from DI:</p>
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddConsole();
+builder.Services.AddNpgsqlDataSource(&quot;Host=localhost;Username=test;Password=test&quot;);
+</code></pre>
+<p>For more details, see the updated <a href="../diagnostics/logging.html">logging documentation page</a>.</p>
+<h3 id="support-for-version-3-of-the-logical-replication-protocol">Support for version 3 of the logical replication protocol</h3>
+<p>PostgreSQL 15 introduced improvements to logical replication, in particular around streaming large, in-progress transactions. Npgsql 7.0 adds support for improvements - see <a href="https://github.com/npgsql/npgsql/issues/4216">#4216</a> for more information (thanks <a href="https://github.com/Brar">@Brar</a>!).</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<h3 id="commandtypestoredprocedure-now-invokes-procedures-instead-of-functions"><a name="commandtype_storedprocedure"></a>CommandType.StoredProcedure now invokes procedures instead of functions</h3>
+<p>When <a href="https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_CommandType"><code>NpgsqlCommand.CommandType</code></a> is set to <a href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-storedprocedure"><code>CommandType.StoredProcedure</code></a>, Npgsql now generates SQL for invoking a PostgreSQL <a href="https://www.postgresql.org/docs/current/sql-createprocedure.html">stored procedure</a>, and not a <a href="https://www.postgresql.org/docs/current/sql-createfunction.html">function</a>, as before. To opt out of this breaking change and continue to invoke functions as before, enable the <code>Npgsql.EnableStoredProcedureCompatMode</code> <a href="https://docs.microsoft.com/dotnet/api/system.appcontext">AppContext switch</a> as follows:</p>
+<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableStoredProcedureCompatMode&quot;, true);
+</code></pre>
+<p>For context, PostgreSQL originally only supported functions, and did not support the standard SQL concept of stored procedures; because of this, <a href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-storedprocedure"><code>CommandType.StoredProcedure</code></a> was implemented to invoke functions. PostgreSQL 11 then introduced stored procedures, which have various advantages over functions in some scenarios (e.g. the ability to use transactions). The 7.0 release changes <a href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-storedprocedure"><code>CommandType.StoredProcedure</code></a> to invoke procedures as its naming suggests, and aligns Npgsql with other database providers for better compatibility.</p>
+<p>Note that with Npgsql, there is no advantage in using <a href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-storedprocedure"><code>CommandType.StoredProcedure</code></a> over simply invoking your function or procedure via SQL. Doing so is in fact recommended:</p>
+<pre><code class="lang-c#">// Invoke a procedure
+using var command1 = new NpgsqlCommand(&quot;CALL some_procedure($1, $2)&quot;, connection)
+{
+    new() { Value = &quot;some_value&quot; },
+    new() { Value = &quot;some_other_value&quot; }
+};
+
+// Invoke a function
+using var command2 = new NpgsqlCommand(&quot;SELECT * FROM some_function($1, $2)&quot;, connection)
+{
+    new() { Value = &quot;some_value&quot; },
+    new() { Value = &quot;some_other_value&quot; }
+};
+</code></pre>
+<p>For more information on calling procedures and functions, see <a href="../basic-usage.html#stored-functions-and-procedures">this doc section</a>.</p>
+<h3 id="managing-type-mappings-at-the-connection-level-is-no-longer-supported">Managing type mappings at the connection level is no longer supported</h3>
+<p>Previous versions of Npgsql allowed mapping custom types (enums/composites) and configuring plugins (NetTopologySuite, NodaTime) at the connection level; the type mapping change would persist only for the lifetime of the connection, and would be reverted when the connection closed. This mechanism was inefficient - connections get opened and closed a lot - and added significant maintenance burden internally.</p>
+<p>With the introduction of <code>NpgsqlDataSource</code>, Npgsql now has a natural API point for managing type mappings:</p>
+<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;);
+dataSourceBuilder.MapEnum&lt;MyEnum&gt;();
+dataSourceBuilder.UseNodaTime();
+await using var dataSource = dataSourceBuilder.Build();
+</code></pre>
+<p>All connections handed out by the data source will use the configured type mappings.</p>
+<p>Note that managing type mappings globally via <code>NpgsqlConnection.GlobalTypeMapper</code> is supported as before, but has been marked as obsolete; although we do not plan on removing global type mappings any time soon, <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a> is now the recommended way to manage type mappings.</p>
+<h3 id="global-type-mappings-must-now-be-done-before-any-usage">Global type mappings must now be done before any usage</h3>
+<p>Previously, any type mapping configuration done via <code>NpgsqlConnection.GlobalTypeMapper</code> would take effect for any new connection opened after the change. Starting with 7.0, global type mappings must be done before the data source or pool is created. To ensure correct functioning, do any global type mappings at the very start of your program, before using any other Npgsql API.</p>
+<h3 id="npgsqldatareaderdispose-no-longer-swallows-exceptions">NpgsqlDataReader.Dispose no longer swallows exceptions</h3>
+<p>Previously, when an unconsumed <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> was disposed, any exceptions that occurred while consuming the remaining results were swallowed and <code>Dispose</code> completed successfully. These exceptions are no longer swallowed, and are thrown from Dispose. This also affects scenarios where <a class="xref" href="../api/Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a> is used in a C# <code>using</code> statement.</p>
+<p>In most cases in .NET, throwing from <code>Dispose</code> is discouraged. If the instance being disposed is used in a <code>using</code> statement and some exception is thrown, that exception triggers <code>Dispose</code> being called (as per <code>using</code>), and if <code>Dispose</code> throws an exception of its own, then that exception bubbles up. As a result, the original exception is hidden, making it difficult to understand exactly what happened. As a result, it is common for <code>Dispose</code> to catch any exceptions internally and swallow them, allowing the original exception to bubble up.</p>
+<p>However, in the Npgsql case, swallowing exceptions in <code>Dispose</code> can have very problematic consequences. A reader can be disposed before it's entirely consumed, after only part of the result set has been read; when this happens, Npgsql consumes the rest of the result set as part of the disposal. If any errors occur past this point, then those exceptions were previously swallowed; this meant that the application could be unaware that part of the command failed, since no exception was raised. Throwing these exceptions from dispose ensures that the application is aware of any failures that occurred.</p>
+<p>For more context on this change, see the discussion in <a href="https://github.com/npgsql/npgsql/issues/4377">#4377</a>.</p>
+<h3 id="the-logging-api-has-been-replaced-by-microsoftextensionslogging">The logging API has been replaced by Microsoft.Extensions.Logging</h3>
+<p>Npgsql previously had its own logging API, requiring special adapters to the standard logging libraries. This API has been removed in 7.0, and replaced with support for the standard Microsoft.Extensions.Logging package. See <a href="../diagnostics/logging.html">Logging</a> for more information.</p>
+<h3 id="the-obsoleted-npgsqldatetime-npgsqldate-and-npgsqltimespan-have-been-removed">The obsoleted NpgsqlDateTime, NpgsqlDate and NpgsqlTimeSpan have been removed</h3>
+<p><code>NpgsqlDateTime</code>, <code>NpgsqlDate</code> and <code>NpgsqlTimeSpan</code> were &quot;provider-specific&quot; types, designed to expose the full range of the PostgreSQL date/time types, which can represent values beyond the built-in .NET types (e.g. <code>DateTime</code>). However, these types were problematic in many ways, and were seldom used. The types were obsoleted in Npgsql 6.0, and have been removed in 7.0.</p>
+<p>To deal with date/time values outside the range of the corresponding .NET types, see <a href="../types/datetime.html">Date and Time Handling</a>.</p>
+<h3 id="npgsqlconnectionsettings-has-been-removed">NpgsqlConnection.Settings has been removed</h3>
+<p>The connection's connection string is still exposed via <a class="xref" href="../api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_ConnectionString">NpgsqlConnection.ConnectionString</a>; this can be parsed with <a class="xref" href="../api/Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>.</p>
+<h3 id="replication-apis-now-return-utc-datetime">Replication APIs now return UTC DateTime</h3>
+<p>Previously, replication APIs returned <code>DateTime</code> instances of Kind <code>Unspecified</code>; this has been changed to <code>Utc</code> to reflect the actual type of data sent by PostgreSQL.</p>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 7.0.x. releases.</p>
+<h3 id="milestone-706"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.6">Milestone 7.0.6</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.6+is%3Aclosed+assignee%3Avonzshik">10</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.6+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-704"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.4">Milestone 7.0.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.4+is%3Aclosed+assignee%3Avonzshik">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.4+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-702"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.2">Milestone 7.0.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.2+is%3Aclosed+assignee%3Avonzshik">5</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/manandre">@manandre</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.2+is%3Aclosed+assignee%3Amanandre">2</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.2+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-701"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1">Milestone 7.0.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3Aroji">3</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3ABrar">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A7.0.1+is%3Aclosed+assignee%3Avonzshik">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-700"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0">Milestone 7.0.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0+is%3Aclosed+assignee%3Aroji">37</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Brar">@Brar</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0+is%3Aclosed+assignee%3ABrar">9</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vonzshik">@vonzshik</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0+is%3Aclosed+assignee%3Avonzshik">4</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/0xced">@0xced</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0+is%3Aclosed+assignee%3A0xced">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/baal2000">@baal2000</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A7.0.0+is%3Aclosed+assignee%3Abaal2000">1</a></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/7.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

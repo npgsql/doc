@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Npgsql 3.1 Release Notes | Npgsql Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Npgsql 3.1 Release Notes | Npgsql Documentation ">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+    <link rel="manifest" href="../../site.webmanifest">
+    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/npgsql.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+  
+  <meta property="docfx:rel" content="../../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="npgsql-31-release-notes">Npgsql 3.1 Release Notes</h1>
+
+<h2 id="migrating-from-30-to-31">Migrating from 3.0 to 3.1</h2>
+<ul>
+<li>CommandTimeout used to be implemented with PostgreSQL's <code>statement_timeout</code> parameter, but this wasn't a very reliable method and has been removed. CommandTimeout is now implemented via socket timeouts only, see <a href="https://github.com/npgsql/npgsql/issues/689">#689</a> for more details. Note that if a socket timeout occurs, the connection is broken and must be reopened.</li>
+<li>The <a href="../connection-string-parameters.html#security-and-encryption"><code>Persist Security Info</code></a> parameter has been implemented and is false by default. This means that once a connection has been opened, you will not be able to get its password.</li>
+<li>Removed ContinuousProcessing mode, and replaced it with <a href="../wait.html">Wait</a>, a simpler and less bug-prone mechanism for consuming asynchronous notifications (<a href="https://github.com/npgsql/npgsql/issues/1024">#1024</a>).</li>
+<li>The <code>Maximum Pool Size</code> connection is parameter is now 100 default instead of 20 (this is default in SqlClient, pg_bouncer...).</li>
+<li>The <code>Connection Lifetime</code> parameter has been renamed to <code>Connection Idle Lifetime</code>, and its default has been changed from 15 to 300. Also, once the number of seconds has elapsed the connection is closed immediately; the previous behavior closed half of the connections.</li>
+<li><code>RegisterEnum</code> and <code>RegisterEnumGlobally</code> have been renamed to <code>MapEnum</code> and <code>MapEnumGlobally</code> respectively.</li>
+<li>If you used enum mapping in 3.0, the strategy for translating between CLR and PostgreSQL type names has changed. In 3.0 Npgsql simply used the CLR name (e.g. SomeField) as the PostgreSQL name; Npgsql 3.1 uses a user-definable name translator, default to snake case (e.g. some_field). See <a href="https://github.com/npgsql/npgsql/issues/859">#859</a>.</li>
+<li>The <code>EnumLabel</code> attribute has been replaced by the <code>PgName</code> attribute (which is also used for the new composite type support).</li>
+<li>When PostgreSQL sends an error, it is no longer raised by an NpgsqlException but by a PostgresException. PostgresException is a subclass of NpgsqlException so code catching NpgsqlException should still work, but the PostgreSQL-specific exception properties will only be available on PostgresException.</li>
+<li>The Code property on NpgsqlException has been renamed to SqlState. It has also been moved to PostgresException.</li>
+<li>NpgsqlNotice has been renamed to PostgresNotice</li>
+<li>For multistatement commands, PostgreSQL parse errors will now be thrown only when the user calls NextResult() and gets to the problematic statement.</li>
+<li>It is no longer possible to dispose a prepared statement while a reader is still open. Since disposing a prepared statement includes database interaction, the connection must be idle.</li>
+<li>Removed <code>NpgsqlConnection.SupportsHexByteFormat</code>.</li>
+<li>Renamed <code>NpgsqlConnection.Supports_E_StringPrefix</code> to <code>SupportsEStringPrefix</code>.</li>
+</ul>
+<h2 id="contributors">Contributors</h2>
+<p>Thank you very much to the following people who have contributed to the individual 3.1.x. releases.</p>
+<h3 id="milestone-3110"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A3.1.10">Milestone 3.1.10</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/Npgsql/Npgsql/issues?q=is%3Aissue+milestone%3A3.1.10+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-319"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.9">Milestone 3.1.9</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.9+is%3Aclosed+assignee%3Aroji">10</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/DaveVdE">@DaveVdE</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.9+is%3Aclosed+assignee%3ADaveVdE">1</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/rwasef1830">@rwasef1830</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.9+is%3Aclosed+assignee%3Arwasef1830">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-318"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.8">Milestone 3.1.8</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.8+is%3Aclosed+assignee%3Aroji">10</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-317"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.7">Milestone 3.1.7</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.7+is%3Aclosed+assignee%3Aroji">7</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-316"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.6">Milestone 3.1.6</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.6+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-315"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.5">Milestone 3.1.5</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.5+is%3Aclosed+assignee%3Aroji">4</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-314"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.4">Milestone 3.1.4</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.4+is%3Aclosed+assignee%3Aroji">2</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-313"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.3">Milestone 3.1.3</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.3+is%3Aclosed+assignee%3Aroji">10</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-312"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.2">Milestone 3.1.2</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.2+is%3Aclosed+assignee%3Aroji">1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-3110-1"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.10">Milestone 3.1.10</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.10+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-311"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.1">Milestone 3.1.1</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.1+is%3Aclosed+assignee%3Aroji">5</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="milestone-310"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.0">Milestone 3.1.0</a></h3>
+<table>
+<thead>
+<tr>
+<th>Contributor</th>
+<th style="text-align: right;">Assigned issues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/roji">@roji</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3Aroji">24</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/Emill">@Emill</a></td>
+<td style="text-align: right;"><a href="https://github.com/npgsql/npgsql/issues?q=is%3Aissue+milestone%3A3.1.0+is%3Aclosed+assignee%3AEmill">2</a></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/3.1.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      © Copyright 2024 The Npgsql Development Team
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
