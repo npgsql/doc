@@ -1,105 +1,129 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlQuerySqlGenerator | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlQuerySqlGenerator | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlQuerySqlGenerator | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlQuerySqlGenerator | Npgsql Documentation ">
+      
+      <meta name="description" content="The default query SQL generator for Npgsql.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator" class="text-break">Class NpgsqlQuerySqlGenerator</h1>
-  <div class="markdown level0 summary"><p>The default query SQL generator for Npgsql.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressionvisitor">ExpressionVisitor</a></div>
-    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionvisitor">SqlExpressionVisitor</a></div>
-    <div class="level3"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator">QuerySqlGenerator</a></div>
-    <div class="level4"><span class="xref">NpgsqlQuerySqlGenerator</span></div>
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator" class="text-break">
+Class NpgsqlQuerySqlGenerator  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Internal</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>The default query SQL generator for Npgsql.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlQuerySqlGenerator : QuerySqlGenerator</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressionvisitor">ExpressionVisitor</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionvisitor">SqlExpressionVisitor</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator">QuerySqlGenerator</a></div>
+      <div><span class="xref">NpgsqlQuerySqlGenerator</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.getcommand">QuerySqlGenerator.GetCommand(Expression)</a>
     </div>
@@ -352,1894 +376,1480 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Internal</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlQuerySqlGenerator : QuerySqlGenerator</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator__ctor_Microsoft_EntityFrameworkCore_Query_QuerySqlGeneratorDependencies_Microsoft_EntityFrameworkCore_Storage_IRelationalTypeMappingSource_System_Boolean_System_Version_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.%23ctor(Microsoft.EntityFrameworkCore.Query.QuerySqlGeneratorDependencies%2CMicrosoft.EntityFrameworkCore.Storage.IRelationalTypeMappingSource%2CSystem.Boolean%2CSystem.Version)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L32">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator__ctor_Microsoft_EntityFrameworkCore_Query_QuerySqlGeneratorDependencies_Microsoft_EntityFrameworkCore_Storage_IRelationalTypeMappingSource_System_Boolean_System_Version_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.#ctor(Microsoft.EntityFrameworkCore.Query.QuerySqlGeneratorDependencies,Microsoft.EntityFrameworkCore.Storage.IRelationalTypeMappingSource,System.Boolean,System.Version)">NpgsqlQuerySqlGenerator(QuerySqlGeneratorDependencies, IRelationalTypeMappingSource, bool, Version)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator__ctor_Microsoft_EntityFrameworkCore_Query_QuerySqlGeneratorDependencies_Microsoft_EntityFrameworkCore_Storage_IRelationalTypeMappingSource_System_Boolean_System_Version_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.#ctor(Microsoft.EntityFrameworkCore.Query.QuerySqlGeneratorDependencies,Microsoft.EntityFrameworkCore.Storage.IRelationalTypeMappingSource,System.Boolean,System.Version)">
+  NpgsqlQuerySqlGenerator(QuerySqlGeneratorDependencies, IRelationalTypeMappingSource, bool, Version)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlQuerySqlGenerator(QuerySqlGeneratorDependencies dependencies, IRelationalTypeMappingSource typeMappingSource, bool reverseNullOrderingEnabled, Version postgresVersion)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgeneratordependencies">QuerySqlGeneratorDependencies</a></td>
-        <td><span class="parametername">dependencies</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.irelationaltypemappingsource">IRelationalTypeMappingSource</a></td>
-        <td><span class="parametername">typeMappingSource</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">reverseNullOrderingEnabled</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a></td>
-        <td><span class="parametername">postgresVersion</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateLimitOffset_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateLimitOffset(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L89">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dependencies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgeneratordependencies">QuerySqlGeneratorDependencies</a></dt>
+    <dd></dd>
+    <dt><code>typeMappingSource</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.irelationaltypemappingsource">IRelationalTypeMappingSource</a></dt>
+    <dd></dd>
+    <dt><code>reverseNullOrderingEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>postgresVersion</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.version">Version</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateLimitOffset_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateLimitOffset*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateLimitOffset_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateLimitOffset(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">GenerateLimitOffset(SelectExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateLimitOffset_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateLimitOffset(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">
+  GenerateLimitOffset(SelectExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Generates a LIMIT...OFFSET... construct in the relational command</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateLimitOffset(SelectExpression selectExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></td>
-        <td><span class="parametername">selectExpression</span></td>
-        <td><p>A select expression to use.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generatelimitoffset">QuerySqlGenerator.GenerateLimitOffset(SelectExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateRootCommand_System_Linq_Expressions_Expression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateRootCommand(System.Linq.Expressions.Expression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L73">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></dt>
+    <dd><p>A select expression to use.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateRootCommand_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateRootCommand*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateRootCommand_System_Linq_Expressions_Expression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateRootCommand(System.Linq.Expressions.Expression)">GenerateRootCommand(Expression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateRootCommand_System_Linq_Expressions_Expression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateRootCommand(System.Linq.Expressions.Expression)">
+  GenerateRootCommand(Expression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Generates the command for the given top-level query expression. This allows providers to intercept if an expression
 requires different processing when it is at top-level.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateRootCommand(Expression queryExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><span class="parametername">queryExpression</span></td>
-        <td><p>A query expression to print in command.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generaterootcommand">QuerySqlGenerator.GenerateRootCommand(Expression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperation_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperation(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L684">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>queryExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>A query expression to print in command.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperation_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperation*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperation_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperation(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase)">GenerateSetOperation(SetOperationBase)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperation_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperation(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase)">
+  GenerateSetOperation(SetOperationBase)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L684"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateSetOperation(SetOperationBase setOperation)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.setoperationbase">SetOperationBase</a></td>
-        <td><span class="parametername">setOperation</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generatesetoperation">QuerySqlGenerator.GenerateSetOperation(SetOperationBase)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperationOperand_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperationOperand(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L627">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>setOperation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.setoperationbase">SetOperationBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperationOperand_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperationOperand*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperationOperand_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperationOperand(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">GenerateSetOperationOperand(SetOperationBase, SelectExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateSetOperationOperand_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SetOperationBase_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateSetOperationOperand(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SetOperationBase,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">
+  GenerateSetOperationOperand(SetOperationBase, SelectExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L627"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateSetOperationOperand(SetOperationBase setOperation, SelectExpression operand)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.setoperationbase">SetOperationBase</a></td>
-        <td><span class="parametername">setOperation</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></td>
-        <td><span class="parametername">operand</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generatesetoperationoperand">QuerySqlGenerator.GenerateSetOperationOperand(SetOperationBase, SelectExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateTop_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateTop(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L151">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>setOperation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.setoperationbase">SetOperationBase</a></dt>
+    <dd></dd>
+    <dt><code>operand</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateTop_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateTop*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateTop_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateTop(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">GenerateTop(SelectExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateTop_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateTop(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">
+  GenerateTop(SelectExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Generates a TOP construct in the relational command</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateTop(SelectExpression selectExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></td>
-        <td><span class="parametername">selectExpression</span></td>
-        <td><p>A select expression to use.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generatetop">QuerySqlGenerator.GenerateTop(SelectExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L761">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></dt>
+    <dd><p>A select expression to use.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateValues_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateValues*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)">GenerateValues(ValuesExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GenerateValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GenerateValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)">
+  GenerateValues(ValuesExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L761"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void GenerateValues(ValuesExpression valuesExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.valuesexpression">ValuesExpression</a></td>
-        <td><span class="parametername">valuesExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.generatevalues">QuerySqlGenerator.GenerateValues(ValuesExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GetOperator_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GetOperator(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L116">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>valuesExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.valuesexpression">ValuesExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GetOperator_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GetOperator*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GetOperator_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GetOperator(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">GetOperator(SqlBinaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_GetOperator_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.GetOperator(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">
+  GetOperator(SqlBinaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets a SQL operator for a SQL binary operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override string GetOperator(SqlBinaryExpression e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>A string representation of the binary operator.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.getoperator">QuerySqlGenerator.GetOperator(SqlBinaryExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_RequiresParentheses_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.RequiresParentheses(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1383">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string representation of the binary operator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_RequiresParentheses_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.RequiresParentheses*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_RequiresParentheses_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.RequiresParentheses(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">RequiresParentheses(SqlExpression, SqlExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_RequiresParentheses_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.RequiresParentheses(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  RequiresParentheses(SqlExpression, SqlExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1383"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override bool RequiresParentheses(SqlExpression outerExpression, SqlExpression innerExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">outerExpression</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">innerExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.requiresparentheses">QuerySqlGenerator.RequiresParentheses(SqlExpression, SqlExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGenerateWithoutWrappingSelect_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGenerateWithoutWrappingSelect(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L671">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>outerExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>innerExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGenerateWithoutWrappingSelect_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGenerateWithoutWrappingSelect*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGenerateWithoutWrappingSelect_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGenerateWithoutWrappingSelect(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">TryGenerateWithoutWrappingSelect(SelectExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGenerateWithoutWrappingSelect_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SelectExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGenerateWithoutWrappingSelect(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SelectExpression)">
+  TryGenerateWithoutWrappingSelect(SelectExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L671"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override bool TryGenerateWithoutWrappingSelect(SelectExpression selectExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></td>
-        <td><span class="parametername">selectExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.trygeneratewithoutwrappingselect">QuerySqlGenerator.TryGenerateWithoutWrappingSelect(SelectExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGetOperatorInfo_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Int32__System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGetOperatorInfo(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Int32%40%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1438">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.selectexpression">SelectExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGetOperatorInfo_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGetOperatorInfo*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGetOperatorInfo_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Int32__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGetOperatorInfo(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Int32@,System.Boolean@)">TryGetOperatorInfo(SqlExpression, out int, out bool)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_TryGetOperatorInfo_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Int32__System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.TryGetOperatorInfo(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Int32@,System.Boolean@)">
+  TryGetOperatorInfo(SqlExpression, out int, out bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1438"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override bool TryGetOperatorInfo(SqlExpression expression, out int precedence, out bool isAssociative)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">precedence</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">isAssociative</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.trygetoperatorinfo">QuerySqlGenerator.TryGetOperatorInfo(SqlExpression, out int, out bool)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L795">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>precedence</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>isAssociative</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAll_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAll*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression)">VisitArrayAll(PgAllExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression)">
+  VisitArrayAll(PgAllExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L795"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitArrayAll(PgAllExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L823">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAny_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAny*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression)">VisitArrayAny(PgAnyExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression)">
+  VisitArrayAny(PgAnyExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L823"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitArrayAny(PgAnyExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L551">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">VisitArrayIndex(SqlBinaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">
+  VisitArrayIndex(SqlBinaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L551"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitArrayIndex(SqlBinaryExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArrayIndexExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L849">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArrayIndexExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression)">VisitArrayIndex(PgArrayIndexExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArrayIndexExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression)">
+  VisitArrayIndex(PgArrayIndexExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L849"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Produces SQL array index expression (e.g. arr[1]).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitArrayIndex(PgArrayIndexExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArraySlice_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArraySliceExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArraySlice(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L874">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArraySlice_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArraySlice*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArraySlice_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArraySliceExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArraySlice(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression)">VisitArraySlice(PgArraySliceExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitArraySlice_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArraySliceExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitArraySlice(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression)">
+  VisitArraySlice(PgArraySliceExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L874"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Produces SQL array slice expression (e.g. arr[1:2]).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitArraySlice(PgArraySliceExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression.html">PgArraySliceExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCollate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CollateExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCollate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CollateExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L651">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression.html">PgArraySliceExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCollate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCollate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCollate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CollateExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCollate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CollateExpression)">VisitCollate(CollateExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCollate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CollateExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCollate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CollateExpression)">
+  VisitCollate(CollateExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L651"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitCollate(CollateExpression collateExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.collateexpression">CollateExpression</a></td>
-        <td><span class="parametername">collateExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitcollate">QuerySqlGenerator.VisitCollate(CollateExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCrossApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CrossApplyExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCrossApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CrossApplyExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L162">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collateExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.collateexpression">CollateExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCrossApply_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCrossApply*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCrossApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CrossApplyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCrossApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CrossApplyExpression)">VisitCrossApply(CrossApplyExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitCrossApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_CrossApplyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitCrossApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.CrossApplyExpression)">
+  VisitCrossApply(CrossApplyExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L162"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitCrossApply(CrossApplyExpression crossApplyExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.crossapplyexpression">CrossApplyExpression</a></td>
-        <td><span class="parametername">crossApplyExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitcrossapply">QuerySqlGenerator.VisitCrossApply(CrossApplyExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitDelete_Microsoft_EntityFrameworkCore_Query_SqlExpressions_DeleteExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitDelete(Microsoft.EntityFrameworkCore.Query.SqlExpressions.DeleteExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L258">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>crossApplyExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.crossapplyexpression">CrossApplyExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitDelete_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitDelete*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitDelete_Microsoft_EntityFrameworkCore_Query_SqlExpressions_DeleteExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitDelete(Microsoft.EntityFrameworkCore.Query.SqlExpressions.DeleteExpression)">VisitDelete(DeleteExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitDelete_Microsoft_EntityFrameworkCore_Query_SqlExpressions_DeleteExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitDelete(Microsoft.EntityFrameworkCore.Query.SqlExpressions.DeleteExpression)">
+  VisitDelete(DeleteExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L258"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitDelete(DeleteExpression deleteExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.deleteexpression">DeleteExpression</a></td>
-        <td><span class="parametername">deleteExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitdelete">QuerySqlGenerator.VisitDelete(DeleteExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitExtension_System_Linq_Expressions_Expression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitExtension(System.Linq.Expressions.Expression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L51">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deleteExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.deleteexpression">DeleteExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitExtension_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitExtension*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitExtension_System_Linq_Expressions_Expression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitExtension(System.Linq.Expressions.Expression)">VisitExtension(Expression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitExtension_System_Linq_Expressions_Expression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitExtension(System.Linq.Expressions.Expression)">
+  VisitExtension(Expression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitExtension(Expression extensionExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><span class="parametername">extensionExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionvisitor.visitextension">SqlExpressionVisitor.VisitExtension(Expression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgILikeExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1010">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>extensionExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitILike_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitILike*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgILikeExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression)">VisitILike(PgILikeExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgILikeExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression)">
+  VisitILike(PgILikeExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1010"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of an <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitILike(PgILikeExpression likeExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a></td>
-        <td><span class="parametername">likeExpression</span></td>
-        <td><p>The expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonPathTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgJsonTraversalExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonPathTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1105">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>likeExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a></dt>
+    <dd><p>The expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonPathTraversal_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonPathTraversal*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonPathTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgJsonTraversalExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonPathTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression)">VisitJsonPathTraversal(PgJsonTraversalExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonPathTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgJsonTraversalExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonPathTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression)">
+  VisitJsonPathTraversal(PgJsonTraversalExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of an <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitJsonPathTraversal(PgJsonTraversalExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td><p>The expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonScalar_Microsoft_EntityFrameworkCore_Query_SqlExpressions_JsonScalarExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonScalar(Microsoft.EntityFrameworkCore.Query.SqlExpressions.JsonScalarExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1031">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></dt>
+    <dd><p>The expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonScalar_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonScalar*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonScalar_Microsoft_EntityFrameworkCore_Query_SqlExpressions_JsonScalarExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonScalar(Microsoft.EntityFrameworkCore.Query.SqlExpressions.JsonScalarExpression)">VisitJsonScalar(JsonScalarExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitJsonScalar_Microsoft_EntityFrameworkCore_Query_SqlExpressions_JsonScalarExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitJsonScalar(Microsoft.EntityFrameworkCore.Query.SqlExpressions.JsonScalarExpression)">
+  VisitJsonScalar(JsonScalarExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1031"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitJsonScalar(JsonScalarExpression jsonScalarExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.jsonscalarexpression">JsonScalarExpression</a></td>
-        <td><span class="parametername">jsonScalarExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitjsonscalar">QuerySqlGenerator.VisitJsonScalar(JsonScalarExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgNewArrayExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L418">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jsonScalarExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.jsonscalarexpression">JsonScalarExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitNewArray_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitNewArray*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgNewArrayExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression)">VisitNewArray(PgNewArrayExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgNewArrayExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression)">
+  VisitNewArray(PgNewArrayExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L418"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitNewArray(PgNewArrayExpression pgNewArrayExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a></td>
-        <td><span class="parametername">pgNewArrayExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOrdering_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OrderingExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOrdering(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OrderingExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L138">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgNewArrayExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOrdering_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOrdering*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOrdering_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OrderingExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOrdering(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OrderingExpression)">VisitOrdering(OrderingExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOrdering_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OrderingExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOrdering(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OrderingExpression)">
+  VisitOrdering(OrderingExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of the ordering expression.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitOrdering(OrderingExpression ordering)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.orderingexpression">OrderingExpression</a></td>
-        <td><span class="parametername">ordering</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitordering">QuerySqlGenerator.VisitOrdering(OrderingExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOuterApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OuterApplyExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOuterApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OuterApplyExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L192">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ordering</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.orderingexpression">OrderingExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOuterApply_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOuterApply*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOuterApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OuterApplyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOuterApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OuterApplyExpression)">VisitOuterApply(OuterApplyExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitOuterApply_Microsoft_EntityFrameworkCore_Query_SqlExpressions_OuterApplyExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitOuterApply(Microsoft.EntityFrameworkCore.Query.SqlExpressions.OuterApplyExpression)">
+  VisitOuterApply(OuterApplyExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L192"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitOuterApply(OuterApplyExpression outerApplyExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.outerapplyexpression">OuterApplyExpression</a></td>
-        <td><span class="parametername">outerApplyExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitouterapply">QuerySqlGenerator.VisitOuterApply(OuterApplyExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgBinaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L449">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>outerApplyExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.outerapplyexpression">OuterApplyExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression)">VisitPgBinary(PgBinaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression)">
+  VisitPgBinary(PgBinaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L449"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitPgBinary(PgBinaryExpression binaryExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
-        <td><span class="parametername">binaryExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgDelete_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgDelete(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L267">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>binaryExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgDelete_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgDelete*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgDelete_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgDelete(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression)">VisitPgDelete(PgDeleteExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgDelete_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgDelete(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression)">
+  VisitPgDelete(PgDeleteExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L267"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitPgDelete(PgDeleteExpression pgDeleteExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html">PgDeleteExpression</a></td>
-        <td><span class="parametername">pgDeleteExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgFunction_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgFunctionExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgFunction(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1297">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgDeleteExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html">PgDeleteExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgFunction_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgFunction*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgFunction_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgFunction(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression)">VisitPgFunction(PgFunctionExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgFunction_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgFunction(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression)">
+  VisitPgFunction(PgFunctionExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1297"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitPgFunction(PgFunctionExpression e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a></td>
-        <td><span class="parametername">e</span></td>
-        <td><p>The expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgTableValuedFunctionExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgTableValuedFunctionExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgTableValuedFunctionExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgTableValuedFunctionExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1155">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a></dt>
+    <dd><p>The expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgTableValuedFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgTableValuedFunctionExpression*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgTableValuedFunctionExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgTableValuedFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgTableValuedFunctionExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgTableValuedFunctionExpression)">VisitPgTableValuedFunctionExpression(PgTableValuedFunctionExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitPgTableValuedFunctionExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgTableValuedFunctionExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitPgTableValuedFunctionExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgTableValuedFunctionExpression)">
+  VisitPgTableValuedFunctionExpression(PgTableValuedFunctionExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1155"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitPgTableValuedFunctionExpression(PgTableValuedFunctionExpression tableValuedFunctionExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgTableValuedFunctionExpression.html">PgTableValuedFunctionExpression</a></td>
-        <td><span class="parametername">tableValuedFunctionExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L908">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tableValuedFunctionExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgTableValuedFunctionExpression.html">PgTableValuedFunctionExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRegexMatch*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression)">VisitRegexMatch(PgRegexMatchExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression)">
+  VisitRegexMatch(PgRegexMatchExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L908"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitRegexMatch(PgRegexMatchExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td><p>The expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a></dt>
+    <dd><p>The expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="http://www.postgresql.org/docs/current/static/functions-matching.html">http://www.postgresql.org/docs/current/static/functions-matching.html</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRowValue_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRowValueExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRowValue(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L982">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRowValue_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRowValue*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRowValue_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRowValueExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRowValue(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression)">VisitRowValue(PgRowValueExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitRowValue_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRowValueExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitRowValue(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression)">
+  VisitRowValue(PgRowValueExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L982"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitRowValue(PgRowValueExpression rowValueExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression.html">PgRowValueExpression</a></td>
-        <td><span class="parametername">rowValueExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlBinary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlBinary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L217">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rowValueExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression.html">PgRowValueExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlBinary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlBinary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">VisitSqlBinary(SqlBinaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlBinary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlBinary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression)">
+  VisitSqlBinary(SqlBinaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of the sql binary expression.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitSqlBinary(SqlBinaryExpression binary)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></td>
-        <td><span class="parametername">binary</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitsqlbinary">QuerySqlGenerator.VisitSqlBinary(SqlBinaryExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlUnary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlUnaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlUnary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlUnaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L566">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>binary</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>The modified expression, if it or any subexpression was modified; otherwise, returns the original expression.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlUnary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlUnary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlUnary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlUnaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlUnary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlUnaryExpression)">VisitSqlUnary(SqlUnaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitSqlUnary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlUnaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitSqlUnary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlUnaryExpression)">
+  VisitSqlUnary(SqlUnaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L566"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitSqlUnary(SqlUnaryExpression sqlUnaryExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlunaryexpression">SqlUnaryExpression</a></td>
-        <td><span class="parametername">sqlUnaryExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitsqlunary">QuerySqlGenerator.VisitSqlUnary(SqlUnaryExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgUnknownBinaryExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1250">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlUnaryExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlunaryexpression">SqlUnaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUnknownBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUnknownBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgUnknownBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression)">VisitUnknownBinary(PgUnknownBinaryExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgUnknownBinaryExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression)">
+  VisitUnknownBinary(PgUnknownBinaryExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L1250"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Visits the children of a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual Expression VisitUnknownBinary(PgUnknownBinaryExpression unknownBinaryExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a></td>
-        <td><span class="parametername">unknownBinaryExpression</span></td>
-        <td><p>The expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUpdate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_UpdateExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUpdate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.UpdateExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L293">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unknownBinaryExpression</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a></dt>
+    <dd><p>The expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUpdate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUpdate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUpdate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_UpdateExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUpdate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.UpdateExpression)">VisitUpdate(UpdateExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitUpdate_Microsoft_EntityFrameworkCore_Query_SqlExpressions_UpdateExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitUpdate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.UpdateExpression)">
+  VisitUpdate(UpdateExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L293"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitUpdate(UpdateExpression updateExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.updateexpression">UpdateExpression</a></td>
-        <td><span class="parametername">updateExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitupdate">QuerySqlGenerator.VisitUpdate(UpdateExpression)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L733">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>updateExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.updateexpression">UpdateExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitValues_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitValues*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)">VisitValues(ValuesExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator_VisitValues_Microsoft_EntityFrameworkCore_Query_SqlExpressions_ValuesExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator.VisitValues(Microsoft.EntityFrameworkCore.Query.SqlExpressions.ValuesExpression)">
+  VisitValues(ValuesExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L733"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitValues(ValuesExpression valuesExpression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.valuesexpression">ValuesExpression</a></td>
-        <td><span class="parametername">valuesExpression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.querysqlgenerator.visitvalues">QuerySqlGenerator.VisitValues(ValuesExpression)</a></div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>valuesExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.valuesexpression">ValuesExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlQuerySqlGenerator.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlQuerySqlGenerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L14" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlQuerySqlGenerator.cs/#L14" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

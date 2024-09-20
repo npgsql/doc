@@ -1,105 +1,129 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct NpgsqlPath | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct NpgsqlPath | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Struct NpgsqlPath | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct NpgsqlPath | Npgsql Documentation ">
+      
+      <meta name="description" content="Represents a PostgreSQL Path type.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NpgsqlTypes.NpgsqlPath">
+
+        <article data-uid="NpgsqlTypes.NpgsqlPath">
 
 
 
-  <h1 id="NpgsqlTypes_NpgsqlPath" data-uid="NpgsqlTypes.NpgsqlPath" class="text-break">Struct NpgsqlPath</h1>
-  <div class="markdown level0 summary"><p>Represents a PostgreSQL Path type.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a>&gt;</div>
+  <h1 id="NpgsqlTypes_NpgsqlPath" data-uid="NpgsqlTypes.NpgsqlPath" class="text-break">
+Struct NpgsqlPath  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L201"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Represents a PostgreSQL Path type.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct NpgsqlPath : IList&lt;NpgsqlPoint&gt;, ICollection&lt;NpgsqlPoint&gt;, IEnumerable&lt;NpgsqlPoint&gt;, IEnumerable, IEquatable&lt;NpgsqlPath&gt;</code></pre>
+  </div>
+
+
+
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
@@ -109,1226 +133,1027 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="NpgsqlTypes_NpgsqlPath_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct NpgsqlPath : IList&lt;NpgsqlPoint&gt;, ICollection&lt;NpgsqlPoint&gt;, IEnumerable&lt;NpgsqlPoint&gt;, IEnumerable, IEquatable&lt;NpgsqlPath&gt;</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L206">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor" data-uid="NpgsqlTypes.NpgsqlPath.#ctor">NpgsqlPath()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor" data-uid="NpgsqlTypes.NpgsqlPath.#ctor">
+  NpgsqlPath()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_NpgsqlTypes_NpgsqlPoint___.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(NpgsqlTypes.NpgsqlPoint%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L216">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_NpgsqlTypes_NpgsqlPoint___" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(NpgsqlTypes.NpgsqlPoint[])">NpgsqlPath(params NpgsqlPoint[])</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_NpgsqlTypes_NpgsqlPoint___" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(NpgsqlTypes.NpgsqlPoint[])">
+  NpgsqlPath(params NpgsqlPoint[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(params NpgsqlPoint[] points)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>[]</td>
-        <td><span class="parametername">points</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L218">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>points</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Boolean)">NpgsqlPath(bool)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Boolean)">
+  NpgsqlPath(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L218"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(bool open)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">open</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(System.Collections.Generic.IEnumerable%7BNpgsqlTypes.NpgsqlPoint%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L215">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>open</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Collections.Generic.IEnumerable{NpgsqlTypes.NpgsqlPoint})">NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt;)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Collections.Generic.IEnumerable{NpgsqlTypes.NpgsqlPoint})">
+  NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt; points)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</td>
-        <td><span class="parametername">points</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(System.Collections.Generic.IEnumerable%7BNpgsqlTypes.NpgsqlPoint%7D%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L209">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>points</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Collections.Generic.IEnumerable{NpgsqlTypes.NpgsqlPoint},System.Boolean)">NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt;, bool)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_System_Collections_Generic_IEnumerable_NpgsqlTypes_NpgsqlPoint__System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Collections.Generic.IEnumerable{NpgsqlTypes.NpgsqlPoint},System.Boolean)">
+  NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(IEnumerable&lt;NpgsqlPoint&gt; points, bool open)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</td>
-        <td><span class="parametername">points</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">open</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L230">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>points</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>open</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Int32)">NpgsqlPath(int)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Int32)">
+  NpgsqlPath(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L230"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(int capacity)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">capacity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath__ctor_System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.%23ctor(System.Int32%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L224">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath__ctor_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath__ctor_System_Int32_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Int32,System.Boolean)">NpgsqlPath(int, bool)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath__ctor_System_Int32_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlPath.#ctor(System.Int32,System.Boolean)">
+  NpgsqlPath(int, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPath(int capacity, bool open)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">capacity</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">open</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Capacity.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Capacity%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L238">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>open</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Capacity_" data-uid="NpgsqlTypes.NpgsqlPath.Capacity*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Capacity" data-uid="NpgsqlTypes.NpgsqlPath.Capacity">Capacity</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Capacity" data-uid="NpgsqlTypes.NpgsqlPath.Capacity">
+  Capacity
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Capacity { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Count.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Count%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L239">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Count_" data-uid="NpgsqlTypes.NpgsqlPath.Count*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Count" data-uid="NpgsqlTypes.NpgsqlPath.Count">Count</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Count" data-uid="NpgsqlTypes.NpgsqlPath.Count">
+  Count
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L239"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_IsReadOnly.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.IsReadOnly%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L240">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements contained in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_IsReadOnly_" data-uid="NpgsqlTypes.NpgsqlPath.IsReadOnly*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_IsReadOnly" data-uid="NpgsqlTypes.NpgsqlPath.IsReadOnly">IsReadOnly</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_IsReadOnly" data-uid="NpgsqlTypes.NpgsqlPath.IsReadOnly">
+  IsReadOnly
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets a value indicating whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsReadOnly { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Item_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Item(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L232">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Item_" data-uid="NpgsqlTypes.NpgsqlPath.Item*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Item_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.Item(System.Int32)">this[int]</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Item_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.Item(System.Int32)">
+  this[int]
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the element at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlPoint this[int index] { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The zero-based index of the element to get or set.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><p>The element at the specified index.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The property is set and the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Open.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Open%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L204">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index of the element to get or set.</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The element at the specified index.</p>
+</dd>
+  </dl>
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The property is set and the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Open_" data-uid="NpgsqlTypes.NpgsqlPath.Open*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Open" data-uid="NpgsqlTypes.NpgsqlPath.Open">Open</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Open" data-uid="NpgsqlTypes.NpgsqlPath.Open">
+  Open
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L204"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Open { readonly get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Add_NpgsqlTypes_NpgsqlPoint_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Add(NpgsqlTypes.NpgsqlPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L245">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Add_" data-uid="NpgsqlTypes.NpgsqlPath.Add*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Add_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Add(NpgsqlTypes.NpgsqlPoint)">Add(NpgsqlPoint)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Add_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Add(NpgsqlTypes.NpgsqlPoint)">
+  Add(NpgsqlPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds an item to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Add(NpgsqlPoint item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The object to add to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Clear.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Clear%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L246">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The object to add to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Clear_" data-uid="NpgsqlTypes.NpgsqlPath.Clear*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Clear" data-uid="NpgsqlTypes.NpgsqlPath.Clear">Clear()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Clear" data-uid="NpgsqlTypes.NpgsqlPath.Clear">
+  Clear()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L246"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes all items from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Clear()</code></pre>
   </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Contains_NpgsqlTypes_NpgsqlPoint_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Contains(NpgsqlTypes.NpgsqlPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L247">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Contains_" data-uid="NpgsqlTypes.NpgsqlPath.Contains*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Contains_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Contains(NpgsqlTypes.NpgsqlPoint)">Contains(NpgsqlPoint)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Contains_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Contains(NpgsqlTypes.NpgsqlPoint)">
+  Contains(NpgsqlPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines whether the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> contains a specific value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Contains(NpgsqlPoint item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_CopyTo_NpgsqlTypes_NpgsqlPoint___System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.CopyTo(NpgsqlTypes.NpgsqlPoint%5B%5D%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L248">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> is found in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_CopyTo_" data-uid="NpgsqlTypes.NpgsqlPath.CopyTo*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_CopyTo_NpgsqlTypes_NpgsqlPoint___System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.CopyTo(NpgsqlTypes.NpgsqlPoint[],System.Int32)">CopyTo(NpgsqlPoint[], int)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_CopyTo_NpgsqlTypes_NpgsqlPoint___System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.CopyTo(NpgsqlTypes.NpgsqlPoint[],System.Int32)">
+  CopyTo(NpgsqlPoint[], int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L248"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Copies the elements of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> to an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a>, starting at a particular <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void CopyTo(NpgsqlPoint[] array, int arrayIndex)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>[]</td>
-        <td><span class="parametername">array</span></td>
-        <td><p>The one-dimensional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> that is the destination of the elements copied from <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>. The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> must have zero-based indexing.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">arrayIndex</span></td>
-        <td><p>The zero-based index in <code class="paramref">array</code> at which copying begins.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></td>
-        <td><p><code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td><p><code class="paramref">arrayIndex</code> is less than 0.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></td>
-        <td><p>The number of elements in the source <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Equals_NpgsqlTypes_NpgsqlPath_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Equals(NpgsqlTypes.NpgsqlPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L253">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>[]</dt>
+    <dd><p>The one-dimensional <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> that is the destination of the elements copied from <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>. The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.array">Array</a> must have zero-based indexing.</p>
+</dd>
+    <dt><code>arrayIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index in <code class="paramref">array</code> at which copying begins.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">array</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">arrayIndex</code> is less than 0.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>The number of elements in the source <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is greater than the available space from <code class="paramref">arrayIndex</code> to the end of the destination <code class="paramref">array</code>.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Equals_" data-uid="NpgsqlTypes.NpgsqlPath.Equals*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Equals_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.Equals(NpgsqlTypes.NpgsqlPath)">Equals(NpgsqlPath)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Equals_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.Equals(NpgsqlTypes.NpgsqlPath)">
+  Equals(NpgsqlPath)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlPath other)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></td>
-        <td><span class="parametername">other</span></td>
-        <td><p>An object to compare with this object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Equals_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L265">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Equals_" data-uid="NpgsqlTypes.NpgsqlPath.Equals*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlPath.Equals(System.Object)">Equals(object?)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlPath.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L265"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>The object to compare with the current instance.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_GetEnumerator.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.GetEnumerator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L250">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current instance.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_GetEnumerator_" data-uid="NpgsqlTypes.NpgsqlPath.GetEnumerator*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_GetEnumerator" data-uid="NpgsqlTypes.NpgsqlPath.GetEnumerator">GetEnumerator()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_GetEnumerator" data-uid="NpgsqlTypes.NpgsqlPath.GetEnumerator">
+  GetEnumerator()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L250"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEnumerator&lt;NpgsqlPoint&gt; GetEnumerator()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</td>
-        <td><p>An enumerator that can be used to iterate through the collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L271">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a>&gt;</dt>
+    <dd><p>An enumerator that can be used to iterate through the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlPath.GetHashCode*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_GetHashCode" data-uid="NpgsqlTypes.NpgsqlPath.GetHashCode">GetHashCode()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_GetHashCode" data-uid="NpgsqlTypes.NpgsqlPath.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>A 32-bit signed integer that is the hash code for this instance.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_IndexOf_NpgsqlTypes_NpgsqlPoint_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.IndexOf(NpgsqlTypes.NpgsqlPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L242">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_IndexOf_" data-uid="NpgsqlTypes.NpgsqlPath.IndexOf*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_IndexOf_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.IndexOf(NpgsqlTypes.NpgsqlPoint)">IndexOf(NpgsqlPoint)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_IndexOf_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.IndexOf(NpgsqlTypes.NpgsqlPoint)">
+  IndexOf(NpgsqlPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines the index of a specific item in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int IndexOf(NpgsqlPoint item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The index of <code class="paramref">item</code> if found in the list; otherwise, -1.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Insert_System_Int32_NpgsqlTypes_NpgsqlPoint_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Insert(System.Int32%2CNpgsqlTypes.NpgsqlPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L243">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The object to locate in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The index of <code class="paramref">item</code> if found in the list; otherwise, -1.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Insert_" data-uid="NpgsqlTypes.NpgsqlPath.Insert*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Insert_System_Int32_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Insert(System.Int32,NpgsqlTypes.NpgsqlPoint)">Insert(int, NpgsqlPoint)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Insert_System_Int32_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Insert(System.Int32,NpgsqlTypes.NpgsqlPoint)">
+  Insert(int, NpgsqlPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L243"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Inserts an item to the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Insert(int index, NpgsqlPoint item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The zero-based index at which <code class="paramref">item</code> should be inserted.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The object to insert into the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_Remove_NpgsqlTypes_NpgsqlPoint_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.Remove(NpgsqlTypes.NpgsqlPoint)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L249">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index at which <code class="paramref">item</code> should be inserted.</p>
+</dd>
+    <dt><code>item</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The object to insert into the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_Remove_" data-uid="NpgsqlTypes.NpgsqlPath.Remove*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_Remove_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Remove(NpgsqlTypes.NpgsqlPoint)">Remove(NpgsqlPoint)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_Remove_NpgsqlTypes_NpgsqlPoint_" data-uid="NpgsqlTypes.NpgsqlPath.Remove(NpgsqlTypes.NpgsqlPoint)">
+  Remove(NpgsqlPoint)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L249"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes the first occurrence of a specific object from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Remove(NpgsqlPoint item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></td>
-        <td><span class="parametername">item</span></td>
-        <td><p>The object to remove from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_RemoveAt_System_Int32_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.RemoveAt(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L244">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="NpgsqlTypes.NpgsqlPoint.html">NpgsqlPoint</a></dt>
+    <dd><p>The object to remove from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">item</code> was successfully removed from the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>. This method also returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if <code class="paramref">item</code> is not found in the original <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_RemoveAt_" data-uid="NpgsqlTypes.NpgsqlPath.RemoveAt*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_RemoveAt_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.RemoveAt(System.Int32)">RemoveAt(int)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_RemoveAt_System_Int32_" data-uid="NpgsqlTypes.NpgsqlPath.RemoveAt(System.Int32)">
+  RemoveAt(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L244"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> item at the specified index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void RemoveAt(int index)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">index</span></td>
-        <td><p>The zero-based index of the item to remove.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></td>
-        <td><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L285">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The zero-based index of the item to remove.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">index</code> is not a valid index in the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> is read-only.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_ToString_" data-uid="NpgsqlTypes.NpgsqlPath.ToString*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_ToString" data-uid="NpgsqlTypes.NpgsqlPath.ToString">ToString()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_ToString" data-uid="NpgsqlTypes.NpgsqlPath.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L285"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The fully qualified type name.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a></div>
-  <h3 id="operators">Operators
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_op_Equality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.op_Equality(NpgsqlTypes.NpgsqlPath%2CNpgsqlTypes.NpgsqlPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L268">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlPath_op_Equality_" data-uid="NpgsqlTypes.NpgsqlPath.op_Equality*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_op_Equality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.op_Equality(NpgsqlTypes.NpgsqlPath,NpgsqlTypes.NpgsqlPath)">operator ==(NpgsqlPath, NpgsqlPath)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_op_Equality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.op_Equality(NpgsqlTypes.NpgsqlPath,NpgsqlTypes.NpgsqlPath)">
+  operator ==(NpgsqlPath, NpgsqlPath)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L268"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlPath x, NpgsqlPath y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath_op_Inequality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath.op_Inequality(NpgsqlTypes.NpgsqlPath%2CNpgsqlTypes.NpgsqlPath)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L269">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlPath_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlPath.op_Inequality*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlPath_op_Inequality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.op_Inequality(NpgsqlTypes.NpgsqlPath,NpgsqlTypes.NpgsqlPath)">operator !=(NpgsqlPath, NpgsqlPath)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlPath_op_Inequality_NpgsqlTypes_NpgsqlPath_NpgsqlTypes_NpgsqlPath_" data-uid="NpgsqlTypes.NpgsqlPath.op_Inequality(NpgsqlTypes.NpgsqlPath,NpgsqlTypes.NpgsqlPath)">
+  operator !=(NpgsqlPath, NpgsqlPath)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlPath x, NpgsqlPath y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable&lt;T&gt;</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="NpgsqlTypes.NpgsqlPath.html">NpgsqlPath</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlPath.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlPath%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L201" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlTypes.cs/#L201" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

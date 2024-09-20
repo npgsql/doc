@@ -1,102 +1,126 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlEntityTypeBuilderExtensions | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlEntityTypeBuilderExtensions | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlEntityTypeBuilderExtensions | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlEntityTypeBuilderExtensions | Npgsql Documentation ">
+      
+      <meta name="description" content="Npgsql-specific extension methods for .">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions">
+
+        <article data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions">
 
 
 
-  <h1 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions" class="text-break">Class NpgsqlEntityTypeBuilderExtensions</h1>
-  <div class="markdown level0 summary"><p>Npgsql-specific extension methods for <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a>.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">NpgsqlEntityTypeBuilderExtensions</span></div>
+  <h1 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions" class="text-break">
+Class NpgsqlEntityTypeBuilderExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft">Microsoft</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore">EntityFrameworkCore</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Npgsql-specific extension methods for <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a>.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class NpgsqlEntityTypeBuilderExtensions</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NpgsqlEntityTypeBuilderExtensions</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -118,209 +142,154 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft">Microsoft</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore">EntityFrameworkCore</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class NpgsqlEntityTypeBuilderExtensions</code></pre>
-  </div>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_remarks"><strong>Remarks</strong></h5>
+  </dd></dl>
+
+
+
+
+  <h2 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>See <a href="https://aka.ms/efcore-docs-modeling">Modeling entity types and relationships</a>.</p>
 </div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetIsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L240">View Source</a>
-  </span>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetIsUnlogged*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetIsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.Boolean,System.Boolean)">CanSetIsUnlogged(IConventionEntityTypeBuilder, bool, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetIsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.Boolean,System.Boolean)">
+  CanSetIsUnlogged(IConventionEntityTypeBuilder, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a value indicating whether the mapped table can be configured to use an unlogged table when targeting Npgsql.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool CanSetIsUnlogged(this IConventionEntityTypeBuilder entityTypeBuilder, bool unlogged = true, bool fromDataAnnotation = false)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">unlogged</span></td>
-        <td><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">fromDataAnnotation</span></td>
-        <td><p>Indicates whether the configuration was specified using a data annotation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>unlogged</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
+</dd>
+    <dt><code>fromDataAnnotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether the configuration was specified using a data annotation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetIsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED">https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder%2CSystem.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L146">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetStorageParameter*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.String,System.Object,System.Boolean)">CanSetStorageParameter(IConventionEntityTypeBuilder, string, object?, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.CanSetStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.String,System.Object,System.Boolean)">
+  CanSetStorageParameter(IConventionEntityTypeBuilder, string, object?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a value indicating whether the PostgreSQL storage parameter is set on the table created for this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool CanSetStorageParameter(this IConventionEntityTypeBuilder entityTypeBuilder, string parameterName, object? parameterValue, bool fromDataAnnotation = false)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parameterName</span></td>
-        <td><p>The name of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">parameterValue</span></td>
-        <td><p>The value of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">fromDataAnnotation</span></td>
-        <td><p>Indicates whether the configuration was specified using a data annotation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><code>true</code> if the mapped table can be configured as with the storage parameter.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the storage parameter.</p>
+</dd>
+    <dt><code>parameterValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value of the storage parameter.</p>
+</dd>
+    <dt><code>fromDataAnnotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether the configuration was specified using a data annotation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the mapped table can be configured as with the storage parameter.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_CanSetStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasGeneratedTsVectorColumn__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Linq_Expressions_Expression_System_Func___0_NpgsqlTypes_NpgsqlTsVector___System_String_System_Linq_Expressions_Expression_System_Func___0_System_Object___.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasGeneratedTsVectorColumn%60%601(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%7B%60%600%7D%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CNpgsqlTypes.NpgsqlTsVector%7D%7D%2CSystem.String%2CSystem.Linq.Expressions.Expression%7BSystem.Func%7B%60%600%2CSystem.Object%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L46">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasGeneratedTsVectorColumn_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasGeneratedTsVectorColumn*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasGeneratedTsVectorColumn__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Linq_Expressions_Expression_System_Func___0_NpgsqlTypes_NpgsqlTsVector___System_String_System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasGeneratedTsVectorColumn``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Linq.Expressions.Expression{System.Func{``0,NpgsqlTypes.NpgsqlTsVector}},System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">HasGeneratedTsVectorColumn&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, Expression&lt;Func&lt;TEntity, NpgsqlTsVector&gt;&gt;, string, Expression&lt;Func&lt;TEntity, object&gt;&gt;)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasGeneratedTsVectorColumn__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Linq_Expressions_Expression_System_Func___0_NpgsqlTypes_NpgsqlTsVector___System_String_System_Linq_Expressions_Expression_System_Func___0_System_Object___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasGeneratedTsVectorColumn``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Linq.Expressions.Expression{System.Func{``0,NpgsqlTypes.NpgsqlTsVector}},System.String,System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+  HasGeneratedTsVectorColumn&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, Expression&lt;Func&lt;TEntity, NpgsqlTsVector&gt;&gt;, string, Expression&lt;Func&lt;TEntity, object&gt;&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures a property on this entity to be a full-text search tsvector column over other given properties.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder&lt;TEntity&gt; HasGeneratedTsVectorColumn&lt;TEntity&gt;(this EntityTypeBuilder&lt;TEntity&gt; entityTypeBuilder, Expression&lt;Func&lt;TEntity, NpgsqlTsVector&gt;&gt; tsVectorPropertyExpression, string config, Expression&lt;Func&lt;TEntity, object&gt;&gt; includeExpression) where TEntity : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>&gt;&gt;</td>
-        <td><span class="parametername">tsVectorPropertyExpression</span></td>
-        <td><p>A lambda expression representing the property to be configured as a tsvector column
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The builder for the entity being configured.</p>
+</dd>
+    <dt><code>tsVectorPropertyExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>&gt;&gt;</dt>
+    <dd><p>A lambda expression representing the property to be configured as a tsvector column
 (<code>blog =&gt; blog.Url</code>).</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">config</span></td>
-        <td><p>
+</dd>
+    <dt><code>config</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>
         The text search configuration for this generated tsvector property, or <code>null</code> if this is not a
         generated tsvector property.
     </p>
 <p>
         See https://www.postgresql.org/docs/current/textsearch-controls.html for more information.
     </p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</td>
-        <td><span class="parametername">includeExpression</span></td>
-        <td><p>
+</dd>
+    <dt><code>includeExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression-1">Expression</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;TEntity, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;&gt;</dt>
+    <dd><p>
         A lambda expression representing the property(s) to be included in the tsvector column
         (<code>blog =&gt; blog.Url</code>).
     </p>
@@ -328,751 +297,528 @@
         If multiple properties are to be included then specify an anonymous type including the
         properties (<code>post =&gt; new { post.Title, post.BlogId }</code>).
     </p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><p>A builder to further configure the property.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_String_System_Object_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%2CSystem.String%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L79">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>A builder to further configure the property.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_String_System_Object_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String,System.Object)">HasStorageParameter(EntityTypeBuilder, string, object?)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_String_System_Object_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.String,System.Object)">
+  HasStorageParameter(EntityTypeBuilder, string, object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets a PostgreSQL storage parameter on the table created for this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder HasStorageParameter(this EntityTypeBuilder entityTypeBuilder, string parameterName, object? parameterValue)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parameterName</span></td>
-        <td><p>The name of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">parameterValue</span></td>
-        <td><p>The value of the storage parameter.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_String_System_Object__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the storage parameter.</p>
+</dd>
+    <dt><code>parameterValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value of the storage parameter.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_String_System_Object__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder%2CSystem.String%2CSystem.Object%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L119">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.String,System.Object,System.Boolean)">HasStorageParameter(IConventionEntityTypeBuilder, string, object?, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.String,System.Object,System.Boolean)">
+  HasStorageParameter(IConventionEntityTypeBuilder, string, object?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets a PostgreSQL storage parameter on the table created for this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IConventionEntityTypeBuilder? HasStorageParameter(this IConventionEntityTypeBuilder entityTypeBuilder, string parameterName, object? parameterValue, bool fromDataAnnotation = false)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parameterName</span></td>
-        <td><p>The name of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">parameterValue</span></td>
-        <td><p>The value of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">fromDataAnnotation</span></td>
-        <td><p>Indicates whether the configuration was specified using a data annotation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the storage parameter.</p>
+</dd>
+    <dt><code>parameterValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value of the storage parameter.</p>
+</dd>
+    <dt><code>fromDataAnnotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether the configuration was specified using a data annotation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_String_System_Object_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_String_System_Object_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter%60%601(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%7B%60%600%7D%2CSystem.String%2CSystem.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L101">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_String_System_Object_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.String,System.Object)">HasStorageParameter&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, string, object?)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_String_System_Object_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.HasStorageParameter``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.String,System.Object)">
+  HasStorageParameter&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, string, object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets a PostgreSQL storage parameter on the table created for this entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder&lt;TEntity&gt; HasStorageParameter&lt;TEntity&gt;(this EntityTypeBuilder&lt;TEntity&gt; entityTypeBuilder, string parameterName, object? parameterValue) where TEntity : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">parameterName</span></td>
-        <td><p>The name of the storage parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">parameterValue</span></td>
-        <td><p>The value of the storage parameter.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_String_System_Object__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>parameterName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the storage parameter.</p>
+</dd>
+    <dt><code>parameterValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value of the storage parameter.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_HasStorageParameter__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_String_System_Object__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">https://www.postgresql.org/docs/current/static/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L173">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.Boolean)">IsUnlogged(EntityTypeBuilder, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.Boolean)">
+  IsUnlogged(EntityTypeBuilder, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures the entity to use an unlogged table when targeting Npgsql.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder IsUnlogged(this EntityTypeBuilder entityTypeBuilder, bool unlogged = true)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">unlogged</span></td>
-        <td><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>unlogged</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED">https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L213">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.Boolean,System.Boolean)">IsUnlogged(IConventionEntityTypeBuilder, bool, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionEntityTypeBuilder,System.Boolean,System.Boolean)">
+  IsUnlogged(IConventionEntityTypeBuilder, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures the mapped table to use an unlogged table when targeting Npgsql.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static IConventionEntityTypeBuilder? IsUnlogged(this IConventionEntityTypeBuilder entityTypeBuilder, bool unlogged = true, bool fromDataAnnotation = false)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">unlogged</span></td>
-        <td><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">fromDataAnnotation</span></td>
-        <td><p>Indicates whether the configuration was specified using a data annotation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>unlogged</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
+</dd>
+    <dt><code>fromDataAnnotation</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Indicates whether the configuration was specified using a data annotation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionentitytypebuilder">IConventionEntityTypeBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionEntityTypeBuilder_System_Boolean_System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED">https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Boolean_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged%60%601(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%7B%60%600%7D%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L195">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Boolean)">IsUnlogged&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, bool)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Boolean_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.IsUnlogged``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Boolean)">
+  IsUnlogged&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L195"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures the mapped table to use an unlogged table when targeting Npgsql.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder&lt;TEntity&gt; IsUnlogged&lt;TEntity&gt;(this EntityTypeBuilder&lt;TEntity&gt; entityTypeBuilder, bool unlogged = true) where TEntity : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">unlogged</span></td>
-        <td><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Boolean__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+    <dt><code>unlogged</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True to configure the entity to use an unlogged table; otherwise, false.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_IsUnlogged__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Boolean__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED">https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-UNLOGGED</a></p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Type_System_Collections_Generic_List_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%2CSystem.Type%2CSystem.Collections.Generic.List%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L257">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Type_System_Collections_Generic_List_System_String__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.Type,System.Collections.Generic.List{System.String})">UseCockroachDbInterleaveInParent(EntityTypeBuilder, Type, List&lt;string&gt;)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_System_Type_System_Collections_Generic_List_System_String__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder,System.Type,System.Collections.Generic.List{System.String})">
+  UseCockroachDbInterleaveInParent(EntityTypeBuilder, Type, List&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies that the CockroachDB-specific &quot;interleave in parent&quot; feature should be used.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder UseCockroachDbInterleaveInParent(this EntityTypeBuilder entityTypeBuilder, Type parentTableType, List&lt;string&gt; interleavePrefix)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">parentTableType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td><span class="parametername">interleavePrefix</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Type_System_Collections_Generic_List_System_String__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent%60%601(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%7B%60%600%7D%2CSystem.Type%2CSystem.Collections.Generic.List%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L288">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd></dd>
+    <dt><code>parentTableType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>interleavePrefix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Type_System_Collections_Generic_List_System_String__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Type,System.Collections.Generic.List{System.String})">UseCockroachDbInterleaveInParent&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, Type, List&lt;string&gt;)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseCockroachDbInterleaveInParent__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__System_Type_System_Collections_Generic_List_System_String__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseCockroachDbInterleaveInParent``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0},System.Type,System.Collections.Generic.List{System.String})">
+  UseCockroachDbInterleaveInParent&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;, Type, List&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies that the CockroachDB-specific &quot;interleave in parent&quot; feature should be used.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityTypeBuilder&lt;TEntity&gt; UseCockroachDbInterleaveInParent&lt;TEntity&gt;(this EntityTypeBuilder&lt;TEntity&gt; entityTypeBuilder, Type parentTableType, List&lt;string&gt; interleavePrefix) where TEntity : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">parentTableType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td><span class="parametername">interleavePrefix</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L309">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+    <dt><code>parentTableType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>interleavePrefix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder)">UseXminAsConcurrencyToken(EntityTypeBuilder)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder)">
+  UseXminAsConcurrencyToken(EntityTypeBuilder)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L309"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures using the auto-updating system column <code>xmin</code> as the optimistic concurrency token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use EF Core&#39;s standard IsRowVersion() or [Timestamp], see https://learn.microsoft.com/ef/core/saving/concurrency&quot;)]
 public static EntityTypeBuilder UseXminAsConcurrencyToken(this EntityTypeBuilder entityTypeBuilder)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder">EntityTypeBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="https://www.npgsql.org/efcore/modeling/concurrency.html">Concurrency tokens</a>
 for more information on using optimistic concurrency in PostgreSQL.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken%60%601(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder%7B%60%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L331">View Source</a>
-  </span>
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0})">UseXminAsConcurrencyToken&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0__" data-uid="Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions.UseXminAsConcurrencyToken``1(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{``0})">
+  UseXminAsConcurrencyToken&lt;TEntity&gt;(EntityTypeBuilder&lt;TEntity&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L331"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures using the auto-updating system column <code>xmin</code> as the optimistic concurrency token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use EF Core&#39;s standard IsRowVersion() or [Timestamp], see https://learn.microsoft.com/ef/core/saving/concurrency&quot;)]
 public static EntityTypeBuilder&lt;TEntity&gt; UseXminAsConcurrencyToken&lt;TEntity&gt;(this EntityTypeBuilder&lt;TEntity&gt; entityTypeBuilder) where TEntity : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><span class="parametername">entityTypeBuilder</span></td>
-        <td><p>The builder for the entity type being configured.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0___remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityTypeBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The builder for the entity type being configured.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.entitytypebuilder-1">EntityTypeBuilder</a>&lt;TEntity&gt;</dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEntity</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions_UseXminAsConcurrencyToken__1_Microsoft_EntityFrameworkCore_Metadata_Builders_EntityTypeBuilder___0___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See <a href="http://www.npgsql.org/efcore/miscellaneous.html#optimistic-concurrency-and-concurrency-tokens">http://www.npgsql.org/efcore/miscellaneous.html#optimistic-concurrency-and-concurrency-tokens</a></p>
 </div>
 
-</article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlEntityTypeBuilderExtensions.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlEntityTypeBuilderExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L12" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/BuilderExtensions/NpgsqlEntityTypeBuilderExtensions.cs/#L12" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

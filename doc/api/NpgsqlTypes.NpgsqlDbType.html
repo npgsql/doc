@@ -1,545 +1,390 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum NpgsqlDbType | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum NpgsqlDbType | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Enum NpgsqlDbType | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Enum NpgsqlDbType | Npgsql Documentation ">
+      
+      <meta name="description" content="Represents a PostgreSQL data type that can be written or read to the database. Used in places such as  to unambiguously specify how to encode or decode values.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlDbType.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlDbType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NpgsqlTypes.NpgsqlDbType">
+
+        <article data-uid="NpgsqlTypes.NpgsqlDbType">
 
 
 
 
-  <h1 id="NpgsqlTypes_NpgsqlDbType" data-uid="NpgsqlTypes.NpgsqlDbType" class="text-break">Enum NpgsqlDbType</h1>
-  <div class="markdown level0 summary"><p>Represents a PostgreSQL data type that can be written or read to the database.
+  <h1 id="NpgsqlTypes_NpgsqlDbType" data-uid="NpgsqlTypes.NpgsqlDbType" class="text-break">
+Enum NpgsqlDbType  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlDbType.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a PostgreSQL data type that can be written or read to the database.
 Used in places such as <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_NpgsqlDbType">NpgsqlDbType</a> to unambiguously specify
 how to encode or decode values.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="NpgsqlTypes_NpgsqlDbType_syntax">Syntax</h5>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public enum NpgsqlDbType</code></pre>
   </div>
-  <h5 id="NpgsqlTypes_NpgsqlDbType_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/datatype.html">https://www.postgresql.org/docs/current/static/datatype.html</a>.</p>
-</div>
-  <h3 id="fields">Fields
-</h3>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    </thead></thead><tbody>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Abstime">Abstime</td>
-        <td><p>Corresponds to the obsolete PostgreSQL &quot;abstime&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Array">Array</td>
-        <td><p>Corresponds to the PostgreSQL &quot;array&quot; type, a variable-length multidimensional array of
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="NpgsqlTypes_NpgsqlDbType_Abstime"><code>[Obsolete(&quot;The PostgreSQL abstime time is obsolete.&quot;)]
+Abstime = 33</code></dt>
+    <dd><p>Corresponds to the obsolete PostgreSQL &quot;abstime&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Array"><code>Array = -2147483648</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;array&quot; type, a variable-length multidimensional array of
 another type. This value must be combined with another value from <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a>
 via a bit OR (e.g. NpgsqlDbType.Array | NpgsqlDbType.Integer)</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_BigIntMultirange">BigIntMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;int8multirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_BigIntRange">BigIntRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;int8range&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Bigint">Bigint</td>
-        <td><p>Corresponds to the PostgreSQL 8-byte &quot;bigint&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Bit">Bit</td>
-        <td><p>Corresponds to the PostgreSQL &quot;bit&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Boolean">Boolean</td>
-        <td><p>Corresponds to the PostgreSQL &quot;boolean&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Box">Box</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;box&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Bytea">Bytea</td>
-        <td><p>Corresponds to the PostgreSQL &quot;bytea&quot; type, holding a raw byte string.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Char">Char</td>
-        <td><p>Corresponds to the PostgreSQL &quot;char(n)&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Cid">Cid</td>
-        <td><p>Corresponds to the PostgreSQL &quot;cid&quot; type, an internal command identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Cidr">Cidr</td>
-        <td><p>Corresponds to the PostgreSQL &quot;cidr&quot; type, a field storing an IPv4 or IPv6 network.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Circle">Circle</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;circle&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Citext">Citext</td>
-        <td><p>Corresponds to the PostgreSQL &quot;citext&quot; type for the citext module.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Date">Date</td>
-        <td><p>Corresponds to the PostgreSQL &quot;date&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_DateMultirange">DateMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;datemultirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_DateRange">DateRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;daterange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Double">Double</td>
-        <td><p>Corresponds to the PostgreSQL 8-byte floating-point &quot;double&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Geography">Geography</td>
-        <td><p>The geography (geodetic) type for PostgreSQL spatial extension PostGIS.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Geometry">Geometry</td>
-        <td><p>The geometry type for PostgreSQL spatial extension PostGIS.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Hstore">Hstore</td>
-        <td><p>Corresponds to the PostgreSQL &quot;hstore&quot; type, a dictionary of string key-value pairs.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Inet">Inet</td>
-        <td><p>Corresponds to the PostgreSQL &quot;inet&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Int2Vector">Int2Vector</td>
-        <td><p>Corresponds to the PostgreSQL internal &quot;int2vector&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Integer">Integer</td>
-        <td><p>Corresponds to the PostgreSQL 4-byte &quot;integer&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_IntegerMultirange">IntegerMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;int4multirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_IntegerRange">IntegerRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;int4range&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_InternalChar">InternalChar</td>
-        <td><p>Corresponds to the PostgreSQL &quot;char&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Interval">Interval</td>
-        <td><p>Corresponds to the PostgreSQL &quot;interval&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Json">Json</td>
-        <td><p>Corresponds to the PostgreSQL &quot;json&quot; type, a field storing JSON in text format.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_JsonPath">JsonPath</td>
-        <td><p>Corresponds to the PostgreSQL &quot;jsonpath&quot; type, a field storing JSON path in text format.
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_BigIntMultirange"><code>BigIntMultirange = 536870913</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;int8multirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_BigIntRange"><code>BigIntRange = 1073741825</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;int8range&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Bigint"><code>Bigint = 1</code></dt>
+    <dd><p>Corresponds to the PostgreSQL 8-byte &quot;bigint&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Bit"><code>Bit = 25</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;bit&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Boolean"><code>Boolean = 2</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;boolean&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Box"><code>Box = 3</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;box&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Bytea"><code>Bytea = 4</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;bytea&quot; type, holding a raw byte string.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Char"><code>Char = 6</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;char(n)&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Cid"><code>Cid = 43</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;cid&quot; type, an internal command identifier.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Cidr"><code>Cidr = 44</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;cidr&quot; type, a field storing an IPv4 or IPv6 network.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Circle"><code>Circle = 5</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;circle&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Citext"><code>Citext = 51</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;citext&quot; type for the citext module.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Date"><code>Date = 7</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;date&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_DateMultirange"><code>DateMultirange = 536870919</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;datemultirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_DateRange"><code>DateRange = 1073741831</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;daterange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Double"><code>Double = 8</code></dt>
+    <dd><p>Corresponds to the PostgreSQL 8-byte floating-point &quot;double&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Geography"><code>Geography = 55</code></dt>
+    <dd><p>The geography (geodetic) type for PostgreSQL spatial extension PostGIS.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Geometry"><code>Geometry = 50</code></dt>
+    <dd><p>The geometry type for PostgreSQL spatial extension PostGIS.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Hstore"><code>Hstore = 37</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;hstore&quot; type, a dictionary of string key-value pairs.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Inet"><code>Inet = 24</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;inet&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Int2Vector"><code>Int2Vector = 52</code></dt>
+    <dd><p>Corresponds to the PostgreSQL internal &quot;int2vector&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Integer"><code>Integer = 9</code></dt>
+    <dd><p>Corresponds to the PostgreSQL 4-byte &quot;integer&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_IntegerMultirange"><code>IntegerMultirange = 536870921</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;int4multirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_IntegerRange"><code>IntegerRange = 1073741833</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;int4range&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_InternalChar"><code>InternalChar = 38</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;char&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Interval"><code>Interval = 30</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;interval&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Json"><code>Json = 35</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;json&quot; type, a field storing JSON in text format.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_JsonPath"><code>JsonPath = 57</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;jsonpath&quot; type, a field storing JSON path in text format.
 format.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Jsonb">Jsonb</td>
-        <td><p>Corresponds to the PostgreSQL &quot;jsonb&quot; type, a field storing JSON in an optimized binary.
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Jsonb"><code>Jsonb = 36</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;jsonb&quot; type, a field storing JSON in an optimized binary.
 format.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_LQuery">LQuery</td>
-        <td><p>The PostgreSQL lquery type for PostgreSQL extension ltree</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_LSeg">LSeg</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;lseg&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_LTree">LTree</td>
-        <td><p>The PostgreSQL ltree type, each value is a label path &quot;a.label.tree.value&quot;, forming a tree in a set.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_LTxtQuery">LTxtQuery</td>
-        <td><p>The PostgreSQL ltxtquery type for PostgreSQL extension ltree</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Line">Line</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;line&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_MacAddr">MacAddr</td>
-        <td><p>Corresponds to the PostgreSQL &quot;macaddr&quot; type, a field storing a 6-byte physical address.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_MacAddr8">MacAddr8</td>
-        <td><p>Corresponds to the PostgreSQL &quot;macaddr8&quot; type, a field storing a 6-byte or 8-byte physical address.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Money">Money</td>
-        <td><p>Corresponds to the PostgreSQL &quot;money&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Multirange">Multirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;multirange&quot; type, continuous range of values of specific type.
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_LQuery"><code>LQuery = 61</code></dt>
+    <dd><p>The PostgreSQL lquery type for PostgreSQL extension ltree</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_LSeg"><code>LSeg = 11</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;lseg&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_LTree"><code>LTree = 60</code></dt>
+    <dd><p>The PostgreSQL ltree type, each value is a label path &quot;a.label.tree.value&quot;, forming a tree in a set.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_LTxtQuery"><code>LTxtQuery = 62</code></dt>
+    <dd><p>The PostgreSQL ltxtquery type for PostgreSQL extension ltree</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Line"><code>Line = 10</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;line&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_MacAddr"><code>MacAddr = 34</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;macaddr&quot; type, a field storing a 6-byte physical address.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_MacAddr8"><code>MacAddr8 = 54</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;macaddr8&quot; type, a field storing a 6-byte or 8-byte physical address.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Money"><code>Money = 12</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;money&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Multirange"><code>Multirange = 536870912</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;multirange&quot; type, continuous range of values of specific type.
 This value must be combined with another value from <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a>
 via a bit OR (e.g. NpgsqlDbType.Multirange | NpgsqlDbType.Integer)</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Name">Name</td>
-        <td><p>Corresponds to the PostgreSQL internal &quot;name&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Numeric">Numeric</td>
-        <td><p>Corresponds to the PostgreSQL arbitrary-precision &quot;numeric&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_NumericMultirange">NumericMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;nummultirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_NumericRange">NumericRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;numrange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Oid">Oid</td>
-        <td><p>Corresponds to the PostgreSQL &quot;oid&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Oidvector">Oidvector</td>
-        <td><p>Corresponds to the PostgreSQL internal &quot;oidvector&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Path">Path</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;path&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_PgLsn">PgLsn</td>
-        <td><p>Corresponds to the PostgreSQL &quot;pg_lsn&quot; type, which can be used to store LSN (Log Sequence Number) data which
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Name"><code>Name = 32</code></dt>
+    <dd><p>Corresponds to the PostgreSQL internal &quot;name&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Numeric"><code>Numeric = 13</code></dt>
+    <dd><p>Corresponds to the PostgreSQL arbitrary-precision &quot;numeric&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_NumericMultirange"><code>NumericMultirange = 536870925</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;nummultirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_NumericRange"><code>NumericRange = 1073741837</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;numrange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Oid"><code>Oid = 41</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;oid&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Oidvector"><code>Oidvector = 29</code></dt>
+    <dd><p>Corresponds to the PostgreSQL internal &quot;oidvector&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Path"><code>Path = 14</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;path&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_PgLsn"><code>PgLsn = 59</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;pg_lsn&quot; type, which can be used to store LSN (Log Sequence Number) data which
 is a pointer to a location in the WAL.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Point">Point</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;point&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Polygon">Polygon</td>
-        <td><p>Corresponds to the PostgreSQL geometric &quot;polygon&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Range">Range</td>
-        <td><p>Corresponds to the PostgreSQL &quot;range&quot; type, continuous range of values of specific type.
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Point"><code>Point = 15</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;point&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Polygon"><code>Polygon = 16</code></dt>
+    <dd><p>Corresponds to the PostgreSQL geometric &quot;polygon&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Range"><code>Range = 1073741824</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;range&quot; type, continuous range of values of specific type.
 This value must be combined with another value from <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a>
 via a bit OR (e.g. NpgsqlDbType.Range | NpgsqlDbType.Integer)</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Real">Real</td>
-        <td><p>Corresponds to the PostgreSQL floating-point &quot;real&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Refcursor">Refcursor</td>
-        <td><p>Corresponds to the PostgreSQL &quot;refcursor&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Regconfig">Regconfig</td>
-        <td><p>Corresponds to the PostgreSQL &quot;regconfig&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Regtype">Regtype</td>
-        <td><p>Corresponds to the PostgreSQL &quot;regtype&quot; type, a numeric (OID) ID of a type in the pg_type table.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Smallint">Smallint</td>
-        <td><p>Corresponds to the PostgreSQL 2-byte &quot;smallint&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Text">Text</td>
-        <td><p>Corresponds to the PostgreSQL &quot;text&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Tid">Tid</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tid&quot; type, a tuple id identifying the physical location of a row within its table.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Time">Time</td>
-        <td><p>Corresponds to the PostgreSQL &quot;time&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimeTz">TimeTz</td>
-        <td><p>Corresponds to the PostgreSQL &quot;time with time zone&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Timestamp">Timestamp</td>
-        <td><p>Corresponds to the PostgreSQL &quot;timestamp&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimestampMultirange">TimestampMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tsmultirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimestampRange">TimestampRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tsrange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimestampTz">TimestampTz</td>
-        <td><p>Corresponds to the PostgreSQL &quot;timestamp with time zone&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimestampTzMultirange">TimestampTzMultirange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tstzmultirange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TimestampTzRange">TimestampTzRange</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tstzrange&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TsQuery">TsQuery</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tsquery&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_TsVector">TsVector</td>
-        <td><p>Corresponds to the PostgreSQL &quot;tsvector&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Unknown">Unknown</td>
-        <td><p>A special value that can be used to send parameter values to the database without
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Real"><code>Real = 17</code></dt>
+    <dd><p>Corresponds to the PostgreSQL floating-point &quot;real&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Refcursor"><code>Refcursor = 23</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;refcursor&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Regconfig"><code>Regconfig = 56</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;regconfig&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Regtype"><code>Regtype = 49</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;regtype&quot; type, a numeric (OID) ID of a type in the pg_type table.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Smallint"><code>Smallint = 18</code></dt>
+    <dd><p>Corresponds to the PostgreSQL 2-byte &quot;smallint&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Text"><code>Text = 19</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;text&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Tid"><code>Tid = 53</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tid&quot; type, a tuple id identifying the physical location of a row within its table.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Time"><code>Time = 20</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;time&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimeTz"><code>TimeTz = 31</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;time with time zone&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Timestamp"><code>Timestamp = 21</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;timestamp&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimestampMultirange"><code>TimestampMultirange = 536870933</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tsmultirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimestampRange"><code>TimestampRange = 1073741845</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tsrange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimestampTz"><code>TimestampTz = 26</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;timestamp with time zone&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimestampTzMultirange"><code>TimestampTzMultirange = 536870938</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tstzmultirange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TimestampTzRange"><code>TimestampTzRange = 1073741850</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tstzrange&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TsQuery"><code>TsQuery = 46</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tsquery&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_TsVector"><code>TsVector = 45</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;tsvector&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Unknown"><code>Unknown = 40</code></dt>
+    <dd><p>A special value that can be used to send parameter values to the database without
 specifying their type, allowing the database to cast them to another value based on context.
 The value will be converted to a string and send as text.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Uuid">Uuid</td>
-        <td><p>Corresponds to the PostgreSQL &quot;uuid&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Varbit">Varbit</td>
-        <td><p>Corresponds to the PostgreSQL &quot;varbit&quot; type, a field storing a variable-length string of bits.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Varchar">Varchar</td>
-        <td><p>Corresponds to the PostgreSQL &quot;varchar&quot; type.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Xid">Xid</td>
-        <td><p>Corresponds to the PostgreSQL &quot;xid&quot; type, an internal transaction identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Xid8">Xid8</td>
-        <td><p>Corresponds to the PostgreSQL &quot;xid8&quot; type, an internal transaction identifier.</p>
-</td>
-      </tr>
-      <tr>
-        <td id="NpgsqlTypes_NpgsqlDbType_Xml">Xml</td>
-        <td><p>Corresponds to the PostgreSQL &quot;xml&quot; type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Uuid"><code>Uuid = 27</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;uuid&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Varbit"><code>Varbit = 39</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;varbit&quot; type, a field storing a variable-length string of bits.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Varchar"><code>Varchar = 22</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;varchar&quot; type.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Xid"><code>Xid = 42</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;xid&quot; type, an internal transaction identifier.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Xid8"><code>Xid8 = 64</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;xid8&quot; type, an internal transaction identifier.</p>
+</dd>
+    <dt id="NpgsqlTypes_NpgsqlDbType_Xml"><code>Xml = 28</code></dt>
+    <dd><p>Corresponds to the PostgreSQL &quot;xml&quot; type.</p>
+</dd>
+  </dl>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlDbType.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlDbType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlDbType.cs/#L21" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+  <h2 id="NpgsqlTypes_NpgsqlDbType_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/datatype.html">https://www.postgresql.org/docs/current/static/datatype.html</a>.</p>
+</div>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlDbType.cs/#L21" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

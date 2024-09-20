@@ -1,101 +1,131 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct NpgsqlRange&lt;T&gt; | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct NpgsqlRange&lt;T&gt; | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Struct NpgsqlRange&lt;T&gt; | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct NpgsqlRange&lt;T&gt; | Npgsql Documentation ">
+      
+      <meta name="description" content="Represents a PostgreSQL range type.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="NpgsqlTypes.NpgsqlRange`1">
+
+        <article data-uid="NpgsqlTypes.NpgsqlRange`1">
 
 
 
-  <h1 id="NpgsqlTypes_NpgsqlRange_1" data-uid="NpgsqlTypes.NpgsqlRange`1" class="text-break">Struct NpgsqlRange&lt;T&gt;</h1>
-  <div class="markdown level0 summary"><p>Represents a PostgreSQL range type.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;&gt;</div>
+  <h1 id="NpgsqlTypes_NpgsqlRange_1" data-uid="NpgsqlTypes.NpgsqlRange`1" class="text-break">
+Struct NpgsqlRange&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Represents a PostgreSQL range type.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public readonly struct NpgsqlRange&lt;T&gt; : IEquatable&lt;NpgsqlRange&lt;T&gt;&gt;</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The element type of the values in the range.</p>
+</dd>
+  </dl>
+
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
@@ -105,855 +135,724 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="NpgsqlTypes.html">NpgsqlTypes</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="NpgsqlTypes_NpgsqlRange_1_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly struct NpgsqlRange&lt;T&gt; : IEquatable&lt;NpgsqlRange&lt;T&gt;&gt;</code></pre>
-  </div>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The element type of the values in the range.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="NpgsqlTypes_NpgsqlRange_1_remarks"><strong>Remarks</strong></h5>
+  </dd></dl>
+
+
+
+
+  <h2 id="NpgsqlTypes_NpgsqlRange_1_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">https://www.postgresql.org/docs/current/static/rangetypes.html</a></p>
 </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean_System_Boolean__0_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2CSystem.Boolean%2CSystem.Boolean%2C%600%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L166">View Source</a>
-  </span>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean_System_Boolean__0_System_Boolean_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,System.Boolean,`0,System.Boolean,System.Boolean)">NpgsqlRange(T, bool, bool, T, bool, bool)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean_System_Boolean__0_System_Boolean_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,System.Boolean,`0,System.Boolean,System.Boolean)">
+  NpgsqlRange(T, bool, bool, T, bool, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L166"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlRange(T lowerBound, bool lowerBoundIsInclusive, bool lowerBoundInfinite, T upperBound, bool upperBoundIsInclusive, bool upperBoundInfinite)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">lowerBound</span></td>
-        <td><p>The lower bound of the range.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">lowerBoundIsInclusive</span></td>
-        <td><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">lowerBoundInfinite</span></td>
-        <td><p>True if the lower bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">upperBound</span></td>
-        <td><p>The upper bound of the range.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">upperBoundIsInclusive</span></td>
-        <td><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">upperBoundInfinite</span></td>
-        <td><p>True if the upper bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean__0_System_Boolean_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2CSystem.Boolean%2C%600%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L152">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lowerBound</code> <span class="xref">T</span></dt>
+    <dd><p>The lower bound of the range.</p>
+</dd>
+    <dt><code>lowerBoundIsInclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
+</dd>
+    <dt><code>lowerBoundInfinite</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the lower bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</dd>
+    <dt><code>upperBound</code> <span class="xref">T</span></dt>
+    <dd><p>The upper bound of the range.</p>
+</dd>
+    <dt><code>upperBoundIsInclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</dd>
+    <dt><code>upperBoundInfinite</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the upper bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean__0_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,`0,System.Boolean)">NpgsqlRange(T, bool, T, bool)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1__ctor__0_System_Boolean__0_System_Boolean_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,System.Boolean,`0,System.Boolean)">
+  NpgsqlRange(T, bool, T, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> with definite bounds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlRange(T lowerBound, bool lowerBoundIsInclusive, T upperBound, bool upperBoundIsInclusive)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">lowerBound</span></td>
-        <td><p>The lower bound of the range.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">lowerBoundIsInclusive</span></td>
-        <td><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">upperBound</span></td>
-        <td><p>The upper bound of the range.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">upperBoundIsInclusive</span></td>
-        <td><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1__ctor__0__0_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.%23ctor(%600%2C%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L142">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lowerBound</code> <span class="xref">T</span></dt>
+    <dd><p>The lower bound of the range.</p>
+</dd>
+    <dt><code>lowerBoundIsInclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the lower bound is is part of the range (i.e. inclusive); otherwise, false.</p>
+</dd>
+    <dt><code>upperBound</code> <span class="xref">T</span></dt>
+    <dd><p>The upper bound of the range.</p>
+</dd>
+    <dt><code>upperBoundIsInclusive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1__ctor_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1__ctor__0__0_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,`0)">NpgsqlRange(T, T)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1__ctor__0__0_" data-uid="NpgsqlTypes.NpgsqlRange`1.#ctor(`0,`0)">
+  NpgsqlRange(T, T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructs an <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> with inclusive and definite bounds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlRange(T lowerBound, T upperBound)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">lowerBound</span></td>
-        <td><p>The lower bound of the range.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">upperBound</span></td>
-        <td><p>The upper bound of the range.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Empty.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Empty%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L93">View Source</a>
-  </span>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_Empty" data-uid="NpgsqlTypes.NpgsqlRange`1.Empty">Empty</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lowerBound</code> <span class="xref">T</span></dt>
+    <dd><p>The lower bound of the range.</p>
+</dd>
+    <dt><code>upperBound</code> <span class="xref">T</span></dt>
+    <dd><p>The upper bound of the range.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_Empty" data-uid="NpgsqlTypes.NpgsqlRange`1.Empty">
+  Empty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Represents the empty range. This field is read-only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static readonly NpgsqlRange&lt;T&gt; Empty</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_IsEmpty.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.IsEmpty%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L135">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_IsEmpty_" data-uid="NpgsqlTypes.NpgsqlRange`1.IsEmpty*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_IsEmpty" data-uid="NpgsqlTypes.NpgsqlRange`1.IsEmpty">IsEmpty</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_IsEmpty" data-uid="NpgsqlTypes.NpgsqlRange`1.IsEmpty">
+  IsEmpty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L135"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>True if the range is empty; otherwise, false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsEmpty { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBound.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBound%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L98">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBound_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBound*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBound" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBound">LowerBound</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_LowerBound" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBound">
+  LowerBound
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The lower bound of the range. Only valid when <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html#NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite">LowerBoundInfinite</a> is false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T LowerBound { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBoundInfinite%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L125">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundInfinite*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundInfinite">LowerBoundInfinite</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundInfinite">
+  LowerBoundInfinite
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>True if the lower bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool LowerBoundInfinite { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.LowerBoundIsInclusive%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L115">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive_" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundIsInclusive*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundIsInclusive">LowerBoundIsInclusive</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_LowerBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.LowerBoundIsInclusive">
+  LowerBoundIsInclusive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>True if the lower bound is part of the range (i.e. inclusive); otherwise, false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool LowerBoundIsInclusive { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBound.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBound%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L104">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBound_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBound*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBound" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBound">UpperBound</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_UpperBound" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBound">
+  UpperBound
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The upper bound of the range. Only valid when <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html#NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite">UpperBoundInfinite</a> is false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T UpperBound { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBoundInfinite%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L130">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundInfinite*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundInfinite">UpperBoundInfinite</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundInfinite" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundInfinite">
+  UpperBoundInfinite
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>True if the upper bound is indefinite (i.e. infinite or unbounded); otherwise, false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UpperBoundInfinite { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.UpperBoundIsInclusive%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L120">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive_" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundIsInclusive*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundIsInclusive">UpperBoundIsInclusive</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_UpperBoundIsInclusive" data-uid="NpgsqlTypes.NpgsqlRange`1.UpperBoundIsInclusive">
+  UpperBoundIsInclusive
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>True if the upper bound is part of the range (i.e. inclusive); otherwise, false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UpperBoundIsInclusive { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Equals_NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Equals(NpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L304">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_Equals_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_Equals_NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(NpgsqlTypes.NpgsqlRange{`0})">Equals(NpgsqlRange&lt;T&gt;)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_Equals_NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(NpgsqlTypes.NpgsqlRange{`0})">
+  Equals(NpgsqlRange&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L304"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether the current object is equal to another object of the same type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool Equals(NpgsqlRange&lt;T&gt; other)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><span class="parametername">other</span></td>
-        <td><p>An object to compare with this object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Equals_System_Object_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L301">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>other</code> <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>An object to compare with this object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the current object is equal to the <code class="paramref">other</code> parameter; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_Equals_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(System.Object)">Equals(object?)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_Equals_System_Object_" data-uid="NpgsqlTypes.NpgsqlRange`1.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L301"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether this instance and a specified object are equal.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Equals(object? o)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">o</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_GetHashCode.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L329">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>o</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if <code class="paramref">obj</code> and this instance are the same type and represent the same value; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_GetHashCode_" data-uid="NpgsqlTypes.NpgsqlRange`1.GetHashCode*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_GetHashCode" data-uid="NpgsqlTypes.NpgsqlRange`1.GetHashCode">GetHashCode()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_GetHashCode" data-uid="NpgsqlTypes.NpgsqlRange`1.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L329"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the hash code for this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>A 32-bit signed integer that is the hash code for this instance.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_Parse_System_String_.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.Parse(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L378">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A 32-bit signed integer that is the hash code for this instance.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_Parse_" data-uid="NpgsqlTypes.NpgsqlRange`1.Parse*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlRange`1.Parse(System.String)">Parse(string)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String_" data-uid="NpgsqlTypes.NpgsqlRange`1.Parse(System.String)">
+  Parse(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L378"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Parses the well-known text representation of a PostgreSQL range type into a <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlRange&lt;T&gt; Parse(string value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>A PosgreSQL range type in a well-known text format.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> represented by the <code class="paramref">value</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PosgreSQL range type in a well-known text format.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> represented by the <code class="paramref">value</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="NpgsqlTypes_NpgsqlRange_1_Parse_System_String__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/static/rangetypes.html">https://www.postgresql.org/docs/current/static/rangetypes.html</a></p>
 </div>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></td>
-        <td><p>Malformed range literal.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></td>
-        <td><p>Malformed range literal. Missing left parenthesis or bracket.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></td>
-        <td><p>Malformed range literal. Missing right parenthesis or bracket.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></td>
-        <td><p>Malformed range literal. Missing comma after lower bound.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_ToString.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.ToString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L333">View Source</a>
-  </span>
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>Malformed range literal.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>Malformed range literal. Missing left parenthesis or bracket.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>Malformed range literal. Missing right parenthesis or bracket.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.formatexception">FormatException</a></dt>
+    <dd><p>Malformed range literal. Missing comma after lower bound.</p>
+</dd>
+  </dl>
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_ToString_" data-uid="NpgsqlTypes.NpgsqlRange`1.ToString*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_ToString" data-uid="NpgsqlTypes.NpgsqlRange`1.ToString">ToString()</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_ToString" data-uid="NpgsqlTypes.NpgsqlRange`1.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the fully qualified type name of this instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The fully qualified type name.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a></div>
-  <h3 id="operators">Operators
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_op_Equality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.op_Equality(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L288">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The fully qualified type name.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_op_Equality_" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Equality*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_op_Equality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Equality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">operator ==(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_op_Equality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Equality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">
+  operator ==(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L288"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator ==(NpgsqlRange&lt;T&gt; x, NpgsqlRange&lt;T&gt; y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><span class="parametername">x</span></td>
-        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><span class="parametername">y</span></td>
-        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1_op_Inequality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601.op_Inequality(NpgsqlTypes.NpgsqlRange%7B%600%7D%2CNpgsqlTypes.NpgsqlRange%7B%600%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L298">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="NpgsqlTypes_NpgsqlRange_1_op_Inequality_" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Inequality*"></a>
-  <h4 id="NpgsqlTypes_NpgsqlRange_1_op_Inequality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Inequality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">operator !=(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)</h4>
+
+  <h3 id="NpgsqlTypes_NpgsqlRange_1_op_Inequality_NpgsqlTypes_NpgsqlRange__0__NpgsqlTypes_NpgsqlRange__0__" data-uid="NpgsqlTypes.NpgsqlRange`1.op_Inequality(NpgsqlTypes.NpgsqlRange{`0},NpgsqlTypes.NpgsqlRange{`0})">
+  operator !=(NpgsqlRange&lt;T&gt;, NpgsqlRange&lt;T&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L298"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Indicates whether the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is not equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool operator !=(NpgsqlRange&lt;T&gt; x, NpgsqlRange&lt;T&gt; y)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><span class="parametername">x</span></td>
-        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</td>
-        <td><span class="parametername">y</span></td>
-        <td><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is not equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left.</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange</a>&lt;T&gt;</dt>
+    <dd><p>The <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the left is not equal to the <a class="xref" href="NpgsqlTypes.NpgsqlRange-1.html">NpgsqlRange&lt;T&gt;</a> on the right; otherwise, false.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=NpgsqlTypes_NpgsqlRange_1.md&amp;value=---%0Auid%3A%20NpgsqlTypes.NpgsqlRange%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L17" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlTypes/NpgsqlRange.cs/#L17" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,101 +1,125 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PgReader | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PgReader | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class PgReader | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PgReader | Npgsql Documentation ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.Internal.PgReader">
+
+        <article data-uid="Npgsql.Internal.PgReader">
 
 
 
-  <h1 id="Npgsql_Internal_PgReader" data-uid="Npgsql.Internal.PgReader" class="text-break">Class PgReader</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">PgReader</span></div>
+  <h1 id="Npgsql_Internal_PgReader" data-uid="Npgsql.Internal.PgReader" class="text-break">
+Class PgReader  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.Internal.html">Internal</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PgReader</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">PgReader</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -117,1469 +141,1238 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.Internal.html">Internal</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_Internal_PgReader_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PgReader</code></pre>
-  </div>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Current.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Current%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L66">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_Internal_PgReader_Current_" data-uid="Npgsql.Internal.PgReader.Current*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Current" data-uid="Npgsql.Internal.PgReader.Current">Current</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Current" data-uid="Npgsql.Internal.PgReader.Current">
+  Current
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueMetadata Current { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.ValueMetadata.html">ValueMetadata</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_CurrentRemaining.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.CurrentRemaining%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L67">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.Internal.ValueMetadata.html">ValueMetadata</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_CurrentRemaining_" data-uid="Npgsql.Internal.PgReader.CurrentRemaining*"></a>
-  <h4 id="Npgsql_Internal_PgReader_CurrentRemaining" data-uid="Npgsql.Internal.PgReader.CurrentRemaining">CurrentRemaining</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_CurrentRemaining" data-uid="Npgsql.Internal.PgReader.CurrentRemaining">
+  CurrentRemaining
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int CurrentRemaining { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_IsResumed.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.IsResumed%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L74">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_IsResumed_" data-uid="Npgsql.Internal.PgReader.IsResumed*"></a>
-  <h4 id="Npgsql_Internal_PgReader_IsResumed" data-uid="Npgsql.Internal.PgReader.IsResumed">IsResumed</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_IsResumed" data-uid="Npgsql.Internal.PgReader.IsResumed">
+  IsResumed
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsResumed { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_BeginNestedRead_System_Int32_Npgsql_Internal_Size_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.BeginNestedRead(System.Int32%2CNpgsql.Internal.Size)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L526">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_Internal_PgReader_BeginNestedRead_" data-uid="Npgsql.Internal.PgReader.BeginNestedRead*"></a>
-  <h4 id="Npgsql_Internal_PgReader_BeginNestedRead_System_Int32_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.BeginNestedRead(System.Int32,Npgsql.Internal.Size)">BeginNestedRead(int, Size)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_BeginNestedRead_System_Int32_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.BeginNestedRead(System.Int32,Npgsql.Internal.Size)">
+  BeginNestedRead(int, Size)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L526"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NestedReadScope BeginNestedRead(int size, Size bufferRequirement)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.Size.html">Size</a></td>
-        <td><span class="parametername">bufferRequirement</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.NestedReadScope.html">NestedReadScope</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_BeginNestedReadAsync_System_Int32_Npgsql_Internal_Size_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.BeginNestedReadAsync(System.Int32%2CNpgsql.Internal.Size%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L529">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>bufferRequirement</code> <a class="xref" href="Npgsql.Internal.Size.html">Size</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.Internal.NestedReadScope.html">NestedReadScope</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_BeginNestedReadAsync_" data-uid="Npgsql.Internal.PgReader.BeginNestedReadAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_BeginNestedReadAsync_System_Int32_Npgsql_Internal_Size_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BeginNestedReadAsync(System.Int32,Npgsql.Internal.Size,System.Threading.CancellationToken)">BeginNestedReadAsync(int, Size, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_BeginNestedReadAsync_System_Int32_Npgsql_Internal_Size_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BeginNestedReadAsync(System.Int32,Npgsql.Internal.Size,System.Threading.CancellationToken)">
+  BeginNestedReadAsync(int, Size, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L529"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask&lt;NestedReadScope&gt; BeginNestedReadAsync(int size, Size bufferRequirement, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.Size.html">Size</a></td>
-        <td><span class="parametername">bufferRequirement</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="Npgsql.Internal.NestedReadScope.html">NestedReadScope</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Buffer_Npgsql_Internal_Size_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Buffer(Npgsql.Internal.Size)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L775">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>bufferRequirement</code> <a class="xref" href="Npgsql.Internal.Size.html">Size</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="Npgsql.Internal.NestedReadScope.html">NestedReadScope</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_Buffer_" data-uid="Npgsql.Internal.PgReader.Buffer*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Buffer_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.Buffer(Npgsql.Internal.Size)">Buffer(Size)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Buffer_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.Buffer(Npgsql.Internal.Size)">
+  Buffer(Size)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L775"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Buffer(Size bufferRequirement)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.Size.html">Size</a></td>
-        <td><span class="parametername">bufferRequirement</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Buffer_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Buffer(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L777">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bufferRequirement</code> <a class="xref" href="Npgsql.Internal.Size.html">Size</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_Buffer_" data-uid="Npgsql.Internal.PgReader.Buffer*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Buffer_System_Int32_" data-uid="Npgsql.Internal.PgReader.Buffer(System.Int32)">Buffer(int)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Buffer_System_Int32_" data-uid="Npgsql.Internal.PgReader.Buffer(System.Int32)">
+  Buffer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L777"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Buffer(int byteCount)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">byteCount</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_BufferAsync_Npgsql_Internal_Size_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.BufferAsync(Npgsql.Internal.Size%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L779">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byteCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_BufferAsync_" data-uid="Npgsql.Internal.PgReader.BufferAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_BufferAsync_Npgsql_Internal_Size_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BufferAsync(Npgsql.Internal.Size,System.Threading.CancellationToken)">BufferAsync(Size, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_BufferAsync_Npgsql_Internal_Size_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BufferAsync(Npgsql.Internal.Size,System.Threading.CancellationToken)">
+  BufferAsync(Size, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L779"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask BufferAsync(Size bufferRequirement, CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.Size.html">Size</a></td>
-        <td><span class="parametername">bufferRequirement</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_BufferAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.BufferAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L781">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bufferRequirement</code> <a class="xref" href="Npgsql.Internal.Size.html">Size</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_BufferAsync_" data-uid="Npgsql.Internal.PgReader.BufferAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_BufferAsync_System_Int32_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BufferAsync(System.Int32,System.Threading.CancellationToken)">BufferAsync(int, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_BufferAsync_System_Int32_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.BufferAsync(System.Int32,System.Threading.CancellationToken)">
+  BufferAsync(int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L781"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask BufferAsync(int byteCount, CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">byteCount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Consume_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Consume(System.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L556">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byteCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_Consume_" data-uid="Npgsql.Internal.PgReader.Consume*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Consume_System_Nullable_System_Int32__" data-uid="Npgsql.Internal.PgReader.Consume(System.Nullable{System.Int32})">Consume(int?)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Consume_System_Nullable_System_Int32__" data-uid="Npgsql.Internal.PgReader.Consume(System.Nullable{System.Int32})">
+  Consume(int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L556"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Consume(int? count = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ConsumeAsync_System_Nullable_System_Int32__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ConsumeAsync(System.Nullable%7BSystem.Int32%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L557">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ConsumeAsync_" data-uid="Npgsql.Internal.PgReader.ConsumeAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ConsumeAsync_System_Nullable_System_Int32__System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ConsumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)">ConsumeAsync(int?, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ConsumeAsync_System_Nullable_System_Int32__System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ConsumeAsync(System.Nullable{System.Int32},System.Threading.CancellationToken)">
+  ConsumeAsync(int?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L557"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask ConsumeAsync(int? count = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_GetStream_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.GetStream(System.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L187">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_GetStream_" data-uid="Npgsql.Internal.PgReader.GetStream*"></a>
-  <h4 id="Npgsql_Internal_PgReader_GetStream_System_Nullable_System_Int32__" data-uid="Npgsql.Internal.PgReader.GetStream(System.Nullable{System.Int32})">GetStream(int?)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_GetStream_System_Nullable_System_Int32__" data-uid="Npgsql.Internal.PgReader.GetStream(System.Nullable{System.Int32})">
+  GetStream(int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L187"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Stream GetStream(int? length = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">length</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_GetTextReader_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.GetTextReader(System.Text.Encoding)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L206">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>length</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_GetTextReader_" data-uid="Npgsql.Internal.PgReader.GetTextReader*"></a>
-  <h4 id="Npgsql_Internal_PgReader_GetTextReader_System_Text_Encoding_" data-uid="Npgsql.Internal.PgReader.GetTextReader(System.Text.Encoding)">GetTextReader(Encoding)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_GetTextReader_System_Text_Encoding_" data-uid="Npgsql.Internal.PgReader.GetTextReader(System.Text.Encoding)">
+  GetTextReader(Encoding)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TextReader GetTextReader(Encoding encoding)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td><span class="parametername">encoding</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.textreader">TextReader</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_GetTextReaderAsync_System_Text_Encoding_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.GetTextReaderAsync(System.Text.Encoding%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L209">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.textreader">TextReader</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_GetTextReaderAsync_" data-uid="Npgsql.Internal.PgReader.GetTextReaderAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_GetTextReaderAsync_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.GetTextReaderAsync(System.Text.Encoding,System.Threading.CancellationToken)">GetTextReaderAsync(Encoding, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_GetTextReaderAsync_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.GetTextReaderAsync(System.Text.Encoding,System.Threading.CancellationToken)">
+  GetTextReaderAsync(Encoding, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L209"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask&lt;TextReader&gt; GetTextReaderAsync(Encoding encoding, CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td><span class="parametername">encoding</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.textreader">TextReader</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Read_System_Span_System_Byte__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Read(System.Span%7BSystem.Byte%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L167">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.textreader">TextReader</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_Read_" data-uid="Npgsql.Internal.PgReader.Read*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Read_System_Span_System_Byte__" data-uid="Npgsql.Internal.PgReader.Read(System.Span{System.Byte})">Read(Span&lt;byte&gt;)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Read_System_Span_System_Byte__" data-uid="Npgsql.Internal.PgReader.Read(System.Span{System.Byte})">
+  Read(Span&lt;byte&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L167"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Read(Span&lt;byte&gt; destination)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td><span class="parametername">destination</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadByte.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadByte%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L104">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadByte_" data-uid="Npgsql.Internal.PgReader.ReadByte*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadByte" data-uid="Npgsql.Internal.PgReader.ReadByte">ReadByte()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadByte" data-uid="Npgsql.Internal.PgReader.ReadByte">
+  ReadByte()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public byte ReadByte()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadBytes_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadBytes(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L308">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadBytes_" data-uid="Npgsql.Internal.PgReader.ReadBytes*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadBytes_System_Int32_" data-uid="Npgsql.Internal.PgReader.ReadBytes(System.Int32)">ReadBytes(int)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadBytes_System_Int32_" data-uid="Npgsql.Internal.PgReader.ReadBytes(System.Int32)">
+  ReadBytes(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ReadOnlySequence&lt;byte&gt; ReadBytes(int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1">ReadOnlySequence</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadBytes_System_Span_System_Byte__.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadBytes(System.Span%7BSystem.Byte%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L255">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1">ReadOnlySequence</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadBytes_" data-uid="Npgsql.Internal.PgReader.ReadBytes*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadBytes_System_Span_System_Byte__" data-uid="Npgsql.Internal.PgReader.ReadBytes(System.Span{System.Byte})">ReadBytes(Span&lt;byte&gt;)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadBytes_System_Span_System_Byte__" data-uid="Npgsql.Internal.PgReader.ReadBytes(System.Span{System.Byte})">
+  ReadBytes(Span&lt;byte&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L255"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ReadBytes(Span&lt;byte&gt; buffer)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td><span class="parametername">buffer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadBytesAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadBytesAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L326">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadBytesAsync_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadBytesAsync_System_Int32_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync(System.Int32,System.Threading.CancellationToken)">ReadBytesAsync(int, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadBytesAsync_System_Int32_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync(System.Int32,System.Threading.CancellationToken)">
+  ReadBytesAsync(int, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask&lt;ReadOnlySequence&lt;byte&gt;&gt; ReadBytesAsync(int count, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1">ReadOnlySequence</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadBytesAsync_System_Memory_System_Byte__System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadBytesAsync(System.Memory%7BSystem.Byte%7D%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L232">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.buffers.readonlysequence-1">ReadOnlySequence</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadBytesAsync_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadBytesAsync_System_Memory_System_Byte__System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync(System.Memory{System.Byte},System.Threading.CancellationToken)">ReadBytesAsync(Memory&lt;byte&gt;, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadBytesAsync_System_Memory_System_Byte__System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadBytesAsync(System.Memory{System.Byte},System.Threading.CancellationToken)">
+  ReadBytesAsync(Memory&lt;byte&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L232"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask ReadBytesAsync(Memory&lt;byte&gt; buffer, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.memory-1">Memory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td><span class="parametername">buffer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadDouble.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadDouble%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L160">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>buffer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.memory-1">Memory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadDouble_" data-uid="Npgsql.Internal.PgReader.ReadDouble*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadDouble" data-uid="Npgsql.Internal.PgReader.ReadDouble">ReadDouble()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadDouble" data-uid="Npgsql.Internal.PgReader.ReadDouble">
+  ReadDouble()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public double ReadDouble()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadFloat.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadFloat%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L153">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadFloat_" data-uid="Npgsql.Internal.PgReader.ReadFloat*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadFloat" data-uid="Npgsql.Internal.PgReader.ReadFloat">ReadFloat()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadFloat" data-uid="Npgsql.Internal.PgReader.ReadFloat">
+  ReadFloat()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public float ReadFloat()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadInt16.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadInt16%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L111">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadInt16_" data-uid="Npgsql.Internal.PgReader.ReadInt16*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadInt16" data-uid="Npgsql.Internal.PgReader.ReadInt16">ReadInt16()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadInt16" data-uid="Npgsql.Internal.PgReader.ReadInt16">
+  ReadInt16()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public short ReadInt16()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadInt32.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadInt32%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L118">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int16">short</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadInt32_" data-uid="Npgsql.Internal.PgReader.ReadInt32*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadInt32" data-uid="Npgsql.Internal.PgReader.ReadInt32">ReadInt32()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadInt32" data-uid="Npgsql.Internal.PgReader.ReadInt32">
+  ReadInt32()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int ReadInt32()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadInt64.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadInt64%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L125">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadInt64_" data-uid="Npgsql.Internal.PgReader.ReadInt64*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadInt64" data-uid="Npgsql.Internal.PgReader.ReadInt64">ReadInt64()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadInt64" data-uid="Npgsql.Internal.PgReader.ReadInt64">
+  ReadInt64()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public long ReadInt64()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadNullTerminatedString_System_Text_Encoding_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadNullTerminatedString(System.Text.Encoding)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L181">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadNullTerminatedString_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedString*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadNullTerminatedString_System_Text_Encoding_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedString(System.Text.Encoding)">ReadNullTerminatedString(Encoding)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadNullTerminatedString_System_Text_Encoding_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedString(System.Text.Encoding)">
+  ReadNullTerminatedString(Encoding)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L181"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string ReadNullTerminatedString(Encoding encoding)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td><span class="parametername">encoding</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadNullTerminatedStringAsync_System_Text_Encoding_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadNullTerminatedStringAsync(System.Text.Encoding%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L173">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadNullTerminatedStringAsync_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedStringAsync*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadNullTerminatedStringAsync_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedStringAsync(System.Text.Encoding,System.Threading.CancellationToken)">ReadNullTerminatedStringAsync(Encoding, CancellationToken)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadNullTerminatedStringAsync_System_Text_Encoding_System_Threading_CancellationToken_" data-uid="Npgsql.Internal.PgReader.ReadNullTerminatedStringAsync(System.Text.Encoding,System.Threading.CancellationToken)">
+  ReadNullTerminatedStringAsync(Encoding, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L173"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask&lt;string&gt; ReadNullTerminatedStringAsync(Encoding encoding, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></td>
-        <td><span class="parametername">encoding</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadUInt16.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadUInt16%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L132">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>encoding</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.encoding">Encoding</a></dt>
+    <dd></dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadUInt16_" data-uid="Npgsql.Internal.PgReader.ReadUInt16*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadUInt16" data-uid="Npgsql.Internal.PgReader.ReadUInt16">ReadUInt16()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadUInt16" data-uid="Npgsql.Internal.PgReader.ReadUInt16">
+  ReadUInt16()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ushort ReadUInt16()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadUInt32.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadUInt32%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L139">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadUInt32_" data-uid="Npgsql.Internal.PgReader.ReadUInt32*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadUInt32" data-uid="Npgsql.Internal.PgReader.ReadUInt32">ReadUInt32()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadUInt32" data-uid="Npgsql.Internal.PgReader.ReadUInt32">
+  ReadUInt32()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public uint ReadUInt32()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ReadUInt64.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ReadUInt64%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L146">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ReadUInt64_" data-uid="Npgsql.Internal.PgReader.ReadUInt64*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ReadUInt64" data-uid="Npgsql.Internal.PgReader.ReadUInt64">ReadUInt64()</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ReadUInt64" data-uid="Npgsql.Internal.PgReader.ReadUInt64">
+  ReadUInt64()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ulong ReadUInt64()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_Rewind_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.Rewind(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L343">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_Rewind_" data-uid="Npgsql.Internal.PgReader.Rewind*"></a>
-  <h4 id="Npgsql_Internal_PgReader_Rewind_System_Int32_" data-uid="Npgsql.Internal.PgReader.Rewind(System.Int32)">Rewind(int)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_Rewind_System_Int32_" data-uid="Npgsql.Internal.PgReader.Rewind(System.Int32)">
+  Rewind(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L343"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Rewind(int count)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ShouldBuffer_Npgsql_Internal_Size_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ShouldBuffer(Npgsql.Internal.Size)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L755">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ShouldBuffer_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ShouldBuffer_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer(Npgsql.Internal.Size)">ShouldBuffer(Size)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ShouldBuffer_Npgsql_Internal_Size_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer(Npgsql.Internal.Size)">
+  ShouldBuffer(Size)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L755"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ShouldBuffer(Size bufferRequirement)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.Size.html">Size</a></td>
-        <td><span class="parametername">bufferRequirement</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_ShouldBuffer_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.ShouldBuffer(System.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L757">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>bufferRequirement</code> <a class="xref" href="Npgsql.Internal.Size.html">Size</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_ShouldBuffer_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer*"></a>
-  <h4 id="Npgsql_Internal_PgReader_ShouldBuffer_System_Int32_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer(System.Int32)">ShouldBuffer(int)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_ShouldBuffer_System_Int32_" data-uid="Npgsql.Internal.PgReader.ShouldBuffer(System.Int32)">
+  ShouldBuffer(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L757"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool ShouldBuffer(int byteCount)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">byteCount</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlyMemory_System_Byte___.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.TryReadBytes(System.Int32%2CSystem.ReadOnlyMemory%7BSystem.Byte%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L292">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byteCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_TryReadBytes_" data-uid="Npgsql.Internal.PgReader.TryReadBytes*"></a>
-  <h4 id="Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlyMemory_System_Byte___" data-uid="Npgsql.Internal.PgReader.TryReadBytes(System.Int32,System.ReadOnlyMemory{System.Byte}@)">TryReadBytes(int, out ReadOnlyMemory&lt;byte&gt;)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlyMemory_System_Byte___" data-uid="Npgsql.Internal.PgReader.TryReadBytes(System.Int32,System.ReadOnlyMemory{System.Byte}@)">
+  TryReadBytes(int, out ReadOnlyMemory&lt;byte&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryReadBytes(int count, out ReadOnlyMemory&lt;byte&gt; bytes)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td><span class="parametername">bytes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlySpan_System_Byte___.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader.TryReadBytes(System.Int32%2CSystem.ReadOnlySpan%7BSystem.Byte%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L277">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlymemory-1">ReadOnlyMemory</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_Internal_PgReader_TryReadBytes_" data-uid="Npgsql.Internal.PgReader.TryReadBytes*"></a>
-  <h4 id="Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlySpan_System_Byte___" data-uid="Npgsql.Internal.PgReader.TryReadBytes(System.Int32,System.ReadOnlySpan{System.Byte}@)">TryReadBytes(int, out ReadOnlySpan&lt;byte&gt;)</h4>
+
+  <h3 id="Npgsql_Internal_PgReader_TryReadBytes_System_Int32_System_ReadOnlySpan_System_Byte___" data-uid="Npgsql.Internal.PgReader.TryReadBytes(System.Int32,System.ReadOnlySpan{System.Byte}@)">
+  TryReadBytes(int, out ReadOnlySpan&lt;byte&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryReadBytes(int count, out ReadOnlySpan&lt;byte&gt; bytes)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">count</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</td>
-        <td><span class="parametername">bytes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>bytes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.readonlyspan-1">ReadOnlySpan</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_PgReader.md&amp;value=---%0Auid%3A%20Npgsql.Internal.PgReader%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/PgReader.cs/#L13" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

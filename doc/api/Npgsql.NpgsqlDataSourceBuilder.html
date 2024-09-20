@@ -1,106 +1,132 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlDataSourceBuilder | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlDataSourceBuilder | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlDataSourceBuilder | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlDataSourceBuilder | Npgsql Documentation ">
+      
+      <meta name="description" content="Provides a simple API for configuring and creating an , from which database connections can be obtained.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlDataSourceBuilder">
+
+        <article data-uid="Npgsql.NpgsqlDataSourceBuilder">
 
 
 
-  <h1 id="Npgsql_NpgsqlDataSourceBuilder" data-uid="Npgsql.NpgsqlDataSourceBuilder" class="text-break">Class NpgsqlDataSourceBuilder</h1>
-  <div class="markdown level0 summary"><p>Provides a simple API for configuring and creating an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, from which database connections can be obtained.</p>
+  <h1 id="Npgsql_NpgsqlDataSourceBuilder" data-uid="Npgsql.NpgsqlDataSourceBuilder" class="text-break">
+Class NpgsqlDataSourceBuilder  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides a simple API for configuring and creating an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, from which database connections can be obtained.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">NpgsqlDataSourceBuilder</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlDataSourceBuilder : INpgsqlTypeMapper</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NpgsqlDataSourceBuilder</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -119,641 +145,572 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlDataSourceBuilder : INpgsqlTypeMapper</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder__ctor_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.%23ctor(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L78">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder__ctor_" data-uid="Npgsql.NpgsqlDataSourceBuilder.#ctor*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder__ctor_System_String_" data-uid="Npgsql.NpgsqlDataSourceBuilder.#ctor(System.String)">NpgsqlDataSourceBuilder(string?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder__ctor_System_String_" data-uid="Npgsql.NpgsqlDataSourceBuilder.#ctor(System.String)">
+  NpgsqlDataSourceBuilder(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructs a new <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, optionally starting out from the given <code class="paramref">connectionString</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder(string? connectionString = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">connectionString</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_ConnectionString.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.ConnectionString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L50">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>connectionString</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_ConnectionString_" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionString*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_ConnectionString" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionString">ConnectionString</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_ConnectionString" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionString">
+  ConnectionString
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the connection string, as currently configured on the builder.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string ConnectionString { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_ConnectionStringBuilder.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.ConnectionStringBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L45">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_ConnectionStringBuilder_" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionStringBuilder*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_ConnectionStringBuilder" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionStringBuilder">ConnectionStringBuilder</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_ConnectionStringBuilder" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConnectionStringBuilder">
+  ConnectionStringBuilder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>A connection string builder that can be used to configured the connection string on the builder.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlConnectionStringBuilder ConnectionStringBuilder { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_DefaultNameTranslator.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.DefaultNameTranslator%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L36">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_DefaultNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.DefaultNameTranslator*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_DefaultNameTranslator" data-uid="Npgsql.NpgsqlDataSourceBuilder.DefaultNameTranslator">DefaultNameTranslator</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_DefaultNameTranslator" data-uid="Npgsql.NpgsqlDataSourceBuilder.DefaultNameTranslator">
+  DefaultNameTranslator
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L36"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The default name translator to convert CLR type names and member names. Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public INpgsqlNameTranslator DefaultNameTranslator { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_Name.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.Name%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L29">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_Name_" data-uid="Npgsql.NpgsqlDataSourceBuilder.Name*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_Name" data-uid="Npgsql.NpgsqlDataSourceBuilder.Name">Name</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_Name" data-uid="Npgsql.NpgsqlDataSourceBuilder.Name">
+  Name
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>A diagnostics name used by Npgsql when generating tracing, logging and metrics.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string? Name { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_AddTypeInfoResolverFactory_Npgsql_Internal_PgTypeInfoResolverFactory_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.AddTypeInfoResolverFactory(Npgsql.Internal.PgTypeInfoResolverFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L333">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_AddTypeInfoResolverFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.AddTypeInfoResolverFactory*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_AddTypeInfoResolverFactory_Npgsql_Internal_PgTypeInfoResolverFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.AddTypeInfoResolverFactory(Npgsql.Internal.PgTypeInfoResolverFactory)">AddTypeInfoResolverFactory(PgTypeInfoResolverFactory)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_AddTypeInfoResolverFactory_Npgsql_Internal_PgTypeInfoResolverFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.AddTypeInfoResolverFactory(Npgsql.Internal.PgTypeInfoResolverFactory)">
+  AddTypeInfoResolverFactory(PgTypeInfoResolverFactory)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a type info resolver factory which can add or modify support for PostgreSQL types.
 Typically used by plugins.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void AddTypeInfoResolverFactory(PgTypeInfoResolverFactory factory)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.Internal.PgTypeInfoResolverFactory.html">PgTypeInfoResolverFactory</a></td>
-        <td><span class="parametername">factory</span></td>
-        <td><p>The type resolver factory to be added.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_Build.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.Build%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L427">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>factory</code> <a class="xref" href="Npgsql.Internal.PgTypeInfoResolverFactory.html">PgTypeInfoResolverFactory</a></dt>
+    <dd><p>The type resolver factory to be added.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_Build_" data-uid="Npgsql.NpgsqlDataSourceBuilder.Build*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_Build" data-uid="Npgsql.NpgsqlDataSourceBuilder.Build">Build()</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_Build" data-uid="Npgsql.NpgsqlDataSourceBuilder.Build">
+  Build()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Builds and returns an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a> which is ready for use.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSource Build()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_BuildMultiHost.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.BuildMultiHost%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L433">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_BuildMultiHost_" data-uid="Npgsql.NpgsqlDataSourceBuilder.BuildMultiHost*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_BuildMultiHost" data-uid="Npgsql.NpgsqlDataSourceBuilder.BuildMultiHost">BuildMultiHost()</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_BuildMultiHost" data-uid="Npgsql.NpgsqlDataSourceBuilder.BuildMultiHost">
+  BuildMultiHost()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Builds and returns a <a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a> which is ready for use for load-balancing and failover scenarios.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlMultiHostDataSource BuildMultiHost()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_ConfigureJsonOptions_System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions(System.Text.Json.JsonSerializerOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L129">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlMultiHostDataSource.html">NpgsqlMultiHostDataSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_ConfigureJsonOptions_" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_ConfigureJsonOptions_System_Text_Json_JsonSerializerOptions_" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions(System.Text.Json.JsonSerializerOptions)">ConfigureJsonOptions(JsonSerializerOptions)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_ConfigureJsonOptions_System_Text_Json_JsonSerializerOptions_" data-uid="Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions(System.Text.Json.JsonSerializerOptions)">
+  ConfigureJsonOptions(JsonSerializerOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures the JSON serializer options used when reading and writing all System.Text.Json data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder ConfigureJsonOptions(JsonSerializerOptions serializerOptions)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></td>
-        <td><span class="parametername">serializerOptions</span></td>
-        <td><p>Options to customize JSON serialization and deserialization.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_System_Type___System_Type___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.EnableDynamicJson(System.Type%5B%5D%2CSystem.Type%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L148">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>serializerOptions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></dt>
+    <dd><p>Options to customize JSON serialization and deserialization.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableDynamicJson*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_System_Type___System_Type___" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableDynamicJson(System.Type[],System.Type[])">EnableDynamicJson(Type[]?, Type[]?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_System_Type___System_Type___" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableDynamicJson(System.Type[],System.Type[])">
+  EnableDynamicJson(Type[]?, Type[]?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets up dynamic System.Text.Json mappings. This allows mapping arbitrary .NET types to PostgreSQL <code>json</code> and <code>jsonb</code>
 types, as well as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.nodes.jsonnode">JsonNode</a> and its derived types.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder EnableDynamicJson(Type[]? jsonbClrTypes = null, Type[]? jsonClrTypes = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>[]</td>
-        <td><span class="parametername">jsonbClrTypes</span></td>
-        <td><p>A list of CLR types to map to PostgreSQL <code>jsonb</code> (no need to specify <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Jsonb">Jsonb</a>).</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>[]</td>
-        <td><span class="parametername">jsonClrTypes</span></td>
-        <td><p>A list of CLR types to map to PostgreSQL <code>json</code> (no need to specify <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Json">Json</a>).</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_System_Type___System_Type____remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jsonbClrTypes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>[]</dt>
+    <dd><p>A list of CLR types to map to PostgreSQL <code>jsonb</code> (no need to specify <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Jsonb">Jsonb</a>).</p>
+</dd>
+    <dt><code>jsonClrTypes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>[]</dt>
+    <dd><p>A list of CLR types to map to PostgreSQL <code>json</code> (no need to specify <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Json">Json</a>).</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_EnableDynamicJson_System_Type___System_Type____remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Due to the dynamic nature of these mappings, they are not compatible with NativeAOT or trimming.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_EnableParameterLogging_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.EnableParameterLogging(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L118">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_EnableParameterLogging_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableParameterLogging*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_EnableParameterLogging_System_Boolean_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableParameterLogging(System.Boolean)">EnableParameterLogging(bool)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_EnableParameterLogging_System_Boolean_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableParameterLogging(System.Boolean)">
+  EnableParameterLogging(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Enables parameters to be included in logging. This includes potentially sensitive information from data sent to PostgreSQL.
 You should only enable this flag in development, or if you have the appropriate security measures in place based on the
 sensitivity of this data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder EnableParameterLogging(bool parameterLoggingEnabled = true)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">parameterLoggingEnabled</span></td>
-        <td><p>If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, then sensitive data is logged.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_EnableRecordsAsTuples.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.EnableRecordsAsTuples%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L160">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameterLoggingEnabled</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>If <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>, then sensitive data is logged.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_EnableRecordsAsTuples_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableRecordsAsTuples*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_EnableRecordsAsTuples" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableRecordsAsTuples">EnableRecordsAsTuples()</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_EnableRecordsAsTuples" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableRecordsAsTuples">
+  EnableRecordsAsTuples()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L160"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets up mappings for the PostgreSQL <code>record</code> type as a .NET <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetuple">ValueTuple</a> or <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.tuple">Tuple</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder EnableRecordsAsTuples()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_EnableUnmappedTypes.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.EnableUnmappedTypes%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L172">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_EnableUnmappedTypes_" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableUnmappedTypes*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_EnableUnmappedTypes" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableUnmappedTypes">EnableUnmappedTypes()</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_EnableUnmappedTypes" data-uid="Npgsql.NpgsqlDataSourceBuilder.EnableUnmappedTypes">
+  EnableUnmappedTypes()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets up mappings allowing the use of unmapped enum, range and multirange types.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder EnableUnmappedTypes()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.MapComposite(System.Type%2CSystem.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L373">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">MapComposite(Type, string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">
+  MapComposite(Type, string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L373"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Maps a CLR type to a composite type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public INpgsqlTypeMapper MapComposite(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">clrType</span></td>
-        <td><p>The .NET type to be mapped.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding composite type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clrType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The .NET type to be mapped.</p>
+</dd>
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Maps CLR fields and properties by string to PostgreSQL names.
 The translation strategy can be controlled by the <code class="paramref">nameTranslator</code> parameter,
 which defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.
 If there is a discrepancy between the .NET type and database type while a composite is read or written,
 an exception will be raised.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.MapComposite%60%601(System.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L364">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_MapComposite_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">MapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">
+  MapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L364"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Maps a CLR type to a PostgreSQL composite type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public INpgsqlTypeMapper MapComposite&lt;T&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding composite type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The .NET type to be mapped</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The .NET type to be mapped</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_MapComposite__1_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>CLR fields and properties by string to PostgreSQL names.
 The translation strategy can be controlled by the <code class="paramref">nameTranslator</code> parameter,
 which defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.
@@ -761,70 +718,53 @@ You can also use the <a class="xref" href="NpgsqlTypes.PgNameAttribute.html">PgN
 If there is a discrepancy between the .NET type and database type while a composite is read or written,
 an exception will be raised.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_MapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.MapEnum(System.Type%2CSystem.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L353">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">MapEnum(Type, string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">
+  MapEnum(Type, string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Maps a CLR enum to a PostgreSQL enum type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public INpgsqlTypeMapper MapEnum(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">clrType</span></td>
-        <td><p>The .NET enum type to be mapped</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding enum type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clrType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The .NET enum type to be mapped</p>
+</dd>
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>CLR enum labels are mapped by name to PostgreSQL enum labels.
 The translation strategy can be controlled by the <code class="paramref">nameTranslator</code> parameter,
 which defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.
@@ -832,80 +772,56 @@ You can also use the <a class="xref" href="NpgsqlTypes.PgNameAttribute.html">PgN
 If there is a discrepancy between the .NET and database labels while an enum is read or written,
 an exception will be raised.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.MapEnum%60%601(System.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L340">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_MapEnum_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">MapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.MapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">
+  MapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L340"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Maps a CLR enum to a PostgreSQL enum type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public INpgsqlTypeMapper MapEnum&lt;TEnum&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null) where TEnum : struct, Enum</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding enum type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEnum</span></td>
-        <td><p>The .NET enum type to be mapped</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEnum</code></dt>
+    <dd><p>The .NET enum type to be mapped</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_MapEnum__1_System_String_Npgsql_INpgsqlNameTranslator__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>CLR enum labels are mapped by name to PostgreSQL enum labels.
 The translation strategy can be controlled by the <code class="paramref">nameTranslator</code> parameter,
 which defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a>.
@@ -913,429 +829,314 @@ You can also use the <a class="xref" href="NpgsqlTypes.PgNameAttribute.html">PgN
 If there is a discrepancy between the .NET and database labels while an enum is read or written,
 an exception will be raised.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UnmapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UnmapComposite(System.Type%2CSystem.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L388">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite(Type, string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">
+  UnmapComposite(Type, string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes an existing composite mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UnmapComposite(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">clrType</span></td>
-        <td><p>The .NET type to be unmapped.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding composite type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clrType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The .NET type to be unmapped.</p>
+</dd>
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UnmapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UnmapComposite%60%601(System.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L382">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UnmapComposite__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapComposite``1(System.String,Npgsql.INpgsqlNameTranslator)">
+  UnmapComposite&lt;T&gt;(string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L382"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes an existing composite mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UnmapComposite&lt;T&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding composite type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding composite type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.NameTranslation.NpgsqlSnakeCaseNameTranslator.html">NpgsqlSnakeCaseNameTranslator</a></p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UnmapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UnmapEnum(System.Type%2CSystem.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L359">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">UnmapEnum(Type, string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum_System_Type_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum(System.Type,System.String,Npgsql.INpgsqlNameTranslator)">
+  UnmapEnum(Type, string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L359"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes an existing enum mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UnmapEnum(Type clrType, string? pgName = null, INpgsqlNameTranslator? nameTranslator = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">clrType</span></td>
-        <td><p>The .NET enum type to be mapped</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding enum type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clrType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The .NET enum type to be mapped</p>
+</dd>
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UnmapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UnmapEnum%60%601(System.String%2CNpgsql.INpgsqlNameTranslator)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L348">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">UnmapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UnmapEnum__1_System_String_Npgsql_INpgsqlNameTranslator_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UnmapEnum``1(System.String,Npgsql.INpgsqlNameTranslator)">
+  UnmapEnum&lt;TEnum&gt;(string?, INpgsqlNameTranslator?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L348"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes an existing enum mapping.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool UnmapEnum&lt;TEnum&gt;(string? pgName = null, INpgsqlNameTranslator? nameTranslator = null) where TEnum : struct, Enum</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">pgName</span></td>
-        <td><p>A PostgreSQL type name for the corresponding enum type in the database.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pgName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A PostgreSQL type name for the corresponding enum type in the database.
 If null, the name translator given in <code class="paramref">nameTranslator</code> will be used.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></td>
-        <td><span class="parametername">nameTranslator</span></td>
-        <td><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
+</dd>
+    <dt><code>nameTranslator</code> <a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></dt>
+    <dd><p>A component which will be used to translate CLR names (e.g. SomeClass) into database names (e.g. some_class).
 Defaults to <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_DefaultNameTranslator">DefaultNameTranslator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TEnum</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L208">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TEnum</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificate*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)">UseClientCertificate(X509Certificate?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificate(System.Security.Cryptography.X509Certificates.X509Certificate)">
+  UseClientCertificate(X509Certificate?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies an SSL/TLS certificate which Npgsql will send to PostgreSQL for certificate-based authentication.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseClientCertificate(X509Certificate? clientCertificate)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate">X509Certificate</a></td>
-        <td><span class="parametername">clientCertificate</span></td>
-        <td><p>The client certificate to be sent to PostgreSQL when opening a connection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseClientCertificates(System.Security.Cryptography.X509Certificates.X509CertificateCollection)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L219">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clientCertificate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate">X509Certificate</a></dt>
+    <dd><p>The client certificate to be sent to PostgreSQL when opening a connection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificates*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificates(System.Security.Cryptography.X509Certificates.X509CertificateCollection)">UseClientCertificates(X509CertificateCollection?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificates(System.Security.Cryptography.X509Certificates.X509CertificateCollection)">
+  UseClientCertificates(X509CertificateCollection?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L219"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies a collection of SSL/TLS certificates which Npgsql will send to PostgreSQL for certificate-based authentication.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseClientCertificates(X509CertificateCollection? clientCertificates)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificatecollection">X509CertificateCollection</a></td>
-        <td><span class="parametername">clientCertificates</span></td>
-        <td><p>The client certificate collection to be sent to PostgreSQL when opening a connection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseClientCertificatesCallback(System.Action%7BSystem.Security.Cryptography.X509Certificates.X509CertificateCollection%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L242">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clientCertificates</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificatecollection">X509CertificateCollection</a></dt>
+    <dd><p>The client certificate collection to be sent to PostgreSQL when opening a connection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificatesCallback*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificatesCallback(System.Action{System.Security.Cryptography.X509Certificates.X509CertificateCollection})">UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseClientCertificatesCallback(System.Action{System.Security.Cryptography.X509Certificates.X509CertificateCollection})">
+  UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies a callback to modify the collection of SSL/TLS client certificates which Npgsql will send to PostgreSQL for
 certificate-based authentication. This is an advanced API, consider using <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificate_System_Security_Cryptography_X509Certificates_X509Certificate_">UseClientCertificate(X509Certificate?)</a> or
 <a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseClientCertificates_System_Security_Cryptography_X509Certificates_X509CertificateCollection_">UseClientCertificates(X509CertificateCollection?)</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseClientCertificatesCallback(Action&lt;X509CertificateCollection&gt;? clientCertificatesCallback)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificatecollection">X509CertificateCollection</a>&gt;</td>
-        <td><span class="parametername">clientCertificatesCallback</span></td>
-        <td><p>The callback to modify the client certificate collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection___remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>clientCertificatesCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificatecollection">X509CertificateCollection</a>&gt;</dt>
+    <dd><p>The callback to modify the client certificate collection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UseClientCertificatesCallback_System_Action_System_Security_Cryptography_X509Certificates_X509CertificateCollection___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>
 The callback is invoked every time a physical connection is opened, and is therefore suitable for rotating short-lived client
 certificates. Simply make sure the certificate collection argument has the up-to-date certificate(s).
@@ -1345,183 +1146,141 @@ The callback's collection argument already includes any client certificates spec
 variables.
 </p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseLoggerFactory_Microsoft_Extensions_Logging_ILoggerFactory_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L105">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseLoggerFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseLoggerFactory*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseLoggerFactory_Microsoft_Extensions_Logging_ILoggerFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)">UseLoggerFactory(ILoggerFactory?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseLoggerFactory_Microsoft_Extensions_Logging_ILoggerFactory_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseLoggerFactory(Microsoft.Extensions.Logging.ILoggerFactory)">
+  UseLoggerFactory(ILoggerFactory?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets the <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory">ILoggerFactory</a> that will be used for logging.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseLoggerFactory(ILoggerFactory? loggerFactory)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory">ILoggerFactory</a></td>
-        <td><span class="parametername">loggerFactory</span></td>
-        <td><p>The logger factory to be used.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_String__System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider(System.Func%7BNpgsql.NpgsqlConnectionStringBuilder%2CSystem.String%7D%2CSystem.Func%7BNpgsql.NpgsqlConnectionStringBuilder%2CSystem.Threading.CancellationToken%2CSystem.Threading.Tasks.ValueTask%7BSystem.String%7D%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L320">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loggerFactory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory">ILoggerFactory</a></dt>
+    <dd><p>The logger factory to be used.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_String__System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider(System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.String},System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">UsePasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, string&gt;?, Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_String__System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider(System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.String},System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}})">
+  UsePasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, string&gt;?, Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L320"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures a password provider, which is called by the data source when opening connections.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UsePasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, string&gt;? passwordProvider, Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;? passwordProviderAsync)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td><span class="parametername">passwordProvider</span></td>
-        <td><p>A callback that may be invoked during <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open">Open()</a> which returns the password to be sent to PostgreSQL.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
-        <td><span class="parametername">passwordProviderAsync</span></td>
-        <td><p>A callback that may be invoked during <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_OpenAsync_System_Threading_CancellationToken_">OpenAsync(CancellationToken)</a> which returns the password to be sent to PostgreSQL.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_String__System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String____remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>passwordProvider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>A callback that may be invoked during <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open">Open()</a> which returns the password to be sent to PostgreSQL.</p>
+</dd>
+    <dt><code>passwordProviderAsync</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>A callback that may be invoked during <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_OpenAsync_System_Threading_CancellationToken_">OpenAsync(CancellationToken)</a> which returns the password to be sent to PostgreSQL.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_String__System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String____remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>
 The provided callback is invoked when opening connections. Therefore its important the callback internally depends on cached
 data or returns quickly otherwise. Any unnecessary delay will affect connection opening time.
 </p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___System_TimeSpan_System_TimeSpan_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UsePeriodicPasswordProvider(System.Func%7BNpgsql.NpgsqlConnectionStringBuilder%2CSystem.Threading.CancellationToken%2CSystem.Threading.Tasks.ValueTask%7BSystem.String%7D%7D%2CSystem.TimeSpan%2CSystem.TimeSpan)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L295">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePeriodicPasswordProvider*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___System_TimeSpan_System_TimeSpan_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePeriodicPasswordProvider(System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}},System.TimeSpan,System.TimeSpan)">UsePeriodicPasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;?, TimeSpan, TimeSpan)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___System_TimeSpan_System_TimeSpan_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePeriodicPasswordProvider(System.Func{Npgsql.NpgsqlConnectionStringBuilder,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask{System.String}},System.TimeSpan,System.TimeSpan)">
+  UsePeriodicPasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;?, TimeSpan, TimeSpan)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Configures a periodic password provider, which is automatically called by the data source at some regular interval. This is the
 recommended way to fetch a rotating access token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UsePeriodicPasswordProvider(Func&lt;NpgsqlConnectionStringBuilder, CancellationToken, ValueTask&lt;string&gt;&gt;? passwordProvider, TimeSpan successRefreshInterval, TimeSpan failureRefreshInterval)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</td>
-        <td><span class="parametername">passwordProvider</span></td>
-        <td><p>A callback which returns the password to be sent to PostgreSQL.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td><span class="parametername">successRefreshInterval</span></td>
-        <td><p>How long to cache the password before re-invoking the callback.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td><span class="parametername">failureRefreshInterval</span></td>
-        <td><p>If a password refresh attempt fails, it will be re-attempted with this interval.
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>passwordProvider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnectionStringBuilder.html">NpgsqlConnectionStringBuilder</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd><p>A callback which returns the password to be sent to PostgreSQL.</p>
+</dd>
+    <dt><code>successRefreshInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>How long to cache the password before re-invoking the callback.</p>
+</dd>
+    <dt><code>failureRefreshInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>If a password refresh attempt fails, it will be re-attempted with this interval.
 This should typically be much lower than <code class="paramref">successRefreshInterval</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___System_TimeSpan_System_TimeSpan__remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UsePeriodicPasswordProvider_System_Func_Npgsql_NpgsqlConnectionStringBuilder_System_Threading_CancellationToken_System_Threading_Tasks_ValueTask_System_String___System_TimeSpan_System_TimeSpan__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>
 The provided callback is invoked in a timer, and not when opening connections. It therefore doesn't affect opening time.
 </p>
@@ -1530,225 +1289,178 @@ The provided cancellation token is only triggered when the entire data source is
 token fetching, do so within the provided callback.
 </p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_System_Action_Npgsql_NpgsqlConnection__System_Func_Npgsql_NpgsqlConnection_System_Threading_Tasks_Task__.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UsePhysicalConnectionInitializer(System.Action%7BNpgsql.NpgsqlConnection%7D%2CSystem.Func%7BNpgsql.NpgsqlConnection%2CSystem.Threading.Tasks.Task%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L416">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePhysicalConnectionInitializer*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_System_Action_Npgsql_NpgsqlConnection__System_Func_Npgsql_NpgsqlConnection_System_Threading_Tasks_Task__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePhysicalConnectionInitializer(System.Action{Npgsql.NpgsqlConnection},System.Func{Npgsql.NpgsqlConnection,System.Threading.Tasks.Task})">UsePhysicalConnectionInitializer(Action&lt;NpgsqlConnection&gt;?, Func&lt;NpgsqlConnection, Task&gt;?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_System_Action_Npgsql_NpgsqlConnection__System_Func_Npgsql_NpgsqlConnection_System_Threading_Tasks_Task__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UsePhysicalConnectionInitializer(System.Action{Npgsql.NpgsqlConnection},System.Func{Npgsql.NpgsqlConnection,System.Threading.Tasks.Task})">
+  UsePhysicalConnectionInitializer(Action&lt;NpgsqlConnection&gt;?, Func&lt;NpgsqlConnection, Task&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Register a connection initializer, which allows executing arbitrary commands when a physical database connection is first opened.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UsePhysicalConnectionInitializer(Action&lt;NpgsqlConnection&gt;? connectionInitializer, Func&lt;NpgsqlConnection, Task&gt;? connectionInitializerAsync)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>&gt;</td>
-        <td><span class="parametername">connectionInitializer</span></td>
-        <td><p>A synchronous connection initialization lambda, which will be called from <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open">Open()</a> when a new physical
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>connectionInitializer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>&gt;</dt>
+    <dd><p>A synchronous connection initialization lambda, which will be called from <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open">Open()</a> when a new physical
 connection is opened.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>&gt;</td>
-        <td><span class="parametername">connectionInitializerAsync</span></td>
-        <td><p>An asynchronous connection initialization lambda, which will be called from
+</dd>
+    <dt><code>connectionInitializerAsync</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a>&gt;</dt>
+    <dd><p>An asynchronous connection initialization lambda, which will be called from
 <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_OpenAsync_System_Threading_CancellationToken_">OpenAsync(CancellationToken)</a> when a new physical connection is opened.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_System_Action_Npgsql_NpgsqlConnection__System_Func_Npgsql_NpgsqlConnection_System_Threading_Tasks_Task___remarks">Remarks</h5>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UsePhysicalConnectionInitializer_System_Action_Npgsql_NpgsqlConnection__System_Func_Npgsql_NpgsqlConnection_System_Threading_Tasks_Task___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>If an initializer is registered, both sync and async versions must be provided. If you do not use sync APIs in your code, simply
 throw <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.notsupportedexception">NotSupportedException</a>, which would also catch accidental cases of sync opening.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseRootCertificate_System_Security_Cryptography_X509Certificates_X509Certificate2_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L253">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificate_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificate_System_Security_Cryptography_X509Certificates_X509Certificate2_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)">UseRootCertificate(X509Certificate2?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificate_System_Security_Cryptography_X509Certificates_X509Certificate2_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+  UseRootCertificate(X509Certificate2?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L253"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a> that will be used validate SSL certificate, received from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseRootCertificate(X509Certificate2? rootCertificate)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a></td>
-        <td><span class="parametername">rootCertificate</span></td>
-        <td><p>The CA certificate.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_System_Func_System_Security_Cryptography_X509Certificates_X509Certificate2__.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseRootCertificateCallback(System.Func%7BSystem.Security.Cryptography.X509Certificates.X509Certificate2%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L269">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rootCertificate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a></dt>
+    <dd><p>The CA certificate.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificateCallback*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_System_Func_System_Security_Cryptography_X509Certificates_X509Certificate2__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificateCallback(System.Func{System.Security.Cryptography.X509Certificates.X509Certificate2})">UseRootCertificateCallback(Func&lt;X509Certificate2&gt;?)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_System_Func_System_Security_Cryptography_X509Certificates_X509Certificate2__" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseRootCertificateCallback(System.Func{System.Security.Cryptography.X509Certificates.X509Certificate2})">
+  UseRootCertificateCallback(Func&lt;X509Certificate2&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Specifies a callback that will be used to validate SSL certificate, received from the server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseRootCertificateCallback(Func&lt;X509Certificate2&gt;? rootCertificateCallback)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a>&gt;</td>
-        <td><span class="parametername">rootCertificateCallback</span></td>
-        <td><p>The callback to get CA certificate.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_System_Func_System_Security_Cryptography_X509Certificates_X509Certificate2___remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rootCertificateCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-1">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.security.cryptography.x509certificates.x509certificate2">X509Certificate2</a>&gt;</dt>
+    <dd><p>The callback to get CA certificate.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UseRootCertificateCallback_System_Func_System_Security_Cryptography_X509Certificates_X509Certificate2___remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This overload, which accepts a callback, is suitable for scenarios where the certificate rotates
 and might change during the lifetime of the application.
 When that's not the case, use the overload which directly accepts the certificate.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(System.Net.Security.RemoteCertificateValidationCallback)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L197">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback*"></a>
-  <h4 id="Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(System.Net.Security.RemoteCertificateValidationCallback)">UseUserCertificateValidationCallback(RemoteCertificateValidationCallback)</h4>
+
+  <h3 id="Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback_" data-uid="Npgsql.NpgsqlDataSourceBuilder.UseUserCertificateValidationCallback(System.Net.Security.RemoteCertificateValidationCallback)">
+  UseUserCertificateValidationCallback(RemoteCertificateValidationCallback)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>When using SSL/TLS, this is a callback that allows customizing how the PostgreSQL-provided certificate is verified. This is an
 advanced API, consider using <a class="xref" href="Npgsql.SslMode.html#Npgsql_SslMode_VerifyFull">VerifyFull</a> or <a class="xref" href="Npgsql.SslMode.html#Npgsql_SslMode_VerifyCA">VerifyCA</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataSourceBuilder UseUserCertificateValidationCallback(RemoteCertificateValidationCallback userCertificateValidationCallback)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.security.remotecertificatevalidationcallback">RemoteCertificateValidationCallback</a></td>
-        <td><span class="parametername">userCertificateValidationCallback</span></td>
-        <td><p>The callback containing custom callback verification logic.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></td>
-        <td><p>The same builder instance so that multiple calls can be chained.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userCertificateValidationCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.security.remotecertificatevalidationcallback">RemoteCertificateValidationCallback</a></dt>
+    <dd><p>The callback containing custom callback verification logic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></dt>
+    <dd><p>The same builder instance so that multiple calls can be chained.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlDataSourceBuilder_UseUserCertificateValidationCallback_System_Net_Security_RemoteCertificateValidationCallback__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>
 Cannot be used in conjunction with <a class="xref" href="Npgsql.SslMode.html#Npgsql_SslMode_Disable">Disable</a>, <a class="xref" href="Npgsql.SslMode.html#Npgsql_SslMode_VerifyCA">VerifyCA</a> or
 <a class="xref" href="Npgsql.SslMode.html#Npgsql_SslMode_VerifyFull">VerifyFull</a>.
@@ -1757,51 +1469,33 @@ Cannot be used in conjunction with <a class="xref" href="Npgsql.SslMode.html#Npg
 See <a href="https://msdn.microsoft.com/en-us/library/system.net.security.remotecertificatevalidationcallback(v=vs.110).aspx">https://msdn.microsoft.com/en-us/library/system.net.security.remotecertificatevalidationcallback(v=vs.110).aspx</a>.
 </p>
 </div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a>
-  </div>
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlDataSourceBuilder.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlDataSourceBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L20" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlDataSourceBuilder.cs/#L20" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

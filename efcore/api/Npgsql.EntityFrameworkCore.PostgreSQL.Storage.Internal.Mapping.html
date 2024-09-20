@@ -1,485 +1,607 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping | Npgsql Documentation ">
+      
+      
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping">
 
   <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping" class="text-break">Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
+
     <h3 id="classes">
 Classes
 </h3>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlArrayTypeMapping.html">NpgsqlArrayTypeMapping</a></h4>
-      <section><p>Type mapping for PostgreSQL arrays.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlArrayTypeMapping-3.html">NpgsqlArrayTypeMapping&lt;TCollection, TConcreteCollection, TElement&gt;</a></h4>
-      <section><p>Type mapping for PostgreSQL arrays.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBigIntegerTypeMapping.html">NpgsqlBigIntegerTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlArrayTypeMapping.html">NpgsqlArrayTypeMapping</a></dt>
+      <dd><p>Type mapping for PostgreSQL arrays.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlArrayTypeMapping-3.html">NpgsqlArrayTypeMapping&lt;TCollection, TConcreteCollection, TElement&gt;</a></dt>
+      <dd><p>Type mapping for PostgreSQL arrays.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBigIntegerTypeMapping.html">NpgsqlBigIntegerTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBigIntegerTypeMapping.JsonBigIntegerReaderWriter.html">NpgsqlBigIntegerTypeMapping.JsonBigIntegerReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBigIntegerTypeMapping.JsonBigIntegerReaderWriter.html">NpgsqlBigIntegerTypeMapping.JsonBigIntegerReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBitTypeMapping.html">NpgsqlBitTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL bit string type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoolTypeMapping.html">NpgsqlBoolTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBitTypeMapping.html">NpgsqlBitTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL bit string type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoolTypeMapping.html">NpgsqlBoolTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoxTypeMapping.html">NpgsqlBoxTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlBoxTypeMapping.html">NpgsqlBoxTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlByteArrayTypeMapping.html">NpgsqlByteArrayTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlByteArrayTypeMapping.html">NpgsqlByteArrayTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterCharTypeMapping.html">NpgsqlCharacterCharTypeMapping</a></h4>
-      <section><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.html">NpgsqlCharacterStringTypeMapping</a></h4>
-      <section><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCidrTypeMapping.html">NpgsqlCidrTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL cidr type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCidrTypeMapping.JsonCidrReaderWriter.html">NpgsqlCidrTypeMapping.JsonCidrReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterCharTypeMapping.html">NpgsqlCharacterCharTypeMapping</a></dt>
+      <dd><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.html">NpgsqlCharacterStringTypeMapping</a></dt>
+      <dd><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCidrTypeMapping.html">NpgsqlCidrTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL cidr type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCidrTypeMapping.JsonCidrReaderWriter.html">NpgsqlCidrTypeMapping.JsonCidrReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCircleTypeMapping.html">NpgsqlCircleTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCircleTypeMapping.html">NpgsqlCircleTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateOnlyTypeMapping.html">NpgsqlDateOnlyTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateOnlyTypeMapping.html">NpgsqlDateOnlyTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateOnlyTypeMapping.NpgsqlJsonDateOnlyReaderWriter.html">NpgsqlDateOnlyTypeMapping.NpgsqlJsonDateOnlyReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateOnlyTypeMapping.NpgsqlJsonDateOnlyReaderWriter.html">NpgsqlDateOnlyTypeMapping.NpgsqlJsonDateOnlyReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateTimeDateTypeMapping.html">NpgsqlDateTimeDateTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateTimeDateTypeMapping.html">NpgsqlDateTimeDateTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateTimeDateTypeMapping.NpgsqlJsonDateTimeReaderWriter.html">NpgsqlDateTimeDateTypeMapping.NpgsqlJsonDateTimeReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDateTimeDateTypeMapping.NpgsqlJsonDateTimeReaderWriter.html">NpgsqlDateTimeDateTypeMapping.NpgsqlJsonDateTimeReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDecimalTypeMapping.html">NpgsqlDecimalTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDecimalTypeMapping.html">NpgsqlDecimalTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDoubleTypeMapping.html">NpgsqlDoubleTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlDoubleTypeMapping.html">NpgsqlDoubleTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEStringTypeMapping.html">NpgsqlEStringTypeMapping</a></h4>
-      <section><p>Represents a so-called PostgreSQL E-string literal string, which allows C-style escape sequences.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEStringTypeMapping.html">NpgsqlEStringTypeMapping</a></dt>
+      <dd><p>Represents a so-called PostgreSQL E-string literal string, which allows C-style escape sequences.
 This is a &quot;virtual&quot; type mapping which is never returned by <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.html">NpgsqlTypeMappingSource</a>.
 It is only used internally by some method translators to produce literal strings.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEnumTypeMapping.html">NpgsqlEnumTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEnumTypeMapping.html">NpgsqlEnumTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEnumTypeMapping.JsonPgEnumReaderWriter-1.html">NpgsqlEnumTypeMapping.JsonPgEnumReaderWriter&lt;T&gt;</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEnumTypeMapping.JsonPgEnumReaderWriter-1.html">NpgsqlEnumTypeMapping.JsonPgEnumReaderWriter&lt;T&gt;</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlFloatTypeMapping.html">NpgsqlFloatTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlFloatTypeMapping.html">NpgsqlFloatTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlHstoreTypeMapping.html">NpgsqlHstoreTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL hstore type. Supports both <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlHstoreTypeMapping.html">NpgsqlHstoreTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL hstore type. Supports both <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary&lt;TKey, TValue&gt;</a>
 and <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutabledictionary-2">ImmutableDictionary&lt;TKey, TValue&gt;</a> over strings.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.html">NpgsqlInetTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL inet type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.JsonIPAddressReaderWriter.html">NpgsqlInetTypeMapping.JsonIPAddressReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.html">NpgsqlInetTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL inet type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.JsonIPAddressReaderWriter.html">NpgsqlInetTypeMapping.JsonIPAddressReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.JsonNpgsqlInetReaderWriter.html">NpgsqlInetTypeMapping.JsonNpgsqlInetReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlInetTypeMapping.JsonNpgsqlInetReaderWriter.html">NpgsqlInetTypeMapping.JsonNpgsqlInetReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlIntervalTypeMapping.html">NpgsqlIntervalTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlIntervalTypeMapping.html">NpgsqlIntervalTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlIntervalTypeMapping.NpgsqlJsonTimeSpanReaderWriter.html">NpgsqlIntervalTypeMapping.NpgsqlJsonTimeSpanReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlIntervalTypeMapping.NpgsqlJsonTimeSpanReaderWriter.html">NpgsqlIntervalTypeMapping.NpgsqlJsonTimeSpanReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonTypeMapping.html">NpgsqlJsonTypeMapping</a></h4>
-      <section><p>Supports the older Npgsql-specific JSON mapping, allowing mapping json/jsonb to text, to e.g.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonTypeMapping.html">NpgsqlJsonTypeMapping</a></dt>
+      <dd><p>Supports the older Npgsql-specific JSON mapping, allowing mapping json/jsonb to text, to e.g.
 <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> (weakly-typed mapping) or to arbitrary POCOs (but without them being modeled).
 For the standard EF JSON support, which relies on owned entity modeling, see <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlOwnedJsonTypeMapping.html">NpgsqlOwnedJsonTypeMapping</a>.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLTreeTypeMapping.html">NpgsqlLTreeTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLTreeTypeMapping.html">NpgsqlLTreeTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLTreeTypeMapping.JsonLTreeReaderWriter.html">NpgsqlLTreeTypeMapping.JsonLTreeReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLTreeTypeMapping.JsonLTreeReaderWriter.html">NpgsqlLTreeTypeMapping.JsonLTreeReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineSegmentTypeMapping.html">NpgsqlLineSegmentTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineSegmentTypeMapping.html">NpgsqlLineSegmentTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineTypeMapping.html">NpgsqlLineTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlLineTypeMapping.html">NpgsqlLineTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMacaddr8TypeMapping.html">NpgsqlMacaddr8TypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL macaddr8 type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMacaddrTypeMapping.html">NpgsqlMacaddrTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL macaddr type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMoneyTypeMapping.html">NpgsqlMoneyTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMacaddr8TypeMapping.html">NpgsqlMacaddr8TypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL macaddr8 type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMacaddrTypeMapping.html">NpgsqlMacaddrTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL macaddr type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMoneyTypeMapping.html">NpgsqlMoneyTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMultirangeTypeMapping.html">NpgsqlMultirangeTypeMapping</a></h4>
-      <section><p>The type mapping for PostgreSQL multirange types.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlOwnedJsonTypeMapping.html">NpgsqlOwnedJsonTypeMapping</a></h4>
-      <section><p>Supports the standard EF JSON support, which relies on owned entity modeling.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlMultirangeTypeMapping.html">NpgsqlMultirangeTypeMapping</a></dt>
+      <dd><p>The type mapping for PostgreSQL multirange types.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlOwnedJsonTypeMapping.html">NpgsqlOwnedJsonTypeMapping</a></dt>
+      <dd><p>Supports the standard EF JSON support, which relies on owned entity modeling.
 See <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlJsonTypeMapping.html">NpgsqlJsonTypeMapping</a> for the older Npgsql-specific support, which allows mapping json/jsonb to text, to e.g.
 <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> (weakly-typed mapping) or to arbitrary POCOs (but without them being modeled).</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPathTypeMapping.html">NpgsqlPathTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPathTypeMapping.html">NpgsqlPathTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPgLsnTypeMapping.html">NpgsqlPgLsnTypeMapping</a></h4>
-      <section><p>The type mapping for the PostgreSQL pg_lsn type.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPgLsnTypeMapping.JsonLogSequenceNumberReaderWriter.html">NpgsqlPgLsnTypeMapping.JsonLogSequenceNumberReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPgLsnTypeMapping.html">NpgsqlPgLsnTypeMapping</a></dt>
+      <dd><p>The type mapping for the PostgreSQL pg_lsn type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPgLsnTypeMapping.JsonLogSequenceNumberReaderWriter.html">NpgsqlPgLsnTypeMapping.JsonLogSequenceNumberReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPointTypeMapping.html">NpgsqlPointTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPointTypeMapping.html">NpgsqlPointTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPolygonTypeMapping.html">NpgsqlPolygonTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlPolygonTypeMapping.html">NpgsqlPolygonTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRangeTypeMapping.html">NpgsqlRangeTypeMapping</a></h4>
-      <section><p>The type mapping for PostgreSQL range types.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRegconfigTypeMapping.html">NpgsqlRegconfigTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRangeTypeMapping.html">NpgsqlRangeTypeMapping</a></dt>
+      <dd><p>The type mapping for PostgreSQL range types.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRegconfigTypeMapping.html">NpgsqlRegconfigTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRegdictionaryTypeMapping.html">NpgsqlRegdictionaryTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRegdictionaryTypeMapping.html">NpgsqlRegdictionaryTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRowValueTypeMapping.html">NpgsqlRowValueTypeMapping</a></h4>
-      <section><p>TODO: Update
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlRowValueTypeMapping.html">NpgsqlRowValueTypeMapping</a></dt>
+      <dd><p>TODO: Update
 Every node in the SQL tree must have a type mapping, but row values aren't actual values (in the sense that they can be sent as
 parameters, or have a literal representation). So we have a dummy type mapping for that.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html">NpgsqlStringTypeMapping</a></h4>
-      <section><p>The base class for mapping Npgsql-specific string types. It configures parameters with the
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html">NpgsqlStringTypeMapping</a></dt>
+      <dd><p>The base class for mapping Npgsql-specific string types. It configures parameters with the
 <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlStringTypeMapping_NpgsqlDbType">NpgsqlDbType</a> provider-specific type enum.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTidTypeMapping.html">NpgsqlTidTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTidTypeMapping.html">NpgsqlTidTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTypeMapping.html">NpgsqlTimeTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTypeMapping.html">NpgsqlTimeTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTzTypeMapping.html">NpgsqlTimeTzTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTzTypeMapping.html">NpgsqlTimeTzTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTzTypeMapping.JsonTimeTzReaderWriter.html">NpgsqlTimeTzTypeMapping.JsonTimeTzReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimeTzTypeMapping.JsonTimeTzReaderWriter.html">NpgsqlTimeTzTypeMapping.JsonTimeTzReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTypeMapping.html">NpgsqlTimestampTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTypeMapping.html">NpgsqlTimestampTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTypeMapping.NpgsqlJsonTimestampReaderWriter.html">NpgsqlTimestampTypeMapping.NpgsqlJsonTimestampReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTypeMapping.NpgsqlJsonTimestampReaderWriter.html">NpgsqlTimestampTypeMapping.NpgsqlJsonTimestampReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.html">NpgsqlTimestampTzTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.html">NpgsqlTimestampTzTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeOffsetReaderWriter.html">NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeOffsetReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeOffsetReaderWriter.html">NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeOffsetReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeReaderWriter.html">NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeReaderWriter</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeReaderWriter.html">NpgsqlTimestampTzTypeMapping.NpgsqlJsonTimestampTzDateTimeReaderWriter</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsQueryTypeMapping.html">NpgsqlTsQueryTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsQueryTypeMapping.html">NpgsqlTsQueryTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsRankingNormalizationTypeMapping.html">NpgsqlTsRankingNormalizationTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsRankingNormalizationTypeMapping.html">NpgsqlTsRankingNormalizationTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsVectorTypeMapping.html">NpgsqlTsVectorTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTsVectorTypeMapping.html">NpgsqlTsVectorTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a></h4>
-      <section><p>The base class for mapping Npgsql-specific types. It configures parameters with the
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html">NpgsqlTypeMapping</a></dt>
+      <dd><p>The base class for mapping Npgsql-specific types. It configures parameters with the
 <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlTypeMapping_NpgsqlDbType">NpgsqlDbType</a> provider-specific type enum.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlUIntTypeMapping.html">NpgsqlUIntTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlUIntTypeMapping.html">NpgsqlUIntTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlULongTypeMapping.html">NpgsqlULongTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlULongTypeMapping.html">NpgsqlULongTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlVarbitTypeMapping.html">NpgsqlVarbitTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlVarbitTypeMapping.html">NpgsqlVarbitTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
+</dd>
+    </dl>
     <h3 id="interfaces">
 Interfaces
 </h3>
-      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.INpgsqlTypeMapping.html">INpgsqlTypeMapping</a></h4>
-      <section><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+    <dl class="jumplist">
+      <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.INpgsqlTypeMapping.html">INpgsqlTypeMapping</a></dt>
+      <dd><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
-</section>
+</dd>
+    </dl>
 
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

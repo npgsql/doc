@@ -1,102 +1,126 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlFullTextSearchLinqExtensions | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlFullTextSearchLinqExtensions | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlFullTextSearchLinqExtensions | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlFullTextSearchLinqExtensions | Npgsql Documentation ">
+      
+      <meta name="description" content="Provides EF Core extension methods for Npgsql full-text search types.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions">
+
+        <article data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions">
 
 
 
-  <h1 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions" class="text-break">Class NpgsqlFullTextSearchLinqExtensions</h1>
-  <div class="markdown level0 summary"><p>Provides EF Core extension methods for Npgsql full-text search types.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">NpgsqlFullTextSearchLinqExtensions</span></div>
+  <h1 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions" class="text-break">
+Class NpgsqlFullTextSearchLinqExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft">Microsoft</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore">EntityFrameworkCore</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Provides EF Core extension methods for Npgsql full-text search types.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class NpgsqlFullTextSearchLinqExtensions</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NpgsqlFullTextSearchLinqExtensions</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -118,1969 +142,1447 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft">Microsoft</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore">EntityFrameworkCore</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class NpgsqlFullTextSearchLinqExtensions</code></pre>
-  </div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_And_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.And(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L16">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_And_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.And*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_And_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.And(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">And(NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_And_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.And(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  And(NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>AND tsquerys together. Generates the &quot;&amp;&amp;&quot; operator.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery And(this NpgsqlTsQuery query1, NpgsqlTsQuery query2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Concat_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Concat(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsVector)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L140">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Concat_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Concat*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Concat_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Concat(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector)">Concat(NpgsqlTsVector, NpgsqlTsVector)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Concat_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Concat(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector)">
+  Concat(NpgsqlTsVector, NpgsqlTsVector)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a vector which combines the lexemes and positional information of <code class="paramref">vector1</code>
 and <code class="paramref">vector2</code> using the || tsvector operator. Positions and weight labels are retained
 during the concatenation.
 <a href="https://www.postgresql.org/docs/10/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">https://www.postgresql.org/docs/10/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector Concat(this NpgsqlTsVector vector1, NpgsqlTsVector vector2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Contains_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Contains(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L38">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>vector2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Contains_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Contains*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Contains_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Contains(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">Contains(NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Contains_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Contains(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  Contains(NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns whether <code class="paramref">query1</code> contains <code class="paramref">query2</code>.
 Generates the &quot;@&gt;&quot; operator.
 <a href="http://www.postgresql.org/docs/current/static/functions-textsearch.html">http://www.postgresql.org/docs/current/static/functions-textsearch.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool Contains(this NpgsqlTsQuery query1, NpgsqlTsQuery query2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L179">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector,System.String)">Delete(NpgsqlTsVector, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector,System.String)">
+  Delete(NpgsqlTsVector, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Return a new vector with <code class="paramref">lexeme</code> removed from <code class="paramref">vector</code>
 <a href="https://www.postgresql.org/docs/current/static/functions-textsearch.html">https://www.postgresql.org/docs/current/static/functions-textsearch.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector Delete(this NpgsqlTsVector vector, string lexeme)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">lexeme</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L186">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>lexeme</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector,System.String[])">Delete(NpgsqlTsVector, string[])</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Delete_NpgsqlTypes_NpgsqlTsVector_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Delete(NpgsqlTypes.NpgsqlTsVector,System.String[])">
+  Delete(NpgsqlTsVector, string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Return a new vector with <code class="paramref">lexemes</code> removed from <code class="paramref">vector</code>
 <a href="https://www.postgresql.org/docs/current/static/functions-textsearch.html">https://www.postgresql.org/docs/current/static/functions-textsearch.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector Delete(this NpgsqlTsVector vector, string[] lexemes)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td><span class="parametername">lexemes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Filter_NpgsqlTypes_NpgsqlTsVector_System_Char___.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Filter(NpgsqlTypes.NpgsqlTsVector%2CSystem.Char%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L193">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>lexemes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Filter_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Filter*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Filter_NpgsqlTypes_NpgsqlTsVector_System_Char___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Filter(NpgsqlTypes.NpgsqlTsVector,System.Char[])">Filter(NpgsqlTsVector, char[])</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Filter_NpgsqlTypes_NpgsqlTsVector_System_Char___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Filter(NpgsqlTypes.NpgsqlTsVector,System.Char[])">
+  Filter(NpgsqlTsVector, char[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a new vector with only lexemes having weights specified in <code class="paramref">weights</code>.
 <a href="https://www.postgresql.org/docs/current/static/functions-textsearch.html">https://www.postgresql.org/docs/current/static/functions-textsearch.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector Filter(this NpgsqlTsVector vector, char[] weights)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</td>
-        <td><span class="parametername">weights</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetLength_NpgsqlTypes_NpgsqlTsVector_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetLength(NpgsqlTypes.NpgsqlTsVector)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L200">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetLength_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetLength*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetLength_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetLength(NpgsqlTypes.NpgsqlTsVector)">GetLength(NpgsqlTsVector)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetLength_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetLength(NpgsqlTypes.NpgsqlTsVector)">
+  GetLength(NpgsqlTsVector)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L200"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the number of lexemes in <code class="paramref">vector</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static int GetLength(this NpgsqlTsVector vector)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetNodeCount_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetNodeCount(NpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L53">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetNodeCount_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetNodeCount*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetNodeCount_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetNodeCount(NpgsqlTypes.NpgsqlTsQuery)">GetNodeCount(NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetNodeCount_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetNodeCount(NpgsqlTypes.NpgsqlTsQuery)">
+  GetNodeCount(NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the number of lexemes plus operators in <code class="paramref">query</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static int GetNodeCount(this NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetQueryTree_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetQueryTree(NpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L60">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetQueryTree_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetQueryTree*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetQueryTree_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetQueryTree(NpgsqlTypes.NpgsqlTsQuery)">GetQueryTree(NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetQueryTree_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetQueryTree(NpgsqlTypes.NpgsqlTsQuery)">
+  GetQueryTree(NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the indexable part of <code class="paramref">query</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static string GetQueryTree(this NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L67">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String)">GetResultHeadline(NpgsqlTsQuery, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String)">
+  GetResultHeadline(NpgsqlTsQuery, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L67"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a string suitable for display containing a query match.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static string GetResultHeadline(this NpgsqlTsQuery query, string document)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">document</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L74">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>document</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String,System.String)">GetResultHeadline(NpgsqlTsQuery, string, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String,System.String)">
+  GetResultHeadline(NpgsqlTsQuery, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a string suitable for display containing a query match.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static string GetResultHeadline(this NpgsqlTsQuery query, string document, string options)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">document</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">options</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L82">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>document</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String,System.String,System.String)">GetResultHeadline(NpgsqlTsQuery, string, string, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_GetResultHeadline_NpgsqlTypes_NpgsqlTsQuery_System_String_System_String_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.GetResultHeadline(NpgsqlTypes.NpgsqlTsQuery,System.String,System.String,System.String)">
+  GetResultHeadline(NpgsqlTsQuery, string, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a string suitable for display containing a query match using the text
 search configuration specified by <code class="paramref">config</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-HEADLINE</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static string GetResultHeadline(this NpgsqlTsQuery query, string config, string document, string options)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">config</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">document</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">options</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_IsContainedIn_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.IsContainedIn(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L46">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>config</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>document</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_IsContainedIn_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.IsContainedIn*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_IsContainedIn_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.IsContainedIn(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">IsContainedIn(NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_IsContainedIn_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.IsContainedIn(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  IsContainedIn(NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns whether <code class="paramref">query1</code> is contained within <code class="paramref">query2</code>.
 Generates the &quot;&lt;@&quot; operator.
 <a href="http://www.postgresql.org/docs/current/static/functions-textsearch.html">http://www.postgresql.org/docs/current/static/functions-textsearch.html</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool IsContainedIn(this NpgsqlTsQuery query1, NpgsqlTsQuery query2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L131">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">Matches(NpgsqlTsVector, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">
+  Matches(NpgsqlTsVector, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This method generates the &quot;@@&quot; match operator.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">http://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool Matches(this NpgsqlTsVector vector, NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L124">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector,System.String)">Matches(NpgsqlTsVector, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Matches_NpgsqlTypes_NpgsqlTsVector_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Matches(NpgsqlTypes.NpgsqlTsVector,System.String)">
+  Matches(NpgsqlTsVector, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This method generates the &quot;@@&quot; match operator. The &lt;code class=&quot;paramref&quot;&gt;query parameter is
 assumed to be a plain search query and will be converted to a tsquery using plainto_tsquery.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING">http://www.postgresql.org/docs/current/static/textsearch-intro.html#TEXTSEARCH-MATCHING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool Matches(this NpgsqlTsVector vector, string query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Or_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Or(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L23">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Or_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Or*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Or_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Or(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">Or(NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Or_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Or(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  Or(NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>OR tsquerys together. Generates the &quot;||&quot; operator.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery Or(this NpgsqlTsQuery query1, NpgsqlTsQuery query2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L215">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">Rank(NpgsqlTsVector, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">
+  Rank(NpgsqlTsVector, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float Rank(this NpgsqlTsVector vector, NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsQuery%2CMicrosoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L223">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">Rank(NpgsqlTsVector, NpgsqlTsQuery, NpgsqlTsRankingNormalization)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">
+  Rank(NpgsqlTsVector, NpgsqlTsQuery, NpgsqlTsRankingNormalization)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L223"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> while normalizing
 the result according to the behaviors specified by <code class="paramref">normalization</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float Rank(this NpgsqlTsVector vector, NpgsqlTsQuery query, NpgsqlTsRankingNormalization normalization)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></td>
-        <td><span class="parametername">normalization</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector%2CSystem.Single%5B%5D%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L231">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>normalization</code> <a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery)">Rank(NpgsqlTsVector, float[], NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery)">
+  Rank(NpgsqlTsVector, float[], NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L231"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> with custom
 weighting for word instances depending on their labels (D, C, B or A).
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float Rank(this NpgsqlTsVector vector, float[] weights, NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</td>
-        <td><span class="parametername">weights</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector%2CSystem.Single%5B%5D%2CNpgsqlTypes.NpgsqlTsQuery%2CMicrosoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L240">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">Rank(NpgsqlTsVector, float[], NpgsqlTsQuery, NpgsqlTsRankingNormalization)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rank_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rank(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">
+  Rank(NpgsqlTsVector, float[], NpgsqlTsQuery, NpgsqlTsRankingNormalization)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L240"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> while normalizing
 the result according to the behaviors specified by <code class="paramref">normalization</code>
 and using custom weighting for word instances depending on their labels (D, C, B or A).
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float Rank(this NpgsqlTsVector vector, float[] weights, NpgsqlTsQuery query, NpgsqlTsRankingNormalization normalization)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</td>
-        <td><span class="parametername">weights</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></td>
-        <td><span class="parametername">normalization</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L252">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>normalization</code> <a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">RankCoverDensity(NpgsqlTsVector, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery)">
+  RankCoverDensity(NpgsqlTsVector, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L252"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> using the cover
 density method.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float RankCoverDensity(this NpgsqlTsVector vector, NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsQuery%2CMicrosoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L261">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">RankCoverDensity(NpgsqlTsVector, NpgsqlTsQuery, NpgsqlTsRankingNormalization)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">
+  RankCoverDensity(NpgsqlTsVector, NpgsqlTsQuery, NpgsqlTsRankingNormalization)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L261"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> using the cover
 density method while normalizing the result according to the behaviors specified by
 <code class="paramref">normalization</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float RankCoverDensity(this NpgsqlTsVector vector, NpgsqlTsQuery query, NpgsqlTsRankingNormalization normalization)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></td>
-        <td><span class="parametername">normalization</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector%2CSystem.Single%5B%5D%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L269">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>normalization</code> <a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery)">RankCoverDensity(NpgsqlTsVector, float[], NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery)">
+  RankCoverDensity(NpgsqlTsVector, float[], NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> using the cover
 density method with custom weighting for word instances depending on their labels (D, C, B or A).
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float RankCoverDensity(this NpgsqlTsVector vector, float[] weights, NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</td>
-        <td><span class="parametername">weights</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector%2CSystem.Single%5B%5D%2CNpgsqlTypes.NpgsqlTsQuery%2CMicrosoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L278">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">RankCoverDensity(NpgsqlTsVector, float[], NpgsqlTsQuery, NpgsqlTsRankingNormalization)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_RankCoverDensity_NpgsqlTypes_NpgsqlTsVector_System_Single___NpgsqlTypes_NpgsqlTsQuery_Microsoft_EntityFrameworkCore_NpgsqlTsRankingNormalization_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.RankCoverDensity(NpgsqlTypes.NpgsqlTsVector,System.Single[],NpgsqlTypes.NpgsqlTsQuery,Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization)">
+  RankCoverDensity(NpgsqlTsVector, float[], NpgsqlTsQuery, NpgsqlTsRankingNormalization)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Calculates the rank of <code class="paramref">vector</code> for <code class="paramref">query</code> using the cover density
 method while normalizing the result according to the behaviors specified by <code class="paramref">normalization</code>
 and using custom weighting for word instances depending on their labels (D, C, B or A).
 <a href="http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING">http://www.postgresql.org/docs/current/static/textsearch-controls.html#TEXTSEARCH-RANKING</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static float RankCoverDensity(this NpgsqlTsVector vector, float[] weights, NpgsqlTsQuery query, NpgsqlTsRankingNormalization normalization)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</td>
-        <td><span class="parametername">weights</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></td>
-        <td><span class="parametername">normalization</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L90">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weights</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>normalization</code> <a class="xref" href="Microsoft.EntityFrameworkCore.NpgsqlTsRankingNormalization.html">NpgsqlTsRankingNormalization</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">Rewrite(NpgsqlTsQuery, NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  Rewrite(NpgsqlTsQuery, NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Searches <code class="paramref">query</code> for occurrences of <code class="paramref">target</code>, and replaces
 each occurrence with a <code class="paramref">substitute</code>. All parameters are of type tsquery.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery Rewrite(this NpgsqlTsQuery query, NpgsqlTsQuery target, NpgsqlTsQuery substitute)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">target</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">substitute</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L99">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>target</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>substitute</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery,System.String)">Rewrite(NpgsqlTsQuery, string)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_Rewrite_NpgsqlTypes_NpgsqlTsQuery_System_String_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.Rewrite(NpgsqlTypes.NpgsqlTsQuery,System.String)">
+  Rewrite(NpgsqlTsQuery, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>For each row of the SQL <code class="paramref">select</code> result, occurrences of the first column value (the target)
 are replaced by the second column value (the substitute) within the current <code class="paramref">query</code> value.
 The <code class="paramref">select</code> must yield two columns of tsquery type.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery Rewrite(this NpgsqlTsQuery query, string select)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">select</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsVector.Lexeme.Weight)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L148">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>select</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight)">SetWeight(NpgsqlTsVector, Weight)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight)">
+  SetWeight(NpgsqlTsVector, Weight)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assign weight to each element of <code class="paramref">vector</code> and return a new
 weighted tsvector.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector SetWeight(this NpgsqlTsVector vector, NpgsqlTsVector.Lexeme.Weight weight)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.html">Lexeme</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight.html">Weight</a></td>
-        <td><span class="parametername">weight</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector%2CNpgsqlTypes.NpgsqlTsVector.Lexeme.Weight%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L156">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weight</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.html">Lexeme</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight.html">Weight</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight,System.String[])">SetWeight(NpgsqlTsVector, Weight, string[])</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_NpgsqlTypes_NpgsqlTsVector_Lexeme_Weight_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight,System.String[])">
+  SetWeight(NpgsqlTsVector, Weight, string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assign weight to elements of <code class="paramref">vector</code> that are in <code class="paramref">lexemes</code> and
 return a new weighted tsvector.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector SetWeight(this NpgsqlTsVector vector, NpgsqlTsVector.Lexeme.Weight weight, string[] lexemes)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.html">Lexeme</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight.html">Weight</a></td>
-        <td><span class="parametername">weight</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td><span class="parametername">lexemes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector%2CSystem.Char)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L164">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weight</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.html">Lexeme</a>.<a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.Lexeme.Weight.html">Weight</a></dt>
+    <dd></dd>
+    <dt><code>lexemes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,System.Char)">SetWeight(NpgsqlTsVector, char)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,System.Char)">
+  SetWeight(NpgsqlTsVector, char)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assign weight to each element of <code class="paramref">vector</code> and return a new
 weighted tsvector.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector SetWeight(this NpgsqlTsVector vector, char weight)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
-        <td><span class="parametername">weight</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_System_String___.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector%2CSystem.Char%2CSystem.String%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L172">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,System.Char,System.String[])">SetWeight(NpgsqlTsVector, char, string[])</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_SetWeight_NpgsqlTypes_NpgsqlTsVector_System_Char_System_String___" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.SetWeight(NpgsqlTypes.NpgsqlTsVector,System.Char,System.String[])">
+  SetWeight(NpgsqlTsVector, char, string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L172"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assign weight to elements of <code class="paramref">vector</code> that are in <code class="paramref">lexemes</code> and
 return a new weighted tsvector.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector SetWeight(this NpgsqlTsVector vector, char weight, string[] lexemes)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></td>
-        <td><span class="parametername">weight</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td><span class="parametername">lexemes</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToNegative_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToNegative(NpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L30">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+    <dt><code>weight</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>lexemes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToNegative_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToNegative*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToNegative_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToNegative(NpgsqlTypes.NpgsqlTsQuery)">ToNegative(NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToNegative_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToNegative(NpgsqlTypes.NpgsqlTsQuery)">
+  ToNegative(NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Negate a tsquery. Generates the &quot;!!&quot; operator.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery ToNegative(this NpgsqlTsQuery query)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L107">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">ToPhrase(NpgsqlTsQuery, NpgsqlTsQuery)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery)">
+  ToPhrase(NpgsqlTsQuery, NpgsqlTsQuery)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a tsquery that searches for a match to <code class="paramref">query1</code> followed by a match
 to <code class="paramref">query2</code>.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery ToPhrase(this NpgsqlTsQuery query1, NpgsqlTsQuery query2)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_System_Int32_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery%2CNpgsqlTypes.NpgsqlTsQuery%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L116">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_System_Int32_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery,System.Int32)">ToPhrase(NpgsqlTsQuery, NpgsqlTsQuery, int)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToPhrase_NpgsqlTypes_NpgsqlTsQuery_NpgsqlTypes_NpgsqlTsQuery_System_Int32_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToPhrase(NpgsqlTypes.NpgsqlTsQuery,NpgsqlTypes.NpgsqlTsQuery,System.Int32)">
+  ToPhrase(NpgsqlTsQuery, NpgsqlTsQuery, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L116"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns a tsquery that searches for a match to <code class="paramref">query1</code> followed by a match
 to <code class="paramref">query2</code> at a distance of <code class="paramref">distance</code> lexemes using
 the &lt;N&gt; tsquery operator
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSQUERY</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsQuery ToPhrase(this NpgsqlTsQuery query1, NpgsqlTsQuery query2, int distance)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query1</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td><span class="parametername">query2</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">distance</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToStripped_NpgsqlTypes_NpgsqlTsVector_.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToStripped(NpgsqlTypes.NpgsqlTsVector)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L208">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>query1</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>query2</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+    <dt><code>distance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsQuery.html">NpgsqlTsQuery</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToStripped_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToStripped*"></a>
-  <h4 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToStripped_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToStripped(NpgsqlTypes.NpgsqlTsVector)">ToStripped(NpgsqlTsVector)</h4>
+
+  <h3 id="Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions_ToStripped_NpgsqlTypes_NpgsqlTsVector_" data-uid="Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions.ToStripped(NpgsqlTypes.NpgsqlTsVector)">
+  ToStripped(NpgsqlTsVector)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L208"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes weights and positions from <code class="paramref">vector</code> and returns
 a new stripped tsvector.
 <a href="http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR">http://www.postgresql.org/docs/current/static/textsearch-features.html#TEXTSEARCH-MANIPULATE-TSVECTOR</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlTsVector ToStripped(this NpgsqlTsVector vector)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td><span class="parametername">vector</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vector</code> <a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="../../doc/api/NpgsqlTypes.NpgsqlTsVector.html">NpgsqlTsVector</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Microsoft_EntityFrameworkCore_NpgsqlFullTextSearchLinqExtensions.md&amp;value=---%0Auid%3A%20Microsoft.EntityFrameworkCore.NpgsqlFullTextSearchLinqExtensions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Extensions/DbFunctionsExtensions/NpgsqlFullTextSearchLinqExtensions.cs/#L9" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

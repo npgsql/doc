@@ -1,93 +1,103 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlJsonElementHackConvention | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlJsonElementHackConvention | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlJsonElementHackConvention | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlJsonElementHackConvention | Npgsql Documentation ">
+      
+      <meta name="description" content="This convention is a hack around https://github.com/dotnet/efcore/issues/32192. To support the EF owned entity JSON support, EF requires that a lookup of the CLR type  return the provider&#39;s special . But Npgsql has its own JSON DOM support, where actually mapping  is allowed as a weakly-typed mapping strategy. The two JSON type mappings are incompatible notably because EF&#39;s  is expected to return UTF8 byte data which is then parsed via  (and not a string). So for properties actually typed as , we hack here and set the type mapping rather than going through the regular type mapping process.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention" class="text-break">Class NpgsqlJsonElementHackConvention</h1>
-  <div class="markdown level0 summary"><p>This convention is a hack around <a href="https://github.com/dotnet/efcore/issues/32192">https://github.com/dotnet/efcore/issues/32192</a>. To support the EF owned entity JSON support, EF
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention" class="text-break">
+Class NpgsqlJsonElementHackConvention  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Metadata/Conventions/NpgsqlJsonElementHackConvention.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.html">Metadata</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.html">Conventions</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This convention is a hack around <a href="https://github.com/dotnet/efcore/issues/32192">https://github.com/dotnet/efcore/issues/32192</a>. To support the EF owned entity JSON support, EF
 requires
 that a lookup of the CLR type <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> return the provider's special <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.jsontypemapping">JsonTypeMapping</a>. But Npgsql has
 its own JSON DOM support, where actually mapping <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> is allowed as a weakly-typed mapping strategy. The two
@@ -95,19 +105,35 @@ JSON type mappings are incompatible notably because EF's <a class="xref" href="h
 then parsed via <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.utf8jsonwriter">Utf8JsonWriter</a> (and not a string). So for properties actually typed as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a>, we
 hack here and set the type mapping rather than going through the regular type mapping process.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">NpgsqlJsonElementHackConvention</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlJsonElementHackConvention : IPropertyAddedConvention, IConvention</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.ipropertyaddedconvention">IPropertyAddedConvention</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.iconvention">IConvention</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NpgsqlJsonElementHackConvention</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.ipropertyaddedconvention">IPropertyAddedConvention</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.iconvention">IConvention</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -129,103 +155,76 @@ hack here and set the type mapping rather than going through the regular type ma
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.html">Metadata</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.html">Conventions</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlJsonElementHackConvention : IPropertyAddedConvention, IConvention</code></pre>
-  </div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention_ProcessPropertyAdded_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder_Microsoft_EntityFrameworkCore_Metadata_Conventions_IConventionContext_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention.ProcessPropertyAdded(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder%2CMicrosoft.EntityFrameworkCore.Metadata.Conventions.IConventionContext%7BMicrosoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Metadata/Conventions/NpgsqlJsonElementHackConvention.cs/#L20">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention_ProcessPropertyAdded_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention.ProcessPropertyAdded*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention_ProcessPropertyAdded_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder_Microsoft_EntityFrameworkCore_Metadata_Conventions_IConventionContext_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention.ProcessPropertyAdded(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder,Microsoft.EntityFrameworkCore.Metadata.Conventions.IConventionContext{Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder})">ProcessPropertyAdded(IConventionPropertyBuilder, IConventionContext&lt;IConventionPropertyBuilder&gt;)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention_ProcessPropertyAdded_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder_Microsoft_EntityFrameworkCore_Metadata_Conventions_IConventionContext_Microsoft_EntityFrameworkCore_Metadata_Builders_IConventionPropertyBuilder__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention.ProcessPropertyAdded(Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder,Microsoft.EntityFrameworkCore.Metadata.Conventions.IConventionContext{Microsoft.EntityFrameworkCore.Metadata.Builders.IConventionPropertyBuilder})">
+  ProcessPropertyAdded(IConventionPropertyBuilder, IConventionContext&lt;IConventionPropertyBuilder&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Metadata/Conventions/NpgsqlJsonElementHackConvention.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Called after a property is added to the entity type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void ProcessPropertyAdded(IConventionPropertyBuilder propertyBuilder, IConventionContext&lt;IConventionPropertyBuilder&gt; context)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionpropertybuilder">IConventionPropertyBuilder</a></td>
-        <td><span class="parametername">propertyBuilder</span></td>
-        <td><p>The builder for the property.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.iconventioncontext-1">IConventionContext</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionpropertybuilder">IConventionPropertyBuilder</a>&gt;</td>
-        <td><span class="parametername">context</span></td>
-        <td><p>Additional information associated with convention execution.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.ipropertyaddedconvention">IPropertyAddedConvention</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.iconvention">IConvention</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>propertyBuilder</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionpropertybuilder">IConventionPropertyBuilder</a></dt>
+    <dd><p>The builder for the property.</p>
+</dd>
+    <dt><code>context</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.conventions.iconventioncontext-1">IConventionContext</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.builders.iconventionpropertybuilder">IConventionPropertyBuilder</a>&gt;</dt>
+    <dd><p>Additional information associated with convention execution.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions_NpgsqlJsonElementHackConvention.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Metadata/Conventions/NpgsqlJsonElementHackConvention.cs/#L15" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Metadata/Conventions/NpgsqlJsonElementHackConvention.cs/#L15" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,107 +1,133 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlSqlExpressionFactory | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlSqlExpressionFactory | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlSqlExpressionFactory | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlSqlExpressionFactory | Npgsql Documentation ">
+      
+      <meta name="description" content="Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory" class="text-break">Class NpgsqlSqlExpressionFactory</h1>
-  <div class="markdown level0 summary"><p>Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory" class="text-break">
+Class NpgsqlSqlExpressionFactory  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Supports all classes in the .NET class hierarchy and provides low-level services to derived classes. This is the ultimate base class of all .NET classes; it is the root of the type hierarchy.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactory">SqlExpressionFactory</a></div>
-    <div class="level2"><span class="xref">NpgsqlSqlExpressionFactory</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlSqlExpressionFactory : SqlExpressionFactory, ISqlExpressionFactory</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.isqlexpressionfactory">ISqlExpressionFactory</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactory">SqlExpressionFactory</a></div>
+      <div><span class="xref">NpgsqlSqlExpressionFactory</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.isqlexpressionfactory">ISqlExpressionFactory</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactory.applydefaulttypemapping">SqlExpressionFactory.ApplyDefaultTypeMapping(SqlExpression)</a>
     </div>
@@ -252,1306 +278,925 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlSqlExpressionFactory : SqlExpressionFactory, ISqlExpressionFactory</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressionFactoryDependencies_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.%23ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressionFactoryDependencies)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L27">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressionFactoryDependencies_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.#ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressionFactoryDependencies)">NpgsqlSqlExpressionFactory(SqlExpressionFactoryDependencies)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressionFactoryDependencies_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.#ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressionFactoryDependencies)">
+  NpgsqlSqlExpressionFactory(SqlExpressionFactoryDependencies)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.html">NpgsqlSqlExpressionFactory</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlSqlExpressionFactory(SqlExpressionFactoryDependencies dependencies)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactorydependencies">SqlExpressionFactoryDependencies</a></td>
-        <td><span class="parametername">dependencies</span></td>
-        <td><p>Parameter object containing dependencies for this class.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AggregateFunction_System_String_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__Microsoft_EntityFrameworkCore_Query_EnumerableExpression_System_Boolean_System_Collections_Generic_IEnumerable_System_Boolean__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AggregateFunction(System.String%2CSystem.Collections.Generic.IEnumerable%7BMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%7D%2CMicrosoft.EntityFrameworkCore.Query.EnumerableExpression%2CSystem.Boolean%2CSystem.Collections.Generic.IEnumerable%7BSystem.Boolean%7D%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L357">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dependencies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactorydependencies">SqlExpressionFactoryDependencies</a></dt>
+    <dd><p>Parameter object containing dependencies for this class.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AggregateFunction_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AggregateFunction*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AggregateFunction_System_String_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__Microsoft_EntityFrameworkCore_Query_EnumerableExpression_System_Boolean_System_Collections_Generic_IEnumerable_System_Boolean__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AggregateFunction(System.String,System.Collections.Generic.IEnumerable{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},Microsoft.EntityFrameworkCore.Query.EnumerableExpression,System.Boolean,System.Collections.Generic.IEnumerable{System.Boolean},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">AggregateFunction(string, IEnumerable&lt;SqlExpression&gt;, EnumerableExpression, bool, IEnumerable&lt;bool&gt;, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AggregateFunction_System_String_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__Microsoft_EntityFrameworkCore_Query_EnumerableExpression_System_Boolean_System_Collections_Generic_IEnumerable_System_Boolean__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AggregateFunction(System.String,System.Collections.Generic.IEnumerable{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},Microsoft.EntityFrameworkCore.Query.EnumerableExpression,System.Boolean,System.Collections.Generic.IEnumerable{System.Boolean},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  AggregateFunction(string, IEnumerable&lt;SqlExpression&gt;, EnumerableExpression, bool, IEnumerable&lt;bool&gt;, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L357"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a> for a PostgreSQL aggregate function call..</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgFunctionExpression AggregateFunction(string name, IEnumerable&lt;SqlExpression&gt; arguments, EnumerableExpression aggregateEnumerableExpression, bool nullable, IEnumerable&lt;bool&gt; argumentsPropagateNullability, Type returnType, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</td>
-        <td><span class="parametername">arguments</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.enumerableexpression">EnumerableExpression</a></td>
-        <td><span class="parametername">aggregateEnumerableExpression</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">nullable</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</td>
-        <td><span class="parametername">argumentsPropagateNullability</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">returnType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_All_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllOperatorType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.All(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CNpgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllOperatorType)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L57">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>arguments</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>aggregateEnumerableExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.enumerableexpression">EnumerableExpression</a></dt>
+    <dd></dd>
+    <dt><code>nullable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>argumentsPropagateNullability</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>returnType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgFunctionExpression.html">PgFunctionExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_All_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.All*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_All_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllOperatorType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.All(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllOperatorType)">All(SqlExpression, SqlExpression, PgAllOperatorType)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_All_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllOperatorType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.All(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllOperatorType)">
+  All(SqlExpression, SqlExpression, PgAllOperatorType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a>, corresponding to the PostgreSQL-specific <code>LIKE ALL</code> operator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgAllExpression All(SqlExpression item, SqlExpression array, PgAllOperatorType operatorType)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllOperatorType.html">PgAllOperatorType</a></td>
-        <td><span class="parametername">operatorType</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Any_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyOperatorType_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Any(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CNpgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyOperatorType)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L48">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>operatorType</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllOperatorType.html">PgAllOperatorType</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Any_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Any*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Any_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyOperatorType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Any(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyOperatorType)">Any(SqlExpression, SqlExpression, PgAnyOperatorType)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Any_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyOperatorType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Any(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyOperatorType)">
+  Any(SqlExpression, SqlExpression, PgAnyOperatorType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a>, corresponding to the PostgreSQL-specific <code>= ANY</code> operator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgAnyExpression Any(SqlExpression item, SqlExpression array, PgAnyOperatorType operatorType)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyOperatorType.html">PgAnyOperatorType</a></td>
-        <td><span class="parametername">operatorType</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ApplyTypeMapping_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ApplyTypeMapping(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L388">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>operatorType</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyOperatorType.html">PgAnyOperatorType</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ApplyTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ApplyTypeMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ApplyTypeMapping_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ApplyTypeMapping(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">ApplyTypeMapping(SqlExpression?, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ApplyTypeMapping_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ApplyTypeMapping(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  ApplyTypeMapping(SqlExpression?, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L388"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Applies type mapping to the given <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override SqlExpression? ApplyTypeMapping(SqlExpression? sqlExpression, RelationalTypeMapping? typeMapping)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">sqlExpression</span></td>
-        <td><p>A SQL expression to apply type mapping.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td><p>A type mapping to apply.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><p>A SQL expression with given type mapping applied.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactory.applytypemapping">SqlExpressionFactory.ApplyTypeMapping(SqlExpression, RelationalTypeMapping)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Boolean%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L66">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlExpression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>A SQL expression to apply type mapping.</p>
+</dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd><p>A type mapping to apply.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>A SQL expression with given type mapping applied.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArrayIndex_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArrayIndex*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">ArrayIndex(SqlExpression, SqlExpression, bool, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArrayIndex_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArrayIndex(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  ArrayIndex(SqlExpression, SqlExpression, bool, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a>, corresponding to the PostgreSQL-specific array subscripting operator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgArrayIndexExpression ArrayIndex(SqlExpression array, SqlExpression index, bool nullable, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">nullable</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArraySlice_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArraySlice(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Boolean%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L85">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>nullable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArraySlice_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArraySlice*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArraySlice_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArraySlice(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">ArraySlice(SqlExpression, SqlExpression?, SqlExpression?, bool, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ArraySlice_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ArraySlice(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  ArraySlice(SqlExpression, SqlExpression?, SqlExpression?, bool, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a>, corresponding to the PostgreSQL-specific array subscripting operator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgArraySliceExpression ArraySlice(SqlExpression array, SqlExpression? lowerBound, SqlExpression? upperBound, bool nullable, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">array</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">lowerBound</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">upperBound</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">nullable</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression.html">PgArraySliceExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtTimeZone_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtTimeZone(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L106">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>array</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>lowerBound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>upperBound</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>nullable</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression.html">PgArraySliceExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtTimeZone_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtTimeZone*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtTimeZone_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtTimeZone(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">AtTimeZone(SqlExpression, SqlExpression, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtTimeZone_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtTimeZone(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  AtTimeZone(SqlExpression, SqlExpression, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a>, for converting a timestamp to another time zone.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AtTimeZoneExpression AtTimeZone(SqlExpression timestamp, SqlExpression timeZone, Type type, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">timestamp</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">timeZone</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtUtc_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtUtc(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L98">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timestamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>timeZone</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtUtc_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtUtc*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtUtc_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtUtc(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">AtUtc(SqlExpression, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_AtUtc_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.AtUtc(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  AtUtc(SqlExpression, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a>, for converting a timestamp to UTC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AtTimeZoneExpression AtUtc(SqlExpression timestamp, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">timestamp</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ContainedBy_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ContainedBy(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L335">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>timestamp</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ContainedBy_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ContainedBy*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ContainedBy_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ContainedBy(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">ContainedBy(SqlExpression, SqlExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ContainedBy_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ContainedBy(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  ContainedBy(SqlExpression, SqlExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L335"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a>, for checking whether one value is contained by another.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgBinaryExpression ContainedBy(SqlExpression left, SqlExpression right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">left</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">right</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Contains_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Contains(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L324">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Contains_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Contains*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Contains_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Contains(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">Contains(SqlExpression, SqlExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Contains_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Contains(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  Contains(SqlExpression, SqlExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L324"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a>, for checking whether one value contains another.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgBinaryExpression Contains(SqlExpression left, SqlExpression right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">left</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">right</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_GenerateOneBasedIndexExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.GenerateOneBasedIndexExpression(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L1029">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_GenerateOneBasedIndexExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.GenerateOneBasedIndexExpression*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_GenerateOneBasedIndexExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.GenerateOneBasedIndexExpression(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">GenerateOneBasedIndexExpression(SqlExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_GenerateOneBasedIndexExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.GenerateOneBasedIndexExpression(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  GenerateOneBasedIndexExpression(SqlExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L1029"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>PostgreSQL array indexing is 1-based. If the index happens to be a constant,
 just increment it. Otherwise, append a +1 in the SQL.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual SqlExpression GenerateOneBasedIndexExpression(SqlExpression expression)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ILike_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ILike(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L140">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ILike_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ILike*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ILike_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ILike(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">ILike(SqlExpression, SqlExpression, SqlExpression?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_ILike_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.ILike(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  ILike(SqlExpression, SqlExpression, SqlExpression?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.attimezoneexpression">AtTimeZoneExpression</a>, for performing a PostgreSQL-specific case-insensitive string match
 (<code>ILIKE</code>).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgILikeExpression ILike(SqlExpression match, SqlExpression pattern, SqlExpression? escapeChar = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">match</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">pattern</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">escapeChar</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Boolean%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L149">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>match</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>escapeChar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">JsonTraversal(SqlExpression, bool, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  JsonTraversal(SqlExpression, bool, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a>, for traversing inside a JSON document.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgJsonTraversalExpression JsonTraversal(SqlExpression expression, bool returnsText, Type type, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">returnsText</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Collections.Generic.IEnumerable%7BMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%7D%2CSystem.Boolean%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L159">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>returnsText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Collections.Generic.IEnumerable{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Boolean,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">JsonTraversal(SqlExpression, IEnumerable&lt;SqlExpression&gt;, bool, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_JsonTraversal_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_IEnumerable_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Boolean_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.JsonTraversal(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Collections.Generic.IEnumerable{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Boolean,System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  JsonTraversal(SqlExpression, IEnumerable&lt;SqlExpression&gt;, bool, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a>, for traversing inside a JSON document.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgJsonTraversalExpression JsonTraversal(SqlExpression expression, IEnumerable&lt;SqlExpression&gt; path, bool returnsText, Type type, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">expression</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</td>
-        <td><span class="parametername">path</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">returnsText</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakeBinary_System_Linq_Expressions_ExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakeBinary(System.Linq.Expressions.ExpressionType%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L228">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expression</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>returnsText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakeBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakeBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakeBinary_System_Linq_Expressions_ExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakeBinary(System.Linq.Expressions.ExpressionType,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">MakeBinary(ExpressionType, SqlExpression, SqlExpression, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakeBinary_System_Linq_Expressions_ExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakeBinary(System.Linq.Expressions.ExpressionType,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  MakeBinary(ExpressionType, SqlExpression, SqlExpression, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L228"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a> with the given arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override SqlBinaryExpression? MakeBinary(ExpressionType operatorType, SqlExpression left, SqlExpression right, RelationalTypeMapping? typeMapping)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a></td>
-        <td><span class="parametername">operatorType</span></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> representing SQL unary operator.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left operand of binary operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right operand of binary operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td><p>A type mapping to be assigned to the created expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a> with the given arguments.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressionfactory.makebinary">SqlExpressionFactory.MakeBinary(ExpressionType, SqlExpression, SqlExpression, RelationalTypeMapping)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakePostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_PgExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakePostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.PgExpressionType%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L282">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>operatorType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> representing SQL unary operator.</p>
+</dd>
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>The left operand of binary operation.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>The right operand of binary operation.</p>
+</dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd><p>A type mapping to be assigned to the created expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a> with the given arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakePostgresBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakePostgresBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakePostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_PgExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakePostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.PgExpressionType,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">MakePostgresBinary(PgExpressionType, SqlExpression, SqlExpression, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_MakePostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_PgExpressionType_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.MakePostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.PgExpressionType,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  MakePostgresBinary(PgExpressionType, SqlExpression, SqlExpression, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a> with the given arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgBinaryExpression MakePostgresBinary(PgExpressionType operatorType, SqlExpression left, SqlExpression right, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.PgExpressionType.html">PgExpressionType</a></td>
-        <td><span class="parametername">operatorType</span></td>
-        <td><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> representing SQL unary operator.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">left</span></td>
-        <td><p>The left operand of binary operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">right</span></td>
-        <td><p>The right operand of binary operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td><p>A type mapping to be assigned to the created expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
-        <td><p>A <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a> with the given arguments.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArray_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArray(System.Collections.Generic.IReadOnlyList%7BMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%7D%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L221">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>operatorType</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.PgExpressionType.html">PgExpressionType</a></dt>
+    <dd><p>An <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> representing SQL unary operator.</p>
+</dd>
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>The left operand of binary operation.</p>
+</dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>The right operand of binary operation.</p>
+</dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd><p>A type mapping to be assigned to the created expression.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></dt>
+    <dd><p>A <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a> with the given arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArray_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArray*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArray_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArray(System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">NewArray(IReadOnlyList&lt;SqlExpression&gt;, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArray_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArray(System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  NewArray(IReadOnlyList&lt;SqlExpression&gt;, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L221"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a>, for creating a new PostgreSQL array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgNewArrayExpression NewArray(IReadOnlyList&lt;SqlExpression&gt; expressions, Type type, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</td>
-        <td><span class="parametername">expressions</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArrayOrConstant_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArrayOrConstant(System.Collections.Generic.IReadOnlyList%7BMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%7D%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L176">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expressions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArrayOrConstant_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArrayOrConstant*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArrayOrConstant_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArrayOrConstant(System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">NewArrayOrConstant(IReadOnlyList&lt;SqlExpression&gt;, Type, RelationalTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_NewArrayOrConstant_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression__System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.NewArrayOrConstant(System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping)">
+  NewArrayOrConstant(IReadOnlyList&lt;SqlExpression&gt;, Type, RelationalTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L176"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructs either a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a>, or, if all provided expressions are constants, a single
 <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlconstantexpression">SqlConstantExpression</a> for the entire array.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual SqlExpression NewArrayOrConstant(IReadOnlyList&lt;SqlExpression&gt; elements, Type type, RelationalTypeMapping? typeMapping = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</td>
-        <td><span class="parametername">elements</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">typeMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Overlaps_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Overlaps(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L346">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>typeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Overlaps_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Overlaps*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Overlaps_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Overlaps(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">Overlaps(SqlExpression, SqlExpression)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_Overlaps_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.Overlaps(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  Overlaps(SqlExpression, SqlExpression)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L346"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a>, for checking whether one value overlaps with another.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgBinaryExpression Overlaps(SqlExpression left, SqlExpression right)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">left</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">right</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_RegexMatch_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Text_RegularExpressions_RegexOptions_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.RegexMatch(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Text.RegularExpressions.RegexOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L39">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>left</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>right</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_RegexMatch_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.RegexMatch*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_RegexMatch_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Text_RegularExpressions_RegexOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.RegexMatch(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Text.RegularExpressions.RegexOptions)">RegexMatch(SqlExpression, SqlExpression, RegexOptions)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory_RegexMatch_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Text_RegularExpressions_RegexOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory.RegexMatch(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Text.RegularExpressions.RegexOptions)">
+  RegexMatch(SqlExpression, SqlExpression, RegexOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a>, corresponding to the PostgreSQL-specific <code>~</code> operator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual PgRegexMatchExpression RegexMatch(SqlExpression match, SqlExpression pattern, RegexOptions options)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">match</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">pattern</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions">RegexOptions</a></td>
-        <td><span class="parametername">options</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.isqlexpressionfactory">ISqlExpressionFactory</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>match</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.regularexpressions.regexoptions">RegexOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_NpgsqlSqlExpressionFactory.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.NpgsqlSqlExpressionFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L15" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/NpgsqlSqlExpressionFactory.cs/#L15" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

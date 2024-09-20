@@ -1,110 +1,136 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlCharacterStringTypeMapping | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlCharacterStringTypeMapping | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlCharacterStringTypeMapping | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlCharacterStringTypeMapping | Npgsql Documentation ">
+      
+      <meta name="description" content="Type mapping for the PostgreSQL &#39;character&#39; data type. Handles both CLR strings and chars.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping" class="text-break">Class NpgsqlCharacterStringTypeMapping</h1>
-  <div class="markdown level0 summary"><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping" class="text-break">
+Class NpgsqlCharacterStringTypeMapping  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.html">Storage</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Internal</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.html">Mapping</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Type mapping for the PostgreSQL 'character' data type. Handles both CLR strings and chars.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping">CoreTypeMapping</a></div>
-    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></div>
-    <div class="level3"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.stringtypemapping">StringTypeMapping</a></div>
-    <div class="level4"><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html">NpgsqlStringTypeMapping</a></div>
-    <div class="level5"><span class="xref">NpgsqlCharacterStringTypeMapping</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlCharacterStringTypeMapping : NpgsqlStringTypeMapping, INpgsqlTypeMapping</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.INpgsqlTypeMapping.html">INpgsqlTypeMapping</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping">CoreTypeMapping</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.stringtypemapping">StringTypeMapping</a></div>
+      <div><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html">NpgsqlStringTypeMapping</a></div>
+      <div><span class="xref">NpgsqlCharacterStringTypeMapping</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.INpgsqlTypeMapping.html">INpgsqlTypeMapping</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlStringTypeMapping_NpgsqlDbType">NpgsqlStringTypeMapping.NpgsqlDbType</a>
     </div>
@@ -237,448 +263,385 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.html">Storage</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Internal</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.html">Mapping</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlCharacterStringTypeMapping : NpgsqlStringTypeMapping, INpgsqlTypeMapping</code></pre>
-  </div>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_remarks"><strong>Remarks</strong></h5>
+  </dd></dl>
+
+
+
+
+  <h2 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>See: <a href="https://www.postgresql.org/docs/current/static/datatype-character.html">https://www.postgresql.org/docs/current/static/datatype-character.html</a></p>
 </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.%23ctor(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L85">View Source</a>
-  </span>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)">NpgsqlCharacterStringTypeMapping(RelationalTypeMappingParameters)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)">
+  NpgsqlCharacterStringTypeMapping(RelationalTypeMappingParameters)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L85"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected NpgsqlCharacterStringTypeMapping(RelationalTypeMapping.RelationalTypeMappingParameters parameters)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping.relationaltypemappingparameters">RelationalTypeMappingParameters</a></td>
-        <td><span class="parametername">parameters</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.%23ctor(System.String%2CSystem.Int32)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L66">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping.relationaltypemappingparameters">RelationalTypeMappingParameters</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_System_String_System_Int32_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor(System.String,System.Int32)">NpgsqlCharacterStringTypeMapping(string, int)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping__ctor_System_String_System_Int32_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.#ctor(System.String,System.Int32)">
+  NpgsqlCharacterStringTypeMapping(string, int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlCharacterStringTypeMapping(string storeType, int size = 1)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">storeType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Comparer.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Comparer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L48">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>storeType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Comparer_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Comparer*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Comparer" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Comparer">Comparer</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Comparer" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Comparer">
+  Comparer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override ValueComparer Comparer { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.valuecomparer">ValueComparer</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping.comparer">CoreTypeMapping.Comparer</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Default.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Default%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L21">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.valuecomparer">ValueComparer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Default_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Default*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Default" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Default">Default</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Default" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Default">
+  Default
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static NpgsqlCharacterStringTypeMapping Default { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.html">NpgsqlCharacterStringTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_KeyComparer.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.KeyComparer%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L57">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.html">NpgsqlCharacterStringTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_KeyComparer_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.KeyComparer*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_KeyComparer" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.KeyComparer">KeyComparer</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_KeyComparer" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.KeyComparer">
+  KeyComparer
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L57"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override ValueComparer KeyComparer { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.valuecomparer">ValueComparer</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping.keycomparer">CoreTypeMapping.KeyComparer</a></div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Clone_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Clone(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L96">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.changetracking.valuecomparer">ValueComparer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Clone_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Clone*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Clone_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Clone(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)">Clone(RelationalTypeMappingParameters)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_Clone_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.Clone(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping.RelationalTypeMappingParameters)">
+  Clone(RelationalTypeMappingParameters)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override RelationalTypeMapping Clone(RelationalTypeMapping.RelationalTypeMappingParameters parameters)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping.relationaltypemappingparameters">RelationalTypeMappingParameters</a></td>
-        <td><span class="parametername">parameters</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlStringTypeMapping_Clone_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_RelationalTypeMappingParameters_">NpgsqlStringTypeMapping.Clone(RelationalTypeMapping.RelationalTypeMappingParameters)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_ConfigureParameter_System_Data_Common_DbParameter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.ConfigureParameter(System.Data.Common.DbParameter)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L115">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameters</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>.<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping.relationaltypemappingparameters">RelationalTypeMappingParameters</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_ConfigureParameter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.ConfigureParameter*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_ConfigureParameter_System_Data_Common_DbParameter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.ConfigureParameter(System.Data.Common.DbParameter)">ConfigureParameter(DbParameter)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_ConfigureParameter_System_Data_Common_DbParameter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.ConfigureParameter(System.Data.Common.DbParameter)">
+  ConfigureParameter(DbParameter)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L115"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void ConfigureParameter(DbParameter parameter)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a></td>
-        <td><span class="parametername">parameter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlStringTypeMapping.html#Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlStringTypeMapping_ConfigureParameter_System_Data_Common_DbParameter_">NpgsqlStringTypeMapping.ConfigureParameter(DbParameter)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_EqualsWithoutTrailingWhitespace_System_String_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.EqualsWithoutTrailingWhitespace(System.String%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L131">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>parameter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_EqualsWithoutTrailingWhitespace_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.EqualsWithoutTrailingWhitespace*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_EqualsWithoutTrailingWhitespace_System_String_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.EqualsWithoutTrailingWhitespace(System.String,System.String)">EqualsWithoutTrailingWhitespace(string?, string?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_EqualsWithoutTrailingWhitespace_System_String_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.EqualsWithoutTrailingWhitespace(System.String,System.String)">
+  EqualsWithoutTrailingWhitespace(string?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static bool EqualsWithoutTrailingWhitespace(string? a, string? b)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_GetHashCodeWithoutTrailingWhitespace_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.GetHashCodeWithoutTrailingWhitespace(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L146">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_GetHashCodeWithoutTrailingWhitespace_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.GetHashCodeWithoutTrailingWhitespace*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_GetHashCodeWithoutTrailingWhitespace_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.GetHashCodeWithoutTrailingWhitespace(System.String)">GetHashCodeWithoutTrailingWhitespace(string)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping_GetHashCodeWithoutTrailingWhitespace_System_String_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping.GetHashCodeWithoutTrailingWhitespace(System.String)">
+  GetHashCodeWithoutTrailingWhitespace(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L146"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static int GetHashCodeWithoutTrailingWhitespace(string a)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.INpgsqlTypeMapping.html">INpgsqlTypeMapping</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_Mapping_NpgsqlCharacterStringTypeMapping.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlCharacterStringTypeMapping%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/Mapping/NpgsqlCharacterStringTypeMapping.cs/#L13" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

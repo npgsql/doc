@@ -1,107 +1,133 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PgDeleteExpression | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PgDeleteExpression | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class PgDeleteExpression | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PgDeleteExpression | Npgsql Documentation ">
+      
+      <meta name="description" content="An SQL expression that represents a PostgreSQL DELETE operation.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression" class="text-break">Class PgDeleteExpression</h1>
-  <div class="markdown level0 summary"><p>An SQL expression that represents a PostgreSQL DELETE operation.</p>
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression" class="text-break">
+Class PgDeleteExpression  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.html">Expressions</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.html">Internal</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>An SQL expression that represents a PostgreSQL DELETE operation.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></div>
-    <div class="level2"><span class="xref">PgDeleteExpression</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class PgDeleteExpression : Expression, IPrintableExpression</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.iprintableexpression">IPrintableExpression</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></div>
+      <div><span class="xref">PgDeleteExpression</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.iprintableexpression">IPrintableExpression</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression.add#system-linq-expressions-expression-add(system-linq-expressions-expression-system-linq-expressions-expression)">Expression.Add(Expression, Expression)</a>
     </div>
@@ -1053,526 +1079,463 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.html">Expressions</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.html">Internal</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class PgDeleteExpression : Expression, IPrintableExpression</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpression_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpressionBase__Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_ISet_System_String__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.%23ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressions.TableExpression%2CSystem.Collections.Generic.IReadOnlyList%7BMicrosoft.EntityFrameworkCore.Query.SqlExpressions.TableExpressionBase%7D%2CMicrosoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Collections.Generic.ISet%7BSystem.String%7D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L31">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpression_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpressionBase__Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_ISet_System_String__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.#ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressions.TableExpression,System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.TableExpressionBase},Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Collections.Generic.ISet{System.String})">PgDeleteExpression(TableExpression, IReadOnlyList&lt;TableExpressionBase&gt;, SqlExpression?, ISet&lt;string&gt;)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression__ctor_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpression_System_Collections_Generic_IReadOnlyList_Microsoft_EntityFrameworkCore_Query_SqlExpressions_TableExpressionBase__Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Collections_Generic_ISet_System_String__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.#ctor(Microsoft.EntityFrameworkCore.Query.SqlExpressions.TableExpression,System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.TableExpressionBase},Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Collections.Generic.ISet{System.String})">
+  PgDeleteExpression(TableExpression, IReadOnlyList&lt;TableExpressionBase&gt;, SqlExpression?, ISet&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html">PgDeleteExpression</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public PgDeleteExpression(TableExpression table, IReadOnlyList&lt;TableExpressionBase&gt; fromItems, SqlExpression? predicate, ISet&lt;string&gt; tags)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpression">TableExpression</a></td>
-        <td><span class="parametername">table</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpressionbase">TableExpressionBase</a>&gt;</td>
-        <td><span class="parametername">fromItems</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">predicate</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1">ISet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td><span class="parametername">tags</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_FromItems.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.FromItems%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L16">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>table</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpression">TableExpression</a></dt>
+    <dd></dd>
+    <dt><code>fromItems</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpressionbase">TableExpressionBase</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+    <dt><code>tags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1">ISet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_FromItems_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.FromItems*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_FromItems" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.FromItems">FromItems</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_FromItems" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.FromItems">
+  FromItems
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Additional tables which can be referenced in the predicate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;TableExpressionBase&gt; FromItems { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpressionbase">TableExpressionBase</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_NodeType.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.NodeType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L45">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpressionbase">TableExpressionBase</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_NodeType_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.NodeType*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_NodeType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.NodeType">NodeType</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_NodeType" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.NodeType">
+  NodeType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the node type of this <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override ExpressionType NodeType { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a></td>
-        <td><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> values.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression.nodetype">Expression.NodeType</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Predicate%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L21">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a></dt>
+    <dd><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressiontype">ExpressionType</a> values.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Predicate*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Predicate">Predicate</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Predicate">
+  Predicate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The WHERE predicate for the DELETE.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public SqlExpression? Predicate { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Table.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Table%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L11">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Table_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Table*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Table" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Table">Table</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Table" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Table">
+  Table
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The tables that rows are to be deleted from.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TableExpression Table { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpression">TableExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Tags.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Tags%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L26">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.tableexpression">TableExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Tags_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Tags*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Tags" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Tags">Tags</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Tags" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Tags">
+  Tags
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The list of tags applied to this <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.deleteexpression">DeleteExpression</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ISet&lt;string&gt; Tags { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1">ISet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Type.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Type%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L41">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.iset-1">ISet</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Type_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Type*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Type" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Type">Type</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Type" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Type">
+  Type
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the static type of the expression that this <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a> represents.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Type Type { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a> that represents the static type of the expression.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression.type">Expression.Type</a></div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Equals_System_Object_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Equals(System.Object)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L96">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a> that represents the static type of the expression.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Equals_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Equals*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Equals_System_Object_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Equals(System.Object)">Equals(object?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Equals_System_Object_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Equals(System.Object)">
+  Equals(object?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Determines whether the specified object is equal to the current object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Equals(object? obj)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><span class="parametername">obj</span></td>
-        <td><p>The object to compare with the current object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_GetHashCode.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.GetHashCode%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L108">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>obj</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The object to compare with the current object.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the specified object  is equal to the current object; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_GetHashCode_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.GetHashCode*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_GetHashCode" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.GetHashCode">GetHashCode()</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_GetHashCode" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.GetHashCode">
+  GetHashCode()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Serves as the default hash function.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int GetHashCode()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>A hash code for the current object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Print_Microsoft_EntityFrameworkCore_Query_ExpressionPrinter_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Print(Microsoft.EntityFrameworkCore.Query.ExpressionPrinter)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L65">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>A hash code for the current object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Print_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Print*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Print_Microsoft_EntityFrameworkCore_Query_ExpressionPrinter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Print(Microsoft.EntityFrameworkCore.Query.ExpressionPrinter)">Print(ExpressionPrinter)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Print_Microsoft_EntityFrameworkCore_Query_ExpressionPrinter_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Print(Microsoft.EntityFrameworkCore.Query.ExpressionPrinter)">
+  Print(ExpressionPrinter)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a printable string representation of the given expression using <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.expressionprinter">ExpressionPrinter</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Print(ExpressionPrinter expressionPrinter)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.expressionprinter">ExpressionPrinter</a></td>
-        <td><span class="parametername">expressionPrinter</span></td>
-        <td><p>The expression printer to use.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Update_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Update(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L59">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>expressionPrinter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.expressionprinter">ExpressionPrinter</a></dt>
+    <dd><p>The expression printer to use.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Update_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Update*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Update_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Update(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">Update(SqlExpression?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Update_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.Update(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression)">
+  Update(SqlExpression?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new expression that is like this one, but using the supplied children. If all of the children are the same, it will
 return this expression.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public PgDeleteExpression Update(SqlExpression? predicate)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
-        <td><span class="parametername">predicate</span></td>
-        <td><p>The <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html#Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate">Predicate</a> property of the result.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html">PgDeleteExpression</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_VisitChildren_System_Linq_Expressions_ExpressionVisitor_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.VisitChildren(System.Linq.Expressions.ExpressionVisitor)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L49">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>predicate</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></dt>
+    <dd><p>The <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html#Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_Predicate">Predicate</a> property of the result.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.html">PgDeleteExpression</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_VisitChildren_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.VisitChildren*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_VisitChildren_System_Linq_Expressions_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.VisitChildren(System.Linq.Expressions.ExpressionVisitor)">VisitChildren(ExpressionVisitor)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression_VisitChildren_System_Linq_Expressions_ExpressionVisitor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression.VisitChildren(System.Linq.Expressions.ExpressionVisitor)">
+  VisitChildren(ExpressionVisitor)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Reduces the node and then calls the visitor delegate on the reduced expression. The method throws an exception if the node is not reducible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Expression VisitChildren(ExpressionVisitor visitor)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressionvisitor">ExpressionVisitor</a></td>
-        <td><span class="parametername">visitor</span></td>
-        <td><p>An instance of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func&lt;T, TResult&gt;</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></td>
-        <td><p>The expression being visited, or an expression which should replace it in the tree.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression.visitchildren">Expression.VisitChildren(ExpressionVisitor)</a></div>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.iprintableexpression">IPrintableExpression</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>visitor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expressionvisitor">ExpressionVisitor</a></dt>
+    <dd><p>An instance of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func&lt;T, TResult&gt;</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.linq.expressions.expression">Expression</a></dt>
+    <dd><p>The expression being visited, or an expression which should replace it in the tree.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgDeleteExpression.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgDeleteExpression%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L6" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Expressions/Internal/PgDeleteExpression.cs/#L6" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

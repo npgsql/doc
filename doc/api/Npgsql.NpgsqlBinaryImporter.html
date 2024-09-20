@@ -1,108 +1,134 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlBinaryImporter | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlBinaryImporter | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlBinaryImporter | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlBinaryImporter | Npgsql Documentation ">
+      
+      <meta name="description" content="Provides an API for a binary COPY FROM operation, a high-performance data import mechanism to a PostgreSQL table. Initiated by">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlBinaryImporter">
+
+        <article data-uid="Npgsql.NpgsqlBinaryImporter">
 
 
 
-  <h1 id="Npgsql_NpgsqlBinaryImporter" data-uid="Npgsql.NpgsqlBinaryImporter" class="text-break">Class NpgsqlBinaryImporter</h1>
-  <div class="markdown level0 summary"><p>Provides an API for a binary COPY FROM operation, a high-performance data import mechanism to
+  <h1 id="Npgsql_NpgsqlBinaryImporter" data-uid="Npgsql.NpgsqlBinaryImporter" class="text-break">
+Class NpgsqlBinaryImporter  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides an API for a binary COPY FROM operation, a high-performance data import mechanism to
 a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginBinaryImport_System_String_">BeginBinaryImport(string)</a></p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">NpgsqlBinaryImporter</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class NpgsqlBinaryImporter : IDisposable, IAsyncDisposable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NpgsqlBinaryImporter</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -121,60 +147,63 @@ a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.h
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_NpgsqlBinaryImporter_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class NpgsqlBinaryImporter : IDisposable, IAsyncDisposable</code></pre>
-  </div>
-  <h5 id="Npgsql_NpgsqlBinaryImporter_remarks"><strong>Remarks</strong></h5>
+  </dd></dl>
+
+
+
+
+  <h2 id="Npgsql_NpgsqlBinaryImporter_remarks">Remarks</h2>
   <div class="markdown level0 remarks"><p>See <a href="https://www.postgresql.org/docs/current/static/sql-copy.html">https://www.postgresql.org/docs/current/static/sql-copy.html</a>.</p>
 </div>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Timeout.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Timeout%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L51">View Source</a>
-  </span>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Timeout_" data-uid="Npgsql.NpgsqlBinaryImporter.Timeout*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Timeout" data-uid="Npgsql.NpgsqlBinaryImporter.Timeout">Timeout</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Timeout" data-uid="Npgsql.NpgsqlBinaryImporter.Timeout">
+  Timeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Current timeout</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public TimeSpan Timeout { set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Close.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Close%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L492">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Close_" data-uid="Npgsql.NpgsqlBinaryImporter.Close*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Close" data-uid="Npgsql.NpgsqlBinaryImporter.Close">Close()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Close" data-uid="Npgsql.NpgsqlBinaryImporter.Close">
+  Close()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L492"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>
 Terminates the ongoing binary import and puts the connection back into the idle state, where regular commands can be executed.
 </p>
@@ -184,19 +213,30 @@ be reverted.
 </p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Close()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_CloseAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.CloseAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L503">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_CloseAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.CloseAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_CloseAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.CloseAsync(System.Threading.CancellationToken)">CloseAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_CloseAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.CloseAsync(System.Threading.CancellationToken)">
+  CloseAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L503"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>
 Async terminates the ongoing binary import and puts the connection back into the idle state, where regular commands can be executed.
 </p>
@@ -206,130 +246,109 @@ be reverted.
 </p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask CloseAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Complete.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Complete%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L393">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Complete_" data-uid="Npgsql.NpgsqlBinaryImporter.Complete*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Complete" data-uid="Npgsql.NpgsqlBinaryImporter.Complete">Complete()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Complete" data-uid="Npgsql.NpgsqlBinaryImporter.Complete">
+  Complete()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L393"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Completes the import operation. The writer is unusable after this operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ulong Complete()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_CompleteAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.CompleteAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L398">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_CompleteAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.CompleteAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_CompleteAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.CompleteAsync(System.Threading.CancellationToken)">CompleteAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_CompleteAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.CompleteAsync(System.Threading.CancellationToken)">
+  CompleteAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L398"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Completes the import operation. The writer is unusable after this operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask&lt;ulong&gt; CompleteAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Dispose.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Dispose%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L448">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask-1">ValueTask</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint64">ulong</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Dispose_" data-uid="Npgsql.NpgsqlBinaryImporter.Dispose*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Dispose" data-uid="Npgsql.NpgsqlBinaryImporter.Dispose">Dispose()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Dispose" data-uid="Npgsql.NpgsqlBinaryImporter.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L448"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>
 Terminates the ongoing binary import and puts the connection back into the idle state, where regular commands can be executed.
 </p>
@@ -339,19 +358,30 @@ be reverted.
 </p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_DisposeAsync.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.DisposeAsync%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L459">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_DisposeAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.DisposeAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_DisposeAsync" data-uid="Npgsql.NpgsqlBinaryImporter.DisposeAsync">DisposeAsync()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_DisposeAsync" data-uid="Npgsql.NpgsqlBinaryImporter.DisposeAsync">
+  DisposeAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L459"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>
 Async terminates the ongoing binary import and puts the connection back into the idle state, where regular commands can be executed.
 </p>
@@ -361,693 +391,539 @@ be reverted.
 </p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ValueTask DisposeAsync()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_StartRow.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.StartRow%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L124">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.valuetask">ValueTask</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_StartRow_" data-uid="Npgsql.NpgsqlBinaryImporter.StartRow*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_StartRow" data-uid="Npgsql.NpgsqlBinaryImporter.StartRow">StartRow()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_StartRow" data-uid="Npgsql.NpgsqlBinaryImporter.StartRow">
+  StartRow()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Starts writing a single row, must be invoked before writing any columns.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void StartRow()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_StartRowAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.StartRowAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L129">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_StartRowAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.StartRowAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_StartRowAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.StartRowAsync(System.Threading.CancellationToken)">StartRowAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_StartRowAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.StartRowAsync(System.Threading.CancellationToken)">
+  StartRowAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Starts writing a single row, must be invoked before writing any columns.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task StartRowAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_NpgsqlTypes_NpgsqlDbType_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteAsync%60%601(%60%600%2CNpgsqlTypes.NpgsqlDbType%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L202">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_NpgsqlTypes_NpgsqlDbType_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,NpgsqlTypes.NpgsqlDbType,System.Threading.CancellationToken)">WriteAsync&lt;T&gt;(T, NpgsqlDbType, CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_NpgsqlTypes_NpgsqlDbType_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,NpgsqlTypes.NpgsqlDbType,System.Threading.CancellationToken)">
+  WriteAsync&lt;T&gt;(T, NpgsqlDbType, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L202"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row as type <code class="paramref">npgsqlDbType</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task WriteAsync&lt;T&gt;(T value, NpgsqlDbType npgsqlDbType, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a></td>
-        <td><span class="parametername">npgsqlDbType</span></td>
-        <td><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+    <dt><code>npgsqlDbType</code> <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a></dt>
+    <dd><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
 the database. This parameter can be used to unambiguously specify the type. An example is
 the JSONB type, for which <code class="typeparamref">T</code> will be a simple string but for which
 <code class="paramref">npgsqlDbType</code> must be specified as <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Jsonb">Jsonb</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The .NET type of the column to be written.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_String_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteAsync%60%601(%60%600%2CSystem.String%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L229">View Source</a>
-  </span>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The .NET type of the column to be written.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_String_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,System.String,System.Threading.CancellationToken)">WriteAsync&lt;T&gt;(T, string, CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_String_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,System.String,System.Threading.CancellationToken)">
+  WriteAsync&lt;T&gt;(T, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L229"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row as type <code class="paramref">dataTypeName</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task WriteAsync&lt;T&gt;(T value, string dataTypeName, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">dataTypeName</span></td>
-        <td><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+    <dt><code>dataTypeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
 the database. This parameter and be used to unambiguously specify the type.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The .NET type of the column to be written.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteAsync%60%601(%60%600%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L171">View Source</a>
-  </span>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The .NET type of the column to be written.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,System.Threading.CancellationToken)">WriteAsync&lt;T&gt;(T, CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteAsync__1___0_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteAsync``1(``0,System.Threading.CancellationToken)">
+  WriteAsync&lt;T&gt;(T, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task WriteAsync&lt;T&gt;(T value, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The type of the column to be written. This must correspond to the actual type or data
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the column to be written. This must correspond to the actual type or data
 corruption will occur. If in doubt, use <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_Write__1___0_NpgsqlTypes_NpgsqlDbType_">Write&lt;T&gt;(T, NpgsqlDbType)</a> to manually
 specify the type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteNull.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteNull%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L321">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteNull_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNull*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteNull" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNull">WriteNull()</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteNull" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNull">
+  WriteNull()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L321"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single null column value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void WriteNull()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteNullAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteNullAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L326">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteNullAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNullAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteNullAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNullAsync(System.Threading.CancellationToken)">WriteNullAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteNullAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteNullAsync(System.Threading.CancellationToken)">
+  WriteNullAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single null column value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task WriteNullAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteRow_System_Object___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteRow(System.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L349">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteRow_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRow*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteRow_System_Object___" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRow(System.Object[])">WriteRow(params object?[])</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteRow_System_Object___" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRow(System.Object[])">
+  WriteRow(params object?[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes an entire row of columns.
 Equivalent to calling <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_StartRow">StartRow()</a>, followed by multiple <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_Write__1___0_">Write&lt;T&gt;(T)</a>
 on each value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void WriteRow(params object?[] values)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>An array of column values to be written as a single row</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_WriteRowAsync_System_Threading_CancellationToken_System_Object___.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.WriteRowAsync(System.Threading.CancellationToken%2CSystem.Object%5B%5D)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L360">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>An array of column values to be written as a single row</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_WriteRowAsync_" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRowAsync*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_WriteRowAsync_System_Threading_CancellationToken_System_Object___" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRowAsync(System.Threading.CancellationToken,System.Object[])">WriteRowAsync(CancellationToken, params object?[])</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_WriteRowAsync_System_Threading_CancellationToken_System_Object___" data-uid="Npgsql.NpgsqlBinaryImporter.WriteRowAsync(System.Threading.CancellationToken,System.Object[])">
+  WriteRowAsync(CancellationToken, params object?[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L360"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes an entire row of columns.
 Equivalent to calling <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_StartRow">StartRow()</a>, followed by multiple <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_Write__1___0_">Write&lt;T&gt;(T)</a>
 on each value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task WriteRowAsync(CancellationToken cancellationToken = default, params object?[] values)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>An array of column values to be written as a single row</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Write__1___0_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Write%60%601(%60%600)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L156">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>An array of column values to be written as a single row</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Write_" data-uid="Npgsql.NpgsqlBinaryImporter.Write*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0)">Write&lt;T&gt;(T)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0)">
+  Write&lt;T&gt;(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Write&lt;T&gt;(T value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The type of the column to be written. This must correspond to the actual type or data
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The type of the column to be written. This must correspond to the actual type or data
 corruption will occur. If in doubt, use <a class="xref" href="Npgsql.NpgsqlBinaryImporter.html#Npgsql_NpgsqlBinaryImporter_Write__1___0_NpgsqlTypes_NpgsqlDbType_">Write&lt;T&gt;(T, NpgsqlDbType)</a> to manually
 specify the type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Write__1___0_NpgsqlTypes_NpgsqlDbType_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Write%60%601(%60%600%2CNpgsqlTypes.NpgsqlDbType)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L185">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Write_" data-uid="Npgsql.NpgsqlBinaryImporter.Write*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_NpgsqlTypes_NpgsqlDbType_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0,NpgsqlTypes.NpgsqlDbType)">Write&lt;T&gt;(T, NpgsqlDbType)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_NpgsqlTypes_NpgsqlDbType_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0,NpgsqlTypes.NpgsqlDbType)">
+  Write&lt;T&gt;(T, NpgsqlDbType)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row as type <code class="paramref">npgsqlDbType</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Write&lt;T&gt;(T value, NpgsqlDbType npgsqlDbType)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a></td>
-        <td><span class="parametername">npgsqlDbType</span></td>
-        <td><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+    <dt><code>npgsqlDbType</code> <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html">NpgsqlDbType</a></dt>
+    <dd><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
 the database. This parameter can be used to unambiguously specify the type. An example is
 the JSONB type, for which <code class="typeparamref">T</code> will be a simple string but for which
 <code class="paramref">npgsqlDbType</code> must be specified as <a class="xref" href="NpgsqlTypes.NpgsqlDbType.html#NpgsqlTypes_NpgsqlDbType_Jsonb">Jsonb</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The .NET type of the column to be written.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter_Write__1___0_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter.Write%60%601(%60%600%2CSystem.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L214">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The .NET type of the column to be written.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlBinaryImporter_Write_" data-uid="Npgsql.NpgsqlBinaryImporter.Write*"></a>
-  <h4 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_System_String_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0,System.String)">Write&lt;T&gt;(T, string)</h4>
+
+  <h3 id="Npgsql_NpgsqlBinaryImporter_Write__1___0_System_String_" data-uid="Npgsql.NpgsqlBinaryImporter.Write``1(``0,System.String)">
+  Write&lt;T&gt;(T, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L214"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Writes a single column in the current row as type <code class="paramref">dataTypeName</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Write&lt;T&gt;(T value, string dataTypeName)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">value</span></td>
-        <td><p>The value to be written</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">dataTypeName</span></td>
-        <td><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd><p>The value to be written</p>
+</dd>
+    <dt><code>dataTypeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>In some cases <code class="typeparamref">T</code> isn't enough to infer the data type to be written to
 the database. This parameter and be used to unambiguously specify the type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>The .NET type of the column to be written.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a>
-  </div>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>The .NET type of the column to be written.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlBinaryImporter.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlBinaryImporter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L21" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlBinaryImporter.cs/#L21" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

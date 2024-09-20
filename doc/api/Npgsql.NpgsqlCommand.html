@@ -1,114 +1,140 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlCommand | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlCommand | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlCommand | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlCommand | Npgsql Documentation ">
+      
+      <meta name="description" content="Represents a SQL statement or function (stored procedure) to execute against a PostgreSQL database. This class cannot be inherited.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.NpgsqlCommand">
+
+        <article data-uid="Npgsql.NpgsqlCommand">
 
 
 
-  <h1 id="Npgsql_NpgsqlCommand" data-uid="Npgsql.NpgsqlCommand" class="text-break">Class NpgsqlCommand</h1>
-  <div class="markdown level0 summary"><p>Represents a SQL statement or function (stored procedure) to execute
+  <h1 id="Npgsql_NpgsqlCommand" data-uid="Npgsql.NpgsqlCommand" class="text-break">
+Class NpgsqlCommand  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a SQL statement or function (stored procedure) to execute
 against a PostgreSQL database. This class cannot be inherited.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject">MarshalByRefObject</a></div>
-    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.component">Component</a></div>
-    <div class="level3"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand">DbCommand</a></div>
-    <div class="level4"><span class="xref">NpgsqlCommand</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlCommand : DbCommand, IDbCommand, IAsyncDisposable, ICloneable, IComponent, IDisposable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbcommand">IDbCommand</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.icomponent">IComponent</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.marshalbyrefobject">MarshalByRefObject</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.component">Component</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand">DbCommand</a></div>
+      <div><span class="xref">NpgsqlCommand</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbcommand">IDbCommand</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.icomponent">IComponent</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.disposeasync">DbCommand.DisposeAsync()</a>
     </div>
@@ -181,1456 +207,1336 @@ against a PostgreSQL database. This class cannot be inherited.</p>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.dll</h6>
-  <h5 id="Npgsql_NpgsqlCommand_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlCommand : DbCommand, IDbCommand, IAsyncDisposable, ICloneable, IComponent, IDisposable</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand__ctor.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.%23ctor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L106">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_NpgsqlCommand__ctor_" data-uid="Npgsql.NpgsqlCommand.#ctor*"></a>
-  <h4 id="Npgsql_NpgsqlCommand__ctor" data-uid="Npgsql.NpgsqlCommand.#ctor">NpgsqlCommand()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand__ctor" data-uid="Npgsql.NpgsqlCommand.#ctor">
+  NpgsqlCommand()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlCommand()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand__ctor_System_String_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.%23ctor(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L113">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand__ctor_" data-uid="Npgsql.NpgsqlCommand.#ctor*"></a>
-  <h4 id="Npgsql_NpgsqlCommand__ctor_System_String_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String)">NpgsqlCommand(string?)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand__ctor_System_String_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String)">
+  NpgsqlCommand(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> class with the text of the query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlCommand(string? cmdText)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">cmdText</span></td>
-        <td><p>The text of the query.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.%23ctor(System.String%2CNpgsql.NpgsqlConnection)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L122">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cmdText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text of the query.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand__ctor_" data-uid="Npgsql.NpgsqlCommand.#ctor*"></a>
-  <h4 id="Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String,Npgsql.NpgsqlConnection)">NpgsqlCommand(string?, NpgsqlConnection?)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String,Npgsql.NpgsqlConnection)">
+  NpgsqlCommand(string?, NpgsqlConnection?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L122"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> class with the text of the query and a
 <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlCommand(string? cmdText, NpgsqlConnection? connection)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">cmdText</span></td>
-        <td><p>The text of the query.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
-        <td><span class="parametername">connection</span></td>
-        <td><p>A <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> that represents the connection to a PostgreSQL server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_Npgsql_NpgsqlTransaction_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.%23ctor(System.String%2CNpgsql.NpgsqlConnection%2CNpgsql.NpgsqlTransaction)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L138">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cmdText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text of the query.</p>
+</dd>
+    <dt><code>connection</code> <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></dt>
+    <dd><p>A <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> that represents the connection to a PostgreSQL server.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand__ctor_" data-uid="Npgsql.NpgsqlCommand.#ctor*"></a>
-  <h4 id="Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_Npgsql_NpgsqlTransaction_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String,Npgsql.NpgsqlConnection,Npgsql.NpgsqlTransaction)">NpgsqlCommand(string?, NpgsqlConnection?, NpgsqlTransaction?)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand__ctor_System_String_Npgsql_NpgsqlConnection_Npgsql_NpgsqlTransaction_" data-uid="Npgsql.NpgsqlCommand.#ctor(System.String,Npgsql.NpgsqlConnection,Npgsql.NpgsqlTransaction)">
+  NpgsqlCommand(string?, NpgsqlConnection?, NpgsqlTransaction?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L138"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> class with the text of the query, a
 <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a>, and the <a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlCommand(string? cmdText, NpgsqlConnection? connection, NpgsqlTransaction? transaction)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">cmdText</span></td>
-        <td><p>The text of the query.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
-        <td><span class="parametername">connection</span></td>
-        <td><p>A <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> that represents the connection to a PostgreSQL server.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></td>
-        <td><span class="parametername">transaction</span></td>
-        <td><p>The <a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a> in which the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> executes.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_AllResultTypesAreUnknown.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.AllResultTypesAreUnknown%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L341">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cmdText</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The text of the query.</p>
+</dd>
+    <dt><code>connection</code> <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></dt>
+    <dd><p>A <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> that represents the connection to a PostgreSQL server.</p>
+</dd>
+    <dt><code>transaction</code> <a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></dt>
+    <dd><p>The <a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a> in which the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> executes.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_NpgsqlCommand_AllResultTypesAreUnknown_" data-uid="Npgsql.NpgsqlCommand.AllResultTypesAreUnknown*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_AllResultTypesAreUnknown" data-uid="Npgsql.NpgsqlCommand.AllResultTypesAreUnknown">AllResultTypesAreUnknown</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_AllResultTypesAreUnknown" data-uid="Npgsql.NpgsqlCommand.AllResultTypesAreUnknown">
+  AllResultTypesAreUnknown
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Marks all of the query's result columns as either known or unknown.
 Unknown result columns are requested from PostgreSQL in text format, and Npgsql makes no
 attempt to parse them. They will be accessible as strings only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool AllResultTypesAreUnknown { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_CommandText.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.CommandText%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L179">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_CommandText_" data-uid="Npgsql.NpgsqlCommand.CommandText*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_CommandText" data-uid="Npgsql.NpgsqlCommand.CommandText">CommandText</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_CommandText" data-uid="Npgsql.NpgsqlCommand.CommandText">
+  CommandText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the SQL statement or function (stored procedure) to execute at the data source.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override string CommandText { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><p>The SQL statement or function (stored procedure) to execute. The default is an empty string.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.commandtext">DbCommand.CommandText</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_CommandTimeout.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.CommandTimeout%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L222">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The SQL statement or function (stored procedure) to execute. The default is an empty string.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_CommandTimeout_" data-uid="Npgsql.NpgsqlCommand.CommandTimeout*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_CommandTimeout" data-uid="Npgsql.NpgsqlCommand.CommandTimeout">CommandTimeout</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_CommandTimeout" data-uid="Npgsql.NpgsqlCommand.CommandTimeout">
+  CommandTimeout
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L222"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the wait time (in seconds) before terminating the attempt  to execute a command and generating an error.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int CommandTimeout { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The time (in seconds) to wait for the command to execute. The default value is 30 seconds.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.commandtimeout">DbCommand.CommandTimeout</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_CommandType.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.CommandType%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L242">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The time (in seconds) to wait for the command to execute. The default value is 30 seconds.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_CommandType_" data-uid="Npgsql.NpgsqlCommand.CommandType*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_CommandType" data-uid="Npgsql.NpgsqlCommand.CommandType">CommandType</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_CommandType" data-uid="Npgsql.NpgsqlCommand.CommandType">
+  CommandType
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets a value indicating how the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_CommandText">CommandText</a> property is to be interpreted.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override CommandType CommandType { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype">CommandType</a></td>
-        <td><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype">CommandType</a> values. The default is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-text">Text</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.commandtype">DbCommand.CommandType</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Connection.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Connection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L271">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype">CommandType</a></dt>
+    <dd><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype">CommandType</a> values. The default is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-text">Text</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Connection_" data-uid="Npgsql.NpgsqlCommand.Connection*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Connection" data-uid="Npgsql.NpgsqlCommand.Connection">Connection</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Connection" data-uid="Npgsql.NpgsqlCommand.Connection">
+  Connection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> used by this instance of the <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlConnection? Connection { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></td>
-        <td><p>The connection to a data source. The default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_DbConnection.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.DbConnection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L251">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a></dt>
+    <dd><p>The connection to a data source. The default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_DbConnection_" data-uid="Npgsql.NpgsqlCommand.DbConnection*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_DbConnection" data-uid="Npgsql.NpgsqlCommand.DbConnection">DbConnection</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_DbConnection" data-uid="Npgsql.NpgsqlCommand.DbConnection">
+  DbConnection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L251"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>DB connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override DbConnection? DbConnection { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbconnection">DbConnection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.dbconnection">DbCommand.DbConnection</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_DbParameterCollection.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.DbParameterCollection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L421">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbconnection">DbConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_DbParameterCollection_" data-uid="Npgsql.NpgsqlCommand.DbParameterCollection*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_DbParameterCollection" data-uid="Npgsql.NpgsqlCommand.DbParameterCollection">DbParameterCollection</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_DbParameterCollection" data-uid="Npgsql.NpgsqlCommand.DbParameterCollection">
+  DbParameterCollection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L421"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>DB parameter collection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override DbParameterCollection DbParameterCollection { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparametercollection">DbParameterCollection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.dbparametercollection">DbCommand.DbParameterCollection</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_DbTransaction.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.DbTransaction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1636">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparametercollection">DbParameterCollection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_DbTransaction_" data-uid="Npgsql.NpgsqlCommand.DbTransaction*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_DbTransaction" data-uid="Npgsql.NpgsqlCommand.DbTransaction">DbTransaction</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_DbTransaction" data-uid="Npgsql.NpgsqlCommand.DbTransaction">
+  DbTransaction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1636"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>DB transaction.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override DbTransaction? DbTransaction { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbtransaction">DbTransaction</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.dbtransaction">DbCommand.DbTransaction</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_DesignTimeVisible.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.DesignTimeVisible%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L282">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbtransaction">DbTransaction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_DesignTimeVisible_" data-uid="Npgsql.NpgsqlCommand.DesignTimeVisible*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_DesignTimeVisible" data-uid="Npgsql.NpgsqlCommand.DesignTimeVisible">DesignTimeVisible</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_DesignTimeVisible" data-uid="Npgsql.NpgsqlCommand.DesignTimeVisible">
+  DesignTimeVisible
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Design time visible.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool DesignTimeVisible { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.designtimevisible">DbCommand.DesignTimeVisible</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_IsPrepared.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.IsPrepared%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L313">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_IsPrepared_" data-uid="Npgsql.NpgsqlCommand.IsPrepared*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_IsPrepared" data-uid="Npgsql.NpgsqlCommand.IsPrepared">IsPrepared</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_IsPrepared" data-uid="Npgsql.NpgsqlCommand.IsPrepared">
+  IsPrepared
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L313"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns whether this query will execute as a prepared (compiled) query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool IsPrepared { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Parameters.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Parameters%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L427">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Parameters_" data-uid="Npgsql.NpgsqlCommand.Parameters*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Parameters" data-uid="Npgsql.NpgsqlCommand.Parameters">Parameters</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Parameters" data-uid="Npgsql.NpgsqlCommand.Parameters">
+  Parameters
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlParameterCollection Parameters { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a></td>
-        <td><p>The parameters of the SQL statement or function (stored procedure). The default is an empty collection.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Statements.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Statements%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L62">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a></dt>
+    <dd><p>The parameters of the SQL statement or function (stored procedure). The default is an empty collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Statements_" data-uid="Npgsql.NpgsqlCommand.Statements*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Statements" data-uid="Npgsql.NpgsqlCommand.Statements">Statements</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Statements" data-uid="Npgsql.NpgsqlCommand.Statements">
+  Statements
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns details about each statement that this command has executed.
 Is only populated when an Execute* method is called.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the new DbBatch API&quot;)]
 public IReadOnlyList&lt;NpgsqlBatchCommand&gt; Statements { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Npgsql.NpgsqlBatchCommand.html">NpgsqlBatchCommand</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Transaction.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Transaction%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1647">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="Npgsql.NpgsqlBatchCommand.html">NpgsqlBatchCommand</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Transaction_" data-uid="Npgsql.NpgsqlCommand.Transaction*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Transaction" data-uid="Npgsql.NpgsqlCommand.Transaction">Transaction</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Transaction" data-uid="Npgsql.NpgsqlCommand.Transaction">
+  Transaction
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1647"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This property is ignored by Npgsql. PostgreSQL only supports a single transaction at a given time on
 a given connection, and all commands implicitly run inside the current transaction started via
 <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTransaction">BeginTransaction()</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlTransaction? Transaction { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_UnknownResultTypeList.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.UnknownResultTypeList%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L366">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlTransaction.html">NpgsqlTransaction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_UnknownResultTypeList_" data-uid="Npgsql.NpgsqlCommand.UnknownResultTypeList*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_UnknownResultTypeList" data-uid="Npgsql.NpgsqlCommand.UnknownResultTypeList">UnknownResultTypeList</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_UnknownResultTypeList" data-uid="Npgsql.NpgsqlCommand.UnknownResultTypeList">
+  UnknownResultTypeList
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Marks the query's result columns as known or unknown, on a column-by-column basis.
 Unknown result columns are requested from PostgreSQL in text format, and Npgsql makes no
 attempt to parse them. They will be accessible as strings only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool[]? UnknownResultTypeList { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Npgsql_NpgsqlCommand_UnknownResultTypeList_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlCommand_UnknownResultTypeList_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>If the query includes several queries (e.g. SELECT 1; SELECT 2), this will only apply to the first
 one. The rest of the queries will be fetched and parsed as usual.</p>
 <p>The array size must correspond exactly to the number of result columns the query returns, or an
 error will be raised.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_UpdatedRowSource.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.UpdatedRowSource%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L289">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_UpdatedRowSource_" data-uid="Npgsql.NpgsqlCommand.UpdatedRowSource*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_UpdatedRowSource" data-uid="Npgsql.NpgsqlCommand.UpdatedRowSource">UpdatedRowSource</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_UpdatedRowSource" data-uid="Npgsql.NpgsqlCommand.UpdatedRowSource">
+  UpdatedRowSource
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets how command results are applied to the DataRow when used by the
 DbDataAdapter.Update(DataSet) method.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override UpdateRowSource UpdatedRowSource { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.updaterowsource">UpdateRowSource</a></td>
-        <td><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.updaterowsource">UpdateRowSource</a> values.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.updatedrowsource">DbCommand.UpdatedRowSource</a></div>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Cancel.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Cancel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1661">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.updaterowsource">UpdateRowSource</a></dt>
+    <dd><p>One of the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.updaterowsource">UpdateRowSource</a> values.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_NpgsqlCommand_Cancel_" data-uid="Npgsql.NpgsqlCommand.Cancel*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Cancel" data-uid="Npgsql.NpgsqlCommand.Cancel">Cancel()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Cancel" data-uid="Npgsql.NpgsqlCommand.Cancel">
+  Cancel()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1661"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Attempts to cancel the execution of an <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Cancel()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.cancel">DbCommand.Cancel()</a></div>
-  <h5 id="Npgsql_NpgsqlCommand_Cancel_remarks">Remarks</h5>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="Npgsql_NpgsqlCommand_Cancel_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>As per the specs, no exception will be thrown by this method in case of failure.</p>
 </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Clone.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Clone%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1880">View Source</a>
-  </span>
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Clone_" data-uid="Npgsql.NpgsqlCommand.Clone*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Clone" data-uid="Npgsql.NpgsqlCommand.Clone">Clone()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Clone" data-uid="Npgsql.NpgsqlCommand.Clone">
+  Clone()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1880"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Create a new command based on this one.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual NpgsqlCommand Clone()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a></td>
-        <td><p>A new NpgsqlCommand object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_CreateDbParameter.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.CreateDbParameter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L410">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a></dt>
+    <dd><p>A new NpgsqlCommand object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_CreateDbParameter_" data-uid="Npgsql.NpgsqlCommand.CreateDbParameter*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_CreateDbParameter" data-uid="Npgsql.NpgsqlCommand.CreateDbParameter">CreateDbParameter()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_CreateDbParameter" data-uid="Npgsql.NpgsqlCommand.CreateDbParameter">
+  CreateDbParameter()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L410"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new instance of an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override DbParameter CreateDbParameter()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a> object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.createdbparameter">DbCommand.CreateDbParameter()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_CreateParameter.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.CreateParameter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L416">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbparameter">DbParameter</a> object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_CreateParameter_" data-uid="Npgsql.NpgsqlCommand.CreateParameter*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_CreateParameter" data-uid="Npgsql.NpgsqlCommand.CreateParameter">CreateParameter()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_CreateParameter" data-uid="Npgsql.NpgsqlCommand.CreateParameter">
+  CreateParameter()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L416"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new instance of a <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlParameter CreateParameter()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></td>
-        <td><p>An <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> object.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Dispose(System.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1678">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></dt>
+    <dd><p>An <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> object.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Dispose_" data-uid="Npgsql.NpgsqlCommand.Dispose*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Dispose_System_Boolean_" data-uid="Npgsql.NpgsqlCommand.Dispose(System.Boolean)">Dispose(bool)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Dispose_System_Boolean_" data-uid="Npgsql.NpgsqlCommand.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1678"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Releases the unmanaged resources used by the <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.component">Component</a> and optionally releases the managed resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void Dispose(bool disposing)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">disposing</span></td>
-        <td><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to release both managed and unmanaged resources; <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to release only unmanaged resources.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.component.dispose#system-componentmodel-component-dispose(system-boolean)">Component.Dispose(bool)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteDbDataReader_System_Data_CommandBehavior_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteDbDataReader(System.Data.CommandBehavior)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1322">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to release both managed and unmanaged resources; <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to release only unmanaged resources.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteDbDataReader_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReader*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteDbDataReader_System_Data_CommandBehavior_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReader(System.Data.CommandBehavior)">ExecuteDbDataReader(CommandBehavior)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteDbDataReader_System_Data_CommandBehavior_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReader(System.Data.CommandBehavior)">
+  ExecuteDbDataReader(CommandBehavior)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1322"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Executes the command text against the connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override DbDataReader ExecuteDbDataReader(CommandBehavior behavior)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></td>
-        <td><span class="parametername">behavior</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatareader">DbDataReader</a></td>
-        <td><p>A task representing the operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executedbdatareader">DbCommand.ExecuteDbDataReader(CommandBehavior)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteDbDataReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(System.Data.CommandBehavior%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1333">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>behavior</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatareader">DbDataReader</a></dt>
+    <dd><p>A task representing the operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteDbDataReaderAsync_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteDbDataReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)">ExecuteDbDataReaderAsync(CommandBehavior, CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteDbDataReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)">
+  ExecuteDbDataReaderAsync(CommandBehavior, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1333"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Executes the command text against the connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override Task&lt;DbDataReader&gt; ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></td>
-        <td><span class="parametername">behavior</span></td>
-        <td><p>An instance of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatareader">DbDataReader</a>&gt;</td>
-        <td><p>A task representing the asynchronous operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executedbdatareaderasync">DbCommand.ExecuteDbDataReaderAsync(CommandBehavior, CancellationToken)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteNonQuery.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteNonQuery%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1238">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>behavior</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></dt>
+    <dd><p>An instance of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a>.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbdatareader">DbDataReader</a>&gt;</dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteNonQuery_" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQuery*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteNonQuery" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQuery">ExecuteNonQuery()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteNonQuery" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQuery">
+  ExecuteNonQuery()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1238"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Executes a SQL statement against the connection and returns the number of rows affected.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override int ExecuteNonQuery()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></td>
-        <td><p>The number of rows affected if known; -1 otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonquery">DbCommand.ExecuteNonQuery()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteNonQueryAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1247">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of rows affected if known; -1 otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteNonQueryAsync_" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQueryAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteNonQueryAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)">ExecuteNonQueryAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteNonQueryAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteNonQueryAsync(System.Threading.CancellationToken)">
+  ExecuteNonQueryAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Asynchronous version of <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery">ExecuteNonQuery()</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Task&lt;int&gt; ExecuteNonQueryAsync(CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</td>
-        <td><p>A task representing the asynchronous operation, with the number of rows affected if known; -1 otherwise.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executenonqueryasync#system-data-common-dbcommand-executenonqueryasync(system-threading-cancellationtoken)">DbCommand.ExecuteNonQueryAsync(CancellationToken)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteReader_System_Data_CommandBehavior_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteReader(System.Data.CommandBehavior)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1342">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd><p>A task representing the asynchronous operation, with the number of rows affected if known; -1 otherwise.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteReader_" data-uid="Npgsql.NpgsqlCommand.ExecuteReader*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteReader_System_Data_CommandBehavior_" data-uid="Npgsql.NpgsqlCommand.ExecuteReader(System.Data.CommandBehavior)">ExecuteReader(CommandBehavior)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteReader_System_Data_CommandBehavior_" data-uid="Npgsql.NpgsqlCommand.ExecuteReader(System.Data.CommandBehavior)">
+  ExecuteReader(CommandBehavior)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1342"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Executes the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_CommandText">CommandText</a> against the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Connection">Connection</a>
 and returns a <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlDataReader ExecuteReader(CommandBehavior behavior = CommandBehavior.Default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></td>
-        <td><span class="parametername">behavior</span></td>
-        <td><p>One of the enumeration values that specifies the command behavior.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a></td>
-        <td><p>A task representing the operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior%2CSystem.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1367">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>behavior</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></dt>
+    <dd><p>One of the enumeration values that specifies the command behavior.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a></dt>
+    <dd><p>A task representing the operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)">ExecuteReaderAsync(CommandBehavior, CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Data_CommandBehavior_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Data.CommandBehavior,System.Threading.CancellationToken)">
+  ExecuteReaderAsync(CommandBehavior, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1367"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>An asynchronous version of <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader_System_Data_CommandBehavior_">ExecuteReader(CommandBehavior)</a>,
 which executes the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_CommandText">CommandText</a> against the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Connection">Connection</a>
 and returns a <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;NpgsqlDataReader&gt; ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></td>
-        <td><span class="parametername">behavior</span></td>
-        <td><p>One of the enumeration values that specifies the command behavior.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>&gt;</td>
-        <td><p>A task representing the asynchronous operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1354">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>behavior</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.commandbehavior">CommandBehavior</a></dt>
+    <dd><p>One of the enumeration values that specifies the command behavior.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>&gt;</dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Threading.CancellationToken)">ExecuteReaderAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteReaderAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteReaderAsync(System.Threading.CancellationToken)">
+  ExecuteReaderAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1354"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>An asynchronous version of <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader_System_Data_CommandBehavior_">ExecuteReader(CommandBehavior)</a>, which executes
 the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_CommandText">CommandText</a> against the <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Connection">Connection</a>
 and returns a <a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;NpgsqlDataReader&gt; ExecuteReaderAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>&gt;</td>
-        <td><p>A task representing the asynchronous operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteScalar.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteScalar%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1279">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a>&gt;</dt>
+    <dd><p>A task representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteScalar_" data-uid="Npgsql.NpgsqlCommand.ExecuteScalar*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteScalar" data-uid="Npgsql.NpgsqlCommand.ExecuteScalar">ExecuteScalar()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteScalar" data-uid="Npgsql.NpgsqlCommand.ExecuteScalar">
+  ExecuteScalar()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1279"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Executes the query, and returns the first column of the first row
 in the result set returned by the query. Extra columns or rows are ignored.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override object? ExecuteScalar()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></td>
-        <td><p>The first column of the first row in the result set,
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The first column of the first row in the result set,
 or a null reference if the result set is empty.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executescalar">DbCommand.ExecuteScalar()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_ExecuteScalarAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1289">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_ExecuteScalarAsync_" data-uid="Npgsql.NpgsqlCommand.ExecuteScalarAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_ExecuteScalarAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)">ExecuteScalarAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_ExecuteScalarAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.ExecuteScalarAsync(System.Threading.CancellationToken)">
+  ExecuteScalarAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L1289"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Asynchronous version of <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteScalar">ExecuteScalar()</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Task&lt;object?&gt; ExecuteScalarAsync(CancellationToken cancellationToken)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</td>
-        <td><p>A task representing the asynchronous operation, with the first column of the
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</dt>
+    <dd><p>A task representing the asynchronous operation, with the first column of the
 first row in the result set, or a null reference if the result set is empty.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.executescalarasync#system-data-common-dbcommand-executescalarasync(system-threading-cancellationtoken)">DbCommand.ExecuteScalarAsync(CancellationToken)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Prepare.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Prepare%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L651">View Source</a>
-  </span>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Prepare_" data-uid="Npgsql.NpgsqlCommand.Prepare*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Prepare" data-uid="Npgsql.NpgsqlCommand.Prepare">Prepare()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Prepare" data-uid="Npgsql.NpgsqlCommand.Prepare">
+  Prepare()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L651"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a server-side prepared statement on the PostgreSQL server.
 This will make repeated future executions of this command much faster.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Prepare()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.prepare">DbCommand.Prepare()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_PrepareAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.PrepareAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L663">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_PrepareAsync_" data-uid="Npgsql.NpgsqlCommand.PrepareAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_PrepareAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.PrepareAsync(System.Threading.CancellationToken)">PrepareAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_PrepareAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.PrepareAsync(System.Threading.CancellationToken)">
+  PrepareAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L663"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a server-side prepared statement on the PostgreSQL server.
 This will make repeated future executions of this command much faster.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Task PrepareAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbcommand.prepareasync">DbCommand.PrepareAsync(CancellationToken)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_Unprepare.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.Unprepare%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L814">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_Unprepare_" data-uid="Npgsql.NpgsqlCommand.Unprepare*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_Unprepare" data-uid="Npgsql.NpgsqlCommand.Unprepare">Unprepare()</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_Unprepare" data-uid="Npgsql.NpgsqlCommand.Unprepare">
+  Unprepare()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L814"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Unprepares a command, closing server-side statements associated with it.
 Note that this only affects commands explicitly prepared with <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Prepare">Prepare()</a>, not
 automatically prepared statements.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Unprepare()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand_UnprepareAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand.UnprepareAsync(System.Threading.CancellationToken)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L825">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_NpgsqlCommand_UnprepareAsync_" data-uid="Npgsql.NpgsqlCommand.UnprepareAsync*"></a>
-  <h4 id="Npgsql_NpgsqlCommand_UnprepareAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.UnprepareAsync(System.Threading.CancellationToken)">UnprepareAsync(CancellationToken)</h4>
+
+  <h3 id="Npgsql_NpgsqlCommand_UnprepareAsync_System_Threading_CancellationToken_" data-uid="Npgsql.NpgsqlCommand.UnprepareAsync(System.Threading.CancellationToken)">
+  UnprepareAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L825"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Unprepares a command, closing server-side statements associated with it.
 Note that this only affects commands explicitly prepared with <a class="xref" href="Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_Prepare">Prepare()</a>, not
 automatically prepared statements.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task UnprepareAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.idbcommand">IDbCommand</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iasyncdisposable">IAsyncDisposable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icloneable">ICloneable</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.icomponent">IComponent</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>An optional token to cancel the asynchronous operation. The default value is <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken.none">None</a>.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_NpgsqlCommand.md&amp;value=---%0Auid%3A%20Npgsql.NpgsqlCommand%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L28" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/NpgsqlCommand.cs/#L28" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

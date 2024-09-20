@@ -1,112 +1,138 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlTypeMappingSource | Npgsql Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlTypeMappingSource | Npgsql Documentation ">
-  
-    <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
-    <link rel="manifest" href="../../site.webmanifest">
-    <link rel="mask-icon" href="../../safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../../styles/docfx.css">
-    <link rel="stylesheet" href="../../styles/main.css">
-    <link rel="stylesheet" href="../../styles/npgsql.css">
-    <meta property="docfx:navrel" content="../../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-  
-  <meta property="docfx:rel" content="../../">
-  
+      <title>Class NpgsqlTypeMappingSource | Npgsql Documentation </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NpgsqlTypeMappingSource | Npgsql Documentation ">
+      
+      <meta name="description" content="This is an internal API that supports the Entity Framework Core infrastructure and not subject to the same compatibility standards as public APIs. It may be changed or removed without notice in any release. You should only use it directly in your code with extreme caution and knowing that doing so can result in application failures when updating to a new Entity Framework Core release.">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-
-              <a class="navbar-brand" href="../../index.html">
-                <img id="logo" class="svg" src="../../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div class="container body-content">
+      </nav>
+    </header>
 
-        <div id="search-results">
-          <div class="search-list">Search Results for <span></span></div>
-          <div class="sr-items">
-            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
         </div>
       </div>
-      <div role="main" class="container body-content hide-when-search">
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource">
+
+        <article data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource">
 
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource" class="text-break">Class NpgsqlTypeMappingSource</h1>
-  <div class="markdown level0 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource" class="text-break">
+Class NpgsqlTypeMappingSource  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.html">Storage</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Internal</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Npgsql.EntityFrameworkCore.PostgreSQL.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.typemappingsourcebase">TypeMappingSourceBase</a></div>
-    <div class="level2"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource">RelationalTypeMappingSource</a></div>
-    <div class="level3"><span class="xref">NpgsqlTypeMappingSource</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class NpgsqlTypeMappingSource : RelationalTypeMappingSource, IRelationalTypeMappingSource, ITypeMappingSource</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.irelationaltypemappingsource">IRelationalTypeMappingSource</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.itypemappingsource">ITypeMappingSource</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.typemappingsourcebase">TypeMappingSourceBase</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource">RelationalTypeMappingSource</a></div>
+      <div><span class="xref">NpgsqlTypeMappingSource</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.irelationaltypemappingsource">IRelationalTypeMappingSource</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.itypemappingsource">ITypeMappingSource</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource.findmapping#microsoft-entityframeworkcore-storage-relationaltypemappingsource-findmapping(microsoft-entityframeworkcore-storage-typemappinginfo@)">RelationalTypeMappingSource.FindMapping(in TypeMappingInfo)</a>
     </div>
@@ -164,704 +190,562 @@ doing so can result in application failures when updating to a new Entity Framew
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.html">Storage</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.html">Internal</a></h6>
-  <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
-  <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class NpgsqlTypeMappingSource : RelationalTypeMappingSource, IRelationalTypeMappingSource, ITypeMappingSource</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource__ctor_Microsoft_EntityFrameworkCore_Storage_TypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.%23ctor(Microsoft.EntityFrameworkCore.Storage.TypeMappingSourceDependencies%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMappingSourceDependencies%2CMicrosoft.EntityFrameworkCore.Storage.ISqlGenerationHelper%2CNpgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L188">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource__ctor_Microsoft_EntityFrameworkCore_Storage_TypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.#ctor(Microsoft.EntityFrameworkCore.Storage.TypeMappingSourceDependencies,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingSourceDependencies,Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions)">NpgsqlTypeMappingSource(TypeMappingSourceDependencies, RelationalTypeMappingSourceDependencies, ISqlGenerationHelper, INpgsqlSingletonOptions)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource__ctor_Microsoft_EntityFrameworkCore_Storage_TypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingSourceDependencies_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_EntityFrameworkCore_PostgreSQL_Infrastructure_Internal_INpgsqlSingletonOptions_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.#ctor(Microsoft.EntityFrameworkCore.Storage.TypeMappingSourceDependencies,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingSourceDependencies,Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions)">
+  NpgsqlTypeMappingSource(TypeMappingSourceDependencies, RelationalTypeMappingSourceDependencies, ISqlGenerationHelper, INpgsqlSingletonOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NpgsqlTypeMappingSource(TypeMappingSourceDependencies dependencies, RelationalTypeMappingSourceDependencies relationalDependencies, ISqlGenerationHelper sqlGenerationHelper, INpgsqlSingletonOptions options)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.typemappingsourcedependencies">TypeMappingSourceDependencies</a></td>
-        <td><span class="parametername">dependencies</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsourcedependencies">RelationalTypeMappingSourceDependencies</a></td>
-        <td><span class="parametername">relationalDependencies</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></td>
-        <td><span class="parametername">sqlGenerationHelper</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions.html">INpgsqlSingletonOptions</a></td>
-        <td><span class="parametername">options</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_EStringTypeMapping.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.EStringTypeMapping%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L178">View Source</a>
-  </span>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_EStringTypeMapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.EStringTypeMapping">EStringTypeMapping</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dependencies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.typemappingsourcedependencies">TypeMappingSourceDependencies</a></dt>
+    <dd></dd>
+    <dt><code>relationalDependencies</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsourcedependencies">RelationalTypeMappingSourceDependencies</a></dt>
+    <dd></dd>
+    <dt><code>sqlGenerationHelper</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></dt>
+    <dd></dd>
+    <dt><code>options</code> <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlSingletonOptions.html">INpgsqlSingletonOptions</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_EStringTypeMapping" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.EStringTypeMapping">
+  EStringTypeMapping
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public readonly NpgsqlEStringTypeMapping EStringTypeMapping</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEStringTypeMapping.html">NpgsqlEStringTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ClrTypeMappings.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ClrTypeMappings%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L58">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.Mapping.NpgsqlEStringTypeMapping.html">NpgsqlEStringTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ClrTypeMappings_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ClrTypeMappings*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ClrTypeMappings" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ClrTypeMappings">ClrTypeMappings</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ClrTypeMappings" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ClrTypeMappings">
+  ClrTypeMappings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual ConcurrentDictionary&lt;Type, RelationalTypeMapping&gt; ClrTypeMappings { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_StoreTypeMappings.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.StoreTypeMappings%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L50">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_StoreTypeMappings_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.StoreTypeMappings*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_StoreTypeMappings" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.StoreTypeMappings">StoreTypeMappings</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_StoreTypeMappings" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.StoreTypeMappings">
+  StoreTypeMappings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual ConcurrentDictionary&lt;string, RelationalTypeMapping[]&gt; StoreTypeMappings { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>[]&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindBaseMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindBaseMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L432">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindBaseMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindBaseMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindBaseMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindBaseMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">FindBaseMapping(in RelationalTypeMappingInfo)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindBaseMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindBaseMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">
+  FindBaseMapping(in RelationalTypeMappingInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L432"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual RelationalTypeMapping? FindBaseMapping(in RelationalTypeMappingInfo mappingInfo)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></td>
-        <td><span class="parametername">mappingInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindCollectionMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo_System_Type_System_Type_Microsoft_EntityFrameworkCore_Storage_CoreTypeMapping_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindCollectionMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo%2CSystem.Type%2CSystem.Type%2CMicrosoft.EntityFrameworkCore.Storage.CoreTypeMapping)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L584">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mappingInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindCollectionMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindCollectionMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindCollectionMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo_System_Type_System_Type_Microsoft_EntityFrameworkCore_Storage_CoreTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindCollectionMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo,System.Type,System.Type,Microsoft.EntityFrameworkCore.Storage.CoreTypeMapping)">FindCollectionMapping(RelationalTypeMappingInfo, Type, Type?, CoreTypeMapping?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindCollectionMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo_System_Type_System_Type_Microsoft_EntityFrameworkCore_Storage_CoreTypeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindCollectionMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo,System.Type,System.Type,Microsoft.EntityFrameworkCore.Storage.CoreTypeMapping)">
+  FindCollectionMapping(RelationalTypeMappingInfo, Type, Type?, CoreTypeMapping?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L584"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override RelationalTypeMapping? FindCollectionMapping(RelationalTypeMappingInfo info, Type modelType, Type? providerType, CoreTypeMapping? elementMapping)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></td>
-        <td><span class="parametername">info</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">modelType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">providerType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping">CoreTypeMapping</a></td>
-        <td><span class="parametername">elementMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource.findcollectionmapping">RelationalTypeMappingSource.FindCollectionMapping(RelationalTypeMappingInfo, Type, Type, CoreTypeMapping)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindContainerMapping_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_Microsoft_EntityFrameworkCore_Metadata_IModel_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindContainerMapping(System.Type%2CMicrosoft.EntityFrameworkCore.Storage.RelationalTypeMapping%2CMicrosoft.EntityFrameworkCore.Metadata.IModel)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L897">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>info</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></dt>
+    <dd></dd>
+    <dt><code>modelType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>providerType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>elementMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.coretypemapping">CoreTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindContainerMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindContainerMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindContainerMapping_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_Microsoft_EntityFrameworkCore_Metadata_IModel_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindContainerMapping(System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping,Microsoft.EntityFrameworkCore.Metadata.IModel)">FindContainerMapping(Type, RelationalTypeMapping, IModel)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindContainerMapping_System_Type_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMapping_Microsoft_EntityFrameworkCore_Metadata_IModel_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindContainerMapping(System.Type,Microsoft.EntityFrameworkCore.Storage.RelationalTypeMapping,Microsoft.EntityFrameworkCore.Metadata.IModel)">
+  FindContainerMapping(Type, RelationalTypeMapping, IModel)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L897"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Finds the mapping for a container given its CLR type and its containee's type mapping; this is used when inferring type mappings
 for arrays and ranges/multiranges.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual RelationalTypeMapping? FindContainerMapping(Type containerClrType, RelationalTypeMapping containeeTypeMapping, IModel model)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></td>
-        <td><span class="parametername">containerClrType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td><span class="parametername">containeeTypeMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.imodel">IModel</a></td>
-        <td><span class="parametername">model</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L419">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>containerClrType</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd></dd>
+    <dt><code>containeeTypeMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+    <dt><code>model</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.imodel">IModel</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">FindMapping(in RelationalTypeMappingInfo)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">
+  FindMapping(in RelationalTypeMappingInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L419"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override RelationalTypeMapping? FindMapping(in RelationalTypeMappingInfo mappingInfo)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></td>
-        <td><span class="parametername">mappingInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource.findmapping#microsoft-entityframeworkcore-storage-relationaltypemappingsource-findmapping(microsoft-entityframeworkcore-storage-relationaltypemappinginfo@)">RelationalTypeMappingSource.FindMapping(in RelationalTypeMappingInfo)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindRowValueMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindRowValueMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L813">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mappingInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindRowValueMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindRowValueMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindRowValueMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindRowValueMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">FindRowValueMapping(in RelationalTypeMappingInfo)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindRowValueMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindRowValueMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">
+  FindRowValueMapping(in RelationalTypeMappingInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L813"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual RelationalTypeMapping? FindRowValueMapping(in RelationalTypeMappingInfo mappingInfo)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></td>
-        <td><span class="parametername">mappingInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindUserRangeMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindUserRangeMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L825">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mappingInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindUserRangeMapping_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindUserRangeMapping*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindUserRangeMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindUserRangeMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">FindUserRangeMapping(in RelationalTypeMappingInfo)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_FindUserRangeMapping_Microsoft_EntityFrameworkCore_Storage_RelationalTypeMappingInfo__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.FindUserRangeMapping(Microsoft.EntityFrameworkCore.Storage.RelationalTypeMappingInfo@)">
+  FindUserRangeMapping(in RelationalTypeMappingInfo)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L825"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual RelationalTypeMapping? FindUserRangeMapping(in RelationalTypeMappingInfo mappingInfo)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></td>
-        <td><span class="parametername">mappingInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_LoadUserDefinedTypeMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.LoadUserDefinedTypeMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper%2CNpgsql.NpgsqlDataSource)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L360">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mappingInfo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappinginfo">RelationalTypeMappingInfo</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemapping">RelationalTypeMapping</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_LoadUserDefinedTypeMappings_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.LoadUserDefinedTypeMappings*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_LoadUserDefinedTypeMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.LoadUserDefinedTypeMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.NpgsqlDataSource)">LoadUserDefinedTypeMappings(ISqlGenerationHelper, NpgsqlDataSource?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_LoadUserDefinedTypeMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.LoadUserDefinedTypeMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.NpgsqlDataSource)">
+  LoadUserDefinedTypeMappings(ISqlGenerationHelper, NpgsqlDataSource?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L360"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>To be used in case user-defined mappings are added late, after this TypeMappingSource has already been initialized.
 This is basically only for test usage.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void LoadUserDefinedTypeMappings(ISqlGenerationHelper sqlGenerationHelper, NpgsqlDataSource? dataSource)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></td>
-        <td><span class="parametername">sqlGenerationHelper</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></td>
-        <td><span class="parametername">dataSource</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ParseStoreTypeName_System_String_System_Nullable_System_Boolean___System_Nullable_System_Int32___System_Nullable_System_Int32___System_Nullable_System_Int32___.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ParseStoreTypeName(System.String%2CSystem.Nullable%7BSystem.Boolean%7D%40%2CSystem.Nullable%7BSystem.Int32%7D%40%2CSystem.Nullable%7BSystem.Int32%7D%40%2CSystem.Nullable%7BSystem.Int32%7D%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L971">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlGenerationHelper</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></dt>
+    <dd></dd>
+    <dt><code>dataSource</code> <a class="xref" href="../../doc/api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ParseStoreTypeName_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ParseStoreTypeName*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ParseStoreTypeName_System_String_System_Nullable_System_Boolean___System_Nullable_System_Int32___System_Nullable_System_Int32___System_Nullable_System_Int32___" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ParseStoreTypeName(System.String,System.Nullable{System.Boolean}@,System.Nullable{System.Int32}@,System.Nullable{System.Int32}@,System.Nullable{System.Int32}@)">ParseStoreTypeName(string?, ref bool?, ref int?, ref int?, ref int?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_ParseStoreTypeName_System_String_System_Nullable_System_Boolean___System_Nullable_System_Int32___System_Nullable_System_Int32___System_Nullable_System_Int32___" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.ParseStoreTypeName(System.String,System.Nullable{System.Boolean}@,System.Nullable{System.Int32}@,System.Nullable{System.Int32}@,System.Nullable{System.Int32}@)">
+  ParseStoreTypeName(string?, ref bool?, ref int?, ref int?, ref int?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L971"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
 doing so can result in application failures when updating to a new Entity Framework Core release.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override string? ParseStoreTypeName(string? storeTypeName, ref bool? unicode, ref int? size, ref int? precision, ref int? scale)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">storeTypeName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
-        <td><span class="parametername">unicode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">size</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">precision</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</td>
-        <td><span class="parametername">scale</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.relationaltypemappingsource.parsestoretypename">RelationalTypeMappingSource.ParseStoreTypeName(string, ref bool?, ref int?, ref int?, ref int?)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_SetupEnumMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.SetupEnumMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper%2CNpgsql.NpgsqlDataSource)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L369">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>storeTypeName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>unicode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>size</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+    <dt><code>precision</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_SetupEnumMappings_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.SetupEnumMappings*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_SetupEnumMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.SetupEnumMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.NpgsqlDataSource)">SetupEnumMappings(ISqlGenerationHelper, NpgsqlDataSource?)</h4>
+
+  <h3 id="Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource_SetupEnumMappings_Microsoft_EntityFrameworkCore_Storage_ISqlGenerationHelper_Npgsql_NpgsqlDataSource_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource.SetupEnumMappings(Microsoft.EntityFrameworkCore.Storage.ISqlGenerationHelper,Npgsql.NpgsqlDataSource)">
+  SetupEnumMappings(ISqlGenerationHelper, NpgsqlDataSource?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L369"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets all global enum mappings from the ADO.NET layer and creates mappings for them</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual void SetupEnumMappings(ISqlGenerationHelper sqlGenerationHelper, NpgsqlDataSource? dataSource)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></td>
-        <td><span class="parametername">sqlGenerationHelper</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="../../doc/api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></td>
-        <td><span class="parametername">dataSource</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.irelationaltypemappingsource">IRelationalTypeMappingSource</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.itypemappingsource">ITypeMappingSource</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sqlGenerationHelper</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.isqlgenerationhelper">ISqlGenerationHelper</a></dt>
+    <dd></dd>
+    <dt><code>dataSource</code> <a class="xref" href="../../doc/api/Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Storage_Internal_NpgsqlTypeMappingSource.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlTypeMappingSource%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L24" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+        <div class="contribution d-print-none">
+          <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Storage/Internal/NpgsqlTypeMappingSource.cs/#L24" class="edit-link">Edit this page</a>
         </div>
+
+
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      © Copyright 2024 The Npgsql Development Team
-      
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../../styles/docfx.js"></script>
-    <script type="text/javascript" src="../../styles/main.js"></script>
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          © Copyright 2024 The Npgsql Development Team
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
