@@ -3,14 +3,14 @@
     {
       "src": [
         {
-          "files": [ "src/**/*.csproj" ],
+          "files": [ "src/Npgsql/Npgsql.csproj" ],
           "exclude": [ "src/MSI/**", "src/VSIX/**", "**/bin/**", "**/obj/**" ],
-          "cwd": "Npgsql/"
+          "src": "Npgsql/"
         }
       ],
       "dest": "obj/api/Npgsql",
       "properties": {
-        "TargetFramework": "netstandard2.1"
+        "TargetFramework": "net8.0"
       }
     },
     {
@@ -18,12 +18,12 @@
         {
           "files": [ "src/**/*.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**", "Properties/NpgsqlStrings.*" ],
-          "cwd": "EFCore.PG"
+          "src": "EFCore.PG"
         }
       ],
       "dest": "obj/api/EFCore.PG",
       "properties": {
-        "TargetFramework": "net6.0"
+        "TargetFramework": "net8.0"
       }
     }
   ],
@@ -35,27 +35,27 @@
     "content": [
       {
         "files": [ "**/*.yml" ],
-        "cwd": "obj/api/Npgsql",
+        "src": "obj/api/Npgsql",
         "dest": "doc/api"
       },
       {
         "files": [ "**/*.yml" ],
-        "cwd": "obj/api/EFCore.PG",
+        "src": "obj/api/EFCore.PG",
         "dest": "efcore/api"
       },
       {
         "files": [ "**.md", "toc.yml" ],
-        "cwd": "conceptual/Npgsql",
+        "src": "conceptual/Npgsql",
         "dest": "doc"
       },
       {
         "files": [ "**.md", "toc.yml" ],
-        "cwd": "conceptual/EFCore.PG",
+        "src": "conceptual/EFCore.PG",
         "dest": "efcore"
       },
       {
         "files": [ "**.md", "toc.yml" ],
-        "cwd": "conceptual/EF6.PG",
+        "src": "conceptual/EF6.PG",
         "dest": "ef6"
       },
       {
