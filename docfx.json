@@ -1,7 +1,9 @@
 ﻿{
-  "metadata": [
+  "metadata":
+  [
     {
-      "src": [
+      "src":
+      [
         {
           "files": [ "src/Npgsql/Npgsql.csproj" ],
           "exclude": [ "src/MSI/**", "src/VSIX/**", "**/bin/**", "**/obj/**" ],
@@ -9,12 +11,14 @@
         }
       ],
       "dest": "obj/api/Npgsql",
-      "properties": {
+      "properties":
+      {
         "TargetFramework": "net8.0"
       }
     },
     {
-      "src": [
+      "src":
+      [
         {
           "files": [ "src/**/*.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**", "Properties/NpgsqlStrings.*" ],
@@ -22,17 +26,21 @@
         }
       ],
       "dest": "obj/api/EFCore.PG",
-      "properties": {
+      "properties":
+      {
         "TargetFramework": "net8.0"
       }
     }
   ],
-  "build": {
-    "template": [
+  "build":
+  {
+    "template":
+    [
         "default",
         "modern"
     ],
-    "content": [
+    "content":
+    [
       {
         "files": [ "**/*.yml" ],
         "src": "obj/api/Npgsql",
@@ -62,7 +70,8 @@
         "files": [ "*.md", "dev/**.md", "toc.yml" ]
       }
     ],
-    "resource": [
+    "resource":
+    [
       {
         "files": [ "img/**", "styles/**", "CNAME" ]
       },
@@ -71,6 +80,7 @@
         "src": "favicons"
       }
     ],
+    "output": "_site",
     "xrefService": [ "https://xref.docs.microsoft.com/query?uid={uid}" ],
     "globalMetadata": {
       "_appTitle": "Npgsql Documentation",
@@ -92,7 +102,6 @@
           "branch": "stable"
         }
       }
-    },
-    "dest" : "live"
+    }
   }
 }
