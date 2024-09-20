@@ -94,7 +94,7 @@
 <h3 id="improved-spatial-support-postgis">Improved Spatial Support (PostGIS)</h3>
 <p>Previous versions have allowed basic usage of PostGIS's spatial types via built-in Npgsql types such as <code>NpgsqlPoint</code>, <code>NpgsqlLineString</code>, etc. These types were limited in many ways, and no operation translation was supported. If you want to calculate, say, the distance between two points, you had to drop down to raw SQL.</p>
 <p>No more! Thanks to a new plugin infrastructure, the EF Core provider now has full-class support for PostGIS. You can now use the <a href="https://github.com/NetTopologySuite/NetTopologySuite">NetTopologySuite</a> spatial library to map PostGIS types - NetTopologySuite's types are more complete, and best of all, the provider knows how to translate its operations to SQL. This allows you to write the following code:</p>
-<pre><code class="lang-c#">var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
+<pre><code class="lang-csharp">var nearbyCities = context.Cities.Where(c =&gt; c.Location.Distance(somePoint) &lt; 100);
 </code></pre>
 <p>See <a href="../mapping/nts.html">the full documentation for more information</a>.</p>
 <p>Thanks to <a href="https://github.com/YohDeadfall">@YohDeadfall</a> for implementing support for this at the ADO level.</p>

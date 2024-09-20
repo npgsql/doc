@@ -94,7 +94,7 @@
 </div>
 <p><a href="https://opentelemetry.io/">OpenTelemetry</a> is a widely-adopted framework for distributed observability across many languages and components; its tracing standards allow applications and libraries to emit information on activities and events, which can be exported by the application, stored and analyzed. Activities typically have start and end times, and can encompass other activities recursively; this allows you to analyze e.g. exactly how much time was spent in the database when handling a certain HTTP call.</p>
 <p>To make Npgsql emit tracing data, reference the <a href="https://www.nuget.org/packages/Npgsql.OpenTelemetry">Npgsql.OpenTelemetry</a> NuGet package from your application, and set up tracing as follows:</p>
-<pre><code class="lang-c#">using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+<pre><code class="lang-csharp">using var tracerProvider = Sdk.CreateTracerProviderBuilder()
     .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(&quot;npgsql-tester&quot;))
     .SetSampler(new AlwaysOnSampler())
     // This optional activates tracing for your application, if you trace your own activities:

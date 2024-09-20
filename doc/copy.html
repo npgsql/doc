@@ -95,7 +95,7 @@
 <h5>Warning</h5>
 <p>It is the your responsibility to read and write the correct type! If you use COPY to write an int32 into a string field you may get an exception, or worse, silent data corruption. It is also highly recommended to use the overload of <code>Write()</code> which accepts an <code>NpgsqlDbType</code>, allowing you to unambiguously specify exactly what type you want to write. Test your code thoroughly.</p>
 </div>
-<pre><code class="lang-c#">// Import two columns to table data
+<pre><code class="lang-csharp">// Import two columns to table data
 using (var writer = conn.BeginBinaryImport(&quot;COPY data (field_text, field_int2) FROM STDIN (FORMAT BINARY)&quot;))
 {
     writer.StartRow();
@@ -126,7 +126,7 @@ using (var reader = Conn.BeginBinaryExport(&quot;COPY data (field_text, field_in
 </code></pre>
 <h2 id="text-copy">Text COPY</h2>
 <p>This mode uses the PostgreSQL text or csv format to transfer data in and out of the database. It is the user's responsibility to format the text or CSV appropriately, Npgsql simply provides a TextReader or Writer. This mode is less efficient than binary copy, and is suitable mainly if you already have the data in a CSV or compatible text format and don't care about performance.</p>
-<pre><code class="lang-c#">using (var writer = conn.BeginTextImport(&quot;COPY data (field_text, field_int4) FROM STDIN&quot;)) {
+<pre><code class="lang-csharp">using (var writer = conn.BeginTextImport(&quot;COPY data (field_text, field_int4) FROM STDIN&quot;)) {
     writer.Write(&quot;HELLO\t1\n&quot;);
     writer.Write(&quot;GOODBYE\t2\n&quot;);
 }
@@ -139,7 +139,7 @@ using (var reader = conn.BeginTextExport(&quot;COPY data (field_text, field_int4
 <h2 id="raw-binary-copy">Raw Binary COPY</h2>
 <p>In this mode, data transfer is binary, but Npgsql does no encoding or decoding whatsoever - data is exposed as a raw .NET Stream. This mode makes sense only for bulk data and restore a table: the table is saved as a blob, which can later be restored. If you need to actually make sense of the data, you should be using regular binary mode instead (not raw).</p>
 <p>Example:</p>
-<pre><code class="lang-c#">int len;
+<pre><code class="lang-csharp">int len;
 var data = new byte[10000];
 // Export table1 to data array
 using (var inStream = conn.BeginRawBinaryCopy(&quot;COPY table1 TO STDOUT (FORMAT BINARY)&quot;)) {

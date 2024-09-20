@@ -1219,7 +1219,7 @@
 </tbody>
 </table>
 <p>Aggregate functions can be used as follows:</p>
-<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+<pre><code class="lang-csharp">var query = ctx.Set&lt;Customer&gt;()
     .GroupBy(c =&gt; c.City)
     .Select(
         g =&gt; new
@@ -1229,7 +1229,7 @@
         });
 </code></pre>
 <p>To use functions accepting a tuple_of_2, project out from the group as follows:</p>
-<pre><code class="lang-c#">var query = ctx.Set&lt;Customer&gt;()
+<pre><code class="lang-csharp">var query = ctx.Set&lt;Customer&gt;()
     .GroupBy(c =&gt; c.City)
     .Select(
         g =&gt; new

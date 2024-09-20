@@ -90,7 +90,7 @@
 <p>The Large Objects feature is a way of storing large files in a PostgreSQL database. Files can normally be stored in bytea columns but there are two downsides; a file can only be 1 GB and the backend buffers the whole file when reading or writing a column, which may use significant amounts of RAM on the backend.</p>
 <p>With the Large Objects feature, objects are instead stored in a separate system table in smaller chunks and provides a streaming API for the user. Each object is given an integral identifier that is used for accessing the object, that can, for example, be stored in a user's table containing information about this object.</p>
 <h2 id="example">Example</h2>
-<pre><code class="lang-c#">// Retrieve a Large Object Manager for this connection
+<pre><code class="lang-csharp">// Retrieve a Large Object Manager for this connection
 var manager = new NpgsqlLargeObjectManager(Conn);
 
 // Create a new empty file, returning the identifier to later access it

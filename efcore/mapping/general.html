@@ -89,7 +89,7 @@
 
 <p>The EF Core provider transparently maps the types supported by Npgsql at the ADO.NET level - see <a href="/doc/types/basic.html">the Npgsql ADO type mapping page</a>.</p>
 <p>This means that you can use PostgreSQL-specific types, such as <code>inet</code> or <code>circle</code>, directly in your entities. Simply define your properties just as if they were a simple type, such as a <code>string</code>:</p>
-<pre><code class="lang-c#">public class MyEntity
+<pre><code class="lang-csharp">public class MyEntity
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -113,13 +113,13 @@
 </ul>
 <section id="tabpanel_1_data-annotations" role="tabpanel" data-tab="data-annotations">
 
-<pre><code class="lang-c#">[Column(TypeName=&quot;jsonb&quot;)]
+<pre><code class="lang-csharp">[Column(TypeName=&quot;jsonb&quot;)]
 public string SomeStringProperty { get; set; }
 </code></pre>
 </section>
 <section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">builder.Entity&lt;Blog&gt;()
+<pre><code class="lang-csharp">builder.Entity&lt;Blog&gt;()
        .Property(b =&gt; b.SomeStringProperty)
        .HasColumnType(&quot;jsonb&quot;);
 </code></pre>

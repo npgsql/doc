@@ -125,7 +125,7 @@ SELECT * FROM blogs WHERE b.name = $1; -- Npgsql 6.0
 </code></pre>
 <p>This is more efficient, is safer (since Npgsql doesn't have to parse SQL), and aligns your SQL with the actual PostgreSQL SQL. Note that named parameters are still supported for backwards compatibility.</p>
 <p>In addition, Npgsql now supports <a href="https://github.com/dotnet/runtime/issues/28633">the new ADO.NET batching API</a> introduced in .NET 6.0 as an alternative to packing multiple statements into a single NpgsqlCommand, delimited by semicolons (<a href="https://github.com/npgsql/npgsql/pull/3860">#3860</a>):</p>
-<pre><code class="lang-c#">// Before Npgsql 6.0
+<pre><code class="lang-csharp">// Before Npgsql 6.0
 var command = new NpgsqlCommand(&quot;SELECT 1; SELECT 2&quot;, connection);
 var reader = await command.ExecuteReaderAsync();
 
@@ -244,13 +244,13 @@ ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 </code></pre>
 <h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
 <p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre>
 <h3 id="nodatime-tstzrange-and-daterange-are-mapped-to-interval-and-dateinterval-by-default">NodaTime: tstzrange and daterange are mapped to Interval and DateInterval by default</h3>
 <p>When using NodaTime, reading a PostgreSQL <code>tstzrange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.Interval.html">Interval</a> instead of <code>NpgsqlRange&lt;Instant&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/4070">#4070</a>), and reading a PostgreSQL <code>daterange</code> returns <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> instead of <code>NpgsqlRange&lt;LocalDate&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/3973">#3973</a>). It is still possible to read <code>NpgsqlRange</code> by via <code>reader.GetFieldValue&lt;NpgsqlRange&lt;Instant&gt;&gt;</code> and <code>reader.GetFieldValue&lt;NpgsqlRange&lt;LocalDate&gt;&gt;</code>.</p>
 <h3 id="datetime-minmax-values-are-now-converted-to-postgresql-infinity-values-by-default">Date/time min/max values are now converted to PostgreSQL infinity values by default</h3>
 <p>PostgreSQL has special <code>infinity</code> and <code>-infinity</code> values for timestamps and dates, which are later and earlier than other value. Npgsql has supported mapping <code>DateTime.MaxValue</code> and <code>MinValue</code> to these infinity values via an <code>Convert Infinity DateTime</code> connection string parameter, which was disabled by default. This behavior is now on by default, since <code>DateTime.MaxValue</code> and <code>MinValue</code> are very rarely used as actual timestamps/dates, and the <code>Convert Infinity DateTime</code> parameter has been removed. To disable infinity conversions, add the following at the start of your application:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
 </code></pre>
 <p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
 <h3 id="pg-intervals-with-monthsyears-can-no-longer-be-read-as-timespan">PG intervals with months/years can no longer be read as TimeSpan</h3>
@@ -265,10 +265,10 @@ ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 <p>As part of the redesign around logical replication support, some major changes to the API had to be done. Applications will have to be changed to use the new API.</p>
 <h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
 <p>PostgreSQL 14 introduced <a href="https://www.postgresql.org/docs/14/rangetypes.html">a new multirange type</a>, which is very similar to an array of ranges but supports various range-related operations efficiently. The provider now maps arrays and lists of <code>NpgsqlRange</code> to these new types by default. You can still read old-style arrays over ranges by explicitly specifying the type:</p>
-<pre><code class="lang-c#">var arrayOverRange = reader.GetFieldValue&lt;NpgsqlRange&lt;int&gt;[]&gt;(0);
+<pre><code class="lang-csharp">var arrayOverRange = reader.GetFieldValue&lt;NpgsqlRange&lt;int&gt;[]&gt;(0);
 </code></pre>
 <p>You can also write arrays over ranges by explicitly specifying the <code>NpgsqlDbType</code>:</p>
-<pre><code class="lang-c#">var parameter = new NpgsqlParameter
+<pre><code class="lang-csharp">var parameter = new NpgsqlParameter
 {
     Value = new NpgsqlRange&lt;int&gt;[] { ... },
     NpgsqlDbType = NpgsqlDbType.IntegerRange | NpgsqlDbType.Array
@@ -279,7 +279,7 @@ ALTER TABLE blogs ALTER COLUMN created_on TYPE timestamp with time zone;
 <h3 id="parameter-name-matching-changed-around-case-sensitivity">Parameter name matching changed around case-sensitivity</h3>
 <p>When using named parameter placeholders, Npgsql now only does a single pass to match placeholders to parameters, taking the first parameter whose name passes a case-insensitive match. Npgsql previously did two passes - a case-insensitive pass, followed by a case-sensitive one if the first pass failed to match; this was detrimental to performance in some scenarios. This behavioral change is only visible when using two parameters with names that are identical except for case; this is generally discouraged.</p>
 <p>To revert to the legacy two-pass behavior, add the following at the start of your application, before any Npgsql operations are invoked:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyCaseInsensitiveDbParameters&quot;, true);
 </code></pre>
 <p>Note: version 6.0.0 and 6.0.1 changed parameter matching to be case-sensitive. This change was rolled back in 6.0.2 since it could lead to data loss in some scenarios.</p>
 <h3 id="the-provider-specific-datetime-types-have-been-obsoleted">The provider-specific date/time types have been obsoleted</h3>

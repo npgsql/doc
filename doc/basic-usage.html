@@ -156,7 +156,7 @@ await command.ExecuteNonQueryAsync();
 <p>Note that each execute method involves a database roundtrip. To execute multiple SQL statements in a single roundtrip, see the <a href="#batching">batching section</a> below.</p>
 <h2 id="parameters">Parameters</h2>
 <p>When sending data values to the database, always consider using parameters rather than including the values in the SQL as follows:</p>
-<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ($1), ($2)&quot;, conn)
+<pre><code class="lang-csharp">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ($1), ($2)&quot;, conn)
 {
     Parameters =
     {
@@ -177,7 +177,7 @@ await cmd.ExecuteNonQueryAsync();
 <h3 id="positional-and-named-placeholders">Positional and named placeholders</h3>
 <p>Starting with Npgsql 6.0, the recommended placeholder style is <em>positional</em> (<code>$1</code>, <code>$2</code>); this is the native parameter style used by PostgreSQL, and your SQL can therefore be sent to the database as-is, without any manipulation.</p>
 <p>For legacy and compatibility reasons, Npgsql also supports <em>named placeholders</em>. This allows the above code to be written as follows:</p>
-<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p1), (@p2)&quot;, conn)
+<pre><code class="lang-csharp">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES (@p1), (@p2)&quot;, conn)
 {
     Parameters =
     {
@@ -225,7 +225,7 @@ await transaction.CommitAsync();
 <p>Note that if you open and close connections to the same database inside an ambient transaction, without ever having two connections open <em>at the same time</em>, Npgsql internally reuses the same connection, avoiding the need for a distributed transaction.</p>
 <h2 id="batching">Batching</h2>
 <p>Let's say you need to execute two SQL statements for some reason. This can naively be done as follows:</p>
-<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ('foo')&quot;, conn);
+<pre><code class="lang-csharp">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ('foo')&quot;, conn);
 await cmd.ExecuteNonQueryAsync();
 
 cmd.CommandText = &quot;SELECT * FROM table&quot;;
@@ -233,7 +233,7 @@ await using var reader = await cmd.ExecuteReaderAsync();
 </code></pre>
 <p>The above code needlessly performs two roundtrips to the database: your program will not send the <code>SELECT</code> until after the <code>INSERT</code> has completed and confirmation for that has been received. Network latency can make this very inefficient: as the distance between your .NET client and PostgreSQL increases, the time spent waiting for packets to cross the network can severely impact your application's performance.</p>
 <p>Instead, you can ask Npgsql to send the two SQL statements in a single roundtrip, by using batching:</p>
-<pre><code class="lang-c#">await using var batch = new NpgsqlBatch(conn)
+<pre><code class="lang-csharp">await using var batch = new NpgsqlBatch(conn)
 {
     BatchCommands =
     {
@@ -251,14 +251,14 @@ await using var reader = await batch.ExecuteReaderAsync();
 </div>
 <h3 id="legacy-batching">Legacy batching</h3>
 <p>Prior to Npgsql 6.0, <code>NpgsqlBatch</code> did not yet exist, and batching could be done as follows:</p>
-<pre><code class="lang-c#">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ('foo'); SELECT * FROM table&quot;, conn);
+<pre><code class="lang-csharp">await using var cmd = new NpgsqlCommand(&quot;INSERT INTO table (col1) VALUES ('foo'); SELECT * FROM table&quot;, conn);
 await using var reader = await cmd.ExecuteReaderAsync();
 </code></pre>
 <p>This packs multiple SQL statements into the <code>CommandText</code> of a single <code>NpgsqlCommand</code>, delimiting them with semi-colons. This technique is still supported, and can be useful when porting database code from other database. However, legacy batching is generally discouraged since it isn't natively supported by PostgreSQL, forcing Npgsql to parse the SQL to find semicolons. This is similar to <em>named parameter placeholders</em>, <a href="#positional-and-named-placeholders">see this section for more details</a>.</p>
 <h2 id="stored-functions-and-procedures">Stored functions and procedures</h2>
 <p>PostgreSQL supports <a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">stored (or server-side) functions</a>, and since PostgreSQL 11 also <a href="https://www.postgresql.org/docs/current/sql-createprocedure.html">stored procedures</a>. These can be written in SQL (similar to views), or in <a href="https://www.postgresql.org/docs/current/static/plpgsql.html">PL/pgSQL</a> (PostgreSQL's procedural language), <a href="https://www.postgresql.org/docs/current/static/plpython.html">PL/Python</a> or several other server-side languages.</p>
 <p>Once a function or procedure has been defined, calling it is a simple matter of executing a regular command:</p>
-<pre><code class="lang-c#">// For functions
+<pre><code class="lang-csharp">// For functions
 using var cmd = new NpgsqlCommand(&quot;SELECT my_func(1, 2)&quot;, conn);
 using var reader = cmd.ExecuteReader();
 
@@ -273,7 +273,7 @@ using var reader = cmd.ExecuteReader();
 <p>Starting with Npgsql 7.0, <a href="https://learn.microsoft.com/dotnet/api/system.data.commandtype#system-data-commandtype-storedprocedure"><code>CommandType.StoredProcedure</code></a> now invokes stored procedures, and not function as before. See the <a href="release-notes/7.0.html#commandtype_storedprocedure">release notes</a> for more information and how to opt out of this change.</p>
 </div>
 <p>In some other databases, calling a stored procedures involves setting the command's <code>CommandType</code>:</p>
-<pre><code class="lang-c#">using var command1 = new NpgsqlCommand(&quot;my_procedure&quot;, connection)
+<pre><code class="lang-csharp">using var command1 = new NpgsqlCommand(&quot;my_procedure&quot;, connection)
 {
     CommandType = CommandType.StoredProcedure,
     Parameters =
@@ -288,18 +288,18 @@ await using var reader = await command1.ExecuteReaderAsync();
 <p>Note that if <code>CommandType.StoredProcedure</code> is set and your parameter instances have names, Npgsql generates parameters with <code>named notation</code>: <code>SELECT my_func(p1 =&gt; 'some_value')</code>. This means that your NpgsqlParameter names must match your PostgreSQL procedure or function parameters, or the call will fail. If you omit the names on your NpgsqlParameters, positional notation will be used instead. Note that positional parameters must always come before named ones. <a href="https://www.postgresql.org/docs/current/static/sql-syntax-calling-funcs.html">See the PostgreSQL docs for more info</a>.</p>
 <h3 id="function-inout-parameters">Function in/out parameters</h3>
 <p>In SQL Server (and possibly other databases), functions can have output parameters, input/output parameters, and a return value, which can be either a scalar or a table (TVF). To call functions with special parameter types, the <code>Direction</code> property must be set on the appropriate <code>DbParameter</code>. PostgreSQL functions, on the hand, always return a single table - they can all be considered TVFs. Somewhat confusingly, PostgreSQL does allow your functions to be defined with input/and output parameters:</p>
-<pre><code class="lang-c#">CREATE FUNCTION dup(in int, out f1 int, out f2 text)
+<pre><code class="lang-csharp">CREATE FUNCTION dup(in int, out f1 int, out f2 text)
     AS $$ SELECT $1, CAST($1 AS text) || ' is text' $$
     LANGUAGE SQL;
 </code></pre>
 <p>However, the above syntax is nothing more than a definition of the function's resultset, and is identical to the following (<a href="https://www.postgresql.org/docs/current/static/sql-createfunction.html">see the PostgreSQL docs</a>):</p>
-<pre><code class="lang-c#">CREATE FUNCTION dup(int) RETURNS TABLE(f1 int, f2 text)
+<pre><code class="lang-csharp">CREATE FUNCTION dup(int) RETURNS TABLE(f1 int, f2 text)
     AS $$ SELECT $1, CAST($1 AS text) || ' is text' $$
     LANGUAGE SQL;
 </code></pre>
 <p>In other words, PostgreSQL functions don't have output parameters that are distinct from the resultset they return - output parameters are just a syntax for describing that resultset. Because of this, on the Npgsql side there's no need to think about output (or input/output) parameters: simply invoke the function and process its resultset just like you would any regular resultset.</p>
 <p>However, to help portability, Npgsql does provide support for output parameters as follows:</p>
-<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;SELECT my_func()&quot;, conn))
+<pre><code class="lang-csharp">using (var cmd = new NpgsqlCommand(&quot;SELECT my_func()&quot;, conn))
 {
     cmd.Parameters.Add(new NpgsqlParameter(&quot;p_out&quot;, DbType.String) { Direction = ParameterDirection.Output });
     cmd.ExecuteNonQuery();

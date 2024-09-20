@@ -103,14 +103,14 @@ otherwise please open one to let us know.</p>
 One simple way to do this is to append ::TEXT in your query (e.g. <code>SELECT 3::TEXT</code>).</p>
 <p>If you don't want to modify your query, Npgsql also includes an API for requesting types as text.
 The following code returns all the columns in the resultset as text:</p>
-<pre><code class="lang-c#">await using (var cmd = new NpgsqlCommand(...)) {
+<pre><code class="lang-csharp">await using (var cmd = new NpgsqlCommand(...)) {
   cmd.AllResultTypesAreUnknown = true;
   await using var reader = await cmd.ExecuteReaderAsync();
   // Read everything as strings
 }
 </code></pre>
 <p>You can also specify text only for some columns in your resultset:</p>
-<pre><code class="lang-c#">await using (var cmd = new NpgsqlCommand(...)) {
+<pre><code class="lang-csharp">await using (var cmd = new NpgsqlCommand(...)) {
   // Only the second field will be fetched as text
   cmd.UnknownResultTypeList = new[] { false, true };
   await using var reader = await cmd.ExecuteReaderAsync();
@@ -119,7 +119,7 @@ The following code returns all the columns in the resultset as text:</p>
 </code></pre>
 <h2 id="im-trying-to-write-a-jsonb-type-and-am-getting-column-xxx-is-of-type-jsonb-but-expression-is-of-type-text"><a name="jsonb">I'm trying to write a JSONB type and am getting 'column &quot;XXX&quot; is of type jsonb but expression is of type text'</a></h2>
 <p>When sending a JSONB parameter, you must explicitly specify its type to be JSONB with NpgsqlDbType:</p>
-<pre><code class="lang-c#">await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO foo (col) VALUES (@p)&quot;, conn)) {
+<pre><code class="lang-csharp">await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO foo (col) VALUES (@p)&quot;, conn)) {
   cmd.Parameters.AddWithValue(&quot;p&quot;, NpgsqlDbType.Jsonb, jsonText);
 }
 </code></pre>

@@ -146,19 +146,19 @@ conn.Execute(&quot;SELECT 1&quot;);
 </ul>
 <section id="tabpanel_1_console" role="tabpanel" data-tab="console">
 
-<pre><code class="lang-c#">dataSourceBuilder.EnableParameterLogging();
+<pre><code class="lang-csharp">dataSourceBuilder.EnableParameterLogging();
 </code></pre>
 </section>
 <section id="tabpanel_1_aspnet" role="tabpanel" data-tab="aspnet" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">builder.Services.AddNpgsqlDataSource(
+<pre><code class="lang-csharp">builder.Services.AddNpgsqlDataSource(
     &quot;Host=localhost;Username=test;Password=test&quot;,
     builder =&gt; builder.EnableParameterLogging());
 </code></pre>
 </section>
 <section id="tabpanel_1_without-dbdatasource" role="tabpanel" data-tab="without-dbdatasource" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">NpgsqlLoggingConfiguration.InitializeLogging(loggerFactory, parameterLoggingEnabled: true);
+<pre><code class="lang-csharp">NpgsqlLoggingConfiguration.InitializeLogging(loggerFactory, parameterLoggingEnabled: true);
 </code></pre>
 </section>
 </div>
@@ -169,21 +169,21 @@ conn.Execute(&quot;SELECT 1&quot;);
 </div>
 <h2 id="logging-in-older-versions-of-npgsql"><a name="old-logging"></a>Logging in older versions of Npgsql</h2>
 <p>Prior to 7.0, Npgsql had its own, custom logging API. To use this, statically inject a logging provider implementing the <code>INpgsqlLoggingProvider</code> interface as follows:</p>
-<pre><code class="lang-c#">NpgsqlLogManager.Provider = new ???
+<pre><code class="lang-csharp">NpgsqlLogManager.Provider = new ???
 </code></pre>
 <p><em>Note: you must set the logging provider before invoking any other Npgsql method, at the very start of your program.</em></p>
 <p>It's trivial to create a logging provider that passes log messages to whatever logging framework you use, you can find such an adapter for NLog below.</p>
 <h3 id="consoleloggingprovider">ConsoleLoggingProvider</h3>
 <p>Npgsql comes with one built-in logging provider: <code>ConsoleLoggingProvider</code>. It simply dumps all log messages with a given level or above to standard output.
 You can set it up by including the following line at the beginning of your application:</p>
-<pre><code class="lang-c#">NpgsqlLogManager.Provider = new ConsoleLoggingProvider(&lt;min level&gt;, &lt;print level?&gt;, &lt;print connector id?&gt;);
+<pre><code class="lang-csharp">NpgsqlLogManager.Provider = new ConsoleLoggingProvider(&lt;min level&gt;, &lt;print level?&gt;, &lt;print connector id?&gt;);
 </code></pre>
 <p>Level defaults to <code>NpgsqlLogLevel.Info</code> (which will only print warnings and errors).
 You can also have log levels and connector IDs logged.</p>
 <h3 id="nlogloggingprovider-or-implementing-your-own">NLogLoggingProvider (or implementing your own)</h3>
 <p>The following provider is used in the Npgsql unit tests to pass log messages to <a href="http://nlog-project.org/">NLog</a>.
 You're welcome to copy-paste it into your project, or to use it as a starting point for implementing your own custom provider.</p>
-<pre><code class="lang-c#">class NLogLoggingProvider : INpgsqlLoggingProvider
+<pre><code class="lang-csharp">class NLogLoggingProvider : INpgsqlLoggingProvider
 {
     public NpgsqlLogger CreateLogger(string name)
     {

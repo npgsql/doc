@@ -95,7 +95,7 @@
 <h2 id="batchingpipelining">Batching/Pipelining</h2>
 <p>When you execute a command, Npgsql executes a roundtrip to the database. If you execute multiple commands (say, inserting 3 rows or performing multiple selects), you're executing multiple roundtrips; each command has to complete before the next command can start execution. Depending on your network latency, this can considerably degrade your application's performance.</p>
 <p>You can batch multiple SQL statements in a single roundtrip:</p>
-<pre><code class="lang-c#">var batch = new NpgsqlBatch(connection)
+<pre><code class="lang-csharp">var batch = new NpgsqlBatch(connection)
 {
     BatchCommands = { new(&quot;SELECT ...&quot;), new(&quot;SELECT ...&quot;) }
 };

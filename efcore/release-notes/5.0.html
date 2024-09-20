@@ -125,7 +125,7 @@
 <h3 id="computed-columns-must-now-explicitly-be-configured-as-stored-1336">Computed columns must now explicitly be configured as stored (<a href="https://github.com/npgsql/efcore.pg/issues/1336">#1336</a>)</h3>
 <p>Version 3.1 of the provider added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">PostgreSQL generated columns</a> (<a href="https://github.com/npgsql/efcore.pg/issues/939">#939</a>), referred to as <a href="https://docs.microsoft.com/ef/core/modeling/generated-properties?tabs=data-annotations#computed-columns">computed columns in EF Core</a>. EF Core 5.0 adds support for specifying whether a computed column is <em>virtual</em> (computed when fetched), or <em>stored</em> (persisted on disk and computed when modified). Aligning with most databases, EF Core by default creates virtual computed columns, but these are currently unsupported by PostgreSQL.</p>
 <p>As a result, you must explicitly specify on all computed columns that they are stored:</p>
-<pre><code class="lang-c#">modelBuilder.Entity&lt;Customer&gt;()
+<pre><code class="lang-csharp">modelBuilder.Entity&lt;Customer&gt;()
     .Property(p =&gt; p.FullName)
     .HasComputedColumnSql(&quot;...&quot;, stored: true);
 </code></pre>

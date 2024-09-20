@@ -112,7 +112,7 @@
 </ul>
 <section id="tabpanel_1_data-annotations" role="tabpanel" data-tab="data-annotations">
 
-<pre><code class="lang-c#">public class SomeEntity
+<pre><code class="lang-csharp">public class SomeEntity
 {
     public int Id { get; set; }
     [Column(TypeName = &quot;jsonb&quot;)]
@@ -122,7 +122,7 @@
 </section>
 <section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">class MyContext : DbContext
+<pre><code class="lang-csharp">class MyContext : DbContext
 {
     public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
 
@@ -151,7 +151,7 @@ public class SomeEntity
 <h3 id="tojson-owned-entity-mapping">ToJson (owned entity mapping)</h3>
 <p>Npgsql's support for <code>ToJson()</code> is fully aligned with the general EF support; see the <a href="https://learn.microsoft.com/ef/core/what-is-new/ef-core-7.0/whatsnew#json-columns">EF documentation for more information</a>.</p>
 <p>To get you started quickly, assume that we have the following Customer type, with a Details property that we want to map to a single JSON column in the database:</p>
-<pre><code class="lang-c#">public class Customer
+<pre><code class="lang-csharp">public class Customer
 {
     public int Id { get; set; }
     public CustomerDetails Details { get; set; }
@@ -171,7 +171,7 @@ public class Order       // Part of the JSON column
 }
 </code></pre>
 <p>To instruct EF to map CustomerDetails - and within it, Order - to a JSON column, configure it as follows:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Customer&gt;()
         .OwnsOne(c =&gt; c.Details, d =&gt;
@@ -196,7 +196,7 @@ public class Order       // Part of the JSON column
 </ul>
 <section id="tabpanel_2_data-annotations" role="tabpanel" data-tab="data-annotations">
 
-<pre><code class="lang-c#">public class Customer
+<pre><code class="lang-csharp">public class Customer
 {
     public int Id { get; set; }
     [Column(TypeName = &quot;jsonb&quot;)]
@@ -219,7 +219,7 @@ public class Order       // Part of the JSON column
 </section>
 <section id="tabpanel_2_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">class MyContext : DbContext
+<pre><code class="lang-csharp">class MyContext : DbContext
 {
     public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
 
@@ -256,7 +256,7 @@ public class Order       // Part of the JSON column
 </div>
 <h2 id="jsondocument-dom-mapping">JsonDocument DOM mapping</h2>
 <p>If your column JSON schema isn't stable, a strongly-typed POCO mapping may not be appropriate. The Npgsql provider also allows you to map the DOM document type provided by <a href="https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-apis/">System.Text.Json APIs</a>.</p>
-<pre><code class="lang-c#">public class SomeEntity : IDisposable
+<pre><code class="lang-csharp">public class SomeEntity : IDisposable
 {
     public int Id { get; set; }
     public JsonDocument Customer { get; set; }
@@ -266,7 +266,7 @@ public class Order       // Part of the JSON column
 </code></pre>
 <p>Note that neither a data annotation nor the fluent API are required, as <a href="https://docs.microsoft.com/dotnet/api/system.text.json.jsondocument">JsonDocument</a> is automatically recognized and mapped to <code>jsonb</code>. Note also that <code>JsonDocument</code> is disposable, so the entity type is made disposable as well; not dispose the <code>JsonDocument</code> will result in the memory not being returned to the pool, which will increase GC impact across various parts of the framework.</p>
 <p>Once a document is loaded from the database, you can traverse it:</p>
-<pre><code class="lang-c#">var someEntity = context.Entities.First();
+<pre><code class="lang-csharp">var someEntity = context.Entities.First();
 Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;)[0].GetProperty(&quot;Price&quot;).GetInt32());
 </code></pre>
 <p>Note that when using this mapping, only limited forms of LINQ querying is supported; <a href="#querying-traditional-and-dom">see below</a> for more details.</p>
@@ -287,14 +287,14 @@ Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;
 </ul>
 <section id="tabpanel_3_poco" role="tabpanel" data-tab="poco">
 
-<pre><code class="lang-c#">var joes = context.CustomerEntries
+<pre><code class="lang-csharp">var joes = context.CustomerEntries
     .Where(e =&gt; e.Customer.Name == &quot;Joe&quot;)
     .ToList();
 </code></pre>
 </section>
 <section id="tabpanel_3_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">var joes = context.CustomerEntries
+<pre><code class="lang-csharp">var joes = context.CustomerEntries
     .Where(e =&gt; e.Customer.RootElement.GetProperty(&quot;Name&quot;).GetString() == &quot;Joe&quot;)
     .ToList();
 </code></pre>

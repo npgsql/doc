@@ -115,11 +115,11 @@
 <p>The default value generation strategy has changed from the older SERIAL columns to the newer IDENTITY columns, introduced in PostgreSQL 10.</p>
 <p>When producing a migration with 3.1, the Npgsql provider will attempt to automatically generate SQL to alter your tables and convert serial columns to identity ones. This is a sensitive, one-time migration operation that should be done with care, and carefully tested before deployment to production.</p>
 <p>If you wish to opt out of using IDENTITY columns and continue using SERIAL columns, set the following on your model:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseSerialColumns();
 </code></pre>
 <p>If you are using a PostgreSQL version older than 10, setting the compatibility mode is a better way to switch the default back to SERIAL columns:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(&quot;...&quot;, o =&gt; o.SetPostgresVersion(9, 6));
 </code></pre>
 <p>More information is available in <a href="../modeling/generated-properties.html">the page about generated properties</a>.</p>

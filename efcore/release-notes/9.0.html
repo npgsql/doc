@@ -96,7 +96,7 @@
 <p>The Npgsql EF provider is built on top of the lower-level Npgsql ADO.NET provider; the configuration interface between these two layers was less than ideal, and configuration been more difficult than it should have been. For version 9.0, the configuration experience has been considerably improved.</p>
 <p>Since version 7, the Npgsql ADO.NET provider has been moving to <a href="../../doc/basic-usage.html#data-source">NpgsqlDataSource</a> as the preferred way of configuration connections and obtaining them. At the EF level, it has been possible to pass an NpgsqlDataSource instance to <code>UseNpgsql()</code>; but this required that the user separately configure a data source and manage it. In addition, features such as  plugins and enums require support from both the EF and ADO.NET layers, forcing users to perform multiple setup actions at the different layers.</p>
 <p>With version 9, <code>UseNpgsql()</code> becomes a single point for configuration, for both the EF and ADO.NET levels. EF can now internally set up an NpgsqlDataSource, automatically applying all the necessary configuration to it, and also exposes an API to allow users to apply arbitrary configuration to it as well:</p>
-<pre><code class="lang-c#">builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt;
+<pre><code class="lang-csharp">builder.Services.AddDbContextPool&lt;BloggingContext&gt;(opt =&gt;
     opt.UseNpgsql(
         builder.Configuration.GetConnectionString(&quot;BloggingContext&quot;),
         o =&gt; o
@@ -115,7 +115,7 @@
 <p>For more information, see the <a href="../index.html">getting started docs</a>.</p>
 <h3 id="improved-configuration-for-enums-and-plugins">Improved configuration for enums and plugins</h3>
 <p>Previously, configuration around enums and plugins (NodaTime, NetTopologySuite) was complicated, requiring multiple setup actions at both the EF and the lower-level Npgsql layers. EF 9.0 improves the configuration story, allowing you to configure enums and plugins via a single EF gesture:</p>
-<pre><code class="lang-c#">builder.Services.AddPooledDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
+<pre><code class="lang-csharp">builder.Services.AddPooledDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
     &quot;&lt;connection string&gt;&quot;,
     o =&gt; o.MapEnum&lt;Mood&gt;(&quot;mood&quot;)));
 </code></pre>
@@ -131,7 +131,7 @@
 <p>Previously, enum configuration involved mapping the enum at the lower-level Npgsql layer (either via <code>NpgsqlDataSourceBuilder.MapEnum</code> or via <code>NpgsqlConnection.GlobalTypeMapper.MapEnum</code>); the EF provider automatically picked this configuration up for the EF-level setup. Unfortunately, this design created numerous issues and bugs.</p>
 <p>As part of the improved enum configuration story in version 9.0 (<a href="#improved-configuration-for-enums-and-plugins">see above</a>), enums must now be configured at the EF level; although this is a breaking change for existing applications, it usually results in simplified setup code and fixes various bugs and problematic behavior.</p>
 <p>If your application calls <code>UseNpgsql</code> with a simple connection string (rather than an NpgsqlDataSource), it simply needs to add a <code>MapEnum</code> call there:</p>
-<pre><code class="lang-c#">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
+<pre><code class="lang-csharp">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
     &quot;&lt;connection string&gt;&quot;,
     o =&gt; o.MapEnum&lt;Mood&gt;(&quot;mood&quot;)));
 </code></pre>

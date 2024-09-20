@@ -178,7 +178,7 @@
  2020-01-01 12:00:00+02 | timestamp with time zone
 </code></pre>
 <p>This means that your new <code>timestamptz</code> column now contains 10:00 UTC, which is probably not what you want: if the original values were in fact UTC values, you need them to be preserved as-is, changing only the column type. To do this, edit your migration and add the following to the top of your migration's Up and Down methods:</p>
-<pre><code class="lang-c#">migrationBuilder.Sql(&quot;SET TimeZone='UTC';&quot;);
+<pre><code class="lang-csharp">migrationBuilder.Sql(&quot;SET TimeZone='UTC';&quot;);
 </code></pre>
 <p>This will ensure that no time zone conversions will be applied when converting the columns:</p>
 <pre><code class="lang-output">        CreatedOn       |           type
@@ -187,27 +187,27 @@
 </code></pre>
 <h4 id="changing-timestamp-seed-data">Changing timestamp seed data</h4>
 <p>When switching from <code>timestamp without time zone</code> to <code>timezone with time zone</code>, you may have have non-UTC timestamp literals in your seeding configuration:</p>
-<pre><code class="lang-c#">modelBuilder.Entity&lt;Blog&gt;().HasData(new Blog { Id = 1, Timestamp = new DateTime(2020, 1, 1, 0, 0, 0) });
+<pre><code class="lang-csharp">modelBuilder.Entity&lt;Blog&gt;().HasData(new Blog { Id = 1, Timestamp = new DateTime(2020, 1, 1, 0, 0, 0) });
 </code></pre>
 <p>If so, you'll have to change these to be UTC. In addition, all migrations code since the change must be modified in the same way, to only seed UTC DateTime into the column; the model snapshot should be changed as well.</p>
 <h4 id="opting-out-of-the-new-timestamp-mapping-logic">Opting out of the new timestamp mapping logic</h4>
 <p>The changes described above are far-reaching, and may break applications in various ways. You can upgrade to version 6.0 but opt out of the new mapping by enabling the <code>Npgsql.EnableLegacyTimestampBehavior</code> <a href="https://docs.microsoft.com/en-us/dotnet/api/system.appcontext?view=net-5.0">AppContext switch</a>. To do this and revert to the legacy timestamp behavior, add the following to your context's constructor, before any Npgsql or EF Core operations are invoked:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.EnableLegacyTimestampBehavior&quot;, true);
 </code></pre>
 <h3 id="nodatime-tstzrange-and-daterange-are-mapped-to-interval-and-dateinterval-by-default">NodaTime: tstzrange and daterange are mapped to Interval and DateInterval by default</h3>
 <p>When using NodaTime, PostgreSQL <code>tstzrange</code> columns are scaffolded as <a href="https://nodatime.org/3.0.x/api/NodaTime.Interval.html">Interval</a> properties instead of <code>NpgsqlRange&lt;Instant&gt;</code> (<a href="https://github.com/npgsql/npgsql/issues/4070">#4070</a>), and <code>daterange</code> columns are scaffolded as <a href="https://nodatime.org/3.0.x/api/NodaTime.DateInterval.html">DateInterval</a> properties of <code>NpgsqlRange&lt;LocalDateTime&gt;</code> (<a href="https://github.com/npgsql/efcore.pg/issues/1998">#1998</a>).</p>
 <h3 id="datetime-minmax-values-are-now-converted-to-postgresql-infinity-values-by-default">Date/time min/max values are now converted to PostgreSQL infinity values by default</h3>
 <p>PostgreSQL has special <code>infinity</code> and <code>-infinity</code> values for timestamps and dates, which are later and earlier than other value. Npgsql has supported mapping <code>DateTime.MaxValue</code> and <code>MinValue</code> to these infinity values via an <code>Convert Infinity DateTime</code> connection string parameter, which was disabled by default. This behavior is now on by default, since <code>DateTime.MaxValue</code> and <code>MinValue</code> are very rarely used as actual timestamps/dates, and the <code>Convert Infinity DateTime</code> parameter has been removed. To disable infinity conversions, add the following at the start of your application:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
 </code></pre>
 <p><a href="/doc/types/datetime.html#infinity-values">See the date/time documentation</a> for more details.</p>
 <h3 id="value-converters-for-arraylist-properties-need-to-use-a-special-new-api">Value converters for array/list properties need to use a special new API</h3>
 <p>Previously, it was possible to configure value converters for array/list properties with the general EF Core API:</p>
-<pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
+<pre><code class="lang-csharp">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
     .HasConversion(w =&gt; w.Select(x =&gt; x.Value).ToArray(), v =&gt; v.Select(x =&gt; new IntWrapper(x)).ToArray());
 </code></pre>
 <p>This is no longer possible and will cause an exception to be thrown. Instead, use the new <code>HasPostgresArrayConversion</code> API, providing conversion lambdas for the array's <em>elements</em>:</p>
-<pre><code class="lang-c#">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
+<pre><code class="lang-csharp">modelBuilder.Entity&lt;SomeEntity&gt;.Property(e =&gt; e.ValueConvertedArray)
     .HasPostgresArrayConversion(w =&gt; w.Value, v =&gt; new IntWrapper(v));
 </code></pre>
 <h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
@@ -223,13 +223,13 @@
 </ul>
 <section id="tabpanel_1_annotations" role="tabpanel" data-tab="annotations">
 
-<pre><code class="lang-c#">[Column(TypeName = &quot;int4range[]&quot;)]
+<pre><code class="lang-csharp">[Column(TypeName = &quot;int4range[]&quot;)]
 public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
 </code></pre>
 </section>
 <section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
         .Entity&lt;Blog&gt;()

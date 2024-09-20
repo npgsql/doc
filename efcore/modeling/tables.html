@@ -90,7 +90,7 @@
 <h2 id="naming">Naming</h2>
 <p>By default, EF Core will map to tables and columns named exactly after your .NET classes and properties, so an entity type named <code>BlogPost</code> will be mapped to a PostgreSQL table called <code>BlogPost</code>. While there's nothing wrong with that, the PostgreSQL world tends towards snake_case naming instead. In addition, any upper-case letters in unquoted identifiers are automatically converted to lower-case identifiers, so the Npgsql provider generates quotes around all such identifiers.</p>
 <p>Starting with 3.0.0, you can use the <a href="https://github.com/efcore/EFCore.NamingConventions">EFCore.NamingConventions</a> plugin to automatically set all your table and column names to snake_case instead:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder
         .UseNpgsql(...)
         .UseSnakeCaseNamingConvention();
@@ -114,7 +114,7 @@ SELECT c.id, c.full_name
 <h2 id="storage-parameters">Storage parameters</h2>
 <p>PostgreSQL allows configuring tables with <em>storage parameters</em>, which can tweak storage behavior in various ways; <a href="https://www.postgresql.org/docs/current/sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS">see the PostgreSQL documentation</a> for more information.</p>
 <p>To configure a storage parameter on a table, use the following code:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;().HasStorageParameter(&quot;fillfactor&quot;, 70);
 </code></pre>
 

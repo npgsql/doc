@@ -109,7 +109,7 @@
 <h5>Note</h5>
 <p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you're using an older version, see the other methods.</p>
 </div>
-<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
+<pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
 dataSourceBuilder.UseGeoJson();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
@@ -117,7 +117,7 @@ await using var dataSource = dataSourceBuilder.Build();
 <section id="tabpanel_1_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
 <p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
+<pre><code class="lang-csharp">NpgsqlConnection.GlobalTypeMapper.UseGeoJson();
 </code></pre>
 <p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
 </section>
@@ -128,14 +128,14 @@ await using var dataSource = dataSourceBuilder.Build();
 <p>This mapping method has been removed in Npgsql 7.0.</p>
 </div>
 <p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
-<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
+<pre><code class="lang-csharp">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseGeoJson();
 </code></pre>
 </section>
 </div>
 <h2 id="reading-and-writing-geometry-values">Reading and Writing Geometry Values</h2>
 <p>When reading PostGIS values from the database, Npgsql will automatically return the appropriate GeoJSON types: <code>Point</code>, <code>LineString</code>, and so on. Npgsql will also automatically recognize GeoJSON's types in parameters, and will automatically send the corresponding PostGIS type to the database. The following code demonstrates a roundtrip of a GeoJSON <code>Point</code> to the database:</p>
-<pre><code class="lang-c#">conn.ExecuteNonQuery(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
+<pre><code class="lang-csharp">conn.ExecuteNonQuery(&quot;CREATE TEMP TABLE data (geom GEOMETRY)&quot;);
 
 await using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geom) VALUES ($1)&quot;, conn))
 {
@@ -154,14 +154,14 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 <h2 id="geography-geodetic-support">Geography (geodetic) Support</h2>
 <p>PostGIS has two types: <code>geometry</code> (for Cartesian coordinates) and <code>geography</code> (for geodetic or spherical coordinates). You can read about the geometry/geography distinction <a href="https://postgis.net/docs/manual-2.4/using_postgis_dbmanagement.html#PostGIS_Geography">in the PostGIS docs</a> or in <a href="http://workshops.boundlessgeo.com/postgis-intro/geography.html">this blog post</a>. In a nutshell, <code>geography</code> is much more accurate when doing calculations over long distances, but is more expensive computationally and supports only a small subset of the spatial operations supported by <code>geometry</code>.</p>
 <p>Npgsql uses the same GeoJSON types to represent both <code>geometry</code> and <code>geography</code> - the <code>Point</code> type represents a point in either Cartesian or geodetic space. You usually don't need to worry about this distinction because PostgreSQL will usually cast types back and forth as needed. However, it's worth noting that Npgsql sends Cartesian <code>geometry</code> by default, because that's the usual requirement. You have the option of telling Npgsql to send <code>geography</code> instead by specifying <code>NpgsqlDbType.Geography</code>:</p>
-<pre><code class="lang-c#">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES ($1)&quot;, conn))
+<pre><code class="lang-csharp">using (var cmd = new NpgsqlCommand(&quot;INSERT INTO data (geog) VALUES ($1)&quot;, conn))
 {
     cmd.Parameters.Add(new() { Value = point, NpgsqlDbType = NpgsqlDbType.Geography });
     await cmd.ExecuteNonQueryAsync();
 }
 </code></pre>
 <p>If you prefer to use <code>geography</code> everywhere by default, you can also specify that when setting up the plugin:</p>
-<pre><code class="lang-c#">dataSourceBuilder.UseGeoJson(geographyAsDefault: true);
+<pre><code class="lang-csharp">dataSourceBuilder.UseGeoJson(geographyAsDefault: true);
 </code></pre>
 
 </article>

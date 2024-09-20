@@ -93,7 +93,7 @@
 <p>Aside from general EF Core features new in 2.2.0, the Npgsql EF Core provider contains the following major new features:</p>
 <h3 id="postgresql-11-covering-indexes">PostgreSQL 11 covering indexes</h3>
 <p>PostgreSQL 11 introduced <a href="https://paquier.xyz/postgresql-2/postgres-11-covering-indexes">covering indexes feature</a>, which allow you to include &quot;non-key&quot; columns in your indexes. This allows you to perform index-only scans and can provide a significant performance boost. Support has been added in (<a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/697">#697</a>):</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder builder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
                    .ForNpgsqlHasIndex(b =&gt; b.Id)
                    .ForNpgsqlInclude(b =&gt; b.Name);
@@ -102,7 +102,7 @@
 <p>Thanks to <a href="https://github.com/khellang">@khellang</a> for contributing this!</p>
 <h3 id="postgresql-user-defined-ranges">PostgreSQL user-defined ranges</h3>
 <p>The provider already supported <a href="https://www.postgresql.org/docs/current/rangetypes.html">PostgreSQL range types</a>, but prior to 2.2 that support was limited to the built-in range types which come with PostgreSQL. <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/issues/329">#329</a> extends that support to range types which you define:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder builder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder builder)
     =&gt; builder.UseNpgsql(&quot;...&quot;, b =&gt; b.MapRange&lt;float&gt;(&quot;floatrange&quot;));
 
 protected override void OnModelCreating(ModelBuilder builder)

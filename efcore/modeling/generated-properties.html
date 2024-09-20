@@ -108,17 +108,17 @@
 <p>The default value generation strategy is &quot;identity by default&quot;. In other words, when EF decides that an int property should be value generated (e.g. because it's named <code>Id</code>, or because you explicitly specified <code>ValueGeneratedOnAdd</code> on it), the Npgsql provider will automatically map it to an identity column.</p>
 <h3 id="defining-the-default-strategy-for-the-entire-model">Defining the default strategy for the entire model</h3>
 <p>You can easily control the value generation strategy for the entire model. For example, to opt out of the change to identity columns, simply place the following in your context's <code>OnModelCreating()</code>:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseIdentityByDefaultColumns();
 </code></pre>
 <h3 id="defining-the-strategy-for-a-single-property">Defining the strategy for a single property</h3>
 <p>Regardless of the model default, you can define a value-generation strategy on a property-by-property basis:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.Id).UseIdentityAlwaysColumn();
 </code></pre>
 <h3 id="identity-sequence-options">Identity sequence options</h3>
 <p>Identity columns have a standard sequence, managed behind the scenes by PostgreSQL; you can customize the sequence options for these. For example, the following makes the column values start at 100:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;().Property(b =&gt; b.Id)
         .HasIdentityOptions(startValue: 100);
 </code></pre>
@@ -126,7 +126,7 @@
 <p>It is not possible to specify sequence options for serial columns, but you can set up a sequence separately and configure the column's default value (see <a href="#standard-sequence-driven-columns">sequence-driven columns</a>).</p>
 <h2 id="standard-sequence-driven-columns">Standard sequence-driven columns</h2>
 <p>While identity and serial columns set up a sequence for you behind the scenes, sometimes you may want to manage sequence creation yourself. For example, you may want to have multiple columns drawing their default values from a single sequence. Adding a sequence to your model is described in <a href="https://docs.microsoft.com/ef/core/modeling/relational/sequences">the general EF Core documentation</a>; once the sequence is specified, you can simply set a column's default value to extract the next value from that sequence. Note that the SQL used to fetch the next value from a sequence differs across databases (see <a href="https://www.postgresql.org/docs/current/static/functions-sequence.html">the PostgreSQL docs</a>). Your models' <code>OnModelCreating</code> should look like this:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.HasSequence&lt;int&gt;(&quot;OrderNumbers&quot;)
                 .StartsAt(1000)
@@ -140,19 +140,19 @@
 <h2 id="hilo-autoincrement-generation">HiLo Autoincrement Generation</h2>
 <p>One disadvantage of database-generated values is that these values must be read back from the database after a row is inserted. If you're saving multiple related entities, this means you must perform multiple round-trips as the first entity's generated key must be read before writing the second one. One solution to this problem is HiLo value generation: rather than relying on the database to generate each and every value, the application &quot;allocates&quot; a range of values, which it can then populate directly on new entities without any additional round-trips. When the range is exhausted, a new range is allocated. In practical terms, this uses a sequence that increments by some large value (100 by default), allowing the application to insert 100 rows autonomously.</p>
 <p>To use HiLo, specify <code>UseHiLo</code> on a property in your model's <code>OnModelCreating</code>:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Blog&gt;()
                    .Property(b =&gt; b.Id)
                    .UseHiLo();
 </code></pre>
 <p>You can also make your model use HiLo everywhere:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.UseHiLo();
 </code></pre>
 <h2 id="guiduuid-generation">GUID/UUID Generation</h2>
 <p>By default, for GUID key properties, a GUID is generated client-side by the EF provider and sent to the database. From version 9.0 and onwards, these GUIDs are sequential (version 7), which are more optimized for database indexes (before version 9.0, these GUIDs were random).</p>
 <p>To have the provider generate GUIDs client-side for <strong>non-key</strong> properties, configure them as follows:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
         .Entity&lt;Blog&gt;()
@@ -172,7 +172,7 @@
 </ul>
 <section id="tabpanel_1_13" role="tabpanel" data-tab="13">
 
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
         .Entity&lt;Blog&gt;()
@@ -184,7 +184,7 @@
 <section id="tabpanel_1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 
 <p>Versions of PostgreSQL prior to 13 don't include any GUID/UUID generation functions, but extensions such as <code>uuid-ossp</code> or <code>pgcrypto</code> exist to fill thie gap. This can be done by placing the following code in your model's <code>OnModelCreating</code>:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.HasPostgresExtension(&quot;uuid-ossp&quot;);    
 
@@ -204,7 +204,7 @@
 </div>
 <h2 id="timestamp-generation">Timestamp generation</h2>
 <p>In many scenarios, it's useful to have a column containing the timestamp when the row was originally created. To do this, add a <code>DateTime</code> property to your entity type (or <code>Instant</code> if using NodaTime) , and configure its default with <code>HasDefaultValueSql</code> as follows:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
         .Entity&lt;Blog&gt;()
@@ -243,7 +243,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 </ul>
 <section id="tabpanel_2_efcore5" role="tabpanel" data-tab="efcore5">
 
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Person&gt;()
       .Property(p =&gt; p.DisplayName)
@@ -253,7 +253,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 </section>
 <section id="tabpanel_2_efcore3" role="tabpanel" data-tab="efcore3" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Person&gt;()
       .Property(p =&gt; p.DisplayName)

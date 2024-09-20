@@ -116,7 +116,7 @@
 <h5>Note</h5>
 <p><code>NpgsqlDataSource</code> was introduced in Npgsql 7.0, and is the recommended way to manage type mapping. If you're using an older version, see the other methods.</p>
 </div>
-<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
+<pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(...);
 dataSourceBuilder.UseNodaTime();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
@@ -124,7 +124,7 @@ await using var dataSource = dataSourceBuilder.Build();
 <section id="tabpanel_1_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
 <p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
-<pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
+<pre><code class="lang-csharp">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 </code></pre>
 <p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
 </section>
@@ -135,14 +135,14 @@ await using var dataSource = dataSourceBuilder.Build();
 <p>This mapping method has been removed in Npgsql 7.0.</p>
 </div>
 <p>Older versions of Npgsql supported configuring a type mapping on an individual connection, as follows:</p>
-<pre><code class="lang-c#">var conn = new NpgsqlConnection(...);
+<pre><code class="lang-csharp">var conn = new NpgsqlConnection(...);
 conn.TypeMapper.UseNodaTime();
 </code></pre>
 </section>
 </div>
 <h2 id="reading-and-writing-values">Reading and Writing Values</h2>
 <p>Once the plugin is set up, you can transparently read and write NodaTime objects:</p>
-<pre><code class="lang-c#">// Write NodaTime Instant to PostgreSQL &quot;timestamp with time zone&quot; (UTC)
+<pre><code class="lang-csharp">// Write NodaTime Instant to PostgreSQL &quot;timestamp with time zone&quot; (UTC)
 await using (var cmd = new NpgsqlCommand(@&quot;INSERT INTO mytable (my_timestamptz) VALUES ($1)&quot;, conn))
 {
     cmd.Parameters.Add(new() { Value = Instant.FromUtc(2011, 1, 1, 10, 30) });
@@ -232,7 +232,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 <p><sup>2</sup> In versions prior to 6.0 (or when <code>Npgsql.EnableLegacyTimestampBehavior</code> is enabled), <code>timestamp without time zone</code> was mapped to Instant by default, instead of LocalDateTime. <a href="../release-notes/6.0.html#major-changes-to-timestamp-mapping">See the breaking change note for more info</a>.</p>
 <h2 id="infinity-values">Infinity values</h2>
 <p>PostgreSQL supports the special values <code>-infinity</code> and <code>infinity</code> for the timestamp and date types (<a href="https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-DATETIME-SPECIAL-VALUES">see docs</a>); these can be useful to represent a value which is earlier or later than any other value. Starting with Npgsql 6.0, these special values are mapped to the <code>MinValue</code> and <code>MaxValue</code> value on the corresponding .NET types (<code>Instant</code> and <code>LocalDate</code>). To opt out of this behavior, set the following AppContext switch at the start of your application:</p>
-<pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
+<pre><code class="lang-csharp">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
 </code></pre>
 <p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
 

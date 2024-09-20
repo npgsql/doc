@@ -105,14 +105,14 @@
 </ul>
 <section id="tabpanel_1_7" role="tabpanel" data-tab="7">
 
-<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=server1,server2;Username=test;Password=test&quot;);
+<pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;Host=server1,server2;Username=test;Password=test&quot;);
 await using var dataSource = dataSourceBuilder.BuildMultiHost();
 await using var connection = await dataSource.OpenConnectionAsync();
 </code></pre>
 </section>
 <section id="tabpanel_1_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test&quot;);
+<pre><code class="lang-csharp">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test&quot;);
 </code></pre>
 </section>
 </div>
@@ -136,11 +136,11 @@ await using var connection = await dataSource.OpenConnectionAsync();
 </ul>
 <section id="tabpanel_2_7" role="tabpanel" data-tab="7">
 
-<pre><code class="lang-c#">await using var connection = await dataSource.OpenConnectionAsync(TargetSessionAttributes.Primary);
+<pre><code class="lang-csharp">await using var connection = await dataSource.OpenConnectionAsync(TargetSessionAttributes.Primary);
 </code></pre>
 <p>This makes Npgsql return connections only to the primary server, regardless of where it's located in the host list you provide.</p>
 <p>You can also get a separate data source which will only return connections to a specific server type. For example, you can create a primary-only data sources in your application startup, and use that data source as usual:</p>
-<pre><code class="lang-c#">// At startup:
+<pre><code class="lang-csharp">// At startup:
 _primaryDataSource = dataSource.WithTargetSession(TargetSessionAttributes.Primary);
 
 // ... and wherever you need a connection:
@@ -149,7 +149,7 @@ await using var connection = await _primaryDataSource.OpenConnectionAsync();
 </section>
 <section id="tabpanel_2_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary&quot;);
+<pre><code class="lang-csharp">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=primary&quot;);
 </code></pre>
 <p>This makes Npgsql return connections only to the primary server, regardless of where it's located in the host list you provide.</p>
 </section>
@@ -168,7 +168,7 @@ await using var connection = await _primaryDataSource.OpenConnectionAsync();
 </ul>
 <section id="tabpanel_3_7" role="tabpanel" data-tab="7">
 
-<pre><code class="lang-c#">// At startup:
+<pre><code class="lang-csharp">// At startup:
 _preferStandbyDatASource = dataSource.WithTargetSession(TargetSessionAttributes.PreferStandby);
 
 // ... and wherever you need a connection:
@@ -177,7 +177,7 @@ await using var connection = await _preferStandbyDatASource.OpenConnectionAsync(
 </section>
 <section id="tabpanel_3_old" role="tabpanel" data-tab="old" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby&quot;);
+<pre><code class="lang-csharp">await using var connection = new NpgsqlConnection(&quot;Host=server1,server2;Username=test;Password=test;Target Session Attributes=prefer-standby&quot;);
 </code></pre>
 </section>
 </div>

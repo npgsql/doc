@@ -116,7 +116,7 @@
         pool.name=CustomersDB,state=used                                   2
 </code></pre>
 <p>Note that Npgsql emits multiple <em>dimensions</em> with the metrics, e.g. the connection states (idle or used). In addition, an identifier for the connection pool - or data source - is emitted with every metric, allowing you to separately track e.g. multiple databases accessed in the same applications. By default, the <code>pool.name</code> will be the connection string, but it can be useful to give your data sources a name for easier and more consistent tracking:</p>
-<pre><code class="lang-c#">var builder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;)
+<pre><code class="lang-csharp">var builder = new NpgsqlDataSourceBuilder(&quot;Host=localhost;Username=test;Password=test&quot;)
 {
     Name = &quot;CustomersDB&quot;
 };

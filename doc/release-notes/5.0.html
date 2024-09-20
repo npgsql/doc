@@ -116,7 +116,7 @@
 <p>All Npgsql APIs are now fully annotated for <em>C# nullable references</em> (<a href="https://github.com/npgsql/npgsql/issues/3120">#3120</a>), in line with the new annotations in System.Data released in .NET 5.0.</p>
 <h3 id="support-for-arrays-of-nullable-value-types">Support for arrays of nullable value types</h3>
 <p>It is now possible to read PostgreSQL arrays as CLR <em>arrays of nullable value types</em>. For example, a PostgreSQL <code>integer[]</code> column can now be read as follows:</p>
-<pre><code class="lang-c#">var array = reader.GetFieldValue&lt;int?&gt;(0);
+<pre><code class="lang-csharp">var array = reader.GetFieldValue&lt;int?&gt;(0);
 </code></pre>
 <p>Previously, only non-nullable value arrays were supported, and nulls were translated to the default value (e.g. 0).</p>
 <p>Thanks to <a href="https://github.com/Brar">@Brar</a> for developing this feature.</p>

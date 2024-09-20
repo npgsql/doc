@@ -91,7 +91,7 @@
 <p>In addition, PostgreSQL 14 introduced <em>multiranges</em>, which are basically sorted arrays of non-overlapping ranges with set-theoretic operations defined over them. Most range operators also work on multiranges, and they have a few functions of their own. Multirange support in the EF Core provider was introduced in version 6.0.0.</p>
 <h2 id="ranges">Ranges</h2>
 <p>Npgsql maps PostgreSQL ranges to the generic CLR type <code>NpgsqlRange&lt;T&gt;</code>:</p>
-<pre><code class="lang-c#">public class Event
+<pre><code class="lang-csharp">public class Event
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -102,14 +102,14 @@
 <h2 id="user-defined-ranges">User-defined ranges</h2>
 <p>PostgreSQL comes with 6 built-in ranges: <code>int4range</code>, <code>int8range</code>, <code>numrange</code>, <code>tsrange</code>, <code>tstzrange</code>, <code>daterange</code>; these can be used simply by adding the appropriate <code>NpgsqlRange&lt;T&gt;</code> property in your entities as shown above. You can also define your own range types over arbitrary types, and use those in EF Core as well.</p>
 <p>To make the EF Core type mapper aware of your user-defined range, call the <code>MapRange()</code> method in your context's <code>OnConfiguring()</code> method as follows:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(
         &quot;&lt;connection_string&gt;&quot;,
         options =&gt; options.MapRange&lt;float&gt;(&quot;floatrange&quot;));
 </code></pre>
 <p>This allows you to have properties of type <code>NpgsqlRange&lt;float&gt;</code>, which will be mapped to PostgreSQL <code>floatrange</code>.</p>
 <p>The above does <em>not</em> create the <code>floatrange</code> type for you. In order to do that, include the following in your context's <code>OnModelCreating()</code>:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.HasPostgresRange(&quot;floatrange&quot;, &quot;real&quot;);
 </code></pre>
 <p>This will cause the appropriate <a href="https://www.postgresql.org/docs/current/static/sql-createtype.html"><code>CREATE TYPE ... AS RANGE</code></a> statement to be generated in your migrations, ensuring that your range is created and ready for use. Note that <code>HasPostgresRange()</code> supports additional parameters as supported by PostgreSQL <code>CREATE TYPE</code>.</p>
@@ -119,7 +119,7 @@
 <p>This feature was introduced in version 6.0</p>
 </div>
 <p>Npgsql maps arrays or lists of <code>NpgsqlRange&lt;T&gt;</code> to PostgreSQL multiranges:</p>
-<pre><code class="lang-c#">public class Store
+<pre><code class="lang-csharp">public class Store
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -128,7 +128,7 @@
 </code></pre>
 <h2 id="operation-translation">Operation translation</h2>
 <p>Ranges can be queried via extensions methods on <code>NpgsqlRange</code>:</p>
-<pre><code class="lang-c#">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));
+<pre><code class="lang-csharp">var events = context.Events.Where(p =&gt; p.Duration.Contains(someDate));
 </code></pre>
 <p>This will translate to an SQL operation using the PostgreSQL <code>@&gt;</code> operator, evaluating at the server and saving you from transferring the entire <code>Events</code> table to the client. Note that you can (and probably should) create indexes to make this operation more efficient, see the PostgreSQL docs for more info.</p>
 <p>The following table lists the range operations that currently get translated. Most operations work on both ranges and multiranges (starting with version 6.0.0); the multirange version is omitted for brevity.</p>

@@ -102,7 +102,7 @@
 <p>For more information, see the <a href="../diagnostics/metrics.html">doc page on metrics</a>.</p>
 <h2 id="register-npgsqldatasource-as-a-keyed-di-service">Register NpgsqlDataSource as a keyed DI service</h2>
 <p>.NET 8.0 introduced <a href="https://learn.microsoft.com/dotnet/core/extensions/dependency-injection#keyed-services">keyed services for dependency injection</a>, allowing multiple services with the same CLR type to be registered in a single DI service provider. This is particularly useful when needing to contact multiple databases from your DI-enabled application:</p>
-<pre><code class="lang-c#">var builder = WebApplication.CreateBuilder(args);
+<pre><code class="lang-csharp">var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddNpgsqlDataSource(&quot;Host=localhost;Database=CustomersDB;Username=test;Password=test&quot;, serviceKey: DatabaseType.CustomerDb)
@@ -170,14 +170,14 @@ enum DatabaseType
 <p>For more context, see <a href="https://github.com/npgsql/npgsql/issues/3988#issuecomment-933011009">#3988</a>.</p>
 <h3 id="ilistt-mapping-now-requires-a-generic-npgsqlparametert">IList&lt;T&gt; mapping now requires a generic NpgsqlParameter&lt;T&gt;</h3>
 <p>Previous versions of Npgsql allowed writing arbitrary list types as PostgreSQL array, as long as they implemented the <code>IList&lt;T&gt;</code> interface:</p>
-<pre><code class="lang-c#">await using var command = new NpgsqlCommand(&quot;SELECT $1&quot;, conn)
+<pre><code class="lang-csharp">await using var command = new NpgsqlCommand(&quot;SELECT $1&quot;, conn)
 {
     Parameters = { new NpgsqlParameter { Value = new ReadOnlyCollection&lt;int&gt;(new List&lt;int&gt; { 1, 2, 3 }) } }
 };
 await using var reader = await command.ExecuteReaderAsync();
 </code></pre>
 <p>This capability has been removed; supporting it required a costly reflection check, which also would be difficult to implement with trimming enabled, potentially increasing binary size in an unacceptable way. As a mitigation, you can instead use the generic <code>NpgsqlParameter&lt;T&gt;</code> - typed with <code>IList&lt;T&gt;</code> - to do the same:</p>
-<pre><code class="lang-c#">await using var command = new NpgsqlCommand(&quot;SELECT $1&quot;, conn)
+<pre><code class="lang-csharp">await using var command = new NpgsqlCommand(&quot;SELECT $1&quot;, conn)
 {
     Parameters = { new NpgsqlParameter&lt;IList&lt;int&gt;&gt; { Value = new ReadOnlyCollection&lt;int&gt;(new List&lt;int&gt; { 1, 2, 3 }) } }
 };
@@ -195,7 +195,7 @@ await using var reader = await command.ExecuteReaderAsync();
 </ul>
 <h3 id="executing-a-void-returning-function-returns-net-null-instead-of-dbnull">Executing a void-returning function returns .NET null instead of DBNull</h3>
 <p>Previously, executing a void-returning returned <code>DBNull.Value</code>:</p>
-<pre><code class="lang-c#">var command = new NpgsqlCommand(&quot;SELECT pg_sleep(10)&quot;, connection);
+<pre><code class="lang-csharp">var command = new NpgsqlCommand(&quot;SELECT pg_sleep(10)&quot;, connection);
 var result = await command.ExecuteScalarAsync();
 </code></pre>
 <p>Before 8.0, <code>result</code> had the value <code>DBNull.Value</code>; this has been changed in 8.0 to be .NET <code>null</code>. This is more correct (as there are no results, rather than a result containing NULL), aligns with ADO.NET standard practices and with other drivers.</p>

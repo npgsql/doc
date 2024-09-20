@@ -103,7 +103,7 @@ event to the user the next time a command is sent and processed.</p>
 <p>To receive notifications outside a synchronous request-response cycle, call <code>NpgsqlConnection.Wait()</code>. This will make your thread block
 until a single notification is received (note that a version with a timeout as well as an async version exist). Note that the notification
 is still delivered via the <code>Notification</code> event as before.</p>
-<pre><code class="lang-c#">var conn = new NpgsqlConnection(ConnectionString);
+<pre><code class="lang-csharp">var conn = new NpgsqlConnection(ConnectionString);
 conn.Open();
 conn.Notification += (o, e) =&gt; Console.WriteLine(&quot;Received notification&quot;);
 

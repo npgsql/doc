@@ -106,7 +106,7 @@
 </ul>
 <section id="tabpanel_1_data-annotations" role="tabpanel" data-tab="data-annotations">
 
-<pre><code class="lang-c#">public class SomeEntity
+<pre><code class="lang-csharp">public class SomeEntity
 {
     public int Id { get; set; }
 
@@ -117,7 +117,7 @@
 </section>
 <section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
-<pre><code class="lang-c#">class MyContext : DbContext
+<pre><code class="lang-csharp">class MyContext : DbContext
 {
     public DbSet&lt;SomeEntity&gt; SomeEntities { get; set; }
 
@@ -139,7 +139,7 @@ public class SomeEntity
 </div>
 
 <p>In older version of the provider, use the following instead:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity&lt;Blog&gt;().UseXminAsConcurrencyToken();
 }

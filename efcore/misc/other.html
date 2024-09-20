@@ -90,12 +90,12 @@
 <h2 id="postgresql-extensions">PostgreSQL extensions</h2>
 <p>The Npgsql EF Core provider allows you to specify PostgreSQL extensions that should be set up in your database.
 Simply use <code>HasPostgresExtension</code> in your context's <code>OnModelCreating</code> method:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.HasPostgresExtension(&quot;hstore&quot;);
 </code></pre>
 <h2 id="execution-strategy">Execution Strategy</h2>
 <p>The Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context's <code>OnModelConfiguring</code>:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(
         &quot;&lt;connection_string&gt;&quot;,
         options =&gt; options.EnableRetryOnFailure());
@@ -104,7 +104,7 @@ Simply use <code>HasPostgresExtension</code> in your context's <code>OnModelCrea
 <h2 id="certificate-authentication">Certificate authentication</h2>
 <p>The Npgsql allows you to provide a callback for verifying the server-provided certificates, and to provide a callback for providing certificates to the server. The latter, if properly set up on the PostgreSQL side, allows you to do client certificate authentication - see <a href="http://www.npgsql.org/doc/security.html#encryption-ssltls">the Npgsql docs</a> and also <a href="https://www.postgresql.org/docs/current/static/ssl-tcp.html#SSL-CLIENT-CERTIFICATES">the PostgreSQL docs</a> on setting this up.</p>
 <p>The Npgsql EF Core provider allows you to set these two callbacks on the <code>DbContextOptionsBuilder</code> as follows:</p>
-<pre><code class="lang-c#">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+<pre><code class="lang-csharp">protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     =&gt; optionsBuilder.UseNpgsql(
         &quot;&lt;connection_string&gt;&quot;,
         options =&gt;
@@ -120,7 +120,7 @@ Simply use <code>HasPostgresExtension</code> in your context's <code>OnModelCrea
 </div>
 <h2 id="cockroachdb-interleave-in-parent">CockroachDB Interleave In Parent</h2>
 <p>If you're using CockroachDB, the Npgsql EF Core provider exposes its <a href="https://www.cockroachlabs.com/docs/stable/interleave-in-parent.html">&quot;interleave in parent&quot; feature</a>. Use the following code:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
     =&gt; modelBuilder.Entity&lt;Customer&gt;()
                    .UseCockroachDbInterleaveInParent(
                         typeof(ParentEntityType),

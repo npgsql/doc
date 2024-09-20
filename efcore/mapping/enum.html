@@ -107,7 +107,7 @@
 <section id="tabpanel_1_with-connection-string" role="tabpanel" data-tab="with-connection-string">
 
 <p>If you're passing a connection string to <code>UseNpgsql</code>, simply add the <code>MapEnum</code> call as follows:</p>
-<pre><code class="lang-c#">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
+<pre><code class="lang-csharp">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
     &quot;&lt;connection string&gt;&quot;,
     o =&gt; o.MapEnum&lt;Mood&gt;(&quot;mood&quot;)));
 </code></pre>
@@ -116,7 +116,7 @@
 <section id="tabpanel_1_with-external-datasource" role="tabpanel" data-tab="with-external-datasource" aria-hidden="true" hidden="hidden">
 
 <p>If you're creating an external NpgsqlDataSource and passing it to <code>UseNpgsql</code>, you must make sure to map your enum on that data independently of the EF-level setup:</p>
-<pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
+<pre><code class="lang-csharp">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
 dataSourceBuilder.MapEnum&lt;Mood&gt;();
 var dataSource = dataSourceBuilder.Build();
 
@@ -130,7 +130,7 @@ builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
 <p>On versions of EF prior to 9.0, enum setup is more involved and consists of several steps; enum mapping has to be done at the lower-level Npgsql layer, and also requires explicit configuration in the EF model for creation in the database via migrations.</p>
 <h4 id="creating-your-database-enum">Creating your database enum</h4>
 <p>First, you must specify the PostgreSQL enum type on your model, just like you would with tables, sequences or other databases objects:</p>
-<pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder builder)
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder builder)
     =&gt; builder.HasPostgresEnum&lt;Mood&gt;();
 </code></pre>
 <p>This causes the EF Core provider to create your enum type, <code>mood</code>, with two labels: <code>happy</code> and <code>sad</code>. This will cause the appropriate migration to be created.</p>
@@ -148,7 +148,7 @@ builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
 <section id="tabpanel_2_with-datasource" role="tabpanel" data-tab="with-datasource">
 
 <p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. When using NpgsqlDataSource, map your enum when building your data source:</p>
-<pre><code class="lang-c#">// Call MapEnum() when building your data source:
+<pre><code class="lang-csharp">// Call MapEnum() when building your data source:
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(/* connection string */);
 dataSourceBuilder.MapEnum&lt;Mood&gt;();
 var dataSource = dataSourceBuilder.Build();
@@ -159,7 +159,7 @@ builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(d
 <section id="tabpanel_2_without-datasource" role="tabpanel" data-tab="without-datasource" aria-hidden="true" hidden="hidden">
 
 <p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. However, if you're not yet using NpgsqlDataSource, map enums by adding the following code, <em>before</em> any EF Core operations take place. An appropriate place for this is in the static constructor on your DbContext class:</p>
-<pre><code class="lang-c#">static MyDbContext()
+<pre><code class="lang-csharp">static MyDbContext()
     =&gt; NpgsqlConnection.GlobalTypeMapper.MapEnum&lt;Mood&gt;();
 </code></pre>
 <div class="NOTE">
@@ -172,7 +172,7 @@ builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(d
 <p>This code lets Npgsql know that your CLR enum type, <code>Mood</code>, should be mapped to a database enum called <code>mood</code>. Note that if your enum is in a custom schema (not <code>public</code>), you must specify that schema in the call to <code>MapEnum</code>.</p>
 <h2 id="using-enum-properties">Using enum properties</h2>
 <p>Once your enum is properly set up with EF, you can use your CLR enum type just like any other property:</p>
-<pre><code class="lang-c#">public class Blog
+<pre><code class="lang-csharp">public class Blog
 {
     public int Id { get; set; }
     public Mood Mood { get; set; }
@@ -190,7 +190,7 @@ using (var ctx = new MyDbContext())
 </code></pre>
 <h2 id="altering-enum-definitions">Altering enum definitions</h2>
 <p>The Npgsql provider only allow adding new values to existing enums, and the appropriate migrations will be automatically created as you add values to your CLR enum type. However, PostgreSQL itself doesn't support removing enum values (since these may be in use), and while renaming values is supported, it isn't automatically done by the provider to avoid using unreliable detection heuristics. Renaming an enum value can be done by including <a href="https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/managing?tabs=dotnet-core-cli#arbitrary-changes-via-raw-sql">raw SQL</a> in your migrations as follows:</p>
-<pre><code class="lang-c#">migrationBuilder.Sql(&quot;ALTER TYPE mood RENAME VALUE 'happy' TO 'thrilled';&quot;);
+<pre><code class="lang-csharp">migrationBuilder.Sql(&quot;ALTER TYPE mood RENAME VALUE 'happy' TO 'thrilled';&quot;);
 </code></pre>
 <p>As always, test your migrations carefully before running them on production databases.</p>
 <h2 id="scaffolding-from-an-existing-database">Scaffolding from an existing database</h2>
