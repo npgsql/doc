@@ -98,6 +98,7 @@ backend (or network equipment) will interfere with these connections, it's bette
 <h2 id="tcp-keepalives">TCP Keepalives</h2>
 <p>The keepalive mechanism above is ideal for long-standing idle connections, but it cannot be used during query processing. With some PostgreSQL-like data warehouse products such as <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html">Amazon Redshift</a> or <a href="http://greenplum.org/">Greenplum</a>, it is not uncommon for a single SQL statement to take a long time to execute, and during that time it is not possible to send application-level pings. For these cases you may want to turn on <em>TCP keepalive</em>, which is quite different from the application-level keepalive described above. To better understand the different kinds of keepalives, see <a href="http://blog.stephencleary.com/2009/05/detection-of-half-open-dropped.html">this blog post</a>. As that article explains, TCP keepalive depends on networking stack support and might not always work, but it is your only option during query processing.</p>
 <p>On Linux, you turn keepalives simply by specifying <code>Tcp Keepalive=true</code> in your connection string. The default system-wide settings will be used (for interval, count...) - it is currently impossible to specify these at the application level. On Windows, you can also specify <code>Tcp Keepalive Time</code> and <code>Tcp Keepalive Interval</code> to tweak these settings.</p>
+
 </article>
           </div>
 
@@ -106,12 +107,12 @@ backend (or network equipment) will interfere with these connections, it's bette
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/keepalive.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/keepalive.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -133,7 +134,7 @@ backend (or network equipment) will interfere with these connections, it's bette
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

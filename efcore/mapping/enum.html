@@ -93,16 +93,16 @@
 <p>Enum mapping has changed considerably in EF 9.0.</p>
 </div>
 <p>If you're using EF 9.0 or above, simply call <code>MapEnum</code> inside your <code>UseNpgsql</code> invocation.</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_with-connection-string" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-connection-string" data-tab="with-connection-string" tabindex="0" aria-selected="true">With a connection string</a>
+<a href="#tabpanel_1_with-connection-string" role="tab" aria-controls="tabpanel_1_with-connection-string" data-tab="with-connection-string" tabindex="0" aria-selected="true">With a connection string</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_with-external-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_with-external-datasource" data-tab="with-external-datasource" tabindex="-1">With an external NpgsqlDataSource</a>
+<a href="#tabpanel_1_with-external-datasource" role="tab" aria-controls="tabpanel_1_with-external-datasource" data-tab="with-external-datasource" tabindex="-1">With an external NpgsqlDataSource</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_with-connection-string" role="tabpanel" data-tab="with-connection-string">
+<section id="tabpanel_1_with-connection-string" role="tabpanel" data-tab="with-connection-string">
 
 <p>If you're passing a connection string to <code>UseNpgsql</code>, simply add the <code>MapEnum</code> call as follows:</p>
 <pre><code class="lang-c#">builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
@@ -111,7 +111,7 @@
 </code></pre>
 <p>This configures all aspects of Npgsql to use your <code>Mood</code> enum - both at the EF and the lower-level Npgsql layer - and ensures that the enum is created in the database in EF migrations.</p>
 </section>
-<section id="tabpanel_bHGHmlrG6S_with-external-datasource" role="tabpanel" data-tab="with-external-datasource" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_with-external-datasource" role="tabpanel" data-tab="with-external-datasource" aria-hidden="true" hidden="hidden">
 
 <p>If you're creating an external NpgsqlDataSource and passing it to <code>UseNpgsql</code>, you must make sure to map your enum on that data independently of the EF-level setup:</p>
 <pre><code class="lang-c#">var dataSourceBuilder = new NpgsqlDataSourceBuilder(&quot;&lt;connection string&gt;&quot;);
@@ -134,16 +134,16 @@ builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(
 <p>This causes the EF Core provider to create your enum type, <code>mood</code>, with two labels: <code>happy</code> and <code>sad</code>. This will cause the appropriate migration to be created.</p>
 <h4 id="mapping-your-enum">Mapping your enum</h4>
 <p>Even if your database enum is created, Npgsql has to know about it, and especially about your CLR enum type that should be mapped to it:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_with-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_with-datasource" data-tab="with-datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_2_with-datasource" role="tab" aria-controls="tabpanel_2_with-datasource" data-tab="with-datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_without-datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_without-datasource" data-tab="without-datasource" tabindex="-1">Without NpgsqlDatasource</a>
+<a href="#tabpanel_2_without-datasource" role="tab" aria-controls="tabpanel_2_without-datasource" data-tab="without-datasource" tabindex="-1">Without NpgsqlDatasource</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-1_with-datasource" role="tabpanel" data-tab="with-datasource">
+<section id="tabpanel_2_with-datasource" role="tabpanel" data-tab="with-datasource">
 
 <p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. When using NpgsqlDataSource, map your enum when building your data source:</p>
 <pre><code class="lang-c#">// Call MapEnum() when building your data source:
@@ -154,7 +154,7 @@ var dataSource = dataSourceBuilder.Build();
 builder.Services.AddDbContext&lt;MyContext&gt;(options =&gt; options.UseNpgsql(dataSource));
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S-1_without-datasource" role="tabpanel" data-tab="without-datasource" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_without-datasource" role="tabpanel" data-tab="without-datasource" aria-hidden="true" hidden="hidden">
 
 <p>Since version 7.0, NpgsqlDataSource is the recommended way to use Npgsql. However, if you're not yet using NpgsqlDataSource, map enums by adding the following code, <em>before</em> any EF Core operations take place. An appropriate place for this is in the static constructor on your DbContext class:</p>
 <pre><code class="lang-c#">static MyDbContext()
@@ -194,6 +194,7 @@ using (var ctx = new MyDbContext())
 <h2 id="scaffolding-from-an-existing-database">Scaffolding from an existing database</h2>
 <p>If you're creating your model from an existing database, the provider will recognize enums in your database, and scaffold the appropriate <code>HasPostgresEnum()</code> lines in your model. However, the scaffolding process has no knowledge of your CLR type, and will therefore skip your enum columns (warnings will be logged). You will have to create the CLR type and perform the proper setup as described above.</p>
 <p>In the future it may be possible to scaffold the actual enum type (and with it the properties), but this isn't supported at the moment.</p>
+
 </article>
           </div>
 
@@ -202,12 +203,12 @@ using (var ctx = new MyDbContext())
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/enum.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/enum.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -229,7 +230,7 @@ using (var ctx = new MyDbContext())
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

@@ -96,19 +96,19 @@
 </ul>
 <h2 id="setup">Setup</h2>
 <p>To avoid forcing a dependency on the NetTopologySuite library for users not using spatial, NodaTime support is delivered as a separate plugin. To use the plugin, simply add a dependency on <a href="https://www.nuget.org/packages/Npgsql.NodaTime">Npgsql.NodaTime</a> and set it up in one of the following ways:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_1_datasource" role="tab" aria-controls="tabpanel_1_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_global" role="tab" aria-controls="tabpanel_bHGHmlrG6S_global" data-tab="global" tabindex="-1">Global mapping</a>
+<a href="#tabpanel_1_global" role="tab" aria-controls="tabpanel_1_global" data-tab="global" tabindex="-1">Global mapping</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_connection" role="tab" aria-controls="tabpanel_bHGHmlrG6S_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
+<a href="#tabpanel_1_connection" role="tab" aria-controls="tabpanel_1_connection" data-tab="connection" tabindex="-1">Connection mapping</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_datasource" role="tabpanel" data-tab="datasource">
+<section id="tabpanel_1_datasource" role="tabpanel" data-tab="datasource">
 
 <div class="NOTE">
 <h5>Note</h5>
@@ -119,14 +119,14 @@ dataSourceBuilder.UseNodaTime();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
 <p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseNodaTime();
 </code></pre>
 <p>For this to work, you must place this code at the beginning of your application, before any other Npgsql API is called. Note that in Npgsql 7.0, global type mappings are obsolete (but still supported) - <code>NpgsqlDataSource</code> is the recommended way to manage type mappings.</p>
 </section>
-<section id="tabpanel_bHGHmlrG6S_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_connection" role="tabpanel" data-tab="connection" aria-hidden="true" hidden="hidden">
 
 <div class="NOTE">
 <h5>Note</h5>
@@ -233,6 +233,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
 <pre><code class="lang-c#">AppContext.SetSwitch(&quot;Npgsql.DisableDateTimeInfinityConversions&quot;, true);
 </code></pre>
 <p>Note: in versions prior to 6.0, the connection string parameter <code>Convert Infinity DateTime</code> could be used to opt into these infinity conversions. That connection string parameter has been removed.</p>
+
 </article>
           </div>
 
@@ -241,12 +242,12 @@ await using (var reader = await cmd.ExecuteReaderAsync())
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/nodatime.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/nodatime.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -268,7 +269,7 @@ await using (var reader = await cmd.ExecuteReaderAsync())
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

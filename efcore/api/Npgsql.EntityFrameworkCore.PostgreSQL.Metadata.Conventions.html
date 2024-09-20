@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions
- | Npgsql Documentation </title>
+    <title>Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions
- | Npgsql Documentation ">
+    <meta name="title" content="Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -86,15 +84,24 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions">
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions" class="text-break">Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions
-</h1>
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_Conventions" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions" class="text-break">Namespace Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+    <h3 id="classes">
+Classes
 </h3>
       <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlConventionSetBuilder.html">NpgsqlConventionSetBuilder</a></h4>
       <section><p>A builder for building conventions for Npgsql.</p>
+</section>
+      <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlJsonElementHackConvention.html">NpgsqlJsonElementHackConvention</a></h4>
+      <section><p>This convention is a hack around <a href="https://github.com/dotnet/efcore/issues/32192">https://github.com/dotnet/efcore/issues/32192</a>. To support the EF owned entity JSON support, EF
+requires
+that a lookup of the CLR type <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> return the provider's special <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.jsontypemapping">JsonTypeMapping</a>. But Npgsql has
+its own JSON DOM support, where actually mapping <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a> is allowed as a weakly-typed mapping strategy. The two
+JSON type mappings are incompatible notably because EF's <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.storage.jsontypemapping">JsonTypeMapping</a> is expected to return UTF8 byte data which is
+then parsed via <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.utf8jsonwriter">Utf8JsonWriter</a> (and not a string). So for properties actually typed as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonelement">JsonElement</a>, we
+hack here and set the type mapping rather than going through the regular type mapping process.</p>
 </section>
       <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlPostgresModelFinalizingConvention.html">NpgsqlPostgresModelFinalizingConvention</a></h4>
       <section><p>A convention that discovers certain common PostgreSQL extensions based on store types used in the model (e.g. hstore).</p>
@@ -110,16 +117,18 @@
 or using a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html">NpgsqlValueGenerationStrategy</a> at the same time.</p>
 </section>
       <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationConvention.html">NpgsqlValueGenerationConvention</a></h4>
-      <section><p>A convention that configures store value generation as <see cref="!:ValueGenerated.OnAdd"></see> on properties that are
+      <section><p>A convention that configures store value generation as <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.valuegenerated#microsoft-entityframeworkcore-metadata-valuegenerated-onadd">OnAdd</a> on properties that are
 part of the primary key and not part of any foreign keys, were configured to have a database default value
 or were configured to use a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html">NpgsqlValueGenerationStrategy</a>.
-It also configures properties as <see cref="!:ValueGenerated.OnAddOrUpdate"></see> if they were configured as computed columns.</p>
+It also configures properties as <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.metadata.valuegenerated#microsoft-entityframeworkcore-metadata-valuegenerated-onaddorupdate">OnAddOrUpdate</a> if they were configured as computed columns.</p>
 </section>
       <h4><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.Conventions.NpgsqlValueGenerationStrategyConvention.html">NpgsqlValueGenerationStrategyConvention</a></h4>
       <section><p>A convention that configures the default model <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html">NpgsqlValueGenerationStrategy</a> as
 <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_IdentityByDefaultColumn">IdentityByDefaultColumn</a> for newer PostgreSQL versions,
 and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.html#Npgsql_EntityFrameworkCore_PostgreSQL_Metadata_NpgsqlValueGenerationStrategy_SerialColumn">SerialColumn</a> for pre-10.0 versions.</p>
 </section>
+
+
 </article>
           </div>
 
@@ -130,7 +139,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -152,7 +161,7 @@ and <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlV
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

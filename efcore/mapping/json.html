@@ -99,16 +99,16 @@
 </ol>
 <h2 id="string-mapping">String mapping</h2>
 <p>The simplest form of mapping to JSON is via a regular string property, just like an ordinary text column:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_data-annotations" role="tab" aria-controls="tabpanel_bHGHmlrG6S_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+<a href="#tabpanel_1_data-annotations" role="tab" aria-controls="tabpanel_1_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_fluent-api" role="tab" aria-controls="tabpanel_bHGHmlrG6S_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+<a href="#tabpanel_1_fluent-api" role="tab" aria-controls="tabpanel_1_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_data-annotations" role="tabpanel" data-tab="data-annotations">
+<section id="tabpanel_1_data-annotations" role="tabpanel" data-tab="data-annotations">
 
 <pre><code class="lang-c#">public class SomeEntity
 {
@@ -118,7 +118,7 @@
 }
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-c#">class MyContext : DbContext
 {
@@ -183,16 +183,16 @@ public class Order       // Part of the JSON column
 <h2 id="traditional-poco-mapping-deprecated">Traditional POCO mapping (deprecated)</h2>
 <p>Before version 8.0 introduced support for EF's ToJson (owned entity mapping), the provider had its own support for JSON POCO mapping, by simply delegating serialization/deserialization to System.Text.Json; in this model, EF itself model the contents of the JSON document, and cannot take that structure into account for queries and updates. This approach can now be considered deprecated as it allows for less powerful mapping and supports less query types; using ToJson() is now the recommended way to map POCOs to JSON.</p>
 <p>To use traditional POCO mapping, configure a property a mapping to map to a <code>jsonb</code> column as follows:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_data-annotations" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+<a href="#tabpanel_2_data-annotations" role="tab" aria-controls="tabpanel_2_data-annotations" data-tab="data-annotations" tabindex="0" aria-selected="true">Data Annotations</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_fluent-api" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+<a href="#tabpanel_2_fluent-api" role="tab" aria-controls="tabpanel_2_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-1_data-annotations" role="tabpanel" data-tab="data-annotations">
+<section id="tabpanel_2_data-annotations" role="tabpanel" data-tab="data-annotations">
 
 <pre><code class="lang-c#">public class Customer
 {
@@ -215,7 +215,7 @@ public class Order       // Part of the JSON column
 }
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S-1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-c#">class MyContext : DbContext
 {
@@ -274,23 +274,23 @@ Console.WriteLine(someEntity.Customer.RootElement.GetProperty(&quot;Orders&quot;
 <p>The below does not apply if you are using ToJson (owned entity mapping). ToJson supports</p>
 </div>
 <p>Saving and loading documents these documents wouldn't be much use without the ability to query them. You can express your queries via the same LINQ constructs you are already using in EF Core:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-2">
+<div class="tabGroup" id="tabgroup_3">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-2_poco" role="tab" aria-controls="tabpanel_bHGHmlrG6S-2_poco" data-tab="poco" tabindex="0" aria-selected="true">Classic POCO Mapping</a>
+<a href="#tabpanel_3_poco" role="tab" aria-controls="tabpanel_3_poco" data-tab="poco" tabindex="0" aria-selected="true">Classic POCO Mapping</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-2_jsondocument" role="tab" aria-controls="tabpanel_bHGHmlrG6S-2_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
+<a href="#tabpanel_3_jsondocument" role="tab" aria-controls="tabpanel_3_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-2_poco" role="tabpanel" data-tab="poco">
+<section id="tabpanel_3_poco" role="tabpanel" data-tab="poco">
 
 <pre><code class="lang-c#">var joes = context.CustomerEntries
     .Where(e =&gt; e.Customer.Name == &quot;Joe&quot;)
     .ToList();
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S-2_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_3_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-c#">var joes = context.CustomerEntries
     .Where(e =&gt; e.Customer.RootElement.GetProperty(&quot;Name&quot;).GetString() == &quot;Joe&quot;)
@@ -306,16 +306,16 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
 </code></pre>
 <p><a href="#indexing-json-columns">If indexes are set up properly</a>, this can result in very efficient, server evaluation of searches with database JSON documents.</p>
 <p>The following expression types and functions are translated:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-3">
+<div class="tabGroup" id="tabgroup_4">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-3_poco" role="tab" aria-controls="tabpanel_bHGHmlrG6S-3_poco" data-tab="poco" tabindex="0" aria-selected="true">POCO Mapping</a>
+<a href="#tabpanel_4_poco" role="tab" aria-controls="tabpanel_4_poco" data-tab="poco" tabindex="0" aria-selected="true">POCO Mapping</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-3_jsondocument" role="tab" aria-controls="tabpanel_bHGHmlrG6S-3_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
+<a href="#tabpanel_4_jsondocument" role="tab" aria-controls="tabpanel_4_jsondocument" data-tab="jsondocument" tabindex="-1">JsonDocument Mapping</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-3_poco" role="tabpanel" data-tab="poco">
+<section id="tabpanel_4_poco" role="tabpanel" data-tab="poco">
 
 <table>
 <thead>
@@ -364,7 +364,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
 </tbody>
 </table>
 </section>
-<section id="tabpanel_bHGHmlrG6S-3_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_4_jsondocument" role="tabpanel" data-tab="jsondocument" aria-hidden="true" hidden="hidden">
 
 <table>
 <thead>
@@ -421,6 +421,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
 <h5>Note</h5>
 <p>A section on indices will be added. In the meantime consult the PostgreSQL documentation and other guides on the Internet.</p>
 </div>
+
 </article>
           </div>
 
@@ -429,12 +430,12 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/json.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/mapping/json.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -456,7 +457,7 @@ WHERE c.&quot;&quot;Customer&quot;&quot;-&gt;&gt;'Name' = 'Joe'
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

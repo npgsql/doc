@@ -258,6 +258,7 @@ await using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn))
 <p>Npgsql supports automatic preparation. When turned on, this will make Npgsql track the statements you execute and automatically prepare them when you reach a certain threshold. When you reach that threshold, the statement is automatically prepared, and from that point on will be executed as prepared, yielding all the performance benefits discussed above. To turn on this feature, you simply need to set the <code>Max Auto Prepare</code> connection string parameter, which determines how many statements can be automatically prepared on the connection at any given time (this parameter defaults to 0, disabling the feature). A second parameter, <code>Auto Prepare Min Usages</code>, determines how many times a statement needs to be executed before it is auto-prepared (defaults to 5). Since no code changes are required, you can simply try setting <code>Max Auto Prepare</code> and running your application to see an immediate speed increase. Note also that, like explicitly-prepared statements, auto-prepared statements are persistent, allowing you to reap the performance benefits in short-lived connection applications.</p>
 <p>Note that if you're coding directly against Npgsql or ADO.NET, explicitly preparing your commands with <code>Prepare()</code> is still recommended over letting Npgsql prepare automatically. Automatic preparation does incur a slight performance cost compared to explicit preparation, because of the internal LRU cache and various book-keeping data structures. Explicitly preparing also allows you to better control exactly which statements are prepared and which aren't, and ensures your statements will always stay prepared, and never get ejected because of the LRU mechanism.</p>
 <p>Note that automatic preparation is a complex new feature which should be considered somewhat experimental; test carefully, and if you see any strange behavior or problem try turning it off.</p>
+
 </article>
           </div>
 
@@ -266,12 +267,12 @@ await using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn))
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/prepare.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/prepare.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -293,7 +294,7 @@ await using (var cmd = new NpgsqlCommand(&quot;&lt;some_sql&gt;&quot;, conn))
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>

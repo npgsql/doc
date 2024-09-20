@@ -210,22 +210,22 @@
 </code></pre>
 <h3 id="arrayslists-over-ranges-are-mapped-to-pg14-multiranges">Arrays/lists over ranges are mapped to PG14 multiranges</h3>
 <p>PostgreSQL 14 introduced <a href="https://www.postgresql.org/docs/14/rangetypes.html">a new multirange type</a>, which is very similar to an array of ranges but supports various range-related operations efficiently. The provider now maps arrays and lists of <code>NpgsqlRange</code> to these new types by default. To map them to old-style arrays over ranges in PostgreSQL, <a href="https://docs.microsoft.com/ef/core/modeling/entity-properties#column-data-types">configure the column type explicitly</a>:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_annotations" role="tab" aria-controls="tabpanel_bHGHmlrG6S_annotations" data-tab="annotations" tabindex="0" aria-selected="true">Data Annotations</a>
+<a href="#tabpanel_1_annotations" role="tab" aria-controls="tabpanel_1_annotations" data-tab="annotations" tabindex="0" aria-selected="true">Data Annotations</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_fluent-api" role="tab" aria-controls="tabpanel_bHGHmlrG6S_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
+<a href="#tabpanel_1_fluent-api" role="tab" aria-controls="tabpanel_1_fluent-api" data-tab="fluent-api" tabindex="-1">Fluent API</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_annotations" role="tabpanel" data-tab="annotations">
+<section id="tabpanel_1_annotations" role="tabpanel" data-tab="annotations">
 
 <pre><code class="lang-c#">[Column(TypeName = &quot;int4range[]&quot;)]
 public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_fluent-api" role="tabpanel" data-tab="fluent-api" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -416,6 +416,7 @@ public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
 </tr>
 </tbody>
 </table>
+
 </article>
           </div>
 
@@ -424,12 +425,12 @@ public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/6.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/release-notes/6.0.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -451,7 +452,7 @@ public NpgsqlRange&lt;int&gt;[] SomeArrayOverIntNpgsqlRange { get; set;}
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

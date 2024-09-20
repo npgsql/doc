@@ -124,15 +124,15 @@ enum DatabaseType
 <h2 id="other-features">Other features</h2>
 <ul>
 <li>Allow using nullable value types with the generic <code>NpgsqlParameter&lt;T&gt;</code>, e.g. <code>NpgsqlParameter&lt;int?&gt;</code>.</li>
-<li>Introduce a non-caching password provider callback via &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UsePasswordProvider?displayProperty=nameWithType&gt;.</li>
-<li>Allow customizing System.Text.Json JsonSerializationOptions via &lt;xref:Npgsql.NpgsqlDataSourceBuilder.ConfigureJsonOptions?displayProperty=nameWithType&gt;.</li>
+<li>Introduce a non-caching password provider callback via <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UsePasswordProvider_">NpgsqlDataSourceBuilder.UsePasswordProvider</a>.</li>
+<li>Allow customizing System.Text.Json JsonSerializationOptions via <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_ConfigureJsonOptions_">NpgsqlDataSourceBuilder.ConfigureJsonOptions</a>.</li>
 <li>Improvements and cleanup for networking type mappings:
 <ul>
-<li>In addition to .NET &lt;xref:System.Net.IPAddress&gt;, PostgreSQL <code>inet</code> can also mapped to be mapped to <a class="xref" href="../api/NpgsqlTypes.NpgsqlInet.html">NpgsqlInet</a>, which is an immutable struct containing both IP and netmask components.</li>
+<li>In addition to .NET <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.ipaddress">IPAddress</a>, PostgreSQL <code>inet</code> can also mapped to be mapped to <a class="xref" href="../api/NpgsqlTypes.NpgsqlInet.html">NpgsqlInet</a>, which is an immutable struct containing both IP and netmask components.</li>
 <li>PostgreSQL <code>cidr</code> is now mapped to the newly-introduced <a class="xref" href="../api/NpgsqlTypes.NpgsqlCidr.html">NpgsqlCidr</a>. The mapping to <code>ValueTuple&lt;IPAddress, int&gt;</code> has been removed.</li>
 </ul>
 </li>
-<li>Allow providing the root certificate programmatically via the new &lt;xref:Npgsql.NpgsqlDataSourceBuilder.UseRootCertificate?displayProperty=nameWithType&gt;</li>
+<li>Allow providing the root certificate programmatically via the new <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html#Npgsql_NpgsqlDataSourceBuilder_UseRootCertificate_">NpgsqlDataSourceBuilder.UseRootCertificate</a></li>
 </ul>
 <p>Version 8.0 contains many other smaller features and bug fixes, <a href="https://github.com/npgsql/npgsql/milestone/97?closed=1">see the 8.0.0 milestone</a> for the full list of issues.</p>
 <h2 id="breaking-changes">Breaking changes</h2>
@@ -148,15 +148,15 @@ enum DatabaseType
 <tbody>
 <tr>
 <td>JSON POCO mapping, JsonNode and subtypes</td>
-<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableDynamicJson&gt;</td>
+<td><a class="xref" href="../api/Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_EnableDynamicJson_">EnableDynamicJson</a></td>
 </tr>
 <tr>
 <td>Unmapped enums, ranges, multiranges</td>
-<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableUnmappedTypes&gt;</td>
+<td><a class="xref" href="../api/Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_EnableUnmappedTypes_">EnableUnmappedTypes</a></td>
 </tr>
 <tr>
 <td>Read PostgreSQL records as .NET tuples</td>
-<td>&lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableRecordsAsTuples&gt;</td>
+<td><a class="xref" href="../api/Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_EnableRecordsAsTuples_">EnableRecordsAsTuples</a></td>
 </tr>
 </tbody>
 </table>
@@ -252,6 +252,7 @@ var result = await command.ExecuteScalarAsync();
 </tr>
 </tbody>
 </table>
+
 </article>
           </div>
 
@@ -260,12 +261,12 @@ var result = await command.ExecuteScalarAsync();
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/8.0.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/release-notes/8.0.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -287,7 +288,7 @@ var result = await command.ExecuteScalarAsync();
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

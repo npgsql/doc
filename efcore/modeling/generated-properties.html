@@ -159,16 +159,16 @@
 }
 </code></pre>
 <p>If you prefer to generate values in the database instead, you can do so by specifying <code>HasDefaultValueSql</code> on your property, and call the function to generate the value in the SQL expression. Which function to use depends on your PostgreSQL version:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_13" role="tab" aria-controls="tabpanel_bHGHmlrG6S_13" data-tab="13" tabindex="0" aria-selected="true">PG 13+</a>
+<a href="#tabpanel_1_13" role="tab" aria-controls="tabpanel_1_13" data-tab="13" tabindex="0" aria-selected="true">PG 13+</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_older" role="tab" aria-controls="tabpanel_bHGHmlrG6S_older" data-tab="older" tabindex="-1">Older</a>
+<a href="#tabpanel_1_older" role="tab" aria-controls="tabpanel_1_older" data-tab="older" tabindex="-1">Older</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_13" role="tabpanel" data-tab="13">
+<section id="tabpanel_1_13" role="tabpanel" data-tab="13">
 
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -179,7 +179,7 @@
 }
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_older" role="tabpanel" data-tab="older" aria-hidden="true" hidden="hidden">
 
 <p>Versions of PostgreSQL prior to 13 don't include any GUID/UUID generation functions, but extensions such as <code>uuid-ossp</code> or <code>pgcrypto</code> exist to fill thie gap. This can be done by placing the following code in your model's <code>OnModelCreating</code>:</p>
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -230,16 +230,16 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 <p>This feature works only on PostgreSQL 12 or above.</p>
 </div>
 <p>PostgreSQL 12 added support for <a href="https://www.postgresql.org/docs/current/ddl-generated-columns.html">stored generated columns</a>, and Npgsql feature supports that feature as well:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_efcore5" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_efcore5" data-tab="efcore5" tabindex="0" aria-selected="true">Version 5.0</a>
+<a href="#tabpanel_2_efcore5" role="tab" aria-controls="tabpanel_2_efcore5" data-tab="efcore5" tabindex="0" aria-selected="true">Version 5.0</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_efcore3" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_efcore3" data-tab="efcore3" tabindex="-1">Version 3.x</a>
+<a href="#tabpanel_2_efcore3" role="tab" aria-controls="tabpanel_2_efcore3" data-tab="efcore3" tabindex="-1">Version 3.x</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-1_efcore5" role="tabpanel" data-tab="efcore5">
+<section id="tabpanel_2_efcore5" role="tabpanel" data-tab="efcore5">
 
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -249,7 +249,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 }
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S-1_efcore3" role="tabpanel" data-tab="efcore3" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_efcore3" role="tabpanel" data-tab="efcore3" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-c#">protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -265,6 +265,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
 <pre><code class="lang-sql">ALTER TABLE &quot;&quot;Person&quot;&quot; ADD &quot;&quot;DisplayName&quot;&quot; text GENERATED ALWAYS AS (&quot;&quot;FirstName&quot;&quot; || ' ' || &quot;&quot;LastName&quot;&quot;) STORED;
 </code></pre>
 <p>Note that this is a <em>stored</em> column - it is computed once when the row is updated, and takes space on disk. Virtual computed columns, which are computed on each select, are not yet supported by PostgreSQL.</p>
+
 </article>
           </div>
 
@@ -273,12 +274,12 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/modeling/generated-properties.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/EFCore.PG/modeling/generated-properties.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -300,7 +301,7 @@ CREATE TRIGGER &quot;UpdateTimestamp&quot;
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

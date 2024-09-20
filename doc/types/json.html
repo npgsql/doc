@@ -126,17 +126,17 @@ while (await reader.ReadAsync())
 <p>As of Npgsql 8.0, POCO mapping is incompatible with NativeAOT. We plan to improve this, <a href="https://github.com/npgsql/npgsql/issues/5355">please upvote this issue if you're interested</a>.</p>
 </div>
 <p>If your column JSON contains documents with a stable schema, you can map them to your own .NET types (or POCOs). The provider will use System.Text.Json APIs under the hood to serialize instances of your types to JSON documents before sending them to the database, and to deserialize documents coming back from the database. This effectively allows mapping an arbitrary .NET type - or object graph - to a single column in the database.</p>
-<p>Starting with Npgsql 8.0, to use this feature, you must first enable it by calling &lt;xref:Npgsql.INpgsqlTypeMapperExtensions.EnableDynamicJson&gt; on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, or, if you're not yet using data sources, on <code>NpgsqlConnection.GlobalTypeMapper</code>:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
+<p>Starting with Npgsql 8.0, to use this feature, you must first enable it by calling <a class="xref" href="../api/Npgsql.TypeMapping.INpgsqlTypeMapper.html#Npgsql_TypeMapping_INpgsqlTypeMapper_EnableDynamicJson_">EnableDynamicJson</a> on your <a class="xref" href="../api/Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a>, or, if you're not yet using data sources, on <code>NpgsqlConnection.GlobalTypeMapper</code>:</p>
+<div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_1_datasource" role="tab" aria-controls="tabpanel_1_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S_global" role="tab" aria-controls="tabpanel_bHGHmlrG6S_global" data-tab="global" tabindex="-1">Global mapping</a>
+<a href="#tabpanel_1_global" role="tab" aria-controls="tabpanel_1_global" data-tab="global" tabindex="-1">Global mapping</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S_datasource" role="tabpanel" data-tab="datasource">
+<section id="tabpanel_1_datasource" role="tabpanel" data-tab="datasource">
 
 <div class="NOTE">
 <h5>Note</h5>
@@ -147,7 +147,7 @@ dataSourceBuilder.EnableDynamicJson();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_1_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
 <p>If you're not yet using <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.EnableDynamicJson();
@@ -222,16 +222,16 @@ void ParseJson(byte[] utf8Data)
 <h2 id="newtonsoftjson">Newtonsoft.JSON</h2>
 <p>System.Text.Json is the built-in, standard way to handle JSON in modern .NET. However, some users still prefer using Newtonoft Json.NET, and Npgsql includes support for that.</p>
 <p>To use Json.NET, add the <a href="https://www.nuget.org/packages/Npgsql.Json.NET">Npgsql.Json.NET package</a> to your project, and enable the plugin as follows:</p>
-<div class="tabGroup" id="tabgroup_bHGHmlrG6S-1">
+<div class="tabGroup" id="tabgroup_2">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_datasource" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
+<a href="#tabpanel_2_datasource" role="tab" aria-controls="tabpanel_2_datasource" data-tab="datasource" tabindex="0" aria-selected="true">NpgsqlDataSource</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_bHGHmlrG6S-1_global" role="tab" aria-controls="tabpanel_bHGHmlrG6S-1_global" data-tab="global" tabindex="-1">Global mapping</a>
+<a href="#tabpanel_2_global" role="tab" aria-controls="tabpanel_2_global" data-tab="global" tabindex="-1">Global mapping</a>
 </li>
 </ul>
-<section id="tabpanel_bHGHmlrG6S-1_datasource" role="tabpanel" data-tab="datasource">
+<section id="tabpanel_2_datasource" role="tabpanel" data-tab="datasource">
 
 <div class="NOTE">
 <h5>Note</h5>
@@ -242,7 +242,7 @@ dataSourceBuilder.UseJsonNet();
 await using var dataSource = dataSourceBuilder.Build();
 </code></pre>
 </section>
-<section id="tabpanel_bHGHmlrG6S-1_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_2_global" role="tabpanel" data-tab="global" aria-hidden="true" hidden="hidden">
 
 <p>If you're using an older version of Npgsql which doesn't yet support <code>NpgsqlDataSource</code>, you can configure mappings globally for all connections in your application:</p>
 <pre><code class="lang-c#">NpgsqlConnection.GlobalTypeMapper.UseJsonNet();
@@ -277,6 +277,7 @@ class MyPoco
 }
 </code></pre>
 <p>The plugin also allows you to read JObject/JArray for weakly-typed DOM mapping.</p>
+
 </article>
           </div>
 
@@ -285,12 +286,12 @@ class MyPoco
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/json.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/doc/blob/main/conceptual/Npgsql/types/json.md/#L1" class="contribution-link">Edit this page</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -312,7 +313,7 @@ class MyPoco
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface INpgsqlDatabaseInfoFactory
- | Npgsql Documentation </title>
+    <title>Interface INpgsqlDatabaseInfoFactory | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface INpgsqlDatabaseInfoFactory
- | Npgsql Documentation ">
+    <meta name="title" content="Interface INpgsqlDatabaseInfoFactory | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -87,8 +85,8 @@
             <article class="content wrap" id="_content" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory">
 
 
-  <h1 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory" class="text-break">Interface INpgsqlDatabaseInfoFactory
-</h1>
+
+  <h1 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory" class="text-break">Interface INpgsqlDatabaseInfoFactory</h1>
   <div class="markdown level0 summary"><p>A factory which get generate instances of <a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>, which describe a database
 and the types it contains. When first connecting to a database, Npgsql will attempt to load information
 about it via this factory.</p>
@@ -104,10 +102,10 @@ about it via this factory.</p>
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector%2CNpgsql.Util.NpgsqlTimeout%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector%2CNpgsql.Util.NpgsqlTimeout%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L21">View Source</a>
+    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L23">View Source</a>
   </span>
   <a id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load*"></a>
   <h4 id="Npgsql_Internal_INpgsqlDatabaseInfoFactory_Load_Npgsql_Internal_NpgsqlConnector_Npgsql_Util_NpgsqlTimeout_System_Boolean_" data-uid="Npgsql.Internal.INpgsqlDatabaseInfoFactory.Load(Npgsql.Internal.NpgsqlConnector,Npgsql.Util.NpgsqlTimeout,System.Boolean)">Load(NpgsqlConnector, NpgsqlTimeout, bool)</h4>
@@ -120,7 +118,7 @@ A factory should only handle the exact database type it was meant for, and retur
     <pre><code class="lang-csharp hljs">Task&lt;NpgsqlDatabaseInfo?&gt; Load(NpgsqlConnector conn, NpgsqlTimeout timeout, bool async)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -140,14 +138,14 @@ A factory should only handle the exact database type it was meant for, and retur
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">async</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -156,13 +154,14 @@ A factory should only handle the exact database type it was meant for, and retur
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task&lt;&gt;</span>&lt;<a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>&gt;</td>
-        <td><p>An object describing the database to which <code data-dev-comment-type="paramref" class="paramref">conn</code> is connected, or null if the
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Npgsql.Internal.NpgsqlDatabaseInfo.html">NpgsqlDatabaseInfo</a>&gt;</td>
+        <td><p>An object describing the database to which <code class="paramref">conn</code> is connected, or null if the
 database isn't of the correct type and isn't handled by this factory.</p>
 </td>
       </tr>
     </tbody>
   </table>
+
 </article>
           </div>
 
@@ -171,15 +170,15 @@ database isn't of the correct type and isn't handled by this factory.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql/new/stable/apiSpec/new?filename=Npgsql_Internal_INpgsqlDatabaseInfoFactory.md&amp;value=---%0Auid%3A%20Npgsql.Internal.INpgsqlDatabaseInfoFactory%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/npgsql/blob/docs/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/npgsql/blob/main/src/Npgsql/Internal/INpgsqlDatabaseInfoFactory.cs/#L12" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -201,7 +200,7 @@ database isn't of the correct type and isn't handled by this factory.</p>
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

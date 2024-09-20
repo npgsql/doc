@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Npgsql
- | Npgsql Documentation </title>
+    <title>Namespace Npgsql | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Npgsql
- | Npgsql Documentation ">
+    <meta name="title" content="Namespace Npgsql | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -86,22 +84,22 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Npgsql">
 
-  <h1 id="Npgsql" data-uid="Npgsql" class="text-break">Namespace Npgsql
-</h1>
+  <h1 id="Npgsql" data-uid="Npgsql" class="text-break">Namespace Npgsql</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+    <h3 id="classes">
+Classes
 </h3>
-      <h4><a class="xref" href="Npgsql.INpgsqlTypeMapperExtensions.html">INpgsqlTypeMapperExtensions</a></h4>
-      <section><p>Extension methods over <a class="xref" href="Npgsql.TypeMapping.INpgsqlTypeMapper.html">INpgsqlTypeMapper</a>.</p>
-</section>
       <h4><a class="xref" href="Npgsql.NpgsqlBatch.html">NpgsqlBatch</a></h4>
-      <section></section>
+      <section><p>Represents a batch of commands which can be executed against a data source in a single round trip. Provides a base class for database-specific classes that represent command batches.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlBatchCommand.html">NpgsqlBatchCommand</a></h4>
-      <section></section>
+      <section><p>Represents a single command within a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbbatch">DbBatch</a>. A batch can be executed against a data source in a single round trip.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlBatchCommandCollection.html">NpgsqlBatchCommandCollection</a></h4>
-      <section></section>
+      <section><p>The base class for a collection of instances of <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbbatchcommand">DbBatchCommand</a>, contained in a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.common.dbbatch">DbBatch</a>.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlBinaryExporter.html">NpgsqlBinaryExporter</a></h4>
       <section><p>Provides an API for a binary COPY TO operation, a high-performance data export mechanism from
 a PostgreSQL table. Initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginBinaryExport_System_String_">BeginBinaryExport(string)</a></p>
@@ -131,13 +129,14 @@ the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> cla
       <section><p>Writer for a text import, initiated by <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_BeginTextImport_System_String_">BeginTextImport(string)</a>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataAdapter.html">NpgsqlDataAdapter</a></h4>
-      <section><p>This class represents an adapter from many commands: select, update, insert and delete to fill a <see cref="!:System.Data.DataSet"></see>.</p>
+      <section><p>This class represents an adapter from many commands: select, update, insert and delete to fill a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.dataset">DataSet</a>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataReader.html">NpgsqlDataReader</a></h4>
       <section><p>Reads a forward-only stream of rows from a data source.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a></h4>
-      <section></section>
+      <section><p>Represents a data source which can be used to obtain open connections, and against which commands can be executed directly.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlDataSourceBuilder.html">NpgsqlDataSourceBuilder</a></h4>
       <section><p>Provides a simple API for configuring and creating an <a class="xref" href="Npgsql.NpgsqlDataSource.html">NpgsqlDataSource</a>, from which database connections can be obtained.</p>
 </section>
@@ -148,12 +147,6 @@ the <a class="xref" href="Npgsql.NpgsqlConnection.html">NpgsqlConnection</a> cla
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlFactory.html">NpgsqlFactory</a></h4>
       <section><p>A factory to create instances of various Npgsql objects.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlGeoJSONExtensions.html">NpgsqlGeoJSONExtensions</a></h4>
-      <section><p>Extension allowing adding the GeoJSON plugin to an Npgsql type mapper.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlJsonNetExtensions.html">NpgsqlJsonNetExtensions</a></h4>
-      <section><p>Extension allowing adding the Json.NET plugin to an Npgsql type mapper.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlLargeObjectManager.html">NpgsqlLargeObjectManager</a></h4>
       <section><p>Large object manager. This class can be used to store very large files in a PostgreSQL database.</p>
@@ -174,12 +167,6 @@ offline...) and can perform failover and load balancing across them.</p>
 Can be retrieved using <a class="xref" href="Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetData_System_Int32_">GetData(int)</a> or
 <a class="xref" href="Npgsql.NpgsqlNestedDataReader.html#Npgsql_NpgsqlNestedDataReader_GetData_System_Int32_">GetData(int)</a>.</p>
 </section>
-      <h4><a class="xref" href="Npgsql.NpgsqlNetTopologySuiteExtensions.html">NpgsqlNetTopologySuiteExtensions</a></h4>
-      <section><p>Extension allowing adding the NetTopologySuite plugin to an Npgsql type mapper.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlNodaTimeExtensions.html">NpgsqlNodaTimeExtensions</a></h4>
-      <section><p>Extension adding the NodaTime plugin to an Npgsql type mapper.</p>
-</section>
       <h4><a class="xref" href="Npgsql.NpgsqlNoticeEventArgs.html">NpgsqlNoticeEventArgs</a></h4>
       <section><p>Provides data for a PostgreSQL notice event.</p>
 </section>
@@ -195,13 +182,13 @@ Provides information on the already-executing operation to help with debugging.<
       <h4><a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a></h4>
       <section><p>This class represents a parameter to a command that will be sent to server</p>
 </section>
+      <h4><a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a></h4>
+      <section><p>Represents a collection of parameters relevant to a <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> as well as their respective mappings to columns in
+a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.data.dataset">DataSet</a>.</p>
+</section>
       <h4><a class="xref" href="Npgsql.NpgsqlParameter-1.html">NpgsqlParameter&lt;T&gt;</a></h4>
       <section><p>A generic version of <a class="xref" href="Npgsql.NpgsqlParameter.html">NpgsqlParameter</a> which provides more type safety and
 avoids boxing of value types. Use <a class="xref" href="Npgsql.NpgsqlParameter-1.html#Npgsql_NpgsqlParameter_1_TypedValue">TypedValue</a> instead of <a class="xref" href="Npgsql.NpgsqlParameter.html#Npgsql_NpgsqlParameter_Value">Value</a>.</p>
-</section>
-      <h4><a class="xref" href="Npgsql.NpgsqlParameterCollection.html">NpgsqlParameterCollection</a></h4>
-      <section><p>Represents a collection of parameters relevant to a <a class="xref" href="Npgsql.NpgsqlCommand.html">NpgsqlCommand</a> as well as their respective mappings to columns in
-a <see cref="!:DataSet"></see>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.NpgsqlRawCopyStream.html">NpgsqlRawCopyStream</a></h4>
       <section><p>Provides an API for a raw binary COPY operation, a high-performance data import/export mechanism to
@@ -233,28 +220,25 @@ SQL issues, constraint violations).</p>
 (e.g. as a warning or informational notice), or due to outside activity (e.g. if the database administrator
 initiates a &quot;fast&quot; database shutdown).</p>
 </section>
-      <h4><a class="xref" href="Npgsql.TracerProviderBuilderExtensions.html">TracerProviderBuilderExtensions</a></h4>
-      <section><p>Extension method for setting up Npgsql OpenTelemetry tracing.</p>
-</section>
-    <h3 id="interfaces">Interfaces
+    <h3 id="interfaces">
+Interfaces
 </h3>
       <h4><a class="xref" href="Npgsql.INpgsqlNameTranslator.html">INpgsqlNameTranslator</a></h4>
       <section><p>A component which translates a CLR name (e.g. SomeClass) into a database name (e.g. some_class)
 according to some scheme.
 Used for mapping enum and composite types.</p>
 </section>
-    <h3 id="enums">Enums
+    <h3 id="enums">
+Enums
 </h3>
       <h4><a class="xref" href="Npgsql.ArrayNullabilityMode.html">ArrayNullabilityMode</a></h4>
       <section><p>Specifies how the mapping of arrays of
 <a href="https://docs.microsoft.com/dotnet/csharp/language-reference/builtin-types/value-types">value types</a>
-behaves with respect to nullability when they are requested via an API returning an <see cref="!:System.Object"></see>.</p>
+behaves with respect to nullability when they are requested via an API returning an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>.</p>
 </section>
       <h4><a class="xref" href="Npgsql.ChannelBinding.html">ChannelBinding</a></h4>
       <section><p>Specifies how to manage channel binding.</p>
 </section>
-      <h4><a class="xref" href="Npgsql.GeoJSONOptions.html">GeoJSONOptions</a></h4>
-      <section></section>
       <h4><a class="xref" href="Npgsql.ServerCompatibilityMode.html">ServerCompatibilityMode</a></h4>
       <section><p>An option specified in the connection string that activates special compatibility features.</p>
 </section>
@@ -267,7 +251,8 @@ behaves with respect to nullability when they are requested via an API returning
       <h4><a class="xref" href="Npgsql.TargetSessionAttributes.html">TargetSessionAttributes</a></h4>
       <section><p>Specifies server type preference.</p>
 </section>
-    <h3 id="delegates">Delegates
+    <h3 id="delegates">
+Delegates
 </h3>
       <h4><a class="xref" href="Npgsql.NoticeEventHandler.html">NoticeEventHandler</a></h4>
       <section><p>Represents a method that handles the <a class="xref" href="Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Notice">Notice</a> event.</p>
@@ -287,6 +272,8 @@ behaves with respect to nullability when they are requested via an API returning
       <h4><a class="xref" href="Npgsql.ProvidePasswordCallback.html">ProvidePasswordCallback</a></h4>
       <section><p>Represents a method that allows the application to provide a password at connection time in code rather than configuration</p>
 </section>
+
+
 </article>
           </div>
 
@@ -297,7 +284,7 @@ behaves with respect to nullability when they are requested via an API returning
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -319,7 +306,7 @@ behaves with respect to nullability when they are requested via an API returning
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>

@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class NpgsqlSqlNullabilityProcessor
- | Npgsql Documentation </title>
+    <title>Class NpgsqlSqlNullabilityProcessor | Npgsql Documentation </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class NpgsqlSqlNullabilityProcessor
- | Npgsql Documentation ">
+    <meta name="title" content="Class NpgsqlSqlNullabilityProcessor | Npgsql Documentation ">
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -87,16 +85,142 @@
             <article class="content wrap" id="_content" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor">
 
 
-  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor" class="text-break">Class NpgsqlSqlNullabilityProcessor
-</h1>
-  <div class="markdown level0 summary"></div>
+
+  <h1 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor" class="text-break">Class NpgsqlSqlNullabilityProcessor</h1>
+  <div class="markdown level0 summary"><p>
+                A class that processes a SQL tree based on nullability of nodes to apply null semantics in use and
+                optimize it based on parameter values.
+            </p>
+<p>
+                This type is typically used by database providers (and other extensions). It is generally
+                not used in application code.
+            </p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">object</span></div>
-    <div class="level1"><span class="xref">NpgsqlSqlNullabilityProcessor</span></div>
+    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+    <div class="level1"><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor">SqlNullabilityProcessor</a></div>
+    <div class="level2"><span class="xref">NpgsqlSqlNullabilityProcessor</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="../../doc/api/Npgsql.html">Npgsql</a>.<span class="xref">EntityFrameworkCore</span>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Internal</a></h6>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.process">SqlNullabilityProcessor.Process(Expression, IReadOnlyDictionary&lt;string, object&gt;, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.donotcache">SqlNullabilityProcessor.DoNotCache()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.addnonnullablecolumn">SqlNullabilityProcessor.AddNonNullableColumn(ColumnExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visit#microsoft-entityframeworkcore-query-sqlnullabilityprocessor-visit(microsoft-entityframeworkcore-query-sqlexpressions-tableexpressionbase)">SqlNullabilityProcessor.Visit(TableExpressionBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visit#microsoft-entityframeworkcore-query-sqlnullabilityprocessor-visit(microsoft-entityframeworkcore-query-sqlexpressions-selectexpression)">SqlNullabilityProcessor.Visit(SelectExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visit#microsoft-entityframeworkcore-query-sqlnullabilityprocessor-visit(microsoft-entityframeworkcore-query-sqlexpressions-sqlexpression-system-boolean@)">SqlNullabilityProcessor.Visit(SqlExpression, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visit#microsoft-entityframeworkcore-query-sqlnullabilityprocessor-visit(microsoft-entityframeworkcore-query-sqlexpressions-sqlexpression-system-boolean-system-boolean@)">SqlNullabilityProcessor.Visit(SqlExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitattimezone">SqlNullabilityProcessor.VisitAtTimeZone(AtTimeZoneExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitcase">SqlNullabilityProcessor.VisitCase(CaseExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitcollate">SqlNullabilityProcessor.VisitCollate(CollateExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitcolumn">SqlNullabilityProcessor.VisitColumn(ColumnExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitdistinct">SqlNullabilityProcessor.VisitDistinct(DistinctExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitexists">SqlNullabilityProcessor.VisitExists(ExistsExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitin">SqlNullabilityProcessor.VisitIn(InExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitlike">SqlNullabilityProcessor.VisitLike(LikeExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitrownumber">SqlNullabilityProcessor.VisitRowNumber(RowNumberExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitrowvalue">SqlNullabilityProcessor.VisitRowValue(RowValueExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitscalarsubquery">SqlNullabilityProcessor.VisitScalarSubquery(ScalarSubqueryExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlconstant">SqlNullabilityProcessor.VisitSqlConstant(SqlConstantExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlfragment">SqlNullabilityProcessor.VisitSqlFragment(SqlFragmentExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlparameter">SqlNullabilityProcessor.VisitSqlParameter(SqlParameterExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlunary">SqlNullabilityProcessor.VisitSqlUnary(SqlUnaryExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitjsonscalar">SqlNullabilityProcessor.VisitJsonScalar(JsonScalarExpression, bool, out bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.optimizenonnullablenotexpression">SqlNullabilityProcessor.OptimizeNonNullableNotExpression(SqlUnaryExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.trymakenonnullable">SqlNullabilityProcessor.TryMakeNonNullable(SelectExpression, out SelectExpression, out bool?)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.iscollectiontable">SqlNullabilityProcessor.IsCollectionTable(TableExpressionBase, out Expression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.updateparametercollection">SqlNullabilityProcessor.UpdateParameterCollection(TableExpressionBase, SqlParameterExpression)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.dependencies">SqlNullabilityProcessor.Dependencies</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.userelationalnulls">SqlNullabilityProcessor.UseRelationalNulls</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.parametervalues">SqlNullabilityProcessor.ParameterValues</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.preferexiststoinwithcoalesce">SqlNullabilityProcessor.PreferExistsToInWithCoalesce</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Npgsql.html">Npgsql</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.html">EntityFrameworkCore</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.html">PostgreSQL</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.html">Query</a>.<a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.html">Internal</a></h6>
   <h6><strong>Assembly</strong>: Npgsql.EntityFrameworkCore.PostgreSQL.dll</h6>
   <h5 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_syntax">Syntax</h5>
   <div class="codewrapper">
@@ -106,13 +230,13 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor__ctor_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.%23ctor(RelationalParameterBasedSqlProcessorDependencies%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor__ctor_Microsoft_EntityFrameworkCore_Query_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.%23ctor(Microsoft.EntityFrameworkCore.Query.RelationalParameterBasedSqlProcessorDependencies%2CSystem.Boolean)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L19">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L18">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor__ctor_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.#ctor*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor__ctor_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.#ctor(RelationalParameterBasedSqlProcessorDependencies,System.Boolean)">NpgsqlSqlNullabilityProcessor(RelationalParameterBasedSqlProcessorDependencies, bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor__ctor_Microsoft_EntityFrameworkCore_Query_RelationalParameterBasedSqlProcessorDependencies_System_Boolean_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.#ctor(Microsoft.EntityFrameworkCore.Query.RelationalParameterBasedSqlProcessorDependencies,System.Boolean)">NpgsqlSqlNullabilityProcessor(RelationalParameterBasedSqlProcessorDependencies, bool)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.html">NpgsqlSqlNullabilityProcessor</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -121,7 +245,7 @@
     <pre><code class="lang-csharp hljs">public NpgsqlSqlNullabilityProcessor(RelationalParameterBasedSqlProcessorDependencies dependencies, bool useRelationalNulls)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -131,13 +255,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RelationalParameterBasedSqlProcessorDependencies</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.relationalparameterbasedsqlprocessordependencies">RelationalParameterBasedSqlProcessorDependencies</a></td>
         <td><span class="parametername">dependencies</span></td>
         <td><p>Parameter object containing dependencies for this class.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">useRelationalNulls</span></td>
         <td><p>A bool value indicating whether relational null semantics are in use.</p>
 </td>
@@ -148,13 +272,13 @@
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresAllExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAllExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L284">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L276">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAll_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAll*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresAllExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAllExpression,System.Boolean,System.Boolean@)">VisitAll(PostgresAllExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAll_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAllExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAll(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression,System.Boolean,System.Boolean@)">VisitAll(PgAllExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -163,10 +287,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitAll(PostgresAllExpression allExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitAll(PgAllExpression allExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -176,24 +300,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAllExpression.html">PostgresAllExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAllExpression.html">PgAllExpression</a></td>
         <td><span class="parametername">allExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -202,20 +326,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresAnyExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAnyExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L211">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L203">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAny_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAny*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresAnyExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAnyExpression,System.Boolean,System.Boolean@)">VisitAny(PostgresAnyExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitAny_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgAnyExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitAny(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression,System.Boolean,System.Boolean@)">VisitAny(PgAnyExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -224,10 +348,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitAny(PostgresAnyExpression anyExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitAny(PgAnyExpression anyExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -237,24 +361,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresAnyExpression.html">PostgresAnyExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgAnyExpression.html">PgAnyExpression</a></td>
         <td><span class="parametername">anyExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -263,20 +387,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresArrayIndexExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresArrayIndexExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArrayIndexExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L311">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L303">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArrayIndex_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArrayIndex*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresArrayIndexExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresArrayIndexExpression,System.Boolean,System.Boolean@)">VisitArrayIndex(PostgresArrayIndexExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArrayIndex_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArrayIndexExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArrayIndex(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression,System.Boolean,System.Boolean@)">VisitArrayIndex(PgArrayIndexExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -285,10 +409,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitArrayIndex(PostgresArrayIndexExpression arrayIndexExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitArrayIndex(PgArrayIndexExpression arrayIndexExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -298,24 +422,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresArrayIndexExpression.html">PostgresArrayIndexExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArrayIndexExpression.html">PgArrayIndexExpression</a></td>
         <td><span class="parametername">arrayIndexExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -324,28 +448,90 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitCustomSqlExpression_SqlExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitCustomSqlExpression(SqlExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArraySlice_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArraySliceExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArraySlice(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L173">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L324">View Source</a>
+  </span>
+  <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArraySlice_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArraySlice*"></a>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitArraySlice_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgArraySliceExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitArraySlice(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression,System.Boolean,System.Boolean@)">VisitArraySlice(PgArraySliceExpression, bool, out bool)</h4>
+  <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+the same compatibility standards as public APIs. It may be changed or removed without notice in
+any release. You should only use it directly in your code with extreme caution and knowing that
+doing so can result in application failures when updating to a new Entity Framework Core release.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="declaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitArraySlice(PgArraySliceExpression arraySliceExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgArraySliceExpression.html">PgArraySliceExpression</a></td>
+        <td><span class="parametername">arraySliceExpression</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">allowOptimizedExpansion</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
+        <td><span class="parametername">nullable</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitCustomSqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitCustomSqlExpression(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L174">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitCustomSqlExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitCustomSqlExpression*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitCustomSqlExpression_SqlExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitCustomSqlExpression(SqlExpression,System.Boolean,System.Boolean@)">VisitCustomSqlExpression(SqlExpression, bool, out bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitCustomSqlExpression_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitCustomSqlExpression(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Boolean,System.Boolean@)">VisitCustomSqlExpression(SqlExpression, bool, out bool)</h4>
+  <div class="markdown level1 summary"><p>Visits a custom <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a> added by providers and computes its nullability.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override SqlExpression VisitCustomSqlExpression(SqlExpression sqlExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -355,24 +541,27 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td><span class="parametername">sqlExpression</span></td>
-        <td></td>
+        <td><p>A sql expression to visit.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
-        <td></td>
+        <td><p>A bool value indicating if optimized expansion which considers null value as false value is allowed.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
-        <td></td>
+        <td><p>A bool value indicating whether the sql expression is nullable.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -381,20 +570,23 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
+        <td><p>An optimized sql expression.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitcustomsqlexpression">SqlNullabilityProcessor.VisitCustomSqlExpression(SqlExpression, bool, out bool)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresILikeExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresILikeExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgILikeExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L439">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L458">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitILike_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitILike*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresILikeExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresILikeExpression,System.Boolean,System.Boolean@)">VisitILike(PostgresILikeExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitILike_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgILikeExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitILike(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression,System.Boolean,System.Boolean@)">VisitILike(PgILikeExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -403,10 +595,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitILike(PostgresILikeExpression iLikeExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitILike(PgILikeExpression iLikeExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -416,24 +608,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresILikeExpression.html">PostgresILikeExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgILikeExpression.html">PgILikeExpression</a></td>
         <td><span class="parametername">iLikeExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -442,20 +634,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitJsonTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresJsonTraversalExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitJsonTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresJsonTraversalExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitJsonTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgJsonTraversalExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitJsonTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L520">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L595">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitJsonTraversal_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitJsonTraversal*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitJsonTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresJsonTraversalExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitJsonTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresJsonTraversalExpression,System.Boolean,System.Boolean@)">VisitJsonTraversal(PostgresJsonTraversalExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitJsonTraversal_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgJsonTraversalExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitJsonTraversal(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression,System.Boolean,System.Boolean@)">VisitJsonTraversal(PgJsonTraversalExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -464,10 +656,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitJsonTraversal(PostgresJsonTraversalExpression jsonTraversalExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitJsonTraversal(PgJsonTraversalExpression jsonTraversalExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -477,24 +669,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresJsonTraversalExpression.html">PostgresJsonTraversalExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgJsonTraversalExpression.html">PgJsonTraversalExpression</a></td>
         <td><span class="parametername">jsonTraversalExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -503,20 +695,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresNewArrayExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresNewArrayExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgNewArrayExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L464">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L535">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitNewArray_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitNewArray*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresNewArrayExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresNewArrayExpression,System.Boolean,System.Boolean@)">VisitNewArray(PostgresNewArrayExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitNewArray_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgNewArrayExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitNewArray(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression,System.Boolean,System.Boolean@)">VisitNewArray(PgNewArrayExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -525,10 +717,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitNewArray(PostgresNewArrayExpression newArrayExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitNewArray(PgNewArrayExpression newArrayExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -538,24 +730,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresNewArrayExpression.html">PostgresNewArrayExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgNewArrayExpression.html">PgNewArrayExpression</a></td>
         <td><span class="parametername">newArrayExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -564,20 +756,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitPostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitPostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitPostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitPostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L330">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L346">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitPostgresBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitPostgresBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitPostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitPostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresBinaryExpression,System.Boolean,System.Boolean@)">VisitPostgresBinary(PostgresBinaryExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitPostgresBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitPostgresBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression,System.Boolean,System.Boolean@)">VisitPostgresBinary(PgBinaryExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -586,10 +778,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitPostgresBinary(PostgresBinaryExpression binaryExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitPostgresBinary(PgBinaryExpression binaryExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -599,24 +791,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresBinaryExpression.html">PostgresBinaryExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgBinaryExpression.html">PgBinaryExpression</a></td>
         <td><span class="parametername">binaryExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -625,20 +817,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresRegexMatchExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRegexMatchExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L501">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L574">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRegexMatch_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRegexMatch*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresRegexMatchExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRegexMatchExpression,System.Boolean,System.Boolean@)">VisitRegexMatch(PostgresRegexMatchExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRegexMatch_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRegexMatchExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRegexMatch(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression,System.Boolean,System.Boolean@)">VisitRegexMatch(PgRegexMatchExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -647,10 +839,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitRegexMatch(PostgresRegexMatchExpression regexMatchExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitRegexMatch(PgRegexMatchExpression regexMatchExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -660,24 +852,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRegexMatchExpression.html">PostgresRegexMatchExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRegexMatchExpression.html">PgRegexMatchExpression</a></td>
         <td><span class="parametername">regexMatchExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -686,20 +878,20 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRowValueExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresRowValueExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRowValueExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRowValueExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRowValueExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRowValueExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRowValueExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L560">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L637">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRowValueExpression_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRowValueExpression*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRowValueExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresRowValueExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRowValueExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRowValueExpression,System.Boolean,System.Boolean@)">VisitRowValueExpression(PostgresRowValueExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitRowValueExpression_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgRowValueExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitRowValueExpression(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression,System.Boolean,System.Boolean@)">VisitRowValueExpression(PgRowValueExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -708,10 +900,10 @@ doing so can result in application failures when updating to a new Entity Framew
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitRowValueExpression(PostgresRowValueExpression rowValueExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitRowValueExpression(PgRowValueExpression rowValueExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -721,24 +913,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresRowValueExpression.html">PostgresRowValueExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgRowValueExpression.html">PgRowValueExpression</a></td>
         <td><span class="parametername">rowValueExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -747,28 +939,29 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlBinary_SqlBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlBinary(SqlBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlBinary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlBinary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L26">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L27">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlBinary_SqlBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlBinary(SqlBinaryExpression,System.Boolean,System.Boolean@)">VisitSqlBinary(SqlBinaryExpression, bool, out bool)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlBinary_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlBinary(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlBinaryExpression,System.Boolean,System.Boolean@)">VisitSqlBinary(SqlBinaryExpression, bool, out bool)</h4>
+  <div class="markdown level1 summary"><p>Visits a <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a> and computes its nullability.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override SqlExpression VisitSqlBinary(SqlBinaryExpression sqlBinaryExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -778,24 +971,27 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlBinaryExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlbinaryexpression">SqlBinaryExpression</a></td>
         <td><span class="parametername">sqlBinaryExpression</span></td>
-        <td></td>
+        <td><p>A sql binary expression to visit.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
-        <td></td>
+        <td><p>A bool value indicating if optimized expansion which considers null value as false value is allowed.</p>
+</td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
-        <td></td>
+        <td><p>A bool value indicating whether the sql expression is nullable.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -804,20 +1000,23 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
-        <td></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
+        <td><p>An optimized sql expression.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlbinary">SqlNullabilityProcessor.VisitSqlBinary(SqlBinaryExpression, bool, out bool)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlFunction_SqlFunctionExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlFunction(SqlFunctionExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlFunction_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlFunctionExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlFunction(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlFunctionExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L360">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L379">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlFunction_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlFunction*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlFunction_SqlFunctionExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlFunction(SqlFunctionExpression,System.Boolean,System.Boolean@)">VisitSqlFunction(SqlFunctionExpression, bool, out bool)</h4>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitSqlFunction_Microsoft_EntityFrameworkCore_Query_SqlExpressions_SqlFunctionExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitSqlFunction(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlFunctionExpression,System.Boolean,System.Boolean@)">VisitSqlFunction(SqlFunctionExpression, bool, out bool)</h4>
   <div class="markdown level1 summary"><p>This is an internal API that supports the Entity Framework Core infrastructure and not subject to
 the same compatibility standards as public APIs. It may be changed or removed without notice in
 any release. You should only use it directly in your code with extreme caution and knowing that
@@ -829,7 +1028,7 @@ doing so can result in application failures when updating to a new Entity Framew
     <pre><code class="lang-csharp hljs">protected override SqlExpression VisitSqlFunction(SqlFunctionExpression sqlFunctionExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -839,24 +1038,24 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlFunctionExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlfunctionexpression">SqlFunctionExpression</a></td>
         <td><span class="parametername">sqlFunctionExpression</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -865,29 +1064,31 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlnullabilityprocessor.visitsqlfunction">SqlNullabilityProcessor.VisitSqlFunction(SqlFunctionExpression, bool, out bool)</a></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresUnknownBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresUnknownBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgUnknownBinaryExpression_System_Boolean_System_Boolean__.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression%2CSystem.Boolean%2CSystem.Boolean%40)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Edit this page</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L603">View Source</a>
+    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L680">View Source</a>
   </span>
   <a id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitUnknownBinary_" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitUnknownBinary*"></a>
-  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PostgresUnknownBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresUnknownBinaryExpression,System.Boolean,System.Boolean@)">VisitUnknownBinary(PostgresUnknownBinaryExpression, bool, out bool)</h4>
-  <div class="markdown level1 summary"><p>Visits a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresUnknownBinaryExpression.html">PostgresUnknownBinaryExpression</a> and computes its nullability.</p>
+  <h4 id="Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor_VisitUnknownBinary_Npgsql_EntityFrameworkCore_PostgreSQL_Query_Expressions_Internal_PgUnknownBinaryExpression_System_Boolean_System_Boolean__" data-uid="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor.VisitUnknownBinary(Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression,System.Boolean,System.Boolean@)">VisitUnknownBinary(PgUnknownBinaryExpression, bool, out bool)</h4>
+  <div class="markdown level1 summary"><p>Visits a <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a> and computes its nullability.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitUnknownBinary(PostgresUnknownBinaryExpression unknownBinaryExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual SqlExpression VisitUnknownBinary(PgUnknownBinaryExpression unknownBinaryExpression, bool allowOptimizedExpansion, out bool nullable)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -897,19 +1098,19 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresUnknownBinaryExpression.html">PostgresUnknownBinaryExpression</a></td>
+        <td><a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a></td>
         <td><span class="parametername">unknownBinaryExpression</span></td>
-        <td><p>A <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PostgresUnknownBinaryExpression.html">PostgresUnknownBinaryExpression</a> expression to visit.</p>
+        <td><p>A <a class="xref" href="Npgsql.EntityFrameworkCore.PostgreSQL.Query.Expressions.Internal.PgUnknownBinaryExpression.html">PgUnknownBinaryExpression</a> expression to visit.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">allowOptimizedExpansion</span></td>
         <td><p>A bool value indicating if optimized expansion which considers null value as false value is allowed.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">bool</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
         <td><span class="parametername">nullable</span></td>
         <td><p>A bool value indicating whether the sql expression is nullable.</p>
 </td>
@@ -917,7 +1118,7 @@ doing so can result in application failures when updating to a new Entity Framew
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -926,12 +1127,13 @@ doing so can result in application failures when updating to a new Entity Framew
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SqlExpression</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.entityframeworkcore.query.sqlexpressions.sqlexpression">SqlExpression</a></td>
         <td><p>An optimized sql expression.</p>
 </td>
       </tr>
     </tbody>
   </table>
+
 </article>
           </div>
 
@@ -940,15 +1142,15 @@ doing so can result in application failures when updating to a new Entity Framew
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/new/stable/apiSpec/new?filename=Npgsql_EntityFrameworkCore_PostgreSQL_Query_Internal_NpgsqlSqlNullabilityProcessor.md&amp;value=---%0Auid%3A%20Npgsql.EntityFrameworkCore.PostgreSQL.Query.Internal.NpgsqlSqlNullabilityProcessor%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Edit this page</a>
                   </li>
                   <li>
-                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/docs/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L10" class="contribution-link">View Source</a>
+                    <a href="https://github.com/npgsql/Npgsql.EntityFrameworkCore.PostgreSQL/blob/main/src/EFCore.PG/Query/Internal/NpgsqlSqlNullabilityProcessor.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
@@ -970,7 +1172,7 @@ doing so can result in application failures when updating to a new Entity Framew
       </footer>
     </div>
 
-    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
