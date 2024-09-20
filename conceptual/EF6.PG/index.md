@@ -144,7 +144,7 @@ Example use cases:
 - Preventing accidental insertion of DateTime values having ```DateTimeKind.Unspecified```.
 - Forcing all postgres date/time types to be returned to Entity Framework as ```DateTimeOffset```.
 
-```c#
+```csharp
 [DbConfigurationType(typeof(AppDbContextConfiguration))]
 public class AppDbContext : DbContext
 {

@@ -1,6 +1,6 @@
 # Translations
 
-Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports [regular expression operations](http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP), and the Npgsql EF Core provider automatically translates .NET's [`Regex.IsMatch`](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regex.ismatch) to use this feature. Since evaluation happens at the server, table data doesn't need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up. The same C# code on other providers will trigger client evaluation.
+Entity Framework Core allows providers to translate query expressions to SQL for database evaluation. For example, PostgreSQL supports [regular expression operations](http://www.postgresql.org/docs/current/static/functions-matching.html#FUNCTIONS-POSIX-REGEXP), and the Npgsql EF Core provider automatically translates .NET's [`Regex.IsMatch`](https://docs.microsoft.com/dotnet/api/system.text.regularexpressions.regex.ismatch) to use this feature. Since evaluation happens at the server, table data doesn't need to be transferred to the client (saving bandwidth), and in some cases indexes can be used to speed things up. The same csharp code on other providers will trigger client evaluation.
 
 The Npgsql-specific translations are listed below. Some areas, such as [full-text search](full-text-search.md), have their own pages in this section which list additional translations.
 
@@ -306,7 +306,7 @@ The PostgreSQL aggregate functions are documented [here](https://www.postgresql.
 
 Aggregate functions can be used as follows:
 
-```c#
+```csharp
 var query = ctx.Set<Customer>()
     .GroupBy(c => c.City)
     .Select(
@@ -319,7 +319,7 @@ var query = ctx.Set<Customer>()
 
 To use functions accepting a tuple_of_2, project out from the group as follows:
 
-```c#
+```csharp
 var query = ctx.Set<Customer>()
     .GroupBy(c => c.City)
     .Select(
