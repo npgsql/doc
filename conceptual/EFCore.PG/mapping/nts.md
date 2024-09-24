@@ -11,7 +11,7 @@ Note that the EF Core NetTopologySuite plugin depends on [the Npgsql ADO.NET Net
 
 To use the NetTopologySuite plugin, add the [Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite nuget](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite) to your project. Then, configure the NetTopologySuite plugin as follows:
 
-### [EF 9.0, with a connection string](#tab/ef9-with-connection-string)
+### [EF 8.0, with a connection string](#tab/ef8-with-connection-string)
 
 If you're passing a connection string to `UseNpgsql`, simply add the `UseNetTopologySuite` call as follows:
 
