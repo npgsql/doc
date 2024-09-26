@@ -29,3 +29,71 @@ For example, Zipkin visualizes traces in the following way:
 ![Zipkin UI Sample](/img/zipkin.png)
 
 In this trace, the Npgsql query (to database testdb) took around 800ms, and was nested inside the application's `work1` activity, which also had another unrelated `subtask1`. This allows understanding the relationships between the different activities, and where time is being spent.
+
+### Enrich Options
+
+Enrich actions on the tracing options allow activities created by Npgsql to be enriched with additional information from the raw object relating to the activity, or on any exception.
+The action is called only when `activity.IsAllDataRequested` is `true`.
+
+#### `EnrichCommandExecution`
+
+This action's parameters contain the activity itself (which can be enriched), the name of the event, and either the `NpgsqlCommand` or a tuple also containing an exception, depending on the event name:
+
+For event name "OnStartActivity", the actual object will be `NpgsqlCommand`.
+
+For event name "OnFirstResponse", the actual object will be `NpgsqlCommand`.
+
+For event name "OnStopActivity", the actual object will be `NpgsqlCommand`.
+
+For event name "OnException", the actual object will be `ValueTuple<NpgsqlCommand, Exception>`.
+
+Example:
+
+```csharp
+using System;
+using Npgsql;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
+
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddNpgsql(options => options.EnrichCommandExecution
+        = (activity, eventName, rawObject) =>
+        {
+            switch (eventName, rawObject)
+            {
+                case ("OnStartActivity", NpgsqlCommand command):
+                    activity.SetTag("command.type", command.CommandType);
+                    break;
+                case ("OnFirstResponse", NpgsqlCommand command):
+                    activity.SetTag("received-first-response", DateTime.UtcNow);
+                    break;
+                case ("OnStopActivity", NpgsqlCommand command):
+                    activity.SetTag("command.type", command.CommandType);
+                    break;
+                case ("OnException", (NpgsqlCommand command, Exception exception)):
+                    activity.SetTag("stackTrace", exception.StackTrace);
+                    break;
+            }
+        }).Build();
+```
+
+### Record Options
+
+Recording of an `ActivityEvent` can be disabled for exceptions or the point at which a first response is received, by setting the corresponding flags on the options.
+Note that even when disabled, the corresponding Enrich invocations will still occur ("OnException" and "OnFirstResponse" respectively, see above).
+
+Example:
+
+```csharp
+using System;
+using Npgsql;
+using OpenTelemetry;
+using OpenTelemetry.Trace;
+
+var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .AddNpgsql(options => 
+        {
+            options.RecordCommandExecutionException = false; // Default = true
+            options.RecordCommandExecutionFirstResponse = false; // Default = true
+        }).Build();
+```
