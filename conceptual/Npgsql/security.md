@@ -80,7 +80,7 @@ Starting Npgsql 9.0 you control how SSL encryption is negotiated while connectin
 
 Enabling this option (by changing it to `direct` mode) can improve latency while opening a physical connection by removing one round trip.
 
-This option is only supported with PostgreSQL 17 and above. 
+This option is only supported with PostgreSQL 17 and above.
 
 ### Advanced server certificate validation
 
