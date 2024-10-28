@@ -76,7 +76,7 @@ To disable certificate validation when using `Require`, set `Trust Server Certif
 
 ### SSL Negotiation
 
-Starting Npgsql 9.0 you control how SSL encryption is negotiated while connecting to PostgreSQL via the `SSL Negotiation` connection string parameter or via the `PGSSLNEGOTIATION` environment variable. In the default `postgres` mode, the client first asks the server if SSL is supported. In `direct` mode, the client starts the standard SSL handshake directly after establishing the TCP/IP connection.
+Starting with Npgsql 9.0, you can control how SSL encryption is negotiated while connecting to PostgreSQL via the `SSL Negotiation` connection string parameter, or via the `PGSSLNEGOTIATION` environment variable. In the default `postgres` mode, the client first asks the server if SSL is supported. In `direct` mode, the client starts the standard SSL handshake directly after establishing the TCP/IP connection.
 
 Enabling this option (by changing it to `direct` mode) can improve latency while opening a physical connection by removing one round trip.
 
