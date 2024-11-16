@@ -40,13 +40,11 @@ In this trace, the Npgsql query (to database testdb) took around 800ms, and was 
 Once you've enabled Npgsql tracing as above, you can tweak its configuration via the <xref:Npgsql.NpgsqlDataSourceBuilder.ConfigureTracingOptions*?displayProperty=nameWithType> API:
 
 ```csharp
-dataSourceBuilder.ConfigureTracingOptions(new NpgsqlTracingOptions
-{
+dataSourceBuilder.ConfigureTracing(o => o
     // Set the command SQL as the span name
-    ProvideSpanNameForCommand = cmd => cmd.CommandText,
+    .ConfigureCommandSpanNameProvider(cmd => cmd.CommandText)
     // Filter out COMMIT commands
-    FilterCommand = cmd => !cmd.CommandText.StartsWith("COMMIT", StringComparison.Ordinal)
-});
+    .ConfigureCommandFilter(cmd => !cmd.CommandText.StartsWith("COMMIT", StringComparison.OrdinalIgnoreCase)));
 ```
 
 This allows you to:
@@ -56,4 +54,46 @@ This allows you to:
 * Add arbitrary tags to the tracing span, based on the command
 * Disable the time-to-first-read event that's emitted in spans
 
-.NET's [`AsyncLocal`](https://learn.microsoft.com/dotnet/api/system.threading.asynclocal-1) allows you to flow arbitrary information from the command call-site (where you create and execute the command) to the above callbacks; for example, you can give each command a unique logical name which would be set as the span name. Note that separate callbacks need to be registered for <xref:Npgsql.NpgsqlCommand> and <xref:Npgsql.NpgsqlBatch>.
+## Using `AsyncLocal` to pass arbitrary information to your callbacks
+
+The callbacks available via <xref:Npgsql.NpgsqlDataSourceBuilder.ConfigureTracingOptions*?displayProperty=nameWithType> only accept the <xref:Npgsql.NpgsqlCommand> or <xref:Npgsql.NpgsqlBatch> as their parameters; this makes it difficult to e.g. assign arbitrary names to your commands, so that show up as the span names in your tracing monitor. You can use .NET [`AsyncLocal`](https://learn.microsoft.com/dotnet/api/system.threading.asynclocal-1) to flow arbitrary information from the command call site (where you execute the command) to your tracing callbacks to achieve this.
+
+For example, the following adds an `ExecuteReaderWithSpanNameAsync` extension method to <xref:Npgsql.NpgsqlCommand>:
+
+```c#
+internal static class DbCommandExtensions
+{
+    internal static readonly AsyncLocal<string?> CommandName = new();
+
+    public static async Task<NpgsqlDataReader> ExecuteReaderWithSpanNameAsync(this NpgsqlCommand command, string spanName)
+    {
+        var previousValue = CommandName.Value;
+        CommandName.Value = "FetchAllUsers";
+
+        try
+        {
+            return await command.ExecuteReaderAsync();
+        }
+        finally
+        {
+            CommandName.Value = previousValue;
+        }
+    }
+}
+```
+
+You can now configure your data source to use this span name in commands:
+
+```c#
+dataSourceBuilder.ConfigureTracing(o =>
+    o.ConfigureCommandSpanNameProvider(_ =>
+        DbCommandExtensions.CommandName.Value));
+```
+
+At this point, you can execute commands as follows, and see the provided value appearing in your tracing:
+
+```c#
+await using var reader = await command.ExecuteReaderWithSpanNameAsync("FetchAllUsers");
+```
+
+We'll likely work on future improvements to streamline this and make the above unnecessary.
