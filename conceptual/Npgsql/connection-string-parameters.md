@@ -84,15 +84,15 @@ Host Recheck Seconds      | Controls for how long the host's cached state will b
 Parameter                | Description                                                                                          | Default
 ------------------------ | ---------------------------------------------------------------------------------------------------- | ----------
 Options<sup>[1](#misc_sup_1)</sup> | Specifies any valid [PostgreSQL connection options](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS) (e.g. `Options=-c synchronous_commit=local`). Introduced in 5.0. | PGOPTIONS
-Application Name         | The optional application name parameter to be sent to the backend during connection initiation.      |
-Enlist                   | Whether to enlist in an ambient TransactionScope.                                                    | true
-Search Path              | Sets the schema search path.                                                                         |
-Client Encoding          | Gets or sets the client_encoding parameter.                                                          | PGCLIENTENCODING, UTF8
-Encoding                 | Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data.            | UTF8
-Timezone                 | Gets or sets the session timezone.                                                                   | PGTZ
-EF Template Database     | The database template to specify when creating a database in Entity Framework.                       | template1
-EF Admin Database        | The database admin to specify when creating and dropping a database in Entity Framework.             | template1
-Load Table Composites    | Load table composite type definitions, and not just free-standing composite types.                   | false
+Application Name         | The optional application name parameter to be sent to the backend during connection initiation.          |
+Enlist                   | Whether to enlist in an ambient TransactionScope.                                                        | true
+Search Path              | Sets the schema search path.                                                                             |
+Client Encoding          | Gets or sets the client_encoding parameter.                                                              | PGCLIENTENCODING, UTF8
+Encoding                 | Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data.                | UTF8
+Timezone                 | Gets or sets the session timezone.                                                                       | PGTZ
+EF Template Database     | The database template to specify when creating a database in Entity Framework.  Removed in 8.0.          | template1
+EF Admin Database        | The database admin to specify when creating and dropping a database in Entity Framework. Removed in 8.0. | template1
+Load Table Composites    | Load table composite type definitions, and not just free-standing composite types.                       | false
 Array Nullability Mode   | Configure the way arrays of value types are returned when requested as object instances. Possible values are: `Never` (arrays of value types are always returned as non-nullable arrays), `Always` (arrays of value types are always returned as nullable arrays) and `PerInstance` (the type of array that gets returned is determined at runtime).             | Never
 
 <sup id="misc_sup_1">1</sup>The `Options` connection string parameter is essentially the string of command line options that get passed to the [`postgres`](https://www.postgresql.org/docs/current/app-postgres.html) program when the process is started.
