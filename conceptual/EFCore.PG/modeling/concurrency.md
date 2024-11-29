@@ -18,7 +18,7 @@ public class SomeEntity
 {
     public int Id { get; set; }
 
-    [Timestamp]
+    [Column("xmin")]
     public uint Version { get; set; }
 }
 ```
@@ -34,7 +34,8 @@ class MyContext : DbContext
     {
         modelBuilder.Entity<SomeEntity>()
             .Property(b => b.Version)
-            .IsRowVersion();
+            .IsRowVersion()
+            .HasColumnName("xmin");
     }
 }
 
