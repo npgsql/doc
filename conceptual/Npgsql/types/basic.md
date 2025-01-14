@@ -37,7 +37,7 @@ date                        | DateTime                   | DateOnly (6.0+)
 time without time zone      | TimeSpan                   | TimeOnly (6.0+)
 time with time zone         | DateTimeOffset             |
 interval                    | TimeSpan<sup>3</sup>       | <xref:NpgsqlTypes.NpgsqlInterval>
-cidr                        | <xref:NpgsqlTypes.NpgsqlCidr><sup>4</sup> |
+cidr                        | <xref:NpgsqlTypes.NpgsqlCidr><sup>4</sup> | [`IPNetwork`](https://learn.microsoft.com/dotnet/api/system.net.ipnetwork)
 inet                        | IPAddress                  | <xref:NpgsqlTypes.NpgsqlInet>
 macaddr                     | PhysicalAddress            |
 tsquery                     | NpgsqlTsQuery              |
@@ -115,7 +115,7 @@ date                        | DateOnly (6.0+)                            | DateT
 time without time zone      | TimeOnly (6.0+)                            | TimeSpan                                | Time                  | Time
 time with time zone         |                                            | DateTimeOffset                          | TimeTz                |
 interval                    | TimeSpan                                   | <xref:NpgsqlTypes.NpgsqlInterval>       | Interval              |
-cidr                        |                                            | ValueTuple\<IPAddress, int\>, IPAddress | Cidr                  |
+cidr                        | <xref:NpgsqlTypes.NpgsqlCidr>, [`IPNetwork`](https://learn.microsoft.com/dotnet/api/system.net.ipnetwork) | ValueTuple\<IPAddress, int\>, IPAddress | Cidr                  |
 inet                        | IPAddress                                  | ValueTuple\<IPAddress, int\>            | Inet                  |
 macaddr                     | PhysicalAddress                            |                                         | MacAddr               |
 tsquery                     | NpgsqlTsQuery                              |                                         | TsQuery               |
