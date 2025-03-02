@@ -39,7 +39,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4.3.0
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 9.0.x
 
     - name: Checkout Npgsql
       uses: actions/checkout@v4
@@ -67,7 +67,7 @@ jobs:
       working-directory: EFCore.PG
 
     - name: Get docfx
-      run: dotnet tool install --version 2.78.0 -g docfx
+      run: dotnet tool install --version 2.78.3 -g docfx
 
     - name: Build docs
       run: docfx --warningsAsErrors
