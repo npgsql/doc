@@ -84,7 +84,7 @@ Host Recheck Seconds      | Controls for how long the host's cached state will b
 Parameter                | Description                                                                                          | Default
 ------------------------ | ---------------------------------------------------------------------------------------------------- | ----------
 Options<sup>[1](#misc_sup_1)</sup> | Specifies any valid [PostgreSQL connection options](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-OPTIONS) (e.g. `Options=-c synchronous_commit=local`). Introduced in 5.0. | PGOPTIONS
-Application Name<sup>[2](#misc_sup_2)</sup> | The optional application name parameter to be sent to the backend during connection initiation.      | PGAPPNAME
+Application Name         | The optional application name parameter to be sent to the backend during connection initiation.      | PGAPPNAME
 Enlist                   | Whether to enlist in an ambient TransactionScope.                                                    | true
 Search Path              | Sets the schema search path.                                                                         |
 Client Encoding          | Gets or sets the client_encoding parameter.                                                          | PGCLIENTENCODING, UTF8
@@ -96,21 +96,6 @@ Array Nullability Mode   | Configure the way arrays of value types are returned 
 It is most commonly used to set named run-time parameters via the `-c` option but other options can be used too (although not all of them make sense in that context).
 Setting multiple options is possible by separating them with a space character. Space and backslash characters in option values need to be escaped by prefixing a backslash character.
 Example: `Options=-c default_transaction_isolation=serializable -c default_transaction_deferrable=on -c foo.bar=My\\ Famous\\\\Thing`
-
-<sup id="misc_sup_2">2</sup>The `Application Name` can be set on your own or you can inject it with `PGAPPNAME` environment variable (introduced in 10.0). For example, you can automatically set the Kubernetes pod name with:
-
-```yaml
-spec:
-  template:
-    spec:
-      containers:
-      - name: my-app
-        env:
-        - name: PGAPPNAME
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.name
-```
 
 ## Obsolete/removed
 
