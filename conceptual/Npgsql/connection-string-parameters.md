@@ -28,7 +28,7 @@ Root Certificate             | Location of a CA certificate used to validate the
 Check Certificate Revocation | Whether to check the certificate revocation list during authentication.                                                                     | false
 SSL Negotiation              | Controls how SSL encryption is negotiated with the server, if SSL is used. Introduced in 9.0. [See docs for possible values and more info](security.md). | PGSSLNEGOTIATION
 Channel Binding              | Control whether channel binding is used when authenticating with SASL. Introduced in 8.0.                                                   | Prefer
-Persist Security Info        | When enabled, security-sensitive information, such as the password, will be included as part of connection string for tracing and logging. | false
+Persist Security Info        | When enabled, security-sensitive information will be included as part of connection string for tracing and logging.                         | false
 Kerberos Service Name        | The Kerberos service name to be used for authentication. [See docs for more info](security.md).                                             | postgres
 Include Realm                | The Kerberos realm to be used for authentication. [See docs for more info](security.md).
 Include Error Detail         | When enabled, PostgreSQL error and notice details are included on <xref:Npgsql.PostgresException.Detail?displayProperty=nameWithType> and <xref:Npgsql.PostgresNotice.Detail?displayProperty=nameWithType>. These can contain sensitive data. | false
