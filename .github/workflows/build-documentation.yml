@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
 
     - name: Use Node.js
       uses: actions/setup-node@v6.0.0
@@ -42,7 +42,7 @@ jobs:
         dotnet-version: 10.0.x
 
     - name: Checkout Npgsql
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         repository: npgsql/npgsql
         ref: docs
@@ -55,7 +55,7 @@ jobs:
       working-directory: Npgsql
 
     - name: Checkout EFCore.PG
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         repository: npgsql/Npgsql.EntityFrameworkCore.PostgreSQL
         ref: docs
