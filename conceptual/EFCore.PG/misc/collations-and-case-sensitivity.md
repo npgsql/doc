@@ -54,6 +54,8 @@ protected override void ConfigureConventions(ModelConfigurationBuilder configura
 }
 ```
 
+To exclude a specific column from a global collation applied via `ConfigureConventions`, you must explicitly configure that property using the Fluent API in the `OnModelCreating` method with its own desired collation using `UseCollation` (or specify null for default), which will override the convention. 
+
 All columns created with this configuration will automatically have their collation specified accordingly, and all existing columns will be altered. The end result of the above is very similar to specifying a database collation: instead of telling PostgreSQL to implicit apply a collation to all columns, EF Core will do the same for you in its migrations.
 
 ## The citext type
