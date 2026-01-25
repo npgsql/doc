@@ -67,7 +67,22 @@ jobs:
       working-directory: EFCore.PG
 
     - name: Get docfx
-      run: dotnet tool install --version 2.78.4 -g docfx
+# We temporarily require a nightly biuld of docfx, supporting Roslyn 5.0.0 which Npgsql requires for its analyzer
+# (https://github.com/dotnet/docfx/pull/10859#issuecomment-3794308564)
+#      run: dotnet tool install --version 2.78.4 -g docfx
+      run: |
+        # Get the latest nightly version from GitHub Packages
+        version=$(gh api /orgs/dotnet/packages/nuget/docfx/versions --jq '.[0].name')
+        echo "Installing docfx version: $version"
+
+        # Download the nupkg
+        downloadUrl="https://nuget.pkg.github.com/dotnet/download/docfx/${version}/${version}.nupkg"
+        curl -L -H "Authorization: Bearer $GH_TOKEN" -o "docfx.${version}.nupkg" "$downloadUrl"
+
+        # Install from local source
+        dotnet tool update docfx -g --prerelease --add-source .
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Build docs
       run: docfx --warningsAsErrors
