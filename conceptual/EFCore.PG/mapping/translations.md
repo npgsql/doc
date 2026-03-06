@@ -118,6 +118,7 @@ collection.Contains(item)                | item IN collection
 enumValue.HasFlag(flag)                  | enumValue & flag = flag
 Guid.CreateVersion7()                    | [uuidv7()](https://www.postgresql.org/docs/current/functions-uuid.html) (added in 10 when targeting PG18, client-evaluated otherwise)
 Guid.NewGuid()                           | [gen_random_uuid()](https://www.postgresql.org/docs/current/functions-uuid.html), or [uuid_generate_v4()](https://www.postgresql.org/docs/current/uuid-ossp.html) from [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) when targeting pre-PG13
+EF.Functions.JsonPathExists(json, path)  | [JSON_EXISTS(json, path)](https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-SQLJSON-CHECK) (added in 11)
 nullable.GetValueOrDefault()             | coalesce(nullable, 0)
 nullable.GetValueOrDefault(defaultValue) | coalesce(nullable, defaultValue)
 
