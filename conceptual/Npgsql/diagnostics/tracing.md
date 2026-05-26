@@ -69,7 +69,7 @@ internal static class DbCommandExtensions
     public static async Task<NpgsqlDataReader> ExecuteReaderWithSpanNameAsync(this NpgsqlCommand command, string spanName)
     {
         var previousValue = CommandName.Value;
-        CommandName.Value = "FetchAllUsers";
+        CommandName.Value = spanName;
 
         try
         {
