@@ -24,6 +24,10 @@ Npgsql 4.* targets .NET Framework 4.6.1, as well as [.NET Standard 2.0](https://
 
 Npgsql 5.* targets .NET Standard 2.0 and .NET 5. Starting with this version, we no longer run regression tests on .NET Framework and mono. In addition, the Visual Studio extension (VSIX) and the MSI GAC installer have been discontinued.
 
+Npgsql 9.* targets .Net 6 and later.
+
+Npgsql 10.* targets .Net 8 and later.
+
 ## pgbouncer
 
 Npgsql works well with PgBouncer, but there are some quirks to be aware of.
