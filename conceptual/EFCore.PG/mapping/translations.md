@@ -48,19 +48,6 @@ string.Join(", ", agg_strings)                                | [string_agg(agg_
 EF.Functions.StringToArray(s, "\|")                           | [string_agg(s, '\|')](https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY)
 EF.Functions.StringToArray(s, "\|", "FOO")                    | [string_agg(s, '\|', 'FOO')](https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY)
 
-## Fuzzy string matching
-
-Starting with version 11.0, `EF.Functions.FuzzyStringMatchDaitchMokotoff()` translates to the [`daitch_mokotoff()`](https://www.postgresql.org/docs/current/fuzzystrmatch.html#FUZZYSTRMATCH-DAITCH-MOKOTOFF) function and returns an array of phonetic codes. This requires PostgreSQL 16 or above and the `fuzzystrmatch` extension:
-
-```csharp
-protected override void OnModelCreating(ModelBuilder modelBuilder)
-    => modelBuilder.HasPostgresExtension("fuzzystrmatch");
-```
-
-.NET                                               | SQL
--------------------------------------------------- | --------------------
-EF.Functions.FuzzyStringMatchDaitchMokotoff(value)   | daitch_mokotoff(value)
-
 ## Date and time functions
 
 > [!NOTE]
