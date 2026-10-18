@@ -24,10 +24,10 @@ stringValue.FirstOrDefault()                                  | substr(stringVal
 stringValue.IndexOf(value)                                    | strpos(stringValue, value) - 1 | char overload added in 11.0
 stringValue.LastOrDefault()                                   | substr(stringValue, length(stringValue), 1)
 stringValue.Length                                            | length(stringValue)
-stringValue.PadLeft(length)                                   | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length) END | Non-truncating in 11.0
-stringValue.PadLeft(length, char)                             | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length, char) END | Non-truncating in 11.0
-stringValue.PadRight(length)                                  | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length) END | Non-truncating in 11.0
-stringValue.PadRight(length, char)                            | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length, char) END | Non-truncating in 11.0
+stringValue.PadLeft(length)                                   | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length) END
+stringValue.PadLeft(length, char)                             | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length, char) END
+stringValue.PadRight(length)                                  | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length) END
+stringValue.PadRight(length, char)                            | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length, char) END
 stringValue.Replace(oldValue, newValue)                       | replace(stringValue, oldValue, newValue) | char overload added in 11.0
 stringValue.StartsWith(value)                                 | stringValue LIKE value \|\| '%' | char overload added in 11.0
 stringValue.Substring(startIndex, length)                     | substr(stringValue, startIndex + 1, @length)
