@@ -18,18 +18,18 @@ string.Concat(str0, str1)                                     | str0 \|\| str1
 string.IsNullOrEmpty(value)                                   | value IS NULL OR value = ''
 string.IsNullOrWhiteSpace(value)                              | value IS NULL OR btrim(value, E' \t\n\r') = ''
 stringValue.CompareTo(strB)                                   | CASE WHEN stringValue = strB THEN 0 ... END
-stringValue.Contains(value)                                   | stringValue LIKE %value%
-stringValue.EndsWith(value)                                   | stringValue LIKE '%' \|\| value
+stringValue.Contains(value)                                   | stringValue LIKE %value% | char overload added in 11.0
+stringValue.EndsWith(value)                                   | stringValue LIKE '%' \|\| value | char overload added in 11.0
 stringValue.FirstOrDefault()                                  | substr(stringValue, 1, 1)
-stringValue.IndexOf(value)                                    | strpos(stringValue, value) - 1
+stringValue.IndexOf(value)                                    | strpos(stringValue, value) - 1 | char overload added in 11.0
 stringValue.LastOrDefault()                                   | substr(stringValue, length(stringValue), 1)
 stringValue.Length                                            | length(stringValue)
-stringValue.PadLeft(length)                                   | lpad(stringValue, length)
-stringValue.PadLeft(length, char)                             | lpad(stringValue, length, char)
-stringValue.PadRight(length)                                  | rpad(stringValue, length)
-stringValue.PadRight(length, char)                            | rpad(stringValue, length, char)
-stringValue.Replace(oldValue, newValue)                       | replace(stringValue, oldValue, newValue)
-stringValue.StartsWith(value)                                 | stringValue LIKE value \|\| '%'
+stringValue.PadLeft(length)                                   | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length) END | Non-truncating in 11.0
+stringValue.PadLeft(length, char)                             | CASE WHEN length(stringValue) >= length THEN stringValue ELSE lpad(stringValue, length, char) END | Non-truncating in 11.0
+stringValue.PadRight(length)                                  | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length) END | Non-truncating in 11.0
+stringValue.PadRight(length, char)                            | CASE WHEN length(stringValue) >= length THEN stringValue ELSE rpad(stringValue, length, char) END | Non-truncating in 11.0
+stringValue.Replace(oldValue, newValue)                       | replace(stringValue, oldValue, newValue) | char overload added in 11.0
+stringValue.StartsWith(value)                                 | stringValue LIKE value \|\| '%' | char overload added in 11.0
 stringValue.Substring(startIndex, length)                     | substr(stringValue, startIndex + 1, @length)
 stringValue.ToLower()                                         | lower(stringValue)
 stringValue.ToUpper()                                         | upper(stringValue)
@@ -48,6 +48,19 @@ string.Join(", ", agg_strings)                                | [string_agg(agg_
 EF.Functions.StringToArray(s, "\|")                           | [string_agg(s, '\|')](https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY)
 EF.Functions.StringToArray(s, "\|", "FOO")                    | [string_agg(s, '\|', 'FOO')](https://www.postgresql.org/docs/current/functions-string.html#FUNCTION-STRING-TO-ARRAY)
 
+## Fuzzy string matching
+
+Starting with version 11.0, `EF.Functions.FuzzyStringMatchDaitchMokotoff()` translates to the [`daitch_mokotoff()`](https://www.postgresql.org/docs/current/fuzzystrmatch.html#FUZZYSTRMATCH-DAITCH-MOKOTOFF) function and returns an array of phonetic codes. This requires PostgreSQL 16 or above and the `fuzzystrmatch` extension:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+    => modelBuilder.HasPostgresExtension("fuzzystrmatch");
+```
+
+.NET                                               | SQL
+-------------------------------------------------- | --------------------
+EF.Functions.FuzzyStringMatchDaitchMokotoff(value)   | daitch_mokotoff(value)
+
 ## Date and time functions
 
 > [!NOTE]
@@ -57,6 +70,8 @@ EF.Functions.StringToArray(s, "\|", "FOO")                    | [string_agg(s, '
 >
 > See also Npgsql's [NodaTime support](/efcore/mapping/nodatime.html), which is a better and safer way of interacting with date/time data.
 
+Starting with version 11.0, `EF.Functions.DateTrunc()` supports `DateTime`, `DateTimeOffset` and `TimeSpan`. The optional time zone argument is only supported for values mapped to `timestamp with time zone`; when omitted for such values, PostgreSQL uses the session time zone.
+
 .NET                                                              | SQL                                                                                                                                    | Notes
 ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------
 DateTime.UtcNow (6.0+)                                            | [now()](https://www.postgresql.org/docs/current/functions-datetime.html)                                                               |
@@ -65,6 +80,8 @@ DateTime.Today (6.0+)                                             | [date_trunc(
 DateTime.UtcNow (legacy)                                          | [now() AT TIME ZONE 'UTC'](https://www.postgresql.org/docs/current/functions-datetime.html)                                            |
 DateTime.Now (legacy)                                             | [now()](https://www.postgresql.org/docs/current/functions-datetime.html)                                                               |
 DateTime.Today (legacy)                                           | [date_trunc('day', now())](https://www.postgresql.org/docs/current/functions-datetime.html)                                            |
+EF.Functions.DateTrunc("month", value)                            | [date_trunc('month', value)](https://www.postgresql.org/docs/current/functions-datetime.html)                                          | Added in 11.0
+EF.Functions.DateTrunc("month", utcDateTime, "Europe/Berlin")     | [date_trunc('month', utcDateTime, 'Europe/Berlin')](https://www.postgresql.org/docs/current/functions-datetime.html)                      | Added in 11.0; timestamp with time zone only
 dateTime.AddDays(1)                                               | [dateTime + INTERVAL '1 days'](https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE)               |
 dateTime.AddHours(value)                                          | [dateTime + INTERVAL '1 hours'](https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE)              |
 dateTime.AddMinutes(1)                                            | [dateTime + INTERVAL '1 minutes'](https://www.postgresql.org/docs/current/functions-datetime.html#OPERATORS-DATETIME-TABLE)            |
@@ -121,6 +138,14 @@ Guid.CreateVersion7()                    | [uuidv7()](https://www.postgresql.org
 Guid.NewGuid()                           | [gen_random_uuid()](https://www.postgresql.org/docs/current/functions-uuid.html), or [uuid_generate_v4()](https://www.postgresql.org/docs/current/uuid-ossp.html) from [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) when targeting pre-PG13
 nullable.GetValueOrDefault()             | coalesce(nullable, 0)
 nullable.GetValueOrDefault(defaultValue) | coalesce(nullable, defaultValue)
+bool.Parse(stringValue)                  | CAST(stringValue AS boolean) (added in 11.0)
+byte.Parse(stringValue)                  | CAST(stringValue AS smallint) (added in 11.0)
+short.Parse(stringValue)                 | CAST(stringValue AS smallint) (added in 11.0)
+int.Parse(stringValue)                   | CAST(stringValue AS integer) (added in 11.0)
+long.Parse(stringValue)                  | CAST(stringValue AS bigint) (added in 11.0)
+float.Parse(stringValue)                 | CAST(stringValue AS real) (added in 11.0)
+double.Parse(stringValue)                | CAST(stringValue AS double precision) (added in 11.0)
+decimal.Parse(stringValue)               | CAST(stringValue AS numeric) (added in 11.0)
 
 ## Binary functions
 
@@ -128,6 +153,7 @@ nullable.GetValueOrDefault(defaultValue) | coalesce(nullable, defaultValue)
 ---------------------------- | ------------------------------- | --------
 bytes[i]                     | get_byte(bytes, i)              |
 bytes.Contains(value)        | position(value IN bytes) > 0    |
+bytes.Any()                  | length(bytes) > 0               | Added in 11.0
 bytes.Length                 | length(@bytes)                  |
 bytes1.SequenceEqual(bytes2) | @bytes = @second                |
 

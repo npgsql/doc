@@ -10,6 +10,8 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     => modelBuilder.HasPostgresExtension("hstore");
 ```
 
+Starting with version 11.0, the generated `CREATE EXTENSION IF NOT EXISTS` command includes `CASCADE`, automatically installing any required extensions. The extensions must still be available on the PostgreSQL server, and the database user must have permission to install them.
+
 ## Execution Strategy
 
 The Npgsql EF Core provider provides a retrying execution strategy, which will attempt to detect most transient PostgreSQL/network errors and will automatically retry your operation. To enable, place the following code in your context's `OnModelConfiguring`:
@@ -22,6 +24,8 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 ```
 
 This strategy relies on the `IsTransient` property of `NpgsqlException`.
+
+Retries are not enabled by default. Starting with version 11.0, the default non-retrying strategy no longer wraps transient failures in an additional `InvalidOperationException`; the original exception is propagated instead. Serialization failures and deadlocks during `SaveChanges` are separately converted to [`DbUpdateConcurrencyException`](../modeling/concurrency.md#database-concurrency-failures).
 
 ## Certificate authentication
 

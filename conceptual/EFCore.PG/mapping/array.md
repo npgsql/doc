@@ -34,6 +34,7 @@ array.Take(2)                                 | [array\[,2\]](https://www.postgr
 array.Skip(1).Take(2)                         | [array\[2,3\]](https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING)                                                     | Added in 8.0
 array1 == array2                              | [array1 = array2](https://www.postgresql.org/docs/current/static/arrays.html)                                                            |
 array1.SequenceEqual(array2)                  | [array1 = array2](https://www.postgresql.org/docs/current/static/arrays.html)                                                            |
+array1.Take(2).SequenceEqual(array2)          | [array1\[:2\] = array2](https://www.postgresql.org/docs/current/arrays.html#ARRAYS-ACCESSING)                                               | Added in 11.0; also supports Skip() and Skip().Take()
 arrayNonColumn.Contains(element)              | [element = ANY(arrayNonColumn)](https://www.postgresql.org/docs/current/static/functions-comparisons.html#AEN21104)                      | Can use regular index
 arrayColumn.Contains(element)                 | [arrayColumn @> ARRAY\[element\]](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                    | Can use GIN index
 array.Append(element)                         | [array_append(array, element)](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE)                       | Added in 6.0
@@ -43,7 +44,7 @@ array.IndexOf(element)                        | [array_position(array, element) 
 array.IndexOf(element, startIndex)            | [array_position(array, element, startIndex + 1) - 1](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE) | Added in 6.0
 String.Join(separator, array)                 | [array_to_string(array, separator, '')](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-FUNCTIONS-TABLE)              | Added in 6.0
 array.Any()                                   | [cardinality(array) > 0](https://www.postgresql.org/docs/current/static/functions-array.html#ARRAY-FUNCTIONS-TABLE)                      |
-array1.Intersect(array2).Any()                | [array1 && array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   | Added in 8.0
+array1.Intersect(array2).Any()                | [array1 && array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   | Added in 8.0; also applies to static readonly collections with non-null elements in 11.0
 array1.Any(i => array2.Contains(i))           | [array1 && array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   |
 array1.All(i => array2.Contains(i))           | [array1 <@ array2](https://www.postgresql.org/docs/current/functions-array.html#ARRAY-OPERATORS-TABLE)                                   |
 array.Any(s => EF.Functions.Like(string, s))  | [string LIKE ANY (array)](https://www.postgresql.org/docs/current/functions-comparisons.html#id-1.5.8.30.16)                             |
