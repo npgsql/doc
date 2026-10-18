@@ -131,22 +131,22 @@ EF.Functions.JsonPathExists(json, "$.Age")      | JSON_EXISTS(json, '$.Age')    
 
 ## Miscellaneous functions
 
-.NET                                     | SQL
----------------------------------------- | --------------------
+.NET                                     | SQL                  | Notes
+---------------------------------------- | -------------------- | -----
 collection.Contains(item)                | item IN collection
 enumValue.HasFlag(flag)                  | enumValue & flag = flag
 Guid.CreateVersion7()                    | [uuidv7()](https://www.postgresql.org/docs/current/functions-uuid.html) (added in 10 when targeting PG18, client-evaluated otherwise)
 Guid.NewGuid()                           | [gen_random_uuid()](https://www.postgresql.org/docs/current/functions-uuid.html), or [uuid_generate_v4()](https://www.postgresql.org/docs/current/uuid-ossp.html) from [`uuid-ossp`](https://www.postgresql.org/docs/current/uuid-ossp.html) when targeting pre-PG13
 nullable.GetValueOrDefault()             | coalesce(nullable, 0)
 nullable.GetValueOrDefault(defaultValue) | coalesce(nullable, defaultValue)
-bool.Parse(stringValue)                  | CAST(stringValue AS boolean) (added in 11.0)
-byte.Parse(stringValue)                  | CAST(stringValue AS smallint) (added in 11.0)
-short.Parse(stringValue)                 | CAST(stringValue AS smallint) (added in 11.0)
-int.Parse(stringValue)                   | CAST(stringValue AS integer) (added in 11.0)
-long.Parse(stringValue)                  | CAST(stringValue AS bigint) (added in 11.0)
-float.Parse(stringValue)                 | CAST(stringValue AS real) (added in 11.0)
-double.Parse(stringValue)                | CAST(stringValue AS double precision) (added in 11.0)
-decimal.Parse(stringValue)               | CAST(stringValue AS numeric) (added in 11.0)
+bool.Parse(stringValue)                  | CAST(stringValue AS boolean) | Added in 11.0
+byte.Parse(stringValue)                  | CAST(stringValue AS smallint) | Added in 11.0
+short.Parse(stringValue)                 | CAST(stringValue AS smallint) | Added in 11.0
+int.Parse(stringValue)                   | CAST(stringValue AS integer) | Added in 11.0
+long.Parse(stringValue)                  | CAST(stringValue AS bigint) | Added in 11.0
+float.Parse(stringValue)                 | CAST(stringValue AS real) | Added in 11.0
+double.Parse(stringValue)                | CAST(stringValue AS double precision) | Added in 11.0
+decimal.Parse(stringValue)               | CAST(stringValue AS numeric) | Added in 11.0
 
 ## Binary functions
 
