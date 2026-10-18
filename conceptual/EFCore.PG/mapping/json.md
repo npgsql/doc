@@ -213,32 +213,6 @@ Console.WriteLine(someEntity.Customer.RootElement.GetProperty("Orders")[0].GetPr
 
 Note that when using this mapping, only limited forms of LINQ querying is supported; [see below](#querying-traditional-and-dom) for more details.
 
-## Querying JSON columns with ToJson
-
-Complex types and owned entities mapped with `ToJson()` support LINQ queries over their members, such as `c.Details.Age > 18`.
-
-Starting with version 11.0, PostgreSQL JSON functions also accept these modeled JSON values, including nested objects, collections and scalar members. For example, with the Customer model above:
-
-```csharp
-var customers = await context.Customers
-    .Where(c => EF.Functions.JsonContains(c.Details, """{"Name": "Joe"}"""))
-    .ToListAsync();
-```
-
-This translates the predicate to `"Details" @> '{"Name": "Joe"}'`. `JsonContains`, `JsonContained`, `JsonExists`, `JsonExistAny` and `JsonExistAll` require `jsonb`, not `json`. `JsonTypeof` supports both column types and can inspect scalar members, such as `EF.Functions.JsonTypeof(c.Details.Age)`.
-
-## Checking JSON paths
-
-Starting with version 11.0, `EF.Functions.JsonPathExists()` translates to PostgreSQL's [`JSON_EXISTS()`](https://www.postgresql.org/docs/current/functions-json.html#FUNCTIONS-SQLJSON-QUERYING) function. This requires PostgreSQL 17 or above and supports JSON columns, including complex types and owned entities mapped with `ToJson()`:
-
-```csharp
-var customers = await context.Customers
-    .Where(c => EF.Functions.JsonPathExists(c.Details, "$.Age"))
-    .ToListAsync();
-```
-
-The predicate is translated to `JSON_EXISTS("Details", '$.Age')`, checking whether the specified JSON path exists.
-
 ## <a name="querying-traditional-and-dom">Querying JSON columns (DOM and legacy POCO)
 
 > [!NOTE]

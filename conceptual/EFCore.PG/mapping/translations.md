@@ -128,6 +128,20 @@ new DateTime(y, m, d, h, m, s, kind)                              | [make_timest
 EF.Functions.Sum(timespans)                                       | [sum(timespans)](https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE)                           | See [Aggregate functions](#aggregate-functions).
 EF.Functions.Average(timespans)                                   | [avg(timespans)](https://www.postgresql.org/docs/current/functions-aggregate.html#FUNCTIONS-AGGREGATE-TABLE)                           | See [Aggregate functions](#aggregate-functions).
 
+## JSON functions
+
+See [JSON mapping](json.md) for mapping options and [PostgreSQL's JSON functions and operators](https://www.postgresql.org/docs/current/functions-json.html) for operator semantics. JSON aggregate functions are listed under [Aggregate functions](#aggregate-functions).
+
+.NET                                            | SQL                                  | Notes
+----------------------------------------------- | ------------------------------------ | -----
+EF.Functions.JsonContains(json, contained)       | json @> contained                    | jsonb only
+EF.Functions.JsonContained(contained, json)      | contained <@ json                    | jsonb only
+EF.Functions.JsonExists(json, key)               | json ? key                           | jsonb only
+EF.Functions.JsonExistAny(json, key1, key2)       | json ?\| ARRAY[key1, key2]            | jsonb only
+EF.Functions.JsonExistAll(json, key1, key2)       | json ?& ARRAY[key1, key2]             | jsonb only
+EF.Functions.JsonTypeof(json)                    | jsonb_typeof(json) or json_typeof(json) | Selected according to the mapped column type
+EF.Functions.JsonPathExists(json, "$.Age")      | JSON_EXISTS(json, '$.Age')            | Added in 11.0; requires PostgreSQL 17 or above
+
 ## Miscellaneous functions
 
 .NET                                     | SQL
@@ -341,6 +355,7 @@ The PostgreSQL aggregate functions are documented [here](https://www.postgresql.
 | EF.Functions.Sum(timespans)                                                        | sum(timespans)
 | EF.Functions.Average(timespans)                                                    | avg(timespans)
 | EF.Functions.JsonObjectAgg(tuple_of_2)                                             | json_object_agg(tuple_of_2.first, tuple_of_2.second)
+| EF.Functions.JsonbObjectAgg(tuple_of_2)                                            | jsonb_object_agg(tuple_of_2.first, tuple_of_2.second)
 | ranges.RangeAgg()                                                                  | range_agg(ranges)
 | ranges.RangeIntersectAgg()                                                         | range_intersect_agg(ranges)
 | multiranges.RangeIntersectAgg()                                                    | range_intersect_agg(multiranges)
