@@ -19,19 +19,6 @@ This will create an index for searching on `Id`, but containing also the column 
 CREATE INDEX "IX_Blog_Id" ON blogs ("Id") INCLUDE ("Name");
 ```
 
-Starting with version 11.0, `IncludeProperties()` also accepts paths to scalar properties within complex types mapped to regular columns:
-
-```csharp
-modelBuilder.Entity<Customer>(b =>
-{
-    b.ComplexProperty(c => c.Address);
-    b.HasIndex(c => c.Name)
-        .IncludeProperties(c => c.Address.PostalCode);
-});
-```
-
-The string overload also accepts dotted paths, such as `.IncludeProperties("Address.PostalCode")`. JSON member paths cannot be included: PostgreSQL's `INCLUDE` clause accepts columns, not expressions extracting values from JSON.
-
 ## Treating nulls as non-distinct
 
 By default, when you create a unique index, PostgreSQL treats null values as distinct; this means that a unique index can contain multiple null values in a column. When creating an index, you can also instruct PostgreSQL that nulls should be treated as *non-distinct*; this causes a unique constraint violation to be raised if a column contains multiple null values:
@@ -98,10 +85,6 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
         .HasIndex(b => b.Url)
         .IsCreatedConcurrently();
 ```
-
-Starting with version 11.0, migrations also use `DROP INDEX CONCURRENTLY` when dropping an index configured this way. Both concurrent creation and removal run outside the migration transaction.
-
-Idempotent migration scripts cannot create or drop indexes concurrently: PostgreSQL forbids these commands inside the `DO` blocks used to check migration history. Starting with version 11.0, generating such a script throws `NotSupportedException`. Use a non-idempotent script for a known migration range, `dotnet ef database update`, or a migration bundle instead. Disabling transactions does not make these operations valid inside a `DO` block.
 
 > [!CAUTION]
 > Do not enable this feature before reading the [PostgreSQL documentation](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY) and understanding the full implications of concurrent index creation.
