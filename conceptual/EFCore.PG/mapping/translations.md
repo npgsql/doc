@@ -32,6 +32,7 @@ stringValue.Replace(oldValue, newValue)                       | replace(stringVa
 stringValue.StartsWith(value)                                 | stringValue LIKE value \|\| '%' | char overload added in 11.0
 stringValue.Substring(startIndex, length)                     | substr(stringValue, startIndex + 1, @length)
 stringValue.ToLower()                                         | lower(stringValue)
+stringValue.ToString()                                        | stringValue | Added in 11.0; null values remain null
 stringValue.ToUpper()                                         | upper(stringValue)
 stringValue.Trim()                                            | btrim(stringValue)
 stringValue.Trim(trimChar)                                    | btrim(stringValue, trimChar)
