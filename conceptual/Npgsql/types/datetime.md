@@ -79,3 +79,15 @@ interval                    | TimeSpan                                   |      
 <sup>1</sup> UTC DateTime is written as `timestamp with time zone`, Local/Unspecified DateTimes are written as `timestamp without time zone`. In versions prior to 6.0 (or when `Npgsql.EnableLegacyTimestampBehavior` is enabled), DateTime is always written as `timestamp without time zone`.
 
 <sup>2</sup>In versions prior to 6.0 (or when `Npgsql.EnableLegacyTimestampBehavior` is enabled), `DbType.DateTime` is mapped to `timestamp without time zone`.
+
+## Negative intervals in JSON (EF Core provider)
+
+Prior to version 11.0, the EF Core provider wrote invalid values for `TimeSpan` and `Duration` to JSON for values with days.
+PostgreSQL applies a sign in an interval [to the field it precedes only](https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-INTERVAL-INPUT), so `-1 02:00:00` is -1 day and +2 hours, i.e. -22 hours. Starting with version 11.0, the EF Core provider writes negative `TimeSpan` and NodaTime `Duration` values with days to JSON with a sign on both the days and the time (`-1 -02:00:00` for -26 hours). Previous versions wrote a sign on the days only (`-1 02:00:00` for -26 hours).
+By default, such values are still read from JSON as -26 hours, and JSON data written by previous versions is read back unchanged. If your JSON data was written by another application, which intended PostgreSQL's meaning (-22 hours), set the following AppContext switch at the start of your application, before any Npgsql or EF Core operations are invoked:
+
+```csharp
+AppContext.SetSwitch("Npgsql.ParseOldEFCoreJsonTimeSpans", false);
+```
+
+This only affects JSON read by the EF Core provider; values read from `interval` columns aren't affected. See the EF Core provider's 11.0 release notes on [negative values with days](/efcore/release-notes/11.0.html#negative-timespan-and-duration-values-with-days) and [migrating them in JSON](/efcore/release-notes/11.0.html#migrating-negative-timespan-and-duration-values-in-json) for details.
