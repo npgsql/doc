@@ -41,7 +41,9 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v6.0.0
       with:
-        dotnet-version: 10.0.x
+        dotnet-version: |
+          10.0.x
+          11.0.x
 
     # docfx has issues specifically with analyzer/sourcegen projects; build manually before.
     - name: Build Npgsql
@@ -55,7 +57,7 @@ jobs:
       working-directory: EFCore.PG
 
     - name: Get docfx
-      run: dotnet tool install --version 2.78.5 -g docfx
+      run: dotnet tool install --version 2.81.0 -g docfx
 
     - name: Build docs
       run: docfx --warningsAsErrors
