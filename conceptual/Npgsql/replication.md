@@ -21,10 +21,10 @@ Enable logical replication in your `postgresql.conf` file:
 wal_level = logical
 ```
 
-Set up a replication user in your [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) file:
+Allow a replication user to connect in your [`pg_hba.conf`](https://www.postgresql.org/docs/current/auth-pg-hba-conf.html) file. Logical replication connections connect to a database, so the `replication` keyword, which only matches physical replication connections, doesn't apply to them:
 
 ```text
-host     replication     repuser     0.0.0.0/0     md5
+host     all     repuser     0.0.0.0/0     md5
 ```
 
 The user `repuser` must exist in your cluster and either be a superuser or have the replication attribute set. See [CREATE ROLE docs](https://www.postgresql.org/docs/current/sql-createrole.html).
@@ -58,7 +58,7 @@ var slot = new PgOutputReplicationSlot("blog_slot");
 // The following will loop until the cancellation token is triggered, and will print message types coming from PostgreSQL:
 var cancellationTokenSource = new CancellationTokenSource();
 await foreach (var message in conn.StartReplication(
-    slot, new PgOutputReplicationOptions("blog_pub", 1), cancellationTokenSource.Token))
+    slot, new PgOutputReplicationOptions("blog_pub", PgOutputProtocolVersion.V1), cancellationTokenSource.Token))
 {
     Console.WriteLine($"Received message type: {message.GetType().Name}");
 
