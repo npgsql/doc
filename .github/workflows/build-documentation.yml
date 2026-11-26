@@ -25,6 +25,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: read
     env:
       # Build source snapshots for API docs, not dependency auditing.
       NuGetAudit: "false"
@@ -77,8 +80,13 @@ jobs:
       shell: bash
       working-directory: EFCore.PG
 
+    # Released docfx (2.81.0) bundles an older Roslyn than Npgsql's source generator requires; use the nightly
+    # until a release with Roslyn 5.12+ ships.
     - name: Get docfx
-      run: dotnet tool install --version 2.81.0 -g docfx
+      run: |
+        dotnet nuget add source https://nuget.pkg.github.com/dotnet/index.json -n docfx-nightly \
+          -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
+        dotnet tool install -g docfx --prerelease
 
     - name: Build docs
       run: docfx --warningsAsErrors
